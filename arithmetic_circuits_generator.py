@@ -75,15 +75,15 @@ class logic_gate():
                     file_object.write('  uint8_t ')
                 else:
                     file_object.write(', ')
-                file_object.write(f'n_{wire_id}=0')
+                file_object.write(f'w_{wire_id}=0')
 
                 self.y.add_wire_id(wire_id)
                 
             else:
                 if self.gate_type == 'not_gate':
-                    file_object.write(f'  n_{self.y.get_wire_id()} = ~n_{self.input.get_wire_id(0)};\n')
+                    file_object.write(f'  w_{self.y.get_wire_id()} = ~w_{self.input.get_wire_id(0)};\n')
                 else:
-                    file_object.write(f'  n_{self.y.get_wire_id()} = n_{self.input.get_wire_id(0)} {self.operator} n_{self.input.get_wire_id(1)};\n')
+                    file_object.write(f'  w_{self.y.get_wire_id()} = w_{self.input.get_wire_id(0)} {self.operator} w_{self.input.get_wire_id(1)};\n')
 
 #jednovstupove
 class not_gate(logic_gate):
@@ -208,7 +208,7 @@ class arithmetic_circuit():
                     else:
                         f.write(', ')
                     
-                    f.write(f'n_{in_wire_index}=0')
+                    f.write(f'w_{in_wire_index}=0')
                     self.inputs.add_wire_id(wire_id, in_wire_index)
                     line_var_cnt += 1
                     wire_id += 1
@@ -239,15 +239,15 @@ class arithmetic_circuit():
 
                 #PRIRAZENI VSTUPNICH HODNOT K DRATUM
                 if self.circuit_type == 'fa':
-                    f.write(f'  n_{self.inputs.get_wire_id(0)} = (a >> 0) & 0x1;\n')
-                    f.write(f'  n_{self.inputs.get_wire_id(1)} = (b >> 0) & 0x1;\n')
-                    f.write(f'  n_{self.inputs.get_wire_id(2)} = (cin >> 0) & 0x1;\n')
+                    f.write(f'  w_{self.inputs.get_wire_id(0)} = (a >> 0) & 0x1;\n')
+                    f.write(f'  w_{self.inputs.get_wire_id(1)} = (b >> 0) & 0x1;\n')
+                    f.write(f'  w_{self.inputs.get_wire_id(2)} = (cin >> 0) & 0x1;\n')
                 else:
                     for in_wire_index in range(0, int(self.input_N/2)):
-                        f.write(f'  n_{self.inputs.get_wire_id(in_wire_index)} = (a >> {in_wire_index}) & 0x1;\n')
+                        f.write(f'  w_{self.inputs.get_wire_id(in_wire_index)} = (a >> {in_wire_index}) & 0x1;\n')
                         
                     for in_wire_index in range(0, int(self.input_N/2)):
-                        f.write(f'  n_{self.inputs.get_wire_id(in_wire_index + int(self.input_N/2))} = (b >> {in_wire_index}) & 0x1;\n')      
+                        f.write(f'  w_{self.inputs.get_wire_id(in_wire_index + int(self.input_N/2))} = (b >> {in_wire_index}) & 0x1;\n')      
 
                 #VYPOCTY VYSTUPNICH HODNOT HRADEL
                 ##
@@ -275,7 +275,7 @@ class arithmetic_circuit():
                                 out_component_index += 5 * (out_wire_index-1) + 2
 
                         wire_id = self.wire_index_offset(out_component_index+self.input_N)
-                        f.write(f'  out |= (n_{wire_id} & 0x01) << {out_wire_index};\n')                    
+                        f.write(f'  out |= (w_{wire_id} & 0x01) << {out_wire_index};\n')                    
                     else:
                         #Cout
                         if out_wire_index == (self.out.N)-1:
@@ -285,7 +285,7 @@ class arithmetic_circuit():
                             out_component_index = self.get_component_index(self.sum_out_gates[out_wire_index])
                     
                         wire_id = self.wire_index_offset(out_component_index+self.input_N)
-                        f.write(f'  out |= (n_{wire_id} & 0x01) << {out_wire_index};\n')                    
+                        f.write(f'  out |= (w_{wire_id} & 0x01) << {out_wire_index};\n')                    
                 
 
                 f.write('  return out;\n')
