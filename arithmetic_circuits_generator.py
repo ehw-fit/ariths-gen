@@ -8,10 +8,10 @@ class wire():
     def get_declaration_c(self):
         return f"  uint8_t {self.name} = 0;\n"
 
-    def get_wire_value(self, offset : int = 0):
+    def get_wire_value_c(self, offset : int = 0):
         return f"(({self.name} >> {offset}) & 0x01)"
             
-    def return_wire_value(self, offset : int = 0):
+    def return_wire_value_c(self, offset : int = 0):
         return f"({self.name} & 0x01) << {offset}"
 
 class bus():
@@ -28,11 +28,11 @@ class bus():
     def connect(self, out_wire_index : int, inner_component_out_wire : wire):
         self.bus[out_wire_index] = inner_component_out_wire
 
-    def get_wire_value(self, offset : int = 0):
-        self.bus[offset].get_wire_value(offset)
+    def get_wire_value_c(self, offset : int = 0):
+        self.bus[offset].get_wire_value_c(offset)
 
-    def return_wire_value(self, offset : int = 0):
-        self.bus[offset].return_wire_value(offset)
+    def return_wire_value_c(self, offset : int = 0):
+        self.bus[offset].return_wire_value_c(offset)
 
     def get_declaration_c(self):
         if self.N > 8:
@@ -46,6 +46,11 @@ class bus():
 
 #KOMPONENTY HRADEL
 class logic_gate():
+    def __init__(self, a : wire, b : wire, prefix : str = "w"):
+        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
+        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),b.value)
+        self.prefix = prefix
+
     @staticmethod
     def get_includes_c():
         return f"#include <stdio.h>\n#include <stdint.h>\n\n"
@@ -60,7 +65,9 @@ class logic_gate():
         return f"{self.a.name} {self.operator} {self.b.name}"
     
     def get_function_c(self):
-        return f"{self.a.get_wire_value()} {self.operator} {self.b.get_wire_value(0)}"
+        self.a.name = self.a.name.replace(self.prefix+"_", '')
+        self.b.name = self.b.name.replace(self.prefix+"_", '')
+        return f"{self.a.get_wire_value_c()} {self.operator} {self.b.get_wire_value_c(0)}"
     
     #generovani samostatneho obvodu logickeho hradla do jazyka C
     def get_c_code(self, file_object):
@@ -75,6 +82,7 @@ class not_gate(logic_gate):
         self.gate_type = 'not_gate'
         self.operator = '~'
         self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
+        self.prefix = prefix
 
         if self.a.value == 1:
             self.output = wire(name=prefix+"_y"+str(outid),value=0)
@@ -91,15 +99,15 @@ class not_gate(logic_gate):
         return f"{self.operator}{self.a.name}"
 
     def get_function_c(self):
-        return f"{self.operator}{self.a.get_wire_value()} & 0x01 << 0"
+        self.a.name = self.a.name.replace(self.prefix+"_", '')
+        return f"{self.operator}{self.a.get_wire_value_c()} & 0x01 << 0"
 
 #dvouvstupove
 class and_gate(logic_gate):
     def __init__(self, a : wire, b : wire, prefix : str = "w", outid : int = 0):
+        super().__init__(a,b,prefix)
         self.gate_type = 'and_gate'
         self.operator = '&'
-        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
-        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),a.value)
 
         if a.value == 1 and b.value == 1:
             self.output = wire(name=prefix+"_y"+str(outid),value=1)
@@ -108,12 +116,11 @@ class and_gate(logic_gate):
 
 class nand_gate(logic_gate):
     def __init__(self, a : wire, b : wire, prefix : str = "w", outid : int = 0):
+        super().__init__(a,b,prefix)
         self.gate_type = 'nand_gate'
         self.operator = '&'
-        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
-        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),a.value)
 
-        if self.a.value == 1 and self.b.value == 1:
+        if (self.a.value == 1 and self.b.value == 1):
             self.output = wire(name=prefix+"_y"+str(outid),value=0)
         else:
             self.output = wire(name=prefix+"_y"+str(outid),value=1)
@@ -124,10 +131,9 @@ class nand_gate(logic_gate):
 
 class or_gate(logic_gate):
     def __init__(self, a : wire, b : wire, prefix : str = "w", outid : int = 0):
+        super().__init__(a,b,prefix)
         self.gate_type = 'or_gate'
         self.operator = '|'
-        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
-        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),a.value)
 
         if self.a.value == 1 or self.b.value == 1:
             self.output = wire(name=prefix+"_y"+str(outid),value=1)
@@ -136,10 +142,9 @@ class or_gate(logic_gate):
 
 class nor_gate(logic_gate):
     def __init__(self, a : wire, b : wire, prefix : str = "w", outid : int = 0):
+        super().__init__(a,b,prefix)
         self.gate_type = 'nor_gate'
         self.operator = '|'
-        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
-        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),a.value)
 
         if self.a.value == 1 or self.b.value == 1:
             self.output = wire(name=prefix+"_y"+str(outid),value=0)
@@ -152,10 +157,9 @@ class nor_gate(logic_gate):
 
 class xor_gate(logic_gate): 
     def __init__(self, a : wire, b : wire, prefix : str = "w", outid : int = 0):
+        super().__init__(a,b,prefix)
         self.gate_type = 'xor_gate'
         self.operator = '^'
-        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
-        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),a.value)
         
         if (a.value == 1 and b.value == 0) or (a.value == 0 and b.value == 1):
             self.output = wire(name=prefix+"_y"+str(outid),value=1)
@@ -164,10 +168,9 @@ class xor_gate(logic_gate):
 
 class xnor_gate(logic_gate): 
     def __init__(self, a : wire, b : wire, prefix : str = "w", outid : int = 0):
+        super().__init__(a,b,prefix)
         self.gate_type = 'xnor_gate'
         self.operator = '^'
-        self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''),a.value)
-        self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''),a.value)
         
         if (self.a.value == 1 and self.b.value == 0) or (self.a.value == 0 and self.b.value == 1):
             self.output = wire(name=prefix+"_y"+str(outid),value=0)
@@ -274,16 +277,16 @@ class half_adder(arithmetic_circuit):
 
     #inicializace hodnot vodicu polovicni scitacky
     def get_initialization_c(self):
-        return f"  {self.components[0].a.name} = {self.a.get_wire_value(offset=self.a.index)};\n" + \
-               f"  {self.components[0].b.name} = {self.b.get_wire_value(offset=self.b.index)};\n" + \
+        return f"  {self.components[0].a.name} = {self.a.get_wire_value_c(offset=self.a.index)};\n" + \
+               f"  {self.components[0].b.name} = {self.b.get_wire_value_c(offset=self.b.index)};\n" + \
                f"  {self.components[0].output.name} = {self.components[0].get_initialization_c()};\n" + \
                f"  {self.components[1].output.name} = {self.components[1].get_initialization_c()};\n"     
     
     def get_function_sum_c(self, offset : int = 0):
-        return f"  {self.out.prefix} |= {self.components[0].output.return_wire_value(offset = offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[0].output.return_wire_value_c(offset = offset)};\n"
     
     def get_function_carry_c(self, offset : int = 1):
-        return f"  {self.out.prefix} |= {self.components[1].output.return_wire_value(offset = offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[1].output.return_wire_value_c(offset = offset)};\n"
 
 
 class full_adder(arithmetic_circuit):
@@ -343,9 +346,9 @@ class full_adder(arithmetic_circuit):
     
     #inicializace hodnot vodicu uplne scitacky
     def get_initialization_c(self):
-        return f"  {self.components[0].a.name} = {self.a.get_wire_value(offset=self.a.index)};\n" + \
-               f"  {self.components[0].b.name} = {self.b.get_wire_value(offset=self.b.index)};\n" + \
-               f"  {self.components[2].b.name} = {self.c.get_wire_value()};\n" + \
+        return f"  {self.components[0].a.name} = {self.a.get_wire_value_c(offset=self.a.index)};\n" + \
+               f"  {self.components[0].b.name} = {self.b.get_wire_value_c(offset=self.b.index)};\n" + \
+               f"  {self.components[2].b.name} = {self.c.get_wire_value_c()};\n" + \
                f"  {self.components[0].output.name} = {self.components[0].get_initialization_c()};\n" + \
                f"  {self.components[1].output.name} = {self.components[1].get_initialization_c()};\n" + \
                f"  {self.components[2].output.name} = {self.components[2].get_initialization_c()};\n" + \
@@ -353,10 +356,10 @@ class full_adder(arithmetic_circuit):
                f"  {self.components[4].output.name} = {self.components[4].get_initialization_c()};\n"
     
     def get_function_sum_c(self, offset : int = 0):
-        return f"  {self.out.prefix} |= {self.components[2].output.return_wire_value(offset = offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[2].output.return_wire_value_c(offset = offset)};\n"
 
     def get_function_carry_c(self, offset : int = 1):
-        return f"  {self.out.prefix} |= {self.components[4].output.return_wire_value(offset = offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[4].output.return_wire_value_c(offset = offset)};\n"
 
 
 class ripple_carry_adder(arithmetic_circuit):
