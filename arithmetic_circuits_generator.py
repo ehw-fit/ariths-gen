@@ -220,8 +220,9 @@ if __name__ == "__main__":
     rca.get_c_code(open("rca_8.c", "w"))
 
     # Vytvoreni logickeho hradla OR
-    a1 = wire("a", 1)
-    b1 = wire("b", 0)
-    xor_gate = xor_gate(a1, b1)
-    # Export do jazyka C (flat)
-    xor_gate.get_c_code(sys.stdout)
+    # Hodnoty pouze pro otestovani funcnosti v Pythonu
+    a1 = wire(name="a", value=1)
+    b1 = wire(name="b", value=0)
+    xor = xor_gate(a1, b1)
+    # Vypis v jazyke C (flat) na standardni vystup
+    xor.get_c_code(sys.stdout)
