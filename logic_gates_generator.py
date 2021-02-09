@@ -1,13 +1,16 @@
 from wire_components import wire
 
 
-# KOMPONENTY HRADEL
+""" LOGIC GATE COMPONENTS """
+
+
 class logic_gate():
     def __init__(self, a: wire, b: wire, prefix: str = "w"):
         self.a = wire(prefix+"_"+a.name.replace(prefix+"_", ''), a.value)
         self.b = wire(prefix+"_"+b.name.replace(prefix+"_", ''), b.value)
         self.prefix = prefix
 
+    # FLAT C GENERATION #
     @staticmethod
     def get_includes_c():
         return f"#include <stdio.h>\n#include <stdint.h>\n\n"
@@ -26,15 +29,19 @@ class logic_gate():
         self.b.name = self.b.name.replace(self.prefix+"_", '')
         return f"{self.a.get_wire_value_c()} {self.operator} {self.b.get_wire_value_c(0)}"
 
-    # Generovani samostatneho obvodu logickeho hradla do jazyka C
+    # Generating flat C code representation of separate logic gate
+    # (i.e. not as a component of bigger circuit)
     def get_c_code(self, file_object):
         file_object.write(self.get_includes_c())
         file_object.write(self.get_prototype_c())
         file_object.write("  return "+(self.get_function_c())+";\n}")
         file_object.close()
 
+    # HIERARCHICAL C GENERATION #
+    # TODO
 
-# Jednovstupa
+
+# Single-input
 class not_gate(logic_gate):
     def __init__(self, a: wire, prefix: str = "w", outid: int = 0):
         self.gate_type = 'not_gate'
@@ -61,7 +68,7 @@ class not_gate(logic_gate):
         return f"{self.operator}{self.a.get_wire_value_c()} & 0x01 << 0"
 
 
-# Dvouvstupa
+# Two-input
 class and_gate(logic_gate):
     def __init__(self, a: wire, b: wire, prefix: str = "w", outid: int = 0):
         super().__init__(a, b, prefix)
