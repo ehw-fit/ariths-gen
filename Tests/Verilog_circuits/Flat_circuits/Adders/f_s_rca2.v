@@ -1,0 +1,43 @@
+module s_rca2(input [1:0] a, input [1:0] b, output [2:0] out);
+  wire s_rca2_ha_a_0;
+  wire s_rca2_ha_b_0;
+  wire s_rca2_ha_y0;
+  wire s_rca2_ha_y1;
+  wire s_rca2_fa1_a_1;
+  wire s_rca2_fa1_b_1;
+  wire s_rca2_fa1_y0;
+  wire s_rca2_fa1_y1;
+  wire s_rca2_fa1_s_rca2_ha_y1;
+  wire s_rca2_fa1_y2;
+  wire s_rca2_fa1_y3;
+  wire s_rca2_fa1_y4;
+  wire s_rca2_xor_1_a_1;
+  wire s_rca2_xor_1_b_1;
+  wire s_rca2_xor_1_y0;
+  wire s_rca2_xor_2_s_rca2_xor_1_y0;
+  wire s_rca2_xor_2_s_rca2_fa1_y4;
+  wire s_rca2_xor_2_y0;
+
+  assign s_rca2_ha_a_0 = a[0];
+  assign s_rca2_ha_b_0 = b[0];
+  assign s_rca2_ha_y0 = s_rca2_ha_a_0 ^ s_rca2_ha_b_0;
+  assign s_rca2_ha_y1 = s_rca2_ha_a_0 & s_rca2_ha_b_0;
+  assign s_rca2_fa1_a_1 = a[1];
+  assign s_rca2_fa1_b_1 = b[1];
+  assign s_rca2_fa1_s_rca2_ha_y1 = s_rca2_ha_y1[1];
+  assign s_rca2_fa1_y0 = s_rca2_fa1_a_1 ^ s_rca2_fa1_b_1;
+  assign s_rca2_fa1_y1 = s_rca2_fa1_a_1 & s_rca2_fa1_b_1;
+  assign s_rca2_fa1_y2 = s_rca2_fa1_y0 ^ s_rca2_fa1_s_rca2_ha_y1;
+  assign s_rca2_fa1_y3 = s_rca2_fa1_y0 & s_rca2_fa1_s_rca2_ha_y1;
+  assign s_rca2_fa1_y4 = s_rca2_fa1_y1 | s_rca2_fa1_y3;
+  assign s_rca2_xor_1_a_1 = a[1];
+  assign s_rca2_xor_1_b_1 = b[1];
+  assign s_rca2_xor_1_y0 = s_rca2_xor_1_a_1 ^ s_rca2_xor_1_b_1;
+  assign s_rca2_xor_2_s_rca2_xor_1_y0 = s_rca2_xor_1_y0;
+  assign s_rca2_xor_2_s_rca2_fa1_y4 = s_rca2_fa1_y4;
+  assign s_rca2_xor_2_y0 = s_rca2_xor_2_s_rca2_xor_1_y0 ^ s_rca2_xor_2_s_rca2_fa1_y4;
+
+  assign out[0] = s_rca2_ha_y0;
+  assign out[1] = s_rca2_fa1_y2;
+  assign out[2] = s_rca2_xor_2_y0;
+endmodule

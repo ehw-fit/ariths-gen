@@ -1,0 +1,48 @@
+module u_rca3(input [2:0] a, input [2:0] b, output [3:0] out);
+  wire u_rca3_ha_a_0;
+  wire u_rca3_ha_b_0;
+  wire u_rca3_ha_y0;
+  wire u_rca3_ha_y1;
+  wire u_rca3_fa1_a_1;
+  wire u_rca3_fa1_b_1;
+  wire u_rca3_fa1_y0;
+  wire u_rca3_fa1_y1;
+  wire u_rca3_fa1_u_rca3_ha_y1;
+  wire u_rca3_fa1_y2;
+  wire u_rca3_fa1_y3;
+  wire u_rca3_fa1_y4;
+  wire u_rca3_fa2_a_2;
+  wire u_rca3_fa2_b_2;
+  wire u_rca3_fa2_y0;
+  wire u_rca3_fa2_y1;
+  wire u_rca3_fa2_u_rca3_fa1_y4;
+  wire u_rca3_fa2_y2;
+  wire u_rca3_fa2_y3;
+  wire u_rca3_fa2_y4;
+
+  assign u_rca3_ha_a_0 = a[0];
+  assign u_rca3_ha_b_0 = b[0];
+  assign u_rca3_ha_y0 = u_rca3_ha_a_0 ^ u_rca3_ha_b_0;
+  assign u_rca3_ha_y1 = u_rca3_ha_a_0 & u_rca3_ha_b_0;
+  assign u_rca3_fa1_a_1 = a[1];
+  assign u_rca3_fa1_b_1 = b[1];
+  assign u_rca3_fa1_u_rca3_ha_y1 = u_rca3_ha_y1[1];
+  assign u_rca3_fa1_y0 = u_rca3_fa1_a_1 ^ u_rca3_fa1_b_1;
+  assign u_rca3_fa1_y1 = u_rca3_fa1_a_1 & u_rca3_fa1_b_1;
+  assign u_rca3_fa1_y2 = u_rca3_fa1_y0 ^ u_rca3_fa1_u_rca3_ha_y1;
+  assign u_rca3_fa1_y3 = u_rca3_fa1_y0 & u_rca3_fa1_u_rca3_ha_y1;
+  assign u_rca3_fa1_y4 = u_rca3_fa1_y1 | u_rca3_fa1_y3;
+  assign u_rca3_fa2_a_2 = a[2];
+  assign u_rca3_fa2_b_2 = b[2];
+  assign u_rca3_fa2_u_rca3_fa1_y4 = u_rca3_fa1_y4[2];
+  assign u_rca3_fa2_y0 = u_rca3_fa2_a_2 ^ u_rca3_fa2_b_2;
+  assign u_rca3_fa2_y1 = u_rca3_fa2_a_2 & u_rca3_fa2_b_2;
+  assign u_rca3_fa2_y2 = u_rca3_fa2_y0 ^ u_rca3_fa2_u_rca3_fa1_y4;
+  assign u_rca3_fa2_y3 = u_rca3_fa2_y0 & u_rca3_fa2_u_rca3_fa1_y4;
+  assign u_rca3_fa2_y4 = u_rca3_fa2_y1 | u_rca3_fa2_y3;
+
+  assign out[0] = u_rca3_ha_y0;
+  assign out[1] = u_rca3_fa1_y2;
+  assign out[2] = u_rca3_fa2_y2;
+  assign out[3] = u_rca3_fa2_y4;
+endmodule
