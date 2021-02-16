@@ -3,4 +3,5 @@ __pycache__/
 test.py
 Makefile
 *.c
+*.v
 t.py

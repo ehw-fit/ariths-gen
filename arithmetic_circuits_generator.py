@@ -12,6 +12,7 @@ class arithmetic_circuit():
         self.components = []
         self.circuit_wires = []
         self.c_data_type = "uint64_t"
+        self.N = 1
 
         # TODO delete?
         self.carry_out_gate = None
@@ -39,7 +40,19 @@ class arithmetic_circuit():
     def get_carry_wire(self):
         return self.out.get_wire(1)
 
-    # FLAT C GENERATION #
+    def get_circuit_wires(self):
+        for component in self.components:
+            if not [item for item in self.circuit_wires if item[1] == component.a.name]:
+                self.circuit_wires.append((component.a, component.a.name))
+
+            if not [item for item in self.circuit_wires if item[1] == component.b.name]:
+                self.circuit_wires.append((component.b, component.b.name))
+
+            if not [item for item in self.circuit_wires if item[1] == component.output.name]:
+                self.circuit_wires.append((component.output, component.output.name))
+
+    """ C CODE GENERATION """
+    # FLAT C #
     @staticmethod
     def get_includes_c():
         return f"#include <stdio.h>\n#include <stdint.h>\n\n"
@@ -71,7 +84,7 @@ class arithmetic_circuit():
         file_object.write(f"  return {self.out.prefix}"+";\n}")
         file_object.close()
 
-    # HIERARCHICAL C GENERATION #
+    # HIERARCHICAL C #
     def get_function_blocks_c(self):
         # Add unique 1-bit adder components (ha, fa)
         self.component_types = self.get_component_types()
@@ -116,6 +129,36 @@ class arithmetic_circuit():
         file_object.write(self.get_circuit_c())
         file_object.close()
 
+    """ VERILOG CODE GENERATION """
+    # FLAT VERILOG #
+    def get_prototype_v(self):
+        return f"module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.N}:0] {self.out.prefix});\n"
+
+    def get_declaration_v_flat(self):
+        return f"".join([c.get_declaration_v_flat() for c in self.components])
+
+    def get_init_v_flat(self, offset: int = 0, array: bool = False):
+        return "".join([c.get_init_v_flat(offset=self.components.index(c), array=True) for c in self.components])
+
+    def get_function_sum_cout_v_flat(self):
+        return "".join([c.get_function_sum_cout_v_flat(offset=self.components.index(c)) for c in self.components])
+
+    def get_function_sum_v_flat(self):
+        return "".join([c.get_function_sum_v_flat(offset=self.components.index(c)) for c in self.components])
+
+    def get_function_carry_v_flat(self):
+        return f"{self.get_previous_component().get_function_carry_v_flat(offset=self.out.N-1)}"
+
+    # Generating flat V code representation of circuit
+    def get_v_code_flat(self, file_object):
+        file_object.write(self.get_prototype_v())
+        file_object.write(self.get_declaration_v_flat()+"\n")
+        file_object.write(self.get_init_v_flat(array=False)+"\n")
+        file_object.write(self.get_function_sum_v_flat())
+        file_object.write(self.get_function_carry_v_flat())
+        file_object.write(f"endmodule")
+        file_object.close()
+
 
 class half_adder(arithmetic_circuit):
     def __init__(self, a: wire, b: wire, prefix: str = "ha"):
@@ -125,7 +168,7 @@ class half_adder(arithmetic_circuit):
         self.a = a
         self.b = b
         # 2 wires for component's bus output (sum, cout)
-        self.out = bus("out", 2)
+        self.out = bus("out", self.N+1)
 
         # Sum
         # XOR gate for calculation of 1-bit sum
@@ -139,7 +182,8 @@ class half_adder(arithmetic_circuit):
         self.add_component(obj_and_gate)
         self.out.connect(1, obj_and_gate.output)
 
-    # FLAT C GENERATION #
+    """ C CODE GENERATION """
+    # FLAT C #
     # Half adder function prototype with two inputs
     def get_prototype_c(self):
         return f"{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.name}, {self.c_data_type} {self.b.name})" + "{" + "\n"
@@ -147,23 +191,14 @@ class half_adder(arithmetic_circuit):
     # Obtaining list of all the unique circuit wires from all contained logic gates
     # to ensure non-recurring declaration of same wires
     def get_declaration_c_flat(self):
-        for component in self.components:
-            if not [item for item in self.circuit_wires if item[1] == component.a.name]:
-                self.circuit_wires.append((component.a, component.a.name))
-
-            if not [item for item in self.circuit_wires if item[1] == component.b.name]:
-                self.circuit_wires.append((component.b, component.b.name))
-
-            if not [item for item in self.circuit_wires if item[1] == component.output.name]:
-                self.circuit_wires.append((component.output, component.output.name))
-
+        self.get_circuit_wires()
         # Unique declaration of all circuit's interconnections
         return "".join([c[0].get_declaration_c() for c in self.circuit_wires])
 
     # Half adder wires values initialization
     def get_init_c_flat(self):
-        self.a.prefix = self.a.name if self.a.prefix == "" else self.a.prefix
-        self.b.prefix = self.b.name if self.b.prefix == "" else self.b.prefix
+        # self.a.prefix = self.a.name if self.a.prefix == "" else self.a.prefix
+        # self.b.prefix = self.b.name if self.b.prefix == "" else self.b.prefix
         return f"  {self.components[0].a.name} = {self.a.get_wire_value_c(offset=self.a.index)};\n" + \
                f"  {self.components[0].b.name} = {self.b.get_wire_value_c(offset=self.b.index)};\n" + \
                f"  {self.components[0].output.name} = {self.components[0].get_init_c_flat()};\n" + \
@@ -175,7 +210,7 @@ class half_adder(arithmetic_circuit):
     def get_function_carry_c_flat(self, offset: int = 1):
         return f"  {self.out.prefix} |= {self.components[1].output.return_wire_value_c(offset=offset)};\n"
 
-    # HIERARCHICAL C GENERATION #
+    # HIERARCHICAL C #
     def get_function_block_c(self):
         self.component_types = self.get_component_types()
         self.prefix = "ha"
@@ -208,6 +243,31 @@ class half_adder(arithmetic_circuit):
                f"{self.get_function_carry_c_hier()}" + \
                f"  return {self.out.prefix}"+";\n}"
 
+    """ VERILOG CODE GENERATION """
+    # FLAT VERILOG #
+    def get_prototype_v(self):
+        return f"module {self.prefix}(input {self.a.name}, input {self.b.name}, output [{self.N}:0]{self.out.prefix});\n"
+
+    def get_declaration_v_flat(self):
+        self.get_circuit_wires()
+        # Unique declaration of all circuit's interconnections
+        return "".join([c[0].get_declaration_v() for c in self.circuit_wires])
+
+    # Half adder wires values initialization
+    def get_init_v_flat(self, offset: int = 0, array: bool = False, ):
+        self.a.prefix = self.a.name if self.a.prefix == "" else self.a.prefix
+        self.b.prefix = self.b.name if self.b.prefix == "" else self.b.prefix
+        return f"  assign {self.components[0].a.name} = {self.a.get_wire_value_v(offset=offset, array=array)};\n" + \
+               f"  assign {self.components[0].b.name} = {self.b.get_wire_value_v(offset=offset, array=array)};\n" + \
+               f"  assign {self.components[0].output.name} = {self.components[0].get_init_v_flat()};\n" + \
+               f"  assign {self.components[1].output.name} = {self.components[1].get_init_v_flat()};\n"
+
+    def get_function_sum_v_flat(self, offset: int = 0):
+        return f"  assign {self.out.prefix}[{offset}] = {self.components[0].output.name};\n"
+
+    def get_function_carry_v_flat(self, offset: int = 1):
+        return f"  assign {self.out.prefix}[{offset}] = {self.components[1].output.name};\n"
+
 
 class full_adder(arithmetic_circuit):
     def __init__(self, a: wire, b: wire, c: wire, prefix: str = "fa"):
@@ -218,7 +278,7 @@ class full_adder(arithmetic_circuit):
         self.b = b
         self.c = c
         # 2 wires for component's bus output (sum, cout)
-        self.out = bus("out", 2)
+        self.out = bus("out", self.N+1)
 
         # PG logic
         propagate_xor_gate1 = xor_gate(a, b, prefix, outid=0)
@@ -246,7 +306,8 @@ class full_adder(arithmetic_circuit):
         self.propagate = propagate_xor_gate1.output
         self.generate = generate_and_gate1.output
 
-    # FLAT C GENERATION #
+    """ C CODE GENERATION """
+    # FLAT C #
     # Full adder function prototype with three inputs
     def get_prototype_c(self):
         return f"{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.name}, {self.c_data_type} {self.b.name}, {self.c_data_type} {self.c.name})" + "{" + "\n"
@@ -254,16 +315,7 @@ class full_adder(arithmetic_circuit):
     # Obtaining list of all the unique circuit wires from all contained logic gates
     # to ensure non-recurring declaration of same wires
     def get_declaration_c_flat(self):
-        for component in self.components:
-            if not [item for item in self.circuit_wires if item[1] == component.a.name]:
-                self.circuit_wires.append((component.a, component.a.name))
-
-            if not [item for item in self.circuit_wires if item[1] == component.b.name]:
-                self.circuit_wires.append((component.b, component.b.name))
-
-            if not [item for item in self.circuit_wires if item[1] == component.output.name]:
-                self.circuit_wires.append((component.output, component.output.name))
-
+        self.get_circuit_wires()
         # Unique declaration of all circuit's interconnections
         return "".join([c[0].get_declaration_c() for c in self.circuit_wires])
 
@@ -287,7 +339,7 @@ class full_adder(arithmetic_circuit):
     def get_function_carry_c_flat(self, offset: int = 1):
         return f"  {self.out.prefix} |= {self.components[4].output.return_wire_value_c(offset=offset)};\n"
 
-    # HIERARCHICAL C GENERATION #
+    # HIERARCHICAL C #
     def get_function_block_c(self):
         self.component_types = self.get_component_types()
         self.prefix = "fa"
@@ -340,6 +392,36 @@ class full_adder(arithmetic_circuit):
                f"{self.get_function_carry_c_hier()}" + \
                f"  return {self.out.prefix}"+";\n}"
 
+    """ VERILOG CODE GENERATION """
+    # FLAT VERILOG #
+    def get_prototype_v(self):
+        return f"module {self.prefix}(input {self.a.name}, input {self.b.name}, input {self.c.name}, output [{self.N}:0]{self.out.prefix});\n"
+
+    def get_declaration_v_flat(self):
+        self.get_circuit_wires()
+        # Unique declaration of all circuit's interconnections
+        return "".join([c[0].get_declaration_v() for c in self.circuit_wires])
+
+    # Full adder wires values initialization
+    def get_init_v_flat(self, offset: int = 0, array: bool = False):
+        self.a.prefix = self.a.name if self.a.prefix == "" else self.a.prefix
+        self.b.prefix = self.b.name if self.b.prefix == "" else self.b.prefix
+        self.c.prefix = self.c.name
+        return f"  assign {self.components[0].a.name} = {self.a.get_wire_value_v(offset=offset, array=array)};\n" + \
+               f"  assign {self.components[0].b.name} = {self.b.get_wire_value_v(offset=offset, array=array)};\n" + \
+               f"  assign {self.components[2].b.name} = {self.c.get_wire_value_v(offset=offset, array=array)};\n" + \
+               f"  assign {self.components[0].output.name} = {self.components[0].get_init_v_flat()};\n" + \
+               f"  assign {self.components[1].output.name} = {self.components[1].get_init_v_flat()};\n" + \
+               f"  assign {self.components[2].output.name} = {self.components[2].get_init_v_flat()};\n" + \
+               f"  assign {self.components[3].output.name} = {self.components[3].get_init_v_flat()};\n" + \
+               f"  assign {self.components[4].output.name} = {self.components[4].get_init_v_flat()};\n"
+
+    def get_function_sum_v_flat(self, offset: int = 0):
+        return f"  assign {self.out.prefix}[{offset}] = {self.components[2].output.name};\n"
+
+    def get_function_carry_v_flat(self, offset: int = 1):
+        return f"  assign {self.out.prefix}[{offset}] = {self.components[4].output.name};\n"
+
 
 class signed_ripple_carry_adder(arithmetic_circuit):
     def __init__(self, a: bus, b: bus, prefix: str = "s_rca"):
@@ -381,7 +463,8 @@ class signed_ripple_carry_adder(arithmetic_circuit):
         self.add_component(sign_xor_1)
         self.add_component(sign_xor_2)
 
-    # FLAT C GENERATION #
+    """ VERILOG CODE GENERATION """
+    # FLAT C #
     # Initialization of 1-bit adders and sign extension XOR gates
     def get_init_c_flat(self):
         self.components[-2].output.prefix = self.components[-2].output.name
@@ -400,7 +483,7 @@ class signed_ripple_carry_adder(arithmetic_circuit):
     def get_function_carry_c_flat(self):
         return f"  {self.out.prefix} |= {self.get_previous_component().output.return_wire_value_c(offset = self.N)};\n"
 
-    # HIERARCHICAL C GENERATION #
+    # HIERARCHICAL C #
     def get_declaration_c_hier(self):
         self.cout = bus(N=self.N, prefix="cout")
         return "".join(self.a.get_wire_declaration_c()) + \
@@ -417,6 +500,26 @@ class signed_ripple_carry_adder(arithmetic_circuit):
 
     def get_function_carry_c_hier(self):
         return f"  {self.out.prefix} |= {self.get_previous_component().get_gate_output_c(a=self.components[-2].output, b=self.cout.bus[-1], offset=self.out.N-1)};\n"
+
+    """ VERILOG CODE GENERATION """
+    # FLAT C #
+    # Initialization of 1-bit adders and sign extension XOR gates
+    def get_init_v_flat(self, offset: int = 0, array: bool = False):
+        self.components[-2].output.prefix = self.components[-2].output.name
+        self.components[-3].get_carry_wire().prefix = self.components[-3].get_carry_wire().name
+        return f"".join([c.get_init_v_flat(offset=self.components.index(c), array=True) for c in self.components[:-2]]) + \
+               f"  assign {self.components[-2].a.name} = {self.a.get_wire_value_v(offset=self.N-1, array=True)};\n" + \
+               f"  assign {self.components[-2].b.name} = {self.b.get_wire_value_v(offset=self.N-1, array=True)};\n" + \
+               f"  assign {self.components[-2].output.name} = {self.components[-2].get_init_v_flat()};\n" + \
+               f"  assign {self.components[-1].a.name} = {self.components[-2].output.get_wire_value_v(offset=offset, array=array)};\n" + \
+               f"  assign {self.components[-1].b.name} = {self.components[-3].get_carry_wire().get_wire_value_v()};\n" + \
+               f"  assign {self.components[-1].output.name} = {self.components[-1].get_init_v_flat()};\n"
+
+    def get_function_sum_v_flat(self, offset: int = 0):
+        return "".join([c.get_function_sum_v_flat(offset=self.components.index(c)) for c in self.components[:-2]])
+
+    def get_function_carry_v_flat(self):
+        return f"  assign {self.out.prefix}[{self.N}] = {self.get_previous_component().output.return_wire_value_v(offset=self.N)};\n"
 
 
 class unsigned_ripple_carry_adder(arithmetic_circuit):
@@ -456,14 +559,22 @@ class unsigned_ripple_carry_adder(arithmetic_circuit):
 if __name__ == "__main__":
     a = bus(N=8, prefix="a")
     b = bus(N=8, prefix="b")
-    rca = unsigned_ripple_carry_adder(a, b)
-
-    # rca.get_c_code_hier(open("h_u_rca8.c", "w"))
+    rca = unsigned_ripple_carry_adder(a, b, prefix="u_rca8")
+    # rca.get_c_code_hier(open("h_u_rca4.c", "w"))
+    # rca.get_c_code_flat(open("f_u_rca8.c", "w"))
+    rca.get_v_code_flat(open("f_u_rca8.v", "w"))
 
     w1 = wire(name="a")
     w2 = wire(name="b")
     w3 = wire(name="cout")
-    fa = full_adder(w1, w2, w3, prefix="h_fa")
-    ha = half_adder(w1, w2, prefix="h_ha")
+    fa = full_adder(w1, w2, w3, prefix="f_fa")
+    ha = half_adder(w1, w2, prefix="f_ha")
 
-    # ha.get_c_code_hier(open("h_ha.c","w"))
+    # ha.get_c_code_flat(open("f_ha.c","w"))
+    # ha.get_v_code_flat(open("f_ha.v","w"))
+    # fa.get_c_code_flat(open("f_fa.c","w"))
+    # fa.get_v_code_flat(open("f_fa.v","w"))
+
+    gate = not_gate(w1)
+    # gate.get_c_code(open("not_gate.c","w"))
+    # gate.get_v_code(open("not_gate.v","w"))
