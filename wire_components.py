@@ -2,18 +2,21 @@
 
 
 class wire():
-    def __init__(self, name: str = "w", value: int = 0, index: int = 0):
+    def __init__(self, name: str, value: int = 0, index: int = 0):
         self.name = name
-        self.prefix = name[0:int(name.rfind(str(index))-1)]
+        if self.name.endswith("_"+str(index)):
+            self.prefix = name[0:int(name.rfind(str(index))-1)]
+        else:
+            self.prefix = name
         self.value = value
         self.index = index
 
     # C CODE GENERATION #
     def get_declaration_c(self):
-        return f"  uint8_t {self.name} = 0;\n"
+        return f"  uint8_t {self.name} = {self.value};\n"
 
-    def get_wire_value_c(self, offset: int = 0):
-        name = self.name if self.prefix == "" else self.prefix
+    def get_wire_value_c(self, offset: int = 0, prefix: str = ""):
+        name = self.name if prefix == "" else prefix
         return f"(({name} >> {offset}) & 0x01)"
 
     def return_wire_value_c(self, offset: int = 0):
@@ -23,19 +26,22 @@ class wire():
     def get_declaration_v(self):
         return f"  wire {self.name};\n"
 
-    def get_wire_value_v(self, offset: int = 0, array: bool = False):
-        name = self.name if self.prefix == "" else self.prefix
+    def get_declaration_init_v(self):
+        return f"  wire {self.name} = {self.value};\n"
+
+    def get_wire_value_v(self, offset: int = 0, prefix: str = "", array: bool = False):
+        name = self.name if prefix == "" else prefix
         if array is True:
             return f"{name}[{offset}]"
         else:
             return f"{name}"
 
-    def return_wire_value_v(self, offset: int = 0):
+    def return_wire_value_v(self):
         return f"{self.name}"
 
 
 class bus():
-    def __init__(self, prefix: str = "bus", N: int = 1):
+    def __init__(self, prefix: str, N: int = 1):
         self.bus = [wire(name=prefix+"_"+str(i), index=i) for i in range(N)]
         self.prefix = prefix
         self.N = N
@@ -48,7 +54,7 @@ class bus():
     def connect(self, out_wire_index: int, inner_component_out_wire: wire):
         self.bus[out_wire_index] = inner_component_out_wire
 
-    def get_wire(self, wire_index: int):
+    def get_wire(self, wire_index: int = 0):
         return self.bus[wire_index]
 
     def bus_extend(self, N: int, prefix: str = "bus"):
@@ -56,14 +62,11 @@ class bus():
         self.N = N
 
     # C CODE GENERATION #
-    def get_wire_value_c(self, offset: int = 0):
-        return self.bus[offset].get_wire_value_c(offset=offset)
-
-    def return_wire_value_c(self, offset: int = 0):
-        self.bus[offset].return_wire_value_c(offset)
+    def get_wire_value_c(self, offset: int = 0, prefix: str = ""):
+        return self.get_wire(wire_index=offset).get_wire_value_c(offset=offset, prefix=prefix)
 
     def get_wire_declaration_c(self):
-        return [w.get_declaration_c() for w in self.bus]
+        return "".join([w.get_declaration_c() for w in self.bus])
 
     def get_declaration_c(self):
         if self.N > 8:
@@ -71,6 +74,12 @@ class bus():
         else:
             return f"  uint8_t {self.prefix} = 0;\n"
 
+    def return_wire_value_c(self, offset: int = 0):
+        self.get_wire(wire_index=offset).return_wire_value_c(offset=offset)
+
     # VERILOG CODE GENERATION #
-    def get_wire_value_v(self, offset: int = 0, array: bool = False):
-        return self.bus[offset].get_wire_value_v(offset=offset, array=array)
+    def get_wire_value_v(self, offset: int = 0, prefix: str = "", array: bool = False):
+        return self.get_wire(wire_index=offset).get_wire_value_v(offset=offset, prefix=prefix, array=array)
+
+    def get_wire_declaration_v(self):
+        return "".join([w.get_declaration_v() for w in self.bus])
