@@ -1,4 +1,4 @@
-from arithmetic_circuits import arithmetic_circuit, signed_adder_circuit, signed_multiplier_circuit
+from arithmetic_circuits import arithmetic_circuit, multiplier_circuit
 from one_bit_circuits import half_adder, full_adder
 from logic_gates import logic_gate, and_gate, nand_gate, or_gate, nor_gate, xor_gate, xnor_gate, not_gate
 from wire_components import wire, bus
@@ -31,6 +31,9 @@ class unsigned_ripple_carry_adder(arithmetic_circuit):
                 obj_ha = half_adder(a.get_wire(input_index), b.get_wire(input_index), prefix=self.prefix+"_ha")
                 self.add_component(obj_ha)
                 self.out.connect(input_index, obj_ha.get_sum_wire())
+
+                if input_index == (self.N-1):
+                    self.out.connect(self.N, obj_ha.get_carry_wire())
             # Rest are full adders
             else:
                 obj_fa = full_adder(a.get_wire(input_index), b.get_wire(input_index), self.get_previous_component().get_carry_wire(), prefix=self.prefix+"_fa"+str(input_index))
@@ -41,7 +44,7 @@ class unsigned_ripple_carry_adder(arithmetic_circuit):
                     self.out.connect(self.N, obj_fa.get_carry_wire())
 
 
-class signed_ripple_carry_adder(unsigned_ripple_carry_adder, signed_adder_circuit):
+class signed_ripple_carry_adder(unsigned_ripple_carry_adder, arithmetic_circuit):
     def __init__(self, a: bus, b: bus, prefix: str = "s_rca"):
         super().__init__(a=a, b=b, prefix=prefix)
         self.c_data_type = "int64_t"
@@ -55,7 +58,7 @@ class signed_ripple_carry_adder(unsigned_ripple_carry_adder, signed_adder_circui
 
 
 # MULTIPLIERS
-class unsigned_array_multiplier(arithmetic_circuit):
+class unsigned_array_multiplier(multiplier_circuit):
     def __init__(self, a: bus, b: bus, prefix: str = "u_arr_mul"):
         super().__init__()
         self.N = max(a.N, b.N)
@@ -70,7 +73,7 @@ class unsigned_array_multiplier(arithmetic_circuit):
             self.prefix = prefix
 
         # Output wires for multiplication product
-        self.out = bus("out", self.N*2) if self.N > 1 else bus("out", self.N)
+        self.out = bus("out", self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -102,6 +105,19 @@ class unsigned_array_multiplier(arithmetic_circuit):
                 if a_multiplicand_index == 0 and b_multiplier_index == 0:
                     self.out.connect(a_multiplicand_index, obj_and.out)
 
+                    # 1 bit multiplier case
+                    if a_multiplicand_index == self.N-1:
+                        obj_xor = xor_gate(self.a.get_wire(), self.b.get_wire(), prefix=self.prefix+"_xor_constant_wire")
+                        obj_xnor = xnor_gate(self.a.get_wire(), self.b.get_wire(), prefix=self.prefix+"_xnor_constant_wire")
+                        obj_and = and_gate(obj_xor.out, obj_xnor.out, prefix=self.prefix+"_and_constant_wire")
+                        obj_and.out.name = "constant_wire"
+                        obj_and.out.prefix = "constant_wire"
+                        self.add_component(obj_xor)
+                        self.add_component(obj_xnor)
+                        self.add_component(obj_and)
+
+                        self.out.connect(a_multiplicand_index+1, obj_and.out)
+
                 elif b_multiplier_index == self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
 
@@ -109,7 +125,7 @@ class unsigned_array_multiplier(arithmetic_circuit):
                         self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
 
 
-class signed_array_multiplier(signed_multiplier_circuit):
+class signed_array_multiplier(multiplier_circuit):
     def __init__(self, a: bus, b: bus, prefix: str = "s_arr_mul"):
         super().__init__()
         self.c_data_type = "int64_t"
@@ -124,11 +140,23 @@ class signed_array_multiplier(signed_multiplier_circuit):
         else:
             self.prefix = prefix
 
-        # TODO CHANGE SIGNED MULTIPLIER CIRCUIT (REPLACE CONSTANT WIRE WITH LOGIC GATES)
-        self.constant_wire = wire(name="constant_wire", value=1)
-
         # Output wires for multiplication product
-        self.out = bus("out", self.N*2) if self.N > 1 else bus("out", self.N)
+        self.out = bus("out", self.N*2)
+
+        # Generating wire with constant logic value 1 (output of the or gate)
+        obj_xor = xor_gate(self.a.get_wire(), self.b.get_wire(), prefix=self.prefix+"_xor_constant_wire")
+        obj_xnor = xnor_gate(self.a.get_wire(), self.b.get_wire(), prefix=self.prefix+"_xnor_constant_wire")
+        obj_or = or_gate(obj_xor.out, obj_xnor.out, prefix=self.prefix+"_or_constant_wire")
+        obj_or.out.name = "constant_wire"
+        obj_or.out.prefix = "constant_wire"
+
+        self.add_component(obj_xor)
+        self.add_component(obj_xnor)
+        self.add_component(obj_or)
+
+        # To adjust proper wire connection between adders and AND/NAND gates
+        # we add offset equal to first 3 gates in circuits components list (that are present to prevent the need to use constant wire with logic value 1)
+        components_offset = 3
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -142,7 +170,7 @@ class signed_array_multiplier(signed_multiplier_circuit):
                     self.add_component(obj_and)
 
                 if b_multiplier_index != 0:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index].out if b_multiplier_index == 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index)
+                    previous_product = self.components[a_multiplicand_index + b_multiplier_index + components_offset].out if b_multiplier_index == 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, offset=components_offset)
                     # HA generation for first 1-bit adder in each row starting from the second one
                     if a_multiplicand_index == 0:
                         obj_adder = half_adder(self.get_previous_component().out, previous_product, prefix=self.prefix+"_ha_"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
@@ -153,7 +181,7 @@ class signed_array_multiplier(signed_multiplier_circuit):
                     # FA generation
                     else:
                         if a_multiplicand_index == self.N-1 and b_multiplier_index == 1:
-                            previous_product = self.constant_wire
+                            previous_product = obj_or.out
 
                         obj_adder = full_adder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_fa_"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
@@ -162,11 +190,18 @@ class signed_array_multiplier(signed_multiplier_circuit):
                 if a_multiplicand_index == 0 and b_multiplier_index == 0:
                     self.out.connect(a_multiplicand_index, obj_and.out)
 
+                    # 1 bit multiplier case
+                    if a_multiplicand_index == self.N-1:
+                        obj_nor = nor_gate(obj_or.out, self.get_previous_component().out, prefix=self.prefix+"_nor_zero_extend")
+                        self.add_component(obj_nor)
+
+                        self.out.connect(a_multiplicand_index+1, obj_nor.out)
+
                 elif b_multiplier_index == self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
 
                     if a_multiplicand_index == self.N-1:
-                        obj_adder = half_adder(self.get_previous_component().get_carry_wire(), self.constant_wire, prefix=self.prefix+"_ha_"+str(a_multiplicand_index+1)+"_"+str(b_multiplier_index))
-                        self.add_component(obj_adder)
+                        obj_xor = xor_gate(self.get_previous_component().get_carry_wire(), obj_or.out, prefix=self.prefix+"_xor_"+str(a_multiplicand_index+1)+"_"+str(b_multiplier_index))
+                        self.add_component(obj_xor)
 
-                        self.out.connect(self.out.N-1, obj_adder.get_sum_wire())
+                        self.out.connect(self.out.N-1, obj_xor.out)

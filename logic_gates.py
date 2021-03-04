@@ -31,10 +31,10 @@ class logic_gate():
     def get_init_c_flat(self):
         return f"{self.a.name} {self.operator} {self.b.name}"
 
-    def get_assign_c_flat(self, prefix_a: str = "a", prefix_b: str = "b", offset: int = 0):
-        return f"  {self.a.name} = {self.a.get_wire_value_c(prefix=prefix_a, offset=offset)};\n" + \
-               f"  {self.b.name} = {self.b.get_wire_value_c(prefix=prefix_b, offset=offset)};\n" + \
-               f"  {self.out.prefix} = {self.a.name} {self.operator} {self.b.name};\n"
+    def get_assign_c_flat(self):
+        return f"{self.a.get_assign_c(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.b.get_assign_c(name=self.b.name.replace(self.prefix+'_', ''))}" + \
+               f"  {self.out.prefix} = {self.get_init_c_flat()};\n"
 
     # Generating flat C code representation of the logic gate itself
     # (i.e. not as a component of bigger circuit)
@@ -46,20 +46,17 @@ class logic_gate():
 
     # HIERARCHICAL C #
     def get_function_block_c(self):
-        return f"{self.get_prototype_c()}" + \
-               f"  return "+(self.get_function_c())+";\n}\n\n"
+        gate_block = not_gate(a=wire(name="a")) if isinstance(self, not_gate) else type(self)(a=wire(name="a"), b=wire(name="b"))
+        return f"{gate_block.get_prototype_c()}" + \
+               f"  return "+(gate_block.get_function_c())+";\n}\n\n"
 
-    def get_gate_invocation_c(self, a: wire, b: wire, sign: bool = False, get_index: bool = False):
-        a_name = a.prefix if sign is False else a.name
-        b_name = b.prefix if sign is False else b.name
-        a_name = a_name if get_index is False else "a" + a.name[a.name.rfind("_"):]
-        b_name = b_name if get_index is False else "b" + b.name[b.name.rfind("_"):]
-        return f"{self.gate_type}({a_name}, {b_name});"
+    def get_gate_invocation_c(self, remove_prefix: bool = True):
+        a_name = self.a.name.replace(self.prefix+"_", "") if remove_prefix is True else self.a.name
+        b_name = self.b.name.replace(self.prefix+"_", "") if remove_prefix is True else self.b.name
+        return f"{self.gate_type}({a_name}, {b_name});\n"
 
-    def get_gate_output_c(self, a: wire, b: wire, offset: int = 0, sign: bool = False):
-        a_name = a.prefix if sign is False else a.name
-        b_name = b.prefix if sign is False else b.name
-        return f"({self.gate_type}({a_name}, {b_name}) & 0x01) << {offset}"
+    def get_gate_output_c(self, a: wire, b: wire, offset: int = 0):
+        return f"({self.gate_type}({a.name}, {b.name}) & 0x01) << {offset}"
 
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
@@ -72,10 +69,10 @@ class logic_gate():
     def get_init_v_flat(self):
         return f"{self.a.name} {self.operator} {self.b.name}"
 
-    def get_assign_v_flat(self, prefix_a: str = "a", prefix_b: str = "b", offset: int = 0, array: bool = False):
-        return f"  assign {self.a.name} = {self.a.get_wire_value_v(prefix=prefix_a, offset=offset, array=array)};\n" + \
-               f"  assign {self.b.name} = {self.b.get_wire_value_v(prefix=prefix_b, offset=offset, array=array)};\n" + \
-               f"  assign {self.out.prefix} = {self.a.name} {self.operator} {self.b.name};"
+    def get_assign_v_flat(self):
+        return f"{self.a.get_assign_v(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.b.get_assign_v(name=self.b.name.replace(self.prefix+'_', ''))}" + \
+               f"  assign {self.out.prefix} = {self.get_init_v_flat()};\n"
 
     # Generating flat Verilog code representation of the logic gate itself
     # (i.e. not as a component of bigger circuit)
@@ -87,16 +84,15 @@ class logic_gate():
 
     # HIERARCHICAL VERILOG #
     def get_function_block_v(self):
-        return f"{self.get_prototype_v()}" + \
-               f"  assign {self.out.name} = {self.get_init_v_flat()};\n" + \
+        gate_block = not_gate(a=wire(name="a")) if isinstance(self, not_gate) else type(self)(a=wire(name="a"), b=wire(name="b"))
+        return f"{gate_block.get_prototype_v()}" + \
+               f"  assign {gate_block.out.name} = {gate_block.get_init_v_flat()};\n" + \
                f"endmodule\n\n"
 
-    def get_gate_invocation_v(self, a: wire, b: wire, out: wire, sign: bool = False, get_index: bool = False, out_array: bool = False, offset: int = 0):
-        a_name = a.prefix if sign is False else a.name
-        b_name = b.prefix if sign is False else b.name
-        a_name = a_name if get_index is False else "a" + a.name[a.name.rfind("_"):]
-        b_name = b_name if get_index is False else "b" + b.name[b.name.rfind("_"):]
-        return f"  {self.gate_type} {self.gate_type}_{out.name}({a_name}, {b_name}, {out.get_wire_value_v(offset=offset, array=out_array)});"
+    def get_gate_invocation_v(self, remove_prefix: bool = True):
+        a_name = self.a.name.replace(self.prefix+"_", "") if remove_prefix is True else self.a.name
+        b_name = self.b.name.replace(self.prefix+"_", "") if remove_prefix is True else self.b.name
+        return f"  {self.gate_type} {self.gate_type}_{self.out.name}({a_name}, {b_name}, {self.out.name});\n"
 
     """ CGP CODE GENERATION """
     # FLAT CGP #
@@ -127,6 +123,9 @@ class inverted_logic_gate(logic_gate):
     def get_function_c(self):
         return "~("+(super().get_function_c())+") & 0x01 << 0"
 
+    def get_init_c_flat(self):
+        return "~("+(super().get_init_c_flat())+")"
+
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
     def get_init_v_flat(self):
@@ -141,26 +140,6 @@ class and_gate(logic_gate):
         self.operator = "&"
         self.out = wire(name=prefix+"_y"+str(outid))
 
-    """ C CODE GENERATION """
-    # FLAT C #
-    def get_assign_c_flat(self, prefix_a: str = "a", prefix_b: str = "b"):
-        indexes = self.prefix[self.prefix.rfind("_", 0, self.prefix.rfind("_"))+1:]
-        offset_a = indexes[:indexes.rfind("_")]
-        offset_b = indexes[indexes.rfind("_")+1:]
-        return f"  {self.a.name} = {self.a.get_wire_value_c(prefix=prefix_a, offset=offset_a)};\n" + \
-               f"  {self.b.name} = {self.b.get_wire_value_c(prefix=prefix_b, offset=offset_b)};\n" + \
-               f"  {self.out.prefix} = {self.a.name} {self.operator} {self.b.name};\n"
-
-    """ VERILOG CODE GENERATION """
-    # FLAT VERILOG #
-    def get_assign_v_flat(self, prefix_a: str = "a", prefix_b: str = "b", offset: int = 0, array: bool = False):
-        indexes = self.prefix[self.prefix.rfind("_", 0, self.prefix.rfind("_"))+1:]
-        offset_a = indexes[:indexes.rfind("_")]
-        offset_b = indexes[indexes.rfind("_")+1:]
-        return f"  assign {self.a.name} = {self.a.get_wire_value_v(prefix=prefix_a, offset=offset_a, array=array)};\n" + \
-               f"  assign {self.b.name} = {self.b.get_wire_value_v(prefix=prefix_b, offset=offset_b, array=array)};\n" + \
-               f"  assign {self.out.prefix} = {self.a.name} {self.operator} {self.b.name};"
-
 
 class nand_gate(inverted_logic_gate):
     def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
@@ -169,26 +148,6 @@ class nand_gate(inverted_logic_gate):
         self.cgp_function = 5
         self.operator = "&"
         self.out = wire(name=prefix+"_y"+str(outid))
-
-    """ C CODE GENERATION """
-    # FLAT C #
-    def get_assign_c_flat(self, prefix_a: str = "a", prefix_b: str = "b"):
-        indexes = self.prefix[self.prefix.rfind("_", 0, self.prefix.rfind("_"))+1:]
-        offset_a = indexes[:indexes.rfind("_")]
-        offset_b = indexes[indexes.rfind("_")+1:]
-        return f"  {self.a.name} = {self.a.get_wire_value_c(prefix=prefix_a, offset=offset_a)};\n" + \
-               f"  {self.b.name} = {self.b.get_wire_value_c(prefix=prefix_b, offset=offset_b)};\n" + \
-               f"  {self.out.prefix} = ~({self.a.name} {self.operator} {self.b.name});\n"
-
-    """ VERILOG CODE GENERATION """
-    # FLAT VERILOG #
-    def get_assign_v_flat(self, prefix_a: str = "a", prefix_b: str = "b", offset: int = 0, array: bool = False):
-        indexes = self.prefix[self.prefix.rfind("_", 0, self.prefix.rfind("_"))+1:]
-        offset_a = indexes[:indexes.rfind("_")]
-        offset_b = indexes[indexes.rfind("_")+1:]
-        return f"  assign {self.a.name} = {self.a.get_wire_value_v(prefix=prefix_a, offset=offset_a, array=array)};\n" + \
-               f"  assign {self.b.name} = {self.b.get_wire_value_v(prefix=prefix_b, offset=offset_b, array=array)};\n" + \
-               f"  assign {self.out.prefix} = ~({self.a.name} {self.operator} {self.b.name});"
 
 
 class or_gate(logic_gate):
@@ -245,25 +204,23 @@ class not_gate(inverted_logic_gate):
     def get_function_c(self):
         return f"{self.operator}{self.a.get_wire_value_c()} & 0x01 << 0"
 
-    def get_declaration_c(self):
+    def get_declaration_c_flat(self):
         return f"{self.a.get_declaration_c()}{self.out.get_declaration_c()}"
 
     def get_init_c_flat(self):
         return f"{self.operator}{self.a.name}"
 
-    def get_assign_c_flat(self, prefix_a: str = "a", offset: int = 0):
-        return f"  {self.a.name} = {self.a.get_wire_value_c(prefix=prefix_a, offset=offset)};\n" + \
-               f"  {self.out.prefix} = {self.operator}{self.a.name};\n"
+    def get_assign_c_flat(self):
+        return f"{self.a.get_assign_c(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+               f"  {self.out.prefix} = {self.get_init_c_flat()};\n"
 
     # HIERARCHICAL C #
-    def get_gate_invocation_c(self, a: wire, sign: bool = False, get_index: bool = False):
-        a_name = a.prefix if sign is False else a.name
-        a_name = a_name if get_index is False else "a" + a.name[a.name.rfind("_"):]
+    def get_gate_invocation_c(self, remove_prefix: bool = True):
+        a_name = self.a.name.replace(self.prefix+"_", "") if remove_prefix is True else self.a.name
         return f"{self.gate_type}({a_name});"
 
-    def get_gate_output_c(self, a: wire, offset: int = 0, sign: bool = False):
-        a_name = a.prefix if sign is False else a.name
-        return f"({self.gate_type}({a_name}) & 0x01) << {offset}"
+    def get_gate_output_c(self, a: wire, offset: int = 0):
+        return f"({self.gate_type}({a.name}) & 0x01) << {offset}"
 
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
@@ -276,15 +233,14 @@ class not_gate(inverted_logic_gate):
     def get_init_v_flat(self):
         return f"{self.operator}{self.a.name}"
 
-    def get_assign_v_flat(self, prefix_a: str = "a", offset: int = 0, array: bool = False):
-        return f"  assign {self.a.name} = {self.a.get_wire_value_v(prefix=prefix_a, offset=offset, array=array)};\n" + \
-               f"  assign {self.out.prefix} = {self.operator}{self.a.name};"
+    def get_assign_v_flat(self):
+        return f"{self.a.get_assign_v(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+               f"  assign {self.out.prefix} = {self.get_init_v_flat()};\n"
 
     # HIERARCHICAL VERILOG #
-    def get_gate_invocation_v(self, a: wire, out: wire, sign: bool = False, get_index: bool = False, out_array: bool = False, offset: int = 0):
-        a_name = a.prefix if sign is False else a.name
-        a_name = a_name if get_index is False else "a" + a.name[a.name.rfind("_"):]
-        return f"  {self.gate_type} {self.gate_type}_{out.name}({a_name}, {out.get_wire_value_v(offset=offset, array=out_array)});"
+    def get_gate_invocation_v(self, remove_prefix: bool = True):
+        a_name = self.a.name.replace(self.prefix+"_", "") if remove_prefix is True else self.a.name
+        return f"  {self.gate_type} {self.gate_type}_{self.out.name}({a_name}, {self.out.name});\n"
 
     """ CGP CODE GENERATION """
     # FLAT CGP #

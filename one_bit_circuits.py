@@ -14,47 +14,36 @@ class one_bit_circuit(arithmetic_circuit):
     # Obtaining list of all the unique circuit wires from all contained logic gates
     # to ensure non-recurring declaration of same wires
     def get_declaration_c_flat(self):
-        self.circuit_wires = []
         self.get_circuit_wires()
         # Unique declaration of all circuit's interconnections
         return "".join([c[0].get_declaration_c() for c in self.circuit_wires])
 
-    # 2 bit input adder wire values initialization
+    # Half adder (2 inputs adder) wires values initialization
     def get_init_c_flat(self):
-        return f"{self.components[0].get_assign_c_flat(prefix_a=self.a.prefix, prefix_b=self.b.prefix)}" + \
-               f"  {self.components[1].out.name} = {self.components[1].get_init_c_flat()};\n"
+        return f"{self.components[0].a.get_assign_c(name=self.components[0].a.get_wire_value_c(name=self.a.name))}" + \
+               f"{self.components[0].b.get_assign_c(name=self.components[0].b.get_wire_value_c(name=self.b.name))}" + \
+               "".join([f"  {c.out.name} = {c.get_init_c_flat()};\n" for c in self.components])
 
     # HIERARCHICAL C #
     def get_function_block_c(self):
-        self.component_types = self.get_component_types()
-        self.prefix = "ha" if isinstance(self, half_adder) else "fa"
-        return f"{self.get_circuit_c()}\n\n"
-
-    def get_declaration_c_hier(self):
-        return f"{self.component_types[0].a.get_declaration_c()}" + \
-               f"{self.component_types[2].a.get_declaration_c()}" + \
-               f"{self.component_types[2].b.get_declaration_c()}"
-
-    def get_init_c_hier(self):
-        return f"  {self.component_types[0].a.name} = {self.component_types[0].get_gate_invocation_c(self.a, self.b)}\n" + \
-               f"  {self.component_types[2].a.name} = {self.component_types[1].get_gate_invocation_c(self.a, self.b)}\n" + \
-               f"  {self.component_types[2].b.name} = {self.component_types[1].get_gate_invocation_c(self.component_types[0].a, self.c)}\n"
+        adder_block = half_adder(a=wire(name="a"), b=wire(name="b")) if isinstance(self, half_adder) else full_adder(a=wire(name="a"), b=wire(name="b"), c=wire(name="cin"))
+        return f"{adder_block.get_circuit_c()}\n\n"
 
     def get_out_invocation_c(self):
         return self.get_sum_invocation_c()+"\n" + \
-               self.get_cout_invocation_c()
+               self.get_cout_invocation_c()+"\n"
 
     def get_sum_invocation_c(self):
-        return f"  {self.get_sum_wire().name} = ({self.prefix}({self.a.name}, {self.b.name}) >> 0) & 0x01;"
+        return f"  {self.get_sum_wire().name} = (ha({self.a.name}, {self.b.name}) >> 0) & 0x01;"
 
     def get_cout_invocation_c(self):
-        return f"  {self.get_carry_wire().name} = ({self.prefix}({self.a.name}, {self.b.name}) >> 1) & 0x01;"
+        return f"  {self.get_carry_wire().name} = (ha({self.a.name}, {self.b.name}) >> 1) & 0x01;"
 
     def get_function_sum_c_hier(self, offset: int = 0):
-        return f"  {self.out.prefix} |= {self.component_types[0].get_gate_output_c(a=self.a ,b=self.b, offset=offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[0].get_gate_output_c(a=self.a ,b=self.b, offset=offset)};\n"
 
     def get_function_carry_c_hier(self, offset: int = 1):
-        return f"  {self.out.prefix} |= {self.component_types[1].get_gate_output_c(a=self.a ,b=self.b, offset=offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[1].get_gate_output_c(a=self.a ,b=self.b, offset=offset)};\n"
 
     def get_circuit_c(self):
         return f"{self.get_prototype_c()}" + \
@@ -69,43 +58,32 @@ class one_bit_circuit(arithmetic_circuit):
         return f"module {self.prefix}(input {self.a.name}, input {self.b.name}, output {self.out.get_wire(0).name}, output {self.out.get_wire(1).name});\n"
 
     def get_declaration_v_flat(self):
-        self.circuit_wires = []
         self.get_circuit_wires()
         # Unique declaration of all circuit's interconnections
         return "".join([c[0].get_declaration_v() for c in self.circuit_wires])
 
-    # Half adder wires values initialization
-    def get_init_v_flat(self, offset: int = 0, array: bool = False):
-        return f"{self.components[0].get_assign_v_flat(prefix_a=self.a.prefix, prefix_b=self.b.prefix, offset=offset, array=array)}\n" + \
-               f"  assign {self.components[1].out.name} = {self.components[1].get_init_v_flat()};"
+    # Half adder (2 inputs adder) wires values initialization
+    def get_init_v_flat(self):
+        return f"{self.components[0].get_assign_v_flat()}" + \
+               f"  assign {self.components[1].out.name} = {self.components[1].get_init_v_flat()};\n"
 
+    # Not used in 1 bit circuits (no effect when calling while generating)
     def get_function_out_v_flat(self):
         return ""
 
     # HIERARCHICAL VERILOG #
     def get_function_block_v(self):
-        self.component_types = self.get_component_types()
-        self.prefix = "ha" if isinstance(self, half_adder) else "fa"
-        return f"{self.get_circuit_v()}\n\n"
-
-    def get_declaration_v_hier(self):
-        return f"{self.component_types[0].a.get_declaration_v()}" + \
-               f"{self.component_types[2].a.get_declaration_v()}" + \
-               f"{self.component_types[2].b.get_declaration_v()}"
-
-    def get_init_v_hier(self):
-        return f"  {self.component_types[0].gate_type} {self.component_types[0].gate_type}_{self.component_types[0].a.name}({self.a.name}, {self.b.name}, {self.component_types[0].a.name});\n" + \
-               f"  {self.component_types[1].gate_type} {self.component_types[1].gate_type}_{self.component_types[2].a.name}({self.a.name}, {self.b.name}, {self.component_types[2].a.name});\n" + \
-               f"  {self.component_types[1].gate_type} {self.component_types[1].gate_type}_{self.component_types[2].b.name}({self.component_types[0].a.name}, {self.c.name}, {self.component_types[2].b.name});\n"
+        adder_block = half_adder(a=wire(name="a"), b=wire(name="b")) if isinstance(self, half_adder) else full_adder(a=wire(name="a"), b=wire(name="b"), c=wire(name="cin"))
+        return f"{adder_block.get_circuit_v()}\n\n"
 
     def get_invocation_v(self):
-        return f"  ha ha_{self.get_carry_wire().name}({self.a.name}, {self.b.name}, {self.get_sum_wire().name}, {self.get_carry_wire().name});"
+        return f"  ha ha_{self.get_carry_wire().name}({self.a.name}, {self.b.name}, {self.get_sum_wire().name}, {self.get_carry_wire().name});\n"
 
     def get_function_sum_v_hier(self):
-        return f"{self.components[0].get_gate_invocation_v(a=self.a, b=self.b, out=self.components[0].out, sign=True)}\n"
+        return f"{self.components[0].get_gate_invocation_v()}"
 
     def get_function_carry_v_hier(self):
-        return f"{self.components[1].get_gate_invocation_v(a=self.a, b=self.b, out=self.components[1].out, sign=True)}\n"
+        return f"{self.components[1].get_gate_invocation_v()}"
 
     def get_circuit_v(self):
         return f"{self.get_prototype_v()}" + \
@@ -182,27 +160,37 @@ class full_adder(one_bit_circuit):
 
     # Full adder wires values initialization
     def get_init_c_flat(self):
-        return f"  {self.components[0].a.name} = {self.a.get_wire_value_c(offset=self.a.index, prefix=self.a.prefix)};\n" + \
-               f"  {self.components[0].b.name} = {self.b.get_wire_value_c(offset=self.b.index, prefix=self.b.prefix)};\n" + \
-               f"  {self.components[2].b.name} = {self.c.get_wire_value_c()};\n" + \
-               f"  {self.components[0].out.name} = {self.components[0].get_init_c_flat()};\n" + \
-               f"  {self.components[1].out.name} = {self.components[1].get_init_c_flat()};\n" + \
-               f"  {self.components[2].out.name} = {self.components[2].get_init_c_flat()};\n" + \
-               f"  {self.components[3].out.name} = {self.components[3].get_init_c_flat()};\n" + \
-               f"  {self.components[4].out.name} = {self.components[4].get_init_c_flat()};\n"
+        return f"{self.components[0].a.get_assign_c(name=self.components[0].a.get_wire_value_c(name=self.a.name))}" + \
+               f"{self.components[0].b.get_assign_c(name=self.components[0].b.get_wire_value_c(name=self.b.name))}" + \
+               f"{self.components[2].b.get_assign_c(name=self.components[2].b.get_wire_value_c(name=self.c.name))}" + \
+               "".join([f"  {c.out.name} = {c.get_init_c_flat()};\n" for c in self.components])
 
     # HIERARCHICAL C #
+    def get_declaration_c_hier(self):
+        return f"{self.components[0].out.get_declaration_c()}" + \
+               f"{self.components[1].out.get_declaration_c()}" + \
+               f"{self.components[3].out.get_declaration_c()}"
+
+    def get_init_c_hier(self):
+        # Temporarily change cin name for proper gate invocation
+        self.components[2].b.name = self.components[3].b.name = self.components[2].b.name.replace(self.prefix+"_", "")
+        return f"  {self.components[0].out.name} = {self.components[0].get_gate_invocation_c()}" + \
+               f"  {self.components[1].out.name} = {self.components[1].get_gate_invocation_c()}" + \
+               f"  {self.components[3].out.name} = {self.components[3].get_gate_invocation_c(remove_prefix=False)}"
+
     def get_sum_invocation_c(self):
-        return f"  {self.get_sum_wire().name} = ({self.prefix}({self.a.name}, {self.b.name}, {self.c.name}) >> 0) & 0x01;"
+        return f"  {self.get_sum_wire().name} = (fa({self.a.name}, {self.b.name}, {self.c.name}) >> 0) & 0x01;"
 
     def get_cout_invocation_c(self):
-        return f"  {self.get_carry_wire().name} = ({self.prefix}({self.a.name}, {self.b.name}, {self.c.name}) >> 1) & 0x01;"
+        return f"  {self.get_carry_wire().name} = (fa({self.a.name}, {self.b.name}, {self.c.name}) >> 1) & 0x01;"
 
     def get_function_sum_c_hier(self, offset: int = 0):
-        return f"  {self.out.prefix} |= {self.component_types[0].get_gate_output_c(a=self.component_types[0].a, b=self.c, offset=offset)};\n"
+        return f"  {self.out.prefix} |= {self.components[0].get_gate_output_c(a=self.components[0].out, b=self.c, offset=offset)};\n"
 
     def get_function_carry_c_hier(self, offset: int = 1):
-        return f"  {self.out.prefix} |= {self.get_previous_component().get_gate_output_c(a=self.component_types[2].a, b=self.component_types[2].b, offset=offset)};\n"
+        # Return cin name to previous string value for sake of consistency
+        self.components[2].b.name = self.components[3].b.name = self.prefix+"_"+self.c.name
+        return f"  {self.out.prefix} |= {self.get_previous_component().get_gate_output_c(a=self.components[1].out, b=self.components[3].out, offset=offset)};\n"
 
     def get_circuit_c(self):
         return f"{self.get_prototype_c()}" + \
@@ -219,25 +207,35 @@ class full_adder(one_bit_circuit):
         return f"module {self.prefix}(input {self.a.name}, input {self.b.name}, input {self.c.name}, output {self.out.get_wire(0).name}, output {self.out.get_wire(1).name});\n"
 
     # Full adder wires values initialization
-    def get_init_v_flat(self, offset: int = 0, array: bool = False):
-        return f"  assign {self.components[0].a.name} = {self.a.get_wire_value_v(offset=offset, prefix=self.a.prefix, array=array)};\n" + \
-               f"  assign {self.components[0].b.name} = {self.b.get_wire_value_v(offset=offset, prefix=self.b.prefix, array=array)};\n" + \
-               f"  assign {self.components[2].b.name} = {self.c.get_wire_value_v(offset=offset)};\n" + \
-               f"  assign {self.components[0].out.name} = {self.components[0].get_init_v_flat()};\n" + \
-               f"  assign {self.components[1].out.name} = {self.components[1].get_init_v_flat()};\n" + \
-               f"  assign {self.components[2].out.name} = {self.components[2].get_init_v_flat()};\n" + \
-               f"  assign {self.components[3].out.name} = {self.components[3].get_init_v_flat()};\n" + \
-               f"  assign {self.components[4].out.name} = {self.components[4].get_init_v_flat()};\n"
+    def get_init_v_flat(self):
+        return f"{self.components[0].a.get_assign_v(name=self.components[0].a.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.components[0].b.get_assign_v(name=self.components[0].b.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.components[2].b.get_assign_v(name=self.components[2].b.name.replace(self.prefix+'_', ''))}" + \
+               "".join([f"  assign {c.out.name} = {c.get_init_v_flat()};\n" for c in self.components])
 
     # HIERARCHICAL VERILOG #
     def get_invocation_v(self):
-        return f"  fa fa_{self.get_carry_wire().name}({self.a.name}, {self.b.name}, {self.c.name}, {self.get_sum_wire().name}, {self.get_carry_wire().name});"
+        return f"  fa fa_{self.get_carry_wire().name}({self.a.name}, {self.b.name}, {self.c.name}, {self.get_sum_wire().name}, {self.get_carry_wire().name});\n"
+
+    def get_declaration_v_hier(self):
+        return f"{self.components[0].out.get_declaration_v()}" + \
+               f"{self.components[1].out.get_declaration_v()}" + \
+               f"{self.components[3].out.get_declaration_v()}"
+
+    def get_init_v_hier(self):
+        # Temporarily change cin name for proper gate invocation
+        self.components[2].b.name = self.components[3].b.name = self.components[2].b.name.replace(self.prefix+"_", "")
+        return f"{self.components[0].get_gate_invocation_v()}" + \
+               f"{self.components[1].get_gate_invocation_v()}" + \
+               f"{self.components[3].get_gate_invocation_v(remove_prefix=False)}"
 
     def get_function_sum_v_hier(self):
-        return f"{self.components[0].get_gate_invocation_v(a=self.component_types[0].a, b=self.c, out=self.out.get_wire(0))}\n"
+        return f"{self.components[2].get_gate_invocation_v(remove_prefix=False)}"
 
     def get_function_carry_v_hier(self):
-        return f"{self.components[-1].get_gate_invocation_v(a=self.component_types[2].a, b=self.component_types[2].b, out=self.out.get_wire(1))}\n"
+        # Return cin name to previous string value for sake of consistency
+        self.components[2].b.name = self.components[3].b.name = self.prefix+"_"+self.c.name
+        return f"{self.components[4].get_gate_invocation_v(remove_prefix=False)}"
 
     def get_circuit_v(self):
         return f"{self.get_prototype_v()}" + \
