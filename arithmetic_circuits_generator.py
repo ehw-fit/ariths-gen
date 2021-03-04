@@ -7,19 +7,19 @@ import sys
 
 """ TESTING """
 if __name__ == "__main__":
-    a = bus(N=10, prefix="a")
+    a = bus(N=1, prefix="a")
     b = bus(N=1, prefix="b")
     rca = unsigned_ripple_carry_adder(a, b, prefix="h_u_rca8")
 
     # rca.get_v_code_hier(open("h_u_rca8.v", "w"))
     # rca.get_c_code_hier(open("h_u_rca8.c", "w"))
 
-    arrmul = unsigned_array_multiplier(a, b, prefix="f_u_arr_mul10")
-    arrmul.get_c_code_flat(open("f_u_arr_mul10.c", "w"))
-    arrmul.get_v_code_flat(open("f_u_arr_mul10.v", "w"))
-
-    # arrmul.get_cgp_code_hier(open("s_arr_mul5.chr", "w"))
-    # rca.get_cgp_code_hier(open("s_rca5.chr", "w"))
+    arrmul = signed_array_multiplier(a, b, prefix="f_u_arr_mul1")
+    # arrmul.get_c_code_flat(open("f_u_arr_mul10.c", "w"))
+    # arrmul.get_v_code_flat(open("f_u_arr_mul10.v", "w"))
+    arrmul.get_cgp_code(open("s_arr_mul1.chr", "w"))
+    # arrmul.get_cgp_code(open("s_arr_mul5.chr", "w"))
+    # rca.get_cgp_code(open("s_rca5.chr", "w"))
 
     w1 = wire(name="a")
     w2 = wire(name="b")
