@@ -1,30 +1,30 @@
 #include <stdio.h>
 #include <stdint.h>
 
-uint8_t xor_gate(uint8_t a, uint8_t b){
-  return ((a >> 0) & 0x01) ^ ((b >> 0) & 0x01);
+uint8_t xor_gate(uint8_t _a, uint8_t _b){
+  return ((_a >> 0) & 0x01) ^ ((_b >> 0) & 0x01);
 }
 
-uint8_t and_gate(uint8_t a, uint8_t b){
-  return ((a >> 0) & 0x01) & ((b >> 0) & 0x01);
+uint8_t and_gate(uint8_t _a, uint8_t _b){
+  return ((_a >> 0) & 0x01) & ((_b >> 0) & 0x01);
 }
 
-uint8_t or_gate(uint8_t a, uint8_t b){
-  return ((a >> 0) & 0x01) | ((b >> 0) & 0x01);
+uint8_t or_gate(uint8_t _a, uint8_t _b){
+  return ((_a >> 0) & 0x01) | ((_b >> 0) & 0x01);
 }
 
-uint8_t h_fa(uint8_t a, uint8_t b, uint8_t cout){
+uint8_t h_fa(uint8_t a, uint8_t b, uint8_t cin){
   uint8_t out = 0;
-  uint8_t xor_1 = 0;
-  uint8_t and_1 = 0;
-  uint8_t and_2 = 0;
+  uint8_t h_fa_y0 = 0;
+  uint8_t h_fa_y1 = 0;
+  uint8_t h_fa_y3 = 0;
 
-  xor_1 = xor_gate(a, b);
-  and_1 = and_gate(a, b);
-  and_2 = and_gate(xor_1, cout);
+  h_fa_y0 = xor_gate(a, b);
+  h_fa_y1 = and_gate(a, b);
+  h_fa_y3 = and_gate(h_fa_y0, cin);
 
-  out |= (xor_gate(xor_1, cout) & 0x01) << 0;
-  out |= (or_gate(and_1, and_2) & 0x01) << 1;
+  out |= (xor_gate(h_fa_y0, cin) & 0x01) << 0;
+  out |= (or_gate(h_fa_y1, h_fa_y3) & 0x01) << 1;
   return out;
 }
 

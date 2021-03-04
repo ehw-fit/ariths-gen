@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdint.h>
 
-uint8_t _nand_gate(uint8_t _a, uint8_t _b){
+uint8_t nand_gate(uint8_t _a, uint8_t _b){
   return ~(((_a >> 0) & 0x01) & ((_b >> 0) & 0x01)) & 0x01 << 0;
 }
 
@@ -9,7 +9,7 @@ uint8_t _nand_gate(uint8_t _a, uint8_t _b){
 int main(){
   for (int i = 0; i < 2; i++){
     for (int j = 0; j < 2; j++){
-      assert(!(i & j) == _nand_gate(i,j));
+      assert(!(i & j) == nand_gate(i,j));
     }
   }
   return 0;

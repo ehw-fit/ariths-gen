@@ -1,42 +1,41 @@
 #include <stdio.h>
 #include <stdint.h>
 
-uint8_t xor_gate(uint8_t a, uint8_t b){
-  return ((a >> 0) & 0x01) ^ ((b >> 0) & 0x01);
+uint8_t xor_gate(uint8_t _a, uint8_t _b){
+  return ((_a >> 0) & 0x01) ^ ((_b >> 0) & 0x01);
 }
 
-uint8_t and_gate(uint8_t a, uint8_t b){
-  return ((a >> 0) & 0x01) & ((b >> 0) & 0x01);
+uint8_t and_gate(uint8_t _a, uint8_t _b){
+  return ((_a >> 0) & 0x01) & ((_b >> 0) & 0x01);
 }
 
-uint8_t or_gate(uint8_t a, uint8_t b){
-  return ((a >> 0) & 0x01) | ((b >> 0) & 0x01);
+uint8_t or_gate(uint8_t _a, uint8_t _b){
+  return ((_a >> 0) & 0x01) | ((_b >> 0) & 0x01);
 }
 
-uint8_t ha(uint8_t a_0, uint8_t b_0){
+uint8_t ha(uint8_t a, uint8_t b){
   uint8_t out = 0;
-
-  out |= (xor_gate(a_0, b_0) & 0x01) << 0;
-  out |= (and_gate(a_0, b_0) & 0x01) << 1;
+  out |= (xor_gate(a, b) & 0x01) << 0;
+  out |= (and_gate(a, b) & 0x01) << 1;
   return out;
 }
 
-uint8_t fa(uint8_t a_7, uint8_t b_7, uint8_t cin){
+uint8_t fa(uint8_t a, uint8_t b, uint8_t cin){
   uint8_t out = 0;
-  uint8_t xor_1 = 0;
-  uint8_t and_1 = 0;
-  uint8_t and_2 = 0;
+  uint8_t fa_y0 = 0;
+  uint8_t fa_y1 = 0;
+  uint8_t fa_y3 = 0;
 
-  xor_1 = xor_gate(a_7, b_7);
-  and_1 = and_gate(a_7, b_7);
-  and_2 = and_gate(xor_1, cin);
+  fa_y0 = xor_gate(a, b);
+  fa_y1 = and_gate(a, b);
+  fa_y3 = and_gate(fa_y0, cin);
 
-  out |= (xor_gate(xor_1, cin) & 0x01) << 0;
-  out |= (or_gate(and_1, and_2) & 0x01) << 1;
+  out |= (xor_gate(fa_y0, cin) & 0x01) << 0;
+  out |= (or_gate(fa_y1, fa_y3) & 0x01) << 1;
   return out;
 }
 
-uint64_t s_rca8(int64_t a, int64_t b){
+int64_t h_s_rca8(int64_t a, int64_t b){
   uint64_t out = 0;
   uint8_t a_0 = 0;
   uint8_t a_1 = 0;
@@ -54,15 +53,24 @@ uint64_t s_rca8(int64_t a, int64_t b){
   uint8_t b_5 = 0;
   uint8_t b_6 = 0;
   uint8_t b_7 = 0;
-  uint8_t cout_0 = 0;
-  uint8_t cout_1 = 0;
-  uint8_t cout_2 = 0;
-  uint8_t cout_3 = 0;
-  uint8_t cout_4 = 0;
-  uint8_t cout_5 = 0;
-  uint8_t cout_6 = 0;
-  uint8_t cout_7 = 0;
-  uint8_t s_rca8_xor_1_y0 = 0;
+  uint8_t h_s_rca8_ha_y0 = 0;
+  uint8_t h_s_rca8_ha_y1 = 0;
+  uint8_t h_s_rca8_fa1_y2 = 0;
+  uint8_t h_s_rca8_fa1_y4 = 0;
+  uint8_t h_s_rca8_fa2_y2 = 0;
+  uint8_t h_s_rca8_fa2_y4 = 0;
+  uint8_t h_s_rca8_fa3_y2 = 0;
+  uint8_t h_s_rca8_fa3_y4 = 0;
+  uint8_t h_s_rca8_fa4_y2 = 0;
+  uint8_t h_s_rca8_fa4_y4 = 0;
+  uint8_t h_s_rca8_fa5_y2 = 0;
+  uint8_t h_s_rca8_fa5_y4 = 0;
+  uint8_t h_s_rca8_fa6_y2 = 0;
+  uint8_t h_s_rca8_fa6_y4 = 0;
+  uint8_t h_s_rca8_fa7_y2 = 0;
+  uint8_t h_s_rca8_fa7_y4 = 0;
+  uint8_t h_s_rca8_xor_1_y0 = 0;
+  uint8_t h_s_rca8_xor_2_y0 = 0;
 
   a_0 = ((a >> 0) & 0x01);
   a_1 = ((a >> 1) & 0x01);
@@ -80,25 +88,34 @@ uint64_t s_rca8(int64_t a, int64_t b){
   b_5 = ((b >> 5) & 0x01);
   b_6 = ((b >> 6) & 0x01);
   b_7 = ((b >> 7) & 0x01);
-  cout_0 = (ha(a_0, b_0) >> 1) & 0x01;
-  cout_1 = (fa(a_1, b_1, cout_0) >> 1) & 0x01;
-  cout_2 = (fa(a_2, b_2, cout_1) >> 1) & 0x01;
-  cout_3 = (fa(a_3, b_3, cout_2) >> 1) & 0x01;
-  cout_4 = (fa(a_4, b_4, cout_3) >> 1) & 0x01;
-  cout_5 = (fa(a_5, b_5, cout_4) >> 1) & 0x01;
-  cout_6 = (fa(a_6, b_6, cout_5) >> 1) & 0x01;
-  cout_7 = (fa(a_7, b_7, cout_6) >> 1) & 0x01;
-  s_rca8_xor_1_y0 = xor_gate(a_7, b_7);
+  h_s_rca8_ha_y0 = (ha(a_0, b_0) >> 0) & 0x01;
+  h_s_rca8_ha_y1 = (ha(a_0, b_0) >> 1) & 0x01;
+  h_s_rca8_fa1_y2 = (fa(a_1, b_1, h_s_rca8_ha_y1) >> 0) & 0x01;
+  h_s_rca8_fa1_y4 = (fa(a_1, b_1, h_s_rca8_ha_y1) >> 1) & 0x01;
+  h_s_rca8_fa2_y2 = (fa(a_2, b_2, h_s_rca8_fa1_y4) >> 0) & 0x01;
+  h_s_rca8_fa2_y4 = (fa(a_2, b_2, h_s_rca8_fa1_y4) >> 1) & 0x01;
+  h_s_rca8_fa3_y2 = (fa(a_3, b_3, h_s_rca8_fa2_y4) >> 0) & 0x01;
+  h_s_rca8_fa3_y4 = (fa(a_3, b_3, h_s_rca8_fa2_y4) >> 1) & 0x01;
+  h_s_rca8_fa4_y2 = (fa(a_4, b_4, h_s_rca8_fa3_y4) >> 0) & 0x01;
+  h_s_rca8_fa4_y4 = (fa(a_4, b_4, h_s_rca8_fa3_y4) >> 1) & 0x01;
+  h_s_rca8_fa5_y2 = (fa(a_5, b_5, h_s_rca8_fa4_y4) >> 0) & 0x01;
+  h_s_rca8_fa5_y4 = (fa(a_5, b_5, h_s_rca8_fa4_y4) >> 1) & 0x01;
+  h_s_rca8_fa6_y2 = (fa(a_6, b_6, h_s_rca8_fa5_y4) >> 0) & 0x01;
+  h_s_rca8_fa6_y4 = (fa(a_6, b_6, h_s_rca8_fa5_y4) >> 1) & 0x01;
+  h_s_rca8_fa7_y2 = (fa(a_7, b_7, h_s_rca8_fa6_y4) >> 0) & 0x01;
+  h_s_rca8_fa7_y4 = (fa(a_7, b_7, h_s_rca8_fa6_y4) >> 1) & 0x01;
+  h_s_rca8_xor_1_y0 = xor_gate(a_7, b_7);
+  h_s_rca8_xor_2_y0 = xor_gate(h_s_rca8_xor_1_y0, h_s_rca8_fa7_y4);
 
-  out |= ((ha(a_0, b_0) >> 0) & 0x01) << 0;
-  out |= ((fa(a_1, b_1, cout_0) >> 0) & 0x01) << 1;
-  out |= ((fa(a_2, b_2, cout_1) >> 0) & 0x01) << 2;
-  out |= ((fa(a_3, b_3, cout_2) >> 0) & 0x01) << 3;
-  out |= ((fa(a_4, b_4, cout_3) >> 0) & 0x01) << 4;
-  out |= ((fa(a_5, b_5, cout_4) >> 0) & 0x01) << 5;
-  out |= ((fa(a_6, b_6, cout_5) >> 0) & 0x01) << 6;
-  out |= ((fa(a_7, b_7, cout_6) >> 0) & 0x01) << 7;
-  out |= (xor_gate(s_rca8_xor_1_y0, cout_7) & 0x01) << 8;
+  out |= (h_s_rca8_ha_y0 & 0x01) << 0;
+  out |= (h_s_rca8_fa1_y2 & 0x01) << 1;
+  out |= (h_s_rca8_fa2_y2 & 0x01) << 2;
+  out |= (h_s_rca8_fa3_y2 & 0x01) << 3;
+  out |= (h_s_rca8_fa4_y2 & 0x01) << 4;
+  out |= (h_s_rca8_fa5_y2 & 0x01) << 5;
+  out |= (h_s_rca8_fa6_y2 & 0x01) << 6;
+  out |= (h_s_rca8_fa7_y2 & 0x01) << 7;
+  out |= (h_s_rca8_xor_2_y0 & 0x01) << 8;
   return out;
 }
 
@@ -114,7 +131,7 @@ int main(){
         result = 512 + result;  
       }
 
-      assert(result == (int)s_rca8(i,j));
+      assert(result == (int)h_s_rca8(i,j));
     }
   }
   return 0;
