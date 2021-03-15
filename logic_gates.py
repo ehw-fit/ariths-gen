@@ -94,11 +94,50 @@ class logic_gate():
         b_name = self.b.name.replace(self.prefix+"_", "") if remove_prefix is True else self.b.name
         return f"  {self.gate_type} {self.gate_type}_{self.out.name}({a_name}, {b_name}, {self.out.name});\n"
 
+    """ BLIF CODE GENERATION """
+    # FLAT BLIF #
+    def get_prototype_blif(self):
+        return f".model {self.gate_type}\n"
+
+    def get_declaration_blif(self):
+        return f".inputs {self.a.name} {self.b.name}\n" + \
+               f".outputs {self.out.name}\n"
+
+    def get_init_function_blif_flat(self):
+        return f"{self.a.get_assign_blif(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.b.get_assign_blif(name=self.b.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.get_function_blif_flat()}"
+
+    # Generating flat BLIF code representation of the logic gate itself
+    # (i.e. not as a component of bigger circuit)
+    def get_blif_code(self, file_object):
+        file_object.write(self.get_prototype_blif())
+        file_object.write(self.get_declaration_blif())
+        file_object.write(self.get_function_blif_flat())
+        file_object.write(f".end\n")
+        file_object.close()
+
+    # HIERARCHICAL BLIF #
+    def get_function_block_blif(self):
+        gate_block = not_gate(a=wire(name="a")) if isinstance(self, not_gate) else type(self)(a=wire(name="a"), b=wire(name="b"))
+        return f"{gate_block.get_prototype_blif()}" + \
+               f"{gate_block.get_declaration_blif()}" + \
+               f"{gate_block.get_function_blif_flat()}" + \
+               f".end\n"
+
+    def get_invocation_blif_hier(self, init: bool = False):
+        if init is True:
+            return f"{self.a.get_assign_blif(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+                   f"{self.b.get_assign_blif(name=self.b.name.replace(self.prefix+'_', ''))}" + \
+                   f".subckt {self.gate_type} _a={self.a.name} _b={self.b.name} _y0={self.out.name}\n"
+        else:
+            return f".subckt {self.gate_type} _a={self.a.name} _b={self.b.name} _y0={self.out.name}\n"
+
     """ CGP CODE GENERATION """
     # FLAT CGP #
     @staticmethod
     def get_parameters_cgp():
-        return "{1,1,2,1,0}"
+        return "{2,1,1,1,2,1,0}"
 
     def get_triplet_cgp(self, a_index: int = 0, b_index: int = 1):
         return f"({a_index},{b_index},{self.cgp_function})"
@@ -140,6 +179,11 @@ class and_gate(logic_gate):
         self.operator = "&"
         self.out = wire(name=prefix+"_y"+str(outid))
 
+    """ BLIF CODE GENERATION """
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.b.name} {self.out.name}\n" + \
+               f"11 1\n"
+
 
 class nand_gate(inverted_logic_gate):
     def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
@@ -148,6 +192,11 @@ class nand_gate(inverted_logic_gate):
         self.cgp_function = 5
         self.operator = "&"
         self.out = wire(name=prefix+"_y"+str(outid))
+
+    """ BLIF CODE GENERATION """
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.b.name} {self.out.name}\n" + \
+               f"0- 1\n-0 1\n"
 
 
 class or_gate(logic_gate):
@@ -158,6 +207,11 @@ class or_gate(logic_gate):
         self.operator = "|"
         self.out = wire(name=prefix+"_y"+str(outid))
 
+    """ BLIF CODE GENERATION """
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.b.name} {self.out.name}\n" + \
+               f"1- 1\n-1 1\n"
+
 
 class nor_gate(inverted_logic_gate):
     def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
@@ -166,6 +220,11 @@ class nor_gate(inverted_logic_gate):
         self.cgp_function = 6
         self.operator = "|"
         self.out = wire(name=prefix+"_y"+str(outid))
+
+    """ BLIF CODE GENERATION """
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.b.name} {self.out.name}\n" + \
+               f"00 1\n"
 
 
 class xor_gate(logic_gate):
@@ -176,6 +235,11 @@ class xor_gate(logic_gate):
         self.operator = "^"
         self.out = wire(name=prefix+"_y"+str(outid))
 
+    """ BLIF CODE GENERATION """
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.b.name} {self.out.name}\n" + \
+               f"01 1\n10 1\n"
+
 
 class xnor_gate(inverted_logic_gate):
     def __init__(self, a: wire, b: wire, prefix: str = "", outid:  int = 0):
@@ -184,6 +248,11 @@ class xnor_gate(inverted_logic_gate):
         self.cgp_function = 7
         self.operator = "^"
         self.out = wire(name=prefix+"_y"+str(outid))
+
+    """ BLIF CODE GENERATION """
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.b.name} {self.out.name}\n" + \
+               f"00 1\n11 1\n"
 
 
 # Single-input #
@@ -242,14 +311,32 @@ class not_gate(inverted_logic_gate):
         a_name = self.a.name.replace(self.prefix+"_", "") if remove_prefix is True else self.a.name
         return f"  {self.gate_type} {self.gate_type}_{self.out.name}({a_name}, {self.out.name});\n"
 
+    """ BLIF CODE GENERATION """
+    # FLAT BLIF #
+    def get_declaration_blif(self):
+        return f".inputs {self.a.name}\n" + \
+               f".outputs {self.out.name}\n"
+
+    def get_function_blif_flat(self):
+        return f".names {self.a.name} {self.out.name}\n" + \
+               f"0 1\n"
+
+    def get_init_function_blif_flat(self):
+        return f"{self.a.get_assign_blif(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+               f"{self.get_function_blif_flat()}"
+
+    # HIERARCHICAL BLIF #
+    def get_invocation_blif_hier(self, init: bool = False):
+        if init is True:
+            return f"{self.a.get_assign_blif(name=self.a.name.replace(self.prefix+'_', ''))}" + \
+                   f".subckt {self.gate_type} _a={self.a.name} _y0={self.out.name}\n"
+        else:
+            return f".subckt {self.gate_type} _a={self.a.name} _y0={self.out.name}\n"
+
     """ CGP CODE GENERATION """
     # FLAT CGP #
-    @staticmethod
-    def get_parameters_cgp():
-        return "{1,1,1,1,0}"
-
     def get_triplet_cgp(self, a_index: int = 0):
-        return f"({a_index},{self.cgp_function})"
+        return f"({a_index},{a_index},{self.cgp_function})"
 
     @staticmethod
     def get_output_cgp(out_index: int = 1):

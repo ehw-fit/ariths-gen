@@ -24,12 +24,26 @@ class one_bit_circuit(arithmetic_circuit):
                f"{self.components[0].b.get_assign_c(name=self.components[0].b.get_wire_value_c(name=self.b.name))}" + \
                "".join([f"  {c.out.name} = {c.get_init_c_flat()};\n" for c in self.components])
 
+    # Generating flat C code representation of circuit
+    def get_c_code_flat(self, file_object):
+        file_object.write(self.get_includes_c())
+        file_object.write(self.get_prototype_c())
+        file_object.write(self.out.get_declaration_c())
+        file_object.write(self.get_declaration_c_flat()+"\n")
+        file_object.write(self.get_init_c_flat()+"\n")
+        file_object.write(self.get_function_out_c_flat())
+        file_object.write(f"  return {self.out.prefix}"+";\n}")
+        file_object.close()
+
     # HIERARCHICAL C #
     def get_function_block_c(self):
         adder_block = half_adder(a=wire(name="a"), b=wire(name="b")) if isinstance(self, half_adder) else full_adder(a=wire(name="a"), b=wire(name="b"), c=wire(name="cin"))
         return f"{adder_block.get_circuit_c()}\n\n"
 
-    def get_out_invocation_c(self):
+    def get_wire_declaration_c_hier(self):
+        return f"{self.out.get_wire_declaration_c()}"
+
+    def get_out_invocation_c(self, **kwargs):
         return self.get_sum_invocation_c()+"\n" + \
                self.get_cout_invocation_c()+"\n"
 
@@ -76,7 +90,10 @@ class one_bit_circuit(arithmetic_circuit):
         adder_block = half_adder(a=wire(name="a"), b=wire(name="b")) if isinstance(self, half_adder) else full_adder(a=wire(name="a"), b=wire(name="b"), c=wire(name="cin"))
         return f"{adder_block.get_circuit_v()}\n\n"
 
-    def get_invocation_v(self):
+    def get_wire_declaration_v_hier(self):
+        return f"{self.out.get_wire_declaration_v()}"
+
+    def get_invocation_v(self, **kwargs):
         return f"  ha ha_{self.get_carry_wire().name}({self.a.name}, {self.b.name}, {self.get_sum_wire().name}, {self.get_carry_wire().name});\n"
 
     def get_function_sum_v_hier(self):
@@ -90,6 +107,50 @@ class one_bit_circuit(arithmetic_circuit):
                f"{self.get_function_sum_v_hier()}" + \
                f"{self.get_function_carry_v_hier()}" + \
                f"endmodule"
+
+    """ BLIF CODE GENERATION """
+    # FLAT BLIF #
+    def get_declaration_blif(self):
+        return f".inputs {self.a.name} {self.b.name}" + \
+               f"\n.outputs" + \
+               "".join([f" {w.name}" for w in self.out.bus])+"\n"
+
+    def get_wire_mapping_blif(self):
+        # For unique mapping of all circuit's input interconnections
+        self.get_circuit_wires()
+        return "".join([c[0].get_assign_blif(name=c[0].name.replace(self.prefix+'_', '')) for c in self.circuit_wires[:self.out.N]])
+
+    def get_function_blif_flat(self):
+        return f"{self.get_wire_mapping_blif()}"+"".join([c.get_function_blif_flat() for c in self.components])
+
+    # Not needed in 1-bit circuits
+    def get_function_out_blif(self):
+        return ""
+
+    # HIERARCHICAL BLIF #
+    def get_function_block_blif(self):
+        adder_block = half_adder(a=wire(name="a"), b=wire(name="b")) if isinstance(self, half_adder) else full_adder(a=wire(name="a"), b=wire(name="b"), c=wire(name="cin"))
+        return f"{adder_block.get_circuit_blif()}"
+
+    def get_function_blif_hier(self):
+        return "".join(c.get_invocation_blif_hier(init=False) for c in self.components)
+
+    def get_invocation_blif_hier(self, **kwargs):
+        return f"{self.get_wire_mapping_blif()}" + \
+               f".subckt ha a={self.circuit_wires[0][0].name} b={self.circuit_wires[1][0].name} ha_y0={self.out.get_wire(0).name} ha_y1={self.out.get_wire(1).name}\n"
+
+    def get_circuit_blif(self):
+        return f"{self.get_prototype_blif()}" + \
+               f"{self.get_declaration_blif()}" + \
+               f"{self.get_wire_mapping_blif()}" + \
+               f"{self.get_function_blif_hier()}" + \
+               f".end\n"
+    
+    """ CGP CODE GENERATION """
+    # FLAT CGP #
+    def get_parameters_cgp(self):
+        self.circuit_gates = self.get_circuit_gates()
+        return f"{{2,2,1,{len(self.circuit_gates)},2,1,0}}"
 
 
 class half_adder(one_bit_circuit):
@@ -148,9 +209,10 @@ class full_adder(one_bit_circuit):
 
         self.out.connect(1, obj_or_gate.out)
 
-        # TODO delete or leave?
-        self.propagate = propagate_xor_gate1.out
-        self.generate = generate_and_gate1.out
+        # TODO delete?
+        # Storing PG logic gates for better accessibility
+        self.propagate = propagate_xor_gate1
+        self.generate = generate_and_gate1
 
     """ C CODE GENERATION """
     # FLAT C #
@@ -214,7 +276,7 @@ class full_adder(one_bit_circuit):
                "".join([f"  assign {c.out.name} = {c.get_init_v_flat()};\n" for c in self.components])
 
     # HIERARCHICAL VERILOG #
-    def get_invocation_v(self):
+    def get_invocation_v(self, **kwargs):
         return f"  fa fa_{self.get_carry_wire().name}({self.a.name}, {self.b.name}, {self.c.name}, {self.get_sum_wire().name}, {self.get_carry_wire().name});\n"
 
     def get_declaration_v_hier(self):
@@ -244,3 +306,29 @@ class full_adder(one_bit_circuit):
                f"{self.get_function_sum_v_hier()}" + \
                f"{self.get_function_carry_v_hier()}" + \
                f"endmodule"
+
+    """ BLIF CODE GENERATION """
+    # FLAT BLIF #
+    def get_declaration_blif(self):
+        return f".inputs {self.a.name} {self.b.name} {self.c.name}" + \
+               f"\n.outputs" + \
+               "".join([f" {w.name}" for w in self.out.bus])+"\n"
+
+    def get_wire_mapping_blif(self):
+        # For unique mapping of all circuit's input interconnections
+        self.get_circuit_wires()
+        # getting desired inner wires and selecting first element from list of tuples containing wires and other info
+        return f"{self.circuit_wires[0][0].get_assign_blif(name=self.circuit_wires[0][0].name.replace(self.prefix+'_', ''))}" + \
+               f"{self.circuit_wires[1][0].get_assign_blif(name=self.circuit_wires[1][0].name.replace(self.prefix+'_', ''))}" + \
+               f"{self.circuit_wires[4][0].get_assign_blif(name=self.circuit_wires[4][0].name.replace(self.prefix+'_', ''))}"
+
+    # HIERARCHICAL BLIF #
+    def get_invocation_blif_hier(self, **kwargs):
+        return f"{self.get_wire_mapping_blif()}" + \
+               f".subckt fa a={self.circuit_wires[0][0].name} b={self.circuit_wires[1][0].name} cin={self.circuit_wires[4][0].name} fa_y2={self.out.get_wire(0).name} fa_y4={self.out.get_wire(1).name}\n"
+
+    """ CGP CODE GENERATION """
+    # FLAT CGP #
+    def get_parameters_cgp(self):
+        self.circuit_gates = self.get_circuit_gates()
+        return f"{{3,2,1,{len(self.circuit_gates)},2,1,0}}"

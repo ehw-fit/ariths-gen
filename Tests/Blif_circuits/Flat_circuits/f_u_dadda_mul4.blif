@@ -1,0 +1,320 @@
+.model f_u_dadda_mul4
+.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names a_3 f_u_dadda_mul4_and_3_0_a_3
+1 1
+.names b_0 f_u_dadda_mul4_and_3_0_b_0
+1 1
+.names f_u_dadda_mul4_and_3_0_a_3 f_u_dadda_mul4_and_3_0_b_0 f_u_dadda_mul4_and_3_0_y0
+11 1
+.names a_2 f_u_dadda_mul4_and_2_1_a_2
+1 1
+.names b_1 f_u_dadda_mul4_and_2_1_b_1
+1 1
+.names f_u_dadda_mul4_and_2_1_a_2 f_u_dadda_mul4_and_2_1_b_1 f_u_dadda_mul4_and_2_1_y0
+11 1
+.names f_u_dadda_mul4_and_3_0_y0 f_u_dadda_mul4_ha0_f_u_dadda_mul4_and_3_0_y0
+1 1
+.names f_u_dadda_mul4_and_2_1_y0 f_u_dadda_mul4_ha0_f_u_dadda_mul4_and_2_1_y0
+1 1
+.names f_u_dadda_mul4_ha0_f_u_dadda_mul4_and_3_0_y0 f_u_dadda_mul4_ha0_f_u_dadda_mul4_and_2_1_y0 f_u_dadda_mul4_ha0_y0
+01 1
+10 1
+.names f_u_dadda_mul4_ha0_f_u_dadda_mul4_and_3_0_y0 f_u_dadda_mul4_ha0_f_u_dadda_mul4_and_2_1_y0 f_u_dadda_mul4_ha0_y1
+11 1
+.names a_3 f_u_dadda_mul4_and_3_1_a_3
+1 1
+.names b_1 f_u_dadda_mul4_and_3_1_b_1
+1 1
+.names f_u_dadda_mul4_and_3_1_a_3 f_u_dadda_mul4_and_3_1_b_1 f_u_dadda_mul4_and_3_1_y0
+11 1
+.names f_u_dadda_mul4_ha0_y1 f_u_dadda_mul4_ha1_f_u_dadda_mul4_ha0_y1
+1 1
+.names f_u_dadda_mul4_and_3_1_y0 f_u_dadda_mul4_ha1_f_u_dadda_mul4_and_3_1_y0
+1 1
+.names f_u_dadda_mul4_ha1_f_u_dadda_mul4_ha0_y1 f_u_dadda_mul4_ha1_f_u_dadda_mul4_and_3_1_y0 f_u_dadda_mul4_ha1_y0
+01 1
+10 1
+.names f_u_dadda_mul4_ha1_f_u_dadda_mul4_ha0_y1 f_u_dadda_mul4_ha1_f_u_dadda_mul4_and_3_1_y0 f_u_dadda_mul4_ha1_y1
+11 1
+.names a_2 f_u_dadda_mul4_and_2_0_a_2
+1 1
+.names b_0 f_u_dadda_mul4_and_2_0_b_0
+1 1
+.names f_u_dadda_mul4_and_2_0_a_2 f_u_dadda_mul4_and_2_0_b_0 f_u_dadda_mul4_and_2_0_y0
+11 1
+.names a_1 f_u_dadda_mul4_and_1_1_a_1
+1 1
+.names b_1 f_u_dadda_mul4_and_1_1_b_1
+1 1
+.names f_u_dadda_mul4_and_1_1_a_1 f_u_dadda_mul4_and_1_1_b_1 f_u_dadda_mul4_and_1_1_y0
+11 1
+.names f_u_dadda_mul4_and_2_0_y0 f_u_dadda_mul4_ha2_f_u_dadda_mul4_and_2_0_y0
+1 1
+.names f_u_dadda_mul4_and_1_1_y0 f_u_dadda_mul4_ha2_f_u_dadda_mul4_and_1_1_y0
+1 1
+.names f_u_dadda_mul4_ha2_f_u_dadda_mul4_and_2_0_y0 f_u_dadda_mul4_ha2_f_u_dadda_mul4_and_1_1_y0 f_u_dadda_mul4_ha2_y0
+01 1
+10 1
+.names f_u_dadda_mul4_ha2_f_u_dadda_mul4_and_2_0_y0 f_u_dadda_mul4_ha2_f_u_dadda_mul4_and_1_1_y0 f_u_dadda_mul4_ha2_y1
+11 1
+.names a_1 f_u_dadda_mul4_and_1_2_a_1
+1 1
+.names b_2 f_u_dadda_mul4_and_1_2_b_2
+1 1
+.names f_u_dadda_mul4_and_1_2_a_1 f_u_dadda_mul4_and_1_2_b_2 f_u_dadda_mul4_and_1_2_y0
+11 1
+.names a_0 f_u_dadda_mul4_and_0_3_a_0
+1 1
+.names b_3 f_u_dadda_mul4_and_0_3_b_3
+1 1
+.names f_u_dadda_mul4_and_0_3_a_0 f_u_dadda_mul4_and_0_3_b_3 f_u_dadda_mul4_and_0_3_y0
+11 1
+.names f_u_dadda_mul4_ha2_y1 f_u_dadda_mul4_fa0_f_u_dadda_mul4_ha2_y1
+1 1
+.names f_u_dadda_mul4_and_1_2_y0 f_u_dadda_mul4_fa0_f_u_dadda_mul4_and_1_2_y0
+1 1
+.names f_u_dadda_mul4_and_0_3_y0 f_u_dadda_mul4_fa0_f_u_dadda_mul4_and_0_3_y0
+1 1
+.names f_u_dadda_mul4_fa0_f_u_dadda_mul4_ha2_y1 f_u_dadda_mul4_fa0_f_u_dadda_mul4_and_1_2_y0 f_u_dadda_mul4_fa0_y0
+01 1
+10 1
+.names f_u_dadda_mul4_fa0_f_u_dadda_mul4_ha2_y1 f_u_dadda_mul4_fa0_f_u_dadda_mul4_and_1_2_y0 f_u_dadda_mul4_fa0_y1
+11 1
+.names f_u_dadda_mul4_fa0_y0 f_u_dadda_mul4_fa0_f_u_dadda_mul4_and_0_3_y0 f_u_dadda_mul4_fa0_y2
+01 1
+10 1
+.names f_u_dadda_mul4_fa0_y0 f_u_dadda_mul4_fa0_f_u_dadda_mul4_and_0_3_y0 f_u_dadda_mul4_fa0_y3
+11 1
+.names f_u_dadda_mul4_fa0_y1 f_u_dadda_mul4_fa0_y3 f_u_dadda_mul4_fa0_y4
+1- 1
+-1 1
+.names a_2 f_u_dadda_mul4_and_2_2_a_2
+1 1
+.names b_2 f_u_dadda_mul4_and_2_2_b_2
+1 1
+.names f_u_dadda_mul4_and_2_2_a_2 f_u_dadda_mul4_and_2_2_b_2 f_u_dadda_mul4_and_2_2_y0
+11 1
+.names a_1 f_u_dadda_mul4_and_1_3_a_1
+1 1
+.names b_3 f_u_dadda_mul4_and_1_3_b_3
+1 1
+.names f_u_dadda_mul4_and_1_3_a_1 f_u_dadda_mul4_and_1_3_b_3 f_u_dadda_mul4_and_1_3_y0
+11 1
+.names f_u_dadda_mul4_fa0_y4 f_u_dadda_mul4_fa1_f_u_dadda_mul4_fa0_y4
+1 1
+.names f_u_dadda_mul4_and_2_2_y0 f_u_dadda_mul4_fa1_f_u_dadda_mul4_and_2_2_y0
+1 1
+.names f_u_dadda_mul4_and_1_3_y0 f_u_dadda_mul4_fa1_f_u_dadda_mul4_and_1_3_y0
+1 1
+.names f_u_dadda_mul4_fa1_f_u_dadda_mul4_fa0_y4 f_u_dadda_mul4_fa1_f_u_dadda_mul4_and_2_2_y0 f_u_dadda_mul4_fa1_y0
+01 1
+10 1
+.names f_u_dadda_mul4_fa1_f_u_dadda_mul4_fa0_y4 f_u_dadda_mul4_fa1_f_u_dadda_mul4_and_2_2_y0 f_u_dadda_mul4_fa1_y1
+11 1
+.names f_u_dadda_mul4_fa1_y0 f_u_dadda_mul4_fa1_f_u_dadda_mul4_and_1_3_y0 f_u_dadda_mul4_fa1_y2
+01 1
+10 1
+.names f_u_dadda_mul4_fa1_y0 f_u_dadda_mul4_fa1_f_u_dadda_mul4_and_1_3_y0 f_u_dadda_mul4_fa1_y3
+11 1
+.names f_u_dadda_mul4_fa1_y1 f_u_dadda_mul4_fa1_y3 f_u_dadda_mul4_fa1_y4
+1- 1
+-1 1
+.names a_3 f_u_dadda_mul4_and_3_2_a_3
+1 1
+.names b_2 f_u_dadda_mul4_and_3_2_b_2
+1 1
+.names f_u_dadda_mul4_and_3_2_a_3 f_u_dadda_mul4_and_3_2_b_2 f_u_dadda_mul4_and_3_2_y0
+11 1
+.names f_u_dadda_mul4_fa1_y4 f_u_dadda_mul4_fa2_f_u_dadda_mul4_fa1_y4
+1 1
+.names f_u_dadda_mul4_ha1_y1 f_u_dadda_mul4_fa2_f_u_dadda_mul4_ha1_y1
+1 1
+.names f_u_dadda_mul4_and_3_2_y0 f_u_dadda_mul4_fa2_f_u_dadda_mul4_and_3_2_y0
+1 1
+.names f_u_dadda_mul4_fa2_f_u_dadda_mul4_fa1_y4 f_u_dadda_mul4_fa2_f_u_dadda_mul4_ha1_y1 f_u_dadda_mul4_fa2_y0
+01 1
+10 1
+.names f_u_dadda_mul4_fa2_f_u_dadda_mul4_fa1_y4 f_u_dadda_mul4_fa2_f_u_dadda_mul4_ha1_y1 f_u_dadda_mul4_fa2_y1
+11 1
+.names f_u_dadda_mul4_fa2_y0 f_u_dadda_mul4_fa2_f_u_dadda_mul4_and_3_2_y0 f_u_dadda_mul4_fa2_y2
+01 1
+10 1
+.names f_u_dadda_mul4_fa2_y0 f_u_dadda_mul4_fa2_f_u_dadda_mul4_and_3_2_y0 f_u_dadda_mul4_fa2_y3
+11 1
+.names f_u_dadda_mul4_fa2_y1 f_u_dadda_mul4_fa2_y3 f_u_dadda_mul4_fa2_y4
+1- 1
+-1 1
+.names a_0 f_u_dadda_mul4_and_0_0_a_0
+1 1
+.names b_0 f_u_dadda_mul4_and_0_0_b_0
+1 1
+.names f_u_dadda_mul4_and_0_0_a_0 f_u_dadda_mul4_and_0_0_b_0 f_u_dadda_mul4_and_0_0_y0
+11 1
+.names a_1 f_u_dadda_mul4_and_1_0_a_1
+1 1
+.names b_0 f_u_dadda_mul4_and_1_0_b_0
+1 1
+.names f_u_dadda_mul4_and_1_0_a_1 f_u_dadda_mul4_and_1_0_b_0 f_u_dadda_mul4_and_1_0_y0
+11 1
+.names a_0 f_u_dadda_mul4_and_0_2_a_0
+1 1
+.names b_2 f_u_dadda_mul4_and_0_2_b_2
+1 1
+.names f_u_dadda_mul4_and_0_2_a_0 f_u_dadda_mul4_and_0_2_b_2 f_u_dadda_mul4_and_0_2_y0
+11 1
+.names a_2 f_u_dadda_mul4_and_2_3_a_2
+1 1
+.names b_3 f_u_dadda_mul4_and_2_3_b_3
+1 1
+.names f_u_dadda_mul4_and_2_3_a_2 f_u_dadda_mul4_and_2_3_b_3 f_u_dadda_mul4_and_2_3_y0
+11 1
+.names a_0 f_u_dadda_mul4_and_0_1_a_0
+1 1
+.names b_1 f_u_dadda_mul4_and_0_1_b_1
+1 1
+.names f_u_dadda_mul4_and_0_1_a_0 f_u_dadda_mul4_and_0_1_b_1 f_u_dadda_mul4_and_0_1_y0
+11 1
+.names a_3 f_u_dadda_mul4_and_3_3_a_3
+1 1
+.names b_3 f_u_dadda_mul4_and_3_3_b_3
+1 1
+.names f_u_dadda_mul4_and_3_3_a_3 f_u_dadda_mul4_and_3_3_b_3 f_u_dadda_mul4_and_3_3_y0
+11 1
+.names f_u_dadda_mul4_and_1_0_y0 f_u_dadda_mul4_u_rca6_ha_f_u_dadda_mul4_and_1_0_y0
+1 1
+.names f_u_dadda_mul4_and_0_1_y0 f_u_dadda_mul4_u_rca6_ha_f_u_dadda_mul4_and_0_1_y0
+1 1
+.names f_u_dadda_mul4_u_rca6_ha_f_u_dadda_mul4_and_1_0_y0 f_u_dadda_mul4_u_rca6_ha_f_u_dadda_mul4_and_0_1_y0 f_u_dadda_mul4_u_rca6_ha_y0
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_ha_f_u_dadda_mul4_and_1_0_y0 f_u_dadda_mul4_u_rca6_ha_f_u_dadda_mul4_and_0_1_y0 f_u_dadda_mul4_u_rca6_ha_y1
+11 1
+.names f_u_dadda_mul4_and_0_2_y0 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_and_0_2_y0
+1 1
+.names f_u_dadda_mul4_ha2_y0 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_ha2_y0
+1 1
+.names f_u_dadda_mul4_u_rca6_ha_y1 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_u_rca6_ha_y1
+1 1
+.names f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_and_0_2_y0 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_ha2_y0 f_u_dadda_mul4_u_rca6_fa1_y0
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_and_0_2_y0 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_ha2_y0 f_u_dadda_mul4_u_rca6_fa1_y1
+11 1
+.names f_u_dadda_mul4_u_rca6_fa1_y0 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_u_rca6_ha_y1 f_u_dadda_mul4_u_rca6_fa1_y2
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa1_y0 f_u_dadda_mul4_u_rca6_fa1_f_u_dadda_mul4_u_rca6_ha_y1 f_u_dadda_mul4_u_rca6_fa1_y3
+11 1
+.names f_u_dadda_mul4_u_rca6_fa1_y1 f_u_dadda_mul4_u_rca6_fa1_y3 f_u_dadda_mul4_u_rca6_fa1_y4
+1- 1
+-1 1
+.names f_u_dadda_mul4_ha0_y0 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_ha0_y0
+1 1
+.names f_u_dadda_mul4_fa0_y2 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_fa0_y2
+1 1
+.names f_u_dadda_mul4_u_rca6_fa1_y4 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_u_rca6_fa1_y4
+1 1
+.names f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_ha0_y0 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_fa0_y2 f_u_dadda_mul4_u_rca6_fa2_y0
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_ha0_y0 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_fa0_y2 f_u_dadda_mul4_u_rca6_fa2_y1
+11 1
+.names f_u_dadda_mul4_u_rca6_fa2_y0 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_u_rca6_fa1_y4 f_u_dadda_mul4_u_rca6_fa2_y2
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa2_y0 f_u_dadda_mul4_u_rca6_fa2_f_u_dadda_mul4_u_rca6_fa1_y4 f_u_dadda_mul4_u_rca6_fa2_y3
+11 1
+.names f_u_dadda_mul4_u_rca6_fa2_y1 f_u_dadda_mul4_u_rca6_fa2_y3 f_u_dadda_mul4_u_rca6_fa2_y4
+1- 1
+-1 1
+.names f_u_dadda_mul4_ha1_y0 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_ha1_y0
+1 1
+.names f_u_dadda_mul4_fa1_y2 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_fa1_y2
+1 1
+.names f_u_dadda_mul4_u_rca6_fa2_y4 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_u_rca6_fa2_y4
+1 1
+.names f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_ha1_y0 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_fa1_y2 f_u_dadda_mul4_u_rca6_fa3_y0
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_ha1_y0 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_fa1_y2 f_u_dadda_mul4_u_rca6_fa3_y1
+11 1
+.names f_u_dadda_mul4_u_rca6_fa3_y0 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_u_rca6_fa2_y4 f_u_dadda_mul4_u_rca6_fa3_y2
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa3_y0 f_u_dadda_mul4_u_rca6_fa3_f_u_dadda_mul4_u_rca6_fa2_y4 f_u_dadda_mul4_u_rca6_fa3_y3
+11 1
+.names f_u_dadda_mul4_u_rca6_fa3_y1 f_u_dadda_mul4_u_rca6_fa3_y3 f_u_dadda_mul4_u_rca6_fa3_y4
+1- 1
+-1 1
+.names f_u_dadda_mul4_and_2_3_y0 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_and_2_3_y0
+1 1
+.names f_u_dadda_mul4_fa2_y2 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_fa2_y2
+1 1
+.names f_u_dadda_mul4_u_rca6_fa3_y4 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_u_rca6_fa3_y4
+1 1
+.names f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_and_2_3_y0 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_fa2_y2 f_u_dadda_mul4_u_rca6_fa4_y0
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_and_2_3_y0 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_fa2_y2 f_u_dadda_mul4_u_rca6_fa4_y1
+11 1
+.names f_u_dadda_mul4_u_rca6_fa4_y0 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_u_rca6_fa3_y4 f_u_dadda_mul4_u_rca6_fa4_y2
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa4_y0 f_u_dadda_mul4_u_rca6_fa4_f_u_dadda_mul4_u_rca6_fa3_y4 f_u_dadda_mul4_u_rca6_fa4_y3
+11 1
+.names f_u_dadda_mul4_u_rca6_fa4_y1 f_u_dadda_mul4_u_rca6_fa4_y3 f_u_dadda_mul4_u_rca6_fa4_y4
+1- 1
+-1 1
+.names f_u_dadda_mul4_fa2_y4 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_fa2_y4
+1 1
+.names f_u_dadda_mul4_and_3_3_y0 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_and_3_3_y0
+1 1
+.names f_u_dadda_mul4_u_rca6_fa4_y4 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_u_rca6_fa4_y4
+1 1
+.names f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_fa2_y4 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_and_3_3_y0 f_u_dadda_mul4_u_rca6_fa5_y0
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_fa2_y4 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_and_3_3_y0 f_u_dadda_mul4_u_rca6_fa5_y1
+11 1
+.names f_u_dadda_mul4_u_rca6_fa5_y0 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_u_rca6_fa4_y4 f_u_dadda_mul4_u_rca6_fa5_y2
+01 1
+10 1
+.names f_u_dadda_mul4_u_rca6_fa5_y0 f_u_dadda_mul4_u_rca6_fa5_f_u_dadda_mul4_u_rca6_fa4_y4 f_u_dadda_mul4_u_rca6_fa5_y3
+11 1
+.names f_u_dadda_mul4_u_rca6_fa5_y1 f_u_dadda_mul4_u_rca6_fa5_y3 f_u_dadda_mul4_u_rca6_fa5_y4
+1- 1
+-1 1
+.names f_u_dadda_mul4_and_0_0_y0 out[0]
+1 1
+.names f_u_dadda_mul4_u_rca6_ha_y0 out[1]
+1 1
+.names f_u_dadda_mul4_u_rca6_fa1_y2 out[2]
+1 1
+.names f_u_dadda_mul4_u_rca6_fa2_y2 out[3]
+1 1
+.names f_u_dadda_mul4_u_rca6_fa3_y2 out[4]
+1 1
+.names f_u_dadda_mul4_u_rca6_fa4_y2 out[5]
+1 1
+.names f_u_dadda_mul4_u_rca6_fa5_y2 out[6]
+1 1
+.names f_u_dadda_mul4_u_rca6_fa5_y4 out[7]
+1 1
+.end

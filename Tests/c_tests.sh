@@ -71,6 +71,16 @@ H_U_ARR_MUL5="./h_u_arr_mul5 2>/dev/null"
 H_U_ARR_MUL8="./h_u_arr_mul8 2>/dev/null"
 H_U_ARR_MUL10="./h_u_arr_mul10 2>/dev/null"
 
+F_U_DADDA_MUL2="./f_u_dadda_mul2 2>/dev/null"
+F_U_DADDA_MUL4="./f_u_dadda_mul4 2>/dev/null"
+F_U_DADDA_MUL6="./f_u_dadda_mul6 2>/dev/null"
+F_U_DADDA_MUL8="./f_u_dadda_mul8 2>/dev/null"
+
+H_U_DADDA_MUL2="./h_u_dadda_mul2 2>/dev/null"
+H_U_DADDA_MUL4="./h_u_dadda_mul4 2>/dev/null"
+H_U_DADDA_MUL6="./h_u_dadda_mul6 2>/dev/null"
+H_U_DADDA_MUL8="./h_u_dadda_mul8 2>/dev/null"
+
 # Signed
 F_S_ARR_MUL1="./f_s_arr_mul1 2>/dev/null"
 F_S_ARR_MUL2="./f_s_arr_mul2 2>/dev/null"
@@ -98,10 +108,10 @@ echo " FLAT CIRCUITS"
 echo "–––––––––––––––"
 echo ""
 
-echo "${BLUECOLOR}LOGIC GATES TESTS${NOCOLOR}"
-
+#################
 ## LOGIC GATES ##
 #################
+echo "${BLUECOLOR}LOGIC GATES TESTS${NOCOLOR}"
 
 # AND
 ${C} ${CFLAGS} ${LG_PATH}and_gate.c -o and_gate
@@ -187,6 +197,9 @@ else
 fi
 rm not_gate
 
+#####################
+## UNSIGNED ADDERS ##
+#####################
 echo ""
 echo "${BLUECOLOR}UNSIGNED ADDERS TESTS${NOCOLOR}"
 
@@ -298,6 +311,10 @@ else
 fi
 rm f_s_rca8
 
+
+##########################
+## UNSIGNED MULTIPLIERS ##
+##########################
 echo ""
 echo "${BLUECOLOR}UNSIGNED MULTIPLIERS TESTS${NOCOLOR}"
 
@@ -376,6 +393,58 @@ else
 fi
 rm f_u_arr_mul10
 
+# 2-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul2.c -o f_u_dadda_mul2
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_dadda_mul2.c"
+eval "$F_U_DADDA_MUL2"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_dadda_mul2
+
+# 4-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul4.c -o f_u_dadda_mul4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_dadda_mul4.c"
+eval "$F_U_DADDA_MUL4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_dadda_mul4
+
+# 6-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul6.c -o f_u_dadda_mul6
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_dadda_mul6.c"
+eval "$F_U_DADDA_MUL6"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_dadda_mul6
+
+# 8-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul8.c -o f_u_dadda_mul8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_dadda_mul8.c"
+eval "$F_U_DADDA_MUL8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_dadda_mul8
+
+
+########################
+## SIGNED MULTIPLIERS ##
+########################
 echo ""
 echo "${BLUECOLOR}SIGNED MULTIPLIERS TESTS${NOCOLOR}"
 
@@ -454,12 +523,21 @@ else
 fi
 rm f_s_arr_mul10
 
+
+
+
+
 echo ""
 echo "${GREENCOLOR}–––––––––––––––––––––––"
 echo " HIERARCHICAL CIRCUITS"
 echo "–––––––––––––––––––––––"
 echo ""
 
+
+#####################
+## UNSIGNED ADDERS ##
+#####################
+echo ""
 echo "${BLUECOLOR}UNSIGNED ADDERS TESTS${NOCOLOR}"
 
 ## HIERARCHICAL 1-BIT ADDERS ##
@@ -528,6 +606,10 @@ else
 fi
 rm h_u_rca8
 
+
+########################
+## SIGNED MULTIPLIERS ##
+########################
 echo ""
 echo "${BLUECOLOR}SIGNED ADDERS TESTS${NOCOLOR}"
 
@@ -582,11 +664,15 @@ else
 fi
 rm h_s_rca8
 
+
+##########################
+## UNSIGNED MULTIPLIERS ##
+##########################
 echo ""
 echo "${BLUECOLOR}UNSIGNED MULTIPLIERS TESTS${NOCOLOR}"
 
 ## HIERARCHICAL UNSIGNED MULTIPLIERS ##
-###############################
+#######################################
 
 # 1-BIT ARRAY MULTIPLIER
 ${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul1.c -o h_u_arr_mul1
@@ -660,11 +746,63 @@ else
 fi
 rm h_u_arr_mul10
 
+# 2-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul2.c -o h_u_dadda_mul2
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_dadda_mul2.c"
+eval "$H_U_DADDA_MUL2"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_dadda_mul2
+
+# 4-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul4.c -o h_u_dadda_mul4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_dadda_mul4.c"
+eval "$H_U_DADDA_MUL4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_dadda_mul4
+
+# 6-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul6.c -o h_u_dadda_mul6
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_dadda_mul6.c"
+eval "$H_U_DADDA_MUL6"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_dadda_mul6
+
+# 8-BIT DADDA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul8.c -o h_u_dadda_mul8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_dadda_mul8.c"
+eval "$H_U_DADDA_MUL8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_dadda_mul8
+
+
+########################
+## SIGNED MULTIPLIERS ##
+########################
 echo ""
 echo "${BLUECOLOR}SIGNED MULTIPLIERS TESTS${NOCOLOR}"
 
 ## HIERARCHICAL SIGNED MULTIPLIERS ##
-###############################
+#####################################
 
 # 1-BIT ARRAY MULTIPLIER
 ${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul1.c -o h_s_arr_mul1
