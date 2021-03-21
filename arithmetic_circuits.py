@@ -9,6 +9,7 @@ class arithmetic_circuit():
     def __init__(self):
         self.components = []
         self.circuit_wires = []
+        self.inputs = []
         self.circuit_gates = []
         self.c_data_type = "uint64_t"
         self.N = 1
@@ -74,6 +75,9 @@ class arithmetic_circuit():
 
             if not [item for item in self.circuit_wires if item[1] == component.out.name]:
                 self.circuit_wires.append((component.out, component.out.name, len(self.circuit_wires)))
+
+        # Get unique names of all inner input circuits (mainly used in one bit circuits)
+        self.inputs = [i[0] for i in self.circuit_wires if i[0] not in [o.out for o in self.components]]
 
     # Search for circuit's wire unique index for cgp chromosome generation
     def get_circuit_wire_index(self, wire: wire):
@@ -223,10 +227,10 @@ class arithmetic_circuit():
     def get_inits_v_flat(self):
         return f"{self.a.get_wire_assign_v()}" + \
                f"{self.b.get_wire_assign_v()}" + \
-               "".join([c.get_assign_v_flat() if isinstance(c, logic_gate) else c.get_init_v_flat() for c in self.components]) + "\n"
+               "".join([c.get_assign_v_flat() if isinstance(c, logic_gate) else c.get_init_v_flat() for c in self.components])
 
     def get_init_v_flat(self):
-        return "".join([c.get_assign_v_flat() if isinstance(c, logic_gate) else c.get_init_v_flat() for c in self.components]) + "\n"
+        return "".join([c.get_assign_v_flat() if isinstance(c, logic_gate) else c.get_init_v_flat() for c in self.components])
 
     def get_function_out_v_flat(self):
         return "".join([f"  assign {self.out.prefix}[{self.out.bus.index(o)}] = {o.prefix};\n" for o in self.out.bus])
@@ -235,7 +239,7 @@ class arithmetic_circuit():
     def get_v_code_flat(self, file_object):
         file_object.write(self.get_prototype_v())
         file_object.write(self.get_declarations_v_flat()+"\n")
-        file_object.write(self.get_inits_v_flat())
+        file_object.write(self.get_inits_v_flat() + "\n")
         file_object.write(self.get_function_out_v_flat())
         file_object.write(f"endmodule")
         file_object.close()
@@ -417,7 +421,7 @@ class multiplier_circuit(arithmetic_circuit):
             if d >= initial_value:
                 return stage, max_height
 
-    def init_column_heights(self):
+    def init_column_heights(self, signed=False):
         columns = [[num] if num <= self.N else [num - (num - self.N)*2] for num in range(1, self.out.N)]
         columns = [self.add_column_wires(column=col, column_index=columns.index(col)) for col in columns]
         return columns
@@ -431,7 +435,22 @@ class multiplier_circuit(arithmetic_circuit):
             [column[self.a.N-index].append(self.a.get_wire(index)) for index in range(self.a.N-1, self.a.N-column[0]-1, -1)]
             [column[index-(self.a.N-1-column[0])].append(self.b.get_wire(index)) for index in range(self.a.N-column[0], self.a.N)]
 
-        column[1:] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(1, len(column))]
+        # TODO check and refactor
+        # Filling unsigned pp matrix with AND gates
+        if self.__class__.__name__ == "unsigned_dadda_multiplier" or self.__class__.__name__ == "unsigned_wallace_multiplier":
+            column[1:] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(1, len(column))]
+        # Filling signed pp matrix with AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
+        else:
+            # First half of partial product columns contains only AND gates
+            if column_index < self.N-1 or column_index == self.out.N-2:
+                column[1:] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(1, len(column))]
+            # Second half of partial product columns contains NAND/AND gates
+            else:
+                column[1] = nand_gate(a=column[1][0], b=column[1][1], prefix=self.prefix+'_nand_'+str(column[1][0].index)+'_'+str(column[1][1].index))
+                column[-1] = nand_gate(a=column[-1][0], b=column[-1][1], prefix=self.prefix+'_nand_'+str(column[-1][0].index)+'_'+str(column[-1][1].index))
+                if len(column[2:-1]) != 0:
+                    column[2:-1] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(2, len(column)-1)]
+        
         return column
 
     def get_column_height(self, column_num: int):
@@ -443,7 +462,7 @@ class multiplier_circuit(arithmetic_circuit):
             self.columns[next_column][0] = self.get_column_height(next_column)+next_height_change
 
     def get_column_wire(self, column: int, bit: int):
-        if isinstance(self.columns[column][bit], and_gate):
+        if isinstance(self.columns[column][bit], and_gate) or isinstance(self.columns[column][bit], nand_gate):
             self.add_component(self.columns[column][bit])
             return self.get_previous_component(1).out
         else:
@@ -460,6 +479,5 @@ class multiplier_circuit(arithmetic_circuit):
             self.columns[curr_column].pop(1)
             self.columns[curr_column].insert(self.get_column_height(curr_column), adder.get_sum_wire())
 
-        # Add carry out from previous column's component to top of column wires
         if next_column-1 == curr_column:
             self.columns[next_column].insert(1, adder.get_carry_wire())
