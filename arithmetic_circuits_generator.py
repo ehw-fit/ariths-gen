@@ -29,7 +29,6 @@ if __name__ == "__main__":
     #arrmul.get_v_code_flat(open("arrmul_test.v", "w"))
     #arrmul.get_blif_code_flat(open("arrmul_test.blif", "w"))
     
-    
     w1 = wire(name="a")
     w2 = wire(name="b")
     w3 = wire(name="cin")
