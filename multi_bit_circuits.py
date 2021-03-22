@@ -1,5 +1,3 @@
-from itertools import combinations_with_replacement
-from typing import ClassVar
 from arithmetic_circuits import arithmetic_circuit, multiplier_circuit
 from one_bit_circuits import half_adder, full_adder, constant_wire_value_0, constant_wire_value_1, full_adder_pg, pg_logic_block
 from logic_gates import logic_gate, and_gate, nand_gate, or_gate, nor_gate, xor_gate, xnor_gate, not_gate
@@ -215,7 +213,7 @@ class signed_carry_lookahead_adder(unsigned_carry_lookahead_adder, arithmetic_ci
 
 # MULTIPLIERS
 class unsigned_array_multiplier(multiplier_circuit):
-    def __init__(self, a: bus, b: bus, prefix: str = "u_arr_mul"):
+    def __init__(self, a: bus, b: bus, prefix: str = "u_arrmul"):
         super().__init__()
         self.N = max(a.N, b.N)
         self.prefix = prefix
@@ -274,7 +272,7 @@ class unsigned_array_multiplier(multiplier_circuit):
 
 
 class signed_array_multiplier(multiplier_circuit):
-    def __init__(self, a: bus, b: bus, prefix: str = "s_arr_mul"):
+    def __init__(self, a: bus, b: bus, prefix: str = "s_arrmul"):
         super().__init__()
         self.c_data_type = "int64_t"
         self.N = max(a.N, b.N)

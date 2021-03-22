@@ -7,101 +7,148 @@ import sys
 
 """ TESTING """
 if __name__ == "__main__":
-    a = bus(N=8, prefix="a")
+    N = 8
+
+    a = bus(N=N, prefix="a")
     b = bus(N=1, prefix="b")
-    pg_rca = signed_pg_ripple_carry_adder(a, b)
-    pg_rca.get_c_code_flat(open("cla_test_flat.c", "w"))
-    pg_rca.get_c_code_hier(open("cla_test_hier.c", "w"))
-    pg_rca.get_cgp_code(open("cla_test.chr", "w"))
 
-    #cla = unsigned_carry_lookahead_adder(a, b)
 
-    #rca = signed_ripple_carry_adder(a, b)
-    #rca.get_c_code_flat(open("rca_test.c", "w"))
-    #rca.get_v_code_flat(open("rca_test.v", "w"))
-    #rca.get_blif_code_hier(open("h_rca2_test.blif", "w"))
-    #rca.get_cgp_code(open("rca_test.chr", "w"))
+    name = f"h_u_wallace_cla{N}"
+    circuit = unsigned_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_wallace_cla{N}"
+    circuit = signed_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+
+    name = f"h_u_dadda_cla{N}"
+    circuit = unsigned_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_dadda_cla{N}"
+    circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
 
     
-    #arrmul = signed_array_multiplier(a, b)
-    #arrmul.get_c_code_flat(open("arrmul_test.c", "w"))
-    #arrmul.get_cgp_code(open("arrmul_test.chr", "w"))
-    #arrmul.get_v_code_flat(open("arrmul_test.v", "w"))
-    #arrmul.get_blif_code_flat(open("arrmul_test.blif", "w"))
+    """
+    # RCA
+    name = f"h_u_rca{N}"
+    circuit = unsigned_ripple_carry_adder(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_rca{N}"
+    circuit = unsigned_ripple_carry_adder(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    #RCA with PG
+    name = f"h_u_pg_rca{N}"
+    circuit = unsigned_pg_ripple_carry_adder(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_pg_rca{N}"
+    circuit = signed_pg_ripple_carry_adder(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    #CLA with PG
+    name = f"h_u_cla{N}"
+    circuit = unsigned_carry_lookahead_adder(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_cla{N}"
+    circuit = signed_carry_lookahead_adder(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
     
+    # Arrmul
+    name = f"h_u_arrmul{N}"
+    circuit = unsigned_array_multiplier(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_arrmul{N}"
+    circuit = signed_array_multiplier(a, b, prefix=name)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    # Wallace
+    name = f"h_u_wallace_rca{N}"
+    circuit = unsigned_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_wallace_rca{N}"
+    circuit = signed_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+
+
+    name = f"h_u_wallace_pg_rca{N}"
+    circuit = unsigned_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_pg_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_wallace_pg_rca{N}"
+    circuit = signed_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_pg_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+
+
+    name = f"h_u_wallace_cla{N}"
+    circuit = unsigned_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_wallace_cla{N}"
+    circuit = signed_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    # Dadda
+    name = f"h_u_dadda_rca{N}"
+    circuit = unsigned_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_dadda_rca{N}"
+    circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+
+
+    name = f"h_u_dadda_pg_rca{N}"
+    circuit = unsigned_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_pg_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_dadda_pg_rca{N}"
+    circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_pg_ripple_carry_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+
+    name = f"h_u_dadda_cla{N}"
+    circuit = unsigned_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+
+    name = f"h_s_dadda_cla{N}"
+    circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
+    circuit.get_v_code_hier(open(f"{name}.v", "w"))
+    """
+
+
+
+
+
+
+
+
+
+
+
+
+
     w1 = wire(name="a")
     w2 = wire(name="b")
     w3 = wire(name="cin")
 
-    ha = half_adder(w1, w2, prefix="ha")
-    fa = full_adder(w1, w2, w3, prefix="fa")
+    #ha = half_adder(w1, w2, prefix="ha")
+    #fa = full_adder(w1, w2, w3, prefix="fa")
 
-    fa.get_v_code_flat(open("f_fa.v", "w"))
-    fa.get_v_code_hier(open("h_fa.v", "w"))
-    
-    fa.get_c_code_flat(open("f_fa.c", "w"))
-    fa.get_c_code_hier(open("h_fa.c", "w"))
-
-    fa.get_blif_code_flat(open("f_fa.blif", "w"))
-    fa.get_blif_code_hier(open("h_fa.blif", "w"))
-
-    fa.get_cgp_code(open("fa.chr", "w"))
-    
-    #fa.get_v_code_hier(open("h_fa.v", "w"))
-    #fa.get_blif_code_hier(open("h_fa2.blif", "w"))
-
-
-    #ha.get_cgp_code(open(f"ha.chr", "w"))
-    #fa.get_cgp_code(open(f"fa.chr", "w"))
-
-    #fa.get_c_code_flat(open("f_fa.c","w"))
-    #ha.get_v_code_hier(open("h_ha.v","w"))
-    #ha.get_blif_code_hier(open("h_ha.blif","w"))
-    
-    #ha.get_blif_code_hier(open("test_h_ha.blif","w"))
-    
-    #fa.get_v_code_hier(open("h_fa.v","w"))
-    #fa.get_blif_code_hier(open("h_fa.blif","w"))
+    #gate = nor_gate(w1, w2)
     
     """
-    ha.get_v_code_hier(open("h_ha.v","w"))
-    ha.get_v_code_flat(open("f_ha.v","w"))
-    ha.get_c_code_hier(open("h_ha.c","w"))
-    ha.get_c_code_flat(open("f_ha.c","w"))
-    ha.get_cgp_code(open("ha.chr","w"))
-    """
-
-    gate = nor_gate(w1, w2)
-    #gate.get_cgp_code(open("nor_gate.chr","w"))
-    #gate.get_v_code(open("and_gate.v","w"))
-    #gate.get_blif_code(open("and_gate.blif","w"))
-    #gate.get_v_code(open("not_gate.v","w"))
-    #gate.get_blif_code(open("test_not_gate.blif","w"))
-    """
-    #gate.get_c_code(open("and_gate.c","w"))
-    #gate.get_v_code(open("and_gate.v","w"))
-    #gate.get_cgp_code(open("and_gate.chr","w"))
-    """
-
-    #dadda = unsigned_dadda_multiplier(a, b, prefix="h_u_dadda_mul2")
-    #dadda.get_v_code_hier(open("h_u_dadda_mul2.v", "w"))
-    #dadda.get_c_code_hier(open("h_u_dadda_mul2.c", "w"))
-    #dadda.get_blif_code_hier(open("h_u_dadda_mul2.blif", "w"))
-    #dadda.get_cgp_code(open("u_dadda_mul2.chr", "w"))
-
-
-    s_dadda = signed_dadda_multiplier(a, b, prefix="dadda_s_mul8")
-    
-    s_dadda.get_v_code_hier(open("dadda_s_mul8.v", "w"))
-    s_dadda.get_c_code_hier(open("dadda_s_mul82.c", "w"))
-    s_dadda.get_c_code_flat(open("f_dadda_s_mul82.c", "w"))
-    s_dadda.get_blif_code_hier(open("dadda_s_mul8.blif", "w"))
-    s_dadda.get_cgp_code(open("dadda_s_mul8.chr", "w"))
-
-
-    #dadda = unsigned_dadda_multiplier(a, b, prefix="h_f_dadda_mul3")
-    #dadda.get_c_code_hier(open("test_dadda_mul8.c", "w"))
-
     test = signed_carry_lookahead_adder(a, b, prefix="test")
     
     test.get_c_code_hier(open("htest.c", "w"))
@@ -114,5 +161,4 @@ if __name__ == "__main__":
     test.get_blif_code_hier(open("htest.blif", "w"))
 
     test.get_cgp_code(open("test.chr", "w"))
-    
-
+    """
