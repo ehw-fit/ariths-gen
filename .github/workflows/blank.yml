@@ -39,3 +39,16 @@ jobs:
         with:
           # filename
           filename: '**.py' # default is test.py
+
+
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Generate Python Docs
+      uses: jbheard/markdown-docs@v1
+    - name: Open docs update PR
+      uses: peter-evans/create-pull-request@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
