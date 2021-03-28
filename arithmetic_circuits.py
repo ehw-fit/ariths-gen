@@ -377,7 +377,7 @@ class arithmetic_circuit():
         return "(" + ",".join([str(self.get_circuit_wire_index(o)) for o in self.out.bus[::-1]]) + ")"
 
     # Generating flat CGP chromosome representation of circuit
-    def get_cgp_code(self, file_object):
+    def get_cgp_code_flat(self, file_object):
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_triplet_cgp())
         file_object.write(self.get_output_cgp())

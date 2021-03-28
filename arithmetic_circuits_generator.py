@@ -12,7 +12,14 @@ if __name__ == "__main__":
     a = bus(N=N, prefix="a")
     b = bus(N=1, prefix="b")
 
+    name = f"test"
+    circuit = unsigned_ripple_carry_adder(a,b, prefix=name)
+    circuit.get_c_code_flat(open(f'{name}.c', 'w'))
+    #circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_ripple_carry_adder)
+    #circuit.get_v_code_hier(open(f"{name}.v", "w"))
+    #circuit.get_blif_code_hier(open(f"{name}.blif", "w"))
 
+    """
     name = f"h_u_wallace_cla{N}"
     circuit = unsigned_wallace_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
     circuit.get_v_code_hier(open(f"{name}.v", "w"))
@@ -29,7 +36,7 @@ if __name__ == "__main__":
     name = f"h_s_dadda_cla{N}"
     circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
     circuit.get_v_code_hier(open(f"{name}.v", "w"))
-
+    """
     
     """
     # RCA
@@ -108,7 +115,6 @@ if __name__ == "__main__":
     circuit.get_v_code_hier(open(f"{name}.v", "w"))
 
 
-
     name = f"h_u_dadda_pg_rca{N}"
     circuit = unsigned_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_pg_ripple_carry_adder)
     circuit.get_v_code_hier(open(f"{name}.v", "w"))
@@ -116,7 +122,6 @@ if __name__ == "__main__":
     name = f"h_s_dadda_pg_rca{N}"
     circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_pg_ripple_carry_adder)
     circuit.get_v_code_hier(open(f"{name}.v", "w"))
-
 
     name = f"h_u_dadda_cla{N}"
     circuit = unsigned_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
@@ -126,18 +131,6 @@ if __name__ == "__main__":
     circuit = signed_dadda_multiplier(a, b, prefix=name, unsigned_adder_class_name=unsigned_carry_lookahead_adder)
     circuit.get_v_code_hier(open(f"{name}.v", "w"))
     """
-
-
-
-
-
-
-
-
-
-
-
-
 
     w1 = wire(name="a")
     w2 = wire(name="b")

@@ -26,20 +26,15 @@ class unsigned_ripple_carry_adder(arithmetic_circuit):
         for input_index in range(self.N):
             # First adder is a half adder
             if input_index == 0:
-                obj_ha = half_adder(self.a.get_wire(input_index), self.b.get_wire(input_index), prefix=self.prefix+"_ha")
-                self.add_component(obj_ha)
-                self.out.connect(input_index, obj_ha.get_sum_wire())
-
-                if input_index == (self.N-1):
-                    self.out.connect(self.N, obj_ha.get_carry_wire())
+                obj_adder = half_adder(self.a.get_wire(input_index), self.b.get_wire(input_index), prefix=self.prefix+"_ha")
             # Rest adders are full adders
             else:
-                obj_fa = full_adder(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().get_carry_wire(), prefix=self.prefix+"_fa"+str(input_index))
-                self.add_component(obj_fa)
-                self.out.connect(input_index, obj_fa.get_sum_wire())
-
-                if input_index == (self.N-1):
-                    self.out.connect(self.N, obj_fa.get_carry_wire())
+                obj_adder = full_adder(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().get_carry_wire(), prefix=self.prefix+"_fa"+str(input_index))
+            
+            self.add_component(obj_adder)
+            self.out.connect(input_index, obj_adder.get_sum_wire())
+            if input_index == (self.N-1):
+                self.out.connect(self.N, obj_adder.get_carry_wire())
     
 
 class signed_ripple_carry_adder(unsigned_ripple_carry_adder, arithmetic_circuit):
@@ -77,13 +72,11 @@ class unsigned_pg_ripple_carry_adder(arithmetic_circuit):
                 constant_wire_0 = constant_wire_value_0(self.a.get_wire(), self.b.get_wire())
                 self.add_component(constant_wire_0)
                 obj_fa_cla = full_adder_pg(self.a.get_wire(input_index), self.b.get_wire(input_index), constant_wire_0.out.get_wire(), prefix=self.prefix+"_fa"+str(input_index))
-                    
-                self.add_component(obj_fa_cla)
-                self.out.connect(input_index, obj_fa_cla.get_sum_wire())
             else:
                 obj_fa_cla = full_adder_pg(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().out, prefix=self.prefix+"_fa"+str(input_index))
-                self.add_component(obj_fa_cla)
-                self.out.connect(input_index, obj_fa_cla.get_sum_wire())
+            
+            self.add_component(obj_fa_cla)
+            self.out.connect(input_index, obj_fa_cla.get_sum_wire())
 
             obj_and = and_gate(self.get_previous_component().c, self.get_previous_component().get_propagate_wire(), prefix=self.prefix+"_and"+str(input_index))
             obj_or = or_gate(obj_and.out, self.get_previous_component().get_generate_wire(), prefix=self.prefix+"_or"+str(input_index))
