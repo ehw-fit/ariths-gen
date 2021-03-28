@@ -57,45 +57,66 @@ H_S_RCA8="./h_s_rca8 2>/dev/null"
 
 # Multipliers #
 # Unsigned
-F_U_ARR_MUL1="./f_u_arr_mul1 2>/dev/null"
-F_U_ARR_MUL2="./f_u_arr_mul2 2>/dev/null"
-F_U_ARR_MUL3="./f_u_arr_mul3 2>/dev/null"
-F_U_ARR_MUL5="./f_u_arr_mul5 2>/dev/null"
-F_U_ARR_MUL8="./f_u_arr_mul8 2>/dev/null"
-F_U_ARR_MUL10="./f_u_arr_mul10 2>/dev/null"
+F_U_ARRMUL1="./f_u_arrmul1 2>/dev/null"
+F_U_ARRMUL2="./f_u_arrmul2 2>/dev/null"
+F_U_ARRMUL3="./f_u_arrmul3 2>/dev/null"
+F_U_ARRMUL5="./f_u_arrmul5 2>/dev/null"
+F_U_ARRMUL8="./f_u_arrmul8 2>/dev/null"
+F_U_ARRMUL10="./f_u_arrmul10 2>/dev/null"
 
-H_U_ARR_MUL1="./h_u_arr_mul1 2>/dev/null"
-H_U_ARR_MUL2="./h_u_arr_mul2 2>/dev/null"
-H_U_ARR_MUL3="./h_u_arr_mul3 2>/dev/null"
-H_U_ARR_MUL5="./h_u_arr_mul5 2>/dev/null"
-H_U_ARR_MUL8="./h_u_arr_mul8 2>/dev/null"
-H_U_ARR_MUL10="./h_u_arr_mul10 2>/dev/null"
+H_U_ARRMUL1="./h_u_arrmul1 2>/dev/null"
+H_U_ARRMUL2="./h_u_arrmul2 2>/dev/null"
+H_U_ARRMUL3="./h_u_arrmul3 2>/dev/null"
+H_U_ARRMUL5="./h_u_arrmul5 2>/dev/null"
+H_U_ARRMUL8="./h_u_arrmul8 2>/dev/null"
+H_U_ARRMUL10="./h_u_arrmul10 2>/dev/null"
 
-F_U_DADDA_MUL2="./f_u_dadda_mul2 2>/dev/null"
-F_U_DADDA_MUL4="./f_u_dadda_mul4 2>/dev/null"
-F_U_DADDA_MUL6="./f_u_dadda_mul6 2>/dev/null"
-F_U_DADDA_MUL8="./f_u_dadda_mul8 2>/dev/null"
+F_U_DADDA_RCA4="./f_u_dadda_rca4 2>/dev/null"
+F_U_DADDA_RCA8="./f_u_dadda_rca8 2>/dev/null"
+F_U_DADDA_RCA10="./f_u_dadda_rca10 2>/dev/null"
 
-H_U_DADDA_MUL2="./h_u_dadda_mul2 2>/dev/null"
-H_U_DADDA_MUL4="./h_u_dadda_mul4 2>/dev/null"
-H_U_DADDA_MUL6="./h_u_dadda_mul6 2>/dev/null"
-H_U_DADDA_MUL8="./h_u_dadda_mul8 2>/dev/null"
+H_U_DADDA_RCA4="./h_u_dadda_rca4 2>/dev/null"
+H_U_DADDA_RCA8="./h_u_dadda_rca8 2>/dev/null"
+H_U_DADDA_RCA10="./h_u_dadda_rca10 2>/dev/null"
+
+F_U_DADDA_PG_RCA4="./f_u_dadda_pg_rca4 2>/dev/null"
+F_U_DADDA_PG_RCA8="./f_u_dadda_pg_rca8 2>/dev/null"
+F_U_DADDA_PG_RCA10="./f_u_dadda_pg_rca10 2>/dev/null"
+
+H_U_DADDA_PG_RCA4="./h_u_dadda_pg_rca4 2>/dev/null"
+H_U_DADDA_PG_RCA8="./h_u_dadda_pg_rca8 2>/dev/null"
+H_U_DADDA_PG_RCA10="./h_u_dadda_pg_rca10 2>/dev/null"
 
 # Signed
-F_S_ARR_MUL1="./f_s_arr_mul1 2>/dev/null"
-F_S_ARR_MUL2="./f_s_arr_mul2 2>/dev/null"
-F_S_ARR_MUL3="./f_s_arr_mul3 2>/dev/null"
-F_S_ARR_MUL5="./f_s_arr_mul5 2>/dev/null"
-F_S_ARR_MUL8="./f_s_arr_mul8 2>/dev/null"
-F_S_ARR_MUL10="./f_s_arr_mul10 2>/dev/null"
+F_S_ARRMUL1="./f_s_arrmul1 2>/dev/null"
+F_S_ARRMUL2="./f_s_arrmul2 2>/dev/null"
+F_S_ARRMUL3="./f_s_arrmul3 2>/dev/null"
+F_S_ARRMUL5="./f_s_arrmul5 2>/dev/null"
+F_S_ARRMUL8="./f_s_arrmul8 2>/dev/null"
+F_S_ARRMUL10="./f_s_arrmul10 2>/dev/null"
 
-H_S_ARR_MUL1="./h_s_arr_mul1 2>/dev/null"
-H_S_ARR_MUL2="./h_s_arr_mul2 2>/dev/null"
-H_S_ARR_MUL3="./h_s_arr_mul3 2>/dev/null"
-H_S_ARR_MUL5="./h_s_arr_mul5 2>/dev/null"
-H_S_ARR_MUL8="./h_s_arr_mul8 2>/dev/null"
-H_S_ARR_MUL10="./h_s_arr_mul10 2>/dev/null"
+H_S_ARRMUL1="./h_s_arrmul1 2>/dev/null"
+H_S_ARRMUL2="./h_s_arrmul2 2>/dev/null"
+H_S_ARRMUL3="./h_s_arrmul3 2>/dev/null"
+H_S_ARRMUL5="./h_s_arrmul5 2>/dev/null"
+H_S_ARRMUL8="./h_s_arrmul8 2>/dev/null"
+H_S_ARRMUL10="./h_s_arrmul10 2>/dev/null"
 
+F_S_DADDA_RCA4="./f_s_dadda_rca4 2>/dev/null"
+F_S_DADDA_RCA8="./f_s_dadda_rca8 2>/dev/null"
+F_S_DADDA_RCA10="./f_s_dadda_rca10 2>/dev/null"
+
+H_S_DADDA_RCA4="./h_s_dadda_rca4 2>/dev/null"
+H_S_DADDA_RCA8="./h_s_dadda_rca8 2>/dev/null"
+H_S_DADDA_RCA10="./h_s_dadda_rca10 2>/dev/null"
+
+F_S_DADDA_PG_RCA4="./f_s_dadda_pg_rca4 2>/dev/null"
+F_S_DADDA_PG_RCA8="./f_s_dadda_pg_rca8 2>/dev/null"
+F_S_DADDA_PG_RCA10="./f_s_dadda_pg_rca10 2>/dev/null"
+
+H_S_DADDA_PG_RCA4="./h_s_dadda_pg_rca4 2>/dev/null"
+H_S_DADDA_PG_RCA8="./h_s_dadda_pg_rca8 2>/dev/null"
+H_S_DADDA_PG_RCA10="./h_s_dadda_pg_rca10 2>/dev/null"
 
 ### TESTING ###
 echo "${BLUECOLOR}TESTING C CODE CIRCUITS GENERATED USING arithmetic_circuits_generator.py"
@@ -322,124 +343,149 @@ echo "${BLUECOLOR}UNSIGNED MULTIPLIERS TESTS${NOCOLOR}"
 ###############################
 
 # 1-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arr_mul1.c -o f_u_arr_mul1
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arrmul1.c -o f_u_arrmul1
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_arr_mul1.c"
-eval "$F_U_ARR_MUL1"
+echo "TEST_$TEST_NUM: f_u_arrmul1.c"
+eval "$F_U_ARRMUL1"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_arr_mul1
+rm f_u_arrmul1
 
 # 2-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arr_mul2.c -o f_u_arr_mul2
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arrmul2.c -o f_u_arrmul2
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_arr_mul2.c"
-eval "$F_U_ARR_MUL2"
+echo "TEST_$TEST_NUM: f_u_arrmul2.c"
+eval "$F_U_ARRMUL2"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_arr_mul2
+rm f_u_arrmul2
 
 # 3-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arr_mul3.c -o f_u_arr_mul3
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arrmul3.c -o f_u_arrmul3
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_arr_mul3.c"
-eval "$F_U_ARR_MUL3"
+echo "TEST_$TEST_NUM: f_u_arrmul3.c"
+eval "$F_U_ARRMUL3"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_arr_mul3
+rm f_u_arrmul3
 
 # 5-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arr_mul5.c -o f_u_arr_mul5
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arrmul5.c -o f_u_arrmul5
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_arr_mul5.c"
-eval "$F_U_ARR_MUL5"
+echo "TEST_$TEST_NUM: f_u_arrmul5.c"
+eval "$F_U_ARRMUL5"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_arr_mul5
+rm f_u_arrmul5
 
 # 8-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arr_mul8.c -o f_u_arr_mul8
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arrmul8.c -o f_u_arrmul8
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_arr_mul8.c"
-eval "$F_U_ARR_MUL8"
+echo "TEST_$TEST_NUM: f_u_arrmul8.c"
+eval "$F_U_ARRMUL8"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_arr_mul8
+rm f_u_arrmul8
 
 # 10-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arr_mul10.c -o f_u_arr_mul10
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_arrmul10.c -o f_u_arrmul10
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_arr_mul10.c"
-eval "$F_U_ARR_MUL10"
+echo "TEST_$TEST_NUM: f_u_arrmul10.c"
+eval "$F_U_ARRMUL10"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_arr_mul10
+rm f_u_arrmul10
 
-# 2-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul2.c -o f_u_dadda_mul2
+# 4-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_rca4.c -o f_u_dadda_rca4
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_dadda_mul2.c"
-eval "$F_U_DADDA_MUL2"
+echo "TEST_$TEST_NUM: f_u_dadda_rca4.c"
+eval "$F_U_DADDA_RCA4"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_dadda_mul2
+rm f_u_dadda_rca4
 
-# 4-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul4.c -o f_u_dadda_mul4
+# 8-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_rca8.c -o f_u_dadda_rca8
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_dadda_mul4.c"
-eval "$F_U_DADDA_MUL4"
+echo "TEST_$TEST_NUM: f_u_dadda_rca8.c"
+eval "$F_U_DADDA_RCA8"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_dadda_mul4
+rm f_u_dadda_rca8
 
-# 6-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul6.c -o f_u_dadda_mul6
+# 10-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_rca10.c -o f_u_dadda_rca10
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_dadda_mul6.c"
-eval "$F_U_DADDA_MUL6"
+echo "TEST_$TEST_NUM: f_u_dadda_rca10.c"
+eval "$F_U_DADDA_RCA10"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_dadda_mul6
+rm f_u_dadda_rca10
 
-# 8-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_mul8.c -o f_u_dadda_mul8
+# 4-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_pg_rca4.c -o f_u_dadda_pg_rca4
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_u_dadda_mul8.c"
-eval "$F_U_DADDA_MUL8"
+echo "TEST_$TEST_NUM: f_u_dadda_pg_rca4.c"
+eval "$F_U_DADDA_PG_RCA4"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_u_dadda_mul8
+rm f_u_dadda_pg_rca4
+
+# 8-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_pg_rca8.c -o f_u_dadda_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_dadda_pg_rca8.c"
+eval "$F_U_DADDA_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_dadda_pg_rca8
+
+# 10-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_dadda_pg_rca10.c -o f_u_dadda_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_dadda_pg_rca10.c"
+eval "$F_U_DADDA_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_dadda_pg_rca10
+
 
 
 ########################
@@ -452,78 +498,148 @@ echo "${BLUECOLOR}SIGNED MULTIPLIERS TESTS${NOCOLOR}"
 ###############################
 
 # 1-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arr_mul1.c -o f_s_arr_mul1
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arrmul1.c -o f_s_arrmul1
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_s_arr_mul1.c"
-eval "$F_S_ARR_MUL1"
+echo "TEST_$TEST_NUM: f_s_arrmul1.c"
+eval "$F_S_ARRMUL1"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_s_arr_mul1
+rm f_s_arrmul1
 
 # 2-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arr_mul2.c -o f_s_arr_mul2
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arrmul2.c -o f_s_arrmul2
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_s_arr_mul2.c"
-eval "$F_S_ARR_MUL2"
+echo "TEST_$TEST_NUM: f_s_arrmul2.c"
+eval "$F_S_ARRMUL2"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_s_arr_mul2
+rm f_s_arrmul2
 
 # 3-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arr_mul3.c -o f_s_arr_mul3
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arrmul3.c -o f_s_arrmul3
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_s_arr_mul3.c"
-eval "$F_S_ARR_MUL3"
+echo "TEST_$TEST_NUM: f_s_arrmul3.c"
+eval "$F_S_ARRMUL3"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_s_arr_mul3
+rm f_s_arrmul3
 
 # 5-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arr_mul5.c -o f_s_arr_mul5
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arrmul5.c -o f_s_arrmul5
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_s_arr_mul5.c"
-eval "$F_S_ARR_MUL5"
+echo "TEST_$TEST_NUM: f_s_arrmul5.c"
+eval "$F_S_ARRMUL5"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_s_arr_mul5
+rm f_s_arrmul5
 
 # 8-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arr_mul8.c -o f_s_arr_mul8
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arrmul8.c -o f_s_arrmul8
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_s_arr_mul8.c"
-eval "$F_S_ARR_MUL8"
+echo "TEST_$TEST_NUM: f_s_arrmul8.c"
+eval "$F_S_ARRMUL8"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_s_arr_mul8
+rm f_s_arrmul8
 
 # 10-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arr_mul10.c -o f_s_arr_mul10
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_arrmul10.c -o f_s_arrmul10
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: f_s_arr_mul10.c"
-eval "$F_S_ARR_MUL10"
+echo "TEST_$TEST_NUM: f_s_arrmul10.c"
+eval "$F_S_ARRMUL10"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm f_s_arr_mul10
+rm f_s_arrmul10
 
+# 4-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_dadda_rca4.c -o f_s_dadda_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_dadda_rca4.c"
+eval "$F_S_DADDA_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_dadda_rca4
 
+# 8-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_dadda_rca8.c -o f_s_dadda_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_dadda_rca8.c"
+eval "$F_S_DADDA_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_dadda_rca8
+
+# 10-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_dadda_rca10.c -o f_s_dadda_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_dadda_rca10.c"
+eval "$F_S_DADDA_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_dadda_rca10
+
+# 4-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_dadda_pg_rca4.c -o f_s_dadda_pg_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_dadda_pg_rca4.c"
+eval "$F_S_DADDA_PG_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_dadda_pg_rca4
+
+# 8-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_dadda_pg_rca8.c -o f_s_dadda_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_dadda_pg_rca8.c"
+eval "$F_S_DADDA_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_dadda_pg_rca8
+
+# 10-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_dadda_pg_rca10.c -o f_s_dadda_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_dadda_pg_rca10.c"
+eval "$F_S_DADDA_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_dadda_pg_rca10
 
 
 
@@ -675,125 +791,148 @@ echo "${BLUECOLOR}UNSIGNED MULTIPLIERS TESTS${NOCOLOR}"
 #######################################
 
 # 1-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul1.c -o h_u_arr_mul1
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arrmul1.c -o h_u_arrmul1
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_arr_mul1.c"
-eval "$H_U_ARR_MUL1"
+echo "TEST_$TEST_NUM: h_u_arrmul1.c"
+eval "$H_U_ARRMUL1"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_arr_mul1
+rm h_u_arrmul1
 
 # 2-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul2.c -o h_u_arr_mul2
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arrmul2.c -o h_u_arrmul2
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_arr_mul2.c"
-eval "$H_U_ARR_MUL2"
+echo "TEST_$TEST_NUM: h_u_arrmul2.c"
+eval "$H_U_ARRMUL2"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_arr_mul2
+rm h_u_arrmul2
 
 # 3-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul3.c -o h_u_arr_mul3
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arrmul3.c -o h_u_arrmul3
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_arr_mul3.c"
-eval "$H_U_ARR_MUL3"
+echo "TEST_$TEST_NUM: h_u_arrmul3.c"
+eval "$H_U_ARRMUL3"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_arr_mul3
+rm h_u_arrmul3
 
 # 5-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul5.c -o h_u_arr_mul5
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arrmul5.c -o h_u_arrmul5
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_arr_mul5.c"
-eval "$H_U_ARR_MUL5"
+echo "TEST_$TEST_NUM: h_u_arrmul5.c"
+eval "$H_U_ARRMUL5"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_arr_mul5
+rm h_u_arrmul5
 
 # 8-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul8.c -o h_u_arr_mul8
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arrmul8.c -o h_u_arrmul8
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_arr_mul8.c"
-eval "$H_U_ARR_MUL8"
+echo "TEST_$TEST_NUM: h_u_arrmul8.c"
+eval "$H_U_ARRMUL8"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_arr_mul8
+rm h_u_arrmul8
 
 # 10-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arr_mul10.c -o h_u_arr_mul10
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_arrmul10.c -o h_u_arrmul10
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_arr_mul10.c"
-eval "$H_U_ARR_MUL10"
+echo "TEST_$TEST_NUM: h_u_arrmul10.c"
+eval "$H_U_ARRMUL10"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_arr_mul10
+rm h_u_arrmul10
 
-# 2-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul2.c -o h_u_dadda_mul2
+# 4-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_rca4.c -o h_u_dadda_rca4
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_dadda_mul2.c"
-eval "$H_U_DADDA_MUL2"
+echo "TEST_$TEST_NUM: h_u_dadda_rca4.c"
+eval "$H_U_DADDA_RCA4"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_dadda_mul2
+rm h_u_dadda_rca4
 
-# 4-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul4.c -o h_u_dadda_mul4
+# 8-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_rca8.c -o h_u_dadda_rca8
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_dadda_mul4.c"
-eval "$H_U_DADDA_MUL4"
+echo "TEST_$TEST_NUM: h_u_dadda_rca8.c"
+eval "$H_U_DADDA_RCA8"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_dadda_mul4
+rm h_u_dadda_rca8
 
-# 6-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul6.c -o h_u_dadda_mul6
+# 10-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_rca10.c -o h_u_dadda_rca10
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_dadda_mul6.c"
-eval "$H_U_DADDA_MUL6"
+echo "TEST_$TEST_NUM: h_u_dadda_rca10.c"
+eval "$H_U_DADDA_RCA10"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_dadda_mul6
+rm h_u_dadda_rca10
 
-# 8-BIT DADDA MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_mul8.c -o h_u_dadda_mul8
+# 4-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_pg_rca4.c -o h_u_dadda_pg_rca4
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_u_dadda_mul8.c"
-eval "$H_U_DADDA_MUL8"
+echo "TEST_$TEST_NUM: h_u_dadda_pg_rca4.c"
+eval "$H_U_DADDA_PG_RCA4"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_u_dadda_mul8
+rm h_u_dadda_pg_rca4
 
+# 8-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_pg_rca8.c -o h_u_dadda_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_dadda_pg_rca8.c"
+eval "$H_U_DADDA_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_dadda_pg_rca8
+
+# 10-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_dadda_pg_rca10.c -o h_u_dadda_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_dadda_pg_rca10.c"
+eval "$H_U_DADDA_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_dadda_pg_rca10
 
 ########################
 ## SIGNED MULTIPLIERS ##
@@ -805,73 +944,145 @@ echo "${BLUECOLOR}SIGNED MULTIPLIERS TESTS${NOCOLOR}"
 #####################################
 
 # 1-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul1.c -o h_s_arr_mul1
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arrmul1.c -o h_s_arrmul1
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_s_arr_mul1.c"
-eval "$H_S_ARR_MUL1"
+echo "TEST_$TEST_NUM: h_s_arrmul1.c"
+eval "$H_S_ARRMUL1"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_s_arr_mul1
+rm h_s_arrmul1
 
 # 2-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul2.c -o h_s_arr_mul2
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arrmul2.c -o h_s_arrmul2
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_s_arr_mul2.c"
-eval "$H_S_ARR_MUL2"
+echo "TEST_$TEST_NUM: h_s_arrmul2.c"
+eval "$H_S_ARRMUL2"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_s_arr_mul2
+rm h_s_arrmul2
 
 # 3-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul3.c -o h_s_arr_mul3
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arrmul3.c -o h_s_arrmul3
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_s_arr_mul3.c"
-eval "$H_S_ARR_MUL3"
+echo "TEST_$TEST_NUM: h_s_arrmul3.c"
+eval "$H_S_ARRMUL3"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_s_arr_mul3
+rm h_s_arrmul3
 
 # 5-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul5.c -o h_s_arr_mul5
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arrmul5.c -o h_s_arrmul5
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_s_arr_mul5.c"
-eval "$H_S_ARR_MUL5"
+echo "TEST_$TEST_NUM: h_s_arrmul5.c"
+eval "$H_S_ARRMUL5"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_s_arr_mul5
+rm h_s_arrmul5
 
 # 8-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul8.c -o h_s_arr_mul8
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arrmul8.c -o h_s_arrmul8
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_s_arr_mul8.c"
-eval "$H_S_ARR_MUL8"
+echo "TEST_$TEST_NUM: h_s_arrmul8.c"
+eval "$H_S_ARRMUL8"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_s_arr_mul8
+rm h_s_arrmul8
 
 # 10-BIT ARRAY MULTIPLIER
-${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arr_mul10.c -o h_s_arr_mul10
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_arrmul10.c -o h_s_arrmul10
 TEST_NUM=$((TEST_NUM+1))
-echo "TEST_$TEST_NUM: h_s_arr_mul10.c"
-eval "$H_S_ARR_MUL10"
+echo "TEST_$TEST_NUM: h_s_arrmul10.c"
+eval "$H_S_ARRMUL10"
 if [ "$?" -eq 0 ] ; then
     echo "${GREENCOLOR}PASSED${NOCOLOR}"
 else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
-rm h_s_arr_mul10
+rm h_s_arrmul10
+
+# 4-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_dadda_rca4.c -o h_s_dadda_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_dadda_rca4.c"
+eval "$H_S_DADDA_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_dadda_rca4
+
+# 8-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_dadda_rca8.c -o h_s_dadda_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_dadda_rca8.c"
+eval "$H_S_DADDA_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_dadda_rca8
+
+# 10-BIT DADDA-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_dadda_rca10.c -o h_s_dadda_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_dadda_rca10.c"
+eval "$H_S_DADDA_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_dadda_rca10
+
+# 4-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_dadda_pg_rca4.c -o h_s_dadda_pg_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_dadda_pg_rca4.c"
+eval "$H_S_DADDA_PG_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_dadda_pg_rca4
+
+# 8-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_dadda_pg_rca8.c -o h_s_dadda_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_dadda_pg_rca8.c"
+eval "$H_S_DADDA_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_dadda_pg_rca8
+
+# 10-BIT DADDA-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_dadda_pg_rca10.c -o h_s_dadda_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_dadda_pg_rca10.c"
+eval "$H_S_DADDA_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_dadda_pg_rca10

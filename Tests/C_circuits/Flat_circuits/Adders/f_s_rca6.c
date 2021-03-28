@@ -59,12 +59,12 @@ int64_t f_s_rca6(int64_t a, int64_t b){
   uint8_t f_s_rca6_fa5_y2 = 0;
   uint8_t f_s_rca6_fa5_y3 = 0;
   uint8_t f_s_rca6_fa5_y4 = 0;
-  uint8_t f_s_rca6_xor_1_a_5 = 0;
-  uint8_t f_s_rca6_xor_1_b_5 = 0;
-  uint8_t f_s_rca6_xor_1_y0 = 0;
-  uint8_t f_s_rca6_xor_2_f_s_rca6_xor_1_y0 = 0;
-  uint8_t f_s_rca6_xor_2_f_s_rca6_fa5_y4 = 0;
-  uint8_t f_s_rca6_xor_2_y0 = 0;
+  uint8_t f_s_rca6_xor0_a_5 = 0;
+  uint8_t f_s_rca6_xor0_b_5 = 0;
+  uint8_t f_s_rca6_xor0_y0 = 0;
+  uint8_t f_s_rca6_xor1_f_s_rca6_xor0_y0 = 0;
+  uint8_t f_s_rca6_xor1_f_s_rca6_fa5_y4 = 0;
+  uint8_t f_s_rca6_xor1_y0 = 0;
 
   a_0 = ((a >> 0) & 0x01);
   a_1 = ((a >> 1) & 0x01);
@@ -122,12 +122,12 @@ int64_t f_s_rca6(int64_t a, int64_t b){
   f_s_rca6_fa5_y2 = f_s_rca6_fa5_y0 ^ f_s_rca6_fa5_f_s_rca6_fa4_y4;
   f_s_rca6_fa5_y3 = f_s_rca6_fa5_y0 & f_s_rca6_fa5_f_s_rca6_fa4_y4;
   f_s_rca6_fa5_y4 = f_s_rca6_fa5_y1 | f_s_rca6_fa5_y3;
-  f_s_rca6_xor_1_a_5 = a_5;
-  f_s_rca6_xor_1_b_5 = b_5;
-  f_s_rca6_xor_1_y0 = f_s_rca6_xor_1_a_5 ^ f_s_rca6_xor_1_b_5;
-  f_s_rca6_xor_2_f_s_rca6_xor_1_y0 = f_s_rca6_xor_1_y0;
-  f_s_rca6_xor_2_f_s_rca6_fa5_y4 = f_s_rca6_fa5_y4;
-  f_s_rca6_xor_2_y0 = f_s_rca6_xor_2_f_s_rca6_xor_1_y0 ^ f_s_rca6_xor_2_f_s_rca6_fa5_y4;
+  f_s_rca6_xor0_a_5 = a_5;
+  f_s_rca6_xor0_b_5 = b_5;
+  f_s_rca6_xor0_y0 = f_s_rca6_xor0_a_5 ^ f_s_rca6_xor0_b_5;
+  f_s_rca6_xor1_f_s_rca6_xor0_y0 = f_s_rca6_xor0_y0;
+  f_s_rca6_xor1_f_s_rca6_fa5_y4 = f_s_rca6_fa5_y4;
+  f_s_rca6_xor1_y0 = f_s_rca6_xor1_f_s_rca6_xor0_y0 ^ f_s_rca6_xor1_f_s_rca6_fa5_y4;
 
   out |= (f_s_rca6_ha_y0 & 0x01) << 0;
   out |= (f_s_rca6_fa1_y2 & 0x01) << 1;
@@ -135,7 +135,7 @@ int64_t f_s_rca6(int64_t a, int64_t b){
   out |= (f_s_rca6_fa3_y2 & 0x01) << 3;
   out |= (f_s_rca6_fa4_y2 & 0x01) << 4;
   out |= (f_s_rca6_fa5_y2 & 0x01) << 5;
-  out |= (f_s_rca6_xor_2_y0 & 0x01) << 6;
+  out |= (f_s_rca6_xor1_y0 & 0x01) << 6;
   return out;
 }
 

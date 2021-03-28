@@ -1,0 +1,6 @@
+.model not_gate
+.inputs _a
+.outputs _y0
+.names _a _y0
+0 1
+.end

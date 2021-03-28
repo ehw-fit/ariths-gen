@@ -1,0 +1,360 @@
+.model h_s_wallace_rca4
+.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names a_0 constant_wire_value_1_a_0
+1 1
+.names b_0 constant_wire_value_1_b_0
+1 1
+.subckt constant_wire_value_1 a=constant_wire_value_1_a_0 b=constant_wire_value_1_b_0 out[0]=constant_wire_1
+.names a_2 h_s_wallace_rca4_and_2_0_a_2
+1 1
+.names b_0 h_s_wallace_rca4_and_2_0_b_0
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_2_0_a_2 _b=h_s_wallace_rca4_and_2_0_b_0 _y0=h_s_wallace_rca4_and_2_0_y0
+.names a_1 h_s_wallace_rca4_and_1_1_a_1
+1 1
+.names b_1 h_s_wallace_rca4_and_1_1_b_1
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_1_1_a_1 _b=h_s_wallace_rca4_and_1_1_b_1 _y0=h_s_wallace_rca4_and_1_1_y0
+.names h_s_wallace_rca4_and_2_0_y0 h_s_wallace_rca4_ha0_h_s_wallace_rca4_and_2_0_y0
+1 1
+.names h_s_wallace_rca4_and_1_1_y0 h_s_wallace_rca4_ha0_h_s_wallace_rca4_and_1_1_y0
+1 1
+.subckt ha a=h_s_wallace_rca4_ha0_h_s_wallace_rca4_and_2_0_y0 b=h_s_wallace_rca4_ha0_h_s_wallace_rca4_and_1_1_y0 out[0]=h_s_wallace_rca4_ha0_y0 out[1]=h_s_wallace_rca4_ha0_y1
+.names a_3 h_s_wallace_rca4_nand_3_0_a_3
+1 1
+.names b_0 h_s_wallace_rca4_nand_3_0_b_0
+1 1
+.subckt nand_gate _a=h_s_wallace_rca4_nand_3_0_a_3 _b=h_s_wallace_rca4_nand_3_0_b_0 _y0=h_s_wallace_rca4_nand_3_0_y0
+.names a_2 h_s_wallace_rca4_and_2_1_a_2
+1 1
+.names b_1 h_s_wallace_rca4_and_2_1_b_1
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_2_1_a_2 _b=h_s_wallace_rca4_and_2_1_b_1 _y0=h_s_wallace_rca4_and_2_1_y0
+.names h_s_wallace_rca4_ha0_y1 h_s_wallace_rca4_fa0_h_s_wallace_rca4_ha0_y1
+1 1
+.names h_s_wallace_rca4_nand_3_0_y0 h_s_wallace_rca4_fa0_h_s_wallace_rca4_nand_3_0_y0
+1 1
+.names h_s_wallace_rca4_and_2_1_y0 h_s_wallace_rca4_fa0_h_s_wallace_rca4_and_2_1_y0
+1 1
+.subckt fa a=h_s_wallace_rca4_fa0_h_s_wallace_rca4_ha0_y1 b=h_s_wallace_rca4_fa0_h_s_wallace_rca4_nand_3_0_y0 cin=h_s_wallace_rca4_fa0_h_s_wallace_rca4_and_2_1_y0 out[0]=h_s_wallace_rca4_fa0_y2 out[1]=h_s_wallace_rca4_fa0_y4
+.names a_3 h_s_wallace_rca4_nand_3_1_a_3
+1 1
+.names b_1 h_s_wallace_rca4_nand_3_1_b_1
+1 1
+.subckt nand_gate _a=h_s_wallace_rca4_nand_3_1_a_3 _b=h_s_wallace_rca4_nand_3_1_b_1 _y0=h_s_wallace_rca4_nand_3_1_y0
+.names h_s_wallace_rca4_fa0_y4 h_s_wallace_rca4_fa1_h_s_wallace_rca4_fa0_y4
+1 1
+.names constant_wire_1 h_s_wallace_rca4_fa1_constant_wire_1
+1 1
+.names h_s_wallace_rca4_nand_3_1_y0 h_s_wallace_rca4_fa1_h_s_wallace_rca4_nand_3_1_y0
+1 1
+.subckt fa a=h_s_wallace_rca4_fa1_h_s_wallace_rca4_fa0_y4 b=h_s_wallace_rca4_fa1_constant_wire_1 cin=h_s_wallace_rca4_fa1_h_s_wallace_rca4_nand_3_1_y0 out[0]=h_s_wallace_rca4_fa1_y2 out[1]=h_s_wallace_rca4_fa1_y4
+.names a_1 h_s_wallace_rca4_and_1_2_a_1
+1 1
+.names b_2 h_s_wallace_rca4_and_1_2_b_2
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_1_2_a_1 _b=h_s_wallace_rca4_and_1_2_b_2 _y0=h_s_wallace_rca4_and_1_2_y0
+.names a_0 h_s_wallace_rca4_nand_0_3_a_0
+1 1
+.names b_3 h_s_wallace_rca4_nand_0_3_b_3
+1 1
+.subckt nand_gate _a=h_s_wallace_rca4_nand_0_3_a_0 _b=h_s_wallace_rca4_nand_0_3_b_3 _y0=h_s_wallace_rca4_nand_0_3_y0
+.names h_s_wallace_rca4_and_1_2_y0 h_s_wallace_rca4_ha1_h_s_wallace_rca4_and_1_2_y0
+1 1
+.names h_s_wallace_rca4_nand_0_3_y0 h_s_wallace_rca4_ha1_h_s_wallace_rca4_nand_0_3_y0
+1 1
+.subckt ha a=h_s_wallace_rca4_ha1_h_s_wallace_rca4_and_1_2_y0 b=h_s_wallace_rca4_ha1_h_s_wallace_rca4_nand_0_3_y0 out[0]=h_s_wallace_rca4_ha1_y0 out[1]=h_s_wallace_rca4_ha1_y1
+.names a_2 h_s_wallace_rca4_and_2_2_a_2
+1 1
+.names b_2 h_s_wallace_rca4_and_2_2_b_2
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_2_2_a_2 _b=h_s_wallace_rca4_and_2_2_b_2 _y0=h_s_wallace_rca4_and_2_2_y0
+.names a_1 h_s_wallace_rca4_nand_1_3_a_1
+1 1
+.names b_3 h_s_wallace_rca4_nand_1_3_b_3
+1 1
+.subckt nand_gate _a=h_s_wallace_rca4_nand_1_3_a_1 _b=h_s_wallace_rca4_nand_1_3_b_3 _y0=h_s_wallace_rca4_nand_1_3_y0
+.names h_s_wallace_rca4_ha1_y1 h_s_wallace_rca4_fa2_h_s_wallace_rca4_ha1_y1
+1 1
+.names h_s_wallace_rca4_and_2_2_y0 h_s_wallace_rca4_fa2_h_s_wallace_rca4_and_2_2_y0
+1 1
+.names h_s_wallace_rca4_nand_1_3_y0 h_s_wallace_rca4_fa2_h_s_wallace_rca4_nand_1_3_y0
+1 1
+.subckt fa a=h_s_wallace_rca4_fa2_h_s_wallace_rca4_ha1_y1 b=h_s_wallace_rca4_fa2_h_s_wallace_rca4_and_2_2_y0 cin=h_s_wallace_rca4_fa2_h_s_wallace_rca4_nand_1_3_y0 out[0]=h_s_wallace_rca4_fa2_y2 out[1]=h_s_wallace_rca4_fa2_y4
+.names a_3 h_s_wallace_rca4_nand_3_2_a_3
+1 1
+.names b_2 h_s_wallace_rca4_nand_3_2_b_2
+1 1
+.subckt nand_gate _a=h_s_wallace_rca4_nand_3_2_a_3 _b=h_s_wallace_rca4_nand_3_2_b_2 _y0=h_s_wallace_rca4_nand_3_2_y0
+.names h_s_wallace_rca4_fa2_y4 h_s_wallace_rca4_fa3_h_s_wallace_rca4_fa2_y4
+1 1
+.names h_s_wallace_rca4_fa1_y4 h_s_wallace_rca4_fa3_h_s_wallace_rca4_fa1_y4
+1 1
+.names h_s_wallace_rca4_nand_3_2_y0 h_s_wallace_rca4_fa3_h_s_wallace_rca4_nand_3_2_y0
+1 1
+.subckt fa a=h_s_wallace_rca4_fa3_h_s_wallace_rca4_fa2_y4 b=h_s_wallace_rca4_fa3_h_s_wallace_rca4_fa1_y4 cin=h_s_wallace_rca4_fa3_h_s_wallace_rca4_nand_3_2_y0 out[0]=h_s_wallace_rca4_fa3_y2 out[1]=h_s_wallace_rca4_fa3_y4
+.names a_0 h_s_wallace_rca4_and_0_0_a_0
+1 1
+.names b_0 h_s_wallace_rca4_and_0_0_b_0
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_0_0_a_0 _b=h_s_wallace_rca4_and_0_0_b_0 _y0=h_s_wallace_rca4_and_0_0_y0
+.names a_1 h_s_wallace_rca4_and_1_0_a_1
+1 1
+.names b_0 h_s_wallace_rca4_and_1_0_b_0
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_1_0_a_1 _b=h_s_wallace_rca4_and_1_0_b_0 _y0=h_s_wallace_rca4_and_1_0_y0
+.names a_0 h_s_wallace_rca4_and_0_2_a_0
+1 1
+.names b_2 h_s_wallace_rca4_and_0_2_b_2
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_0_2_a_0 _b=h_s_wallace_rca4_and_0_2_b_2 _y0=h_s_wallace_rca4_and_0_2_y0
+.names a_2 h_s_wallace_rca4_nand_2_3_a_2
+1 1
+.names b_3 h_s_wallace_rca4_nand_2_3_b_3
+1 1
+.subckt nand_gate _a=h_s_wallace_rca4_nand_2_3_a_2 _b=h_s_wallace_rca4_nand_2_3_b_3 _y0=h_s_wallace_rca4_nand_2_3_y0
+.names a_0 h_s_wallace_rca4_and_0_1_a_0
+1 1
+.names b_1 h_s_wallace_rca4_and_0_1_b_1
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_0_1_a_0 _b=h_s_wallace_rca4_and_0_1_b_1 _y0=h_s_wallace_rca4_and_0_1_y0
+.names a_3 h_s_wallace_rca4_and_3_3_a_3
+1 1
+.names b_3 h_s_wallace_rca4_and_3_3_b_3
+1 1
+.subckt and_gate _a=h_s_wallace_rca4_and_3_3_a_3 _b=h_s_wallace_rca4_and_3_3_b_3 _y0=h_s_wallace_rca4_and_3_3_y0
+.names h_s_wallace_rca4_and_1_0_y0 h_s_wallace_rca4_u_rca_u_rca_a[0]
+1 1
+.names h_s_wallace_rca4_and_0_2_y0 h_s_wallace_rca4_u_rca_u_rca_a[1]
+1 1
+.names h_s_wallace_rca4_fa0_y2 h_s_wallace_rca4_u_rca_u_rca_a[2]
+1 1
+.names h_s_wallace_rca4_fa1_y2 h_s_wallace_rca4_u_rca_u_rca_a[3]
+1 1
+.names h_s_wallace_rca4_nand_2_3_y0 h_s_wallace_rca4_u_rca_u_rca_a[4]
+1 1
+.names h_s_wallace_rca4_fa3_y4 h_s_wallace_rca4_u_rca_u_rca_a[5]
+1 1
+.names h_s_wallace_rca4_and_0_1_y0 h_s_wallace_rca4_u_rca_u_rca_b[0]
+1 1
+.names h_s_wallace_rca4_ha0_y0 h_s_wallace_rca4_u_rca_u_rca_b[1]
+1 1
+.names h_s_wallace_rca4_ha1_y0 h_s_wallace_rca4_u_rca_u_rca_b[2]
+1 1
+.names h_s_wallace_rca4_fa2_y2 h_s_wallace_rca4_u_rca_u_rca_b[3]
+1 1
+.names h_s_wallace_rca4_fa3_y2 h_s_wallace_rca4_u_rca_u_rca_b[4]
+1 1
+.names h_s_wallace_rca4_and_3_3_y0 h_s_wallace_rca4_u_rca_u_rca_b[5]
+1 1
+.subckt u_rca a[0]=h_s_wallace_rca4_u_rca_u_rca_a[0] a[1]=h_s_wallace_rca4_u_rca_u_rca_a[1] a[2]=h_s_wallace_rca4_u_rca_u_rca_a[2] a[3]=h_s_wallace_rca4_u_rca_u_rca_a[3] a[4]=h_s_wallace_rca4_u_rca_u_rca_a[4] a[5]=h_s_wallace_rca4_u_rca_u_rca_a[5] b[0]=h_s_wallace_rca4_u_rca_u_rca_b[0] b[1]=h_s_wallace_rca4_u_rca_u_rca_b[1] b[2]=h_s_wallace_rca4_u_rca_u_rca_b[2] b[3]=h_s_wallace_rca4_u_rca_u_rca_b[3] b[4]=h_s_wallace_rca4_u_rca_u_rca_b[4] b[5]=h_s_wallace_rca4_u_rca_u_rca_b[5] out[0]=h_s_wallace_rca4_u_rca_ha_y0 out[1]=h_s_wallace_rca4_u_rca_fa1_y2 out[2]=h_s_wallace_rca4_u_rca_fa2_y2 out[3]=h_s_wallace_rca4_u_rca_fa3_y2 out[4]=h_s_wallace_rca4_u_rca_fa4_y2 out[5]=h_s_wallace_rca4_u_rca_fa5_y2 out[6]=h_s_wallace_rca4_u_rca_fa5_y4
+.names constant_wire_1 h_s_wallace_rca4_xor0_constant_wire_1
+1 1
+.names h_s_wallace_rca4_u_rca_fa5_y4 h_s_wallace_rca4_xor0_h_s_wallace_rca4_u_rca_fa5_y4
+1 1
+.subckt xor_gate _a=h_s_wallace_rca4_xor0_constant_wire_1 _b=h_s_wallace_rca4_xor0_h_s_wallace_rca4_u_rca_fa5_y4 _y0=h_s_wallace_rca4_xor0_y0
+.names h_s_wallace_rca4_and_0_0_y0 out[0]
+1 1
+.names h_s_wallace_rca4_u_rca_ha_y0 out[1]
+1 1
+.names h_s_wallace_rca4_u_rca_fa1_y2 out[2]
+1 1
+.names h_s_wallace_rca4_u_rca_fa2_y2 out[3]
+1 1
+.names h_s_wallace_rca4_u_rca_fa3_y2 out[4]
+1 1
+.names h_s_wallace_rca4_u_rca_fa4_y2 out[5]
+1 1
+.names h_s_wallace_rca4_u_rca_fa5_y2 out[6]
+1 1
+.names h_s_wallace_rca4_xor0_y0 out[7]
+1 1
+.end
+
+.model u_rca
+.inputs  a[0] a[1] a[2] a[3] a[4] a[5] b[0] b[1] b[2] b[3] b[4] b[5]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names a[4] a_4
+1 1
+.names a[5] a_5
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names b[4] b_4
+1 1
+.names b[5] b_5
+1 1
+.names a_0 u_rca_ha_a_0
+1 1
+.names b_0 u_rca_ha_b_0
+1 1
+.subckt ha a=u_rca_ha_a_0 b=u_rca_ha_b_0 out[0]=u_rca_ha_y0 out[1]=u_rca_ha_y1
+.names a_1 u_rca_fa1_a_1
+1 1
+.names b_1 u_rca_fa1_b_1
+1 1
+.names u_rca_ha_y1 u_rca_fa1_u_rca_ha_y1
+1 1
+.subckt fa a=u_rca_fa1_a_1 b=u_rca_fa1_b_1 cin=u_rca_fa1_u_rca_ha_y1 out[0]=u_rca_fa1_y2 out[1]=u_rca_fa1_y4
+.names a_2 u_rca_fa2_a_2
+1 1
+.names b_2 u_rca_fa2_b_2
+1 1
+.names u_rca_fa1_y4 u_rca_fa2_u_rca_fa1_y4
+1 1
+.subckt fa a=u_rca_fa2_a_2 b=u_rca_fa2_b_2 cin=u_rca_fa2_u_rca_fa1_y4 out[0]=u_rca_fa2_y2 out[1]=u_rca_fa2_y4
+.names a_3 u_rca_fa3_a_3
+1 1
+.names b_3 u_rca_fa3_b_3
+1 1
+.names u_rca_fa2_y4 u_rca_fa3_u_rca_fa2_y4
+1 1
+.subckt fa a=u_rca_fa3_a_3 b=u_rca_fa3_b_3 cin=u_rca_fa3_u_rca_fa2_y4 out[0]=u_rca_fa3_y2 out[1]=u_rca_fa3_y4
+.names a_4 u_rca_fa4_a_4
+1 1
+.names b_4 u_rca_fa4_b_4
+1 1
+.names u_rca_fa3_y4 u_rca_fa4_u_rca_fa3_y4
+1 1
+.subckt fa a=u_rca_fa4_a_4 b=u_rca_fa4_b_4 cin=u_rca_fa4_u_rca_fa3_y4 out[0]=u_rca_fa4_y2 out[1]=u_rca_fa4_y4
+.names a_5 u_rca_fa5_a_5
+1 1
+.names b_5 u_rca_fa5_b_5
+1 1
+.names u_rca_fa4_y4 u_rca_fa5_u_rca_fa4_y4
+1 1
+.subckt fa a=u_rca_fa5_a_5 b=u_rca_fa5_b_5 cin=u_rca_fa5_u_rca_fa4_y4 out[0]=u_rca_fa5_y2 out[1]=u_rca_fa5_y4
+.names u_rca_ha_y0 out[0]
+1 1
+.names u_rca_fa1_y2 out[1]
+1 1
+.names u_rca_fa2_y2 out[2]
+1 1
+.names u_rca_fa3_y2 out[3]
+1 1
+.names u_rca_fa4_y2 out[4]
+1 1
+.names u_rca_fa5_y2 out[5]
+1 1
+.names u_rca_fa5_y4 out[6]
+1 1
+.end
+
+.model fa
+.inputs a b cin
+.outputs out[0] out[1]
+.names a fa_a
+1 1
+.names b fa_b
+1 1
+.names cin fa_cin
+1 1
+.subckt xor_gate _a=fa_a _b=fa_b _y0=fa_y0
+.subckt and_gate _a=fa_a _b=fa_b _y0=fa_y1
+.subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
+.subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
+.subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
+.names fa_y2 out[0]
+1 1
+.names fa_y4 out[1]
+1 1
+.end
+
+.model ha
+.inputs a b
+.outputs out[0] out[1]
+.names a ha_a
+1 1
+.names b ha_b
+1 1
+.subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
+.subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
+.names ha_y0 out[0]
+1 1
+.names ha_y1 out[1]
+1 1
+.end
+
+.model constant_wire_value_1
+.inputs a b
+.outputs out[0]
+.names a constant_wire_value_1_a
+1 1
+.names b constant_wire_value_1_b
+1 1
+.subckt xor_gate _a=constant_wire_value_1_a _b=constant_wire_value_1_b _y0=constant_wire_value_1_y0
+.subckt xnor_gate _a=constant_wire_value_1_a _b=constant_wire_value_1_b _y0=constant_wire_value_1_y1
+.subckt or_gate _a=constant_wire_value_1_y0 _b=constant_wire_value_1_y1 _y0=constant_wire_1
+.names constant_wire_1 out[0]
+1 1
+.end
+
+.model nand_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+0- 1
+-0 1
+.end
+
+.model and_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+11 1
+.end
+
+.model or_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+1- 1
+-1 1
+.end
+
+.model xnor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+00 1
+11 1
+.end
+
+.model xor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+01 1
+10 1
+.end

@@ -15,23 +15,43 @@ uint8_t or_gate(uint8_t _a, uint8_t _b){
 
 uint8_t ha(uint8_t a, uint8_t b){
   uint8_t out = 0;
-  out |= (xor_gate(a, b) & 0x01) << 0;
-  out |= (and_gate(a, b) & 0x01) << 1;
+  uint8_t ha_a = 0;
+  uint8_t ha_b = 0;
+  uint8_t ha_y0 = 0;
+  uint8_t ha_y1 = 0;
+
+  ha_a = ((a >> 0) & 0x01);
+  ha_b = ((b >> 0) & 0x01);
+  ha_y0 = xor_gate(ha_a, ha_b);
+  ha_y1 = and_gate(ha_a, ha_b);
+
+  out |= (ha_y0 & 0x01) << 0;
+  out |= (ha_y1 & 0x01) << 1;
   return out;
 }
 
 uint8_t fa(uint8_t a, uint8_t b, uint8_t cin){
   uint8_t out = 0;
+  uint8_t fa_a = 0;
+  uint8_t fa_b = 0;
   uint8_t fa_y0 = 0;
   uint8_t fa_y1 = 0;
+  uint8_t fa_cin = 0;
+  uint8_t fa_y2 = 0;
   uint8_t fa_y3 = 0;
+  uint8_t fa_y4 = 0;
 
-  fa_y0 = xor_gate(a, b);
-  fa_y1 = and_gate(a, b);
-  fa_y3 = and_gate(fa_y0, cin);
+  fa_a = ((a >> 0) & 0x01);
+  fa_b = ((b >> 0) & 0x01);
+  fa_cin = ((cin >> 0) & 0x01);
+  fa_y0 = xor_gate(fa_a, fa_b);
+  fa_y1 = and_gate(fa_a, fa_b);
+  fa_y2 = xor_gate(fa_y0, fa_cin);
+  fa_y3 = and_gate(fa_y0, fa_cin);
+  fa_y4 = or_gate(fa_y1, fa_y3);
 
-  out |= (xor_gate(fa_y0, cin) & 0x01) << 0;
-  out |= (or_gate(fa_y1, fa_y3) & 0x01) << 1;
+  out |= (fa_y2 & 0x01) << 0;
+  out |= (fa_y4 & 0x01) << 1;
   return out;
 }
 

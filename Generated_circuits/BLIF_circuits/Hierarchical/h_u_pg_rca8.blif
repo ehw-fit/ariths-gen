@@ -1,0 +1,267 @@
+.model h_u_pg_rca8
+.inputs  a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names a[4] a_4
+1 1
+.names a[5] a_5
+1 1
+.names a[6] a_6
+1 1
+.names a[7] a_7
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names b[4] b_4
+1 1
+.names b[5] b_5
+1 1
+.names b[6] b_6
+1 1
+.names b[7] b_7
+1 1
+.names a_0 constant_wire_value_0_a_0
+1 1
+.names b_0 constant_wire_value_0_b_0
+1 1
+.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 out[0]=constant_wire_0
+.names a_0 h_u_pg_rca8_fa0_a_0
+1 1
+.names b_0 h_u_pg_rca8_fa0_b_0
+1 1
+.names constant_wire_0 h_u_pg_rca8_fa0_constant_wire_0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa0_a_0 b=h_u_pg_rca8_fa0_b_0 cin=h_u_pg_rca8_fa0_constant_wire_0 out[0]=h_u_pg_rca8_fa0_y0 out[1]=h_u_pg_rca8_fa0_y1 out[2]=h_u_pg_rca8_fa0_y2
+.names constant_wire_0 h_u_pg_rca8_and0_constant_wire_0
+1 1
+.names h_u_pg_rca8_fa0_y0 h_u_pg_rca8_and0_h_u_pg_rca8_fa0_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and0_constant_wire_0 _b=h_u_pg_rca8_and0_h_u_pg_rca8_fa0_y0 _y0=h_u_pg_rca8_and0_y0
+.names h_u_pg_rca8_and0_y0 h_u_pg_rca8_or0_h_u_pg_rca8_and0_y0
+1 1
+.names h_u_pg_rca8_fa0_y1 h_u_pg_rca8_or0_h_u_pg_rca8_fa0_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or0_h_u_pg_rca8_and0_y0 _b=h_u_pg_rca8_or0_h_u_pg_rca8_fa0_y1 _y0=h_u_pg_rca8_or0_y0
+.names a_1 h_u_pg_rca8_fa1_a_1
+1 1
+.names b_1 h_u_pg_rca8_fa1_b_1
+1 1
+.names h_u_pg_rca8_or0_y0 h_u_pg_rca8_fa1_h_u_pg_rca8_or0_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa1_a_1 b=h_u_pg_rca8_fa1_b_1 cin=h_u_pg_rca8_fa1_h_u_pg_rca8_or0_y0 out[0]=h_u_pg_rca8_fa1_y0 out[1]=h_u_pg_rca8_fa1_y1 out[2]=h_u_pg_rca8_fa1_y2
+.names h_u_pg_rca8_or0_y0 h_u_pg_rca8_and1_h_u_pg_rca8_or0_y0
+1 1
+.names h_u_pg_rca8_fa1_y0 h_u_pg_rca8_and1_h_u_pg_rca8_fa1_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and1_h_u_pg_rca8_or0_y0 _b=h_u_pg_rca8_and1_h_u_pg_rca8_fa1_y0 _y0=h_u_pg_rca8_and1_y0
+.names h_u_pg_rca8_and1_y0 h_u_pg_rca8_or1_h_u_pg_rca8_and1_y0
+1 1
+.names h_u_pg_rca8_fa1_y1 h_u_pg_rca8_or1_h_u_pg_rca8_fa1_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or1_h_u_pg_rca8_and1_y0 _b=h_u_pg_rca8_or1_h_u_pg_rca8_fa1_y1 _y0=h_u_pg_rca8_or1_y0
+.names a_2 h_u_pg_rca8_fa2_a_2
+1 1
+.names b_2 h_u_pg_rca8_fa2_b_2
+1 1
+.names h_u_pg_rca8_or1_y0 h_u_pg_rca8_fa2_h_u_pg_rca8_or1_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa2_a_2 b=h_u_pg_rca8_fa2_b_2 cin=h_u_pg_rca8_fa2_h_u_pg_rca8_or1_y0 out[0]=h_u_pg_rca8_fa2_y0 out[1]=h_u_pg_rca8_fa2_y1 out[2]=h_u_pg_rca8_fa2_y2
+.names h_u_pg_rca8_or1_y0 h_u_pg_rca8_and2_h_u_pg_rca8_or1_y0
+1 1
+.names h_u_pg_rca8_fa2_y0 h_u_pg_rca8_and2_h_u_pg_rca8_fa2_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and2_h_u_pg_rca8_or1_y0 _b=h_u_pg_rca8_and2_h_u_pg_rca8_fa2_y0 _y0=h_u_pg_rca8_and2_y0
+.names h_u_pg_rca8_and2_y0 h_u_pg_rca8_or2_h_u_pg_rca8_and2_y0
+1 1
+.names h_u_pg_rca8_fa2_y1 h_u_pg_rca8_or2_h_u_pg_rca8_fa2_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or2_h_u_pg_rca8_and2_y0 _b=h_u_pg_rca8_or2_h_u_pg_rca8_fa2_y1 _y0=h_u_pg_rca8_or2_y0
+.names a_3 h_u_pg_rca8_fa3_a_3
+1 1
+.names b_3 h_u_pg_rca8_fa3_b_3
+1 1
+.names h_u_pg_rca8_or2_y0 h_u_pg_rca8_fa3_h_u_pg_rca8_or2_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa3_a_3 b=h_u_pg_rca8_fa3_b_3 cin=h_u_pg_rca8_fa3_h_u_pg_rca8_or2_y0 out[0]=h_u_pg_rca8_fa3_y0 out[1]=h_u_pg_rca8_fa3_y1 out[2]=h_u_pg_rca8_fa3_y2
+.names h_u_pg_rca8_or2_y0 h_u_pg_rca8_and3_h_u_pg_rca8_or2_y0
+1 1
+.names h_u_pg_rca8_fa3_y0 h_u_pg_rca8_and3_h_u_pg_rca8_fa3_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and3_h_u_pg_rca8_or2_y0 _b=h_u_pg_rca8_and3_h_u_pg_rca8_fa3_y0 _y0=h_u_pg_rca8_and3_y0
+.names h_u_pg_rca8_and3_y0 h_u_pg_rca8_or3_h_u_pg_rca8_and3_y0
+1 1
+.names h_u_pg_rca8_fa3_y1 h_u_pg_rca8_or3_h_u_pg_rca8_fa3_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or3_h_u_pg_rca8_and3_y0 _b=h_u_pg_rca8_or3_h_u_pg_rca8_fa3_y1 _y0=h_u_pg_rca8_or3_y0
+.names a_4 h_u_pg_rca8_fa4_a_4
+1 1
+.names b_4 h_u_pg_rca8_fa4_b_4
+1 1
+.names h_u_pg_rca8_or3_y0 h_u_pg_rca8_fa4_h_u_pg_rca8_or3_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa4_a_4 b=h_u_pg_rca8_fa4_b_4 cin=h_u_pg_rca8_fa4_h_u_pg_rca8_or3_y0 out[0]=h_u_pg_rca8_fa4_y0 out[1]=h_u_pg_rca8_fa4_y1 out[2]=h_u_pg_rca8_fa4_y2
+.names h_u_pg_rca8_or3_y0 h_u_pg_rca8_and4_h_u_pg_rca8_or3_y0
+1 1
+.names h_u_pg_rca8_fa4_y0 h_u_pg_rca8_and4_h_u_pg_rca8_fa4_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and4_h_u_pg_rca8_or3_y0 _b=h_u_pg_rca8_and4_h_u_pg_rca8_fa4_y0 _y0=h_u_pg_rca8_and4_y0
+.names h_u_pg_rca8_and4_y0 h_u_pg_rca8_or4_h_u_pg_rca8_and4_y0
+1 1
+.names h_u_pg_rca8_fa4_y1 h_u_pg_rca8_or4_h_u_pg_rca8_fa4_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or4_h_u_pg_rca8_and4_y0 _b=h_u_pg_rca8_or4_h_u_pg_rca8_fa4_y1 _y0=h_u_pg_rca8_or4_y0
+.names a_5 h_u_pg_rca8_fa5_a_5
+1 1
+.names b_5 h_u_pg_rca8_fa5_b_5
+1 1
+.names h_u_pg_rca8_or4_y0 h_u_pg_rca8_fa5_h_u_pg_rca8_or4_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa5_a_5 b=h_u_pg_rca8_fa5_b_5 cin=h_u_pg_rca8_fa5_h_u_pg_rca8_or4_y0 out[0]=h_u_pg_rca8_fa5_y0 out[1]=h_u_pg_rca8_fa5_y1 out[2]=h_u_pg_rca8_fa5_y2
+.names h_u_pg_rca8_or4_y0 h_u_pg_rca8_and5_h_u_pg_rca8_or4_y0
+1 1
+.names h_u_pg_rca8_fa5_y0 h_u_pg_rca8_and5_h_u_pg_rca8_fa5_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and5_h_u_pg_rca8_or4_y0 _b=h_u_pg_rca8_and5_h_u_pg_rca8_fa5_y0 _y0=h_u_pg_rca8_and5_y0
+.names h_u_pg_rca8_and5_y0 h_u_pg_rca8_or5_h_u_pg_rca8_and5_y0
+1 1
+.names h_u_pg_rca8_fa5_y1 h_u_pg_rca8_or5_h_u_pg_rca8_fa5_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or5_h_u_pg_rca8_and5_y0 _b=h_u_pg_rca8_or5_h_u_pg_rca8_fa5_y1 _y0=h_u_pg_rca8_or5_y0
+.names a_6 h_u_pg_rca8_fa6_a_6
+1 1
+.names b_6 h_u_pg_rca8_fa6_b_6
+1 1
+.names h_u_pg_rca8_or5_y0 h_u_pg_rca8_fa6_h_u_pg_rca8_or5_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa6_a_6 b=h_u_pg_rca8_fa6_b_6 cin=h_u_pg_rca8_fa6_h_u_pg_rca8_or5_y0 out[0]=h_u_pg_rca8_fa6_y0 out[1]=h_u_pg_rca8_fa6_y1 out[2]=h_u_pg_rca8_fa6_y2
+.names h_u_pg_rca8_or5_y0 h_u_pg_rca8_and6_h_u_pg_rca8_or5_y0
+1 1
+.names h_u_pg_rca8_fa6_y0 h_u_pg_rca8_and6_h_u_pg_rca8_fa6_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and6_h_u_pg_rca8_or5_y0 _b=h_u_pg_rca8_and6_h_u_pg_rca8_fa6_y0 _y0=h_u_pg_rca8_and6_y0
+.names h_u_pg_rca8_and6_y0 h_u_pg_rca8_or6_h_u_pg_rca8_and6_y0
+1 1
+.names h_u_pg_rca8_fa6_y1 h_u_pg_rca8_or6_h_u_pg_rca8_fa6_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or6_h_u_pg_rca8_and6_y0 _b=h_u_pg_rca8_or6_h_u_pg_rca8_fa6_y1 _y0=h_u_pg_rca8_or6_y0
+.names a_7 h_u_pg_rca8_fa7_a_7
+1 1
+.names b_7 h_u_pg_rca8_fa7_b_7
+1 1
+.names h_u_pg_rca8_or6_y0 h_u_pg_rca8_fa7_h_u_pg_rca8_or6_y0
+1 1
+.subckt fa_cla a=h_u_pg_rca8_fa7_a_7 b=h_u_pg_rca8_fa7_b_7 cin=h_u_pg_rca8_fa7_h_u_pg_rca8_or6_y0 out[0]=h_u_pg_rca8_fa7_y0 out[1]=h_u_pg_rca8_fa7_y1 out[2]=h_u_pg_rca8_fa7_y2
+.names h_u_pg_rca8_or6_y0 h_u_pg_rca8_and7_h_u_pg_rca8_or6_y0
+1 1
+.names h_u_pg_rca8_fa7_y0 h_u_pg_rca8_and7_h_u_pg_rca8_fa7_y0
+1 1
+.subckt and_gate _a=h_u_pg_rca8_and7_h_u_pg_rca8_or6_y0 _b=h_u_pg_rca8_and7_h_u_pg_rca8_fa7_y0 _y0=h_u_pg_rca8_and7_y0
+.names h_u_pg_rca8_and7_y0 h_u_pg_rca8_or7_h_u_pg_rca8_and7_y0
+1 1
+.names h_u_pg_rca8_fa7_y1 h_u_pg_rca8_or7_h_u_pg_rca8_fa7_y1
+1 1
+.subckt or_gate _a=h_u_pg_rca8_or7_h_u_pg_rca8_and7_y0 _b=h_u_pg_rca8_or7_h_u_pg_rca8_fa7_y1 _y0=h_u_pg_rca8_or7_y0
+.names h_u_pg_rca8_fa0_y2 out[0]
+1 1
+.names h_u_pg_rca8_fa1_y2 out[1]
+1 1
+.names h_u_pg_rca8_fa2_y2 out[2]
+1 1
+.names h_u_pg_rca8_fa3_y2 out[3]
+1 1
+.names h_u_pg_rca8_fa4_y2 out[4]
+1 1
+.names h_u_pg_rca8_fa5_y2 out[5]
+1 1
+.names h_u_pg_rca8_fa6_y2 out[6]
+1 1
+.names h_u_pg_rca8_fa7_y2 out[7]
+1 1
+.names h_u_pg_rca8_or7_y0 out[8]
+1 1
+.end
+
+.model fa_cla
+.inputs a b cin
+.outputs out[0] out[1] out[2]
+.names a fa_cla_a
+1 1
+.names b fa_cla_b
+1 1
+.names cin fa_cla_cin
+1 1
+.subckt xor_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y0
+.subckt and_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y1
+.subckt xor_gate _a=fa_cla_y0 _b=fa_cla_cin _y0=fa_cla_y2
+.names fa_cla_y0 out[0]
+1 1
+.names fa_cla_y1 out[1]
+1 1
+.names fa_cla_y2 out[2]
+1 1
+.end
+
+.model constant_wire_value_0
+.inputs a b
+.outputs out[0]
+.names a constant_wire_value_0_a
+1 1
+.names b constant_wire_value_0_b
+1 1
+.subckt xor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y0
+.subckt xnor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y1
+.subckt nor_gate _a=constant_wire_value_0_y0 _b=constant_wire_value_0_y1 _y0=constant_wire_0
+.names constant_wire_0 out[0]
+1 1
+.end
+
+.model or_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+11 1
+.end
+
+.model nor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+00 1
+.end
+
+.model xnor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+00 1
+11 1
+.end
+
+.model xor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+01 1
+10 1
+.end

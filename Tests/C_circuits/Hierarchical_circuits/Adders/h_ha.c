@@ -11,8 +11,18 @@ uint8_t and_gate(uint8_t _a, uint8_t _b){
 
 uint8_t h_ha(uint8_t a, uint8_t b){
   uint8_t out = 0;
-  out |= (xor_gate(a, b) & 0x01) << 0;
-  out |= (and_gate(a, b) & 0x01) << 1;
+  uint8_t h_ha_a = 0;
+  uint8_t h_ha_b = 0;
+  uint8_t h_ha_y0 = 0;
+  uint8_t h_ha_y1 = 0;
+
+  h_ha_a = ((a >> 0) & 0x01);
+  h_ha_b = ((b >> 0) & 0x01);
+  h_ha_y0 = xor_gate(h_ha_a, h_ha_b);
+  h_ha_y1 = and_gate(h_ha_a, h_ha_b);
+
+  out |= (h_ha_y0 & 0x01) << 0;
+  out |= (h_ha_y1 & 0x01) << 1;
   return out;
 }
 

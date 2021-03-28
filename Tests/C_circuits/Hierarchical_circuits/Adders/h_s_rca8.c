@@ -15,23 +15,43 @@ uint8_t or_gate(uint8_t _a, uint8_t _b){
 
 uint8_t ha(uint8_t a, uint8_t b){
   uint8_t out = 0;
-  out |= (xor_gate(a, b) & 0x01) << 0;
-  out |= (and_gate(a, b) & 0x01) << 1;
+  uint8_t ha_a = 0;
+  uint8_t ha_b = 0;
+  uint8_t ha_y0 = 0;
+  uint8_t ha_y1 = 0;
+
+  ha_a = ((a >> 0) & 0x01);
+  ha_b = ((b >> 0) & 0x01);
+  ha_y0 = xor_gate(ha_a, ha_b);
+  ha_y1 = and_gate(ha_a, ha_b);
+
+  out |= (ha_y0 & 0x01) << 0;
+  out |= (ha_y1 & 0x01) << 1;
   return out;
 }
 
 uint8_t fa(uint8_t a, uint8_t b, uint8_t cin){
   uint8_t out = 0;
+  uint8_t fa_a = 0;
+  uint8_t fa_b = 0;
   uint8_t fa_y0 = 0;
   uint8_t fa_y1 = 0;
+  uint8_t fa_cin = 0;
+  uint8_t fa_y2 = 0;
   uint8_t fa_y3 = 0;
+  uint8_t fa_y4 = 0;
 
-  fa_y0 = xor_gate(a, b);
-  fa_y1 = and_gate(a, b);
-  fa_y3 = and_gate(fa_y0, cin);
+  fa_a = ((a >> 0) & 0x01);
+  fa_b = ((b >> 0) & 0x01);
+  fa_cin = ((cin >> 0) & 0x01);
+  fa_y0 = xor_gate(fa_a, fa_b);
+  fa_y1 = and_gate(fa_a, fa_b);
+  fa_y2 = xor_gate(fa_y0, fa_cin);
+  fa_y3 = and_gate(fa_y0, fa_cin);
+  fa_y4 = or_gate(fa_y1, fa_y3);
 
-  out |= (xor_gate(fa_y0, cin) & 0x01) << 0;
-  out |= (or_gate(fa_y1, fa_y3) & 0x01) << 1;
+  out |= (fa_y2 & 0x01) << 0;
+  out |= (fa_y4 & 0x01) << 1;
   return out;
 }
 
@@ -69,8 +89,8 @@ int64_t h_s_rca8(int64_t a, int64_t b){
   uint8_t h_s_rca8_fa6_y4 = 0;
   uint8_t h_s_rca8_fa7_y2 = 0;
   uint8_t h_s_rca8_fa7_y4 = 0;
-  uint8_t h_s_rca8_xor_1_y0 = 0;
-  uint8_t h_s_rca8_xor_2_y0 = 0;
+  uint8_t h_s_rca8_xor0_y0 = 0;
+  uint8_t h_s_rca8_xor1_y0 = 0;
 
   a_0 = ((a >> 0) & 0x01);
   a_1 = ((a >> 1) & 0x01);
@@ -104,8 +124,8 @@ int64_t h_s_rca8(int64_t a, int64_t b){
   h_s_rca8_fa6_y4 = (fa(a_6, b_6, h_s_rca8_fa5_y4) >> 1) & 0x01;
   h_s_rca8_fa7_y2 = (fa(a_7, b_7, h_s_rca8_fa6_y4) >> 0) & 0x01;
   h_s_rca8_fa7_y4 = (fa(a_7, b_7, h_s_rca8_fa6_y4) >> 1) & 0x01;
-  h_s_rca8_xor_1_y0 = xor_gate(a_7, b_7);
-  h_s_rca8_xor_2_y0 = xor_gate(h_s_rca8_xor_1_y0, h_s_rca8_fa7_y4);
+  h_s_rca8_xor0_y0 = xor_gate(a_7, b_7);
+  h_s_rca8_xor1_y0 = xor_gate(h_s_rca8_xor0_y0, h_s_rca8_fa7_y4);
 
   out |= (h_s_rca8_ha_y0 & 0x01) << 0;
   out |= (h_s_rca8_fa1_y2 & 0x01) << 1;
@@ -115,7 +135,7 @@ int64_t h_s_rca8(int64_t a, int64_t b){
   out |= (h_s_rca8_fa5_y2 & 0x01) << 5;
   out |= (h_s_rca8_fa6_y2 & 0x01) << 6;
   out |= (h_s_rca8_fa7_y2 & 0x01) << 7;
-  out |= (h_s_rca8_xor_2_y0 & 0x01) << 8;
+  out |= (h_s_rca8_xor1_y0 & 0x01) << 8;
   return out;
 }
 

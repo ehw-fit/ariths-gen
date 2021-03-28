@@ -19,12 +19,12 @@ int64_t f_s_rca2(int64_t a, int64_t b){
   uint8_t f_s_rca2_fa1_y2 = 0;
   uint8_t f_s_rca2_fa1_y3 = 0;
   uint8_t f_s_rca2_fa1_y4 = 0;
-  uint8_t f_s_rca2_xor_1_a_1 = 0;
-  uint8_t f_s_rca2_xor_1_b_1 = 0;
-  uint8_t f_s_rca2_xor_1_y0 = 0;
-  uint8_t f_s_rca2_xor_2_f_s_rca2_xor_1_y0 = 0;
-  uint8_t f_s_rca2_xor_2_f_s_rca2_fa1_y4 = 0;
-  uint8_t f_s_rca2_xor_2_y0 = 0;
+  uint8_t f_s_rca2_xor0_a_1 = 0;
+  uint8_t f_s_rca2_xor0_b_1 = 0;
+  uint8_t f_s_rca2_xor0_y0 = 0;
+  uint8_t f_s_rca2_xor1_f_s_rca2_xor0_y0 = 0;
+  uint8_t f_s_rca2_xor1_f_s_rca2_fa1_y4 = 0;
+  uint8_t f_s_rca2_xor1_y0 = 0;
 
   a_0 = ((a >> 0) & 0x01);
   a_1 = ((a >> 1) & 0x01);
@@ -42,16 +42,16 @@ int64_t f_s_rca2(int64_t a, int64_t b){
   f_s_rca2_fa1_y2 = f_s_rca2_fa1_y0 ^ f_s_rca2_fa1_f_s_rca2_ha_y1;
   f_s_rca2_fa1_y3 = f_s_rca2_fa1_y0 & f_s_rca2_fa1_f_s_rca2_ha_y1;
   f_s_rca2_fa1_y4 = f_s_rca2_fa1_y1 | f_s_rca2_fa1_y3;
-  f_s_rca2_xor_1_a_1 = a_1;
-  f_s_rca2_xor_1_b_1 = b_1;
-  f_s_rca2_xor_1_y0 = f_s_rca2_xor_1_a_1 ^ f_s_rca2_xor_1_b_1;
-  f_s_rca2_xor_2_f_s_rca2_xor_1_y0 = f_s_rca2_xor_1_y0;
-  f_s_rca2_xor_2_f_s_rca2_fa1_y4 = f_s_rca2_fa1_y4;
-  f_s_rca2_xor_2_y0 = f_s_rca2_xor_2_f_s_rca2_xor_1_y0 ^ f_s_rca2_xor_2_f_s_rca2_fa1_y4;
+  f_s_rca2_xor0_a_1 = a_1;
+  f_s_rca2_xor0_b_1 = b_1;
+  f_s_rca2_xor0_y0 = f_s_rca2_xor0_a_1 ^ f_s_rca2_xor0_b_1;
+  f_s_rca2_xor1_f_s_rca2_xor0_y0 = f_s_rca2_xor0_y0;
+  f_s_rca2_xor1_f_s_rca2_fa1_y4 = f_s_rca2_fa1_y4;
+  f_s_rca2_xor1_y0 = f_s_rca2_xor1_f_s_rca2_xor0_y0 ^ f_s_rca2_xor1_f_s_rca2_fa1_y4;
 
   out |= (f_s_rca2_ha_y0 & 0x01) << 0;
   out |= (f_s_rca2_fa1_y2 & 0x01) << 1;
-  out |= (f_s_rca2_xor_2_y0 & 0x01) << 2;
+  out |= (f_s_rca2_xor1_y0 & 0x01) << 2;
   return out;
 }
 

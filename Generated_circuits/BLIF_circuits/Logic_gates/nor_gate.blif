@@ -1,0 +1,6 @@
+.model nor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+00 1
+.end

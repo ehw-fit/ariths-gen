@@ -1,0 +1,596 @@
+.model f_s_rca24
+.inputs  a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] a[16] a[17] a[18] a[19] a[20] a[21] a[22] a[23] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15] b[16] b[17] b[18] b[19] b[20] b[21] b[22] b[23]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] out[12] out[13] out[14] out[15] out[16] out[17] out[18] out[19] out[20] out[21] out[22] out[23] out[24]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names a[4] a_4
+1 1
+.names a[5] a_5
+1 1
+.names a[6] a_6
+1 1
+.names a[7] a_7
+1 1
+.names a[8] a_8
+1 1
+.names a[9] a_9
+1 1
+.names a[10] a_10
+1 1
+.names a[11] a_11
+1 1
+.names a[12] a_12
+1 1
+.names a[13] a_13
+1 1
+.names a[14] a_14
+1 1
+.names a[15] a_15
+1 1
+.names a[16] a_16
+1 1
+.names a[17] a_17
+1 1
+.names a[18] a_18
+1 1
+.names a[19] a_19
+1 1
+.names a[20] a_20
+1 1
+.names a[21] a_21
+1 1
+.names a[22] a_22
+1 1
+.names a[23] a_23
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names b[4] b_4
+1 1
+.names b[5] b_5
+1 1
+.names b[6] b_6
+1 1
+.names b[7] b_7
+1 1
+.names b[8] b_8
+1 1
+.names b[9] b_9
+1 1
+.names b[10] b_10
+1 1
+.names b[11] b_11
+1 1
+.names b[12] b_12
+1 1
+.names b[13] b_13
+1 1
+.names b[14] b_14
+1 1
+.names b[15] b_15
+1 1
+.names b[16] b_16
+1 1
+.names b[17] b_17
+1 1
+.names b[18] b_18
+1 1
+.names b[19] b_19
+1 1
+.names b[20] b_20
+1 1
+.names b[21] b_21
+1 1
+.names b[22] b_22
+1 1
+.names b[23] b_23
+1 1
+.names a_0 f_s_rca24_ha_a_0
+1 1
+.names b_0 f_s_rca24_ha_b_0
+1 1
+.names f_s_rca24_ha_a_0 f_s_rca24_ha_b_0 f_s_rca24_ha_y0
+01 1
+10 1
+.names f_s_rca24_ha_a_0 f_s_rca24_ha_b_0 f_s_rca24_ha_y1
+11 1
+.names a_1 f_s_rca24_fa1_a_1
+1 1
+.names b_1 f_s_rca24_fa1_b_1
+1 1
+.names f_s_rca24_ha_y1 f_s_rca24_fa1_f_s_rca24_ha_y1
+1 1
+.names f_s_rca24_fa1_a_1 f_s_rca24_fa1_b_1 f_s_rca24_fa1_y0
+01 1
+10 1
+.names f_s_rca24_fa1_a_1 f_s_rca24_fa1_b_1 f_s_rca24_fa1_y1
+11 1
+.names f_s_rca24_fa1_y0 f_s_rca24_fa1_f_s_rca24_ha_y1 f_s_rca24_fa1_y2
+01 1
+10 1
+.names f_s_rca24_fa1_y0 f_s_rca24_fa1_f_s_rca24_ha_y1 f_s_rca24_fa1_y3
+11 1
+.names f_s_rca24_fa1_y1 f_s_rca24_fa1_y3 f_s_rca24_fa1_y4
+1- 1
+-1 1
+.names a_2 f_s_rca24_fa2_a_2
+1 1
+.names b_2 f_s_rca24_fa2_b_2
+1 1
+.names f_s_rca24_fa1_y4 f_s_rca24_fa2_f_s_rca24_fa1_y4
+1 1
+.names f_s_rca24_fa2_a_2 f_s_rca24_fa2_b_2 f_s_rca24_fa2_y0
+01 1
+10 1
+.names f_s_rca24_fa2_a_2 f_s_rca24_fa2_b_2 f_s_rca24_fa2_y1
+11 1
+.names f_s_rca24_fa2_y0 f_s_rca24_fa2_f_s_rca24_fa1_y4 f_s_rca24_fa2_y2
+01 1
+10 1
+.names f_s_rca24_fa2_y0 f_s_rca24_fa2_f_s_rca24_fa1_y4 f_s_rca24_fa2_y3
+11 1
+.names f_s_rca24_fa2_y1 f_s_rca24_fa2_y3 f_s_rca24_fa2_y4
+1- 1
+-1 1
+.names a_3 f_s_rca24_fa3_a_3
+1 1
+.names b_3 f_s_rca24_fa3_b_3
+1 1
+.names f_s_rca24_fa2_y4 f_s_rca24_fa3_f_s_rca24_fa2_y4
+1 1
+.names f_s_rca24_fa3_a_3 f_s_rca24_fa3_b_3 f_s_rca24_fa3_y0
+01 1
+10 1
+.names f_s_rca24_fa3_a_3 f_s_rca24_fa3_b_3 f_s_rca24_fa3_y1
+11 1
+.names f_s_rca24_fa3_y0 f_s_rca24_fa3_f_s_rca24_fa2_y4 f_s_rca24_fa3_y2
+01 1
+10 1
+.names f_s_rca24_fa3_y0 f_s_rca24_fa3_f_s_rca24_fa2_y4 f_s_rca24_fa3_y3
+11 1
+.names f_s_rca24_fa3_y1 f_s_rca24_fa3_y3 f_s_rca24_fa3_y4
+1- 1
+-1 1
+.names a_4 f_s_rca24_fa4_a_4
+1 1
+.names b_4 f_s_rca24_fa4_b_4
+1 1
+.names f_s_rca24_fa3_y4 f_s_rca24_fa4_f_s_rca24_fa3_y4
+1 1
+.names f_s_rca24_fa4_a_4 f_s_rca24_fa4_b_4 f_s_rca24_fa4_y0
+01 1
+10 1
+.names f_s_rca24_fa4_a_4 f_s_rca24_fa4_b_4 f_s_rca24_fa4_y1
+11 1
+.names f_s_rca24_fa4_y0 f_s_rca24_fa4_f_s_rca24_fa3_y4 f_s_rca24_fa4_y2
+01 1
+10 1
+.names f_s_rca24_fa4_y0 f_s_rca24_fa4_f_s_rca24_fa3_y4 f_s_rca24_fa4_y3
+11 1
+.names f_s_rca24_fa4_y1 f_s_rca24_fa4_y3 f_s_rca24_fa4_y4
+1- 1
+-1 1
+.names a_5 f_s_rca24_fa5_a_5
+1 1
+.names b_5 f_s_rca24_fa5_b_5
+1 1
+.names f_s_rca24_fa4_y4 f_s_rca24_fa5_f_s_rca24_fa4_y4
+1 1
+.names f_s_rca24_fa5_a_5 f_s_rca24_fa5_b_5 f_s_rca24_fa5_y0
+01 1
+10 1
+.names f_s_rca24_fa5_a_5 f_s_rca24_fa5_b_5 f_s_rca24_fa5_y1
+11 1
+.names f_s_rca24_fa5_y0 f_s_rca24_fa5_f_s_rca24_fa4_y4 f_s_rca24_fa5_y2
+01 1
+10 1
+.names f_s_rca24_fa5_y0 f_s_rca24_fa5_f_s_rca24_fa4_y4 f_s_rca24_fa5_y3
+11 1
+.names f_s_rca24_fa5_y1 f_s_rca24_fa5_y3 f_s_rca24_fa5_y4
+1- 1
+-1 1
+.names a_6 f_s_rca24_fa6_a_6
+1 1
+.names b_6 f_s_rca24_fa6_b_6
+1 1
+.names f_s_rca24_fa5_y4 f_s_rca24_fa6_f_s_rca24_fa5_y4
+1 1
+.names f_s_rca24_fa6_a_6 f_s_rca24_fa6_b_6 f_s_rca24_fa6_y0
+01 1
+10 1
+.names f_s_rca24_fa6_a_6 f_s_rca24_fa6_b_6 f_s_rca24_fa6_y1
+11 1
+.names f_s_rca24_fa6_y0 f_s_rca24_fa6_f_s_rca24_fa5_y4 f_s_rca24_fa6_y2
+01 1
+10 1
+.names f_s_rca24_fa6_y0 f_s_rca24_fa6_f_s_rca24_fa5_y4 f_s_rca24_fa6_y3
+11 1
+.names f_s_rca24_fa6_y1 f_s_rca24_fa6_y3 f_s_rca24_fa6_y4
+1- 1
+-1 1
+.names a_7 f_s_rca24_fa7_a_7
+1 1
+.names b_7 f_s_rca24_fa7_b_7
+1 1
+.names f_s_rca24_fa6_y4 f_s_rca24_fa7_f_s_rca24_fa6_y4
+1 1
+.names f_s_rca24_fa7_a_7 f_s_rca24_fa7_b_7 f_s_rca24_fa7_y0
+01 1
+10 1
+.names f_s_rca24_fa7_a_7 f_s_rca24_fa7_b_7 f_s_rca24_fa7_y1
+11 1
+.names f_s_rca24_fa7_y0 f_s_rca24_fa7_f_s_rca24_fa6_y4 f_s_rca24_fa7_y2
+01 1
+10 1
+.names f_s_rca24_fa7_y0 f_s_rca24_fa7_f_s_rca24_fa6_y4 f_s_rca24_fa7_y3
+11 1
+.names f_s_rca24_fa7_y1 f_s_rca24_fa7_y3 f_s_rca24_fa7_y4
+1- 1
+-1 1
+.names a_8 f_s_rca24_fa8_a_8
+1 1
+.names b_8 f_s_rca24_fa8_b_8
+1 1
+.names f_s_rca24_fa7_y4 f_s_rca24_fa8_f_s_rca24_fa7_y4
+1 1
+.names f_s_rca24_fa8_a_8 f_s_rca24_fa8_b_8 f_s_rca24_fa8_y0
+01 1
+10 1
+.names f_s_rca24_fa8_a_8 f_s_rca24_fa8_b_8 f_s_rca24_fa8_y1
+11 1
+.names f_s_rca24_fa8_y0 f_s_rca24_fa8_f_s_rca24_fa7_y4 f_s_rca24_fa8_y2
+01 1
+10 1
+.names f_s_rca24_fa8_y0 f_s_rca24_fa8_f_s_rca24_fa7_y4 f_s_rca24_fa8_y3
+11 1
+.names f_s_rca24_fa8_y1 f_s_rca24_fa8_y3 f_s_rca24_fa8_y4
+1- 1
+-1 1
+.names a_9 f_s_rca24_fa9_a_9
+1 1
+.names b_9 f_s_rca24_fa9_b_9
+1 1
+.names f_s_rca24_fa8_y4 f_s_rca24_fa9_f_s_rca24_fa8_y4
+1 1
+.names f_s_rca24_fa9_a_9 f_s_rca24_fa9_b_9 f_s_rca24_fa9_y0
+01 1
+10 1
+.names f_s_rca24_fa9_a_9 f_s_rca24_fa9_b_9 f_s_rca24_fa9_y1
+11 1
+.names f_s_rca24_fa9_y0 f_s_rca24_fa9_f_s_rca24_fa8_y4 f_s_rca24_fa9_y2
+01 1
+10 1
+.names f_s_rca24_fa9_y0 f_s_rca24_fa9_f_s_rca24_fa8_y4 f_s_rca24_fa9_y3
+11 1
+.names f_s_rca24_fa9_y1 f_s_rca24_fa9_y3 f_s_rca24_fa9_y4
+1- 1
+-1 1
+.names a_10 f_s_rca24_fa10_a_10
+1 1
+.names b_10 f_s_rca24_fa10_b_10
+1 1
+.names f_s_rca24_fa9_y4 f_s_rca24_fa10_f_s_rca24_fa9_y4
+1 1
+.names f_s_rca24_fa10_a_10 f_s_rca24_fa10_b_10 f_s_rca24_fa10_y0
+01 1
+10 1
+.names f_s_rca24_fa10_a_10 f_s_rca24_fa10_b_10 f_s_rca24_fa10_y1
+11 1
+.names f_s_rca24_fa10_y0 f_s_rca24_fa10_f_s_rca24_fa9_y4 f_s_rca24_fa10_y2
+01 1
+10 1
+.names f_s_rca24_fa10_y0 f_s_rca24_fa10_f_s_rca24_fa9_y4 f_s_rca24_fa10_y3
+11 1
+.names f_s_rca24_fa10_y1 f_s_rca24_fa10_y3 f_s_rca24_fa10_y4
+1- 1
+-1 1
+.names a_11 f_s_rca24_fa11_a_11
+1 1
+.names b_11 f_s_rca24_fa11_b_11
+1 1
+.names f_s_rca24_fa10_y4 f_s_rca24_fa11_f_s_rca24_fa10_y4
+1 1
+.names f_s_rca24_fa11_a_11 f_s_rca24_fa11_b_11 f_s_rca24_fa11_y0
+01 1
+10 1
+.names f_s_rca24_fa11_a_11 f_s_rca24_fa11_b_11 f_s_rca24_fa11_y1
+11 1
+.names f_s_rca24_fa11_y0 f_s_rca24_fa11_f_s_rca24_fa10_y4 f_s_rca24_fa11_y2
+01 1
+10 1
+.names f_s_rca24_fa11_y0 f_s_rca24_fa11_f_s_rca24_fa10_y4 f_s_rca24_fa11_y3
+11 1
+.names f_s_rca24_fa11_y1 f_s_rca24_fa11_y3 f_s_rca24_fa11_y4
+1- 1
+-1 1
+.names a_12 f_s_rca24_fa12_a_12
+1 1
+.names b_12 f_s_rca24_fa12_b_12
+1 1
+.names f_s_rca24_fa11_y4 f_s_rca24_fa12_f_s_rca24_fa11_y4
+1 1
+.names f_s_rca24_fa12_a_12 f_s_rca24_fa12_b_12 f_s_rca24_fa12_y0
+01 1
+10 1
+.names f_s_rca24_fa12_a_12 f_s_rca24_fa12_b_12 f_s_rca24_fa12_y1
+11 1
+.names f_s_rca24_fa12_y0 f_s_rca24_fa12_f_s_rca24_fa11_y4 f_s_rca24_fa12_y2
+01 1
+10 1
+.names f_s_rca24_fa12_y0 f_s_rca24_fa12_f_s_rca24_fa11_y4 f_s_rca24_fa12_y3
+11 1
+.names f_s_rca24_fa12_y1 f_s_rca24_fa12_y3 f_s_rca24_fa12_y4
+1- 1
+-1 1
+.names a_13 f_s_rca24_fa13_a_13
+1 1
+.names b_13 f_s_rca24_fa13_b_13
+1 1
+.names f_s_rca24_fa12_y4 f_s_rca24_fa13_f_s_rca24_fa12_y4
+1 1
+.names f_s_rca24_fa13_a_13 f_s_rca24_fa13_b_13 f_s_rca24_fa13_y0
+01 1
+10 1
+.names f_s_rca24_fa13_a_13 f_s_rca24_fa13_b_13 f_s_rca24_fa13_y1
+11 1
+.names f_s_rca24_fa13_y0 f_s_rca24_fa13_f_s_rca24_fa12_y4 f_s_rca24_fa13_y2
+01 1
+10 1
+.names f_s_rca24_fa13_y0 f_s_rca24_fa13_f_s_rca24_fa12_y4 f_s_rca24_fa13_y3
+11 1
+.names f_s_rca24_fa13_y1 f_s_rca24_fa13_y3 f_s_rca24_fa13_y4
+1- 1
+-1 1
+.names a_14 f_s_rca24_fa14_a_14
+1 1
+.names b_14 f_s_rca24_fa14_b_14
+1 1
+.names f_s_rca24_fa13_y4 f_s_rca24_fa14_f_s_rca24_fa13_y4
+1 1
+.names f_s_rca24_fa14_a_14 f_s_rca24_fa14_b_14 f_s_rca24_fa14_y0
+01 1
+10 1
+.names f_s_rca24_fa14_a_14 f_s_rca24_fa14_b_14 f_s_rca24_fa14_y1
+11 1
+.names f_s_rca24_fa14_y0 f_s_rca24_fa14_f_s_rca24_fa13_y4 f_s_rca24_fa14_y2
+01 1
+10 1
+.names f_s_rca24_fa14_y0 f_s_rca24_fa14_f_s_rca24_fa13_y4 f_s_rca24_fa14_y3
+11 1
+.names f_s_rca24_fa14_y1 f_s_rca24_fa14_y3 f_s_rca24_fa14_y4
+1- 1
+-1 1
+.names a_15 f_s_rca24_fa15_a_15
+1 1
+.names b_15 f_s_rca24_fa15_b_15
+1 1
+.names f_s_rca24_fa14_y4 f_s_rca24_fa15_f_s_rca24_fa14_y4
+1 1
+.names f_s_rca24_fa15_a_15 f_s_rca24_fa15_b_15 f_s_rca24_fa15_y0
+01 1
+10 1
+.names f_s_rca24_fa15_a_15 f_s_rca24_fa15_b_15 f_s_rca24_fa15_y1
+11 1
+.names f_s_rca24_fa15_y0 f_s_rca24_fa15_f_s_rca24_fa14_y4 f_s_rca24_fa15_y2
+01 1
+10 1
+.names f_s_rca24_fa15_y0 f_s_rca24_fa15_f_s_rca24_fa14_y4 f_s_rca24_fa15_y3
+11 1
+.names f_s_rca24_fa15_y1 f_s_rca24_fa15_y3 f_s_rca24_fa15_y4
+1- 1
+-1 1
+.names a_16 f_s_rca24_fa16_a_16
+1 1
+.names b_16 f_s_rca24_fa16_b_16
+1 1
+.names f_s_rca24_fa15_y4 f_s_rca24_fa16_f_s_rca24_fa15_y4
+1 1
+.names f_s_rca24_fa16_a_16 f_s_rca24_fa16_b_16 f_s_rca24_fa16_y0
+01 1
+10 1
+.names f_s_rca24_fa16_a_16 f_s_rca24_fa16_b_16 f_s_rca24_fa16_y1
+11 1
+.names f_s_rca24_fa16_y0 f_s_rca24_fa16_f_s_rca24_fa15_y4 f_s_rca24_fa16_y2
+01 1
+10 1
+.names f_s_rca24_fa16_y0 f_s_rca24_fa16_f_s_rca24_fa15_y4 f_s_rca24_fa16_y3
+11 1
+.names f_s_rca24_fa16_y1 f_s_rca24_fa16_y3 f_s_rca24_fa16_y4
+1- 1
+-1 1
+.names a_17 f_s_rca24_fa17_a_17
+1 1
+.names b_17 f_s_rca24_fa17_b_17
+1 1
+.names f_s_rca24_fa16_y4 f_s_rca24_fa17_f_s_rca24_fa16_y4
+1 1
+.names f_s_rca24_fa17_a_17 f_s_rca24_fa17_b_17 f_s_rca24_fa17_y0
+01 1
+10 1
+.names f_s_rca24_fa17_a_17 f_s_rca24_fa17_b_17 f_s_rca24_fa17_y1
+11 1
+.names f_s_rca24_fa17_y0 f_s_rca24_fa17_f_s_rca24_fa16_y4 f_s_rca24_fa17_y2
+01 1
+10 1
+.names f_s_rca24_fa17_y0 f_s_rca24_fa17_f_s_rca24_fa16_y4 f_s_rca24_fa17_y3
+11 1
+.names f_s_rca24_fa17_y1 f_s_rca24_fa17_y3 f_s_rca24_fa17_y4
+1- 1
+-1 1
+.names a_18 f_s_rca24_fa18_a_18
+1 1
+.names b_18 f_s_rca24_fa18_b_18
+1 1
+.names f_s_rca24_fa17_y4 f_s_rca24_fa18_f_s_rca24_fa17_y4
+1 1
+.names f_s_rca24_fa18_a_18 f_s_rca24_fa18_b_18 f_s_rca24_fa18_y0
+01 1
+10 1
+.names f_s_rca24_fa18_a_18 f_s_rca24_fa18_b_18 f_s_rca24_fa18_y1
+11 1
+.names f_s_rca24_fa18_y0 f_s_rca24_fa18_f_s_rca24_fa17_y4 f_s_rca24_fa18_y2
+01 1
+10 1
+.names f_s_rca24_fa18_y0 f_s_rca24_fa18_f_s_rca24_fa17_y4 f_s_rca24_fa18_y3
+11 1
+.names f_s_rca24_fa18_y1 f_s_rca24_fa18_y3 f_s_rca24_fa18_y4
+1- 1
+-1 1
+.names a_19 f_s_rca24_fa19_a_19
+1 1
+.names b_19 f_s_rca24_fa19_b_19
+1 1
+.names f_s_rca24_fa18_y4 f_s_rca24_fa19_f_s_rca24_fa18_y4
+1 1
+.names f_s_rca24_fa19_a_19 f_s_rca24_fa19_b_19 f_s_rca24_fa19_y0
+01 1
+10 1
+.names f_s_rca24_fa19_a_19 f_s_rca24_fa19_b_19 f_s_rca24_fa19_y1
+11 1
+.names f_s_rca24_fa19_y0 f_s_rca24_fa19_f_s_rca24_fa18_y4 f_s_rca24_fa19_y2
+01 1
+10 1
+.names f_s_rca24_fa19_y0 f_s_rca24_fa19_f_s_rca24_fa18_y4 f_s_rca24_fa19_y3
+11 1
+.names f_s_rca24_fa19_y1 f_s_rca24_fa19_y3 f_s_rca24_fa19_y4
+1- 1
+-1 1
+.names a_20 f_s_rca24_fa20_a_20
+1 1
+.names b_20 f_s_rca24_fa20_b_20
+1 1
+.names f_s_rca24_fa19_y4 f_s_rca24_fa20_f_s_rca24_fa19_y4
+1 1
+.names f_s_rca24_fa20_a_20 f_s_rca24_fa20_b_20 f_s_rca24_fa20_y0
+01 1
+10 1
+.names f_s_rca24_fa20_a_20 f_s_rca24_fa20_b_20 f_s_rca24_fa20_y1
+11 1
+.names f_s_rca24_fa20_y0 f_s_rca24_fa20_f_s_rca24_fa19_y4 f_s_rca24_fa20_y2
+01 1
+10 1
+.names f_s_rca24_fa20_y0 f_s_rca24_fa20_f_s_rca24_fa19_y4 f_s_rca24_fa20_y3
+11 1
+.names f_s_rca24_fa20_y1 f_s_rca24_fa20_y3 f_s_rca24_fa20_y4
+1- 1
+-1 1
+.names a_21 f_s_rca24_fa21_a_21
+1 1
+.names b_21 f_s_rca24_fa21_b_21
+1 1
+.names f_s_rca24_fa20_y4 f_s_rca24_fa21_f_s_rca24_fa20_y4
+1 1
+.names f_s_rca24_fa21_a_21 f_s_rca24_fa21_b_21 f_s_rca24_fa21_y0
+01 1
+10 1
+.names f_s_rca24_fa21_a_21 f_s_rca24_fa21_b_21 f_s_rca24_fa21_y1
+11 1
+.names f_s_rca24_fa21_y0 f_s_rca24_fa21_f_s_rca24_fa20_y4 f_s_rca24_fa21_y2
+01 1
+10 1
+.names f_s_rca24_fa21_y0 f_s_rca24_fa21_f_s_rca24_fa20_y4 f_s_rca24_fa21_y3
+11 1
+.names f_s_rca24_fa21_y1 f_s_rca24_fa21_y3 f_s_rca24_fa21_y4
+1- 1
+-1 1
+.names a_22 f_s_rca24_fa22_a_22
+1 1
+.names b_22 f_s_rca24_fa22_b_22
+1 1
+.names f_s_rca24_fa21_y4 f_s_rca24_fa22_f_s_rca24_fa21_y4
+1 1
+.names f_s_rca24_fa22_a_22 f_s_rca24_fa22_b_22 f_s_rca24_fa22_y0
+01 1
+10 1
+.names f_s_rca24_fa22_a_22 f_s_rca24_fa22_b_22 f_s_rca24_fa22_y1
+11 1
+.names f_s_rca24_fa22_y0 f_s_rca24_fa22_f_s_rca24_fa21_y4 f_s_rca24_fa22_y2
+01 1
+10 1
+.names f_s_rca24_fa22_y0 f_s_rca24_fa22_f_s_rca24_fa21_y4 f_s_rca24_fa22_y3
+11 1
+.names f_s_rca24_fa22_y1 f_s_rca24_fa22_y3 f_s_rca24_fa22_y4
+1- 1
+-1 1
+.names a_23 f_s_rca24_fa23_a_23
+1 1
+.names b_23 f_s_rca24_fa23_b_23
+1 1
+.names f_s_rca24_fa22_y4 f_s_rca24_fa23_f_s_rca24_fa22_y4
+1 1
+.names f_s_rca24_fa23_a_23 f_s_rca24_fa23_b_23 f_s_rca24_fa23_y0
+01 1
+10 1
+.names f_s_rca24_fa23_a_23 f_s_rca24_fa23_b_23 f_s_rca24_fa23_y1
+11 1
+.names f_s_rca24_fa23_y0 f_s_rca24_fa23_f_s_rca24_fa22_y4 f_s_rca24_fa23_y2
+01 1
+10 1
+.names f_s_rca24_fa23_y0 f_s_rca24_fa23_f_s_rca24_fa22_y4 f_s_rca24_fa23_y3
+11 1
+.names f_s_rca24_fa23_y1 f_s_rca24_fa23_y3 f_s_rca24_fa23_y4
+1- 1
+-1 1
+.names f_s_rca24_ha_y0 out[0]
+1 1
+.names f_s_rca24_fa1_y2 out[1]
+1 1
+.names f_s_rca24_fa2_y2 out[2]
+1 1
+.names f_s_rca24_fa3_y2 out[3]
+1 1
+.names f_s_rca24_fa4_y2 out[4]
+1 1
+.names f_s_rca24_fa5_y2 out[5]
+1 1
+.names f_s_rca24_fa6_y2 out[6]
+1 1
+.names f_s_rca24_fa7_y2 out[7]
+1 1
+.names f_s_rca24_fa8_y2 out[8]
+1 1
+.names f_s_rca24_fa9_y2 out[9]
+1 1
+.names f_s_rca24_fa10_y2 out[10]
+1 1
+.names f_s_rca24_fa11_y2 out[11]
+1 1
+.names f_s_rca24_fa12_y2 out[12]
+1 1
+.names f_s_rca24_fa13_y2 out[13]
+1 1
+.names f_s_rca24_fa14_y2 out[14]
+1 1
+.names f_s_rca24_fa15_y2 out[15]
+1 1
+.names f_s_rca24_fa16_y2 out[16]
+1 1
+.names f_s_rca24_fa17_y2 out[17]
+1 1
+.names f_s_rca24_fa18_y2 out[18]
+1 1
+.names f_s_rca24_fa19_y2 out[19]
+1 1
+.names f_s_rca24_fa20_y2 out[20]
+1 1
+.names f_s_rca24_fa21_y2 out[21]
+1 1
+.names f_s_rca24_fa22_y2 out[22]
+1 1
+.names f_s_rca24_fa23_y2 out[23]
+1 1
+.names f_s_rca24_fa23_y4 out[24]
+1 1
+.end

@@ -1,0 +1,7 @@
+.model xor_gate
+.inputs _a _b
+.outputs _y0
+.names _a _b _y0
+01 1
+10 1
+.end

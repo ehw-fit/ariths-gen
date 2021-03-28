@@ -1,0 +1,356 @@
+.model f_s_arrmul4
+.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names a_0 constant_wire_value_1_a_0
+1 1
+.names b_0 constant_wire_value_1_b_0
+1 1
+.names constant_wire_value_1_a_0 constant_wire_value_1_b_0 constant_wire_value_1_y0
+01 1
+10 1
+.names constant_wire_value_1_a_0 constant_wire_value_1_b_0 constant_wire_value_1_y1
+00 1
+11 1
+.names constant_wire_value_1_y0 constant_wire_value_1_y1 constant_wire_1
+1- 1
+-1 1
+.names a_0 f_s_arrmul4_and0_0_a_0
+1 1
+.names b_0 f_s_arrmul4_and0_0_b_0
+1 1
+.names f_s_arrmul4_and0_0_a_0 f_s_arrmul4_and0_0_b_0 f_s_arrmul4_and0_0_y0
+11 1
+.names a_1 f_s_arrmul4_and1_0_a_1
+1 1
+.names b_0 f_s_arrmul4_and1_0_b_0
+1 1
+.names f_s_arrmul4_and1_0_a_1 f_s_arrmul4_and1_0_b_0 f_s_arrmul4_and1_0_y0
+11 1
+.names a_2 f_s_arrmul4_and2_0_a_2
+1 1
+.names b_0 f_s_arrmul4_and2_0_b_0
+1 1
+.names f_s_arrmul4_and2_0_a_2 f_s_arrmul4_and2_0_b_0 f_s_arrmul4_and2_0_y0
+11 1
+.names a_3 f_s_arrmul4_nand3_0_a_3
+1 1
+.names b_0 f_s_arrmul4_nand3_0_b_0
+1 1
+.names f_s_arrmul4_nand3_0_a_3 f_s_arrmul4_nand3_0_b_0 f_s_arrmul4_nand3_0_y0
+0- 1
+-0 1
+.names a_0 f_s_arrmul4_and0_1_a_0
+1 1
+.names b_1 f_s_arrmul4_and0_1_b_1
+1 1
+.names f_s_arrmul4_and0_1_a_0 f_s_arrmul4_and0_1_b_1 f_s_arrmul4_and0_1_y0
+11 1
+.names f_s_arrmul4_and0_1_y0 f_s_arrmul4_ha0_1_f_s_arrmul4_and0_1_y0
+1 1
+.names f_s_arrmul4_and1_0_y0 f_s_arrmul4_ha0_1_f_s_arrmul4_and1_0_y0
+1 1
+.names f_s_arrmul4_ha0_1_f_s_arrmul4_and0_1_y0 f_s_arrmul4_ha0_1_f_s_arrmul4_and1_0_y0 f_s_arrmul4_ha0_1_y0
+01 1
+10 1
+.names f_s_arrmul4_ha0_1_f_s_arrmul4_and0_1_y0 f_s_arrmul4_ha0_1_f_s_arrmul4_and1_0_y0 f_s_arrmul4_ha0_1_y1
+11 1
+.names a_1 f_s_arrmul4_and1_1_a_1
+1 1
+.names b_1 f_s_arrmul4_and1_1_b_1
+1 1
+.names f_s_arrmul4_and1_1_a_1 f_s_arrmul4_and1_1_b_1 f_s_arrmul4_and1_1_y0
+11 1
+.names f_s_arrmul4_and1_1_y0 f_s_arrmul4_fa1_1_f_s_arrmul4_and1_1_y0
+1 1
+.names f_s_arrmul4_and2_0_y0 f_s_arrmul4_fa1_1_f_s_arrmul4_and2_0_y0
+1 1
+.names f_s_arrmul4_ha0_1_y1 f_s_arrmul4_fa1_1_f_s_arrmul4_ha0_1_y1
+1 1
+.names f_s_arrmul4_fa1_1_f_s_arrmul4_and1_1_y0 f_s_arrmul4_fa1_1_f_s_arrmul4_and2_0_y0 f_s_arrmul4_fa1_1_y0
+01 1
+10 1
+.names f_s_arrmul4_fa1_1_f_s_arrmul4_and1_1_y0 f_s_arrmul4_fa1_1_f_s_arrmul4_and2_0_y0 f_s_arrmul4_fa1_1_y1
+11 1
+.names f_s_arrmul4_fa1_1_y0 f_s_arrmul4_fa1_1_f_s_arrmul4_ha0_1_y1 f_s_arrmul4_fa1_1_y2
+01 1
+10 1
+.names f_s_arrmul4_fa1_1_y0 f_s_arrmul4_fa1_1_f_s_arrmul4_ha0_1_y1 f_s_arrmul4_fa1_1_y3
+11 1
+.names f_s_arrmul4_fa1_1_y1 f_s_arrmul4_fa1_1_y3 f_s_arrmul4_fa1_1_y4
+1- 1
+-1 1
+.names a_2 f_s_arrmul4_and2_1_a_2
+1 1
+.names b_1 f_s_arrmul4_and2_1_b_1
+1 1
+.names f_s_arrmul4_and2_1_a_2 f_s_arrmul4_and2_1_b_1 f_s_arrmul4_and2_1_y0
+11 1
+.names f_s_arrmul4_and2_1_y0 f_s_arrmul4_fa2_1_f_s_arrmul4_and2_1_y0
+1 1
+.names f_s_arrmul4_nand3_0_y0 f_s_arrmul4_fa2_1_f_s_arrmul4_nand3_0_y0
+1 1
+.names f_s_arrmul4_fa1_1_y4 f_s_arrmul4_fa2_1_f_s_arrmul4_fa1_1_y4
+1 1
+.names f_s_arrmul4_fa2_1_f_s_arrmul4_and2_1_y0 f_s_arrmul4_fa2_1_f_s_arrmul4_nand3_0_y0 f_s_arrmul4_fa2_1_y0
+01 1
+10 1
+.names f_s_arrmul4_fa2_1_f_s_arrmul4_and2_1_y0 f_s_arrmul4_fa2_1_f_s_arrmul4_nand3_0_y0 f_s_arrmul4_fa2_1_y1
+11 1
+.names f_s_arrmul4_fa2_1_y0 f_s_arrmul4_fa2_1_f_s_arrmul4_fa1_1_y4 f_s_arrmul4_fa2_1_y2
+01 1
+10 1
+.names f_s_arrmul4_fa2_1_y0 f_s_arrmul4_fa2_1_f_s_arrmul4_fa1_1_y4 f_s_arrmul4_fa2_1_y3
+11 1
+.names f_s_arrmul4_fa2_1_y1 f_s_arrmul4_fa2_1_y3 f_s_arrmul4_fa2_1_y4
+1- 1
+-1 1
+.names a_3 f_s_arrmul4_nand3_1_a_3
+1 1
+.names b_1 f_s_arrmul4_nand3_1_b_1
+1 1
+.names f_s_arrmul4_nand3_1_a_3 f_s_arrmul4_nand3_1_b_1 f_s_arrmul4_nand3_1_y0
+0- 1
+-0 1
+.names f_s_arrmul4_nand3_1_y0 f_s_arrmul4_fa3_1_f_s_arrmul4_nand3_1_y0
+1 1
+.names constant_wire_1 f_s_arrmul4_fa3_1_constant_wire_1
+1 1
+.names f_s_arrmul4_fa2_1_y4 f_s_arrmul4_fa3_1_f_s_arrmul4_fa2_1_y4
+1 1
+.names f_s_arrmul4_fa3_1_f_s_arrmul4_nand3_1_y0 f_s_arrmul4_fa3_1_constant_wire_1 f_s_arrmul4_fa3_1_y0
+01 1
+10 1
+.names f_s_arrmul4_fa3_1_f_s_arrmul4_nand3_1_y0 f_s_arrmul4_fa3_1_constant_wire_1 f_s_arrmul4_fa3_1_y1
+11 1
+.names f_s_arrmul4_fa3_1_y0 f_s_arrmul4_fa3_1_f_s_arrmul4_fa2_1_y4 f_s_arrmul4_fa3_1_y2
+01 1
+10 1
+.names f_s_arrmul4_fa3_1_y0 f_s_arrmul4_fa3_1_f_s_arrmul4_fa2_1_y4 f_s_arrmul4_fa3_1_y3
+11 1
+.names f_s_arrmul4_fa3_1_y1 f_s_arrmul4_fa3_1_y3 f_s_arrmul4_fa3_1_y4
+1- 1
+-1 1
+.names a_0 f_s_arrmul4_and0_2_a_0
+1 1
+.names b_2 f_s_arrmul4_and0_2_b_2
+1 1
+.names f_s_arrmul4_and0_2_a_0 f_s_arrmul4_and0_2_b_2 f_s_arrmul4_and0_2_y0
+11 1
+.names f_s_arrmul4_and0_2_y0 f_s_arrmul4_ha0_2_f_s_arrmul4_and0_2_y0
+1 1
+.names f_s_arrmul4_fa1_1_y2 f_s_arrmul4_ha0_2_f_s_arrmul4_fa1_1_y2
+1 1
+.names f_s_arrmul4_ha0_2_f_s_arrmul4_and0_2_y0 f_s_arrmul4_ha0_2_f_s_arrmul4_fa1_1_y2 f_s_arrmul4_ha0_2_y0
+01 1
+10 1
+.names f_s_arrmul4_ha0_2_f_s_arrmul4_and0_2_y0 f_s_arrmul4_ha0_2_f_s_arrmul4_fa1_1_y2 f_s_arrmul4_ha0_2_y1
+11 1
+.names a_1 f_s_arrmul4_and1_2_a_1
+1 1
+.names b_2 f_s_arrmul4_and1_2_b_2
+1 1
+.names f_s_arrmul4_and1_2_a_1 f_s_arrmul4_and1_2_b_2 f_s_arrmul4_and1_2_y0
+11 1
+.names f_s_arrmul4_and1_2_y0 f_s_arrmul4_fa1_2_f_s_arrmul4_and1_2_y0
+1 1
+.names f_s_arrmul4_fa2_1_y2 f_s_arrmul4_fa1_2_f_s_arrmul4_fa2_1_y2
+1 1
+.names f_s_arrmul4_ha0_2_y1 f_s_arrmul4_fa1_2_f_s_arrmul4_ha0_2_y1
+1 1
+.names f_s_arrmul4_fa1_2_f_s_arrmul4_and1_2_y0 f_s_arrmul4_fa1_2_f_s_arrmul4_fa2_1_y2 f_s_arrmul4_fa1_2_y0
+01 1
+10 1
+.names f_s_arrmul4_fa1_2_f_s_arrmul4_and1_2_y0 f_s_arrmul4_fa1_2_f_s_arrmul4_fa2_1_y2 f_s_arrmul4_fa1_2_y1
+11 1
+.names f_s_arrmul4_fa1_2_y0 f_s_arrmul4_fa1_2_f_s_arrmul4_ha0_2_y1 f_s_arrmul4_fa1_2_y2
+01 1
+10 1
+.names f_s_arrmul4_fa1_2_y0 f_s_arrmul4_fa1_2_f_s_arrmul4_ha0_2_y1 f_s_arrmul4_fa1_2_y3
+11 1
+.names f_s_arrmul4_fa1_2_y1 f_s_arrmul4_fa1_2_y3 f_s_arrmul4_fa1_2_y4
+1- 1
+-1 1
+.names a_2 f_s_arrmul4_and2_2_a_2
+1 1
+.names b_2 f_s_arrmul4_and2_2_b_2
+1 1
+.names f_s_arrmul4_and2_2_a_2 f_s_arrmul4_and2_2_b_2 f_s_arrmul4_and2_2_y0
+11 1
+.names f_s_arrmul4_and2_2_y0 f_s_arrmul4_fa2_2_f_s_arrmul4_and2_2_y0
+1 1
+.names f_s_arrmul4_fa3_1_y2 f_s_arrmul4_fa2_2_f_s_arrmul4_fa3_1_y2
+1 1
+.names f_s_arrmul4_fa1_2_y4 f_s_arrmul4_fa2_2_f_s_arrmul4_fa1_2_y4
+1 1
+.names f_s_arrmul4_fa2_2_f_s_arrmul4_and2_2_y0 f_s_arrmul4_fa2_2_f_s_arrmul4_fa3_1_y2 f_s_arrmul4_fa2_2_y0
+01 1
+10 1
+.names f_s_arrmul4_fa2_2_f_s_arrmul4_and2_2_y0 f_s_arrmul4_fa2_2_f_s_arrmul4_fa3_1_y2 f_s_arrmul4_fa2_2_y1
+11 1
+.names f_s_arrmul4_fa2_2_y0 f_s_arrmul4_fa2_2_f_s_arrmul4_fa1_2_y4 f_s_arrmul4_fa2_2_y2
+01 1
+10 1
+.names f_s_arrmul4_fa2_2_y0 f_s_arrmul4_fa2_2_f_s_arrmul4_fa1_2_y4 f_s_arrmul4_fa2_2_y3
+11 1
+.names f_s_arrmul4_fa2_2_y1 f_s_arrmul4_fa2_2_y3 f_s_arrmul4_fa2_2_y4
+1- 1
+-1 1
+.names a_3 f_s_arrmul4_nand3_2_a_3
+1 1
+.names b_2 f_s_arrmul4_nand3_2_b_2
+1 1
+.names f_s_arrmul4_nand3_2_a_3 f_s_arrmul4_nand3_2_b_2 f_s_arrmul4_nand3_2_y0
+0- 1
+-0 1
+.names f_s_arrmul4_nand3_2_y0 f_s_arrmul4_fa3_2_f_s_arrmul4_nand3_2_y0
+1 1
+.names f_s_arrmul4_fa3_1_y4 f_s_arrmul4_fa3_2_f_s_arrmul4_fa3_1_y4
+1 1
+.names f_s_arrmul4_fa2_2_y4 f_s_arrmul4_fa3_2_f_s_arrmul4_fa2_2_y4
+1 1
+.names f_s_arrmul4_fa3_2_f_s_arrmul4_nand3_2_y0 f_s_arrmul4_fa3_2_f_s_arrmul4_fa3_1_y4 f_s_arrmul4_fa3_2_y0
+01 1
+10 1
+.names f_s_arrmul4_fa3_2_f_s_arrmul4_nand3_2_y0 f_s_arrmul4_fa3_2_f_s_arrmul4_fa3_1_y4 f_s_arrmul4_fa3_2_y1
+11 1
+.names f_s_arrmul4_fa3_2_y0 f_s_arrmul4_fa3_2_f_s_arrmul4_fa2_2_y4 f_s_arrmul4_fa3_2_y2
+01 1
+10 1
+.names f_s_arrmul4_fa3_2_y0 f_s_arrmul4_fa3_2_f_s_arrmul4_fa2_2_y4 f_s_arrmul4_fa3_2_y3
+11 1
+.names f_s_arrmul4_fa3_2_y1 f_s_arrmul4_fa3_2_y3 f_s_arrmul4_fa3_2_y4
+1- 1
+-1 1
+.names a_0 f_s_arrmul4_nand0_3_a_0
+1 1
+.names b_3 f_s_arrmul4_nand0_3_b_3
+1 1
+.names f_s_arrmul4_nand0_3_a_0 f_s_arrmul4_nand0_3_b_3 f_s_arrmul4_nand0_3_y0
+0- 1
+-0 1
+.names f_s_arrmul4_nand0_3_y0 f_s_arrmul4_ha0_3_f_s_arrmul4_nand0_3_y0
+1 1
+.names f_s_arrmul4_fa1_2_y2 f_s_arrmul4_ha0_3_f_s_arrmul4_fa1_2_y2
+1 1
+.names f_s_arrmul4_ha0_3_f_s_arrmul4_nand0_3_y0 f_s_arrmul4_ha0_3_f_s_arrmul4_fa1_2_y2 f_s_arrmul4_ha0_3_y0
+01 1
+10 1
+.names f_s_arrmul4_ha0_3_f_s_arrmul4_nand0_3_y0 f_s_arrmul4_ha0_3_f_s_arrmul4_fa1_2_y2 f_s_arrmul4_ha0_3_y1
+11 1
+.names a_1 f_s_arrmul4_nand1_3_a_1
+1 1
+.names b_3 f_s_arrmul4_nand1_3_b_3
+1 1
+.names f_s_arrmul4_nand1_3_a_1 f_s_arrmul4_nand1_3_b_3 f_s_arrmul4_nand1_3_y0
+0- 1
+-0 1
+.names f_s_arrmul4_nand1_3_y0 f_s_arrmul4_fa1_3_f_s_arrmul4_nand1_3_y0
+1 1
+.names f_s_arrmul4_fa2_2_y2 f_s_arrmul4_fa1_3_f_s_arrmul4_fa2_2_y2
+1 1
+.names f_s_arrmul4_ha0_3_y1 f_s_arrmul4_fa1_3_f_s_arrmul4_ha0_3_y1
+1 1
+.names f_s_arrmul4_fa1_3_f_s_arrmul4_nand1_3_y0 f_s_arrmul4_fa1_3_f_s_arrmul4_fa2_2_y2 f_s_arrmul4_fa1_3_y0
+01 1
+10 1
+.names f_s_arrmul4_fa1_3_f_s_arrmul4_nand1_3_y0 f_s_arrmul4_fa1_3_f_s_arrmul4_fa2_2_y2 f_s_arrmul4_fa1_3_y1
+11 1
+.names f_s_arrmul4_fa1_3_y0 f_s_arrmul4_fa1_3_f_s_arrmul4_ha0_3_y1 f_s_arrmul4_fa1_3_y2
+01 1
+10 1
+.names f_s_arrmul4_fa1_3_y0 f_s_arrmul4_fa1_3_f_s_arrmul4_ha0_3_y1 f_s_arrmul4_fa1_3_y3
+11 1
+.names f_s_arrmul4_fa1_3_y1 f_s_arrmul4_fa1_3_y3 f_s_arrmul4_fa1_3_y4
+1- 1
+-1 1
+.names a_2 f_s_arrmul4_nand2_3_a_2
+1 1
+.names b_3 f_s_arrmul4_nand2_3_b_3
+1 1
+.names f_s_arrmul4_nand2_3_a_2 f_s_arrmul4_nand2_3_b_3 f_s_arrmul4_nand2_3_y0
+0- 1
+-0 1
+.names f_s_arrmul4_nand2_3_y0 f_s_arrmul4_fa2_3_f_s_arrmul4_nand2_3_y0
+1 1
+.names f_s_arrmul4_fa3_2_y2 f_s_arrmul4_fa2_3_f_s_arrmul4_fa3_2_y2
+1 1
+.names f_s_arrmul4_fa1_3_y4 f_s_arrmul4_fa2_3_f_s_arrmul4_fa1_3_y4
+1 1
+.names f_s_arrmul4_fa2_3_f_s_arrmul4_nand2_3_y0 f_s_arrmul4_fa2_3_f_s_arrmul4_fa3_2_y2 f_s_arrmul4_fa2_3_y0
+01 1
+10 1
+.names f_s_arrmul4_fa2_3_f_s_arrmul4_nand2_3_y0 f_s_arrmul4_fa2_3_f_s_arrmul4_fa3_2_y2 f_s_arrmul4_fa2_3_y1
+11 1
+.names f_s_arrmul4_fa2_3_y0 f_s_arrmul4_fa2_3_f_s_arrmul4_fa1_3_y4 f_s_arrmul4_fa2_3_y2
+01 1
+10 1
+.names f_s_arrmul4_fa2_3_y0 f_s_arrmul4_fa2_3_f_s_arrmul4_fa1_3_y4 f_s_arrmul4_fa2_3_y3
+11 1
+.names f_s_arrmul4_fa2_3_y1 f_s_arrmul4_fa2_3_y3 f_s_arrmul4_fa2_3_y4
+1- 1
+-1 1
+.names a_3 f_s_arrmul4_and3_3_a_3
+1 1
+.names b_3 f_s_arrmul4_and3_3_b_3
+1 1
+.names f_s_arrmul4_and3_3_a_3 f_s_arrmul4_and3_3_b_3 f_s_arrmul4_and3_3_y0
+11 1
+.names f_s_arrmul4_and3_3_y0 f_s_arrmul4_fa3_3_f_s_arrmul4_and3_3_y0
+1 1
+.names f_s_arrmul4_fa3_2_y4 f_s_arrmul4_fa3_3_f_s_arrmul4_fa3_2_y4
+1 1
+.names f_s_arrmul4_fa2_3_y4 f_s_arrmul4_fa3_3_f_s_arrmul4_fa2_3_y4
+1 1
+.names f_s_arrmul4_fa3_3_f_s_arrmul4_and3_3_y0 f_s_arrmul4_fa3_3_f_s_arrmul4_fa3_2_y4 f_s_arrmul4_fa3_3_y0
+01 1
+10 1
+.names f_s_arrmul4_fa3_3_f_s_arrmul4_and3_3_y0 f_s_arrmul4_fa3_3_f_s_arrmul4_fa3_2_y4 f_s_arrmul4_fa3_3_y1
+11 1
+.names f_s_arrmul4_fa3_3_y0 f_s_arrmul4_fa3_3_f_s_arrmul4_fa2_3_y4 f_s_arrmul4_fa3_3_y2
+01 1
+10 1
+.names f_s_arrmul4_fa3_3_y0 f_s_arrmul4_fa3_3_f_s_arrmul4_fa2_3_y4 f_s_arrmul4_fa3_3_y3
+11 1
+.names f_s_arrmul4_fa3_3_y1 f_s_arrmul4_fa3_3_y3 f_s_arrmul4_fa3_3_y4
+1- 1
+-1 1
+.names f_s_arrmul4_fa3_3_y4 f_s_arrmul4_xor4_3_f_s_arrmul4_fa3_3_y4
+1 1
+.names constant_wire_1 f_s_arrmul4_xor4_3_constant_wire_1
+1 1
+.names f_s_arrmul4_xor4_3_f_s_arrmul4_fa3_3_y4 f_s_arrmul4_xor4_3_constant_wire_1 f_s_arrmul4_xor4_3_y0
+01 1
+10 1
+.names f_s_arrmul4_and0_0_y0 out[0]
+1 1
+.names f_s_arrmul4_ha0_1_y0 out[1]
+1 1
+.names f_s_arrmul4_ha0_2_y0 out[2]
+1 1
+.names f_s_arrmul4_ha0_3_y0 out[3]
+1 1
+.names f_s_arrmul4_fa1_3_y2 out[4]
+1 1
+.names f_s_arrmul4_fa2_3_y2 out[5]
+1 1
+.names f_s_arrmul4_fa3_3_y2 out[6]
+1 1
+.names f_s_arrmul4_xor4_3_y0 out[7]
+1 1
+.end

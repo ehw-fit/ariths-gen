@@ -1,0 +1,368 @@
+.model f_u_cla4
+.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs out[0] out[1] out[2] out[3] out[4]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names a_0 constant_wire_value_0_a_0
+1 1
+.names b_0 constant_wire_value_0_b_0
+1 1
+.names constant_wire_value_0_a_0 constant_wire_value_0_b_0 constant_wire_value_0_y0
+01 1
+10 1
+.names constant_wire_value_0_a_0 constant_wire_value_0_b_0 constant_wire_value_0_y1
+00 1
+11 1
+.names constant_wire_value_0_y0 constant_wire_value_0_y1 constant_wire_0
+00 1
+.names a_0 f_u_cla4_pg_logic0_a_0
+1 1
+.names b_0 f_u_cla4_pg_logic0_b_0
+1 1
+.names f_u_cla4_pg_logic0_a_0 f_u_cla4_pg_logic0_b_0 f_u_cla4_pg_logic0_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic0_a_0 f_u_cla4_pg_logic0_b_0 f_u_cla4_pg_logic0_y1
+11 1
+.names f_u_cla4_pg_logic0_a_0 f_u_cla4_pg_logic0_b_0 f_u_cla4_pg_logic0_y2
+01 1
+10 1
+.names f_u_cla4_pg_logic0_y2 f_u_cla4_xor0_f_u_cla4_pg_logic0_y2
+1 1
+.names constant_wire_0 f_u_cla4_xor0_constant_wire_0
+1 1
+.names f_u_cla4_xor0_f_u_cla4_pg_logic0_y2 f_u_cla4_xor0_constant_wire_0 f_u_cla4_xor0_y0
+01 1
+10 1
+.names f_u_cla4_pg_logic0_y0 f_u_cla4_and0_f_u_cla4_pg_logic0_y0
+1 1
+.names constant_wire_0 f_u_cla4_and0_constant_wire_0
+1 1
+.names f_u_cla4_and0_f_u_cla4_pg_logic0_y0 f_u_cla4_and0_constant_wire_0 f_u_cla4_and0_y0
+11 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_or0_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and0_y0 f_u_cla4_or0_f_u_cla4_and0_y0
+1 1
+.names f_u_cla4_or0_f_u_cla4_pg_logic0_y1 f_u_cla4_or0_f_u_cla4_and0_y0 f_u_cla4_or0_y0
+1- 1
+-1 1
+.names a_1 f_u_cla4_pg_logic1_a_1
+1 1
+.names b_1 f_u_cla4_pg_logic1_b_1
+1 1
+.names f_u_cla4_pg_logic1_a_1 f_u_cla4_pg_logic1_b_1 f_u_cla4_pg_logic1_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic1_a_1 f_u_cla4_pg_logic1_b_1 f_u_cla4_pg_logic1_y1
+11 1
+.names f_u_cla4_pg_logic1_a_1 f_u_cla4_pg_logic1_b_1 f_u_cla4_pg_logic1_y2
+01 1
+10 1
+.names f_u_cla4_pg_logic1_y2 f_u_cla4_xor1_f_u_cla4_pg_logic1_y2
+1 1
+.names f_u_cla4_or0_y0 f_u_cla4_xor1_f_u_cla4_or0_y0
+1 1
+.names f_u_cla4_xor1_f_u_cla4_pg_logic1_y2 f_u_cla4_xor1_f_u_cla4_or0_y0 f_u_cla4_xor1_y0
+01 1
+10 1
+.names f_u_cla4_pg_logic0_y0 f_u_cla4_and1_f_u_cla4_pg_logic0_y0
+1 1
+.names constant_wire_0 f_u_cla4_and1_constant_wire_0
+1 1
+.names f_u_cla4_and1_f_u_cla4_pg_logic0_y0 f_u_cla4_and1_constant_wire_0 f_u_cla4_and1_y0
+11 1
+.names f_u_cla4_pg_logic1_y0 f_u_cla4_and2_f_u_cla4_pg_logic1_y0
+1 1
+.names constant_wire_0 f_u_cla4_and2_constant_wire_0
+1 1
+.names f_u_cla4_and2_f_u_cla4_pg_logic1_y0 f_u_cla4_and2_constant_wire_0 f_u_cla4_and2_y0
+11 1
+.names f_u_cla4_and2_y0 f_u_cla4_and3_f_u_cla4_and2_y0
+1 1
+.names f_u_cla4_and1_y0 f_u_cla4_and3_f_u_cla4_and1_y0
+1 1
+.names f_u_cla4_and3_f_u_cla4_and2_y0 f_u_cla4_and3_f_u_cla4_and1_y0 f_u_cla4_and3_y0
+11 1
+.names f_u_cla4_pg_logic1_y0 f_u_cla4_and4_f_u_cla4_pg_logic1_y0
+1 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_and4_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and4_f_u_cla4_pg_logic1_y0 f_u_cla4_and4_f_u_cla4_pg_logic0_y1 f_u_cla4_and4_y0
+11 1
+.names f_u_cla4_and4_y0 f_u_cla4_or1_f_u_cla4_and4_y0
+1 1
+.names f_u_cla4_and3_y0 f_u_cla4_or1_f_u_cla4_and3_y0
+1 1
+.names f_u_cla4_or1_f_u_cla4_and4_y0 f_u_cla4_or1_f_u_cla4_and3_y0 f_u_cla4_or1_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic1_y1 f_u_cla4_or2_f_u_cla4_pg_logic1_y1
+1 1
+.names f_u_cla4_or1_y0 f_u_cla4_or2_f_u_cla4_or1_y0
+1 1
+.names f_u_cla4_or2_f_u_cla4_pg_logic1_y1 f_u_cla4_or2_f_u_cla4_or1_y0 f_u_cla4_or2_y0
+1- 1
+-1 1
+.names a_2 f_u_cla4_pg_logic2_a_2
+1 1
+.names b_2 f_u_cla4_pg_logic2_b_2
+1 1
+.names f_u_cla4_pg_logic2_a_2 f_u_cla4_pg_logic2_b_2 f_u_cla4_pg_logic2_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic2_a_2 f_u_cla4_pg_logic2_b_2 f_u_cla4_pg_logic2_y1
+11 1
+.names f_u_cla4_pg_logic2_a_2 f_u_cla4_pg_logic2_b_2 f_u_cla4_pg_logic2_y2
+01 1
+10 1
+.names f_u_cla4_pg_logic2_y2 f_u_cla4_xor2_f_u_cla4_pg_logic2_y2
+1 1
+.names f_u_cla4_or2_y0 f_u_cla4_xor2_f_u_cla4_or2_y0
+1 1
+.names f_u_cla4_xor2_f_u_cla4_pg_logic2_y2 f_u_cla4_xor2_f_u_cla4_or2_y0 f_u_cla4_xor2_y0
+01 1
+10 1
+.names f_u_cla4_pg_logic0_y0 f_u_cla4_and5_f_u_cla4_pg_logic0_y0
+1 1
+.names constant_wire_0 f_u_cla4_and5_constant_wire_0
+1 1
+.names f_u_cla4_and5_f_u_cla4_pg_logic0_y0 f_u_cla4_and5_constant_wire_0 f_u_cla4_and5_y0
+11 1
+.names f_u_cla4_pg_logic1_y0 f_u_cla4_and6_f_u_cla4_pg_logic1_y0
+1 1
+.names constant_wire_0 f_u_cla4_and6_constant_wire_0
+1 1
+.names f_u_cla4_and6_f_u_cla4_pg_logic1_y0 f_u_cla4_and6_constant_wire_0 f_u_cla4_and6_y0
+11 1
+.names f_u_cla4_and6_y0 f_u_cla4_and7_f_u_cla4_and6_y0
+1 1
+.names f_u_cla4_and5_y0 f_u_cla4_and7_f_u_cla4_and5_y0
+1 1
+.names f_u_cla4_and7_f_u_cla4_and6_y0 f_u_cla4_and7_f_u_cla4_and5_y0 f_u_cla4_and7_y0
+11 1
+.names f_u_cla4_pg_logic2_y0 f_u_cla4_and8_f_u_cla4_pg_logic2_y0
+1 1
+.names constant_wire_0 f_u_cla4_and8_constant_wire_0
+1 1
+.names f_u_cla4_and8_f_u_cla4_pg_logic2_y0 f_u_cla4_and8_constant_wire_0 f_u_cla4_and8_y0
+11 1
+.names f_u_cla4_and8_y0 f_u_cla4_and9_f_u_cla4_and8_y0
+1 1
+.names f_u_cla4_and7_y0 f_u_cla4_and9_f_u_cla4_and7_y0
+1 1
+.names f_u_cla4_and9_f_u_cla4_and8_y0 f_u_cla4_and9_f_u_cla4_and7_y0 f_u_cla4_and9_y0
+11 1
+.names f_u_cla4_pg_logic1_y0 f_u_cla4_and10_f_u_cla4_pg_logic1_y0
+1 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_and10_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and10_f_u_cla4_pg_logic1_y0 f_u_cla4_and10_f_u_cla4_pg_logic0_y1 f_u_cla4_and10_y0
+11 1
+.names f_u_cla4_pg_logic2_y0 f_u_cla4_and11_f_u_cla4_pg_logic2_y0
+1 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_and11_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and11_f_u_cla4_pg_logic2_y0 f_u_cla4_and11_f_u_cla4_pg_logic0_y1 f_u_cla4_and11_y0
+11 1
+.names f_u_cla4_and11_y0 f_u_cla4_and12_f_u_cla4_and11_y0
+1 1
+.names f_u_cla4_and10_y0 f_u_cla4_and12_f_u_cla4_and10_y0
+1 1
+.names f_u_cla4_and12_f_u_cla4_and11_y0 f_u_cla4_and12_f_u_cla4_and10_y0 f_u_cla4_and12_y0
+11 1
+.names f_u_cla4_pg_logic2_y0 f_u_cla4_and13_f_u_cla4_pg_logic2_y0
+1 1
+.names f_u_cla4_pg_logic1_y1 f_u_cla4_and13_f_u_cla4_pg_logic1_y1
+1 1
+.names f_u_cla4_and13_f_u_cla4_pg_logic2_y0 f_u_cla4_and13_f_u_cla4_pg_logic1_y1 f_u_cla4_and13_y0
+11 1
+.names f_u_cla4_and13_y0 f_u_cla4_or3_f_u_cla4_and13_y0
+1 1
+.names f_u_cla4_and9_y0 f_u_cla4_or3_f_u_cla4_and9_y0
+1 1
+.names f_u_cla4_or3_f_u_cla4_and13_y0 f_u_cla4_or3_f_u_cla4_and9_y0 f_u_cla4_or3_y0
+1- 1
+-1 1
+.names f_u_cla4_or3_y0 f_u_cla4_or4_f_u_cla4_or3_y0
+1 1
+.names f_u_cla4_and12_y0 f_u_cla4_or4_f_u_cla4_and12_y0
+1 1
+.names f_u_cla4_or4_f_u_cla4_or3_y0 f_u_cla4_or4_f_u_cla4_and12_y0 f_u_cla4_or4_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic2_y1 f_u_cla4_or5_f_u_cla4_pg_logic2_y1
+1 1
+.names f_u_cla4_or4_y0 f_u_cla4_or5_f_u_cla4_or4_y0
+1 1
+.names f_u_cla4_or5_f_u_cla4_pg_logic2_y1 f_u_cla4_or5_f_u_cla4_or4_y0 f_u_cla4_or5_y0
+1- 1
+-1 1
+.names a_3 f_u_cla4_pg_logic3_a_3
+1 1
+.names b_3 f_u_cla4_pg_logic3_b_3
+1 1
+.names f_u_cla4_pg_logic3_a_3 f_u_cla4_pg_logic3_b_3 f_u_cla4_pg_logic3_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic3_a_3 f_u_cla4_pg_logic3_b_3 f_u_cla4_pg_logic3_y1
+11 1
+.names f_u_cla4_pg_logic3_a_3 f_u_cla4_pg_logic3_b_3 f_u_cla4_pg_logic3_y2
+01 1
+10 1
+.names f_u_cla4_pg_logic3_y2 f_u_cla4_xor3_f_u_cla4_pg_logic3_y2
+1 1
+.names f_u_cla4_or5_y0 f_u_cla4_xor3_f_u_cla4_or5_y0
+1 1
+.names f_u_cla4_xor3_f_u_cla4_pg_logic3_y2 f_u_cla4_xor3_f_u_cla4_or5_y0 f_u_cla4_xor3_y0
+01 1
+10 1
+.names f_u_cla4_pg_logic0_y0 f_u_cla4_and14_f_u_cla4_pg_logic0_y0
+1 1
+.names constant_wire_0 f_u_cla4_and14_constant_wire_0
+1 1
+.names f_u_cla4_and14_f_u_cla4_pg_logic0_y0 f_u_cla4_and14_constant_wire_0 f_u_cla4_and14_y0
+11 1
+.names f_u_cla4_pg_logic1_y0 f_u_cla4_and15_f_u_cla4_pg_logic1_y0
+1 1
+.names constant_wire_0 f_u_cla4_and15_constant_wire_0
+1 1
+.names f_u_cla4_and15_f_u_cla4_pg_logic1_y0 f_u_cla4_and15_constant_wire_0 f_u_cla4_and15_y0
+11 1
+.names f_u_cla4_and15_y0 f_u_cla4_and16_f_u_cla4_and15_y0
+1 1
+.names f_u_cla4_and14_y0 f_u_cla4_and16_f_u_cla4_and14_y0
+1 1
+.names f_u_cla4_and16_f_u_cla4_and15_y0 f_u_cla4_and16_f_u_cla4_and14_y0 f_u_cla4_and16_y0
+11 1
+.names f_u_cla4_pg_logic2_y0 f_u_cla4_and17_f_u_cla4_pg_logic2_y0
+1 1
+.names constant_wire_0 f_u_cla4_and17_constant_wire_0
+1 1
+.names f_u_cla4_and17_f_u_cla4_pg_logic2_y0 f_u_cla4_and17_constant_wire_0 f_u_cla4_and17_y0
+11 1
+.names f_u_cla4_and17_y0 f_u_cla4_and18_f_u_cla4_and17_y0
+1 1
+.names f_u_cla4_and16_y0 f_u_cla4_and18_f_u_cla4_and16_y0
+1 1
+.names f_u_cla4_and18_f_u_cla4_and17_y0 f_u_cla4_and18_f_u_cla4_and16_y0 f_u_cla4_and18_y0
+11 1
+.names f_u_cla4_pg_logic3_y0 f_u_cla4_and19_f_u_cla4_pg_logic3_y0
+1 1
+.names constant_wire_0 f_u_cla4_and19_constant_wire_0
+1 1
+.names f_u_cla4_and19_f_u_cla4_pg_logic3_y0 f_u_cla4_and19_constant_wire_0 f_u_cla4_and19_y0
+11 1
+.names f_u_cla4_and19_y0 f_u_cla4_and20_f_u_cla4_and19_y0
+1 1
+.names f_u_cla4_and18_y0 f_u_cla4_and20_f_u_cla4_and18_y0
+1 1
+.names f_u_cla4_and20_f_u_cla4_and19_y0 f_u_cla4_and20_f_u_cla4_and18_y0 f_u_cla4_and20_y0
+11 1
+.names f_u_cla4_pg_logic1_y0 f_u_cla4_and21_f_u_cla4_pg_logic1_y0
+1 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_and21_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and21_f_u_cla4_pg_logic1_y0 f_u_cla4_and21_f_u_cla4_pg_logic0_y1 f_u_cla4_and21_y0
+11 1
+.names f_u_cla4_pg_logic2_y0 f_u_cla4_and22_f_u_cla4_pg_logic2_y0
+1 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_and22_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and22_f_u_cla4_pg_logic2_y0 f_u_cla4_and22_f_u_cla4_pg_logic0_y1 f_u_cla4_and22_y0
+11 1
+.names f_u_cla4_and22_y0 f_u_cla4_and23_f_u_cla4_and22_y0
+1 1
+.names f_u_cla4_and21_y0 f_u_cla4_and23_f_u_cla4_and21_y0
+1 1
+.names f_u_cla4_and23_f_u_cla4_and22_y0 f_u_cla4_and23_f_u_cla4_and21_y0 f_u_cla4_and23_y0
+11 1
+.names f_u_cla4_pg_logic3_y0 f_u_cla4_and24_f_u_cla4_pg_logic3_y0
+1 1
+.names f_u_cla4_pg_logic0_y1 f_u_cla4_and24_f_u_cla4_pg_logic0_y1
+1 1
+.names f_u_cla4_and24_f_u_cla4_pg_logic3_y0 f_u_cla4_and24_f_u_cla4_pg_logic0_y1 f_u_cla4_and24_y0
+11 1
+.names f_u_cla4_and24_y0 f_u_cla4_and25_f_u_cla4_and24_y0
+1 1
+.names f_u_cla4_and23_y0 f_u_cla4_and25_f_u_cla4_and23_y0
+1 1
+.names f_u_cla4_and25_f_u_cla4_and24_y0 f_u_cla4_and25_f_u_cla4_and23_y0 f_u_cla4_and25_y0
+11 1
+.names f_u_cla4_pg_logic2_y0 f_u_cla4_and26_f_u_cla4_pg_logic2_y0
+1 1
+.names f_u_cla4_pg_logic1_y1 f_u_cla4_and26_f_u_cla4_pg_logic1_y1
+1 1
+.names f_u_cla4_and26_f_u_cla4_pg_logic2_y0 f_u_cla4_and26_f_u_cla4_pg_logic1_y1 f_u_cla4_and26_y0
+11 1
+.names f_u_cla4_pg_logic3_y0 f_u_cla4_and27_f_u_cla4_pg_logic3_y0
+1 1
+.names f_u_cla4_pg_logic1_y1 f_u_cla4_and27_f_u_cla4_pg_logic1_y1
+1 1
+.names f_u_cla4_and27_f_u_cla4_pg_logic3_y0 f_u_cla4_and27_f_u_cla4_pg_logic1_y1 f_u_cla4_and27_y0
+11 1
+.names f_u_cla4_and27_y0 f_u_cla4_and28_f_u_cla4_and27_y0
+1 1
+.names f_u_cla4_and26_y0 f_u_cla4_and28_f_u_cla4_and26_y0
+1 1
+.names f_u_cla4_and28_f_u_cla4_and27_y0 f_u_cla4_and28_f_u_cla4_and26_y0 f_u_cla4_and28_y0
+11 1
+.names f_u_cla4_pg_logic3_y0 f_u_cla4_and29_f_u_cla4_pg_logic3_y0
+1 1
+.names f_u_cla4_pg_logic2_y1 f_u_cla4_and29_f_u_cla4_pg_logic2_y1
+1 1
+.names f_u_cla4_and29_f_u_cla4_pg_logic3_y0 f_u_cla4_and29_f_u_cla4_pg_logic2_y1 f_u_cla4_and29_y0
+11 1
+.names f_u_cla4_and29_y0 f_u_cla4_or6_f_u_cla4_and29_y0
+1 1
+.names f_u_cla4_and20_y0 f_u_cla4_or6_f_u_cla4_and20_y0
+1 1
+.names f_u_cla4_or6_f_u_cla4_and29_y0 f_u_cla4_or6_f_u_cla4_and20_y0 f_u_cla4_or6_y0
+1- 1
+-1 1
+.names f_u_cla4_or6_y0 f_u_cla4_or7_f_u_cla4_or6_y0
+1 1
+.names f_u_cla4_and25_y0 f_u_cla4_or7_f_u_cla4_and25_y0
+1 1
+.names f_u_cla4_or7_f_u_cla4_or6_y0 f_u_cla4_or7_f_u_cla4_and25_y0 f_u_cla4_or7_y0
+1- 1
+-1 1
+.names f_u_cla4_or7_y0 f_u_cla4_or8_f_u_cla4_or7_y0
+1 1
+.names f_u_cla4_and28_y0 f_u_cla4_or8_f_u_cla4_and28_y0
+1 1
+.names f_u_cla4_or8_f_u_cla4_or7_y0 f_u_cla4_or8_f_u_cla4_and28_y0 f_u_cla4_or8_y0
+1- 1
+-1 1
+.names f_u_cla4_pg_logic3_y1 f_u_cla4_or9_f_u_cla4_pg_logic3_y1
+1 1
+.names f_u_cla4_or8_y0 f_u_cla4_or9_f_u_cla4_or8_y0
+1 1
+.names f_u_cla4_or9_f_u_cla4_pg_logic3_y1 f_u_cla4_or9_f_u_cla4_or8_y0 f_u_cla4_or9_y0
+1- 1
+-1 1
+.names f_u_cla4_xor0_y0 out[0]
+1 1
+.names f_u_cla4_xor1_y0 out[1]
+1 1
+.names f_u_cla4_xor2_y0 out[2]
+1 1
+.names f_u_cla4_xor3_y0 out[3]
+1 1
+.names f_u_cla4_or9_y0 out[4]
+1 1
+.end

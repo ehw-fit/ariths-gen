@@ -1,0 +1,164 @@
+.model f_s_pg_rca4
+.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs out[0] out[1] out[2] out[3] out[4]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names a_0 constant_wire_value_0_a_0
+1 1
+.names b_0 constant_wire_value_0_b_0
+1 1
+.names constant_wire_value_0_a_0 constant_wire_value_0_b_0 constant_wire_value_0_y0
+01 1
+10 1
+.names constant_wire_value_0_a_0 constant_wire_value_0_b_0 constant_wire_value_0_y1
+00 1
+11 1
+.names constant_wire_value_0_y0 constant_wire_value_0_y1 constant_wire_0
+00 1
+.names a_0 f_s_pg_rca4_fa0_a_0
+1 1
+.names b_0 f_s_pg_rca4_fa0_b_0
+1 1
+.names constant_wire_0 f_s_pg_rca4_fa0_constant_wire_0
+1 1
+.names f_s_pg_rca4_fa0_a_0 f_s_pg_rca4_fa0_b_0 f_s_pg_rca4_fa0_y0
+01 1
+10 1
+.names f_s_pg_rca4_fa0_a_0 f_s_pg_rca4_fa0_b_0 f_s_pg_rca4_fa0_y1
+11 1
+.names f_s_pg_rca4_fa0_y0 f_s_pg_rca4_fa0_constant_wire_0 f_s_pg_rca4_fa0_y2
+01 1
+10 1
+.names constant_wire_0 f_s_pg_rca4_and0_constant_wire_0
+1 1
+.names f_s_pg_rca4_fa0_y0 f_s_pg_rca4_and0_f_s_pg_rca4_fa0_y0
+1 1
+.names f_s_pg_rca4_and0_constant_wire_0 f_s_pg_rca4_and0_f_s_pg_rca4_fa0_y0 f_s_pg_rca4_and0_y0
+11 1
+.names f_s_pg_rca4_and0_y0 f_s_pg_rca4_or0_f_s_pg_rca4_and0_y0
+1 1
+.names f_s_pg_rca4_fa0_y1 f_s_pg_rca4_or0_f_s_pg_rca4_fa0_y1
+1 1
+.names f_s_pg_rca4_or0_f_s_pg_rca4_and0_y0 f_s_pg_rca4_or0_f_s_pg_rca4_fa0_y1 f_s_pg_rca4_or0_y0
+1- 1
+-1 1
+.names a_1 f_s_pg_rca4_fa1_a_1
+1 1
+.names b_1 f_s_pg_rca4_fa1_b_1
+1 1
+.names f_s_pg_rca4_or0_y0 f_s_pg_rca4_fa1_f_s_pg_rca4_or0_y0
+1 1
+.names f_s_pg_rca4_fa1_a_1 f_s_pg_rca4_fa1_b_1 f_s_pg_rca4_fa1_y0
+01 1
+10 1
+.names f_s_pg_rca4_fa1_a_1 f_s_pg_rca4_fa1_b_1 f_s_pg_rca4_fa1_y1
+11 1
+.names f_s_pg_rca4_fa1_y0 f_s_pg_rca4_fa1_f_s_pg_rca4_or0_y0 f_s_pg_rca4_fa1_y2
+01 1
+10 1
+.names f_s_pg_rca4_or0_y0 f_s_pg_rca4_and1_f_s_pg_rca4_or0_y0
+1 1
+.names f_s_pg_rca4_fa1_y0 f_s_pg_rca4_and1_f_s_pg_rca4_fa1_y0
+1 1
+.names f_s_pg_rca4_and1_f_s_pg_rca4_or0_y0 f_s_pg_rca4_and1_f_s_pg_rca4_fa1_y0 f_s_pg_rca4_and1_y0
+11 1
+.names f_s_pg_rca4_and1_y0 f_s_pg_rca4_or1_f_s_pg_rca4_and1_y0
+1 1
+.names f_s_pg_rca4_fa1_y1 f_s_pg_rca4_or1_f_s_pg_rca4_fa1_y1
+1 1
+.names f_s_pg_rca4_or1_f_s_pg_rca4_and1_y0 f_s_pg_rca4_or1_f_s_pg_rca4_fa1_y1 f_s_pg_rca4_or1_y0
+1- 1
+-1 1
+.names a_2 f_s_pg_rca4_fa2_a_2
+1 1
+.names b_2 f_s_pg_rca4_fa2_b_2
+1 1
+.names f_s_pg_rca4_or1_y0 f_s_pg_rca4_fa2_f_s_pg_rca4_or1_y0
+1 1
+.names f_s_pg_rca4_fa2_a_2 f_s_pg_rca4_fa2_b_2 f_s_pg_rca4_fa2_y0
+01 1
+10 1
+.names f_s_pg_rca4_fa2_a_2 f_s_pg_rca4_fa2_b_2 f_s_pg_rca4_fa2_y1
+11 1
+.names f_s_pg_rca4_fa2_y0 f_s_pg_rca4_fa2_f_s_pg_rca4_or1_y0 f_s_pg_rca4_fa2_y2
+01 1
+10 1
+.names f_s_pg_rca4_or1_y0 f_s_pg_rca4_and2_f_s_pg_rca4_or1_y0
+1 1
+.names f_s_pg_rca4_fa2_y0 f_s_pg_rca4_and2_f_s_pg_rca4_fa2_y0
+1 1
+.names f_s_pg_rca4_and2_f_s_pg_rca4_or1_y0 f_s_pg_rca4_and2_f_s_pg_rca4_fa2_y0 f_s_pg_rca4_and2_y0
+11 1
+.names f_s_pg_rca4_and2_y0 f_s_pg_rca4_or2_f_s_pg_rca4_and2_y0
+1 1
+.names f_s_pg_rca4_fa2_y1 f_s_pg_rca4_or2_f_s_pg_rca4_fa2_y1
+1 1
+.names f_s_pg_rca4_or2_f_s_pg_rca4_and2_y0 f_s_pg_rca4_or2_f_s_pg_rca4_fa2_y1 f_s_pg_rca4_or2_y0
+1- 1
+-1 1
+.names a_3 f_s_pg_rca4_fa3_a_3
+1 1
+.names b_3 f_s_pg_rca4_fa3_b_3
+1 1
+.names f_s_pg_rca4_or2_y0 f_s_pg_rca4_fa3_f_s_pg_rca4_or2_y0
+1 1
+.names f_s_pg_rca4_fa3_a_3 f_s_pg_rca4_fa3_b_3 f_s_pg_rca4_fa3_y0
+01 1
+10 1
+.names f_s_pg_rca4_fa3_a_3 f_s_pg_rca4_fa3_b_3 f_s_pg_rca4_fa3_y1
+11 1
+.names f_s_pg_rca4_fa3_y0 f_s_pg_rca4_fa3_f_s_pg_rca4_or2_y0 f_s_pg_rca4_fa3_y2
+01 1
+10 1
+.names f_s_pg_rca4_or2_y0 f_s_pg_rca4_and3_f_s_pg_rca4_or2_y0
+1 1
+.names f_s_pg_rca4_fa3_y0 f_s_pg_rca4_and3_f_s_pg_rca4_fa3_y0
+1 1
+.names f_s_pg_rca4_and3_f_s_pg_rca4_or2_y0 f_s_pg_rca4_and3_f_s_pg_rca4_fa3_y0 f_s_pg_rca4_and3_y0
+11 1
+.names f_s_pg_rca4_and3_y0 f_s_pg_rca4_or3_f_s_pg_rca4_and3_y0
+1 1
+.names f_s_pg_rca4_fa3_y1 f_s_pg_rca4_or3_f_s_pg_rca4_fa3_y1
+1 1
+.names f_s_pg_rca4_or3_f_s_pg_rca4_and3_y0 f_s_pg_rca4_or3_f_s_pg_rca4_fa3_y1 f_s_pg_rca4_or3_y0
+1- 1
+-1 1
+.names a_3 f_s_pg_rca4_xor0_a_3
+1 1
+.names b_3 f_s_pg_rca4_xor0_b_3
+1 1
+.names f_s_pg_rca4_xor0_a_3 f_s_pg_rca4_xor0_b_3 f_s_pg_rca4_xor0_y0
+01 1
+10 1
+.names f_s_pg_rca4_xor0_y0 f_s_pg_rca4_xor1_f_s_pg_rca4_xor0_y0
+1 1
+.names f_s_pg_rca4_or3_y0 f_s_pg_rca4_xor1_f_s_pg_rca4_or3_y0
+1 1
+.names f_s_pg_rca4_xor1_f_s_pg_rca4_xor0_y0 f_s_pg_rca4_xor1_f_s_pg_rca4_or3_y0 f_s_pg_rca4_xor1_y0
+01 1
+10 1
+.names f_s_pg_rca4_fa0_y2 out[0]
+1 1
+.names f_s_pg_rca4_fa1_y2 out[1]
+1 1
+.names f_s_pg_rca4_fa2_y2 out[2]
+1 1
+.names f_s_pg_rca4_fa3_y2 out[3]
+1 1
+.names f_s_pg_rca4_xor1_y0 out[4]
+1 1
+.end

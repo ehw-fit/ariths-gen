@@ -1,0 +1,196 @@
+.model f_s_rca8
+.inputs  a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8]
+.names a[0] a_0
+1 1
+.names a[1] a_1
+1 1
+.names a[2] a_2
+1 1
+.names a[3] a_3
+1 1
+.names a[4] a_4
+1 1
+.names a[5] a_5
+1 1
+.names a[6] a_6
+1 1
+.names a[7] a_7
+1 1
+.names b[0] b_0
+1 1
+.names b[1] b_1
+1 1
+.names b[2] b_2
+1 1
+.names b[3] b_3
+1 1
+.names b[4] b_4
+1 1
+.names b[5] b_5
+1 1
+.names b[6] b_6
+1 1
+.names b[7] b_7
+1 1
+.names a_0 f_s_rca8_ha_a_0
+1 1
+.names b_0 f_s_rca8_ha_b_0
+1 1
+.names f_s_rca8_ha_a_0 f_s_rca8_ha_b_0 f_s_rca8_ha_y0
+01 1
+10 1
+.names f_s_rca8_ha_a_0 f_s_rca8_ha_b_0 f_s_rca8_ha_y1
+11 1
+.names a_1 f_s_rca8_fa1_a_1
+1 1
+.names b_1 f_s_rca8_fa1_b_1
+1 1
+.names f_s_rca8_ha_y1 f_s_rca8_fa1_f_s_rca8_ha_y1
+1 1
+.names f_s_rca8_fa1_a_1 f_s_rca8_fa1_b_1 f_s_rca8_fa1_y0
+01 1
+10 1
+.names f_s_rca8_fa1_a_1 f_s_rca8_fa1_b_1 f_s_rca8_fa1_y1
+11 1
+.names f_s_rca8_fa1_y0 f_s_rca8_fa1_f_s_rca8_ha_y1 f_s_rca8_fa1_y2
+01 1
+10 1
+.names f_s_rca8_fa1_y0 f_s_rca8_fa1_f_s_rca8_ha_y1 f_s_rca8_fa1_y3
+11 1
+.names f_s_rca8_fa1_y1 f_s_rca8_fa1_y3 f_s_rca8_fa1_y4
+1- 1
+-1 1
+.names a_2 f_s_rca8_fa2_a_2
+1 1
+.names b_2 f_s_rca8_fa2_b_2
+1 1
+.names f_s_rca8_fa1_y4 f_s_rca8_fa2_f_s_rca8_fa1_y4
+1 1
+.names f_s_rca8_fa2_a_2 f_s_rca8_fa2_b_2 f_s_rca8_fa2_y0
+01 1
+10 1
+.names f_s_rca8_fa2_a_2 f_s_rca8_fa2_b_2 f_s_rca8_fa2_y1
+11 1
+.names f_s_rca8_fa2_y0 f_s_rca8_fa2_f_s_rca8_fa1_y4 f_s_rca8_fa2_y2
+01 1
+10 1
+.names f_s_rca8_fa2_y0 f_s_rca8_fa2_f_s_rca8_fa1_y4 f_s_rca8_fa2_y3
+11 1
+.names f_s_rca8_fa2_y1 f_s_rca8_fa2_y3 f_s_rca8_fa2_y4
+1- 1
+-1 1
+.names a_3 f_s_rca8_fa3_a_3
+1 1
+.names b_3 f_s_rca8_fa3_b_3
+1 1
+.names f_s_rca8_fa2_y4 f_s_rca8_fa3_f_s_rca8_fa2_y4
+1 1
+.names f_s_rca8_fa3_a_3 f_s_rca8_fa3_b_3 f_s_rca8_fa3_y0
+01 1
+10 1
+.names f_s_rca8_fa3_a_3 f_s_rca8_fa3_b_3 f_s_rca8_fa3_y1
+11 1
+.names f_s_rca8_fa3_y0 f_s_rca8_fa3_f_s_rca8_fa2_y4 f_s_rca8_fa3_y2
+01 1
+10 1
+.names f_s_rca8_fa3_y0 f_s_rca8_fa3_f_s_rca8_fa2_y4 f_s_rca8_fa3_y3
+11 1
+.names f_s_rca8_fa3_y1 f_s_rca8_fa3_y3 f_s_rca8_fa3_y4
+1- 1
+-1 1
+.names a_4 f_s_rca8_fa4_a_4
+1 1
+.names b_4 f_s_rca8_fa4_b_4
+1 1
+.names f_s_rca8_fa3_y4 f_s_rca8_fa4_f_s_rca8_fa3_y4
+1 1
+.names f_s_rca8_fa4_a_4 f_s_rca8_fa4_b_4 f_s_rca8_fa4_y0
+01 1
+10 1
+.names f_s_rca8_fa4_a_4 f_s_rca8_fa4_b_4 f_s_rca8_fa4_y1
+11 1
+.names f_s_rca8_fa4_y0 f_s_rca8_fa4_f_s_rca8_fa3_y4 f_s_rca8_fa4_y2
+01 1
+10 1
+.names f_s_rca8_fa4_y0 f_s_rca8_fa4_f_s_rca8_fa3_y4 f_s_rca8_fa4_y3
+11 1
+.names f_s_rca8_fa4_y1 f_s_rca8_fa4_y3 f_s_rca8_fa4_y4
+1- 1
+-1 1
+.names a_5 f_s_rca8_fa5_a_5
+1 1
+.names b_5 f_s_rca8_fa5_b_5
+1 1
+.names f_s_rca8_fa4_y4 f_s_rca8_fa5_f_s_rca8_fa4_y4
+1 1
+.names f_s_rca8_fa5_a_5 f_s_rca8_fa5_b_5 f_s_rca8_fa5_y0
+01 1
+10 1
+.names f_s_rca8_fa5_a_5 f_s_rca8_fa5_b_5 f_s_rca8_fa5_y1
+11 1
+.names f_s_rca8_fa5_y0 f_s_rca8_fa5_f_s_rca8_fa4_y4 f_s_rca8_fa5_y2
+01 1
+10 1
+.names f_s_rca8_fa5_y0 f_s_rca8_fa5_f_s_rca8_fa4_y4 f_s_rca8_fa5_y3
+11 1
+.names f_s_rca8_fa5_y1 f_s_rca8_fa5_y3 f_s_rca8_fa5_y4
+1- 1
+-1 1
+.names a_6 f_s_rca8_fa6_a_6
+1 1
+.names b_6 f_s_rca8_fa6_b_6
+1 1
+.names f_s_rca8_fa5_y4 f_s_rca8_fa6_f_s_rca8_fa5_y4
+1 1
+.names f_s_rca8_fa6_a_6 f_s_rca8_fa6_b_6 f_s_rca8_fa6_y0
+01 1
+10 1
+.names f_s_rca8_fa6_a_6 f_s_rca8_fa6_b_6 f_s_rca8_fa6_y1
+11 1
+.names f_s_rca8_fa6_y0 f_s_rca8_fa6_f_s_rca8_fa5_y4 f_s_rca8_fa6_y2
+01 1
+10 1
+.names f_s_rca8_fa6_y0 f_s_rca8_fa6_f_s_rca8_fa5_y4 f_s_rca8_fa6_y3
+11 1
+.names f_s_rca8_fa6_y1 f_s_rca8_fa6_y3 f_s_rca8_fa6_y4
+1- 1
+-1 1
+.names a_7 f_s_rca8_fa7_a_7
+1 1
+.names b_7 f_s_rca8_fa7_b_7
+1 1
+.names f_s_rca8_fa6_y4 f_s_rca8_fa7_f_s_rca8_fa6_y4
+1 1
+.names f_s_rca8_fa7_a_7 f_s_rca8_fa7_b_7 f_s_rca8_fa7_y0
+01 1
+10 1
+.names f_s_rca8_fa7_a_7 f_s_rca8_fa7_b_7 f_s_rca8_fa7_y1
+11 1
+.names f_s_rca8_fa7_y0 f_s_rca8_fa7_f_s_rca8_fa6_y4 f_s_rca8_fa7_y2
+01 1
+10 1
+.names f_s_rca8_fa7_y0 f_s_rca8_fa7_f_s_rca8_fa6_y4 f_s_rca8_fa7_y3
+11 1
+.names f_s_rca8_fa7_y1 f_s_rca8_fa7_y3 f_s_rca8_fa7_y4
+1- 1
+-1 1
+.names f_s_rca8_ha_y0 out[0]
+1 1
+.names f_s_rca8_fa1_y2 out[1]
+1 1
+.names f_s_rca8_fa2_y2 out[2]
+1 1
+.names f_s_rca8_fa3_y2 out[3]
+1 1
+.names f_s_rca8_fa4_y2 out[4]
+1 1
+.names f_s_rca8_fa5_y2 out[5]
+1 1
+.names f_s_rca8_fa6_y2 out[6]
+1 1
+.names f_s_rca8_fa7_y2 out[7]
+1 1
+.names f_s_rca8_fa7_y4 out[8]
+1 1
+.end
