@@ -21,7 +21,7 @@
 1 1
 .names b_0 constant_wire_value_1_b_0
 1 1
-.subckt constant_wire_value_1 a=constant_wire_value_1_a_0 b=constant_wire_value_1_b_0 out[0]=constant_wire_1
+.subckt constant_wire_value_1 a=constant_wire_value_1_a_0 b=constant_wire_value_1_b_0 constant_wire_1=constant_wire_1
 .names a_0 h_s_arrmul4_and0_0_a_0
 1 1
 .names b_0 h_s_arrmul4_and0_0_b_0
@@ -51,7 +51,7 @@
 1 1
 .names h_s_arrmul4_and1_0_y0 h_s_arrmul4_ha0_1_h_s_arrmul4_and1_0_y0
 1 1
-.subckt ha a=h_s_arrmul4_ha0_1_h_s_arrmul4_and0_1_y0 b=h_s_arrmul4_ha0_1_h_s_arrmul4_and1_0_y0 out[0]=h_s_arrmul4_ha0_1_y0 out[1]=h_s_arrmul4_ha0_1_y1
+.subckt ha a=h_s_arrmul4_ha0_1_h_s_arrmul4_and0_1_y0 b=h_s_arrmul4_ha0_1_h_s_arrmul4_and1_0_y0 ha_y0=h_s_arrmul4_ha0_1_y0 ha_y1=h_s_arrmul4_ha0_1_y1
 .names a_1 h_s_arrmul4_and1_1_a_1
 1 1
 .names b_1 h_s_arrmul4_and1_1_b_1
@@ -63,7 +63,7 @@
 1 1
 .names h_s_arrmul4_ha0_1_y1 h_s_arrmul4_fa1_1_h_s_arrmul4_ha0_1_y1
 1 1
-.subckt fa a=h_s_arrmul4_fa1_1_h_s_arrmul4_and1_1_y0 b=h_s_arrmul4_fa1_1_h_s_arrmul4_and2_0_y0 cin=h_s_arrmul4_fa1_1_h_s_arrmul4_ha0_1_y1 out[0]=h_s_arrmul4_fa1_1_y2 out[1]=h_s_arrmul4_fa1_1_y4
+.subckt fa a=h_s_arrmul4_fa1_1_h_s_arrmul4_and1_1_y0 b=h_s_arrmul4_fa1_1_h_s_arrmul4_and2_0_y0 cin=h_s_arrmul4_fa1_1_h_s_arrmul4_ha0_1_y1 fa_y2=h_s_arrmul4_fa1_1_y2 fa_y4=h_s_arrmul4_fa1_1_y4
 .names a_2 h_s_arrmul4_and2_1_a_2
 1 1
 .names b_1 h_s_arrmul4_and2_1_b_1
@@ -75,7 +75,7 @@
 1 1
 .names h_s_arrmul4_fa1_1_y4 h_s_arrmul4_fa2_1_h_s_arrmul4_fa1_1_y4
 1 1
-.subckt fa a=h_s_arrmul4_fa2_1_h_s_arrmul4_and2_1_y0 b=h_s_arrmul4_fa2_1_h_s_arrmul4_nand3_0_y0 cin=h_s_arrmul4_fa2_1_h_s_arrmul4_fa1_1_y4 out[0]=h_s_arrmul4_fa2_1_y2 out[1]=h_s_arrmul4_fa2_1_y4
+.subckt fa a=h_s_arrmul4_fa2_1_h_s_arrmul4_and2_1_y0 b=h_s_arrmul4_fa2_1_h_s_arrmul4_nand3_0_y0 cin=h_s_arrmul4_fa2_1_h_s_arrmul4_fa1_1_y4 fa_y2=h_s_arrmul4_fa2_1_y2 fa_y4=h_s_arrmul4_fa2_1_y4
 .names a_3 h_s_arrmul4_nand3_1_a_3
 1 1
 .names b_1 h_s_arrmul4_nand3_1_b_1
@@ -87,7 +87,7 @@
 1 1
 .names h_s_arrmul4_fa2_1_y4 h_s_arrmul4_fa3_1_h_s_arrmul4_fa2_1_y4
 1 1
-.subckt fa a=h_s_arrmul4_fa3_1_h_s_arrmul4_nand3_1_y0 b=h_s_arrmul4_fa3_1_constant_wire_1 cin=h_s_arrmul4_fa3_1_h_s_arrmul4_fa2_1_y4 out[0]=h_s_arrmul4_fa3_1_y2 out[1]=h_s_arrmul4_fa3_1_y4
+.subckt fa a=h_s_arrmul4_fa3_1_h_s_arrmul4_nand3_1_y0 b=h_s_arrmul4_fa3_1_constant_wire_1 cin=h_s_arrmul4_fa3_1_h_s_arrmul4_fa2_1_y4 fa_y2=h_s_arrmul4_fa3_1_y2 fa_y4=h_s_arrmul4_fa3_1_y4
 .names a_0 h_s_arrmul4_and0_2_a_0
 1 1
 .names b_2 h_s_arrmul4_and0_2_b_2
@@ -97,7 +97,7 @@
 1 1
 .names h_s_arrmul4_fa1_1_y2 h_s_arrmul4_ha0_2_h_s_arrmul4_fa1_1_y2
 1 1
-.subckt ha a=h_s_arrmul4_ha0_2_h_s_arrmul4_and0_2_y0 b=h_s_arrmul4_ha0_2_h_s_arrmul4_fa1_1_y2 out[0]=h_s_arrmul4_ha0_2_y0 out[1]=h_s_arrmul4_ha0_2_y1
+.subckt ha a=h_s_arrmul4_ha0_2_h_s_arrmul4_and0_2_y0 b=h_s_arrmul4_ha0_2_h_s_arrmul4_fa1_1_y2 ha_y0=h_s_arrmul4_ha0_2_y0 ha_y1=h_s_arrmul4_ha0_2_y1
 .names a_1 h_s_arrmul4_and1_2_a_1
 1 1
 .names b_2 h_s_arrmul4_and1_2_b_2
@@ -109,7 +109,7 @@
 1 1
 .names h_s_arrmul4_ha0_2_y1 h_s_arrmul4_fa1_2_h_s_arrmul4_ha0_2_y1
 1 1
-.subckt fa a=h_s_arrmul4_fa1_2_h_s_arrmul4_and1_2_y0 b=h_s_arrmul4_fa1_2_h_s_arrmul4_fa2_1_y2 cin=h_s_arrmul4_fa1_2_h_s_arrmul4_ha0_2_y1 out[0]=h_s_arrmul4_fa1_2_y2 out[1]=h_s_arrmul4_fa1_2_y4
+.subckt fa a=h_s_arrmul4_fa1_2_h_s_arrmul4_and1_2_y0 b=h_s_arrmul4_fa1_2_h_s_arrmul4_fa2_1_y2 cin=h_s_arrmul4_fa1_2_h_s_arrmul4_ha0_2_y1 fa_y2=h_s_arrmul4_fa1_2_y2 fa_y4=h_s_arrmul4_fa1_2_y4
 .names a_2 h_s_arrmul4_and2_2_a_2
 1 1
 .names b_2 h_s_arrmul4_and2_2_b_2
@@ -121,7 +121,7 @@
 1 1
 .names h_s_arrmul4_fa1_2_y4 h_s_arrmul4_fa2_2_h_s_arrmul4_fa1_2_y4
 1 1
-.subckt fa a=h_s_arrmul4_fa2_2_h_s_arrmul4_and2_2_y0 b=h_s_arrmul4_fa2_2_h_s_arrmul4_fa3_1_y2 cin=h_s_arrmul4_fa2_2_h_s_arrmul4_fa1_2_y4 out[0]=h_s_arrmul4_fa2_2_y2 out[1]=h_s_arrmul4_fa2_2_y4
+.subckt fa a=h_s_arrmul4_fa2_2_h_s_arrmul4_and2_2_y0 b=h_s_arrmul4_fa2_2_h_s_arrmul4_fa3_1_y2 cin=h_s_arrmul4_fa2_2_h_s_arrmul4_fa1_2_y4 fa_y2=h_s_arrmul4_fa2_2_y2 fa_y4=h_s_arrmul4_fa2_2_y4
 .names a_3 h_s_arrmul4_nand3_2_a_3
 1 1
 .names b_2 h_s_arrmul4_nand3_2_b_2
@@ -133,7 +133,7 @@
 1 1
 .names h_s_arrmul4_fa2_2_y4 h_s_arrmul4_fa3_2_h_s_arrmul4_fa2_2_y4
 1 1
-.subckt fa a=h_s_arrmul4_fa3_2_h_s_arrmul4_nand3_2_y0 b=h_s_arrmul4_fa3_2_h_s_arrmul4_fa3_1_y4 cin=h_s_arrmul4_fa3_2_h_s_arrmul4_fa2_2_y4 out[0]=h_s_arrmul4_fa3_2_y2 out[1]=h_s_arrmul4_fa3_2_y4
+.subckt fa a=h_s_arrmul4_fa3_2_h_s_arrmul4_nand3_2_y0 b=h_s_arrmul4_fa3_2_h_s_arrmul4_fa3_1_y4 cin=h_s_arrmul4_fa3_2_h_s_arrmul4_fa2_2_y4 fa_y2=h_s_arrmul4_fa3_2_y2 fa_y4=h_s_arrmul4_fa3_2_y4
 .names a_0 h_s_arrmul4_nand0_3_a_0
 1 1
 .names b_3 h_s_arrmul4_nand0_3_b_3
@@ -143,7 +143,7 @@
 1 1
 .names h_s_arrmul4_fa1_2_y2 h_s_arrmul4_ha0_3_h_s_arrmul4_fa1_2_y2
 1 1
-.subckt ha a=h_s_arrmul4_ha0_3_h_s_arrmul4_nand0_3_y0 b=h_s_arrmul4_ha0_3_h_s_arrmul4_fa1_2_y2 out[0]=h_s_arrmul4_ha0_3_y0 out[1]=h_s_arrmul4_ha0_3_y1
+.subckt ha a=h_s_arrmul4_ha0_3_h_s_arrmul4_nand0_3_y0 b=h_s_arrmul4_ha0_3_h_s_arrmul4_fa1_2_y2 ha_y0=h_s_arrmul4_ha0_3_y0 ha_y1=h_s_arrmul4_ha0_3_y1
 .names a_1 h_s_arrmul4_nand1_3_a_1
 1 1
 .names b_3 h_s_arrmul4_nand1_3_b_3
@@ -155,7 +155,7 @@
 1 1
 .names h_s_arrmul4_ha0_3_y1 h_s_arrmul4_fa1_3_h_s_arrmul4_ha0_3_y1
 1 1
-.subckt fa a=h_s_arrmul4_fa1_3_h_s_arrmul4_nand1_3_y0 b=h_s_arrmul4_fa1_3_h_s_arrmul4_fa2_2_y2 cin=h_s_arrmul4_fa1_3_h_s_arrmul4_ha0_3_y1 out[0]=h_s_arrmul4_fa1_3_y2 out[1]=h_s_arrmul4_fa1_3_y4
+.subckt fa a=h_s_arrmul4_fa1_3_h_s_arrmul4_nand1_3_y0 b=h_s_arrmul4_fa1_3_h_s_arrmul4_fa2_2_y2 cin=h_s_arrmul4_fa1_3_h_s_arrmul4_ha0_3_y1 fa_y2=h_s_arrmul4_fa1_3_y2 fa_y4=h_s_arrmul4_fa1_3_y4
 .names a_2 h_s_arrmul4_nand2_3_a_2
 1 1
 .names b_3 h_s_arrmul4_nand2_3_b_3
@@ -167,7 +167,7 @@
 1 1
 .names h_s_arrmul4_fa1_3_y4 h_s_arrmul4_fa2_3_h_s_arrmul4_fa1_3_y4
 1 1
-.subckt fa a=h_s_arrmul4_fa2_3_h_s_arrmul4_nand2_3_y0 b=h_s_arrmul4_fa2_3_h_s_arrmul4_fa3_2_y2 cin=h_s_arrmul4_fa2_3_h_s_arrmul4_fa1_3_y4 out[0]=h_s_arrmul4_fa2_3_y2 out[1]=h_s_arrmul4_fa2_3_y4
+.subckt fa a=h_s_arrmul4_fa2_3_h_s_arrmul4_nand2_3_y0 b=h_s_arrmul4_fa2_3_h_s_arrmul4_fa3_2_y2 cin=h_s_arrmul4_fa2_3_h_s_arrmul4_fa1_3_y4 fa_y2=h_s_arrmul4_fa2_3_y2 fa_y4=h_s_arrmul4_fa2_3_y4
 .names a_3 h_s_arrmul4_and3_3_a_3
 1 1
 .names b_3 h_s_arrmul4_and3_3_b_3
@@ -179,7 +179,7 @@
 1 1
 .names h_s_arrmul4_fa2_3_y4 h_s_arrmul4_fa3_3_h_s_arrmul4_fa2_3_y4
 1 1
-.subckt fa a=h_s_arrmul4_fa3_3_h_s_arrmul4_and3_3_y0 b=h_s_arrmul4_fa3_3_h_s_arrmul4_fa3_2_y4 cin=h_s_arrmul4_fa3_3_h_s_arrmul4_fa2_3_y4 out[0]=h_s_arrmul4_fa3_3_y2 out[1]=h_s_arrmul4_fa3_3_y4
+.subckt fa a=h_s_arrmul4_fa3_3_h_s_arrmul4_and3_3_y0 b=h_s_arrmul4_fa3_3_h_s_arrmul4_fa3_2_y4 cin=h_s_arrmul4_fa3_3_h_s_arrmul4_fa2_3_y4 fa_y2=h_s_arrmul4_fa3_3_y2 fa_y4=h_s_arrmul4_fa3_3_y4
 .names h_s_arrmul4_fa3_3_y4 h_s_arrmul4_xor4_3_h_s_arrmul4_fa3_3_y4
 1 1
 .names constant_wire_1 h_s_arrmul4_xor4_3_constant_wire_1
@@ -205,7 +205,7 @@
 
 .model fa
 .inputs a b cin
-.outputs out[0] out[1]
+.outputs fa_y2 fa_y4
 .names a fa_a
 1 1
 .names b fa_b
@@ -217,30 +217,22 @@
 .subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
 .subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
 .subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
-.names fa_y2 out[0]
-1 1
-.names fa_y4 out[1]
-1 1
 .end
 
 .model ha
 .inputs a b
-.outputs out[0] out[1]
+.outputs ha_y0 ha_y1
 .names a ha_a
 1 1
 .names b ha_b
 1 1
 .subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
 .subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
-.names ha_y0 out[0]
-1 1
-.names ha_y1 out[1]
-1 1
 .end
 
 .model constant_wire_value_1
 .inputs a b
-.outputs out[0]
+.outputs constant_wire_1
 .names a constant_wire_value_1_a
 1 1
 .names b constant_wire_value_1_b
@@ -248,8 +240,6 @@
 .subckt xor_gate _a=constant_wire_value_1_a _b=constant_wire_value_1_b _y0=constant_wire_value_1_y0
 .subckt xnor_gate _a=constant_wire_value_1_a _b=constant_wire_value_1_b _y0=constant_wire_value_1_y1
 .subckt or_gate _a=constant_wire_value_1_y0 _b=constant_wire_value_1_y1 _y0=constant_wire_1
-.names constant_wire_1 out[0]
-1 1
 .end
 
 .model nand_gate

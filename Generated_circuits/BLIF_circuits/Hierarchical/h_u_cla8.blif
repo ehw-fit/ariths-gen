@@ -37,12 +37,12 @@
 1 1
 .names b_0 constant_wire_value_0_b_0
 1 1
-.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 out[0]=constant_wire_0
+.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 constant_wire_0=constant_wire_0
 .names a_0 h_u_cla8_pg_logic0_a_0
 1 1
 .names b_0 h_u_cla8_pg_logic0_b_0
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic0_a_0 b=h_u_cla8_pg_logic0_b_0 out[0]=h_u_cla8_pg_logic0_y0 out[1]=h_u_cla8_pg_logic0_y1 out[2]=h_u_cla8_pg_logic0_y2
+.subckt pg_logic a=h_u_cla8_pg_logic0_a_0 b=h_u_cla8_pg_logic0_b_0 pg_logic_y0=h_u_cla8_pg_logic0_y0 pg_logic_y1=h_u_cla8_pg_logic0_y1 pg_logic_y2=h_u_cla8_pg_logic0_y2
 .names h_u_cla8_pg_logic0_y2 h_u_cla8_xor0_h_u_cla8_pg_logic0_y2
 1 1
 .names constant_wire_0 h_u_cla8_xor0_constant_wire_0
@@ -62,7 +62,7 @@
 1 1
 .names b_1 h_u_cla8_pg_logic1_b_1
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic1_a_1 b=h_u_cla8_pg_logic1_b_1 out[0]=h_u_cla8_pg_logic1_y0 out[1]=h_u_cla8_pg_logic1_y1 out[2]=h_u_cla8_pg_logic1_y2
+.subckt pg_logic a=h_u_cla8_pg_logic1_a_1 b=h_u_cla8_pg_logic1_b_1 pg_logic_y0=h_u_cla8_pg_logic1_y0 pg_logic_y1=h_u_cla8_pg_logic1_y1 pg_logic_y2=h_u_cla8_pg_logic1_y2
 .names h_u_cla8_pg_logic1_y2 h_u_cla8_xor1_h_u_cla8_pg_logic1_y2
 1 1
 .names h_u_cla8_or0_y0 h_u_cla8_xor1_h_u_cla8_or0_y0
@@ -102,7 +102,7 @@
 1 1
 .names b_2 h_u_cla8_pg_logic2_b_2
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic2_a_2 b=h_u_cla8_pg_logic2_b_2 out[0]=h_u_cla8_pg_logic2_y0 out[1]=h_u_cla8_pg_logic2_y1 out[2]=h_u_cla8_pg_logic2_y2
+.subckt pg_logic a=h_u_cla8_pg_logic2_a_2 b=h_u_cla8_pg_logic2_b_2 pg_logic_y0=h_u_cla8_pg_logic2_y0 pg_logic_y1=h_u_cla8_pg_logic2_y1 pg_logic_y2=h_u_cla8_pg_logic2_y2
 .names h_u_cla8_pg_logic2_y2 h_u_cla8_xor2_h_u_cla8_pg_logic2_y2
 1 1
 .names h_u_cla8_or2_y0 h_u_cla8_xor2_h_u_cla8_or2_y0
@@ -172,7 +172,7 @@
 1 1
 .names b_3 h_u_cla8_pg_logic3_b_3
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic3_a_3 b=h_u_cla8_pg_logic3_b_3 out[0]=h_u_cla8_pg_logic3_y0 out[1]=h_u_cla8_pg_logic3_y1 out[2]=h_u_cla8_pg_logic3_y2
+.subckt pg_logic a=h_u_cla8_pg_logic3_a_3 b=h_u_cla8_pg_logic3_b_3 pg_logic_y0=h_u_cla8_pg_logic3_y0 pg_logic_y1=h_u_cla8_pg_logic3_y1 pg_logic_y2=h_u_cla8_pg_logic3_y2
 .names h_u_cla8_pg_logic3_y2 h_u_cla8_xor3_h_u_cla8_pg_logic3_y2
 1 1
 .names h_u_cla8_or5_y0 h_u_cla8_xor3_h_u_cla8_or5_y0
@@ -282,7 +282,7 @@
 1 1
 .names b_4 h_u_cla8_pg_logic4_b_4
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic4_a_4 b=h_u_cla8_pg_logic4_b_4 out[0]=h_u_cla8_pg_logic4_y0 out[1]=h_u_cla8_pg_logic4_y1 out[2]=h_u_cla8_pg_logic4_y2
+.subckt pg_logic a=h_u_cla8_pg_logic4_a_4 b=h_u_cla8_pg_logic4_b_4 pg_logic_y0=h_u_cla8_pg_logic4_y0 pg_logic_y1=h_u_cla8_pg_logic4_y1 pg_logic_y2=h_u_cla8_pg_logic4_y2
 .names h_u_cla8_pg_logic4_y2 h_u_cla8_xor4_h_u_cla8_pg_logic4_y2
 1 1
 .names h_u_cla8_or9_y0 h_u_cla8_xor4_h_u_cla8_or9_y0
@@ -442,7 +442,7 @@
 1 1
 .names b_5 h_u_cla8_pg_logic5_b_5
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic5_a_5 b=h_u_cla8_pg_logic5_b_5 out[0]=h_u_cla8_pg_logic5_y0 out[1]=h_u_cla8_pg_logic5_y1 out[2]=h_u_cla8_pg_logic5_y2
+.subckt pg_logic a=h_u_cla8_pg_logic5_a_5 b=h_u_cla8_pg_logic5_b_5 pg_logic_y0=h_u_cla8_pg_logic5_y0 pg_logic_y1=h_u_cla8_pg_logic5_y1 pg_logic_y2=h_u_cla8_pg_logic5_y2
 .names h_u_cla8_pg_logic5_y2 h_u_cla8_xor5_h_u_cla8_pg_logic5_y2
 1 1
 .names h_u_cla8_or14_y0 h_u_cla8_xor5_h_u_cla8_or14_y0
@@ -662,7 +662,7 @@
 1 1
 .names b_6 h_u_cla8_pg_logic6_b_6
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic6_a_6 b=h_u_cla8_pg_logic6_b_6 out[0]=h_u_cla8_pg_logic6_y0 out[1]=h_u_cla8_pg_logic6_y1 out[2]=h_u_cla8_pg_logic6_y2
+.subckt pg_logic a=h_u_cla8_pg_logic6_a_6 b=h_u_cla8_pg_logic6_b_6 pg_logic_y0=h_u_cla8_pg_logic6_y0 pg_logic_y1=h_u_cla8_pg_logic6_y1 pg_logic_y2=h_u_cla8_pg_logic6_y2
 .names h_u_cla8_pg_logic6_y2 h_u_cla8_xor6_h_u_cla8_pg_logic6_y2
 1 1
 .names h_u_cla8_or20_y0 h_u_cla8_xor6_h_u_cla8_or20_y0
@@ -952,7 +952,7 @@
 1 1
 .names b_7 h_u_cla8_pg_logic7_b_7
 1 1
-.subckt pg_logic a=h_u_cla8_pg_logic7_a_7 b=h_u_cla8_pg_logic7_b_7 out[0]=h_u_cla8_pg_logic7_y0 out[1]=h_u_cla8_pg_logic7_y1 out[2]=h_u_cla8_pg_logic7_y2
+.subckt pg_logic a=h_u_cla8_pg_logic7_a_7 b=h_u_cla8_pg_logic7_b_7 pg_logic_y0=h_u_cla8_pg_logic7_y0 pg_logic_y1=h_u_cla8_pg_logic7_y1 pg_logic_y2=h_u_cla8_pg_logic7_y2
 .names h_u_cla8_pg_logic7_y2 h_u_cla8_xor7_h_u_cla8_pg_logic7_y2
 1 1
 .names h_u_cla8_or27_y0 h_u_cla8_xor7_h_u_cla8_or27_y0
@@ -1340,7 +1340,7 @@
 
 .model pg_logic
 .inputs a b
-.outputs out[0] out[1] out[2]
+.outputs pg_logic_y0 pg_logic_y1 pg_logic_y2
 .names a pg_logic_a
 1 1
 .names b pg_logic_b
@@ -1348,17 +1348,11 @@
 .subckt or_gate _a=pg_logic_a _b=pg_logic_b _y0=pg_logic_y0
 .subckt and_gate _a=pg_logic_a _b=pg_logic_b _y0=pg_logic_y1
 .subckt xor_gate _a=pg_logic_a _b=pg_logic_b _y0=pg_logic_y2
-.names pg_logic_y0 out[0]
-1 1
-.names pg_logic_y1 out[1]
-1 1
-.names pg_logic_y2 out[2]
-1 1
 .end
 
 .model constant_wire_value_0
 .inputs a b
-.outputs out[0]
+.outputs constant_wire_0
 .names a constant_wire_value_0_a
 1 1
 .names b constant_wire_value_0_b
@@ -1366,8 +1360,6 @@
 .subckt xor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y0
 .subckt xnor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y1
 .subckt nor_gate _a=constant_wire_value_0_y0 _b=constant_wire_value_0_y1 _y0=constant_wire_0
-.names constant_wire_0 out[0]
-1 1
 .end
 
 .model and_gate

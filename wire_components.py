@@ -101,8 +101,8 @@ class bus():
         return "".join([w.get_assign_v(name=self.prefix, offset=self.bus.index(w), array=True) for w in self.bus])
 
     """ BLIF CODE GENERATION """
-    def get_wire_declaration_blif(self):
-        return "".join([w.get_declaration_blif(name=self.prefix, offset=self.bus.index(w), array=True) for w in self.bus])
+    def get_wire_declaration_blif(self, array: bool = True):
+        return "".join([w.get_declaration_blif(name=self.prefix, offset=self.bus.index(w), array=array) for w in self.bus])
 
     def get_wire_assign_blif(self, output: bool = False):
         return "".join([w.get_assign_blif(name=self.prefix+f"[{self.bus.index(w)}]", output=output) for w in self.bus])

@@ -37,7 +37,7 @@
 1 1
 .names b_0 constant_wire_value_1_b_0
 1 1
-.subckt constant_wire_value_1 a=constant_wire_value_1_a_0 b=constant_wire_value_1_b_0 out[0]=constant_wire_1
+.subckt constant_wire_value_1 a=constant_wire_value_1_a_0 b=constant_wire_value_1_b_0 constant_wire_1=constant_wire_1
 .names a_6 h_s_dadda_pg_rca8_and_6_0_a_6
 1 1
 .names b_0 h_s_dadda_pg_rca8_and_6_0_b_0
@@ -52,7 +52,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_5_1_y0 h_s_dadda_pg_rca8_ha0_h_s_dadda_pg_rca8_and_5_1_y0
 1 1
-.subckt ha a=h_s_dadda_pg_rca8_ha0_h_s_dadda_pg_rca8_and_6_0_y0 b=h_s_dadda_pg_rca8_ha0_h_s_dadda_pg_rca8_and_5_1_y0 out[0]=h_s_dadda_pg_rca8_ha0_y0 out[1]=h_s_dadda_pg_rca8_ha0_y1
+.subckt ha a=h_s_dadda_pg_rca8_ha0_h_s_dadda_pg_rca8_and_6_0_y0 b=h_s_dadda_pg_rca8_ha0_h_s_dadda_pg_rca8_and_5_1_y0 ha_y0=h_s_dadda_pg_rca8_ha0_y0 ha_y1=h_s_dadda_pg_rca8_ha0_y1
 .names a_7 h_s_dadda_pg_rca8_nand_7_0_a_7
 1 1
 .names b_0 h_s_dadda_pg_rca8_nand_7_0_b_0
@@ -69,7 +69,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_6_1_y0 h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_and_6_1_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_ha0_y1 b=h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_nand_7_0_y0 cin=h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_and_6_1_y0 out[0]=h_s_dadda_pg_rca8_fa0_y2 out[1]=h_s_dadda_pg_rca8_fa0_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_ha0_y1 b=h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_nand_7_0_y0 cin=h_s_dadda_pg_rca8_fa0_h_s_dadda_pg_rca8_and_6_1_y0 fa_y2=h_s_dadda_pg_rca8_fa0_y2 fa_y4=h_s_dadda_pg_rca8_fa0_y4
 .names a_5 h_s_dadda_pg_rca8_and_5_2_a_5
 1 1
 .names b_2 h_s_dadda_pg_rca8_and_5_2_b_2
@@ -84,14 +84,14 @@
 1 1
 .names h_s_dadda_pg_rca8_and_4_3_y0 h_s_dadda_pg_rca8_ha1_h_s_dadda_pg_rca8_and_4_3_y0
 1 1
-.subckt ha a=h_s_dadda_pg_rca8_ha1_h_s_dadda_pg_rca8_and_5_2_y0 b=h_s_dadda_pg_rca8_ha1_h_s_dadda_pg_rca8_and_4_3_y0 out[0]=h_s_dadda_pg_rca8_ha1_y0 out[1]=h_s_dadda_pg_rca8_ha1_y1
+.subckt ha a=h_s_dadda_pg_rca8_ha1_h_s_dadda_pg_rca8_and_5_2_y0 b=h_s_dadda_pg_rca8_ha1_h_s_dadda_pg_rca8_and_4_3_y0 ha_y0=h_s_dadda_pg_rca8_ha1_y0 ha_y1=h_s_dadda_pg_rca8_ha1_y1
 .names h_s_dadda_pg_rca8_ha1_y1 h_s_dadda_pg_rca8_fa1_h_s_dadda_pg_rca8_ha1_y1
 1 1
 .names h_s_dadda_pg_rca8_fa0_y4 h_s_dadda_pg_rca8_fa1_h_s_dadda_pg_rca8_fa0_y4
 1 1
 .names constant_wire_1 h_s_dadda_pg_rca8_fa1_constant_wire_1
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa1_h_s_dadda_pg_rca8_ha1_y1 b=h_s_dadda_pg_rca8_fa1_h_s_dadda_pg_rca8_fa0_y4 cin=h_s_dadda_pg_rca8_fa1_constant_wire_1 out[0]=h_s_dadda_pg_rca8_fa1_y2 out[1]=h_s_dadda_pg_rca8_fa1_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa1_h_s_dadda_pg_rca8_ha1_y1 b=h_s_dadda_pg_rca8_fa1_h_s_dadda_pg_rca8_fa0_y4 cin=h_s_dadda_pg_rca8_fa1_constant_wire_1 fa_y2=h_s_dadda_pg_rca8_fa1_y2 fa_y4=h_s_dadda_pg_rca8_fa1_y4
 .names a_7 h_s_dadda_pg_rca8_nand_7_1_a_7
 1 1
 .names b_1 h_s_dadda_pg_rca8_nand_7_1_b_1
@@ -113,7 +113,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_5_3_y0 h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_and_5_3_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_nand_7_1_y0 b=h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_and_6_2_y0 cin=h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_and_5_3_y0 out[0]=h_s_dadda_pg_rca8_fa2_y2 out[1]=h_s_dadda_pg_rca8_fa2_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_nand_7_1_y0 b=h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_and_6_2_y0 cin=h_s_dadda_pg_rca8_fa2_h_s_dadda_pg_rca8_and_5_3_y0 fa_y2=h_s_dadda_pg_rca8_fa2_y2 fa_y4=h_s_dadda_pg_rca8_fa2_y4
 .names a_7 h_s_dadda_pg_rca8_nand_7_2_a_7
 1 1
 .names b_2 h_s_dadda_pg_rca8_nand_7_2_b_2
@@ -125,7 +125,7 @@
 1 1
 .names h_s_dadda_pg_rca8_nand_7_2_y0 h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_nand_7_2_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_fa2_y4 b=h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_fa1_y4 cin=h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_nand_7_2_y0 out[0]=h_s_dadda_pg_rca8_fa3_y2 out[1]=h_s_dadda_pg_rca8_fa3_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_fa2_y4 b=h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_fa1_y4 cin=h_s_dadda_pg_rca8_fa3_h_s_dadda_pg_rca8_nand_7_2_y0 fa_y2=h_s_dadda_pg_rca8_fa3_y2 fa_y4=h_s_dadda_pg_rca8_fa3_y4
 .names a_3 h_s_dadda_pg_rca8_and_3_0_a_3
 1 1
 .names b_0 h_s_dadda_pg_rca8_and_3_0_b_0
@@ -140,7 +140,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_2_1_y0 h_s_dadda_pg_rca8_ha2_h_s_dadda_pg_rca8_and_2_1_y0
 1 1
-.subckt ha a=h_s_dadda_pg_rca8_ha2_h_s_dadda_pg_rca8_and_3_0_y0 b=h_s_dadda_pg_rca8_ha2_h_s_dadda_pg_rca8_and_2_1_y0 out[0]=h_s_dadda_pg_rca8_ha2_y0 out[1]=h_s_dadda_pg_rca8_ha2_y1
+.subckt ha a=h_s_dadda_pg_rca8_ha2_h_s_dadda_pg_rca8_and_3_0_y0 b=h_s_dadda_pg_rca8_ha2_h_s_dadda_pg_rca8_and_2_1_y0 ha_y0=h_s_dadda_pg_rca8_ha2_y0 ha_y1=h_s_dadda_pg_rca8_ha2_y1
 .names a_4 h_s_dadda_pg_rca8_and_4_0_a_4
 1 1
 .names b_0 h_s_dadda_pg_rca8_and_4_0_b_0
@@ -157,7 +157,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_3_1_y0 h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_and_3_1_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_ha2_y1 b=h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_and_4_0_y0 cin=h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_and_3_1_y0 out[0]=h_s_dadda_pg_rca8_fa4_y2 out[1]=h_s_dadda_pg_rca8_fa4_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_ha2_y1 b=h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_and_4_0_y0 cin=h_s_dadda_pg_rca8_fa4_h_s_dadda_pg_rca8_and_3_1_y0 fa_y2=h_s_dadda_pg_rca8_fa4_y2 fa_y4=h_s_dadda_pg_rca8_fa4_y4
 .names a_2 h_s_dadda_pg_rca8_and_2_2_a_2
 1 1
 .names b_2 h_s_dadda_pg_rca8_and_2_2_b_2
@@ -172,7 +172,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_1_3_y0 h_s_dadda_pg_rca8_ha3_h_s_dadda_pg_rca8_and_1_3_y0
 1 1
-.subckt ha a=h_s_dadda_pg_rca8_ha3_h_s_dadda_pg_rca8_and_2_2_y0 b=h_s_dadda_pg_rca8_ha3_h_s_dadda_pg_rca8_and_1_3_y0 out[0]=h_s_dadda_pg_rca8_ha3_y0 out[1]=h_s_dadda_pg_rca8_ha3_y1
+.subckt ha a=h_s_dadda_pg_rca8_ha3_h_s_dadda_pg_rca8_and_2_2_y0 b=h_s_dadda_pg_rca8_ha3_h_s_dadda_pg_rca8_and_1_3_y0 ha_y0=h_s_dadda_pg_rca8_ha3_y0 ha_y1=h_s_dadda_pg_rca8_ha3_y1
 .names a_5 h_s_dadda_pg_rca8_and_5_0_a_5
 1 1
 .names b_0 h_s_dadda_pg_rca8_and_5_0_b_0
@@ -184,7 +184,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_5_0_y0 h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_and_5_0_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_ha3_y1 b=h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_fa4_y4 cin=h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_and_5_0_y0 out[0]=h_s_dadda_pg_rca8_fa5_y2 out[1]=h_s_dadda_pg_rca8_fa5_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_ha3_y1 b=h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_fa4_y4 cin=h_s_dadda_pg_rca8_fa5_h_s_dadda_pg_rca8_and_5_0_y0 fa_y2=h_s_dadda_pg_rca8_fa5_y2 fa_y4=h_s_dadda_pg_rca8_fa5_y4
 .names a_4 h_s_dadda_pg_rca8_and_4_1_a_4
 1 1
 .names b_1 h_s_dadda_pg_rca8_and_4_1_b_1
@@ -206,7 +206,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_2_3_y0 h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_2_3_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_4_1_y0 b=h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_3_2_y0 cin=h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_2_3_y0 out[0]=h_s_dadda_pg_rca8_fa6_y2 out[1]=h_s_dadda_pg_rca8_fa6_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_4_1_y0 b=h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_3_2_y0 cin=h_s_dadda_pg_rca8_fa6_h_s_dadda_pg_rca8_and_2_3_y0 fa_y2=h_s_dadda_pg_rca8_fa6_y2 fa_y4=h_s_dadda_pg_rca8_fa6_y4
 .names a_1 h_s_dadda_pg_rca8_and_1_4_a_1
 1 1
 .names b_4 h_s_dadda_pg_rca8_and_1_4_b_4
@@ -221,14 +221,14 @@
 1 1
 .names h_s_dadda_pg_rca8_and_0_5_y0 h_s_dadda_pg_rca8_ha4_h_s_dadda_pg_rca8_and_0_5_y0
 1 1
-.subckt ha a=h_s_dadda_pg_rca8_ha4_h_s_dadda_pg_rca8_and_1_4_y0 b=h_s_dadda_pg_rca8_ha4_h_s_dadda_pg_rca8_and_0_5_y0 out[0]=h_s_dadda_pg_rca8_ha4_y0 out[1]=h_s_dadda_pg_rca8_ha4_y1
+.subckt ha a=h_s_dadda_pg_rca8_ha4_h_s_dadda_pg_rca8_and_1_4_y0 b=h_s_dadda_pg_rca8_ha4_h_s_dadda_pg_rca8_and_0_5_y0 ha_y0=h_s_dadda_pg_rca8_ha4_y0 ha_y1=h_s_dadda_pg_rca8_ha4_y1
 .names h_s_dadda_pg_rca8_ha4_y1 h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_ha4_y1
 1 1
 .names h_s_dadda_pg_rca8_fa6_y4 h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_fa6_y4
 1 1
 .names h_s_dadda_pg_rca8_fa5_y4 h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_fa5_y4
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_ha4_y1 b=h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_fa6_y4 cin=h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_fa5_y4 out[0]=h_s_dadda_pg_rca8_fa7_y2 out[1]=h_s_dadda_pg_rca8_fa7_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_ha4_y1 b=h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_fa6_y4 cin=h_s_dadda_pg_rca8_fa7_h_s_dadda_pg_rca8_fa5_y4 fa_y2=h_s_dadda_pg_rca8_fa7_y2 fa_y4=h_s_dadda_pg_rca8_fa7_y4
 .names a_4 h_s_dadda_pg_rca8_and_4_2_a_4
 1 1
 .names b_2 h_s_dadda_pg_rca8_and_4_2_b_2
@@ -250,7 +250,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_2_4_y0 h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_2_4_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_4_2_y0 b=h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_3_3_y0 cin=h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_2_4_y0 out[0]=h_s_dadda_pg_rca8_fa8_y2 out[1]=h_s_dadda_pg_rca8_fa8_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_4_2_y0 b=h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_3_3_y0 cin=h_s_dadda_pg_rca8_fa8_h_s_dadda_pg_rca8_and_2_4_y0 fa_y2=h_s_dadda_pg_rca8_fa8_y2 fa_y4=h_s_dadda_pg_rca8_fa8_y4
 .names a_1 h_s_dadda_pg_rca8_and_1_5_a_1
 1 1
 .names b_5 h_s_dadda_pg_rca8_and_1_5_b_5
@@ -267,14 +267,14 @@
 1 1
 .names h_s_dadda_pg_rca8_ha0_y0 h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_ha0_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_and_1_5_y0 b=h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_and_0_6_y0 cin=h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_ha0_y0 out[0]=h_s_dadda_pg_rca8_fa9_y2 out[1]=h_s_dadda_pg_rca8_fa9_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_and_1_5_y0 b=h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_and_0_6_y0 cin=h_s_dadda_pg_rca8_fa9_h_s_dadda_pg_rca8_ha0_y0 fa_y2=h_s_dadda_pg_rca8_fa9_y2 fa_y4=h_s_dadda_pg_rca8_fa9_y4
 .names h_s_dadda_pg_rca8_fa9_y4 h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa9_y4
 1 1
 .names h_s_dadda_pg_rca8_fa8_y4 h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa8_y4
 1 1
 .names h_s_dadda_pg_rca8_fa7_y4 h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa7_y4
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa9_y4 b=h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa8_y4 cin=h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa7_y4 out[0]=h_s_dadda_pg_rca8_fa10_y2 out[1]=h_s_dadda_pg_rca8_fa10_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa9_y4 b=h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa8_y4 cin=h_s_dadda_pg_rca8_fa10_h_s_dadda_pg_rca8_fa7_y4 fa_y2=h_s_dadda_pg_rca8_fa10_y2 fa_y4=h_s_dadda_pg_rca8_fa10_y4
 .names a_3 h_s_dadda_pg_rca8_and_3_4_a_3
 1 1
 .names b_4 h_s_dadda_pg_rca8_and_3_4_b_4
@@ -296,7 +296,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_1_6_y0 h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_1_6_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_3_4_y0 b=h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_2_5_y0 cin=h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_1_6_y0 out[0]=h_s_dadda_pg_rca8_fa11_y2 out[1]=h_s_dadda_pg_rca8_fa11_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_3_4_y0 b=h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_2_5_y0 cin=h_s_dadda_pg_rca8_fa11_h_s_dadda_pg_rca8_and_1_6_y0 fa_y2=h_s_dadda_pg_rca8_fa11_y2 fa_y4=h_s_dadda_pg_rca8_fa11_y4
 .names a_0 h_s_dadda_pg_rca8_nand_0_7_a_0
 1 1
 .names b_7 h_s_dadda_pg_rca8_nand_0_7_b_7
@@ -308,14 +308,14 @@
 1 1
 .names h_s_dadda_pg_rca8_ha1_y0 h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_ha1_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_nand_0_7_y0 b=h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_fa0_y2 cin=h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_ha1_y0 out[0]=h_s_dadda_pg_rca8_fa12_y2 out[1]=h_s_dadda_pg_rca8_fa12_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_nand_0_7_y0 b=h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_fa0_y2 cin=h_s_dadda_pg_rca8_fa12_h_s_dadda_pg_rca8_ha1_y0 fa_y2=h_s_dadda_pg_rca8_fa12_y2 fa_y4=h_s_dadda_pg_rca8_fa12_y4
 .names h_s_dadda_pg_rca8_fa12_y4 h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa12_y4
 1 1
 .names h_s_dadda_pg_rca8_fa11_y4 h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa11_y4
 1 1
 .names h_s_dadda_pg_rca8_fa10_y4 h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa10_y4
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa12_y4 b=h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa11_y4 cin=h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa10_y4 out[0]=h_s_dadda_pg_rca8_fa13_y2 out[1]=h_s_dadda_pg_rca8_fa13_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa12_y4 b=h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa11_y4 cin=h_s_dadda_pg_rca8_fa13_h_s_dadda_pg_rca8_fa10_y4 fa_y2=h_s_dadda_pg_rca8_fa13_y2 fa_y4=h_s_dadda_pg_rca8_fa13_y4
 .names a_4 h_s_dadda_pg_rca8_and_4_4_a_4
 1 1
 .names b_4 h_s_dadda_pg_rca8_and_4_4_b_4
@@ -337,7 +337,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_2_6_y0 h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_2_6_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_4_4_y0 b=h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_3_5_y0 cin=h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_2_6_y0 out[0]=h_s_dadda_pg_rca8_fa14_y2 out[1]=h_s_dadda_pg_rca8_fa14_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_4_4_y0 b=h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_3_5_y0 cin=h_s_dadda_pg_rca8_fa14_h_s_dadda_pg_rca8_and_2_6_y0 fa_y2=h_s_dadda_pg_rca8_fa14_y2 fa_y4=h_s_dadda_pg_rca8_fa14_y4
 .names a_1 h_s_dadda_pg_rca8_nand_1_7_a_1
 1 1
 .names b_7 h_s_dadda_pg_rca8_nand_1_7_b_7
@@ -349,14 +349,14 @@
 1 1
 .names h_s_dadda_pg_rca8_fa2_y2 h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_fa2_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_nand_1_7_y0 b=h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_fa1_y2 cin=h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_fa2_y2 out[0]=h_s_dadda_pg_rca8_fa15_y2 out[1]=h_s_dadda_pg_rca8_fa15_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_nand_1_7_y0 b=h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_fa1_y2 cin=h_s_dadda_pg_rca8_fa15_h_s_dadda_pg_rca8_fa2_y2 fa_y2=h_s_dadda_pg_rca8_fa15_y2 fa_y4=h_s_dadda_pg_rca8_fa15_y4
 .names h_s_dadda_pg_rca8_fa15_y4 h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa15_y4
 1 1
 .names h_s_dadda_pg_rca8_fa14_y4 h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa14_y4
 1 1
 .names h_s_dadda_pg_rca8_fa13_y4 h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa13_y4
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa15_y4 b=h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa14_y4 cin=h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa13_y4 out[0]=h_s_dadda_pg_rca8_fa16_y2 out[1]=h_s_dadda_pg_rca8_fa16_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa15_y4 b=h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa14_y4 cin=h_s_dadda_pg_rca8_fa16_h_s_dadda_pg_rca8_fa13_y4 fa_y2=h_s_dadda_pg_rca8_fa16_y2 fa_y4=h_s_dadda_pg_rca8_fa16_y4
 .names a_6 h_s_dadda_pg_rca8_and_6_3_a_6
 1 1
 .names b_3 h_s_dadda_pg_rca8_and_6_3_b_3
@@ -378,7 +378,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_4_5_y0 h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_4_5_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_6_3_y0 b=h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_5_4_y0 cin=h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_4_5_y0 out[0]=h_s_dadda_pg_rca8_fa17_y2 out[1]=h_s_dadda_pg_rca8_fa17_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_6_3_y0 b=h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_5_4_y0 cin=h_s_dadda_pg_rca8_fa17_h_s_dadda_pg_rca8_and_4_5_y0 fa_y2=h_s_dadda_pg_rca8_fa17_y2 fa_y4=h_s_dadda_pg_rca8_fa17_y4
 .names a_3 h_s_dadda_pg_rca8_and_3_6_a_3
 1 1
 .names b_6 h_s_dadda_pg_rca8_and_3_6_b_6
@@ -395,14 +395,14 @@
 1 1
 .names h_s_dadda_pg_rca8_fa3_y2 h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_fa3_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_and_3_6_y0 b=h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_nand_2_7_y0 cin=h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_fa3_y2 out[0]=h_s_dadda_pg_rca8_fa18_y2 out[1]=h_s_dadda_pg_rca8_fa18_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_and_3_6_y0 b=h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_nand_2_7_y0 cin=h_s_dadda_pg_rca8_fa18_h_s_dadda_pg_rca8_fa3_y2 fa_y2=h_s_dadda_pg_rca8_fa18_y2 fa_y4=h_s_dadda_pg_rca8_fa18_y4
 .names h_s_dadda_pg_rca8_fa18_y4 h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa18_y4
 1 1
 .names h_s_dadda_pg_rca8_fa17_y4 h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa17_y4
 1 1
 .names h_s_dadda_pg_rca8_fa16_y4 h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa16_y4
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa18_y4 b=h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa17_y4 cin=h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa16_y4 out[0]=h_s_dadda_pg_rca8_fa19_y2 out[1]=h_s_dadda_pg_rca8_fa19_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa18_y4 b=h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa17_y4 cin=h_s_dadda_pg_rca8_fa19_h_s_dadda_pg_rca8_fa16_y4 fa_y2=h_s_dadda_pg_rca8_fa19_y2 fa_y4=h_s_dadda_pg_rca8_fa19_y4
 .names a_7 h_s_dadda_pg_rca8_nand_7_3_a_7
 1 1
 .names b_3 h_s_dadda_pg_rca8_nand_7_3_b_3
@@ -419,7 +419,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_6_4_y0 h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_and_6_4_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_fa3_y4 b=h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_nand_7_3_y0 cin=h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_and_6_4_y0 out[0]=h_s_dadda_pg_rca8_fa20_y2 out[1]=h_s_dadda_pg_rca8_fa20_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_fa3_y4 b=h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_nand_7_3_y0 cin=h_s_dadda_pg_rca8_fa20_h_s_dadda_pg_rca8_and_6_4_y0 fa_y2=h_s_dadda_pg_rca8_fa20_y2 fa_y4=h_s_dadda_pg_rca8_fa20_y4
 .names a_5 h_s_dadda_pg_rca8_and_5_5_a_5
 1 1
 .names b_5 h_s_dadda_pg_rca8_and_5_5_b_5
@@ -441,14 +441,14 @@
 1 1
 .names h_s_dadda_pg_rca8_nand_3_7_y0 h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_nand_3_7_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_and_5_5_y0 b=h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_and_4_6_y0 cin=h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_nand_3_7_y0 out[0]=h_s_dadda_pg_rca8_fa21_y2 out[1]=h_s_dadda_pg_rca8_fa21_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_and_5_5_y0 b=h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_and_4_6_y0 cin=h_s_dadda_pg_rca8_fa21_h_s_dadda_pg_rca8_nand_3_7_y0 fa_y2=h_s_dadda_pg_rca8_fa21_y2 fa_y4=h_s_dadda_pg_rca8_fa21_y4
 .names h_s_dadda_pg_rca8_fa21_y4 h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa21_y4
 1 1
 .names h_s_dadda_pg_rca8_fa20_y4 h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa20_y4
 1 1
 .names h_s_dadda_pg_rca8_fa19_y4 h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa19_y4
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa21_y4 b=h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa20_y4 cin=h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa19_y4 out[0]=h_s_dadda_pg_rca8_fa22_y2 out[1]=h_s_dadda_pg_rca8_fa22_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa21_y4 b=h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa20_y4 cin=h_s_dadda_pg_rca8_fa22_h_s_dadda_pg_rca8_fa19_y4 fa_y2=h_s_dadda_pg_rca8_fa22_y2 fa_y4=h_s_dadda_pg_rca8_fa22_y4
 .names a_7 h_s_dadda_pg_rca8_nand_7_4_a_7
 1 1
 .names b_4 h_s_dadda_pg_rca8_nand_7_4_b_4
@@ -470,7 +470,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_5_6_y0 h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_and_5_6_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_nand_7_4_y0 b=h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_and_6_5_y0 cin=h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_and_5_6_y0 out[0]=h_s_dadda_pg_rca8_fa23_y2 out[1]=h_s_dadda_pg_rca8_fa23_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_nand_7_4_y0 b=h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_and_6_5_y0 cin=h_s_dadda_pg_rca8_fa23_h_s_dadda_pg_rca8_and_5_6_y0 fa_y2=h_s_dadda_pg_rca8_fa23_y2 fa_y4=h_s_dadda_pg_rca8_fa23_y4
 .names a_7 h_s_dadda_pg_rca8_nand_7_5_a_7
 1 1
 .names b_5 h_s_dadda_pg_rca8_nand_7_5_b_5
@@ -482,7 +482,7 @@
 1 1
 .names h_s_dadda_pg_rca8_nand_7_5_y0 h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_nand_7_5_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_fa23_y4 b=h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_fa22_y4 cin=h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_nand_7_5_y0 out[0]=h_s_dadda_pg_rca8_fa24_y2 out[1]=h_s_dadda_pg_rca8_fa24_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_fa23_y4 b=h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_fa22_y4 cin=h_s_dadda_pg_rca8_fa24_h_s_dadda_pg_rca8_nand_7_5_y0 fa_y2=h_s_dadda_pg_rca8_fa24_y2 fa_y4=h_s_dadda_pg_rca8_fa24_y4
 .names a_2 h_s_dadda_pg_rca8_and_2_0_a_2
 1 1
 .names b_0 h_s_dadda_pg_rca8_and_2_0_b_0
@@ -497,7 +497,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_1_1_y0 h_s_dadda_pg_rca8_ha5_h_s_dadda_pg_rca8_and_1_1_y0
 1 1
-.subckt ha a=h_s_dadda_pg_rca8_ha5_h_s_dadda_pg_rca8_and_2_0_y0 b=h_s_dadda_pg_rca8_ha5_h_s_dadda_pg_rca8_and_1_1_y0 out[0]=h_s_dadda_pg_rca8_ha5_y0 out[1]=h_s_dadda_pg_rca8_ha5_y1
+.subckt ha a=h_s_dadda_pg_rca8_ha5_h_s_dadda_pg_rca8_and_2_0_y0 b=h_s_dadda_pg_rca8_ha5_h_s_dadda_pg_rca8_and_1_1_y0 ha_y0=h_s_dadda_pg_rca8_ha5_y0 ha_y1=h_s_dadda_pg_rca8_ha5_y1
 .names a_1 h_s_dadda_pg_rca8_and_1_2_a_1
 1 1
 .names b_2 h_s_dadda_pg_rca8_and_1_2_b_2
@@ -514,7 +514,7 @@
 1 1
 .names h_s_dadda_pg_rca8_and_0_3_y0 h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_and_0_3_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_ha5_y1 b=h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_and_1_2_y0 cin=h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_and_0_3_y0 out[0]=h_s_dadda_pg_rca8_fa25_y2 out[1]=h_s_dadda_pg_rca8_fa25_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_ha5_y1 b=h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_and_1_2_y0 cin=h_s_dadda_pg_rca8_fa25_h_s_dadda_pg_rca8_and_0_3_y0 fa_y2=h_s_dadda_pg_rca8_fa25_y2 fa_y4=h_s_dadda_pg_rca8_fa25_y4
 .names a_0 h_s_dadda_pg_rca8_and_0_4_a_0
 1 1
 .names b_4 h_s_dadda_pg_rca8_and_0_4_b_4
@@ -526,49 +526,49 @@
 1 1
 .names h_s_dadda_pg_rca8_fa4_y2 h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_fa4_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_fa25_y4 b=h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_and_0_4_y0 cin=h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_fa4_y2 out[0]=h_s_dadda_pg_rca8_fa26_y2 out[1]=h_s_dadda_pg_rca8_fa26_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_fa25_y4 b=h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_and_0_4_y0 cin=h_s_dadda_pg_rca8_fa26_h_s_dadda_pg_rca8_fa4_y2 fa_y2=h_s_dadda_pg_rca8_fa26_y2 fa_y4=h_s_dadda_pg_rca8_fa26_y4
 .names h_s_dadda_pg_rca8_fa26_y4 h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa26_y4
 1 1
 .names h_s_dadda_pg_rca8_fa5_y2 h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa5_y2
 1 1
 .names h_s_dadda_pg_rca8_fa6_y2 h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa6_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa26_y4 b=h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa5_y2 cin=h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa6_y2 out[0]=h_s_dadda_pg_rca8_fa27_y2 out[1]=h_s_dadda_pg_rca8_fa27_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa26_y4 b=h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa5_y2 cin=h_s_dadda_pg_rca8_fa27_h_s_dadda_pg_rca8_fa6_y2 fa_y2=h_s_dadda_pg_rca8_fa27_y2 fa_y4=h_s_dadda_pg_rca8_fa27_y4
 .names h_s_dadda_pg_rca8_fa27_y4 h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa27_y4
 1 1
 .names h_s_dadda_pg_rca8_fa7_y2 h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa7_y2
 1 1
 .names h_s_dadda_pg_rca8_fa8_y2 h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa8_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa27_y4 b=h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa7_y2 cin=h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa8_y2 out[0]=h_s_dadda_pg_rca8_fa28_y2 out[1]=h_s_dadda_pg_rca8_fa28_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa27_y4 b=h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa7_y2 cin=h_s_dadda_pg_rca8_fa28_h_s_dadda_pg_rca8_fa8_y2 fa_y2=h_s_dadda_pg_rca8_fa28_y2 fa_y4=h_s_dadda_pg_rca8_fa28_y4
 .names h_s_dadda_pg_rca8_fa28_y4 h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa28_y4
 1 1
 .names h_s_dadda_pg_rca8_fa10_y2 h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa10_y2
 1 1
 .names h_s_dadda_pg_rca8_fa11_y2 h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa11_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa28_y4 b=h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa10_y2 cin=h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa11_y2 out[0]=h_s_dadda_pg_rca8_fa29_y2 out[1]=h_s_dadda_pg_rca8_fa29_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa28_y4 b=h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa10_y2 cin=h_s_dadda_pg_rca8_fa29_h_s_dadda_pg_rca8_fa11_y2 fa_y2=h_s_dadda_pg_rca8_fa29_y2 fa_y4=h_s_dadda_pg_rca8_fa29_y4
 .names h_s_dadda_pg_rca8_fa29_y4 h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa29_y4
 1 1
 .names h_s_dadda_pg_rca8_fa13_y2 h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa13_y2
 1 1
 .names h_s_dadda_pg_rca8_fa14_y2 h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa14_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa29_y4 b=h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa13_y2 cin=h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa14_y2 out[0]=h_s_dadda_pg_rca8_fa30_y2 out[1]=h_s_dadda_pg_rca8_fa30_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa29_y4 b=h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa13_y2 cin=h_s_dadda_pg_rca8_fa30_h_s_dadda_pg_rca8_fa14_y2 fa_y2=h_s_dadda_pg_rca8_fa30_y2 fa_y4=h_s_dadda_pg_rca8_fa30_y4
 .names h_s_dadda_pg_rca8_fa30_y4 h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa30_y4
 1 1
 .names h_s_dadda_pg_rca8_fa16_y2 h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa16_y2
 1 1
 .names h_s_dadda_pg_rca8_fa17_y2 h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa17_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa30_y4 b=h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa16_y2 cin=h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa17_y2 out[0]=h_s_dadda_pg_rca8_fa31_y2 out[1]=h_s_dadda_pg_rca8_fa31_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa30_y4 b=h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa16_y2 cin=h_s_dadda_pg_rca8_fa31_h_s_dadda_pg_rca8_fa17_y2 fa_y2=h_s_dadda_pg_rca8_fa31_y2 fa_y4=h_s_dadda_pg_rca8_fa31_y4
 .names h_s_dadda_pg_rca8_fa31_y4 h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa31_y4
 1 1
 .names h_s_dadda_pg_rca8_fa19_y2 h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa19_y2
 1 1
 .names h_s_dadda_pg_rca8_fa20_y2 h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa20_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa31_y4 b=h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa19_y2 cin=h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa20_y2 out[0]=h_s_dadda_pg_rca8_fa32_y2 out[1]=h_s_dadda_pg_rca8_fa32_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa31_y4 b=h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa19_y2 cin=h_s_dadda_pg_rca8_fa32_h_s_dadda_pg_rca8_fa20_y2 fa_y2=h_s_dadda_pg_rca8_fa32_y2 fa_y4=h_s_dadda_pg_rca8_fa32_y4
 .names a_4 h_s_dadda_pg_rca8_nand_4_7_a_4
 1 1
 .names b_7 h_s_dadda_pg_rca8_nand_4_7_b_7
@@ -580,7 +580,7 @@
 1 1
 .names h_s_dadda_pg_rca8_fa22_y2 h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_fa22_y2
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_fa32_y4 b=h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_nand_4_7_y0 cin=h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_fa22_y2 out[0]=h_s_dadda_pg_rca8_fa33_y2 out[1]=h_s_dadda_pg_rca8_fa33_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_fa32_y4 b=h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_nand_4_7_y0 cin=h_s_dadda_pg_rca8_fa33_h_s_dadda_pg_rca8_fa22_y2 fa_y2=h_s_dadda_pg_rca8_fa33_y2 fa_y4=h_s_dadda_pg_rca8_fa33_y4
 .names a_6 h_s_dadda_pg_rca8_and_6_6_a_6
 1 1
 .names b_6 h_s_dadda_pg_rca8_and_6_6_b_6
@@ -597,7 +597,7 @@
 1 1
 .names h_s_dadda_pg_rca8_nand_5_7_y0 h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_nand_5_7_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_fa33_y4 b=h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_and_6_6_y0 cin=h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_nand_5_7_y0 out[0]=h_s_dadda_pg_rca8_fa34_y2 out[1]=h_s_dadda_pg_rca8_fa34_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_fa33_y4 b=h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_and_6_6_y0 cin=h_s_dadda_pg_rca8_fa34_h_s_dadda_pg_rca8_nand_5_7_y0 fa_y2=h_s_dadda_pg_rca8_fa34_y2 fa_y4=h_s_dadda_pg_rca8_fa34_y4
 .names a_7 h_s_dadda_pg_rca8_nand_7_6_a_7
 1 1
 .names b_6 h_s_dadda_pg_rca8_nand_7_6_b_6
@@ -609,7 +609,7 @@
 1 1
 .names h_s_dadda_pg_rca8_nand_7_6_y0 h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_nand_7_6_y0
 1 1
-.subckt fa a=h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_fa34_y4 b=h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_fa24_y4 cin=h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_nand_7_6_y0 out[0]=h_s_dadda_pg_rca8_fa35_y2 out[1]=h_s_dadda_pg_rca8_fa35_y4
+.subckt fa a=h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_fa34_y4 b=h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_fa24_y4 cin=h_s_dadda_pg_rca8_fa35_h_s_dadda_pg_rca8_nand_7_6_y0 fa_y2=h_s_dadda_pg_rca8_fa35_y2 fa_y4=h_s_dadda_pg_rca8_fa35_y4
 .names a_0 h_s_dadda_pg_rca8_and_0_0_a_0
 1 1
 .names b_0 h_s_dadda_pg_rca8_and_0_0_b_0
@@ -640,103 +640,103 @@
 .names b_7 h_s_dadda_pg_rca8_and_7_7_b_7
 1 1
 .subckt and_gate _a=h_s_dadda_pg_rca8_and_7_7_a_7 _b=h_s_dadda_pg_rca8_and_7_7_b_7 _y0=h_s_dadda_pg_rca8_and_7_7_y0
-.names h_s_dadda_pg_rca8_and_1_0_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[0]
+.names h_s_dadda_pg_rca8_and_1_0_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[0]
 1 1
-.names h_s_dadda_pg_rca8_and_0_2_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[1]
+.names h_s_dadda_pg_rca8_and_0_2_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[1]
 1 1
-.names h_s_dadda_pg_rca8_ha2_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[2]
+.names h_s_dadda_pg_rca8_ha2_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[2]
 1 1
-.names h_s_dadda_pg_rca8_ha3_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[3]
+.names h_s_dadda_pg_rca8_ha3_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[3]
 1 1
-.names h_s_dadda_pg_rca8_ha4_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[4]
+.names h_s_dadda_pg_rca8_ha4_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[4]
 1 1
-.names h_s_dadda_pg_rca8_fa9_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[5]
+.names h_s_dadda_pg_rca8_fa9_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[5]
 1 1
-.names h_s_dadda_pg_rca8_fa12_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[6]
+.names h_s_dadda_pg_rca8_fa12_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[6]
 1 1
-.names h_s_dadda_pg_rca8_fa15_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[7]
+.names h_s_dadda_pg_rca8_fa15_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[7]
 1 1
-.names h_s_dadda_pg_rca8_fa18_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[8]
+.names h_s_dadda_pg_rca8_fa18_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[8]
 1 1
-.names h_s_dadda_pg_rca8_fa21_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[9]
+.names h_s_dadda_pg_rca8_fa21_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[9]
 1 1
-.names h_s_dadda_pg_rca8_fa23_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[10]
+.names h_s_dadda_pg_rca8_fa23_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[10]
 1 1
-.names h_s_dadda_pg_rca8_fa24_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[11]
+.names h_s_dadda_pg_rca8_fa24_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[11]
 1 1
-.names h_s_dadda_pg_rca8_nand_6_7_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[12]
+.names h_s_dadda_pg_rca8_nand_6_7_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[12]
 1 1
-.names h_s_dadda_pg_rca8_fa35_y4 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[13]
+.names h_s_dadda_pg_rca8_fa35_y4 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[13]
 1 1
-.names h_s_dadda_pg_rca8_and_0_1_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[0]
+.names h_s_dadda_pg_rca8_and_0_1_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[0]
 1 1
-.names h_s_dadda_pg_rca8_ha5_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[1]
+.names h_s_dadda_pg_rca8_ha5_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[1]
 1 1
-.names h_s_dadda_pg_rca8_fa25_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[2]
+.names h_s_dadda_pg_rca8_fa25_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[2]
 1 1
-.names h_s_dadda_pg_rca8_fa26_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[3]
+.names h_s_dadda_pg_rca8_fa26_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[3]
 1 1
-.names h_s_dadda_pg_rca8_fa27_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[4]
+.names h_s_dadda_pg_rca8_fa27_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[4]
 1 1
-.names h_s_dadda_pg_rca8_fa28_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[5]
+.names h_s_dadda_pg_rca8_fa28_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[5]
 1 1
-.names h_s_dadda_pg_rca8_fa29_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[6]
+.names h_s_dadda_pg_rca8_fa29_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[6]
 1 1
-.names h_s_dadda_pg_rca8_fa30_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[7]
+.names h_s_dadda_pg_rca8_fa30_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[7]
 1 1
-.names h_s_dadda_pg_rca8_fa31_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[8]
+.names h_s_dadda_pg_rca8_fa31_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[8]
 1 1
-.names h_s_dadda_pg_rca8_fa32_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[9]
+.names h_s_dadda_pg_rca8_fa32_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[9]
 1 1
-.names h_s_dadda_pg_rca8_fa33_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[10]
+.names h_s_dadda_pg_rca8_fa33_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[10]
 1 1
-.names h_s_dadda_pg_rca8_fa34_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[11]
+.names h_s_dadda_pg_rca8_fa34_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[11]
 1 1
-.names h_s_dadda_pg_rca8_fa35_y2 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[12]
+.names h_s_dadda_pg_rca8_fa35_y2 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[12]
 1 1
-.names h_s_dadda_pg_rca8_and_7_7_y0 h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[13]
+.names h_s_dadda_pg_rca8_and_7_7_y0 h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[13]
 1 1
-.subckt u_pg_rca a[0]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[0] a[1]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[1] a[2]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[2] a[3]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[3] a[4]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[4] a[5]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[5] a[6]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[6] a[7]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[7] a[8]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[8] a[9]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[9] a[10]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[10] a[11]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[11] a[12]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[12] a[13]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_a[13] b[0]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[0] b[1]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[1] b[2]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[2] b[3]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[3] b[4]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[4] b[5]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[5] b[6]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[6] b[7]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[7] b[8]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[8] b[9]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[9] b[10]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[10] b[11]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[11] b[12]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[12] b[13]=h_s_dadda_pg_rca8_u_pg_rca_u_pg_rca_b[13] out[0]=h_s_dadda_pg_rca8_u_pg_rca_fa0_y2 out[1]=h_s_dadda_pg_rca8_u_pg_rca_fa1_y2 out[2]=h_s_dadda_pg_rca8_u_pg_rca_fa2_y2 out[3]=h_s_dadda_pg_rca8_u_pg_rca_fa3_y2 out[4]=h_s_dadda_pg_rca8_u_pg_rca_fa4_y2 out[5]=h_s_dadda_pg_rca8_u_pg_rca_fa5_y2 out[6]=h_s_dadda_pg_rca8_u_pg_rca_fa6_y2 out[7]=h_s_dadda_pg_rca8_u_pg_rca_fa7_y2 out[8]=h_s_dadda_pg_rca8_u_pg_rca_fa8_y2 out[9]=h_s_dadda_pg_rca8_u_pg_rca_fa9_y2 out[10]=h_s_dadda_pg_rca8_u_pg_rca_fa10_y2 out[11]=h_s_dadda_pg_rca8_u_pg_rca_fa11_y2 out[12]=h_s_dadda_pg_rca8_u_pg_rca_fa12_y2 out[13]=h_s_dadda_pg_rca8_u_pg_rca_fa13_y2 out[14]=h_s_dadda_pg_rca8_u_pg_rca_or13_y0
+.subckt u_pg_rca14 a[0]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[0] a[1]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[1] a[2]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[2] a[3]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[3] a[4]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[4] a[5]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[5] a[6]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[6] a[7]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[7] a[8]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[8] a[9]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[9] a[10]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[10] a[11]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[11] a[12]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[12] a[13]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_a[13] b[0]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[0] b[1]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[1] b[2]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[2] b[3]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[3] b[4]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[4] b[5]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[5] b[6]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[6] b[7]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[7] b[8]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[8] b[9]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[9] b[10]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[10] b[11]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[11] b[12]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[12] b[13]=h_s_dadda_pg_rca8_u_pg_rca14_u_pg_rca14_b[13] out[0]=h_s_dadda_pg_rca8_u_pg_rca14_fa0_y2 out[1]=h_s_dadda_pg_rca8_u_pg_rca14_fa1_y2 out[2]=h_s_dadda_pg_rca8_u_pg_rca14_fa2_y2 out[3]=h_s_dadda_pg_rca8_u_pg_rca14_fa3_y2 out[4]=h_s_dadda_pg_rca8_u_pg_rca14_fa4_y2 out[5]=h_s_dadda_pg_rca8_u_pg_rca14_fa5_y2 out[6]=h_s_dadda_pg_rca8_u_pg_rca14_fa6_y2 out[7]=h_s_dadda_pg_rca8_u_pg_rca14_fa7_y2 out[8]=h_s_dadda_pg_rca8_u_pg_rca14_fa8_y2 out[9]=h_s_dadda_pg_rca8_u_pg_rca14_fa9_y2 out[10]=h_s_dadda_pg_rca8_u_pg_rca14_fa10_y2 out[11]=h_s_dadda_pg_rca8_u_pg_rca14_fa11_y2 out[12]=h_s_dadda_pg_rca8_u_pg_rca14_fa12_y2 out[13]=h_s_dadda_pg_rca8_u_pg_rca14_fa13_y2 out[14]=h_s_dadda_pg_rca8_u_pg_rca14_or13_y0
 .names constant_wire_1 h_s_dadda_pg_rca8_xor0_constant_wire_1
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_or13_y0 h_s_dadda_pg_rca8_xor0_h_s_dadda_pg_rca8_u_pg_rca_or13_y0
+.names h_s_dadda_pg_rca8_u_pg_rca14_or13_y0 h_s_dadda_pg_rca8_xor0_h_s_dadda_pg_rca8_u_pg_rca14_or13_y0
 1 1
-.subckt xor_gate _a=h_s_dadda_pg_rca8_xor0_constant_wire_1 _b=h_s_dadda_pg_rca8_xor0_h_s_dadda_pg_rca8_u_pg_rca_or13_y0 _y0=h_s_dadda_pg_rca8_xor0_y0
+.subckt xor_gate _a=h_s_dadda_pg_rca8_xor0_constant_wire_1 _b=h_s_dadda_pg_rca8_xor0_h_s_dadda_pg_rca8_u_pg_rca14_or13_y0 _y0=h_s_dadda_pg_rca8_xor0_y0
 .names h_s_dadda_pg_rca8_and_0_0_y0 out[0]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa0_y2 out[1]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa0_y2 out[1]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa1_y2 out[2]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa1_y2 out[2]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa2_y2 out[3]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa2_y2 out[3]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa3_y2 out[4]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa3_y2 out[4]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa4_y2 out[5]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa4_y2 out[5]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa5_y2 out[6]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa5_y2 out[6]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa6_y2 out[7]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa6_y2 out[7]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa7_y2 out[8]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa7_y2 out[8]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa8_y2 out[9]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa8_y2 out[9]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa9_y2 out[10]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa9_y2 out[10]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa10_y2 out[11]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa10_y2 out[11]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa11_y2 out[12]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa11_y2 out[12]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa12_y2 out[13]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa12_y2 out[13]
 1 1
-.names h_s_dadda_pg_rca8_u_pg_rca_fa13_y2 out[14]
+.names h_s_dadda_pg_rca8_u_pg_rca14_fa13_y2 out[14]
 1 1
 .names h_s_dadda_pg_rca8_xor0_y0 out[15]
 1 1
 .end
 
-.model u_pg_rca
+.model u_pg_rca14
 .inputs  a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13]
 .outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] out[12] out[13] out[14]
 .names a[0] a_0
@@ -799,280 +799,280 @@
 1 1
 .names b_0 constant_wire_value_0_b_0
 1 1
-.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 out[0]=constant_wire_0
-.names a_0 u_pg_rca_fa0_a_0
+.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 constant_wire_0=constant_wire_0
+.names a_0 u_pg_rca14_fa0_a_0
 1 1
-.names b_0 u_pg_rca_fa0_b_0
+.names b_0 u_pg_rca14_fa0_b_0
 1 1
-.names constant_wire_0 u_pg_rca_fa0_constant_wire_0
+.names constant_wire_0 u_pg_rca14_fa0_constant_wire_0
 1 1
-.subckt fa_cla a=u_pg_rca_fa0_a_0 b=u_pg_rca_fa0_b_0 cin=u_pg_rca_fa0_constant_wire_0 out[0]=u_pg_rca_fa0_y0 out[1]=u_pg_rca_fa0_y1 out[2]=u_pg_rca_fa0_y2
-.names constant_wire_0 u_pg_rca_and0_constant_wire_0
+.subckt fa_cla a=u_pg_rca14_fa0_a_0 b=u_pg_rca14_fa0_b_0 cin=u_pg_rca14_fa0_constant_wire_0 fa_cla_y0=u_pg_rca14_fa0_y0 fa_cla_y1=u_pg_rca14_fa0_y1 fa_cla_y2=u_pg_rca14_fa0_y2
+.names constant_wire_0 u_pg_rca14_and0_constant_wire_0
 1 1
-.names u_pg_rca_fa0_y0 u_pg_rca_and0_u_pg_rca_fa0_y0
+.names u_pg_rca14_fa0_y0 u_pg_rca14_and0_u_pg_rca14_fa0_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and0_constant_wire_0 _b=u_pg_rca_and0_u_pg_rca_fa0_y0 _y0=u_pg_rca_and0_y0
-.names u_pg_rca_and0_y0 u_pg_rca_or0_u_pg_rca_and0_y0
+.subckt and_gate _a=u_pg_rca14_and0_constant_wire_0 _b=u_pg_rca14_and0_u_pg_rca14_fa0_y0 _y0=u_pg_rca14_and0_y0
+.names u_pg_rca14_and0_y0 u_pg_rca14_or0_u_pg_rca14_and0_y0
 1 1
-.names u_pg_rca_fa0_y1 u_pg_rca_or0_u_pg_rca_fa0_y1
+.names u_pg_rca14_fa0_y1 u_pg_rca14_or0_u_pg_rca14_fa0_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or0_u_pg_rca_and0_y0 _b=u_pg_rca_or0_u_pg_rca_fa0_y1 _y0=u_pg_rca_or0_y0
-.names a_1 u_pg_rca_fa1_a_1
+.subckt or_gate _a=u_pg_rca14_or0_u_pg_rca14_and0_y0 _b=u_pg_rca14_or0_u_pg_rca14_fa0_y1 _y0=u_pg_rca14_or0_y0
+.names a_1 u_pg_rca14_fa1_a_1
 1 1
-.names b_1 u_pg_rca_fa1_b_1
+.names b_1 u_pg_rca14_fa1_b_1
 1 1
-.names u_pg_rca_or0_y0 u_pg_rca_fa1_u_pg_rca_or0_y0
+.names u_pg_rca14_or0_y0 u_pg_rca14_fa1_u_pg_rca14_or0_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa1_a_1 b=u_pg_rca_fa1_b_1 cin=u_pg_rca_fa1_u_pg_rca_or0_y0 out[0]=u_pg_rca_fa1_y0 out[1]=u_pg_rca_fa1_y1 out[2]=u_pg_rca_fa1_y2
-.names u_pg_rca_or0_y0 u_pg_rca_and1_u_pg_rca_or0_y0
+.subckt fa_cla a=u_pg_rca14_fa1_a_1 b=u_pg_rca14_fa1_b_1 cin=u_pg_rca14_fa1_u_pg_rca14_or0_y0 fa_cla_y0=u_pg_rca14_fa1_y0 fa_cla_y1=u_pg_rca14_fa1_y1 fa_cla_y2=u_pg_rca14_fa1_y2
+.names u_pg_rca14_or0_y0 u_pg_rca14_and1_u_pg_rca14_or0_y0
 1 1
-.names u_pg_rca_fa1_y0 u_pg_rca_and1_u_pg_rca_fa1_y0
+.names u_pg_rca14_fa1_y0 u_pg_rca14_and1_u_pg_rca14_fa1_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and1_u_pg_rca_or0_y0 _b=u_pg_rca_and1_u_pg_rca_fa1_y0 _y0=u_pg_rca_and1_y0
-.names u_pg_rca_and1_y0 u_pg_rca_or1_u_pg_rca_and1_y0
+.subckt and_gate _a=u_pg_rca14_and1_u_pg_rca14_or0_y0 _b=u_pg_rca14_and1_u_pg_rca14_fa1_y0 _y0=u_pg_rca14_and1_y0
+.names u_pg_rca14_and1_y0 u_pg_rca14_or1_u_pg_rca14_and1_y0
 1 1
-.names u_pg_rca_fa1_y1 u_pg_rca_or1_u_pg_rca_fa1_y1
+.names u_pg_rca14_fa1_y1 u_pg_rca14_or1_u_pg_rca14_fa1_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or1_u_pg_rca_and1_y0 _b=u_pg_rca_or1_u_pg_rca_fa1_y1 _y0=u_pg_rca_or1_y0
-.names a_2 u_pg_rca_fa2_a_2
+.subckt or_gate _a=u_pg_rca14_or1_u_pg_rca14_and1_y0 _b=u_pg_rca14_or1_u_pg_rca14_fa1_y1 _y0=u_pg_rca14_or1_y0
+.names a_2 u_pg_rca14_fa2_a_2
 1 1
-.names b_2 u_pg_rca_fa2_b_2
+.names b_2 u_pg_rca14_fa2_b_2
 1 1
-.names u_pg_rca_or1_y0 u_pg_rca_fa2_u_pg_rca_or1_y0
+.names u_pg_rca14_or1_y0 u_pg_rca14_fa2_u_pg_rca14_or1_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa2_a_2 b=u_pg_rca_fa2_b_2 cin=u_pg_rca_fa2_u_pg_rca_or1_y0 out[0]=u_pg_rca_fa2_y0 out[1]=u_pg_rca_fa2_y1 out[2]=u_pg_rca_fa2_y2
-.names u_pg_rca_or1_y0 u_pg_rca_and2_u_pg_rca_or1_y0
+.subckt fa_cla a=u_pg_rca14_fa2_a_2 b=u_pg_rca14_fa2_b_2 cin=u_pg_rca14_fa2_u_pg_rca14_or1_y0 fa_cla_y0=u_pg_rca14_fa2_y0 fa_cla_y1=u_pg_rca14_fa2_y1 fa_cla_y2=u_pg_rca14_fa2_y2
+.names u_pg_rca14_or1_y0 u_pg_rca14_and2_u_pg_rca14_or1_y0
 1 1
-.names u_pg_rca_fa2_y0 u_pg_rca_and2_u_pg_rca_fa2_y0
+.names u_pg_rca14_fa2_y0 u_pg_rca14_and2_u_pg_rca14_fa2_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and2_u_pg_rca_or1_y0 _b=u_pg_rca_and2_u_pg_rca_fa2_y0 _y0=u_pg_rca_and2_y0
-.names u_pg_rca_and2_y0 u_pg_rca_or2_u_pg_rca_and2_y0
+.subckt and_gate _a=u_pg_rca14_and2_u_pg_rca14_or1_y0 _b=u_pg_rca14_and2_u_pg_rca14_fa2_y0 _y0=u_pg_rca14_and2_y0
+.names u_pg_rca14_and2_y0 u_pg_rca14_or2_u_pg_rca14_and2_y0
 1 1
-.names u_pg_rca_fa2_y1 u_pg_rca_or2_u_pg_rca_fa2_y1
+.names u_pg_rca14_fa2_y1 u_pg_rca14_or2_u_pg_rca14_fa2_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or2_u_pg_rca_and2_y0 _b=u_pg_rca_or2_u_pg_rca_fa2_y1 _y0=u_pg_rca_or2_y0
-.names a_3 u_pg_rca_fa3_a_3
+.subckt or_gate _a=u_pg_rca14_or2_u_pg_rca14_and2_y0 _b=u_pg_rca14_or2_u_pg_rca14_fa2_y1 _y0=u_pg_rca14_or2_y0
+.names a_3 u_pg_rca14_fa3_a_3
 1 1
-.names b_3 u_pg_rca_fa3_b_3
+.names b_3 u_pg_rca14_fa3_b_3
 1 1
-.names u_pg_rca_or2_y0 u_pg_rca_fa3_u_pg_rca_or2_y0
+.names u_pg_rca14_or2_y0 u_pg_rca14_fa3_u_pg_rca14_or2_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa3_a_3 b=u_pg_rca_fa3_b_3 cin=u_pg_rca_fa3_u_pg_rca_or2_y0 out[0]=u_pg_rca_fa3_y0 out[1]=u_pg_rca_fa3_y1 out[2]=u_pg_rca_fa3_y2
-.names u_pg_rca_or2_y0 u_pg_rca_and3_u_pg_rca_or2_y0
+.subckt fa_cla a=u_pg_rca14_fa3_a_3 b=u_pg_rca14_fa3_b_3 cin=u_pg_rca14_fa3_u_pg_rca14_or2_y0 fa_cla_y0=u_pg_rca14_fa3_y0 fa_cla_y1=u_pg_rca14_fa3_y1 fa_cla_y2=u_pg_rca14_fa3_y2
+.names u_pg_rca14_or2_y0 u_pg_rca14_and3_u_pg_rca14_or2_y0
 1 1
-.names u_pg_rca_fa3_y0 u_pg_rca_and3_u_pg_rca_fa3_y0
+.names u_pg_rca14_fa3_y0 u_pg_rca14_and3_u_pg_rca14_fa3_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and3_u_pg_rca_or2_y0 _b=u_pg_rca_and3_u_pg_rca_fa3_y0 _y0=u_pg_rca_and3_y0
-.names u_pg_rca_and3_y0 u_pg_rca_or3_u_pg_rca_and3_y0
+.subckt and_gate _a=u_pg_rca14_and3_u_pg_rca14_or2_y0 _b=u_pg_rca14_and3_u_pg_rca14_fa3_y0 _y0=u_pg_rca14_and3_y0
+.names u_pg_rca14_and3_y0 u_pg_rca14_or3_u_pg_rca14_and3_y0
 1 1
-.names u_pg_rca_fa3_y1 u_pg_rca_or3_u_pg_rca_fa3_y1
+.names u_pg_rca14_fa3_y1 u_pg_rca14_or3_u_pg_rca14_fa3_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or3_u_pg_rca_and3_y0 _b=u_pg_rca_or3_u_pg_rca_fa3_y1 _y0=u_pg_rca_or3_y0
-.names a_4 u_pg_rca_fa4_a_4
+.subckt or_gate _a=u_pg_rca14_or3_u_pg_rca14_and3_y0 _b=u_pg_rca14_or3_u_pg_rca14_fa3_y1 _y0=u_pg_rca14_or3_y0
+.names a_4 u_pg_rca14_fa4_a_4
 1 1
-.names b_4 u_pg_rca_fa4_b_4
+.names b_4 u_pg_rca14_fa4_b_4
 1 1
-.names u_pg_rca_or3_y0 u_pg_rca_fa4_u_pg_rca_or3_y0
+.names u_pg_rca14_or3_y0 u_pg_rca14_fa4_u_pg_rca14_or3_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa4_a_4 b=u_pg_rca_fa4_b_4 cin=u_pg_rca_fa4_u_pg_rca_or3_y0 out[0]=u_pg_rca_fa4_y0 out[1]=u_pg_rca_fa4_y1 out[2]=u_pg_rca_fa4_y2
-.names u_pg_rca_or3_y0 u_pg_rca_and4_u_pg_rca_or3_y0
+.subckt fa_cla a=u_pg_rca14_fa4_a_4 b=u_pg_rca14_fa4_b_4 cin=u_pg_rca14_fa4_u_pg_rca14_or3_y0 fa_cla_y0=u_pg_rca14_fa4_y0 fa_cla_y1=u_pg_rca14_fa4_y1 fa_cla_y2=u_pg_rca14_fa4_y2
+.names u_pg_rca14_or3_y0 u_pg_rca14_and4_u_pg_rca14_or3_y0
 1 1
-.names u_pg_rca_fa4_y0 u_pg_rca_and4_u_pg_rca_fa4_y0
+.names u_pg_rca14_fa4_y0 u_pg_rca14_and4_u_pg_rca14_fa4_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and4_u_pg_rca_or3_y0 _b=u_pg_rca_and4_u_pg_rca_fa4_y0 _y0=u_pg_rca_and4_y0
-.names u_pg_rca_and4_y0 u_pg_rca_or4_u_pg_rca_and4_y0
+.subckt and_gate _a=u_pg_rca14_and4_u_pg_rca14_or3_y0 _b=u_pg_rca14_and4_u_pg_rca14_fa4_y0 _y0=u_pg_rca14_and4_y0
+.names u_pg_rca14_and4_y0 u_pg_rca14_or4_u_pg_rca14_and4_y0
 1 1
-.names u_pg_rca_fa4_y1 u_pg_rca_or4_u_pg_rca_fa4_y1
+.names u_pg_rca14_fa4_y1 u_pg_rca14_or4_u_pg_rca14_fa4_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or4_u_pg_rca_and4_y0 _b=u_pg_rca_or4_u_pg_rca_fa4_y1 _y0=u_pg_rca_or4_y0
-.names a_5 u_pg_rca_fa5_a_5
+.subckt or_gate _a=u_pg_rca14_or4_u_pg_rca14_and4_y0 _b=u_pg_rca14_or4_u_pg_rca14_fa4_y1 _y0=u_pg_rca14_or4_y0
+.names a_5 u_pg_rca14_fa5_a_5
 1 1
-.names b_5 u_pg_rca_fa5_b_5
+.names b_5 u_pg_rca14_fa5_b_5
 1 1
-.names u_pg_rca_or4_y0 u_pg_rca_fa5_u_pg_rca_or4_y0
+.names u_pg_rca14_or4_y0 u_pg_rca14_fa5_u_pg_rca14_or4_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa5_a_5 b=u_pg_rca_fa5_b_5 cin=u_pg_rca_fa5_u_pg_rca_or4_y0 out[0]=u_pg_rca_fa5_y0 out[1]=u_pg_rca_fa5_y1 out[2]=u_pg_rca_fa5_y2
-.names u_pg_rca_or4_y0 u_pg_rca_and5_u_pg_rca_or4_y0
+.subckt fa_cla a=u_pg_rca14_fa5_a_5 b=u_pg_rca14_fa5_b_5 cin=u_pg_rca14_fa5_u_pg_rca14_or4_y0 fa_cla_y0=u_pg_rca14_fa5_y0 fa_cla_y1=u_pg_rca14_fa5_y1 fa_cla_y2=u_pg_rca14_fa5_y2
+.names u_pg_rca14_or4_y0 u_pg_rca14_and5_u_pg_rca14_or4_y0
 1 1
-.names u_pg_rca_fa5_y0 u_pg_rca_and5_u_pg_rca_fa5_y0
+.names u_pg_rca14_fa5_y0 u_pg_rca14_and5_u_pg_rca14_fa5_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and5_u_pg_rca_or4_y0 _b=u_pg_rca_and5_u_pg_rca_fa5_y0 _y0=u_pg_rca_and5_y0
-.names u_pg_rca_and5_y0 u_pg_rca_or5_u_pg_rca_and5_y0
+.subckt and_gate _a=u_pg_rca14_and5_u_pg_rca14_or4_y0 _b=u_pg_rca14_and5_u_pg_rca14_fa5_y0 _y0=u_pg_rca14_and5_y0
+.names u_pg_rca14_and5_y0 u_pg_rca14_or5_u_pg_rca14_and5_y0
 1 1
-.names u_pg_rca_fa5_y1 u_pg_rca_or5_u_pg_rca_fa5_y1
+.names u_pg_rca14_fa5_y1 u_pg_rca14_or5_u_pg_rca14_fa5_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or5_u_pg_rca_and5_y0 _b=u_pg_rca_or5_u_pg_rca_fa5_y1 _y0=u_pg_rca_or5_y0
-.names a_6 u_pg_rca_fa6_a_6
+.subckt or_gate _a=u_pg_rca14_or5_u_pg_rca14_and5_y0 _b=u_pg_rca14_or5_u_pg_rca14_fa5_y1 _y0=u_pg_rca14_or5_y0
+.names a_6 u_pg_rca14_fa6_a_6
 1 1
-.names b_6 u_pg_rca_fa6_b_6
+.names b_6 u_pg_rca14_fa6_b_6
 1 1
-.names u_pg_rca_or5_y0 u_pg_rca_fa6_u_pg_rca_or5_y0
+.names u_pg_rca14_or5_y0 u_pg_rca14_fa6_u_pg_rca14_or5_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa6_a_6 b=u_pg_rca_fa6_b_6 cin=u_pg_rca_fa6_u_pg_rca_or5_y0 out[0]=u_pg_rca_fa6_y0 out[1]=u_pg_rca_fa6_y1 out[2]=u_pg_rca_fa6_y2
-.names u_pg_rca_or5_y0 u_pg_rca_and6_u_pg_rca_or5_y0
+.subckt fa_cla a=u_pg_rca14_fa6_a_6 b=u_pg_rca14_fa6_b_6 cin=u_pg_rca14_fa6_u_pg_rca14_or5_y0 fa_cla_y0=u_pg_rca14_fa6_y0 fa_cla_y1=u_pg_rca14_fa6_y1 fa_cla_y2=u_pg_rca14_fa6_y2
+.names u_pg_rca14_or5_y0 u_pg_rca14_and6_u_pg_rca14_or5_y0
 1 1
-.names u_pg_rca_fa6_y0 u_pg_rca_and6_u_pg_rca_fa6_y0
+.names u_pg_rca14_fa6_y0 u_pg_rca14_and6_u_pg_rca14_fa6_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and6_u_pg_rca_or5_y0 _b=u_pg_rca_and6_u_pg_rca_fa6_y0 _y0=u_pg_rca_and6_y0
-.names u_pg_rca_and6_y0 u_pg_rca_or6_u_pg_rca_and6_y0
+.subckt and_gate _a=u_pg_rca14_and6_u_pg_rca14_or5_y0 _b=u_pg_rca14_and6_u_pg_rca14_fa6_y0 _y0=u_pg_rca14_and6_y0
+.names u_pg_rca14_and6_y0 u_pg_rca14_or6_u_pg_rca14_and6_y0
 1 1
-.names u_pg_rca_fa6_y1 u_pg_rca_or6_u_pg_rca_fa6_y1
+.names u_pg_rca14_fa6_y1 u_pg_rca14_or6_u_pg_rca14_fa6_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or6_u_pg_rca_and6_y0 _b=u_pg_rca_or6_u_pg_rca_fa6_y1 _y0=u_pg_rca_or6_y0
-.names a_7 u_pg_rca_fa7_a_7
+.subckt or_gate _a=u_pg_rca14_or6_u_pg_rca14_and6_y0 _b=u_pg_rca14_or6_u_pg_rca14_fa6_y1 _y0=u_pg_rca14_or6_y0
+.names a_7 u_pg_rca14_fa7_a_7
 1 1
-.names b_7 u_pg_rca_fa7_b_7
+.names b_7 u_pg_rca14_fa7_b_7
 1 1
-.names u_pg_rca_or6_y0 u_pg_rca_fa7_u_pg_rca_or6_y0
+.names u_pg_rca14_or6_y0 u_pg_rca14_fa7_u_pg_rca14_or6_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa7_a_7 b=u_pg_rca_fa7_b_7 cin=u_pg_rca_fa7_u_pg_rca_or6_y0 out[0]=u_pg_rca_fa7_y0 out[1]=u_pg_rca_fa7_y1 out[2]=u_pg_rca_fa7_y2
-.names u_pg_rca_or6_y0 u_pg_rca_and7_u_pg_rca_or6_y0
+.subckt fa_cla a=u_pg_rca14_fa7_a_7 b=u_pg_rca14_fa7_b_7 cin=u_pg_rca14_fa7_u_pg_rca14_or6_y0 fa_cla_y0=u_pg_rca14_fa7_y0 fa_cla_y1=u_pg_rca14_fa7_y1 fa_cla_y2=u_pg_rca14_fa7_y2
+.names u_pg_rca14_or6_y0 u_pg_rca14_and7_u_pg_rca14_or6_y0
 1 1
-.names u_pg_rca_fa7_y0 u_pg_rca_and7_u_pg_rca_fa7_y0
+.names u_pg_rca14_fa7_y0 u_pg_rca14_and7_u_pg_rca14_fa7_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and7_u_pg_rca_or6_y0 _b=u_pg_rca_and7_u_pg_rca_fa7_y0 _y0=u_pg_rca_and7_y0
-.names u_pg_rca_and7_y0 u_pg_rca_or7_u_pg_rca_and7_y0
+.subckt and_gate _a=u_pg_rca14_and7_u_pg_rca14_or6_y0 _b=u_pg_rca14_and7_u_pg_rca14_fa7_y0 _y0=u_pg_rca14_and7_y0
+.names u_pg_rca14_and7_y0 u_pg_rca14_or7_u_pg_rca14_and7_y0
 1 1
-.names u_pg_rca_fa7_y1 u_pg_rca_or7_u_pg_rca_fa7_y1
+.names u_pg_rca14_fa7_y1 u_pg_rca14_or7_u_pg_rca14_fa7_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or7_u_pg_rca_and7_y0 _b=u_pg_rca_or7_u_pg_rca_fa7_y1 _y0=u_pg_rca_or7_y0
-.names a_8 u_pg_rca_fa8_a_8
+.subckt or_gate _a=u_pg_rca14_or7_u_pg_rca14_and7_y0 _b=u_pg_rca14_or7_u_pg_rca14_fa7_y1 _y0=u_pg_rca14_or7_y0
+.names a_8 u_pg_rca14_fa8_a_8
 1 1
-.names b_8 u_pg_rca_fa8_b_8
+.names b_8 u_pg_rca14_fa8_b_8
 1 1
-.names u_pg_rca_or7_y0 u_pg_rca_fa8_u_pg_rca_or7_y0
+.names u_pg_rca14_or7_y0 u_pg_rca14_fa8_u_pg_rca14_or7_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa8_a_8 b=u_pg_rca_fa8_b_8 cin=u_pg_rca_fa8_u_pg_rca_or7_y0 out[0]=u_pg_rca_fa8_y0 out[1]=u_pg_rca_fa8_y1 out[2]=u_pg_rca_fa8_y2
-.names u_pg_rca_or7_y0 u_pg_rca_and8_u_pg_rca_or7_y0
+.subckt fa_cla a=u_pg_rca14_fa8_a_8 b=u_pg_rca14_fa8_b_8 cin=u_pg_rca14_fa8_u_pg_rca14_or7_y0 fa_cla_y0=u_pg_rca14_fa8_y0 fa_cla_y1=u_pg_rca14_fa8_y1 fa_cla_y2=u_pg_rca14_fa8_y2
+.names u_pg_rca14_or7_y0 u_pg_rca14_and8_u_pg_rca14_or7_y0
 1 1
-.names u_pg_rca_fa8_y0 u_pg_rca_and8_u_pg_rca_fa8_y0
+.names u_pg_rca14_fa8_y0 u_pg_rca14_and8_u_pg_rca14_fa8_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and8_u_pg_rca_or7_y0 _b=u_pg_rca_and8_u_pg_rca_fa8_y0 _y0=u_pg_rca_and8_y0
-.names u_pg_rca_and8_y0 u_pg_rca_or8_u_pg_rca_and8_y0
+.subckt and_gate _a=u_pg_rca14_and8_u_pg_rca14_or7_y0 _b=u_pg_rca14_and8_u_pg_rca14_fa8_y0 _y0=u_pg_rca14_and8_y0
+.names u_pg_rca14_and8_y0 u_pg_rca14_or8_u_pg_rca14_and8_y0
 1 1
-.names u_pg_rca_fa8_y1 u_pg_rca_or8_u_pg_rca_fa8_y1
+.names u_pg_rca14_fa8_y1 u_pg_rca14_or8_u_pg_rca14_fa8_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or8_u_pg_rca_and8_y0 _b=u_pg_rca_or8_u_pg_rca_fa8_y1 _y0=u_pg_rca_or8_y0
-.names a_9 u_pg_rca_fa9_a_9
+.subckt or_gate _a=u_pg_rca14_or8_u_pg_rca14_and8_y0 _b=u_pg_rca14_or8_u_pg_rca14_fa8_y1 _y0=u_pg_rca14_or8_y0
+.names a_9 u_pg_rca14_fa9_a_9
 1 1
-.names b_9 u_pg_rca_fa9_b_9
+.names b_9 u_pg_rca14_fa9_b_9
 1 1
-.names u_pg_rca_or8_y0 u_pg_rca_fa9_u_pg_rca_or8_y0
+.names u_pg_rca14_or8_y0 u_pg_rca14_fa9_u_pg_rca14_or8_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa9_a_9 b=u_pg_rca_fa9_b_9 cin=u_pg_rca_fa9_u_pg_rca_or8_y0 out[0]=u_pg_rca_fa9_y0 out[1]=u_pg_rca_fa9_y1 out[2]=u_pg_rca_fa9_y2
-.names u_pg_rca_or8_y0 u_pg_rca_and9_u_pg_rca_or8_y0
+.subckt fa_cla a=u_pg_rca14_fa9_a_9 b=u_pg_rca14_fa9_b_9 cin=u_pg_rca14_fa9_u_pg_rca14_or8_y0 fa_cla_y0=u_pg_rca14_fa9_y0 fa_cla_y1=u_pg_rca14_fa9_y1 fa_cla_y2=u_pg_rca14_fa9_y2
+.names u_pg_rca14_or8_y0 u_pg_rca14_and9_u_pg_rca14_or8_y0
 1 1
-.names u_pg_rca_fa9_y0 u_pg_rca_and9_u_pg_rca_fa9_y0
+.names u_pg_rca14_fa9_y0 u_pg_rca14_and9_u_pg_rca14_fa9_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and9_u_pg_rca_or8_y0 _b=u_pg_rca_and9_u_pg_rca_fa9_y0 _y0=u_pg_rca_and9_y0
-.names u_pg_rca_and9_y0 u_pg_rca_or9_u_pg_rca_and9_y0
+.subckt and_gate _a=u_pg_rca14_and9_u_pg_rca14_or8_y0 _b=u_pg_rca14_and9_u_pg_rca14_fa9_y0 _y0=u_pg_rca14_and9_y0
+.names u_pg_rca14_and9_y0 u_pg_rca14_or9_u_pg_rca14_and9_y0
 1 1
-.names u_pg_rca_fa9_y1 u_pg_rca_or9_u_pg_rca_fa9_y1
+.names u_pg_rca14_fa9_y1 u_pg_rca14_or9_u_pg_rca14_fa9_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or9_u_pg_rca_and9_y0 _b=u_pg_rca_or9_u_pg_rca_fa9_y1 _y0=u_pg_rca_or9_y0
-.names a_10 u_pg_rca_fa10_a_10
+.subckt or_gate _a=u_pg_rca14_or9_u_pg_rca14_and9_y0 _b=u_pg_rca14_or9_u_pg_rca14_fa9_y1 _y0=u_pg_rca14_or9_y0
+.names a_10 u_pg_rca14_fa10_a_10
 1 1
-.names b_10 u_pg_rca_fa10_b_10
+.names b_10 u_pg_rca14_fa10_b_10
 1 1
-.names u_pg_rca_or9_y0 u_pg_rca_fa10_u_pg_rca_or9_y0
+.names u_pg_rca14_or9_y0 u_pg_rca14_fa10_u_pg_rca14_or9_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa10_a_10 b=u_pg_rca_fa10_b_10 cin=u_pg_rca_fa10_u_pg_rca_or9_y0 out[0]=u_pg_rca_fa10_y0 out[1]=u_pg_rca_fa10_y1 out[2]=u_pg_rca_fa10_y2
-.names u_pg_rca_or9_y0 u_pg_rca_and10_u_pg_rca_or9_y0
+.subckt fa_cla a=u_pg_rca14_fa10_a_10 b=u_pg_rca14_fa10_b_10 cin=u_pg_rca14_fa10_u_pg_rca14_or9_y0 fa_cla_y0=u_pg_rca14_fa10_y0 fa_cla_y1=u_pg_rca14_fa10_y1 fa_cla_y2=u_pg_rca14_fa10_y2
+.names u_pg_rca14_or9_y0 u_pg_rca14_and10_u_pg_rca14_or9_y0
 1 1
-.names u_pg_rca_fa10_y0 u_pg_rca_and10_u_pg_rca_fa10_y0
+.names u_pg_rca14_fa10_y0 u_pg_rca14_and10_u_pg_rca14_fa10_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and10_u_pg_rca_or9_y0 _b=u_pg_rca_and10_u_pg_rca_fa10_y0 _y0=u_pg_rca_and10_y0
-.names u_pg_rca_and10_y0 u_pg_rca_or10_u_pg_rca_and10_y0
+.subckt and_gate _a=u_pg_rca14_and10_u_pg_rca14_or9_y0 _b=u_pg_rca14_and10_u_pg_rca14_fa10_y0 _y0=u_pg_rca14_and10_y0
+.names u_pg_rca14_and10_y0 u_pg_rca14_or10_u_pg_rca14_and10_y0
 1 1
-.names u_pg_rca_fa10_y1 u_pg_rca_or10_u_pg_rca_fa10_y1
+.names u_pg_rca14_fa10_y1 u_pg_rca14_or10_u_pg_rca14_fa10_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or10_u_pg_rca_and10_y0 _b=u_pg_rca_or10_u_pg_rca_fa10_y1 _y0=u_pg_rca_or10_y0
-.names a_11 u_pg_rca_fa11_a_11
+.subckt or_gate _a=u_pg_rca14_or10_u_pg_rca14_and10_y0 _b=u_pg_rca14_or10_u_pg_rca14_fa10_y1 _y0=u_pg_rca14_or10_y0
+.names a_11 u_pg_rca14_fa11_a_11
 1 1
-.names b_11 u_pg_rca_fa11_b_11
+.names b_11 u_pg_rca14_fa11_b_11
 1 1
-.names u_pg_rca_or10_y0 u_pg_rca_fa11_u_pg_rca_or10_y0
+.names u_pg_rca14_or10_y0 u_pg_rca14_fa11_u_pg_rca14_or10_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa11_a_11 b=u_pg_rca_fa11_b_11 cin=u_pg_rca_fa11_u_pg_rca_or10_y0 out[0]=u_pg_rca_fa11_y0 out[1]=u_pg_rca_fa11_y1 out[2]=u_pg_rca_fa11_y2
-.names u_pg_rca_or10_y0 u_pg_rca_and11_u_pg_rca_or10_y0
+.subckt fa_cla a=u_pg_rca14_fa11_a_11 b=u_pg_rca14_fa11_b_11 cin=u_pg_rca14_fa11_u_pg_rca14_or10_y0 fa_cla_y0=u_pg_rca14_fa11_y0 fa_cla_y1=u_pg_rca14_fa11_y1 fa_cla_y2=u_pg_rca14_fa11_y2
+.names u_pg_rca14_or10_y0 u_pg_rca14_and11_u_pg_rca14_or10_y0
 1 1
-.names u_pg_rca_fa11_y0 u_pg_rca_and11_u_pg_rca_fa11_y0
+.names u_pg_rca14_fa11_y0 u_pg_rca14_and11_u_pg_rca14_fa11_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and11_u_pg_rca_or10_y0 _b=u_pg_rca_and11_u_pg_rca_fa11_y0 _y0=u_pg_rca_and11_y0
-.names u_pg_rca_and11_y0 u_pg_rca_or11_u_pg_rca_and11_y0
+.subckt and_gate _a=u_pg_rca14_and11_u_pg_rca14_or10_y0 _b=u_pg_rca14_and11_u_pg_rca14_fa11_y0 _y0=u_pg_rca14_and11_y0
+.names u_pg_rca14_and11_y0 u_pg_rca14_or11_u_pg_rca14_and11_y0
 1 1
-.names u_pg_rca_fa11_y1 u_pg_rca_or11_u_pg_rca_fa11_y1
+.names u_pg_rca14_fa11_y1 u_pg_rca14_or11_u_pg_rca14_fa11_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or11_u_pg_rca_and11_y0 _b=u_pg_rca_or11_u_pg_rca_fa11_y1 _y0=u_pg_rca_or11_y0
-.names a_12 u_pg_rca_fa12_a_12
+.subckt or_gate _a=u_pg_rca14_or11_u_pg_rca14_and11_y0 _b=u_pg_rca14_or11_u_pg_rca14_fa11_y1 _y0=u_pg_rca14_or11_y0
+.names a_12 u_pg_rca14_fa12_a_12
 1 1
-.names b_12 u_pg_rca_fa12_b_12
+.names b_12 u_pg_rca14_fa12_b_12
 1 1
-.names u_pg_rca_or11_y0 u_pg_rca_fa12_u_pg_rca_or11_y0
+.names u_pg_rca14_or11_y0 u_pg_rca14_fa12_u_pg_rca14_or11_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa12_a_12 b=u_pg_rca_fa12_b_12 cin=u_pg_rca_fa12_u_pg_rca_or11_y0 out[0]=u_pg_rca_fa12_y0 out[1]=u_pg_rca_fa12_y1 out[2]=u_pg_rca_fa12_y2
-.names u_pg_rca_or11_y0 u_pg_rca_and12_u_pg_rca_or11_y0
+.subckt fa_cla a=u_pg_rca14_fa12_a_12 b=u_pg_rca14_fa12_b_12 cin=u_pg_rca14_fa12_u_pg_rca14_or11_y0 fa_cla_y0=u_pg_rca14_fa12_y0 fa_cla_y1=u_pg_rca14_fa12_y1 fa_cla_y2=u_pg_rca14_fa12_y2
+.names u_pg_rca14_or11_y0 u_pg_rca14_and12_u_pg_rca14_or11_y0
 1 1
-.names u_pg_rca_fa12_y0 u_pg_rca_and12_u_pg_rca_fa12_y0
+.names u_pg_rca14_fa12_y0 u_pg_rca14_and12_u_pg_rca14_fa12_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and12_u_pg_rca_or11_y0 _b=u_pg_rca_and12_u_pg_rca_fa12_y0 _y0=u_pg_rca_and12_y0
-.names u_pg_rca_and12_y0 u_pg_rca_or12_u_pg_rca_and12_y0
+.subckt and_gate _a=u_pg_rca14_and12_u_pg_rca14_or11_y0 _b=u_pg_rca14_and12_u_pg_rca14_fa12_y0 _y0=u_pg_rca14_and12_y0
+.names u_pg_rca14_and12_y0 u_pg_rca14_or12_u_pg_rca14_and12_y0
 1 1
-.names u_pg_rca_fa12_y1 u_pg_rca_or12_u_pg_rca_fa12_y1
+.names u_pg_rca14_fa12_y1 u_pg_rca14_or12_u_pg_rca14_fa12_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or12_u_pg_rca_and12_y0 _b=u_pg_rca_or12_u_pg_rca_fa12_y1 _y0=u_pg_rca_or12_y0
-.names a_13 u_pg_rca_fa13_a_13
+.subckt or_gate _a=u_pg_rca14_or12_u_pg_rca14_and12_y0 _b=u_pg_rca14_or12_u_pg_rca14_fa12_y1 _y0=u_pg_rca14_or12_y0
+.names a_13 u_pg_rca14_fa13_a_13
 1 1
-.names b_13 u_pg_rca_fa13_b_13
+.names b_13 u_pg_rca14_fa13_b_13
 1 1
-.names u_pg_rca_or12_y0 u_pg_rca_fa13_u_pg_rca_or12_y0
+.names u_pg_rca14_or12_y0 u_pg_rca14_fa13_u_pg_rca14_or12_y0
 1 1
-.subckt fa_cla a=u_pg_rca_fa13_a_13 b=u_pg_rca_fa13_b_13 cin=u_pg_rca_fa13_u_pg_rca_or12_y0 out[0]=u_pg_rca_fa13_y0 out[1]=u_pg_rca_fa13_y1 out[2]=u_pg_rca_fa13_y2
-.names u_pg_rca_or12_y0 u_pg_rca_and13_u_pg_rca_or12_y0
+.subckt fa_cla a=u_pg_rca14_fa13_a_13 b=u_pg_rca14_fa13_b_13 cin=u_pg_rca14_fa13_u_pg_rca14_or12_y0 fa_cla_y0=u_pg_rca14_fa13_y0 fa_cla_y1=u_pg_rca14_fa13_y1 fa_cla_y2=u_pg_rca14_fa13_y2
+.names u_pg_rca14_or12_y0 u_pg_rca14_and13_u_pg_rca14_or12_y0
 1 1
-.names u_pg_rca_fa13_y0 u_pg_rca_and13_u_pg_rca_fa13_y0
+.names u_pg_rca14_fa13_y0 u_pg_rca14_and13_u_pg_rca14_fa13_y0
 1 1
-.subckt and_gate _a=u_pg_rca_and13_u_pg_rca_or12_y0 _b=u_pg_rca_and13_u_pg_rca_fa13_y0 _y0=u_pg_rca_and13_y0
-.names u_pg_rca_and13_y0 u_pg_rca_or13_u_pg_rca_and13_y0
+.subckt and_gate _a=u_pg_rca14_and13_u_pg_rca14_or12_y0 _b=u_pg_rca14_and13_u_pg_rca14_fa13_y0 _y0=u_pg_rca14_and13_y0
+.names u_pg_rca14_and13_y0 u_pg_rca14_or13_u_pg_rca14_and13_y0
 1 1
-.names u_pg_rca_fa13_y1 u_pg_rca_or13_u_pg_rca_fa13_y1
+.names u_pg_rca14_fa13_y1 u_pg_rca14_or13_u_pg_rca14_fa13_y1
 1 1
-.subckt or_gate _a=u_pg_rca_or13_u_pg_rca_and13_y0 _b=u_pg_rca_or13_u_pg_rca_fa13_y1 _y0=u_pg_rca_or13_y0
-.names u_pg_rca_fa0_y2 out[0]
+.subckt or_gate _a=u_pg_rca14_or13_u_pg_rca14_and13_y0 _b=u_pg_rca14_or13_u_pg_rca14_fa13_y1 _y0=u_pg_rca14_or13_y0
+.names u_pg_rca14_fa0_y2 out[0]
 1 1
-.names u_pg_rca_fa1_y2 out[1]
+.names u_pg_rca14_fa1_y2 out[1]
 1 1
-.names u_pg_rca_fa2_y2 out[2]
+.names u_pg_rca14_fa2_y2 out[2]
 1 1
-.names u_pg_rca_fa3_y2 out[3]
+.names u_pg_rca14_fa3_y2 out[3]
 1 1
-.names u_pg_rca_fa4_y2 out[4]
+.names u_pg_rca14_fa4_y2 out[4]
 1 1
-.names u_pg_rca_fa5_y2 out[5]
+.names u_pg_rca14_fa5_y2 out[5]
 1 1
-.names u_pg_rca_fa6_y2 out[6]
+.names u_pg_rca14_fa6_y2 out[6]
 1 1
-.names u_pg_rca_fa7_y2 out[7]
+.names u_pg_rca14_fa7_y2 out[7]
 1 1
-.names u_pg_rca_fa8_y2 out[8]
+.names u_pg_rca14_fa8_y2 out[8]
 1 1
-.names u_pg_rca_fa9_y2 out[9]
+.names u_pg_rca14_fa9_y2 out[9]
 1 1
-.names u_pg_rca_fa10_y2 out[10]
+.names u_pg_rca14_fa10_y2 out[10]
 1 1
-.names u_pg_rca_fa11_y2 out[11]
+.names u_pg_rca14_fa11_y2 out[11]
 1 1
-.names u_pg_rca_fa12_y2 out[12]
+.names u_pg_rca14_fa12_y2 out[12]
 1 1
-.names u_pg_rca_fa13_y2 out[13]
+.names u_pg_rca14_fa13_y2 out[13]
 1 1
-.names u_pg_rca_or13_y0 out[14]
+.names u_pg_rca14_or13_y0 out[14]
 1 1
 .end
 
 .model fa_cla
 .inputs a b cin
-.outputs out[0] out[1] out[2]
+.outputs fa_cla_y0 fa_cla_y1 fa_cla_y2
 .names a fa_cla_a
 1 1
 .names b fa_cla_b
@@ -1082,17 +1082,11 @@
 .subckt xor_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y0
 .subckt and_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y1
 .subckt xor_gate _a=fa_cla_y0 _b=fa_cla_cin _y0=fa_cla_y2
-.names fa_cla_y0 out[0]
-1 1
-.names fa_cla_y1 out[1]
-1 1
-.names fa_cla_y2 out[2]
-1 1
 .end
 
 .model constant_wire_value_0
 .inputs a b
-.outputs out[0]
+.outputs constant_wire_0
 .names a constant_wire_value_0_a
 1 1
 .names b constant_wire_value_0_b
@@ -1100,13 +1094,11 @@
 .subckt xor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y0
 .subckt xnor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y1
 .subckt nor_gate _a=constant_wire_value_0_y0 _b=constant_wire_value_0_y1 _y0=constant_wire_0
-.names constant_wire_0 out[0]
-1 1
 .end
 
 .model fa
 .inputs a b cin
-.outputs out[0] out[1]
+.outputs fa_y2 fa_y4
 .names a fa_a
 1 1
 .names b fa_b
@@ -1118,30 +1110,22 @@
 .subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
 .subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
 .subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
-.names fa_y2 out[0]
-1 1
-.names fa_y4 out[1]
-1 1
 .end
 
 .model ha
 .inputs a b
-.outputs out[0] out[1]
+.outputs ha_y0 ha_y1
 .names a ha_a
 1 1
 .names b ha_b
 1 1
 .subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
 .subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
-.names ha_y0 out[0]
-1 1
-.names ha_y1 out[1]
-1 1
 .end
 
 .model constant_wire_value_1
 .inputs a b
-.outputs out[0]
+.outputs constant_wire_1
 .names a constant_wire_value_1_a
 1 1
 .names b constant_wire_value_1_b
@@ -1149,8 +1133,6 @@
 .subckt xor_gate _a=constant_wire_value_1_a _b=constant_wire_value_1_b _y0=constant_wire_value_1_y0
 .subckt xnor_gate _a=constant_wire_value_1_a _b=constant_wire_value_1_b _y0=constant_wire_value_1_y1
 .subckt or_gate _a=constant_wire_value_1_y0 _b=constant_wire_value_1_y1 _y0=constant_wire_1
-.names constant_wire_1 out[0]
-1 1
 .end
 
 .model nor_gate

@@ -21,6 +21,8 @@ endmodule
 module constant_wire_value_0(input a, input b, output constant_wire_0);
   wire constant_wire_value_0_a;
   wire constant_wire_value_0_b;
+  wire constant_wire_value_0_y0;
+  wire constant_wire_value_0_y1;
 
   assign constant_wire_value_0_a = a;
   assign constant_wire_value_0_b = b;

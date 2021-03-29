@@ -133,14 +133,14 @@
 1 1
 .names b_0 constant_wire_value_0_b_0
 1 1
-.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 out[0]=constant_wire_0
+.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 constant_wire_0=constant_wire_0
 .names a_0 h_u_pg_rca32_fa0_a_0
 1 1
 .names b_0 h_u_pg_rca32_fa0_b_0
 1 1
 .names constant_wire_0 h_u_pg_rca32_fa0_constant_wire_0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa0_a_0 b=h_u_pg_rca32_fa0_b_0 cin=h_u_pg_rca32_fa0_constant_wire_0 out[0]=h_u_pg_rca32_fa0_y0 out[1]=h_u_pg_rca32_fa0_y1 out[2]=h_u_pg_rca32_fa0_y2
+.subckt fa_cla a=h_u_pg_rca32_fa0_a_0 b=h_u_pg_rca32_fa0_b_0 cin=h_u_pg_rca32_fa0_constant_wire_0 fa_cla_y0=h_u_pg_rca32_fa0_y0 fa_cla_y1=h_u_pg_rca32_fa0_y1 fa_cla_y2=h_u_pg_rca32_fa0_y2
 .names constant_wire_0 h_u_pg_rca32_and0_constant_wire_0
 1 1
 .names h_u_pg_rca32_fa0_y0 h_u_pg_rca32_and0_h_u_pg_rca32_fa0_y0
@@ -157,7 +157,7 @@
 1 1
 .names h_u_pg_rca32_or0_y0 h_u_pg_rca32_fa1_h_u_pg_rca32_or0_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa1_a_1 b=h_u_pg_rca32_fa1_b_1 cin=h_u_pg_rca32_fa1_h_u_pg_rca32_or0_y0 out[0]=h_u_pg_rca32_fa1_y0 out[1]=h_u_pg_rca32_fa1_y1 out[2]=h_u_pg_rca32_fa1_y2
+.subckt fa_cla a=h_u_pg_rca32_fa1_a_1 b=h_u_pg_rca32_fa1_b_1 cin=h_u_pg_rca32_fa1_h_u_pg_rca32_or0_y0 fa_cla_y0=h_u_pg_rca32_fa1_y0 fa_cla_y1=h_u_pg_rca32_fa1_y1 fa_cla_y2=h_u_pg_rca32_fa1_y2
 .names h_u_pg_rca32_or0_y0 h_u_pg_rca32_and1_h_u_pg_rca32_or0_y0
 1 1
 .names h_u_pg_rca32_fa1_y0 h_u_pg_rca32_and1_h_u_pg_rca32_fa1_y0
@@ -174,7 +174,7 @@
 1 1
 .names h_u_pg_rca32_or1_y0 h_u_pg_rca32_fa2_h_u_pg_rca32_or1_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa2_a_2 b=h_u_pg_rca32_fa2_b_2 cin=h_u_pg_rca32_fa2_h_u_pg_rca32_or1_y0 out[0]=h_u_pg_rca32_fa2_y0 out[1]=h_u_pg_rca32_fa2_y1 out[2]=h_u_pg_rca32_fa2_y2
+.subckt fa_cla a=h_u_pg_rca32_fa2_a_2 b=h_u_pg_rca32_fa2_b_2 cin=h_u_pg_rca32_fa2_h_u_pg_rca32_or1_y0 fa_cla_y0=h_u_pg_rca32_fa2_y0 fa_cla_y1=h_u_pg_rca32_fa2_y1 fa_cla_y2=h_u_pg_rca32_fa2_y2
 .names h_u_pg_rca32_or1_y0 h_u_pg_rca32_and2_h_u_pg_rca32_or1_y0
 1 1
 .names h_u_pg_rca32_fa2_y0 h_u_pg_rca32_and2_h_u_pg_rca32_fa2_y0
@@ -191,7 +191,7 @@
 1 1
 .names h_u_pg_rca32_or2_y0 h_u_pg_rca32_fa3_h_u_pg_rca32_or2_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa3_a_3 b=h_u_pg_rca32_fa3_b_3 cin=h_u_pg_rca32_fa3_h_u_pg_rca32_or2_y0 out[0]=h_u_pg_rca32_fa3_y0 out[1]=h_u_pg_rca32_fa3_y1 out[2]=h_u_pg_rca32_fa3_y2
+.subckt fa_cla a=h_u_pg_rca32_fa3_a_3 b=h_u_pg_rca32_fa3_b_3 cin=h_u_pg_rca32_fa3_h_u_pg_rca32_or2_y0 fa_cla_y0=h_u_pg_rca32_fa3_y0 fa_cla_y1=h_u_pg_rca32_fa3_y1 fa_cla_y2=h_u_pg_rca32_fa3_y2
 .names h_u_pg_rca32_or2_y0 h_u_pg_rca32_and3_h_u_pg_rca32_or2_y0
 1 1
 .names h_u_pg_rca32_fa3_y0 h_u_pg_rca32_and3_h_u_pg_rca32_fa3_y0
@@ -208,7 +208,7 @@
 1 1
 .names h_u_pg_rca32_or3_y0 h_u_pg_rca32_fa4_h_u_pg_rca32_or3_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa4_a_4 b=h_u_pg_rca32_fa4_b_4 cin=h_u_pg_rca32_fa4_h_u_pg_rca32_or3_y0 out[0]=h_u_pg_rca32_fa4_y0 out[1]=h_u_pg_rca32_fa4_y1 out[2]=h_u_pg_rca32_fa4_y2
+.subckt fa_cla a=h_u_pg_rca32_fa4_a_4 b=h_u_pg_rca32_fa4_b_4 cin=h_u_pg_rca32_fa4_h_u_pg_rca32_or3_y0 fa_cla_y0=h_u_pg_rca32_fa4_y0 fa_cla_y1=h_u_pg_rca32_fa4_y1 fa_cla_y2=h_u_pg_rca32_fa4_y2
 .names h_u_pg_rca32_or3_y0 h_u_pg_rca32_and4_h_u_pg_rca32_or3_y0
 1 1
 .names h_u_pg_rca32_fa4_y0 h_u_pg_rca32_and4_h_u_pg_rca32_fa4_y0
@@ -225,7 +225,7 @@
 1 1
 .names h_u_pg_rca32_or4_y0 h_u_pg_rca32_fa5_h_u_pg_rca32_or4_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa5_a_5 b=h_u_pg_rca32_fa5_b_5 cin=h_u_pg_rca32_fa5_h_u_pg_rca32_or4_y0 out[0]=h_u_pg_rca32_fa5_y0 out[1]=h_u_pg_rca32_fa5_y1 out[2]=h_u_pg_rca32_fa5_y2
+.subckt fa_cla a=h_u_pg_rca32_fa5_a_5 b=h_u_pg_rca32_fa5_b_5 cin=h_u_pg_rca32_fa5_h_u_pg_rca32_or4_y0 fa_cla_y0=h_u_pg_rca32_fa5_y0 fa_cla_y1=h_u_pg_rca32_fa5_y1 fa_cla_y2=h_u_pg_rca32_fa5_y2
 .names h_u_pg_rca32_or4_y0 h_u_pg_rca32_and5_h_u_pg_rca32_or4_y0
 1 1
 .names h_u_pg_rca32_fa5_y0 h_u_pg_rca32_and5_h_u_pg_rca32_fa5_y0
@@ -242,7 +242,7 @@
 1 1
 .names h_u_pg_rca32_or5_y0 h_u_pg_rca32_fa6_h_u_pg_rca32_or5_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa6_a_6 b=h_u_pg_rca32_fa6_b_6 cin=h_u_pg_rca32_fa6_h_u_pg_rca32_or5_y0 out[0]=h_u_pg_rca32_fa6_y0 out[1]=h_u_pg_rca32_fa6_y1 out[2]=h_u_pg_rca32_fa6_y2
+.subckt fa_cla a=h_u_pg_rca32_fa6_a_6 b=h_u_pg_rca32_fa6_b_6 cin=h_u_pg_rca32_fa6_h_u_pg_rca32_or5_y0 fa_cla_y0=h_u_pg_rca32_fa6_y0 fa_cla_y1=h_u_pg_rca32_fa6_y1 fa_cla_y2=h_u_pg_rca32_fa6_y2
 .names h_u_pg_rca32_or5_y0 h_u_pg_rca32_and6_h_u_pg_rca32_or5_y0
 1 1
 .names h_u_pg_rca32_fa6_y0 h_u_pg_rca32_and6_h_u_pg_rca32_fa6_y0
@@ -259,7 +259,7 @@
 1 1
 .names h_u_pg_rca32_or6_y0 h_u_pg_rca32_fa7_h_u_pg_rca32_or6_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa7_a_7 b=h_u_pg_rca32_fa7_b_7 cin=h_u_pg_rca32_fa7_h_u_pg_rca32_or6_y0 out[0]=h_u_pg_rca32_fa7_y0 out[1]=h_u_pg_rca32_fa7_y1 out[2]=h_u_pg_rca32_fa7_y2
+.subckt fa_cla a=h_u_pg_rca32_fa7_a_7 b=h_u_pg_rca32_fa7_b_7 cin=h_u_pg_rca32_fa7_h_u_pg_rca32_or6_y0 fa_cla_y0=h_u_pg_rca32_fa7_y0 fa_cla_y1=h_u_pg_rca32_fa7_y1 fa_cla_y2=h_u_pg_rca32_fa7_y2
 .names h_u_pg_rca32_or6_y0 h_u_pg_rca32_and7_h_u_pg_rca32_or6_y0
 1 1
 .names h_u_pg_rca32_fa7_y0 h_u_pg_rca32_and7_h_u_pg_rca32_fa7_y0
@@ -276,7 +276,7 @@
 1 1
 .names h_u_pg_rca32_or7_y0 h_u_pg_rca32_fa8_h_u_pg_rca32_or7_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa8_a_8 b=h_u_pg_rca32_fa8_b_8 cin=h_u_pg_rca32_fa8_h_u_pg_rca32_or7_y0 out[0]=h_u_pg_rca32_fa8_y0 out[1]=h_u_pg_rca32_fa8_y1 out[2]=h_u_pg_rca32_fa8_y2
+.subckt fa_cla a=h_u_pg_rca32_fa8_a_8 b=h_u_pg_rca32_fa8_b_8 cin=h_u_pg_rca32_fa8_h_u_pg_rca32_or7_y0 fa_cla_y0=h_u_pg_rca32_fa8_y0 fa_cla_y1=h_u_pg_rca32_fa8_y1 fa_cla_y2=h_u_pg_rca32_fa8_y2
 .names h_u_pg_rca32_or7_y0 h_u_pg_rca32_and8_h_u_pg_rca32_or7_y0
 1 1
 .names h_u_pg_rca32_fa8_y0 h_u_pg_rca32_and8_h_u_pg_rca32_fa8_y0
@@ -293,7 +293,7 @@
 1 1
 .names h_u_pg_rca32_or8_y0 h_u_pg_rca32_fa9_h_u_pg_rca32_or8_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa9_a_9 b=h_u_pg_rca32_fa9_b_9 cin=h_u_pg_rca32_fa9_h_u_pg_rca32_or8_y0 out[0]=h_u_pg_rca32_fa9_y0 out[1]=h_u_pg_rca32_fa9_y1 out[2]=h_u_pg_rca32_fa9_y2
+.subckt fa_cla a=h_u_pg_rca32_fa9_a_9 b=h_u_pg_rca32_fa9_b_9 cin=h_u_pg_rca32_fa9_h_u_pg_rca32_or8_y0 fa_cla_y0=h_u_pg_rca32_fa9_y0 fa_cla_y1=h_u_pg_rca32_fa9_y1 fa_cla_y2=h_u_pg_rca32_fa9_y2
 .names h_u_pg_rca32_or8_y0 h_u_pg_rca32_and9_h_u_pg_rca32_or8_y0
 1 1
 .names h_u_pg_rca32_fa9_y0 h_u_pg_rca32_and9_h_u_pg_rca32_fa9_y0
@@ -310,7 +310,7 @@
 1 1
 .names h_u_pg_rca32_or9_y0 h_u_pg_rca32_fa10_h_u_pg_rca32_or9_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa10_a_10 b=h_u_pg_rca32_fa10_b_10 cin=h_u_pg_rca32_fa10_h_u_pg_rca32_or9_y0 out[0]=h_u_pg_rca32_fa10_y0 out[1]=h_u_pg_rca32_fa10_y1 out[2]=h_u_pg_rca32_fa10_y2
+.subckt fa_cla a=h_u_pg_rca32_fa10_a_10 b=h_u_pg_rca32_fa10_b_10 cin=h_u_pg_rca32_fa10_h_u_pg_rca32_or9_y0 fa_cla_y0=h_u_pg_rca32_fa10_y0 fa_cla_y1=h_u_pg_rca32_fa10_y1 fa_cla_y2=h_u_pg_rca32_fa10_y2
 .names h_u_pg_rca32_or9_y0 h_u_pg_rca32_and10_h_u_pg_rca32_or9_y0
 1 1
 .names h_u_pg_rca32_fa10_y0 h_u_pg_rca32_and10_h_u_pg_rca32_fa10_y0
@@ -327,7 +327,7 @@
 1 1
 .names h_u_pg_rca32_or10_y0 h_u_pg_rca32_fa11_h_u_pg_rca32_or10_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa11_a_11 b=h_u_pg_rca32_fa11_b_11 cin=h_u_pg_rca32_fa11_h_u_pg_rca32_or10_y0 out[0]=h_u_pg_rca32_fa11_y0 out[1]=h_u_pg_rca32_fa11_y1 out[2]=h_u_pg_rca32_fa11_y2
+.subckt fa_cla a=h_u_pg_rca32_fa11_a_11 b=h_u_pg_rca32_fa11_b_11 cin=h_u_pg_rca32_fa11_h_u_pg_rca32_or10_y0 fa_cla_y0=h_u_pg_rca32_fa11_y0 fa_cla_y1=h_u_pg_rca32_fa11_y1 fa_cla_y2=h_u_pg_rca32_fa11_y2
 .names h_u_pg_rca32_or10_y0 h_u_pg_rca32_and11_h_u_pg_rca32_or10_y0
 1 1
 .names h_u_pg_rca32_fa11_y0 h_u_pg_rca32_and11_h_u_pg_rca32_fa11_y0
@@ -344,7 +344,7 @@
 1 1
 .names h_u_pg_rca32_or11_y0 h_u_pg_rca32_fa12_h_u_pg_rca32_or11_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa12_a_12 b=h_u_pg_rca32_fa12_b_12 cin=h_u_pg_rca32_fa12_h_u_pg_rca32_or11_y0 out[0]=h_u_pg_rca32_fa12_y0 out[1]=h_u_pg_rca32_fa12_y1 out[2]=h_u_pg_rca32_fa12_y2
+.subckt fa_cla a=h_u_pg_rca32_fa12_a_12 b=h_u_pg_rca32_fa12_b_12 cin=h_u_pg_rca32_fa12_h_u_pg_rca32_or11_y0 fa_cla_y0=h_u_pg_rca32_fa12_y0 fa_cla_y1=h_u_pg_rca32_fa12_y1 fa_cla_y2=h_u_pg_rca32_fa12_y2
 .names h_u_pg_rca32_or11_y0 h_u_pg_rca32_and12_h_u_pg_rca32_or11_y0
 1 1
 .names h_u_pg_rca32_fa12_y0 h_u_pg_rca32_and12_h_u_pg_rca32_fa12_y0
@@ -361,7 +361,7 @@
 1 1
 .names h_u_pg_rca32_or12_y0 h_u_pg_rca32_fa13_h_u_pg_rca32_or12_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa13_a_13 b=h_u_pg_rca32_fa13_b_13 cin=h_u_pg_rca32_fa13_h_u_pg_rca32_or12_y0 out[0]=h_u_pg_rca32_fa13_y0 out[1]=h_u_pg_rca32_fa13_y1 out[2]=h_u_pg_rca32_fa13_y2
+.subckt fa_cla a=h_u_pg_rca32_fa13_a_13 b=h_u_pg_rca32_fa13_b_13 cin=h_u_pg_rca32_fa13_h_u_pg_rca32_or12_y0 fa_cla_y0=h_u_pg_rca32_fa13_y0 fa_cla_y1=h_u_pg_rca32_fa13_y1 fa_cla_y2=h_u_pg_rca32_fa13_y2
 .names h_u_pg_rca32_or12_y0 h_u_pg_rca32_and13_h_u_pg_rca32_or12_y0
 1 1
 .names h_u_pg_rca32_fa13_y0 h_u_pg_rca32_and13_h_u_pg_rca32_fa13_y0
@@ -378,7 +378,7 @@
 1 1
 .names h_u_pg_rca32_or13_y0 h_u_pg_rca32_fa14_h_u_pg_rca32_or13_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa14_a_14 b=h_u_pg_rca32_fa14_b_14 cin=h_u_pg_rca32_fa14_h_u_pg_rca32_or13_y0 out[0]=h_u_pg_rca32_fa14_y0 out[1]=h_u_pg_rca32_fa14_y1 out[2]=h_u_pg_rca32_fa14_y2
+.subckt fa_cla a=h_u_pg_rca32_fa14_a_14 b=h_u_pg_rca32_fa14_b_14 cin=h_u_pg_rca32_fa14_h_u_pg_rca32_or13_y0 fa_cla_y0=h_u_pg_rca32_fa14_y0 fa_cla_y1=h_u_pg_rca32_fa14_y1 fa_cla_y2=h_u_pg_rca32_fa14_y2
 .names h_u_pg_rca32_or13_y0 h_u_pg_rca32_and14_h_u_pg_rca32_or13_y0
 1 1
 .names h_u_pg_rca32_fa14_y0 h_u_pg_rca32_and14_h_u_pg_rca32_fa14_y0
@@ -395,7 +395,7 @@
 1 1
 .names h_u_pg_rca32_or14_y0 h_u_pg_rca32_fa15_h_u_pg_rca32_or14_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa15_a_15 b=h_u_pg_rca32_fa15_b_15 cin=h_u_pg_rca32_fa15_h_u_pg_rca32_or14_y0 out[0]=h_u_pg_rca32_fa15_y0 out[1]=h_u_pg_rca32_fa15_y1 out[2]=h_u_pg_rca32_fa15_y2
+.subckt fa_cla a=h_u_pg_rca32_fa15_a_15 b=h_u_pg_rca32_fa15_b_15 cin=h_u_pg_rca32_fa15_h_u_pg_rca32_or14_y0 fa_cla_y0=h_u_pg_rca32_fa15_y0 fa_cla_y1=h_u_pg_rca32_fa15_y1 fa_cla_y2=h_u_pg_rca32_fa15_y2
 .names h_u_pg_rca32_or14_y0 h_u_pg_rca32_and15_h_u_pg_rca32_or14_y0
 1 1
 .names h_u_pg_rca32_fa15_y0 h_u_pg_rca32_and15_h_u_pg_rca32_fa15_y0
@@ -412,7 +412,7 @@
 1 1
 .names h_u_pg_rca32_or15_y0 h_u_pg_rca32_fa16_h_u_pg_rca32_or15_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa16_a_16 b=h_u_pg_rca32_fa16_b_16 cin=h_u_pg_rca32_fa16_h_u_pg_rca32_or15_y0 out[0]=h_u_pg_rca32_fa16_y0 out[1]=h_u_pg_rca32_fa16_y1 out[2]=h_u_pg_rca32_fa16_y2
+.subckt fa_cla a=h_u_pg_rca32_fa16_a_16 b=h_u_pg_rca32_fa16_b_16 cin=h_u_pg_rca32_fa16_h_u_pg_rca32_or15_y0 fa_cla_y0=h_u_pg_rca32_fa16_y0 fa_cla_y1=h_u_pg_rca32_fa16_y1 fa_cla_y2=h_u_pg_rca32_fa16_y2
 .names h_u_pg_rca32_or15_y0 h_u_pg_rca32_and16_h_u_pg_rca32_or15_y0
 1 1
 .names h_u_pg_rca32_fa16_y0 h_u_pg_rca32_and16_h_u_pg_rca32_fa16_y0
@@ -429,7 +429,7 @@
 1 1
 .names h_u_pg_rca32_or16_y0 h_u_pg_rca32_fa17_h_u_pg_rca32_or16_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa17_a_17 b=h_u_pg_rca32_fa17_b_17 cin=h_u_pg_rca32_fa17_h_u_pg_rca32_or16_y0 out[0]=h_u_pg_rca32_fa17_y0 out[1]=h_u_pg_rca32_fa17_y1 out[2]=h_u_pg_rca32_fa17_y2
+.subckt fa_cla a=h_u_pg_rca32_fa17_a_17 b=h_u_pg_rca32_fa17_b_17 cin=h_u_pg_rca32_fa17_h_u_pg_rca32_or16_y0 fa_cla_y0=h_u_pg_rca32_fa17_y0 fa_cla_y1=h_u_pg_rca32_fa17_y1 fa_cla_y2=h_u_pg_rca32_fa17_y2
 .names h_u_pg_rca32_or16_y0 h_u_pg_rca32_and17_h_u_pg_rca32_or16_y0
 1 1
 .names h_u_pg_rca32_fa17_y0 h_u_pg_rca32_and17_h_u_pg_rca32_fa17_y0
@@ -446,7 +446,7 @@
 1 1
 .names h_u_pg_rca32_or17_y0 h_u_pg_rca32_fa18_h_u_pg_rca32_or17_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa18_a_18 b=h_u_pg_rca32_fa18_b_18 cin=h_u_pg_rca32_fa18_h_u_pg_rca32_or17_y0 out[0]=h_u_pg_rca32_fa18_y0 out[1]=h_u_pg_rca32_fa18_y1 out[2]=h_u_pg_rca32_fa18_y2
+.subckt fa_cla a=h_u_pg_rca32_fa18_a_18 b=h_u_pg_rca32_fa18_b_18 cin=h_u_pg_rca32_fa18_h_u_pg_rca32_or17_y0 fa_cla_y0=h_u_pg_rca32_fa18_y0 fa_cla_y1=h_u_pg_rca32_fa18_y1 fa_cla_y2=h_u_pg_rca32_fa18_y2
 .names h_u_pg_rca32_or17_y0 h_u_pg_rca32_and18_h_u_pg_rca32_or17_y0
 1 1
 .names h_u_pg_rca32_fa18_y0 h_u_pg_rca32_and18_h_u_pg_rca32_fa18_y0
@@ -463,7 +463,7 @@
 1 1
 .names h_u_pg_rca32_or18_y0 h_u_pg_rca32_fa19_h_u_pg_rca32_or18_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa19_a_19 b=h_u_pg_rca32_fa19_b_19 cin=h_u_pg_rca32_fa19_h_u_pg_rca32_or18_y0 out[0]=h_u_pg_rca32_fa19_y0 out[1]=h_u_pg_rca32_fa19_y1 out[2]=h_u_pg_rca32_fa19_y2
+.subckt fa_cla a=h_u_pg_rca32_fa19_a_19 b=h_u_pg_rca32_fa19_b_19 cin=h_u_pg_rca32_fa19_h_u_pg_rca32_or18_y0 fa_cla_y0=h_u_pg_rca32_fa19_y0 fa_cla_y1=h_u_pg_rca32_fa19_y1 fa_cla_y2=h_u_pg_rca32_fa19_y2
 .names h_u_pg_rca32_or18_y0 h_u_pg_rca32_and19_h_u_pg_rca32_or18_y0
 1 1
 .names h_u_pg_rca32_fa19_y0 h_u_pg_rca32_and19_h_u_pg_rca32_fa19_y0
@@ -480,7 +480,7 @@
 1 1
 .names h_u_pg_rca32_or19_y0 h_u_pg_rca32_fa20_h_u_pg_rca32_or19_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa20_a_20 b=h_u_pg_rca32_fa20_b_20 cin=h_u_pg_rca32_fa20_h_u_pg_rca32_or19_y0 out[0]=h_u_pg_rca32_fa20_y0 out[1]=h_u_pg_rca32_fa20_y1 out[2]=h_u_pg_rca32_fa20_y2
+.subckt fa_cla a=h_u_pg_rca32_fa20_a_20 b=h_u_pg_rca32_fa20_b_20 cin=h_u_pg_rca32_fa20_h_u_pg_rca32_or19_y0 fa_cla_y0=h_u_pg_rca32_fa20_y0 fa_cla_y1=h_u_pg_rca32_fa20_y1 fa_cla_y2=h_u_pg_rca32_fa20_y2
 .names h_u_pg_rca32_or19_y0 h_u_pg_rca32_and20_h_u_pg_rca32_or19_y0
 1 1
 .names h_u_pg_rca32_fa20_y0 h_u_pg_rca32_and20_h_u_pg_rca32_fa20_y0
@@ -497,7 +497,7 @@
 1 1
 .names h_u_pg_rca32_or20_y0 h_u_pg_rca32_fa21_h_u_pg_rca32_or20_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa21_a_21 b=h_u_pg_rca32_fa21_b_21 cin=h_u_pg_rca32_fa21_h_u_pg_rca32_or20_y0 out[0]=h_u_pg_rca32_fa21_y0 out[1]=h_u_pg_rca32_fa21_y1 out[2]=h_u_pg_rca32_fa21_y2
+.subckt fa_cla a=h_u_pg_rca32_fa21_a_21 b=h_u_pg_rca32_fa21_b_21 cin=h_u_pg_rca32_fa21_h_u_pg_rca32_or20_y0 fa_cla_y0=h_u_pg_rca32_fa21_y0 fa_cla_y1=h_u_pg_rca32_fa21_y1 fa_cla_y2=h_u_pg_rca32_fa21_y2
 .names h_u_pg_rca32_or20_y0 h_u_pg_rca32_and21_h_u_pg_rca32_or20_y0
 1 1
 .names h_u_pg_rca32_fa21_y0 h_u_pg_rca32_and21_h_u_pg_rca32_fa21_y0
@@ -514,7 +514,7 @@
 1 1
 .names h_u_pg_rca32_or21_y0 h_u_pg_rca32_fa22_h_u_pg_rca32_or21_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa22_a_22 b=h_u_pg_rca32_fa22_b_22 cin=h_u_pg_rca32_fa22_h_u_pg_rca32_or21_y0 out[0]=h_u_pg_rca32_fa22_y0 out[1]=h_u_pg_rca32_fa22_y1 out[2]=h_u_pg_rca32_fa22_y2
+.subckt fa_cla a=h_u_pg_rca32_fa22_a_22 b=h_u_pg_rca32_fa22_b_22 cin=h_u_pg_rca32_fa22_h_u_pg_rca32_or21_y0 fa_cla_y0=h_u_pg_rca32_fa22_y0 fa_cla_y1=h_u_pg_rca32_fa22_y1 fa_cla_y2=h_u_pg_rca32_fa22_y2
 .names h_u_pg_rca32_or21_y0 h_u_pg_rca32_and22_h_u_pg_rca32_or21_y0
 1 1
 .names h_u_pg_rca32_fa22_y0 h_u_pg_rca32_and22_h_u_pg_rca32_fa22_y0
@@ -531,7 +531,7 @@
 1 1
 .names h_u_pg_rca32_or22_y0 h_u_pg_rca32_fa23_h_u_pg_rca32_or22_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa23_a_23 b=h_u_pg_rca32_fa23_b_23 cin=h_u_pg_rca32_fa23_h_u_pg_rca32_or22_y0 out[0]=h_u_pg_rca32_fa23_y0 out[1]=h_u_pg_rca32_fa23_y1 out[2]=h_u_pg_rca32_fa23_y2
+.subckt fa_cla a=h_u_pg_rca32_fa23_a_23 b=h_u_pg_rca32_fa23_b_23 cin=h_u_pg_rca32_fa23_h_u_pg_rca32_or22_y0 fa_cla_y0=h_u_pg_rca32_fa23_y0 fa_cla_y1=h_u_pg_rca32_fa23_y1 fa_cla_y2=h_u_pg_rca32_fa23_y2
 .names h_u_pg_rca32_or22_y0 h_u_pg_rca32_and23_h_u_pg_rca32_or22_y0
 1 1
 .names h_u_pg_rca32_fa23_y0 h_u_pg_rca32_and23_h_u_pg_rca32_fa23_y0
@@ -548,7 +548,7 @@
 1 1
 .names h_u_pg_rca32_or23_y0 h_u_pg_rca32_fa24_h_u_pg_rca32_or23_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa24_a_24 b=h_u_pg_rca32_fa24_b_24 cin=h_u_pg_rca32_fa24_h_u_pg_rca32_or23_y0 out[0]=h_u_pg_rca32_fa24_y0 out[1]=h_u_pg_rca32_fa24_y1 out[2]=h_u_pg_rca32_fa24_y2
+.subckt fa_cla a=h_u_pg_rca32_fa24_a_24 b=h_u_pg_rca32_fa24_b_24 cin=h_u_pg_rca32_fa24_h_u_pg_rca32_or23_y0 fa_cla_y0=h_u_pg_rca32_fa24_y0 fa_cla_y1=h_u_pg_rca32_fa24_y1 fa_cla_y2=h_u_pg_rca32_fa24_y2
 .names h_u_pg_rca32_or23_y0 h_u_pg_rca32_and24_h_u_pg_rca32_or23_y0
 1 1
 .names h_u_pg_rca32_fa24_y0 h_u_pg_rca32_and24_h_u_pg_rca32_fa24_y0
@@ -565,7 +565,7 @@
 1 1
 .names h_u_pg_rca32_or24_y0 h_u_pg_rca32_fa25_h_u_pg_rca32_or24_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa25_a_25 b=h_u_pg_rca32_fa25_b_25 cin=h_u_pg_rca32_fa25_h_u_pg_rca32_or24_y0 out[0]=h_u_pg_rca32_fa25_y0 out[1]=h_u_pg_rca32_fa25_y1 out[2]=h_u_pg_rca32_fa25_y2
+.subckt fa_cla a=h_u_pg_rca32_fa25_a_25 b=h_u_pg_rca32_fa25_b_25 cin=h_u_pg_rca32_fa25_h_u_pg_rca32_or24_y0 fa_cla_y0=h_u_pg_rca32_fa25_y0 fa_cla_y1=h_u_pg_rca32_fa25_y1 fa_cla_y2=h_u_pg_rca32_fa25_y2
 .names h_u_pg_rca32_or24_y0 h_u_pg_rca32_and25_h_u_pg_rca32_or24_y0
 1 1
 .names h_u_pg_rca32_fa25_y0 h_u_pg_rca32_and25_h_u_pg_rca32_fa25_y0
@@ -582,7 +582,7 @@
 1 1
 .names h_u_pg_rca32_or25_y0 h_u_pg_rca32_fa26_h_u_pg_rca32_or25_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa26_a_26 b=h_u_pg_rca32_fa26_b_26 cin=h_u_pg_rca32_fa26_h_u_pg_rca32_or25_y0 out[0]=h_u_pg_rca32_fa26_y0 out[1]=h_u_pg_rca32_fa26_y1 out[2]=h_u_pg_rca32_fa26_y2
+.subckt fa_cla a=h_u_pg_rca32_fa26_a_26 b=h_u_pg_rca32_fa26_b_26 cin=h_u_pg_rca32_fa26_h_u_pg_rca32_or25_y0 fa_cla_y0=h_u_pg_rca32_fa26_y0 fa_cla_y1=h_u_pg_rca32_fa26_y1 fa_cla_y2=h_u_pg_rca32_fa26_y2
 .names h_u_pg_rca32_or25_y0 h_u_pg_rca32_and26_h_u_pg_rca32_or25_y0
 1 1
 .names h_u_pg_rca32_fa26_y0 h_u_pg_rca32_and26_h_u_pg_rca32_fa26_y0
@@ -599,7 +599,7 @@
 1 1
 .names h_u_pg_rca32_or26_y0 h_u_pg_rca32_fa27_h_u_pg_rca32_or26_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa27_a_27 b=h_u_pg_rca32_fa27_b_27 cin=h_u_pg_rca32_fa27_h_u_pg_rca32_or26_y0 out[0]=h_u_pg_rca32_fa27_y0 out[1]=h_u_pg_rca32_fa27_y1 out[2]=h_u_pg_rca32_fa27_y2
+.subckt fa_cla a=h_u_pg_rca32_fa27_a_27 b=h_u_pg_rca32_fa27_b_27 cin=h_u_pg_rca32_fa27_h_u_pg_rca32_or26_y0 fa_cla_y0=h_u_pg_rca32_fa27_y0 fa_cla_y1=h_u_pg_rca32_fa27_y1 fa_cla_y2=h_u_pg_rca32_fa27_y2
 .names h_u_pg_rca32_or26_y0 h_u_pg_rca32_and27_h_u_pg_rca32_or26_y0
 1 1
 .names h_u_pg_rca32_fa27_y0 h_u_pg_rca32_and27_h_u_pg_rca32_fa27_y0
@@ -616,7 +616,7 @@
 1 1
 .names h_u_pg_rca32_or27_y0 h_u_pg_rca32_fa28_h_u_pg_rca32_or27_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa28_a_28 b=h_u_pg_rca32_fa28_b_28 cin=h_u_pg_rca32_fa28_h_u_pg_rca32_or27_y0 out[0]=h_u_pg_rca32_fa28_y0 out[1]=h_u_pg_rca32_fa28_y1 out[2]=h_u_pg_rca32_fa28_y2
+.subckt fa_cla a=h_u_pg_rca32_fa28_a_28 b=h_u_pg_rca32_fa28_b_28 cin=h_u_pg_rca32_fa28_h_u_pg_rca32_or27_y0 fa_cla_y0=h_u_pg_rca32_fa28_y0 fa_cla_y1=h_u_pg_rca32_fa28_y1 fa_cla_y2=h_u_pg_rca32_fa28_y2
 .names h_u_pg_rca32_or27_y0 h_u_pg_rca32_and28_h_u_pg_rca32_or27_y0
 1 1
 .names h_u_pg_rca32_fa28_y0 h_u_pg_rca32_and28_h_u_pg_rca32_fa28_y0
@@ -633,7 +633,7 @@
 1 1
 .names h_u_pg_rca32_or28_y0 h_u_pg_rca32_fa29_h_u_pg_rca32_or28_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa29_a_29 b=h_u_pg_rca32_fa29_b_29 cin=h_u_pg_rca32_fa29_h_u_pg_rca32_or28_y0 out[0]=h_u_pg_rca32_fa29_y0 out[1]=h_u_pg_rca32_fa29_y1 out[2]=h_u_pg_rca32_fa29_y2
+.subckt fa_cla a=h_u_pg_rca32_fa29_a_29 b=h_u_pg_rca32_fa29_b_29 cin=h_u_pg_rca32_fa29_h_u_pg_rca32_or28_y0 fa_cla_y0=h_u_pg_rca32_fa29_y0 fa_cla_y1=h_u_pg_rca32_fa29_y1 fa_cla_y2=h_u_pg_rca32_fa29_y2
 .names h_u_pg_rca32_or28_y0 h_u_pg_rca32_and29_h_u_pg_rca32_or28_y0
 1 1
 .names h_u_pg_rca32_fa29_y0 h_u_pg_rca32_and29_h_u_pg_rca32_fa29_y0
@@ -650,7 +650,7 @@
 1 1
 .names h_u_pg_rca32_or29_y0 h_u_pg_rca32_fa30_h_u_pg_rca32_or29_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa30_a_30 b=h_u_pg_rca32_fa30_b_30 cin=h_u_pg_rca32_fa30_h_u_pg_rca32_or29_y0 out[0]=h_u_pg_rca32_fa30_y0 out[1]=h_u_pg_rca32_fa30_y1 out[2]=h_u_pg_rca32_fa30_y2
+.subckt fa_cla a=h_u_pg_rca32_fa30_a_30 b=h_u_pg_rca32_fa30_b_30 cin=h_u_pg_rca32_fa30_h_u_pg_rca32_or29_y0 fa_cla_y0=h_u_pg_rca32_fa30_y0 fa_cla_y1=h_u_pg_rca32_fa30_y1 fa_cla_y2=h_u_pg_rca32_fa30_y2
 .names h_u_pg_rca32_or29_y0 h_u_pg_rca32_and30_h_u_pg_rca32_or29_y0
 1 1
 .names h_u_pg_rca32_fa30_y0 h_u_pg_rca32_and30_h_u_pg_rca32_fa30_y0
@@ -667,7 +667,7 @@
 1 1
 .names h_u_pg_rca32_or30_y0 h_u_pg_rca32_fa31_h_u_pg_rca32_or30_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca32_fa31_a_31 b=h_u_pg_rca32_fa31_b_31 cin=h_u_pg_rca32_fa31_h_u_pg_rca32_or30_y0 out[0]=h_u_pg_rca32_fa31_y0 out[1]=h_u_pg_rca32_fa31_y1 out[2]=h_u_pg_rca32_fa31_y2
+.subckt fa_cla a=h_u_pg_rca32_fa31_a_31 b=h_u_pg_rca32_fa31_b_31 cin=h_u_pg_rca32_fa31_h_u_pg_rca32_or30_y0 fa_cla_y0=h_u_pg_rca32_fa31_y0 fa_cla_y1=h_u_pg_rca32_fa31_y1 fa_cla_y2=h_u_pg_rca32_fa31_y2
 .names h_u_pg_rca32_or30_y0 h_u_pg_rca32_and31_h_u_pg_rca32_or30_y0
 1 1
 .names h_u_pg_rca32_fa31_y0 h_u_pg_rca32_and31_h_u_pg_rca32_fa31_y0
@@ -748,7 +748,7 @@
 
 .model fa_cla
 .inputs a b cin
-.outputs out[0] out[1] out[2]
+.outputs fa_cla_y0 fa_cla_y1 fa_cla_y2
 .names a fa_cla_a
 1 1
 .names b fa_cla_b
@@ -758,17 +758,11 @@
 .subckt xor_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y0
 .subckt and_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y1
 .subckt xor_gate _a=fa_cla_y0 _b=fa_cla_cin _y0=fa_cla_y2
-.names fa_cla_y0 out[0]
-1 1
-.names fa_cla_y1 out[1]
-1 1
-.names fa_cla_y2 out[2]
-1 1
 .end
 
 .model constant_wire_value_0
 .inputs a b
-.outputs out[0]
+.outputs constant_wire_0
 .names a constant_wire_value_0_a
 1 1
 .names b constant_wire_value_0_b
@@ -776,8 +770,6 @@
 .subckt xor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y0
 .subckt xnor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y1
 .subckt nor_gate _a=constant_wire_value_0_y0 _b=constant_wire_value_0_y1 _y0=constant_wire_0
-.names constant_wire_0 out[0]
-1 1
 .end
 
 .model or_gate

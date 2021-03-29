@@ -100,7 +100,7 @@ class two_input_one_bit_circuit(arithmetic_circuit):
     def get_declaration_v_hier(self):
         self.get_circuit_wires()
         # Unique declaration of all circuit's interconnections
-        return "".join([c.get_declaration_v() for c in self.inputs])
+        return "".join([c[0].get_declaration_v() for c in self.circuit_wires if c[0] not in self.out.bus])
 
     def get_init_v_hier(self):
         return "".join([i.get_assign_v(name=i.name.replace(self.prefix+"_","")) for i in self.inputs])
@@ -112,7 +112,7 @@ class two_input_one_bit_circuit(arithmetic_circuit):
     # FLAT BLIF #
     def get_declaration_blif(self):
         return f".inputs {self.a.name} {self.b.name}\n" + \
-               f".outputs{self.out.get_wire_declaration_blif()}\n"
+               f".outputs{self.out.get_wire_declaration_blif(array=False)}\n"
 
     def get_wire_mapping_blif(self):
         # For unique mapping of all circuit's input interconnections
@@ -123,7 +123,7 @@ class two_input_one_bit_circuit(arithmetic_circuit):
         return f"{self.get_wire_mapping_blif()}"+"".join([c.get_function_blif_flat() for c in self.components])
 
     def get_function_out_blif(self):
-        return f"{self.out.get_wire_assign_blif(output=True)}"
+        return f""
 
     # HIERARCHICAL BLIF #
     # Subcomponent generation
@@ -134,7 +134,7 @@ class two_input_one_bit_circuit(arithmetic_circuit):
     def get_invocation_blif_hier(self, **kwargs):
         circuit_class = self.__class__()
         return f"{self.get_wire_mapping_blif()}" + \
-               f".subckt {circuit_class.prefix} a={self.inputs[0].name} b={self.inputs[1].name}{''.join([f' {self.out.prefix}[{circuit_class.out.bus.index(o)}]={self.out.get_wire(circuit_class.out.bus.index(o)).name}' for o in circuit_class.out.bus])}\n"
+               f".subckt {circuit_class.prefix} a={self.inputs[0].name} b={self.inputs[1].name}{''.join([f' {o.name}={self.out.get_wire(circuit_class.out.bus.index(o)).name}' for o in circuit_class.out.bus])}\n"
 
     # Self circuit hierarchical generation
     def get_function_blif_hier(self):
@@ -180,14 +180,14 @@ class three_input_one_bit_circuit(two_input_one_bit_circuit):
     # Model prototype with three inputs
     def get_declaration_blif(self):
         return f".inputs {self.a.name} {self.b.name} {self.c.name}\n" + \
-               f".outputs{self.out.get_wire_declaration_blif()}\n"
+               f".outputs{self.out.get_wire_declaration_blif(array=False)}\n"
 
     # HIERARCHICAL BLIF #
     # Subcomponent generation (3 inputs)
     def get_invocation_blif_hier(self, **kwargs):
         circuit_class = self.__class__()
         return f"{self.get_wire_mapping_blif()}" + \
-               f".subckt {circuit_class.prefix} a={self.inputs[0].name} b={self.inputs[1].name} cin={self.inputs[2].name}{''.join([f' {self.out.prefix}[{circuit_class.out.bus.index(o)}]={self.out.get_wire(circuit_class.out.bus.index(o)).name}' for o in circuit_class.out.bus])}\n"
+               f".subckt {circuit_class.prefix} a={self.inputs[0].name} b={self.inputs[1].name} cin={self.inputs[2].name}{''.join([f' {o.name}={self.out.get_wire(circuit_class.out.bus.index(o)).name}' for o in circuit_class.out.bus])}\n"
 
     """ CGP CODE GENERATION """
     # FLAT CGP #

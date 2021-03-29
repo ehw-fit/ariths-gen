@@ -409,10 +409,12 @@ class unsigned_wallace_multiplier(multiplier_circuit):
             self.out.connect(3, obj_ha.get_carry_wire())
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
-            adder_type = unsigned_adder_class_name(a=a, b=b)
-            adder_a = bus(prefix=f"{adder_type.prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            adder_b = bus(prefix=f"{adder_type.prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_type.prefix}")
+            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+            adder_prefix = unsigned_adder_class_name(a=a , b=b).prefix + str(len(self.columns)-1)
+
+            adder_a = bus(prefix=f"{adder_prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            adder_b = bus(prefix=f"{adder_prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_prefix}")
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1)) for o in range(1, len(self.out.bus))]
@@ -503,10 +505,12 @@ class signed_wallace_multiplier(multiplier_circuit):
             self.out.connect(3, obj_ha.get_carry_wire())
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
-            adder_type = unsigned_adder_class_name(a=a, b=b)
-            adder_a = bus(prefix=f"{adder_type.prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            adder_b = bus(prefix=f"{adder_type.prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_type.prefix}")
+            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+            adder_prefix = unsigned_adder_class_name(a=a , b=b).prefix + str(len(self.columns)-1)
+
+            adder_a = bus(prefix=f"{adder_prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            adder_b = bus(prefix=f"{adder_prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_prefix}")
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1)) for o in range(1, len(self.out.bus))]
@@ -593,10 +597,12 @@ class unsigned_dadda_multiplier(multiplier_circuit):
             self.out.connect(3, obj_ha.get_carry_wire())
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
-            adder_type = unsigned_adder_class_name(a=a, b=b)
-            adder_a = bus(prefix=f"{adder_type.prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            adder_b = bus(prefix=f"{adder_type.prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_type.prefix}")
+            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+            adder_prefix = unsigned_adder_class_name(a=a , b=b).prefix + str(len(self.columns)-1)
+
+            adder_a = bus(prefix=f"{adder_prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            adder_b = bus(prefix=f"{adder_prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_prefix}")
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1)) for o in range(1, len(self.out.bus))]
@@ -690,10 +696,12 @@ class signed_dadda_multiplier(multiplier_circuit):
             self.out.connect(3, obj_ha.get_carry_wire())
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
-            adder_type = unsigned_adder_class_name(a=a, b=b)
-            adder_a = bus(prefix=f"{adder_type.prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            adder_b = bus(prefix=f"{adder_type.prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_type.prefix}")
+            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+            adder_prefix = unsigned_adder_class_name(a=a , b=b).prefix + str(len(self.columns)-1)
+
+            adder_a = bus(prefix=f"{adder_prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            adder_b = bus(prefix=f"{adder_prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix+f"_{adder_prefix}")
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1)) for o in range(1, len(self.out.bus))]

@@ -57,6 +57,7 @@ H_S_RCA8="./h_s_rca8 2>/dev/null"
 
 # Multipliers #
 # Unsigned
+#Array multipliers
 F_U_ARRMUL1="./f_u_arrmul1 2>/dev/null"
 F_U_ARRMUL2="./f_u_arrmul2 2>/dev/null"
 F_U_ARRMUL3="./f_u_arrmul3 2>/dev/null"
@@ -71,6 +72,7 @@ H_U_ARRMUL5="./h_u_arrmul5 2>/dev/null"
 H_U_ARRMUL8="./h_u_arrmul8 2>/dev/null"
 H_U_ARRMUL10="./h_u_arrmul10 2>/dev/null"
 
+#Dadda multipliers
 F_U_DADDA_RCA4="./f_u_dadda_rca4 2>/dev/null"
 F_U_DADDA_RCA8="./f_u_dadda_rca8 2>/dev/null"
 F_U_DADDA_RCA10="./f_u_dadda_rca10 2>/dev/null"
@@ -87,7 +89,25 @@ H_U_DADDA_PG_RCA4="./h_u_dadda_pg_rca4 2>/dev/null"
 H_U_DADDA_PG_RCA8="./h_u_dadda_pg_rca8 2>/dev/null"
 H_U_DADDA_PG_RCA10="./h_u_dadda_pg_rca10 2>/dev/null"
 
+#Wallace multipliers
+F_U_WALLACE_RCA4="./f_u_wallace_rca4 2>/dev/null"
+F_U_WALLACE_RCA8="./f_u_wallace_rca8 2>/dev/null"
+F_U_WALLACE_RCA10="./f_u_wallace_rca10 2>/dev/null"
+
+H_U_WALLACE_RCA4="./h_u_wallace_rca4 2>/dev/null"
+H_U_WALLACE_RCA8="./h_u_wallace_rca8 2>/dev/null"
+H_U_WALLACE_RCA10="./h_u_wallace_rca10 2>/dev/null"
+
+F_U_WALLACE_PG_RCA4="./f_u_wallace_pg_rca4 2>/dev/null"
+F_U_WALLACE_PG_RCA8="./f_u_wallace_pg_rca8 2>/dev/null"
+F_U_WALLACE_PG_RCA10="./f_u_wallace_pg_rca10 2>/dev/null"
+
+H_U_WALLACE_PG_RCA4="./h_u_wallace_pg_rca4 2>/dev/null"
+H_U_WALLACE_PG_RCA8="./h_u_wallace_pg_rca8 2>/dev/null"
+H_U_WALLACE_PG_RCA10="./h_u_wallace_pg_rca10 2>/dev/null"
+
 # Signed
+#Array multipliers
 F_S_ARRMUL1="./f_s_arrmul1 2>/dev/null"
 F_S_ARRMUL2="./f_s_arrmul2 2>/dev/null"
 F_S_ARRMUL3="./f_s_arrmul3 2>/dev/null"
@@ -102,6 +122,7 @@ H_S_ARRMUL5="./h_s_arrmul5 2>/dev/null"
 H_S_ARRMUL8="./h_s_arrmul8 2>/dev/null"
 H_S_ARRMUL10="./h_s_arrmul10 2>/dev/null"
 
+#Dadda multipliers
 F_S_DADDA_RCA4="./f_s_dadda_rca4 2>/dev/null"
 F_S_DADDA_RCA8="./f_s_dadda_rca8 2>/dev/null"
 F_S_DADDA_RCA10="./f_s_dadda_rca10 2>/dev/null"
@@ -117,6 +138,23 @@ F_S_DADDA_PG_RCA10="./f_s_dadda_pg_rca10 2>/dev/null"
 H_S_DADDA_PG_RCA4="./h_s_dadda_pg_rca4 2>/dev/null"
 H_S_DADDA_PG_RCA8="./h_s_dadda_pg_rca8 2>/dev/null"
 H_S_DADDA_PG_RCA10="./h_s_dadda_pg_rca10 2>/dev/null"
+
+#Wallace multipliers
+F_S_WALLACE_RCA4="./f_s_wallace_rca4 2>/dev/null"
+F_S_WALLACE_RCA8="./f_s_wallace_rca8 2>/dev/null"
+F_S_WALLACE_RCA10="./f_s_wallace_rca10 2>/dev/null"
+
+H_S_WALLACE_RCA4="./h_s_wallace_rca4 2>/dev/null"
+H_S_WALLACE_RCA8="./h_s_wallace_rca8 2>/dev/null"
+H_S_WALLACE_RCA10="./h_s_wallace_rca10 2>/dev/null"
+
+F_S_WALLACE_PG_RCA4="./f_s_wallace_pg_rca4 2>/dev/null"
+F_S_WALLACE_PG_RCA8="./f_s_wallace_pg_rca8 2>/dev/null"
+F_S_WALLACE_PG_RCA10="./f_s_wallace_pg_rca10 2>/dev/null"
+
+H_S_WALLACE_PG_RCA4="./h_s_wallace_pg_rca4 2>/dev/null"
+H_S_WALLACE_PG_RCA8="./h_s_wallace_pg_rca8 2>/dev/null"
+H_S_WALLACE_PG_RCA10="./h_s_wallace_pg_rca10 2>/dev/null"
 
 ### TESTING ###
 echo "${BLUECOLOR}TESTING C CODE CIRCUITS GENERATED USING arithmetic_circuits_generator.py"
@@ -486,6 +524,77 @@ else
 fi
 rm f_u_dadda_pg_rca10
 
+# 4-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_wallace_rca4.c -o f_u_wallace_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_wallace_rca4.c"
+eval "$F_U_WALLACE_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_wallace_rca4
+
+# 8-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_wallace_rca8.c -o f_u_wallace_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_wallace_rca8.c"
+eval "$F_U_WALLACE_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_wallace_rca8
+
+# 10-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_wallace_rca10.c -o f_u_wallace_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_wallace_rca10.c"
+eval "$F_U_WALLACE_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_wallace_rca10
+
+# 4-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_wallace_pg_rca4.c -o f_u_wallace_pg_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_wallace_pg_rca4.c"
+eval "$F_U_WALLACE_PG_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_wallace_pg_rca4
+
+# 8-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_wallace_pg_rca8.c -o f_u_wallace_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_wallace_pg_rca8.c"
+eval "$F_U_WALLACE_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_wallace_pg_rca8
+
+# 10-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_u_wallace_pg_rca10.c -o f_u_wallace_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_u_wallace_pg_rca10.c"
+eval "$F_U_WALLACE_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_u_wallace_pg_rca10
 
 
 ########################
@@ -641,6 +750,78 @@ else
 fi
 rm f_s_dadda_pg_rca10
 
+
+# 4-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_wallace_rca4.c -o f_s_wallace_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_wallace_rca4.c"
+eval "$F_S_WALLACE_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_wallace_rca4
+
+# 8-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_wallace_rca8.c -o f_s_wallace_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_wallace_rca8.c"
+eval "$F_S_WALLACE_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_wallace_rca8
+
+# 10-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_wallace_rca10.c -o f_s_wallace_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_wallace_rca10.c"
+eval "$F_S_WALLACE_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_wallace_rca10
+
+# 4-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_wallace_pg_rca4.c -o f_s_wallace_pg_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_wallace_pg_rca4.c"
+eval "$F_S_WALLACE_PG_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_wallace_pg_rca4
+
+# 8-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_wallace_pg_rca8.c -o f_s_wallace_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_wallace_pg_rca8.c"
+eval "$F_S_WALLACE_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_wallace_pg_rca8
+
+# 10-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${FLAT_MUL_PATH}f_s_wallace_pg_rca10.c -o f_s_wallace_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: f_s_wallace_pg_rca10.c"
+eval "$F_S_WALLACE_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm f_s_wallace_pg_rca10
 
 
 echo ""
@@ -934,6 +1115,78 @@ else
 fi
 rm h_u_dadda_pg_rca10
 
+# 4-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_wallace_rca4.c -o h_u_wallace_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_wallace_rca4.c"
+eval "$H_U_WALLACE_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_wallace_rca4
+
+# 8-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_wallace_rca8.c -o h_u_wallace_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_wallace_rca8.c"
+eval "$H_U_WALLACE_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_wallace_rca8
+
+# 10-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_wallace_rca10.c -o h_u_wallace_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_wallace_rca10.c"
+eval "$H_U_WALLACE_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_wallace_rca10
+
+# 4-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_wallace_pg_rca4.c -o h_u_wallace_pg_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_wallace_pg_rca4.c"
+eval "$H_U_WALLACE_PG_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_wallace_pg_rca4
+
+# 8-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_wallace_pg_rca8.c -o h_u_wallace_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_wallace_pg_rca8.c"
+eval "$H_U_WALLACE_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_wallace_pg_rca8
+
+# 10-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_u_wallace_pg_rca10.c -o h_u_wallace_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_u_wallace_pg_rca10.c"
+eval "$H_U_WALLACE_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_u_wallace_pg_rca10
+
 ########################
 ## SIGNED MULTIPLIERS ##
 ########################
@@ -1086,3 +1339,75 @@ else
     echo "${REDCOLOR}FAILED${NOCOLOR}"
 fi
 rm h_s_dadda_pg_rca10
+
+# 4-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_wallace_rca4.c -o h_s_wallace_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_wallace_rca4.c"
+eval "$H_S_WALLACE_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_wallace_rca4
+
+# 8-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_wallace_rca8.c -o h_s_wallace_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_wallace_rca8.c"
+eval "$H_S_WALLACE_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_wallace_rca8
+
+# 10-BIT WALLACE-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_wallace_rca10.c -o h_s_wallace_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_wallace_rca10.c"
+eval "$H_S_WALLACE_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_wallace_rca10
+
+# 4-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_wallace_pg_rca4.c -o h_s_wallace_pg_rca4
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_wallace_pg_rca4.c"
+eval "$H_S_WALLACE_PG_RCA4"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_wallace_pg_rca4
+
+# 8-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_wallace_pg_rca8.c -o h_s_wallace_pg_rca8
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_wallace_pg_rca8.c"
+eval "$H_S_WALLACE_PG_RCA8"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_wallace_pg_rca8
+
+# 10-BIT WALLACE-PG-RCA MULTIPLIER
+${C} ${CFLAGS} ${HIER_MUL_PATH}h_s_wallace_pg_rca10.c -o h_s_wallace_pg_rca10
+TEST_NUM=$((TEST_NUM+1))
+echo "TEST_$TEST_NUM: h_s_wallace_pg_rca10.c"
+eval "$H_S_WALLACE_PG_RCA10"
+if [ "$?" -eq 0 ] ; then
+    echo "${GREENCOLOR}PASSED${NOCOLOR}"
+else
+    echo "${REDCOLOR}FAILED${NOCOLOR}"
+fi
+rm h_s_wallace_pg_rca10

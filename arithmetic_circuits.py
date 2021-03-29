@@ -165,7 +165,9 @@ class arithmetic_circuit():
         return "".join([c.get_function_block_c() for c in self.component_types])
 
     def get_function_block_c(self):
-        adder_block = type(self)(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"))
+        # Obtain proper adder name with its bit width
+        adder_prefix = self.__class__(a=bus("a") , b=bus("b")).prefix + str(self.N)
+        adder_block = self.__class__(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_c()}\n\n"
 
     def get_declaration_c_hier(self):
@@ -251,7 +253,9 @@ class arithmetic_circuit():
         return "".join([c.get_function_block_v() for c in self.component_types])
 
     def get_function_block_v(self):
-        adder_block = type(self)(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"))
+        # Obtain proper adder name with its bit width
+        adder_prefix = self.__class__(a=bus("a") , b=bus("b")).prefix + str(self.N)
+        adder_block = self.__class__(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_v()}\n\n"
 
     def get_declaration_v_hier(self):
@@ -354,7 +358,9 @@ class arithmetic_circuit():
         return "\n".join([c.get_function_block_blif() for c in self.component_types[::-1]])
 
     def get_function_block_blif(self):
-        adder_block = type(self)(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"))
+        # Obtain proper adder name with its bit width
+        adder_prefix = self.__class__(a=bus("a") , b=bus("b")).prefix + str(self.N)
+        adder_block = self.__class__(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit

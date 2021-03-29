@@ -118,7 +118,7 @@
 1 1
 .names h_u_arrmul12_and1_0_y0 h_u_arrmul12_ha0_1_h_u_arrmul12_and1_0_y0
 1 1
-.subckt ha a=h_u_arrmul12_ha0_1_h_u_arrmul12_and0_1_y0 b=h_u_arrmul12_ha0_1_h_u_arrmul12_and1_0_y0 out[0]=h_u_arrmul12_ha0_1_y0 out[1]=h_u_arrmul12_ha0_1_y1
+.subckt ha a=h_u_arrmul12_ha0_1_h_u_arrmul12_and0_1_y0 b=h_u_arrmul12_ha0_1_h_u_arrmul12_and1_0_y0 ha_y0=h_u_arrmul12_ha0_1_y0 ha_y1=h_u_arrmul12_ha0_1_y1
 .names a_1 h_u_arrmul12_and1_1_a_1
 1 1
 .names b_1 h_u_arrmul12_and1_1_b_1
@@ -130,7 +130,7 @@
 1 1
 .names h_u_arrmul12_ha0_1_y1 h_u_arrmul12_fa1_1_h_u_arrmul12_ha0_1_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_1_h_u_arrmul12_and1_1_y0 b=h_u_arrmul12_fa1_1_h_u_arrmul12_and2_0_y0 cin=h_u_arrmul12_fa1_1_h_u_arrmul12_ha0_1_y1 out[0]=h_u_arrmul12_fa1_1_y2 out[1]=h_u_arrmul12_fa1_1_y4
+.subckt fa a=h_u_arrmul12_fa1_1_h_u_arrmul12_and1_1_y0 b=h_u_arrmul12_fa1_1_h_u_arrmul12_and2_0_y0 cin=h_u_arrmul12_fa1_1_h_u_arrmul12_ha0_1_y1 fa_y2=h_u_arrmul12_fa1_1_y2 fa_y4=h_u_arrmul12_fa1_1_y4
 .names a_2 h_u_arrmul12_and2_1_a_2
 1 1
 .names b_1 h_u_arrmul12_and2_1_b_1
@@ -142,7 +142,7 @@
 1 1
 .names h_u_arrmul12_fa1_1_y4 h_u_arrmul12_fa2_1_h_u_arrmul12_fa1_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_1_h_u_arrmul12_and2_1_y0 b=h_u_arrmul12_fa2_1_h_u_arrmul12_and3_0_y0 cin=h_u_arrmul12_fa2_1_h_u_arrmul12_fa1_1_y4 out[0]=h_u_arrmul12_fa2_1_y2 out[1]=h_u_arrmul12_fa2_1_y4
+.subckt fa a=h_u_arrmul12_fa2_1_h_u_arrmul12_and2_1_y0 b=h_u_arrmul12_fa2_1_h_u_arrmul12_and3_0_y0 cin=h_u_arrmul12_fa2_1_h_u_arrmul12_fa1_1_y4 fa_y2=h_u_arrmul12_fa2_1_y2 fa_y4=h_u_arrmul12_fa2_1_y4
 .names a_3 h_u_arrmul12_and3_1_a_3
 1 1
 .names b_1 h_u_arrmul12_and3_1_b_1
@@ -154,7 +154,7 @@
 1 1
 .names h_u_arrmul12_fa2_1_y4 h_u_arrmul12_fa3_1_h_u_arrmul12_fa2_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_1_h_u_arrmul12_and3_1_y0 b=h_u_arrmul12_fa3_1_h_u_arrmul12_and4_0_y0 cin=h_u_arrmul12_fa3_1_h_u_arrmul12_fa2_1_y4 out[0]=h_u_arrmul12_fa3_1_y2 out[1]=h_u_arrmul12_fa3_1_y4
+.subckt fa a=h_u_arrmul12_fa3_1_h_u_arrmul12_and3_1_y0 b=h_u_arrmul12_fa3_1_h_u_arrmul12_and4_0_y0 cin=h_u_arrmul12_fa3_1_h_u_arrmul12_fa2_1_y4 fa_y2=h_u_arrmul12_fa3_1_y2 fa_y4=h_u_arrmul12_fa3_1_y4
 .names a_4 h_u_arrmul12_and4_1_a_4
 1 1
 .names b_1 h_u_arrmul12_and4_1_b_1
@@ -166,7 +166,7 @@
 1 1
 .names h_u_arrmul12_fa3_1_y4 h_u_arrmul12_fa4_1_h_u_arrmul12_fa3_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_1_h_u_arrmul12_and4_1_y0 b=h_u_arrmul12_fa4_1_h_u_arrmul12_and5_0_y0 cin=h_u_arrmul12_fa4_1_h_u_arrmul12_fa3_1_y4 out[0]=h_u_arrmul12_fa4_1_y2 out[1]=h_u_arrmul12_fa4_1_y4
+.subckt fa a=h_u_arrmul12_fa4_1_h_u_arrmul12_and4_1_y0 b=h_u_arrmul12_fa4_1_h_u_arrmul12_and5_0_y0 cin=h_u_arrmul12_fa4_1_h_u_arrmul12_fa3_1_y4 fa_y2=h_u_arrmul12_fa4_1_y2 fa_y4=h_u_arrmul12_fa4_1_y4
 .names a_5 h_u_arrmul12_and5_1_a_5
 1 1
 .names b_1 h_u_arrmul12_and5_1_b_1
@@ -178,7 +178,7 @@
 1 1
 .names h_u_arrmul12_fa4_1_y4 h_u_arrmul12_fa5_1_h_u_arrmul12_fa4_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_1_h_u_arrmul12_and5_1_y0 b=h_u_arrmul12_fa5_1_h_u_arrmul12_and6_0_y0 cin=h_u_arrmul12_fa5_1_h_u_arrmul12_fa4_1_y4 out[0]=h_u_arrmul12_fa5_1_y2 out[1]=h_u_arrmul12_fa5_1_y4
+.subckt fa a=h_u_arrmul12_fa5_1_h_u_arrmul12_and5_1_y0 b=h_u_arrmul12_fa5_1_h_u_arrmul12_and6_0_y0 cin=h_u_arrmul12_fa5_1_h_u_arrmul12_fa4_1_y4 fa_y2=h_u_arrmul12_fa5_1_y2 fa_y4=h_u_arrmul12_fa5_1_y4
 .names a_6 h_u_arrmul12_and6_1_a_6
 1 1
 .names b_1 h_u_arrmul12_and6_1_b_1
@@ -190,7 +190,7 @@
 1 1
 .names h_u_arrmul12_fa5_1_y4 h_u_arrmul12_fa6_1_h_u_arrmul12_fa5_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_1_h_u_arrmul12_and6_1_y0 b=h_u_arrmul12_fa6_1_h_u_arrmul12_and7_0_y0 cin=h_u_arrmul12_fa6_1_h_u_arrmul12_fa5_1_y4 out[0]=h_u_arrmul12_fa6_1_y2 out[1]=h_u_arrmul12_fa6_1_y4
+.subckt fa a=h_u_arrmul12_fa6_1_h_u_arrmul12_and6_1_y0 b=h_u_arrmul12_fa6_1_h_u_arrmul12_and7_0_y0 cin=h_u_arrmul12_fa6_1_h_u_arrmul12_fa5_1_y4 fa_y2=h_u_arrmul12_fa6_1_y2 fa_y4=h_u_arrmul12_fa6_1_y4
 .names a_7 h_u_arrmul12_and7_1_a_7
 1 1
 .names b_1 h_u_arrmul12_and7_1_b_1
@@ -202,7 +202,7 @@
 1 1
 .names h_u_arrmul12_fa6_1_y4 h_u_arrmul12_fa7_1_h_u_arrmul12_fa6_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_1_h_u_arrmul12_and7_1_y0 b=h_u_arrmul12_fa7_1_h_u_arrmul12_and8_0_y0 cin=h_u_arrmul12_fa7_1_h_u_arrmul12_fa6_1_y4 out[0]=h_u_arrmul12_fa7_1_y2 out[1]=h_u_arrmul12_fa7_1_y4
+.subckt fa a=h_u_arrmul12_fa7_1_h_u_arrmul12_and7_1_y0 b=h_u_arrmul12_fa7_1_h_u_arrmul12_and8_0_y0 cin=h_u_arrmul12_fa7_1_h_u_arrmul12_fa6_1_y4 fa_y2=h_u_arrmul12_fa7_1_y2 fa_y4=h_u_arrmul12_fa7_1_y4
 .names a_8 h_u_arrmul12_and8_1_a_8
 1 1
 .names b_1 h_u_arrmul12_and8_1_b_1
@@ -214,7 +214,7 @@
 1 1
 .names h_u_arrmul12_fa7_1_y4 h_u_arrmul12_fa8_1_h_u_arrmul12_fa7_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_1_h_u_arrmul12_and8_1_y0 b=h_u_arrmul12_fa8_1_h_u_arrmul12_and9_0_y0 cin=h_u_arrmul12_fa8_1_h_u_arrmul12_fa7_1_y4 out[0]=h_u_arrmul12_fa8_1_y2 out[1]=h_u_arrmul12_fa8_1_y4
+.subckt fa a=h_u_arrmul12_fa8_1_h_u_arrmul12_and8_1_y0 b=h_u_arrmul12_fa8_1_h_u_arrmul12_and9_0_y0 cin=h_u_arrmul12_fa8_1_h_u_arrmul12_fa7_1_y4 fa_y2=h_u_arrmul12_fa8_1_y2 fa_y4=h_u_arrmul12_fa8_1_y4
 .names a_9 h_u_arrmul12_and9_1_a_9
 1 1
 .names b_1 h_u_arrmul12_and9_1_b_1
@@ -226,7 +226,7 @@
 1 1
 .names h_u_arrmul12_fa8_1_y4 h_u_arrmul12_fa9_1_h_u_arrmul12_fa8_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_1_h_u_arrmul12_and9_1_y0 b=h_u_arrmul12_fa9_1_h_u_arrmul12_and10_0_y0 cin=h_u_arrmul12_fa9_1_h_u_arrmul12_fa8_1_y4 out[0]=h_u_arrmul12_fa9_1_y2 out[1]=h_u_arrmul12_fa9_1_y4
+.subckt fa a=h_u_arrmul12_fa9_1_h_u_arrmul12_and9_1_y0 b=h_u_arrmul12_fa9_1_h_u_arrmul12_and10_0_y0 cin=h_u_arrmul12_fa9_1_h_u_arrmul12_fa8_1_y4 fa_y2=h_u_arrmul12_fa9_1_y2 fa_y4=h_u_arrmul12_fa9_1_y4
 .names a_10 h_u_arrmul12_and10_1_a_10
 1 1
 .names b_1 h_u_arrmul12_and10_1_b_1
@@ -238,7 +238,7 @@
 1 1
 .names h_u_arrmul12_fa9_1_y4 h_u_arrmul12_fa10_1_h_u_arrmul12_fa9_1_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_1_h_u_arrmul12_and10_1_y0 b=h_u_arrmul12_fa10_1_h_u_arrmul12_and11_0_y0 cin=h_u_arrmul12_fa10_1_h_u_arrmul12_fa9_1_y4 out[0]=h_u_arrmul12_fa10_1_y2 out[1]=h_u_arrmul12_fa10_1_y4
+.subckt fa a=h_u_arrmul12_fa10_1_h_u_arrmul12_and10_1_y0 b=h_u_arrmul12_fa10_1_h_u_arrmul12_and11_0_y0 cin=h_u_arrmul12_fa10_1_h_u_arrmul12_fa9_1_y4 fa_y2=h_u_arrmul12_fa10_1_y2 fa_y4=h_u_arrmul12_fa10_1_y4
 .names a_11 h_u_arrmul12_and11_1_a_11
 1 1
 .names b_1 h_u_arrmul12_and11_1_b_1
@@ -248,7 +248,7 @@
 1 1
 .names h_u_arrmul12_fa10_1_y4 h_u_arrmul12_ha11_1_h_u_arrmul12_fa10_1_y4
 1 1
-.subckt ha a=h_u_arrmul12_ha11_1_h_u_arrmul12_and11_1_y0 b=h_u_arrmul12_ha11_1_h_u_arrmul12_fa10_1_y4 out[0]=h_u_arrmul12_ha11_1_y0 out[1]=h_u_arrmul12_ha11_1_y1
+.subckt ha a=h_u_arrmul12_ha11_1_h_u_arrmul12_and11_1_y0 b=h_u_arrmul12_ha11_1_h_u_arrmul12_fa10_1_y4 ha_y0=h_u_arrmul12_ha11_1_y0 ha_y1=h_u_arrmul12_ha11_1_y1
 .names a_0 h_u_arrmul12_and0_2_a_0
 1 1
 .names b_2 h_u_arrmul12_and0_2_b_2
@@ -258,7 +258,7 @@
 1 1
 .names h_u_arrmul12_fa1_1_y2 h_u_arrmul12_ha0_2_h_u_arrmul12_fa1_1_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_2_h_u_arrmul12_and0_2_y0 b=h_u_arrmul12_ha0_2_h_u_arrmul12_fa1_1_y2 out[0]=h_u_arrmul12_ha0_2_y0 out[1]=h_u_arrmul12_ha0_2_y1
+.subckt ha a=h_u_arrmul12_ha0_2_h_u_arrmul12_and0_2_y0 b=h_u_arrmul12_ha0_2_h_u_arrmul12_fa1_1_y2 ha_y0=h_u_arrmul12_ha0_2_y0 ha_y1=h_u_arrmul12_ha0_2_y1
 .names a_1 h_u_arrmul12_and1_2_a_1
 1 1
 .names b_2 h_u_arrmul12_and1_2_b_2
@@ -270,7 +270,7 @@
 1 1
 .names h_u_arrmul12_ha0_2_y1 h_u_arrmul12_fa1_2_h_u_arrmul12_ha0_2_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_2_h_u_arrmul12_and1_2_y0 b=h_u_arrmul12_fa1_2_h_u_arrmul12_fa2_1_y2 cin=h_u_arrmul12_fa1_2_h_u_arrmul12_ha0_2_y1 out[0]=h_u_arrmul12_fa1_2_y2 out[1]=h_u_arrmul12_fa1_2_y4
+.subckt fa a=h_u_arrmul12_fa1_2_h_u_arrmul12_and1_2_y0 b=h_u_arrmul12_fa1_2_h_u_arrmul12_fa2_1_y2 cin=h_u_arrmul12_fa1_2_h_u_arrmul12_ha0_2_y1 fa_y2=h_u_arrmul12_fa1_2_y2 fa_y4=h_u_arrmul12_fa1_2_y4
 .names a_2 h_u_arrmul12_and2_2_a_2
 1 1
 .names b_2 h_u_arrmul12_and2_2_b_2
@@ -282,7 +282,7 @@
 1 1
 .names h_u_arrmul12_fa1_2_y4 h_u_arrmul12_fa2_2_h_u_arrmul12_fa1_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_2_h_u_arrmul12_and2_2_y0 b=h_u_arrmul12_fa2_2_h_u_arrmul12_fa3_1_y2 cin=h_u_arrmul12_fa2_2_h_u_arrmul12_fa1_2_y4 out[0]=h_u_arrmul12_fa2_2_y2 out[1]=h_u_arrmul12_fa2_2_y4
+.subckt fa a=h_u_arrmul12_fa2_2_h_u_arrmul12_and2_2_y0 b=h_u_arrmul12_fa2_2_h_u_arrmul12_fa3_1_y2 cin=h_u_arrmul12_fa2_2_h_u_arrmul12_fa1_2_y4 fa_y2=h_u_arrmul12_fa2_2_y2 fa_y4=h_u_arrmul12_fa2_2_y4
 .names a_3 h_u_arrmul12_and3_2_a_3
 1 1
 .names b_2 h_u_arrmul12_and3_2_b_2
@@ -294,7 +294,7 @@
 1 1
 .names h_u_arrmul12_fa2_2_y4 h_u_arrmul12_fa3_2_h_u_arrmul12_fa2_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_2_h_u_arrmul12_and3_2_y0 b=h_u_arrmul12_fa3_2_h_u_arrmul12_fa4_1_y2 cin=h_u_arrmul12_fa3_2_h_u_arrmul12_fa2_2_y4 out[0]=h_u_arrmul12_fa3_2_y2 out[1]=h_u_arrmul12_fa3_2_y4
+.subckt fa a=h_u_arrmul12_fa3_2_h_u_arrmul12_and3_2_y0 b=h_u_arrmul12_fa3_2_h_u_arrmul12_fa4_1_y2 cin=h_u_arrmul12_fa3_2_h_u_arrmul12_fa2_2_y4 fa_y2=h_u_arrmul12_fa3_2_y2 fa_y4=h_u_arrmul12_fa3_2_y4
 .names a_4 h_u_arrmul12_and4_2_a_4
 1 1
 .names b_2 h_u_arrmul12_and4_2_b_2
@@ -306,7 +306,7 @@
 1 1
 .names h_u_arrmul12_fa3_2_y4 h_u_arrmul12_fa4_2_h_u_arrmul12_fa3_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_2_h_u_arrmul12_and4_2_y0 b=h_u_arrmul12_fa4_2_h_u_arrmul12_fa5_1_y2 cin=h_u_arrmul12_fa4_2_h_u_arrmul12_fa3_2_y4 out[0]=h_u_arrmul12_fa4_2_y2 out[1]=h_u_arrmul12_fa4_2_y4
+.subckt fa a=h_u_arrmul12_fa4_2_h_u_arrmul12_and4_2_y0 b=h_u_arrmul12_fa4_2_h_u_arrmul12_fa5_1_y2 cin=h_u_arrmul12_fa4_2_h_u_arrmul12_fa3_2_y4 fa_y2=h_u_arrmul12_fa4_2_y2 fa_y4=h_u_arrmul12_fa4_2_y4
 .names a_5 h_u_arrmul12_and5_2_a_5
 1 1
 .names b_2 h_u_arrmul12_and5_2_b_2
@@ -318,7 +318,7 @@
 1 1
 .names h_u_arrmul12_fa4_2_y4 h_u_arrmul12_fa5_2_h_u_arrmul12_fa4_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_2_h_u_arrmul12_and5_2_y0 b=h_u_arrmul12_fa5_2_h_u_arrmul12_fa6_1_y2 cin=h_u_arrmul12_fa5_2_h_u_arrmul12_fa4_2_y4 out[0]=h_u_arrmul12_fa5_2_y2 out[1]=h_u_arrmul12_fa5_2_y4
+.subckt fa a=h_u_arrmul12_fa5_2_h_u_arrmul12_and5_2_y0 b=h_u_arrmul12_fa5_2_h_u_arrmul12_fa6_1_y2 cin=h_u_arrmul12_fa5_2_h_u_arrmul12_fa4_2_y4 fa_y2=h_u_arrmul12_fa5_2_y2 fa_y4=h_u_arrmul12_fa5_2_y4
 .names a_6 h_u_arrmul12_and6_2_a_6
 1 1
 .names b_2 h_u_arrmul12_and6_2_b_2
@@ -330,7 +330,7 @@
 1 1
 .names h_u_arrmul12_fa5_2_y4 h_u_arrmul12_fa6_2_h_u_arrmul12_fa5_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_2_h_u_arrmul12_and6_2_y0 b=h_u_arrmul12_fa6_2_h_u_arrmul12_fa7_1_y2 cin=h_u_arrmul12_fa6_2_h_u_arrmul12_fa5_2_y4 out[0]=h_u_arrmul12_fa6_2_y2 out[1]=h_u_arrmul12_fa6_2_y4
+.subckt fa a=h_u_arrmul12_fa6_2_h_u_arrmul12_and6_2_y0 b=h_u_arrmul12_fa6_2_h_u_arrmul12_fa7_1_y2 cin=h_u_arrmul12_fa6_2_h_u_arrmul12_fa5_2_y4 fa_y2=h_u_arrmul12_fa6_2_y2 fa_y4=h_u_arrmul12_fa6_2_y4
 .names a_7 h_u_arrmul12_and7_2_a_7
 1 1
 .names b_2 h_u_arrmul12_and7_2_b_2
@@ -342,7 +342,7 @@
 1 1
 .names h_u_arrmul12_fa6_2_y4 h_u_arrmul12_fa7_2_h_u_arrmul12_fa6_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_2_h_u_arrmul12_and7_2_y0 b=h_u_arrmul12_fa7_2_h_u_arrmul12_fa8_1_y2 cin=h_u_arrmul12_fa7_2_h_u_arrmul12_fa6_2_y4 out[0]=h_u_arrmul12_fa7_2_y2 out[1]=h_u_arrmul12_fa7_2_y4
+.subckt fa a=h_u_arrmul12_fa7_2_h_u_arrmul12_and7_2_y0 b=h_u_arrmul12_fa7_2_h_u_arrmul12_fa8_1_y2 cin=h_u_arrmul12_fa7_2_h_u_arrmul12_fa6_2_y4 fa_y2=h_u_arrmul12_fa7_2_y2 fa_y4=h_u_arrmul12_fa7_2_y4
 .names a_8 h_u_arrmul12_and8_2_a_8
 1 1
 .names b_2 h_u_arrmul12_and8_2_b_2
@@ -354,7 +354,7 @@
 1 1
 .names h_u_arrmul12_fa7_2_y4 h_u_arrmul12_fa8_2_h_u_arrmul12_fa7_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_2_h_u_arrmul12_and8_2_y0 b=h_u_arrmul12_fa8_2_h_u_arrmul12_fa9_1_y2 cin=h_u_arrmul12_fa8_2_h_u_arrmul12_fa7_2_y4 out[0]=h_u_arrmul12_fa8_2_y2 out[1]=h_u_arrmul12_fa8_2_y4
+.subckt fa a=h_u_arrmul12_fa8_2_h_u_arrmul12_and8_2_y0 b=h_u_arrmul12_fa8_2_h_u_arrmul12_fa9_1_y2 cin=h_u_arrmul12_fa8_2_h_u_arrmul12_fa7_2_y4 fa_y2=h_u_arrmul12_fa8_2_y2 fa_y4=h_u_arrmul12_fa8_2_y4
 .names a_9 h_u_arrmul12_and9_2_a_9
 1 1
 .names b_2 h_u_arrmul12_and9_2_b_2
@@ -366,7 +366,7 @@
 1 1
 .names h_u_arrmul12_fa8_2_y4 h_u_arrmul12_fa9_2_h_u_arrmul12_fa8_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_2_h_u_arrmul12_and9_2_y0 b=h_u_arrmul12_fa9_2_h_u_arrmul12_fa10_1_y2 cin=h_u_arrmul12_fa9_2_h_u_arrmul12_fa8_2_y4 out[0]=h_u_arrmul12_fa9_2_y2 out[1]=h_u_arrmul12_fa9_2_y4
+.subckt fa a=h_u_arrmul12_fa9_2_h_u_arrmul12_and9_2_y0 b=h_u_arrmul12_fa9_2_h_u_arrmul12_fa10_1_y2 cin=h_u_arrmul12_fa9_2_h_u_arrmul12_fa8_2_y4 fa_y2=h_u_arrmul12_fa9_2_y2 fa_y4=h_u_arrmul12_fa9_2_y4
 .names a_10 h_u_arrmul12_and10_2_a_10
 1 1
 .names b_2 h_u_arrmul12_and10_2_b_2
@@ -378,7 +378,7 @@
 1 1
 .names h_u_arrmul12_fa9_2_y4 h_u_arrmul12_fa10_2_h_u_arrmul12_fa9_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_2_h_u_arrmul12_and10_2_y0 b=h_u_arrmul12_fa10_2_h_u_arrmul12_ha11_1_y0 cin=h_u_arrmul12_fa10_2_h_u_arrmul12_fa9_2_y4 out[0]=h_u_arrmul12_fa10_2_y2 out[1]=h_u_arrmul12_fa10_2_y4
+.subckt fa a=h_u_arrmul12_fa10_2_h_u_arrmul12_and10_2_y0 b=h_u_arrmul12_fa10_2_h_u_arrmul12_ha11_1_y0 cin=h_u_arrmul12_fa10_2_h_u_arrmul12_fa9_2_y4 fa_y2=h_u_arrmul12_fa10_2_y2 fa_y4=h_u_arrmul12_fa10_2_y4
 .names a_11 h_u_arrmul12_and11_2_a_11
 1 1
 .names b_2 h_u_arrmul12_and11_2_b_2
@@ -390,7 +390,7 @@
 1 1
 .names h_u_arrmul12_fa10_2_y4 h_u_arrmul12_fa11_2_h_u_arrmul12_fa10_2_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_2_h_u_arrmul12_and11_2_y0 b=h_u_arrmul12_fa11_2_h_u_arrmul12_ha11_1_y1 cin=h_u_arrmul12_fa11_2_h_u_arrmul12_fa10_2_y4 out[0]=h_u_arrmul12_fa11_2_y2 out[1]=h_u_arrmul12_fa11_2_y4
+.subckt fa a=h_u_arrmul12_fa11_2_h_u_arrmul12_and11_2_y0 b=h_u_arrmul12_fa11_2_h_u_arrmul12_ha11_1_y1 cin=h_u_arrmul12_fa11_2_h_u_arrmul12_fa10_2_y4 fa_y2=h_u_arrmul12_fa11_2_y2 fa_y4=h_u_arrmul12_fa11_2_y4
 .names a_0 h_u_arrmul12_and0_3_a_0
 1 1
 .names b_3 h_u_arrmul12_and0_3_b_3
@@ -400,7 +400,7 @@
 1 1
 .names h_u_arrmul12_fa1_2_y2 h_u_arrmul12_ha0_3_h_u_arrmul12_fa1_2_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_3_h_u_arrmul12_and0_3_y0 b=h_u_arrmul12_ha0_3_h_u_arrmul12_fa1_2_y2 out[0]=h_u_arrmul12_ha0_3_y0 out[1]=h_u_arrmul12_ha0_3_y1
+.subckt ha a=h_u_arrmul12_ha0_3_h_u_arrmul12_and0_3_y0 b=h_u_arrmul12_ha0_3_h_u_arrmul12_fa1_2_y2 ha_y0=h_u_arrmul12_ha0_3_y0 ha_y1=h_u_arrmul12_ha0_3_y1
 .names a_1 h_u_arrmul12_and1_3_a_1
 1 1
 .names b_3 h_u_arrmul12_and1_3_b_3
@@ -412,7 +412,7 @@
 1 1
 .names h_u_arrmul12_ha0_3_y1 h_u_arrmul12_fa1_3_h_u_arrmul12_ha0_3_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_3_h_u_arrmul12_and1_3_y0 b=h_u_arrmul12_fa1_3_h_u_arrmul12_fa2_2_y2 cin=h_u_arrmul12_fa1_3_h_u_arrmul12_ha0_3_y1 out[0]=h_u_arrmul12_fa1_3_y2 out[1]=h_u_arrmul12_fa1_3_y4
+.subckt fa a=h_u_arrmul12_fa1_3_h_u_arrmul12_and1_3_y0 b=h_u_arrmul12_fa1_3_h_u_arrmul12_fa2_2_y2 cin=h_u_arrmul12_fa1_3_h_u_arrmul12_ha0_3_y1 fa_y2=h_u_arrmul12_fa1_3_y2 fa_y4=h_u_arrmul12_fa1_3_y4
 .names a_2 h_u_arrmul12_and2_3_a_2
 1 1
 .names b_3 h_u_arrmul12_and2_3_b_3
@@ -424,7 +424,7 @@
 1 1
 .names h_u_arrmul12_fa1_3_y4 h_u_arrmul12_fa2_3_h_u_arrmul12_fa1_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_3_h_u_arrmul12_and2_3_y0 b=h_u_arrmul12_fa2_3_h_u_arrmul12_fa3_2_y2 cin=h_u_arrmul12_fa2_3_h_u_arrmul12_fa1_3_y4 out[0]=h_u_arrmul12_fa2_3_y2 out[1]=h_u_arrmul12_fa2_3_y4
+.subckt fa a=h_u_arrmul12_fa2_3_h_u_arrmul12_and2_3_y0 b=h_u_arrmul12_fa2_3_h_u_arrmul12_fa3_2_y2 cin=h_u_arrmul12_fa2_3_h_u_arrmul12_fa1_3_y4 fa_y2=h_u_arrmul12_fa2_3_y2 fa_y4=h_u_arrmul12_fa2_3_y4
 .names a_3 h_u_arrmul12_and3_3_a_3
 1 1
 .names b_3 h_u_arrmul12_and3_3_b_3
@@ -436,7 +436,7 @@
 1 1
 .names h_u_arrmul12_fa2_3_y4 h_u_arrmul12_fa3_3_h_u_arrmul12_fa2_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_3_h_u_arrmul12_and3_3_y0 b=h_u_arrmul12_fa3_3_h_u_arrmul12_fa4_2_y2 cin=h_u_arrmul12_fa3_3_h_u_arrmul12_fa2_3_y4 out[0]=h_u_arrmul12_fa3_3_y2 out[1]=h_u_arrmul12_fa3_3_y4
+.subckt fa a=h_u_arrmul12_fa3_3_h_u_arrmul12_and3_3_y0 b=h_u_arrmul12_fa3_3_h_u_arrmul12_fa4_2_y2 cin=h_u_arrmul12_fa3_3_h_u_arrmul12_fa2_3_y4 fa_y2=h_u_arrmul12_fa3_3_y2 fa_y4=h_u_arrmul12_fa3_3_y4
 .names a_4 h_u_arrmul12_and4_3_a_4
 1 1
 .names b_3 h_u_arrmul12_and4_3_b_3
@@ -448,7 +448,7 @@
 1 1
 .names h_u_arrmul12_fa3_3_y4 h_u_arrmul12_fa4_3_h_u_arrmul12_fa3_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_3_h_u_arrmul12_and4_3_y0 b=h_u_arrmul12_fa4_3_h_u_arrmul12_fa5_2_y2 cin=h_u_arrmul12_fa4_3_h_u_arrmul12_fa3_3_y4 out[0]=h_u_arrmul12_fa4_3_y2 out[1]=h_u_arrmul12_fa4_3_y4
+.subckt fa a=h_u_arrmul12_fa4_3_h_u_arrmul12_and4_3_y0 b=h_u_arrmul12_fa4_3_h_u_arrmul12_fa5_2_y2 cin=h_u_arrmul12_fa4_3_h_u_arrmul12_fa3_3_y4 fa_y2=h_u_arrmul12_fa4_3_y2 fa_y4=h_u_arrmul12_fa4_3_y4
 .names a_5 h_u_arrmul12_and5_3_a_5
 1 1
 .names b_3 h_u_arrmul12_and5_3_b_3
@@ -460,7 +460,7 @@
 1 1
 .names h_u_arrmul12_fa4_3_y4 h_u_arrmul12_fa5_3_h_u_arrmul12_fa4_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_3_h_u_arrmul12_and5_3_y0 b=h_u_arrmul12_fa5_3_h_u_arrmul12_fa6_2_y2 cin=h_u_arrmul12_fa5_3_h_u_arrmul12_fa4_3_y4 out[0]=h_u_arrmul12_fa5_3_y2 out[1]=h_u_arrmul12_fa5_3_y4
+.subckt fa a=h_u_arrmul12_fa5_3_h_u_arrmul12_and5_3_y0 b=h_u_arrmul12_fa5_3_h_u_arrmul12_fa6_2_y2 cin=h_u_arrmul12_fa5_3_h_u_arrmul12_fa4_3_y4 fa_y2=h_u_arrmul12_fa5_3_y2 fa_y4=h_u_arrmul12_fa5_3_y4
 .names a_6 h_u_arrmul12_and6_3_a_6
 1 1
 .names b_3 h_u_arrmul12_and6_3_b_3
@@ -472,7 +472,7 @@
 1 1
 .names h_u_arrmul12_fa5_3_y4 h_u_arrmul12_fa6_3_h_u_arrmul12_fa5_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_3_h_u_arrmul12_and6_3_y0 b=h_u_arrmul12_fa6_3_h_u_arrmul12_fa7_2_y2 cin=h_u_arrmul12_fa6_3_h_u_arrmul12_fa5_3_y4 out[0]=h_u_arrmul12_fa6_3_y2 out[1]=h_u_arrmul12_fa6_3_y4
+.subckt fa a=h_u_arrmul12_fa6_3_h_u_arrmul12_and6_3_y0 b=h_u_arrmul12_fa6_3_h_u_arrmul12_fa7_2_y2 cin=h_u_arrmul12_fa6_3_h_u_arrmul12_fa5_3_y4 fa_y2=h_u_arrmul12_fa6_3_y2 fa_y4=h_u_arrmul12_fa6_3_y4
 .names a_7 h_u_arrmul12_and7_3_a_7
 1 1
 .names b_3 h_u_arrmul12_and7_3_b_3
@@ -484,7 +484,7 @@
 1 1
 .names h_u_arrmul12_fa6_3_y4 h_u_arrmul12_fa7_3_h_u_arrmul12_fa6_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_3_h_u_arrmul12_and7_3_y0 b=h_u_arrmul12_fa7_3_h_u_arrmul12_fa8_2_y2 cin=h_u_arrmul12_fa7_3_h_u_arrmul12_fa6_3_y4 out[0]=h_u_arrmul12_fa7_3_y2 out[1]=h_u_arrmul12_fa7_3_y4
+.subckt fa a=h_u_arrmul12_fa7_3_h_u_arrmul12_and7_3_y0 b=h_u_arrmul12_fa7_3_h_u_arrmul12_fa8_2_y2 cin=h_u_arrmul12_fa7_3_h_u_arrmul12_fa6_3_y4 fa_y2=h_u_arrmul12_fa7_3_y2 fa_y4=h_u_arrmul12_fa7_3_y4
 .names a_8 h_u_arrmul12_and8_3_a_8
 1 1
 .names b_3 h_u_arrmul12_and8_3_b_3
@@ -496,7 +496,7 @@
 1 1
 .names h_u_arrmul12_fa7_3_y4 h_u_arrmul12_fa8_3_h_u_arrmul12_fa7_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_3_h_u_arrmul12_and8_3_y0 b=h_u_arrmul12_fa8_3_h_u_arrmul12_fa9_2_y2 cin=h_u_arrmul12_fa8_3_h_u_arrmul12_fa7_3_y4 out[0]=h_u_arrmul12_fa8_3_y2 out[1]=h_u_arrmul12_fa8_3_y4
+.subckt fa a=h_u_arrmul12_fa8_3_h_u_arrmul12_and8_3_y0 b=h_u_arrmul12_fa8_3_h_u_arrmul12_fa9_2_y2 cin=h_u_arrmul12_fa8_3_h_u_arrmul12_fa7_3_y4 fa_y2=h_u_arrmul12_fa8_3_y2 fa_y4=h_u_arrmul12_fa8_3_y4
 .names a_9 h_u_arrmul12_and9_3_a_9
 1 1
 .names b_3 h_u_arrmul12_and9_3_b_3
@@ -508,7 +508,7 @@
 1 1
 .names h_u_arrmul12_fa8_3_y4 h_u_arrmul12_fa9_3_h_u_arrmul12_fa8_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_3_h_u_arrmul12_and9_3_y0 b=h_u_arrmul12_fa9_3_h_u_arrmul12_fa10_2_y2 cin=h_u_arrmul12_fa9_3_h_u_arrmul12_fa8_3_y4 out[0]=h_u_arrmul12_fa9_3_y2 out[1]=h_u_arrmul12_fa9_3_y4
+.subckt fa a=h_u_arrmul12_fa9_3_h_u_arrmul12_and9_3_y0 b=h_u_arrmul12_fa9_3_h_u_arrmul12_fa10_2_y2 cin=h_u_arrmul12_fa9_3_h_u_arrmul12_fa8_3_y4 fa_y2=h_u_arrmul12_fa9_3_y2 fa_y4=h_u_arrmul12_fa9_3_y4
 .names a_10 h_u_arrmul12_and10_3_a_10
 1 1
 .names b_3 h_u_arrmul12_and10_3_b_3
@@ -520,7 +520,7 @@
 1 1
 .names h_u_arrmul12_fa9_3_y4 h_u_arrmul12_fa10_3_h_u_arrmul12_fa9_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_3_h_u_arrmul12_and10_3_y0 b=h_u_arrmul12_fa10_3_h_u_arrmul12_fa11_2_y2 cin=h_u_arrmul12_fa10_3_h_u_arrmul12_fa9_3_y4 out[0]=h_u_arrmul12_fa10_3_y2 out[1]=h_u_arrmul12_fa10_3_y4
+.subckt fa a=h_u_arrmul12_fa10_3_h_u_arrmul12_and10_3_y0 b=h_u_arrmul12_fa10_3_h_u_arrmul12_fa11_2_y2 cin=h_u_arrmul12_fa10_3_h_u_arrmul12_fa9_3_y4 fa_y2=h_u_arrmul12_fa10_3_y2 fa_y4=h_u_arrmul12_fa10_3_y4
 .names a_11 h_u_arrmul12_and11_3_a_11
 1 1
 .names b_3 h_u_arrmul12_and11_3_b_3
@@ -532,7 +532,7 @@
 1 1
 .names h_u_arrmul12_fa10_3_y4 h_u_arrmul12_fa11_3_h_u_arrmul12_fa10_3_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_3_h_u_arrmul12_and11_3_y0 b=h_u_arrmul12_fa11_3_h_u_arrmul12_fa11_2_y4 cin=h_u_arrmul12_fa11_3_h_u_arrmul12_fa10_3_y4 out[0]=h_u_arrmul12_fa11_3_y2 out[1]=h_u_arrmul12_fa11_3_y4
+.subckt fa a=h_u_arrmul12_fa11_3_h_u_arrmul12_and11_3_y0 b=h_u_arrmul12_fa11_3_h_u_arrmul12_fa11_2_y4 cin=h_u_arrmul12_fa11_3_h_u_arrmul12_fa10_3_y4 fa_y2=h_u_arrmul12_fa11_3_y2 fa_y4=h_u_arrmul12_fa11_3_y4
 .names a_0 h_u_arrmul12_and0_4_a_0
 1 1
 .names b_4 h_u_arrmul12_and0_4_b_4
@@ -542,7 +542,7 @@
 1 1
 .names h_u_arrmul12_fa1_3_y2 h_u_arrmul12_ha0_4_h_u_arrmul12_fa1_3_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_4_h_u_arrmul12_and0_4_y0 b=h_u_arrmul12_ha0_4_h_u_arrmul12_fa1_3_y2 out[0]=h_u_arrmul12_ha0_4_y0 out[1]=h_u_arrmul12_ha0_4_y1
+.subckt ha a=h_u_arrmul12_ha0_4_h_u_arrmul12_and0_4_y0 b=h_u_arrmul12_ha0_4_h_u_arrmul12_fa1_3_y2 ha_y0=h_u_arrmul12_ha0_4_y0 ha_y1=h_u_arrmul12_ha0_4_y1
 .names a_1 h_u_arrmul12_and1_4_a_1
 1 1
 .names b_4 h_u_arrmul12_and1_4_b_4
@@ -554,7 +554,7 @@
 1 1
 .names h_u_arrmul12_ha0_4_y1 h_u_arrmul12_fa1_4_h_u_arrmul12_ha0_4_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_4_h_u_arrmul12_and1_4_y0 b=h_u_arrmul12_fa1_4_h_u_arrmul12_fa2_3_y2 cin=h_u_arrmul12_fa1_4_h_u_arrmul12_ha0_4_y1 out[0]=h_u_arrmul12_fa1_4_y2 out[1]=h_u_arrmul12_fa1_4_y4
+.subckt fa a=h_u_arrmul12_fa1_4_h_u_arrmul12_and1_4_y0 b=h_u_arrmul12_fa1_4_h_u_arrmul12_fa2_3_y2 cin=h_u_arrmul12_fa1_4_h_u_arrmul12_ha0_4_y1 fa_y2=h_u_arrmul12_fa1_4_y2 fa_y4=h_u_arrmul12_fa1_4_y4
 .names a_2 h_u_arrmul12_and2_4_a_2
 1 1
 .names b_4 h_u_arrmul12_and2_4_b_4
@@ -566,7 +566,7 @@
 1 1
 .names h_u_arrmul12_fa1_4_y4 h_u_arrmul12_fa2_4_h_u_arrmul12_fa1_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_4_h_u_arrmul12_and2_4_y0 b=h_u_arrmul12_fa2_4_h_u_arrmul12_fa3_3_y2 cin=h_u_arrmul12_fa2_4_h_u_arrmul12_fa1_4_y4 out[0]=h_u_arrmul12_fa2_4_y2 out[1]=h_u_arrmul12_fa2_4_y4
+.subckt fa a=h_u_arrmul12_fa2_4_h_u_arrmul12_and2_4_y0 b=h_u_arrmul12_fa2_4_h_u_arrmul12_fa3_3_y2 cin=h_u_arrmul12_fa2_4_h_u_arrmul12_fa1_4_y4 fa_y2=h_u_arrmul12_fa2_4_y2 fa_y4=h_u_arrmul12_fa2_4_y4
 .names a_3 h_u_arrmul12_and3_4_a_3
 1 1
 .names b_4 h_u_arrmul12_and3_4_b_4
@@ -578,7 +578,7 @@
 1 1
 .names h_u_arrmul12_fa2_4_y4 h_u_arrmul12_fa3_4_h_u_arrmul12_fa2_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_4_h_u_arrmul12_and3_4_y0 b=h_u_arrmul12_fa3_4_h_u_arrmul12_fa4_3_y2 cin=h_u_arrmul12_fa3_4_h_u_arrmul12_fa2_4_y4 out[0]=h_u_arrmul12_fa3_4_y2 out[1]=h_u_arrmul12_fa3_4_y4
+.subckt fa a=h_u_arrmul12_fa3_4_h_u_arrmul12_and3_4_y0 b=h_u_arrmul12_fa3_4_h_u_arrmul12_fa4_3_y2 cin=h_u_arrmul12_fa3_4_h_u_arrmul12_fa2_4_y4 fa_y2=h_u_arrmul12_fa3_4_y2 fa_y4=h_u_arrmul12_fa3_4_y4
 .names a_4 h_u_arrmul12_and4_4_a_4
 1 1
 .names b_4 h_u_arrmul12_and4_4_b_4
@@ -590,7 +590,7 @@
 1 1
 .names h_u_arrmul12_fa3_4_y4 h_u_arrmul12_fa4_4_h_u_arrmul12_fa3_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_4_h_u_arrmul12_and4_4_y0 b=h_u_arrmul12_fa4_4_h_u_arrmul12_fa5_3_y2 cin=h_u_arrmul12_fa4_4_h_u_arrmul12_fa3_4_y4 out[0]=h_u_arrmul12_fa4_4_y2 out[1]=h_u_arrmul12_fa4_4_y4
+.subckt fa a=h_u_arrmul12_fa4_4_h_u_arrmul12_and4_4_y0 b=h_u_arrmul12_fa4_4_h_u_arrmul12_fa5_3_y2 cin=h_u_arrmul12_fa4_4_h_u_arrmul12_fa3_4_y4 fa_y2=h_u_arrmul12_fa4_4_y2 fa_y4=h_u_arrmul12_fa4_4_y4
 .names a_5 h_u_arrmul12_and5_4_a_5
 1 1
 .names b_4 h_u_arrmul12_and5_4_b_4
@@ -602,7 +602,7 @@
 1 1
 .names h_u_arrmul12_fa4_4_y4 h_u_arrmul12_fa5_4_h_u_arrmul12_fa4_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_4_h_u_arrmul12_and5_4_y0 b=h_u_arrmul12_fa5_4_h_u_arrmul12_fa6_3_y2 cin=h_u_arrmul12_fa5_4_h_u_arrmul12_fa4_4_y4 out[0]=h_u_arrmul12_fa5_4_y2 out[1]=h_u_arrmul12_fa5_4_y4
+.subckt fa a=h_u_arrmul12_fa5_4_h_u_arrmul12_and5_4_y0 b=h_u_arrmul12_fa5_4_h_u_arrmul12_fa6_3_y2 cin=h_u_arrmul12_fa5_4_h_u_arrmul12_fa4_4_y4 fa_y2=h_u_arrmul12_fa5_4_y2 fa_y4=h_u_arrmul12_fa5_4_y4
 .names a_6 h_u_arrmul12_and6_4_a_6
 1 1
 .names b_4 h_u_arrmul12_and6_4_b_4
@@ -614,7 +614,7 @@
 1 1
 .names h_u_arrmul12_fa5_4_y4 h_u_arrmul12_fa6_4_h_u_arrmul12_fa5_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_4_h_u_arrmul12_and6_4_y0 b=h_u_arrmul12_fa6_4_h_u_arrmul12_fa7_3_y2 cin=h_u_arrmul12_fa6_4_h_u_arrmul12_fa5_4_y4 out[0]=h_u_arrmul12_fa6_4_y2 out[1]=h_u_arrmul12_fa6_4_y4
+.subckt fa a=h_u_arrmul12_fa6_4_h_u_arrmul12_and6_4_y0 b=h_u_arrmul12_fa6_4_h_u_arrmul12_fa7_3_y2 cin=h_u_arrmul12_fa6_4_h_u_arrmul12_fa5_4_y4 fa_y2=h_u_arrmul12_fa6_4_y2 fa_y4=h_u_arrmul12_fa6_4_y4
 .names a_7 h_u_arrmul12_and7_4_a_7
 1 1
 .names b_4 h_u_arrmul12_and7_4_b_4
@@ -626,7 +626,7 @@
 1 1
 .names h_u_arrmul12_fa6_4_y4 h_u_arrmul12_fa7_4_h_u_arrmul12_fa6_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_4_h_u_arrmul12_and7_4_y0 b=h_u_arrmul12_fa7_4_h_u_arrmul12_fa8_3_y2 cin=h_u_arrmul12_fa7_4_h_u_arrmul12_fa6_4_y4 out[0]=h_u_arrmul12_fa7_4_y2 out[1]=h_u_arrmul12_fa7_4_y4
+.subckt fa a=h_u_arrmul12_fa7_4_h_u_arrmul12_and7_4_y0 b=h_u_arrmul12_fa7_4_h_u_arrmul12_fa8_3_y2 cin=h_u_arrmul12_fa7_4_h_u_arrmul12_fa6_4_y4 fa_y2=h_u_arrmul12_fa7_4_y2 fa_y4=h_u_arrmul12_fa7_4_y4
 .names a_8 h_u_arrmul12_and8_4_a_8
 1 1
 .names b_4 h_u_arrmul12_and8_4_b_4
@@ -638,7 +638,7 @@
 1 1
 .names h_u_arrmul12_fa7_4_y4 h_u_arrmul12_fa8_4_h_u_arrmul12_fa7_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_4_h_u_arrmul12_and8_4_y0 b=h_u_arrmul12_fa8_4_h_u_arrmul12_fa9_3_y2 cin=h_u_arrmul12_fa8_4_h_u_arrmul12_fa7_4_y4 out[0]=h_u_arrmul12_fa8_4_y2 out[1]=h_u_arrmul12_fa8_4_y4
+.subckt fa a=h_u_arrmul12_fa8_4_h_u_arrmul12_and8_4_y0 b=h_u_arrmul12_fa8_4_h_u_arrmul12_fa9_3_y2 cin=h_u_arrmul12_fa8_4_h_u_arrmul12_fa7_4_y4 fa_y2=h_u_arrmul12_fa8_4_y2 fa_y4=h_u_arrmul12_fa8_4_y4
 .names a_9 h_u_arrmul12_and9_4_a_9
 1 1
 .names b_4 h_u_arrmul12_and9_4_b_4
@@ -650,7 +650,7 @@
 1 1
 .names h_u_arrmul12_fa8_4_y4 h_u_arrmul12_fa9_4_h_u_arrmul12_fa8_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_4_h_u_arrmul12_and9_4_y0 b=h_u_arrmul12_fa9_4_h_u_arrmul12_fa10_3_y2 cin=h_u_arrmul12_fa9_4_h_u_arrmul12_fa8_4_y4 out[0]=h_u_arrmul12_fa9_4_y2 out[1]=h_u_arrmul12_fa9_4_y4
+.subckt fa a=h_u_arrmul12_fa9_4_h_u_arrmul12_and9_4_y0 b=h_u_arrmul12_fa9_4_h_u_arrmul12_fa10_3_y2 cin=h_u_arrmul12_fa9_4_h_u_arrmul12_fa8_4_y4 fa_y2=h_u_arrmul12_fa9_4_y2 fa_y4=h_u_arrmul12_fa9_4_y4
 .names a_10 h_u_arrmul12_and10_4_a_10
 1 1
 .names b_4 h_u_arrmul12_and10_4_b_4
@@ -662,7 +662,7 @@
 1 1
 .names h_u_arrmul12_fa9_4_y4 h_u_arrmul12_fa10_4_h_u_arrmul12_fa9_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_4_h_u_arrmul12_and10_4_y0 b=h_u_arrmul12_fa10_4_h_u_arrmul12_fa11_3_y2 cin=h_u_arrmul12_fa10_4_h_u_arrmul12_fa9_4_y4 out[0]=h_u_arrmul12_fa10_4_y2 out[1]=h_u_arrmul12_fa10_4_y4
+.subckt fa a=h_u_arrmul12_fa10_4_h_u_arrmul12_and10_4_y0 b=h_u_arrmul12_fa10_4_h_u_arrmul12_fa11_3_y2 cin=h_u_arrmul12_fa10_4_h_u_arrmul12_fa9_4_y4 fa_y2=h_u_arrmul12_fa10_4_y2 fa_y4=h_u_arrmul12_fa10_4_y4
 .names a_11 h_u_arrmul12_and11_4_a_11
 1 1
 .names b_4 h_u_arrmul12_and11_4_b_4
@@ -674,7 +674,7 @@
 1 1
 .names h_u_arrmul12_fa10_4_y4 h_u_arrmul12_fa11_4_h_u_arrmul12_fa10_4_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_4_h_u_arrmul12_and11_4_y0 b=h_u_arrmul12_fa11_4_h_u_arrmul12_fa11_3_y4 cin=h_u_arrmul12_fa11_4_h_u_arrmul12_fa10_4_y4 out[0]=h_u_arrmul12_fa11_4_y2 out[1]=h_u_arrmul12_fa11_4_y4
+.subckt fa a=h_u_arrmul12_fa11_4_h_u_arrmul12_and11_4_y0 b=h_u_arrmul12_fa11_4_h_u_arrmul12_fa11_3_y4 cin=h_u_arrmul12_fa11_4_h_u_arrmul12_fa10_4_y4 fa_y2=h_u_arrmul12_fa11_4_y2 fa_y4=h_u_arrmul12_fa11_4_y4
 .names a_0 h_u_arrmul12_and0_5_a_0
 1 1
 .names b_5 h_u_arrmul12_and0_5_b_5
@@ -684,7 +684,7 @@
 1 1
 .names h_u_arrmul12_fa1_4_y2 h_u_arrmul12_ha0_5_h_u_arrmul12_fa1_4_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_5_h_u_arrmul12_and0_5_y0 b=h_u_arrmul12_ha0_5_h_u_arrmul12_fa1_4_y2 out[0]=h_u_arrmul12_ha0_5_y0 out[1]=h_u_arrmul12_ha0_5_y1
+.subckt ha a=h_u_arrmul12_ha0_5_h_u_arrmul12_and0_5_y0 b=h_u_arrmul12_ha0_5_h_u_arrmul12_fa1_4_y2 ha_y0=h_u_arrmul12_ha0_5_y0 ha_y1=h_u_arrmul12_ha0_5_y1
 .names a_1 h_u_arrmul12_and1_5_a_1
 1 1
 .names b_5 h_u_arrmul12_and1_5_b_5
@@ -696,7 +696,7 @@
 1 1
 .names h_u_arrmul12_ha0_5_y1 h_u_arrmul12_fa1_5_h_u_arrmul12_ha0_5_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_5_h_u_arrmul12_and1_5_y0 b=h_u_arrmul12_fa1_5_h_u_arrmul12_fa2_4_y2 cin=h_u_arrmul12_fa1_5_h_u_arrmul12_ha0_5_y1 out[0]=h_u_arrmul12_fa1_5_y2 out[1]=h_u_arrmul12_fa1_5_y4
+.subckt fa a=h_u_arrmul12_fa1_5_h_u_arrmul12_and1_5_y0 b=h_u_arrmul12_fa1_5_h_u_arrmul12_fa2_4_y2 cin=h_u_arrmul12_fa1_5_h_u_arrmul12_ha0_5_y1 fa_y2=h_u_arrmul12_fa1_5_y2 fa_y4=h_u_arrmul12_fa1_5_y4
 .names a_2 h_u_arrmul12_and2_5_a_2
 1 1
 .names b_5 h_u_arrmul12_and2_5_b_5
@@ -708,7 +708,7 @@
 1 1
 .names h_u_arrmul12_fa1_5_y4 h_u_arrmul12_fa2_5_h_u_arrmul12_fa1_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_5_h_u_arrmul12_and2_5_y0 b=h_u_arrmul12_fa2_5_h_u_arrmul12_fa3_4_y2 cin=h_u_arrmul12_fa2_5_h_u_arrmul12_fa1_5_y4 out[0]=h_u_arrmul12_fa2_5_y2 out[1]=h_u_arrmul12_fa2_5_y4
+.subckt fa a=h_u_arrmul12_fa2_5_h_u_arrmul12_and2_5_y0 b=h_u_arrmul12_fa2_5_h_u_arrmul12_fa3_4_y2 cin=h_u_arrmul12_fa2_5_h_u_arrmul12_fa1_5_y4 fa_y2=h_u_arrmul12_fa2_5_y2 fa_y4=h_u_arrmul12_fa2_5_y4
 .names a_3 h_u_arrmul12_and3_5_a_3
 1 1
 .names b_5 h_u_arrmul12_and3_5_b_5
@@ -720,7 +720,7 @@
 1 1
 .names h_u_arrmul12_fa2_5_y4 h_u_arrmul12_fa3_5_h_u_arrmul12_fa2_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_5_h_u_arrmul12_and3_5_y0 b=h_u_arrmul12_fa3_5_h_u_arrmul12_fa4_4_y2 cin=h_u_arrmul12_fa3_5_h_u_arrmul12_fa2_5_y4 out[0]=h_u_arrmul12_fa3_5_y2 out[1]=h_u_arrmul12_fa3_5_y4
+.subckt fa a=h_u_arrmul12_fa3_5_h_u_arrmul12_and3_5_y0 b=h_u_arrmul12_fa3_5_h_u_arrmul12_fa4_4_y2 cin=h_u_arrmul12_fa3_5_h_u_arrmul12_fa2_5_y4 fa_y2=h_u_arrmul12_fa3_5_y2 fa_y4=h_u_arrmul12_fa3_5_y4
 .names a_4 h_u_arrmul12_and4_5_a_4
 1 1
 .names b_5 h_u_arrmul12_and4_5_b_5
@@ -732,7 +732,7 @@
 1 1
 .names h_u_arrmul12_fa3_5_y4 h_u_arrmul12_fa4_5_h_u_arrmul12_fa3_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_5_h_u_arrmul12_and4_5_y0 b=h_u_arrmul12_fa4_5_h_u_arrmul12_fa5_4_y2 cin=h_u_arrmul12_fa4_5_h_u_arrmul12_fa3_5_y4 out[0]=h_u_arrmul12_fa4_5_y2 out[1]=h_u_arrmul12_fa4_5_y4
+.subckt fa a=h_u_arrmul12_fa4_5_h_u_arrmul12_and4_5_y0 b=h_u_arrmul12_fa4_5_h_u_arrmul12_fa5_4_y2 cin=h_u_arrmul12_fa4_5_h_u_arrmul12_fa3_5_y4 fa_y2=h_u_arrmul12_fa4_5_y2 fa_y4=h_u_arrmul12_fa4_5_y4
 .names a_5 h_u_arrmul12_and5_5_a_5
 1 1
 .names b_5 h_u_arrmul12_and5_5_b_5
@@ -744,7 +744,7 @@
 1 1
 .names h_u_arrmul12_fa4_5_y4 h_u_arrmul12_fa5_5_h_u_arrmul12_fa4_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_5_h_u_arrmul12_and5_5_y0 b=h_u_arrmul12_fa5_5_h_u_arrmul12_fa6_4_y2 cin=h_u_arrmul12_fa5_5_h_u_arrmul12_fa4_5_y4 out[0]=h_u_arrmul12_fa5_5_y2 out[1]=h_u_arrmul12_fa5_5_y4
+.subckt fa a=h_u_arrmul12_fa5_5_h_u_arrmul12_and5_5_y0 b=h_u_arrmul12_fa5_5_h_u_arrmul12_fa6_4_y2 cin=h_u_arrmul12_fa5_5_h_u_arrmul12_fa4_5_y4 fa_y2=h_u_arrmul12_fa5_5_y2 fa_y4=h_u_arrmul12_fa5_5_y4
 .names a_6 h_u_arrmul12_and6_5_a_6
 1 1
 .names b_5 h_u_arrmul12_and6_5_b_5
@@ -756,7 +756,7 @@
 1 1
 .names h_u_arrmul12_fa5_5_y4 h_u_arrmul12_fa6_5_h_u_arrmul12_fa5_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_5_h_u_arrmul12_and6_5_y0 b=h_u_arrmul12_fa6_5_h_u_arrmul12_fa7_4_y2 cin=h_u_arrmul12_fa6_5_h_u_arrmul12_fa5_5_y4 out[0]=h_u_arrmul12_fa6_5_y2 out[1]=h_u_arrmul12_fa6_5_y4
+.subckt fa a=h_u_arrmul12_fa6_5_h_u_arrmul12_and6_5_y0 b=h_u_arrmul12_fa6_5_h_u_arrmul12_fa7_4_y2 cin=h_u_arrmul12_fa6_5_h_u_arrmul12_fa5_5_y4 fa_y2=h_u_arrmul12_fa6_5_y2 fa_y4=h_u_arrmul12_fa6_5_y4
 .names a_7 h_u_arrmul12_and7_5_a_7
 1 1
 .names b_5 h_u_arrmul12_and7_5_b_5
@@ -768,7 +768,7 @@
 1 1
 .names h_u_arrmul12_fa6_5_y4 h_u_arrmul12_fa7_5_h_u_arrmul12_fa6_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_5_h_u_arrmul12_and7_5_y0 b=h_u_arrmul12_fa7_5_h_u_arrmul12_fa8_4_y2 cin=h_u_arrmul12_fa7_5_h_u_arrmul12_fa6_5_y4 out[0]=h_u_arrmul12_fa7_5_y2 out[1]=h_u_arrmul12_fa7_5_y4
+.subckt fa a=h_u_arrmul12_fa7_5_h_u_arrmul12_and7_5_y0 b=h_u_arrmul12_fa7_5_h_u_arrmul12_fa8_4_y2 cin=h_u_arrmul12_fa7_5_h_u_arrmul12_fa6_5_y4 fa_y2=h_u_arrmul12_fa7_5_y2 fa_y4=h_u_arrmul12_fa7_5_y4
 .names a_8 h_u_arrmul12_and8_5_a_8
 1 1
 .names b_5 h_u_arrmul12_and8_5_b_5
@@ -780,7 +780,7 @@
 1 1
 .names h_u_arrmul12_fa7_5_y4 h_u_arrmul12_fa8_5_h_u_arrmul12_fa7_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_5_h_u_arrmul12_and8_5_y0 b=h_u_arrmul12_fa8_5_h_u_arrmul12_fa9_4_y2 cin=h_u_arrmul12_fa8_5_h_u_arrmul12_fa7_5_y4 out[0]=h_u_arrmul12_fa8_5_y2 out[1]=h_u_arrmul12_fa8_5_y4
+.subckt fa a=h_u_arrmul12_fa8_5_h_u_arrmul12_and8_5_y0 b=h_u_arrmul12_fa8_5_h_u_arrmul12_fa9_4_y2 cin=h_u_arrmul12_fa8_5_h_u_arrmul12_fa7_5_y4 fa_y2=h_u_arrmul12_fa8_5_y2 fa_y4=h_u_arrmul12_fa8_5_y4
 .names a_9 h_u_arrmul12_and9_5_a_9
 1 1
 .names b_5 h_u_arrmul12_and9_5_b_5
@@ -792,7 +792,7 @@
 1 1
 .names h_u_arrmul12_fa8_5_y4 h_u_arrmul12_fa9_5_h_u_arrmul12_fa8_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_5_h_u_arrmul12_and9_5_y0 b=h_u_arrmul12_fa9_5_h_u_arrmul12_fa10_4_y2 cin=h_u_arrmul12_fa9_5_h_u_arrmul12_fa8_5_y4 out[0]=h_u_arrmul12_fa9_5_y2 out[1]=h_u_arrmul12_fa9_5_y4
+.subckt fa a=h_u_arrmul12_fa9_5_h_u_arrmul12_and9_5_y0 b=h_u_arrmul12_fa9_5_h_u_arrmul12_fa10_4_y2 cin=h_u_arrmul12_fa9_5_h_u_arrmul12_fa8_5_y4 fa_y2=h_u_arrmul12_fa9_5_y2 fa_y4=h_u_arrmul12_fa9_5_y4
 .names a_10 h_u_arrmul12_and10_5_a_10
 1 1
 .names b_5 h_u_arrmul12_and10_5_b_5
@@ -804,7 +804,7 @@
 1 1
 .names h_u_arrmul12_fa9_5_y4 h_u_arrmul12_fa10_5_h_u_arrmul12_fa9_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_5_h_u_arrmul12_and10_5_y0 b=h_u_arrmul12_fa10_5_h_u_arrmul12_fa11_4_y2 cin=h_u_arrmul12_fa10_5_h_u_arrmul12_fa9_5_y4 out[0]=h_u_arrmul12_fa10_5_y2 out[1]=h_u_arrmul12_fa10_5_y4
+.subckt fa a=h_u_arrmul12_fa10_5_h_u_arrmul12_and10_5_y0 b=h_u_arrmul12_fa10_5_h_u_arrmul12_fa11_4_y2 cin=h_u_arrmul12_fa10_5_h_u_arrmul12_fa9_5_y4 fa_y2=h_u_arrmul12_fa10_5_y2 fa_y4=h_u_arrmul12_fa10_5_y4
 .names a_11 h_u_arrmul12_and11_5_a_11
 1 1
 .names b_5 h_u_arrmul12_and11_5_b_5
@@ -816,7 +816,7 @@
 1 1
 .names h_u_arrmul12_fa10_5_y4 h_u_arrmul12_fa11_5_h_u_arrmul12_fa10_5_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_5_h_u_arrmul12_and11_5_y0 b=h_u_arrmul12_fa11_5_h_u_arrmul12_fa11_4_y4 cin=h_u_arrmul12_fa11_5_h_u_arrmul12_fa10_5_y4 out[0]=h_u_arrmul12_fa11_5_y2 out[1]=h_u_arrmul12_fa11_5_y4
+.subckt fa a=h_u_arrmul12_fa11_5_h_u_arrmul12_and11_5_y0 b=h_u_arrmul12_fa11_5_h_u_arrmul12_fa11_4_y4 cin=h_u_arrmul12_fa11_5_h_u_arrmul12_fa10_5_y4 fa_y2=h_u_arrmul12_fa11_5_y2 fa_y4=h_u_arrmul12_fa11_5_y4
 .names a_0 h_u_arrmul12_and0_6_a_0
 1 1
 .names b_6 h_u_arrmul12_and0_6_b_6
@@ -826,7 +826,7 @@
 1 1
 .names h_u_arrmul12_fa1_5_y2 h_u_arrmul12_ha0_6_h_u_arrmul12_fa1_5_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_6_h_u_arrmul12_and0_6_y0 b=h_u_arrmul12_ha0_6_h_u_arrmul12_fa1_5_y2 out[0]=h_u_arrmul12_ha0_6_y0 out[1]=h_u_arrmul12_ha0_6_y1
+.subckt ha a=h_u_arrmul12_ha0_6_h_u_arrmul12_and0_6_y0 b=h_u_arrmul12_ha0_6_h_u_arrmul12_fa1_5_y2 ha_y0=h_u_arrmul12_ha0_6_y0 ha_y1=h_u_arrmul12_ha0_6_y1
 .names a_1 h_u_arrmul12_and1_6_a_1
 1 1
 .names b_6 h_u_arrmul12_and1_6_b_6
@@ -838,7 +838,7 @@
 1 1
 .names h_u_arrmul12_ha0_6_y1 h_u_arrmul12_fa1_6_h_u_arrmul12_ha0_6_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_6_h_u_arrmul12_and1_6_y0 b=h_u_arrmul12_fa1_6_h_u_arrmul12_fa2_5_y2 cin=h_u_arrmul12_fa1_6_h_u_arrmul12_ha0_6_y1 out[0]=h_u_arrmul12_fa1_6_y2 out[1]=h_u_arrmul12_fa1_6_y4
+.subckt fa a=h_u_arrmul12_fa1_6_h_u_arrmul12_and1_6_y0 b=h_u_arrmul12_fa1_6_h_u_arrmul12_fa2_5_y2 cin=h_u_arrmul12_fa1_6_h_u_arrmul12_ha0_6_y1 fa_y2=h_u_arrmul12_fa1_6_y2 fa_y4=h_u_arrmul12_fa1_6_y4
 .names a_2 h_u_arrmul12_and2_6_a_2
 1 1
 .names b_6 h_u_arrmul12_and2_6_b_6
@@ -850,7 +850,7 @@
 1 1
 .names h_u_arrmul12_fa1_6_y4 h_u_arrmul12_fa2_6_h_u_arrmul12_fa1_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_6_h_u_arrmul12_and2_6_y0 b=h_u_arrmul12_fa2_6_h_u_arrmul12_fa3_5_y2 cin=h_u_arrmul12_fa2_6_h_u_arrmul12_fa1_6_y4 out[0]=h_u_arrmul12_fa2_6_y2 out[1]=h_u_arrmul12_fa2_6_y4
+.subckt fa a=h_u_arrmul12_fa2_6_h_u_arrmul12_and2_6_y0 b=h_u_arrmul12_fa2_6_h_u_arrmul12_fa3_5_y2 cin=h_u_arrmul12_fa2_6_h_u_arrmul12_fa1_6_y4 fa_y2=h_u_arrmul12_fa2_6_y2 fa_y4=h_u_arrmul12_fa2_6_y4
 .names a_3 h_u_arrmul12_and3_6_a_3
 1 1
 .names b_6 h_u_arrmul12_and3_6_b_6
@@ -862,7 +862,7 @@
 1 1
 .names h_u_arrmul12_fa2_6_y4 h_u_arrmul12_fa3_6_h_u_arrmul12_fa2_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_6_h_u_arrmul12_and3_6_y0 b=h_u_arrmul12_fa3_6_h_u_arrmul12_fa4_5_y2 cin=h_u_arrmul12_fa3_6_h_u_arrmul12_fa2_6_y4 out[0]=h_u_arrmul12_fa3_6_y2 out[1]=h_u_arrmul12_fa3_6_y4
+.subckt fa a=h_u_arrmul12_fa3_6_h_u_arrmul12_and3_6_y0 b=h_u_arrmul12_fa3_6_h_u_arrmul12_fa4_5_y2 cin=h_u_arrmul12_fa3_6_h_u_arrmul12_fa2_6_y4 fa_y2=h_u_arrmul12_fa3_6_y2 fa_y4=h_u_arrmul12_fa3_6_y4
 .names a_4 h_u_arrmul12_and4_6_a_4
 1 1
 .names b_6 h_u_arrmul12_and4_6_b_6
@@ -874,7 +874,7 @@
 1 1
 .names h_u_arrmul12_fa3_6_y4 h_u_arrmul12_fa4_6_h_u_arrmul12_fa3_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_6_h_u_arrmul12_and4_6_y0 b=h_u_arrmul12_fa4_6_h_u_arrmul12_fa5_5_y2 cin=h_u_arrmul12_fa4_6_h_u_arrmul12_fa3_6_y4 out[0]=h_u_arrmul12_fa4_6_y2 out[1]=h_u_arrmul12_fa4_6_y4
+.subckt fa a=h_u_arrmul12_fa4_6_h_u_arrmul12_and4_6_y0 b=h_u_arrmul12_fa4_6_h_u_arrmul12_fa5_5_y2 cin=h_u_arrmul12_fa4_6_h_u_arrmul12_fa3_6_y4 fa_y2=h_u_arrmul12_fa4_6_y2 fa_y4=h_u_arrmul12_fa4_6_y4
 .names a_5 h_u_arrmul12_and5_6_a_5
 1 1
 .names b_6 h_u_arrmul12_and5_6_b_6
@@ -886,7 +886,7 @@
 1 1
 .names h_u_arrmul12_fa4_6_y4 h_u_arrmul12_fa5_6_h_u_arrmul12_fa4_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_6_h_u_arrmul12_and5_6_y0 b=h_u_arrmul12_fa5_6_h_u_arrmul12_fa6_5_y2 cin=h_u_arrmul12_fa5_6_h_u_arrmul12_fa4_6_y4 out[0]=h_u_arrmul12_fa5_6_y2 out[1]=h_u_arrmul12_fa5_6_y4
+.subckt fa a=h_u_arrmul12_fa5_6_h_u_arrmul12_and5_6_y0 b=h_u_arrmul12_fa5_6_h_u_arrmul12_fa6_5_y2 cin=h_u_arrmul12_fa5_6_h_u_arrmul12_fa4_6_y4 fa_y2=h_u_arrmul12_fa5_6_y2 fa_y4=h_u_arrmul12_fa5_6_y4
 .names a_6 h_u_arrmul12_and6_6_a_6
 1 1
 .names b_6 h_u_arrmul12_and6_6_b_6
@@ -898,7 +898,7 @@
 1 1
 .names h_u_arrmul12_fa5_6_y4 h_u_arrmul12_fa6_6_h_u_arrmul12_fa5_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_6_h_u_arrmul12_and6_6_y0 b=h_u_arrmul12_fa6_6_h_u_arrmul12_fa7_5_y2 cin=h_u_arrmul12_fa6_6_h_u_arrmul12_fa5_6_y4 out[0]=h_u_arrmul12_fa6_6_y2 out[1]=h_u_arrmul12_fa6_6_y4
+.subckt fa a=h_u_arrmul12_fa6_6_h_u_arrmul12_and6_6_y0 b=h_u_arrmul12_fa6_6_h_u_arrmul12_fa7_5_y2 cin=h_u_arrmul12_fa6_6_h_u_arrmul12_fa5_6_y4 fa_y2=h_u_arrmul12_fa6_6_y2 fa_y4=h_u_arrmul12_fa6_6_y4
 .names a_7 h_u_arrmul12_and7_6_a_7
 1 1
 .names b_6 h_u_arrmul12_and7_6_b_6
@@ -910,7 +910,7 @@
 1 1
 .names h_u_arrmul12_fa6_6_y4 h_u_arrmul12_fa7_6_h_u_arrmul12_fa6_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_6_h_u_arrmul12_and7_6_y0 b=h_u_arrmul12_fa7_6_h_u_arrmul12_fa8_5_y2 cin=h_u_arrmul12_fa7_6_h_u_arrmul12_fa6_6_y4 out[0]=h_u_arrmul12_fa7_6_y2 out[1]=h_u_arrmul12_fa7_6_y4
+.subckt fa a=h_u_arrmul12_fa7_6_h_u_arrmul12_and7_6_y0 b=h_u_arrmul12_fa7_6_h_u_arrmul12_fa8_5_y2 cin=h_u_arrmul12_fa7_6_h_u_arrmul12_fa6_6_y4 fa_y2=h_u_arrmul12_fa7_6_y2 fa_y4=h_u_arrmul12_fa7_6_y4
 .names a_8 h_u_arrmul12_and8_6_a_8
 1 1
 .names b_6 h_u_arrmul12_and8_6_b_6
@@ -922,7 +922,7 @@
 1 1
 .names h_u_arrmul12_fa7_6_y4 h_u_arrmul12_fa8_6_h_u_arrmul12_fa7_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_6_h_u_arrmul12_and8_6_y0 b=h_u_arrmul12_fa8_6_h_u_arrmul12_fa9_5_y2 cin=h_u_arrmul12_fa8_6_h_u_arrmul12_fa7_6_y4 out[0]=h_u_arrmul12_fa8_6_y2 out[1]=h_u_arrmul12_fa8_6_y4
+.subckt fa a=h_u_arrmul12_fa8_6_h_u_arrmul12_and8_6_y0 b=h_u_arrmul12_fa8_6_h_u_arrmul12_fa9_5_y2 cin=h_u_arrmul12_fa8_6_h_u_arrmul12_fa7_6_y4 fa_y2=h_u_arrmul12_fa8_6_y2 fa_y4=h_u_arrmul12_fa8_6_y4
 .names a_9 h_u_arrmul12_and9_6_a_9
 1 1
 .names b_6 h_u_arrmul12_and9_6_b_6
@@ -934,7 +934,7 @@
 1 1
 .names h_u_arrmul12_fa8_6_y4 h_u_arrmul12_fa9_6_h_u_arrmul12_fa8_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_6_h_u_arrmul12_and9_6_y0 b=h_u_arrmul12_fa9_6_h_u_arrmul12_fa10_5_y2 cin=h_u_arrmul12_fa9_6_h_u_arrmul12_fa8_6_y4 out[0]=h_u_arrmul12_fa9_6_y2 out[1]=h_u_arrmul12_fa9_6_y4
+.subckt fa a=h_u_arrmul12_fa9_6_h_u_arrmul12_and9_6_y0 b=h_u_arrmul12_fa9_6_h_u_arrmul12_fa10_5_y2 cin=h_u_arrmul12_fa9_6_h_u_arrmul12_fa8_6_y4 fa_y2=h_u_arrmul12_fa9_6_y2 fa_y4=h_u_arrmul12_fa9_6_y4
 .names a_10 h_u_arrmul12_and10_6_a_10
 1 1
 .names b_6 h_u_arrmul12_and10_6_b_6
@@ -946,7 +946,7 @@
 1 1
 .names h_u_arrmul12_fa9_6_y4 h_u_arrmul12_fa10_6_h_u_arrmul12_fa9_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_6_h_u_arrmul12_and10_6_y0 b=h_u_arrmul12_fa10_6_h_u_arrmul12_fa11_5_y2 cin=h_u_arrmul12_fa10_6_h_u_arrmul12_fa9_6_y4 out[0]=h_u_arrmul12_fa10_6_y2 out[1]=h_u_arrmul12_fa10_6_y4
+.subckt fa a=h_u_arrmul12_fa10_6_h_u_arrmul12_and10_6_y0 b=h_u_arrmul12_fa10_6_h_u_arrmul12_fa11_5_y2 cin=h_u_arrmul12_fa10_6_h_u_arrmul12_fa9_6_y4 fa_y2=h_u_arrmul12_fa10_6_y2 fa_y4=h_u_arrmul12_fa10_6_y4
 .names a_11 h_u_arrmul12_and11_6_a_11
 1 1
 .names b_6 h_u_arrmul12_and11_6_b_6
@@ -958,7 +958,7 @@
 1 1
 .names h_u_arrmul12_fa10_6_y4 h_u_arrmul12_fa11_6_h_u_arrmul12_fa10_6_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_6_h_u_arrmul12_and11_6_y0 b=h_u_arrmul12_fa11_6_h_u_arrmul12_fa11_5_y4 cin=h_u_arrmul12_fa11_6_h_u_arrmul12_fa10_6_y4 out[0]=h_u_arrmul12_fa11_6_y2 out[1]=h_u_arrmul12_fa11_6_y4
+.subckt fa a=h_u_arrmul12_fa11_6_h_u_arrmul12_and11_6_y0 b=h_u_arrmul12_fa11_6_h_u_arrmul12_fa11_5_y4 cin=h_u_arrmul12_fa11_6_h_u_arrmul12_fa10_6_y4 fa_y2=h_u_arrmul12_fa11_6_y2 fa_y4=h_u_arrmul12_fa11_6_y4
 .names a_0 h_u_arrmul12_and0_7_a_0
 1 1
 .names b_7 h_u_arrmul12_and0_7_b_7
@@ -968,7 +968,7 @@
 1 1
 .names h_u_arrmul12_fa1_6_y2 h_u_arrmul12_ha0_7_h_u_arrmul12_fa1_6_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_7_h_u_arrmul12_and0_7_y0 b=h_u_arrmul12_ha0_7_h_u_arrmul12_fa1_6_y2 out[0]=h_u_arrmul12_ha0_7_y0 out[1]=h_u_arrmul12_ha0_7_y1
+.subckt ha a=h_u_arrmul12_ha0_7_h_u_arrmul12_and0_7_y0 b=h_u_arrmul12_ha0_7_h_u_arrmul12_fa1_6_y2 ha_y0=h_u_arrmul12_ha0_7_y0 ha_y1=h_u_arrmul12_ha0_7_y1
 .names a_1 h_u_arrmul12_and1_7_a_1
 1 1
 .names b_7 h_u_arrmul12_and1_7_b_7
@@ -980,7 +980,7 @@
 1 1
 .names h_u_arrmul12_ha0_7_y1 h_u_arrmul12_fa1_7_h_u_arrmul12_ha0_7_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_7_h_u_arrmul12_and1_7_y0 b=h_u_arrmul12_fa1_7_h_u_arrmul12_fa2_6_y2 cin=h_u_arrmul12_fa1_7_h_u_arrmul12_ha0_7_y1 out[0]=h_u_arrmul12_fa1_7_y2 out[1]=h_u_arrmul12_fa1_7_y4
+.subckt fa a=h_u_arrmul12_fa1_7_h_u_arrmul12_and1_7_y0 b=h_u_arrmul12_fa1_7_h_u_arrmul12_fa2_6_y2 cin=h_u_arrmul12_fa1_7_h_u_arrmul12_ha0_7_y1 fa_y2=h_u_arrmul12_fa1_7_y2 fa_y4=h_u_arrmul12_fa1_7_y4
 .names a_2 h_u_arrmul12_and2_7_a_2
 1 1
 .names b_7 h_u_arrmul12_and2_7_b_7
@@ -992,7 +992,7 @@
 1 1
 .names h_u_arrmul12_fa1_7_y4 h_u_arrmul12_fa2_7_h_u_arrmul12_fa1_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_7_h_u_arrmul12_and2_7_y0 b=h_u_arrmul12_fa2_7_h_u_arrmul12_fa3_6_y2 cin=h_u_arrmul12_fa2_7_h_u_arrmul12_fa1_7_y4 out[0]=h_u_arrmul12_fa2_7_y2 out[1]=h_u_arrmul12_fa2_7_y4
+.subckt fa a=h_u_arrmul12_fa2_7_h_u_arrmul12_and2_7_y0 b=h_u_arrmul12_fa2_7_h_u_arrmul12_fa3_6_y2 cin=h_u_arrmul12_fa2_7_h_u_arrmul12_fa1_7_y4 fa_y2=h_u_arrmul12_fa2_7_y2 fa_y4=h_u_arrmul12_fa2_7_y4
 .names a_3 h_u_arrmul12_and3_7_a_3
 1 1
 .names b_7 h_u_arrmul12_and3_7_b_7
@@ -1004,7 +1004,7 @@
 1 1
 .names h_u_arrmul12_fa2_7_y4 h_u_arrmul12_fa3_7_h_u_arrmul12_fa2_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_7_h_u_arrmul12_and3_7_y0 b=h_u_arrmul12_fa3_7_h_u_arrmul12_fa4_6_y2 cin=h_u_arrmul12_fa3_7_h_u_arrmul12_fa2_7_y4 out[0]=h_u_arrmul12_fa3_7_y2 out[1]=h_u_arrmul12_fa3_7_y4
+.subckt fa a=h_u_arrmul12_fa3_7_h_u_arrmul12_and3_7_y0 b=h_u_arrmul12_fa3_7_h_u_arrmul12_fa4_6_y2 cin=h_u_arrmul12_fa3_7_h_u_arrmul12_fa2_7_y4 fa_y2=h_u_arrmul12_fa3_7_y2 fa_y4=h_u_arrmul12_fa3_7_y4
 .names a_4 h_u_arrmul12_and4_7_a_4
 1 1
 .names b_7 h_u_arrmul12_and4_7_b_7
@@ -1016,7 +1016,7 @@
 1 1
 .names h_u_arrmul12_fa3_7_y4 h_u_arrmul12_fa4_7_h_u_arrmul12_fa3_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_7_h_u_arrmul12_and4_7_y0 b=h_u_arrmul12_fa4_7_h_u_arrmul12_fa5_6_y2 cin=h_u_arrmul12_fa4_7_h_u_arrmul12_fa3_7_y4 out[0]=h_u_arrmul12_fa4_7_y2 out[1]=h_u_arrmul12_fa4_7_y4
+.subckt fa a=h_u_arrmul12_fa4_7_h_u_arrmul12_and4_7_y0 b=h_u_arrmul12_fa4_7_h_u_arrmul12_fa5_6_y2 cin=h_u_arrmul12_fa4_7_h_u_arrmul12_fa3_7_y4 fa_y2=h_u_arrmul12_fa4_7_y2 fa_y4=h_u_arrmul12_fa4_7_y4
 .names a_5 h_u_arrmul12_and5_7_a_5
 1 1
 .names b_7 h_u_arrmul12_and5_7_b_7
@@ -1028,7 +1028,7 @@
 1 1
 .names h_u_arrmul12_fa4_7_y4 h_u_arrmul12_fa5_7_h_u_arrmul12_fa4_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_7_h_u_arrmul12_and5_7_y0 b=h_u_arrmul12_fa5_7_h_u_arrmul12_fa6_6_y2 cin=h_u_arrmul12_fa5_7_h_u_arrmul12_fa4_7_y4 out[0]=h_u_arrmul12_fa5_7_y2 out[1]=h_u_arrmul12_fa5_7_y4
+.subckt fa a=h_u_arrmul12_fa5_7_h_u_arrmul12_and5_7_y0 b=h_u_arrmul12_fa5_7_h_u_arrmul12_fa6_6_y2 cin=h_u_arrmul12_fa5_7_h_u_arrmul12_fa4_7_y4 fa_y2=h_u_arrmul12_fa5_7_y2 fa_y4=h_u_arrmul12_fa5_7_y4
 .names a_6 h_u_arrmul12_and6_7_a_6
 1 1
 .names b_7 h_u_arrmul12_and6_7_b_7
@@ -1040,7 +1040,7 @@
 1 1
 .names h_u_arrmul12_fa5_7_y4 h_u_arrmul12_fa6_7_h_u_arrmul12_fa5_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_7_h_u_arrmul12_and6_7_y0 b=h_u_arrmul12_fa6_7_h_u_arrmul12_fa7_6_y2 cin=h_u_arrmul12_fa6_7_h_u_arrmul12_fa5_7_y4 out[0]=h_u_arrmul12_fa6_7_y2 out[1]=h_u_arrmul12_fa6_7_y4
+.subckt fa a=h_u_arrmul12_fa6_7_h_u_arrmul12_and6_7_y0 b=h_u_arrmul12_fa6_7_h_u_arrmul12_fa7_6_y2 cin=h_u_arrmul12_fa6_7_h_u_arrmul12_fa5_7_y4 fa_y2=h_u_arrmul12_fa6_7_y2 fa_y4=h_u_arrmul12_fa6_7_y4
 .names a_7 h_u_arrmul12_and7_7_a_7
 1 1
 .names b_7 h_u_arrmul12_and7_7_b_7
@@ -1052,7 +1052,7 @@
 1 1
 .names h_u_arrmul12_fa6_7_y4 h_u_arrmul12_fa7_7_h_u_arrmul12_fa6_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_7_h_u_arrmul12_and7_7_y0 b=h_u_arrmul12_fa7_7_h_u_arrmul12_fa8_6_y2 cin=h_u_arrmul12_fa7_7_h_u_arrmul12_fa6_7_y4 out[0]=h_u_arrmul12_fa7_7_y2 out[1]=h_u_arrmul12_fa7_7_y4
+.subckt fa a=h_u_arrmul12_fa7_7_h_u_arrmul12_and7_7_y0 b=h_u_arrmul12_fa7_7_h_u_arrmul12_fa8_6_y2 cin=h_u_arrmul12_fa7_7_h_u_arrmul12_fa6_7_y4 fa_y2=h_u_arrmul12_fa7_7_y2 fa_y4=h_u_arrmul12_fa7_7_y4
 .names a_8 h_u_arrmul12_and8_7_a_8
 1 1
 .names b_7 h_u_arrmul12_and8_7_b_7
@@ -1064,7 +1064,7 @@
 1 1
 .names h_u_arrmul12_fa7_7_y4 h_u_arrmul12_fa8_7_h_u_arrmul12_fa7_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_7_h_u_arrmul12_and8_7_y0 b=h_u_arrmul12_fa8_7_h_u_arrmul12_fa9_6_y2 cin=h_u_arrmul12_fa8_7_h_u_arrmul12_fa7_7_y4 out[0]=h_u_arrmul12_fa8_7_y2 out[1]=h_u_arrmul12_fa8_7_y4
+.subckt fa a=h_u_arrmul12_fa8_7_h_u_arrmul12_and8_7_y0 b=h_u_arrmul12_fa8_7_h_u_arrmul12_fa9_6_y2 cin=h_u_arrmul12_fa8_7_h_u_arrmul12_fa7_7_y4 fa_y2=h_u_arrmul12_fa8_7_y2 fa_y4=h_u_arrmul12_fa8_7_y4
 .names a_9 h_u_arrmul12_and9_7_a_9
 1 1
 .names b_7 h_u_arrmul12_and9_7_b_7
@@ -1076,7 +1076,7 @@
 1 1
 .names h_u_arrmul12_fa8_7_y4 h_u_arrmul12_fa9_7_h_u_arrmul12_fa8_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_7_h_u_arrmul12_and9_7_y0 b=h_u_arrmul12_fa9_7_h_u_arrmul12_fa10_6_y2 cin=h_u_arrmul12_fa9_7_h_u_arrmul12_fa8_7_y4 out[0]=h_u_arrmul12_fa9_7_y2 out[1]=h_u_arrmul12_fa9_7_y4
+.subckt fa a=h_u_arrmul12_fa9_7_h_u_arrmul12_and9_7_y0 b=h_u_arrmul12_fa9_7_h_u_arrmul12_fa10_6_y2 cin=h_u_arrmul12_fa9_7_h_u_arrmul12_fa8_7_y4 fa_y2=h_u_arrmul12_fa9_7_y2 fa_y4=h_u_arrmul12_fa9_7_y4
 .names a_10 h_u_arrmul12_and10_7_a_10
 1 1
 .names b_7 h_u_arrmul12_and10_7_b_7
@@ -1088,7 +1088,7 @@
 1 1
 .names h_u_arrmul12_fa9_7_y4 h_u_arrmul12_fa10_7_h_u_arrmul12_fa9_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_7_h_u_arrmul12_and10_7_y0 b=h_u_arrmul12_fa10_7_h_u_arrmul12_fa11_6_y2 cin=h_u_arrmul12_fa10_7_h_u_arrmul12_fa9_7_y4 out[0]=h_u_arrmul12_fa10_7_y2 out[1]=h_u_arrmul12_fa10_7_y4
+.subckt fa a=h_u_arrmul12_fa10_7_h_u_arrmul12_and10_7_y0 b=h_u_arrmul12_fa10_7_h_u_arrmul12_fa11_6_y2 cin=h_u_arrmul12_fa10_7_h_u_arrmul12_fa9_7_y4 fa_y2=h_u_arrmul12_fa10_7_y2 fa_y4=h_u_arrmul12_fa10_7_y4
 .names a_11 h_u_arrmul12_and11_7_a_11
 1 1
 .names b_7 h_u_arrmul12_and11_7_b_7
@@ -1100,7 +1100,7 @@
 1 1
 .names h_u_arrmul12_fa10_7_y4 h_u_arrmul12_fa11_7_h_u_arrmul12_fa10_7_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_7_h_u_arrmul12_and11_7_y0 b=h_u_arrmul12_fa11_7_h_u_arrmul12_fa11_6_y4 cin=h_u_arrmul12_fa11_7_h_u_arrmul12_fa10_7_y4 out[0]=h_u_arrmul12_fa11_7_y2 out[1]=h_u_arrmul12_fa11_7_y4
+.subckt fa a=h_u_arrmul12_fa11_7_h_u_arrmul12_and11_7_y0 b=h_u_arrmul12_fa11_7_h_u_arrmul12_fa11_6_y4 cin=h_u_arrmul12_fa11_7_h_u_arrmul12_fa10_7_y4 fa_y2=h_u_arrmul12_fa11_7_y2 fa_y4=h_u_arrmul12_fa11_7_y4
 .names a_0 h_u_arrmul12_and0_8_a_0
 1 1
 .names b_8 h_u_arrmul12_and0_8_b_8
@@ -1110,7 +1110,7 @@
 1 1
 .names h_u_arrmul12_fa1_7_y2 h_u_arrmul12_ha0_8_h_u_arrmul12_fa1_7_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_8_h_u_arrmul12_and0_8_y0 b=h_u_arrmul12_ha0_8_h_u_arrmul12_fa1_7_y2 out[0]=h_u_arrmul12_ha0_8_y0 out[1]=h_u_arrmul12_ha0_8_y1
+.subckt ha a=h_u_arrmul12_ha0_8_h_u_arrmul12_and0_8_y0 b=h_u_arrmul12_ha0_8_h_u_arrmul12_fa1_7_y2 ha_y0=h_u_arrmul12_ha0_8_y0 ha_y1=h_u_arrmul12_ha0_8_y1
 .names a_1 h_u_arrmul12_and1_8_a_1
 1 1
 .names b_8 h_u_arrmul12_and1_8_b_8
@@ -1122,7 +1122,7 @@
 1 1
 .names h_u_arrmul12_ha0_8_y1 h_u_arrmul12_fa1_8_h_u_arrmul12_ha0_8_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_8_h_u_arrmul12_and1_8_y0 b=h_u_arrmul12_fa1_8_h_u_arrmul12_fa2_7_y2 cin=h_u_arrmul12_fa1_8_h_u_arrmul12_ha0_8_y1 out[0]=h_u_arrmul12_fa1_8_y2 out[1]=h_u_arrmul12_fa1_8_y4
+.subckt fa a=h_u_arrmul12_fa1_8_h_u_arrmul12_and1_8_y0 b=h_u_arrmul12_fa1_8_h_u_arrmul12_fa2_7_y2 cin=h_u_arrmul12_fa1_8_h_u_arrmul12_ha0_8_y1 fa_y2=h_u_arrmul12_fa1_8_y2 fa_y4=h_u_arrmul12_fa1_8_y4
 .names a_2 h_u_arrmul12_and2_8_a_2
 1 1
 .names b_8 h_u_arrmul12_and2_8_b_8
@@ -1134,7 +1134,7 @@
 1 1
 .names h_u_arrmul12_fa1_8_y4 h_u_arrmul12_fa2_8_h_u_arrmul12_fa1_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_8_h_u_arrmul12_and2_8_y0 b=h_u_arrmul12_fa2_8_h_u_arrmul12_fa3_7_y2 cin=h_u_arrmul12_fa2_8_h_u_arrmul12_fa1_8_y4 out[0]=h_u_arrmul12_fa2_8_y2 out[1]=h_u_arrmul12_fa2_8_y4
+.subckt fa a=h_u_arrmul12_fa2_8_h_u_arrmul12_and2_8_y0 b=h_u_arrmul12_fa2_8_h_u_arrmul12_fa3_7_y2 cin=h_u_arrmul12_fa2_8_h_u_arrmul12_fa1_8_y4 fa_y2=h_u_arrmul12_fa2_8_y2 fa_y4=h_u_arrmul12_fa2_8_y4
 .names a_3 h_u_arrmul12_and3_8_a_3
 1 1
 .names b_8 h_u_arrmul12_and3_8_b_8
@@ -1146,7 +1146,7 @@
 1 1
 .names h_u_arrmul12_fa2_8_y4 h_u_arrmul12_fa3_8_h_u_arrmul12_fa2_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_8_h_u_arrmul12_and3_8_y0 b=h_u_arrmul12_fa3_8_h_u_arrmul12_fa4_7_y2 cin=h_u_arrmul12_fa3_8_h_u_arrmul12_fa2_8_y4 out[0]=h_u_arrmul12_fa3_8_y2 out[1]=h_u_arrmul12_fa3_8_y4
+.subckt fa a=h_u_arrmul12_fa3_8_h_u_arrmul12_and3_8_y0 b=h_u_arrmul12_fa3_8_h_u_arrmul12_fa4_7_y2 cin=h_u_arrmul12_fa3_8_h_u_arrmul12_fa2_8_y4 fa_y2=h_u_arrmul12_fa3_8_y2 fa_y4=h_u_arrmul12_fa3_8_y4
 .names a_4 h_u_arrmul12_and4_8_a_4
 1 1
 .names b_8 h_u_arrmul12_and4_8_b_8
@@ -1158,7 +1158,7 @@
 1 1
 .names h_u_arrmul12_fa3_8_y4 h_u_arrmul12_fa4_8_h_u_arrmul12_fa3_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_8_h_u_arrmul12_and4_8_y0 b=h_u_arrmul12_fa4_8_h_u_arrmul12_fa5_7_y2 cin=h_u_arrmul12_fa4_8_h_u_arrmul12_fa3_8_y4 out[0]=h_u_arrmul12_fa4_8_y2 out[1]=h_u_arrmul12_fa4_8_y4
+.subckt fa a=h_u_arrmul12_fa4_8_h_u_arrmul12_and4_8_y0 b=h_u_arrmul12_fa4_8_h_u_arrmul12_fa5_7_y2 cin=h_u_arrmul12_fa4_8_h_u_arrmul12_fa3_8_y4 fa_y2=h_u_arrmul12_fa4_8_y2 fa_y4=h_u_arrmul12_fa4_8_y4
 .names a_5 h_u_arrmul12_and5_8_a_5
 1 1
 .names b_8 h_u_arrmul12_and5_8_b_8
@@ -1170,7 +1170,7 @@
 1 1
 .names h_u_arrmul12_fa4_8_y4 h_u_arrmul12_fa5_8_h_u_arrmul12_fa4_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_8_h_u_arrmul12_and5_8_y0 b=h_u_arrmul12_fa5_8_h_u_arrmul12_fa6_7_y2 cin=h_u_arrmul12_fa5_8_h_u_arrmul12_fa4_8_y4 out[0]=h_u_arrmul12_fa5_8_y2 out[1]=h_u_arrmul12_fa5_8_y4
+.subckt fa a=h_u_arrmul12_fa5_8_h_u_arrmul12_and5_8_y0 b=h_u_arrmul12_fa5_8_h_u_arrmul12_fa6_7_y2 cin=h_u_arrmul12_fa5_8_h_u_arrmul12_fa4_8_y4 fa_y2=h_u_arrmul12_fa5_8_y2 fa_y4=h_u_arrmul12_fa5_8_y4
 .names a_6 h_u_arrmul12_and6_8_a_6
 1 1
 .names b_8 h_u_arrmul12_and6_8_b_8
@@ -1182,7 +1182,7 @@
 1 1
 .names h_u_arrmul12_fa5_8_y4 h_u_arrmul12_fa6_8_h_u_arrmul12_fa5_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_8_h_u_arrmul12_and6_8_y0 b=h_u_arrmul12_fa6_8_h_u_arrmul12_fa7_7_y2 cin=h_u_arrmul12_fa6_8_h_u_arrmul12_fa5_8_y4 out[0]=h_u_arrmul12_fa6_8_y2 out[1]=h_u_arrmul12_fa6_8_y4
+.subckt fa a=h_u_arrmul12_fa6_8_h_u_arrmul12_and6_8_y0 b=h_u_arrmul12_fa6_8_h_u_arrmul12_fa7_7_y2 cin=h_u_arrmul12_fa6_8_h_u_arrmul12_fa5_8_y4 fa_y2=h_u_arrmul12_fa6_8_y2 fa_y4=h_u_arrmul12_fa6_8_y4
 .names a_7 h_u_arrmul12_and7_8_a_7
 1 1
 .names b_8 h_u_arrmul12_and7_8_b_8
@@ -1194,7 +1194,7 @@
 1 1
 .names h_u_arrmul12_fa6_8_y4 h_u_arrmul12_fa7_8_h_u_arrmul12_fa6_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_8_h_u_arrmul12_and7_8_y0 b=h_u_arrmul12_fa7_8_h_u_arrmul12_fa8_7_y2 cin=h_u_arrmul12_fa7_8_h_u_arrmul12_fa6_8_y4 out[0]=h_u_arrmul12_fa7_8_y2 out[1]=h_u_arrmul12_fa7_8_y4
+.subckt fa a=h_u_arrmul12_fa7_8_h_u_arrmul12_and7_8_y0 b=h_u_arrmul12_fa7_8_h_u_arrmul12_fa8_7_y2 cin=h_u_arrmul12_fa7_8_h_u_arrmul12_fa6_8_y4 fa_y2=h_u_arrmul12_fa7_8_y2 fa_y4=h_u_arrmul12_fa7_8_y4
 .names a_8 h_u_arrmul12_and8_8_a_8
 1 1
 .names b_8 h_u_arrmul12_and8_8_b_8
@@ -1206,7 +1206,7 @@
 1 1
 .names h_u_arrmul12_fa7_8_y4 h_u_arrmul12_fa8_8_h_u_arrmul12_fa7_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_8_h_u_arrmul12_and8_8_y0 b=h_u_arrmul12_fa8_8_h_u_arrmul12_fa9_7_y2 cin=h_u_arrmul12_fa8_8_h_u_arrmul12_fa7_8_y4 out[0]=h_u_arrmul12_fa8_8_y2 out[1]=h_u_arrmul12_fa8_8_y4
+.subckt fa a=h_u_arrmul12_fa8_8_h_u_arrmul12_and8_8_y0 b=h_u_arrmul12_fa8_8_h_u_arrmul12_fa9_7_y2 cin=h_u_arrmul12_fa8_8_h_u_arrmul12_fa7_8_y4 fa_y2=h_u_arrmul12_fa8_8_y2 fa_y4=h_u_arrmul12_fa8_8_y4
 .names a_9 h_u_arrmul12_and9_8_a_9
 1 1
 .names b_8 h_u_arrmul12_and9_8_b_8
@@ -1218,7 +1218,7 @@
 1 1
 .names h_u_arrmul12_fa8_8_y4 h_u_arrmul12_fa9_8_h_u_arrmul12_fa8_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_8_h_u_arrmul12_and9_8_y0 b=h_u_arrmul12_fa9_8_h_u_arrmul12_fa10_7_y2 cin=h_u_arrmul12_fa9_8_h_u_arrmul12_fa8_8_y4 out[0]=h_u_arrmul12_fa9_8_y2 out[1]=h_u_arrmul12_fa9_8_y4
+.subckt fa a=h_u_arrmul12_fa9_8_h_u_arrmul12_and9_8_y0 b=h_u_arrmul12_fa9_8_h_u_arrmul12_fa10_7_y2 cin=h_u_arrmul12_fa9_8_h_u_arrmul12_fa8_8_y4 fa_y2=h_u_arrmul12_fa9_8_y2 fa_y4=h_u_arrmul12_fa9_8_y4
 .names a_10 h_u_arrmul12_and10_8_a_10
 1 1
 .names b_8 h_u_arrmul12_and10_8_b_8
@@ -1230,7 +1230,7 @@
 1 1
 .names h_u_arrmul12_fa9_8_y4 h_u_arrmul12_fa10_8_h_u_arrmul12_fa9_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_8_h_u_arrmul12_and10_8_y0 b=h_u_arrmul12_fa10_8_h_u_arrmul12_fa11_7_y2 cin=h_u_arrmul12_fa10_8_h_u_arrmul12_fa9_8_y4 out[0]=h_u_arrmul12_fa10_8_y2 out[1]=h_u_arrmul12_fa10_8_y4
+.subckt fa a=h_u_arrmul12_fa10_8_h_u_arrmul12_and10_8_y0 b=h_u_arrmul12_fa10_8_h_u_arrmul12_fa11_7_y2 cin=h_u_arrmul12_fa10_8_h_u_arrmul12_fa9_8_y4 fa_y2=h_u_arrmul12_fa10_8_y2 fa_y4=h_u_arrmul12_fa10_8_y4
 .names a_11 h_u_arrmul12_and11_8_a_11
 1 1
 .names b_8 h_u_arrmul12_and11_8_b_8
@@ -1242,7 +1242,7 @@
 1 1
 .names h_u_arrmul12_fa10_8_y4 h_u_arrmul12_fa11_8_h_u_arrmul12_fa10_8_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_8_h_u_arrmul12_and11_8_y0 b=h_u_arrmul12_fa11_8_h_u_arrmul12_fa11_7_y4 cin=h_u_arrmul12_fa11_8_h_u_arrmul12_fa10_8_y4 out[0]=h_u_arrmul12_fa11_8_y2 out[1]=h_u_arrmul12_fa11_8_y4
+.subckt fa a=h_u_arrmul12_fa11_8_h_u_arrmul12_and11_8_y0 b=h_u_arrmul12_fa11_8_h_u_arrmul12_fa11_7_y4 cin=h_u_arrmul12_fa11_8_h_u_arrmul12_fa10_8_y4 fa_y2=h_u_arrmul12_fa11_8_y2 fa_y4=h_u_arrmul12_fa11_8_y4
 .names a_0 h_u_arrmul12_and0_9_a_0
 1 1
 .names b_9 h_u_arrmul12_and0_9_b_9
@@ -1252,7 +1252,7 @@
 1 1
 .names h_u_arrmul12_fa1_8_y2 h_u_arrmul12_ha0_9_h_u_arrmul12_fa1_8_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_9_h_u_arrmul12_and0_9_y0 b=h_u_arrmul12_ha0_9_h_u_arrmul12_fa1_8_y2 out[0]=h_u_arrmul12_ha0_9_y0 out[1]=h_u_arrmul12_ha0_9_y1
+.subckt ha a=h_u_arrmul12_ha0_9_h_u_arrmul12_and0_9_y0 b=h_u_arrmul12_ha0_9_h_u_arrmul12_fa1_8_y2 ha_y0=h_u_arrmul12_ha0_9_y0 ha_y1=h_u_arrmul12_ha0_9_y1
 .names a_1 h_u_arrmul12_and1_9_a_1
 1 1
 .names b_9 h_u_arrmul12_and1_9_b_9
@@ -1264,7 +1264,7 @@
 1 1
 .names h_u_arrmul12_ha0_9_y1 h_u_arrmul12_fa1_9_h_u_arrmul12_ha0_9_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_9_h_u_arrmul12_and1_9_y0 b=h_u_arrmul12_fa1_9_h_u_arrmul12_fa2_8_y2 cin=h_u_arrmul12_fa1_9_h_u_arrmul12_ha0_9_y1 out[0]=h_u_arrmul12_fa1_9_y2 out[1]=h_u_arrmul12_fa1_9_y4
+.subckt fa a=h_u_arrmul12_fa1_9_h_u_arrmul12_and1_9_y0 b=h_u_arrmul12_fa1_9_h_u_arrmul12_fa2_8_y2 cin=h_u_arrmul12_fa1_9_h_u_arrmul12_ha0_9_y1 fa_y2=h_u_arrmul12_fa1_9_y2 fa_y4=h_u_arrmul12_fa1_9_y4
 .names a_2 h_u_arrmul12_and2_9_a_2
 1 1
 .names b_9 h_u_arrmul12_and2_9_b_9
@@ -1276,7 +1276,7 @@
 1 1
 .names h_u_arrmul12_fa1_9_y4 h_u_arrmul12_fa2_9_h_u_arrmul12_fa1_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_9_h_u_arrmul12_and2_9_y0 b=h_u_arrmul12_fa2_9_h_u_arrmul12_fa3_8_y2 cin=h_u_arrmul12_fa2_9_h_u_arrmul12_fa1_9_y4 out[0]=h_u_arrmul12_fa2_9_y2 out[1]=h_u_arrmul12_fa2_9_y4
+.subckt fa a=h_u_arrmul12_fa2_9_h_u_arrmul12_and2_9_y0 b=h_u_arrmul12_fa2_9_h_u_arrmul12_fa3_8_y2 cin=h_u_arrmul12_fa2_9_h_u_arrmul12_fa1_9_y4 fa_y2=h_u_arrmul12_fa2_9_y2 fa_y4=h_u_arrmul12_fa2_9_y4
 .names a_3 h_u_arrmul12_and3_9_a_3
 1 1
 .names b_9 h_u_arrmul12_and3_9_b_9
@@ -1288,7 +1288,7 @@
 1 1
 .names h_u_arrmul12_fa2_9_y4 h_u_arrmul12_fa3_9_h_u_arrmul12_fa2_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_9_h_u_arrmul12_and3_9_y0 b=h_u_arrmul12_fa3_9_h_u_arrmul12_fa4_8_y2 cin=h_u_arrmul12_fa3_9_h_u_arrmul12_fa2_9_y4 out[0]=h_u_arrmul12_fa3_9_y2 out[1]=h_u_arrmul12_fa3_9_y4
+.subckt fa a=h_u_arrmul12_fa3_9_h_u_arrmul12_and3_9_y0 b=h_u_arrmul12_fa3_9_h_u_arrmul12_fa4_8_y2 cin=h_u_arrmul12_fa3_9_h_u_arrmul12_fa2_9_y4 fa_y2=h_u_arrmul12_fa3_9_y2 fa_y4=h_u_arrmul12_fa3_9_y4
 .names a_4 h_u_arrmul12_and4_9_a_4
 1 1
 .names b_9 h_u_arrmul12_and4_9_b_9
@@ -1300,7 +1300,7 @@
 1 1
 .names h_u_arrmul12_fa3_9_y4 h_u_arrmul12_fa4_9_h_u_arrmul12_fa3_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_9_h_u_arrmul12_and4_9_y0 b=h_u_arrmul12_fa4_9_h_u_arrmul12_fa5_8_y2 cin=h_u_arrmul12_fa4_9_h_u_arrmul12_fa3_9_y4 out[0]=h_u_arrmul12_fa4_9_y2 out[1]=h_u_arrmul12_fa4_9_y4
+.subckt fa a=h_u_arrmul12_fa4_9_h_u_arrmul12_and4_9_y0 b=h_u_arrmul12_fa4_9_h_u_arrmul12_fa5_8_y2 cin=h_u_arrmul12_fa4_9_h_u_arrmul12_fa3_9_y4 fa_y2=h_u_arrmul12_fa4_9_y2 fa_y4=h_u_arrmul12_fa4_9_y4
 .names a_5 h_u_arrmul12_and5_9_a_5
 1 1
 .names b_9 h_u_arrmul12_and5_9_b_9
@@ -1312,7 +1312,7 @@
 1 1
 .names h_u_arrmul12_fa4_9_y4 h_u_arrmul12_fa5_9_h_u_arrmul12_fa4_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_9_h_u_arrmul12_and5_9_y0 b=h_u_arrmul12_fa5_9_h_u_arrmul12_fa6_8_y2 cin=h_u_arrmul12_fa5_9_h_u_arrmul12_fa4_9_y4 out[0]=h_u_arrmul12_fa5_9_y2 out[1]=h_u_arrmul12_fa5_9_y4
+.subckt fa a=h_u_arrmul12_fa5_9_h_u_arrmul12_and5_9_y0 b=h_u_arrmul12_fa5_9_h_u_arrmul12_fa6_8_y2 cin=h_u_arrmul12_fa5_9_h_u_arrmul12_fa4_9_y4 fa_y2=h_u_arrmul12_fa5_9_y2 fa_y4=h_u_arrmul12_fa5_9_y4
 .names a_6 h_u_arrmul12_and6_9_a_6
 1 1
 .names b_9 h_u_arrmul12_and6_9_b_9
@@ -1324,7 +1324,7 @@
 1 1
 .names h_u_arrmul12_fa5_9_y4 h_u_arrmul12_fa6_9_h_u_arrmul12_fa5_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_9_h_u_arrmul12_and6_9_y0 b=h_u_arrmul12_fa6_9_h_u_arrmul12_fa7_8_y2 cin=h_u_arrmul12_fa6_9_h_u_arrmul12_fa5_9_y4 out[0]=h_u_arrmul12_fa6_9_y2 out[1]=h_u_arrmul12_fa6_9_y4
+.subckt fa a=h_u_arrmul12_fa6_9_h_u_arrmul12_and6_9_y0 b=h_u_arrmul12_fa6_9_h_u_arrmul12_fa7_8_y2 cin=h_u_arrmul12_fa6_9_h_u_arrmul12_fa5_9_y4 fa_y2=h_u_arrmul12_fa6_9_y2 fa_y4=h_u_arrmul12_fa6_9_y4
 .names a_7 h_u_arrmul12_and7_9_a_7
 1 1
 .names b_9 h_u_arrmul12_and7_9_b_9
@@ -1336,7 +1336,7 @@
 1 1
 .names h_u_arrmul12_fa6_9_y4 h_u_arrmul12_fa7_9_h_u_arrmul12_fa6_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_9_h_u_arrmul12_and7_9_y0 b=h_u_arrmul12_fa7_9_h_u_arrmul12_fa8_8_y2 cin=h_u_arrmul12_fa7_9_h_u_arrmul12_fa6_9_y4 out[0]=h_u_arrmul12_fa7_9_y2 out[1]=h_u_arrmul12_fa7_9_y4
+.subckt fa a=h_u_arrmul12_fa7_9_h_u_arrmul12_and7_9_y0 b=h_u_arrmul12_fa7_9_h_u_arrmul12_fa8_8_y2 cin=h_u_arrmul12_fa7_9_h_u_arrmul12_fa6_9_y4 fa_y2=h_u_arrmul12_fa7_9_y2 fa_y4=h_u_arrmul12_fa7_9_y4
 .names a_8 h_u_arrmul12_and8_9_a_8
 1 1
 .names b_9 h_u_arrmul12_and8_9_b_9
@@ -1348,7 +1348,7 @@
 1 1
 .names h_u_arrmul12_fa7_9_y4 h_u_arrmul12_fa8_9_h_u_arrmul12_fa7_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_9_h_u_arrmul12_and8_9_y0 b=h_u_arrmul12_fa8_9_h_u_arrmul12_fa9_8_y2 cin=h_u_arrmul12_fa8_9_h_u_arrmul12_fa7_9_y4 out[0]=h_u_arrmul12_fa8_9_y2 out[1]=h_u_arrmul12_fa8_9_y4
+.subckt fa a=h_u_arrmul12_fa8_9_h_u_arrmul12_and8_9_y0 b=h_u_arrmul12_fa8_9_h_u_arrmul12_fa9_8_y2 cin=h_u_arrmul12_fa8_9_h_u_arrmul12_fa7_9_y4 fa_y2=h_u_arrmul12_fa8_9_y2 fa_y4=h_u_arrmul12_fa8_9_y4
 .names a_9 h_u_arrmul12_and9_9_a_9
 1 1
 .names b_9 h_u_arrmul12_and9_9_b_9
@@ -1360,7 +1360,7 @@
 1 1
 .names h_u_arrmul12_fa8_9_y4 h_u_arrmul12_fa9_9_h_u_arrmul12_fa8_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_9_h_u_arrmul12_and9_9_y0 b=h_u_arrmul12_fa9_9_h_u_arrmul12_fa10_8_y2 cin=h_u_arrmul12_fa9_9_h_u_arrmul12_fa8_9_y4 out[0]=h_u_arrmul12_fa9_9_y2 out[1]=h_u_arrmul12_fa9_9_y4
+.subckt fa a=h_u_arrmul12_fa9_9_h_u_arrmul12_and9_9_y0 b=h_u_arrmul12_fa9_9_h_u_arrmul12_fa10_8_y2 cin=h_u_arrmul12_fa9_9_h_u_arrmul12_fa8_9_y4 fa_y2=h_u_arrmul12_fa9_9_y2 fa_y4=h_u_arrmul12_fa9_9_y4
 .names a_10 h_u_arrmul12_and10_9_a_10
 1 1
 .names b_9 h_u_arrmul12_and10_9_b_9
@@ -1372,7 +1372,7 @@
 1 1
 .names h_u_arrmul12_fa9_9_y4 h_u_arrmul12_fa10_9_h_u_arrmul12_fa9_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_9_h_u_arrmul12_and10_9_y0 b=h_u_arrmul12_fa10_9_h_u_arrmul12_fa11_8_y2 cin=h_u_arrmul12_fa10_9_h_u_arrmul12_fa9_9_y4 out[0]=h_u_arrmul12_fa10_9_y2 out[1]=h_u_arrmul12_fa10_9_y4
+.subckt fa a=h_u_arrmul12_fa10_9_h_u_arrmul12_and10_9_y0 b=h_u_arrmul12_fa10_9_h_u_arrmul12_fa11_8_y2 cin=h_u_arrmul12_fa10_9_h_u_arrmul12_fa9_9_y4 fa_y2=h_u_arrmul12_fa10_9_y2 fa_y4=h_u_arrmul12_fa10_9_y4
 .names a_11 h_u_arrmul12_and11_9_a_11
 1 1
 .names b_9 h_u_arrmul12_and11_9_b_9
@@ -1384,7 +1384,7 @@
 1 1
 .names h_u_arrmul12_fa10_9_y4 h_u_arrmul12_fa11_9_h_u_arrmul12_fa10_9_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_9_h_u_arrmul12_and11_9_y0 b=h_u_arrmul12_fa11_9_h_u_arrmul12_fa11_8_y4 cin=h_u_arrmul12_fa11_9_h_u_arrmul12_fa10_9_y4 out[0]=h_u_arrmul12_fa11_9_y2 out[1]=h_u_arrmul12_fa11_9_y4
+.subckt fa a=h_u_arrmul12_fa11_9_h_u_arrmul12_and11_9_y0 b=h_u_arrmul12_fa11_9_h_u_arrmul12_fa11_8_y4 cin=h_u_arrmul12_fa11_9_h_u_arrmul12_fa10_9_y4 fa_y2=h_u_arrmul12_fa11_9_y2 fa_y4=h_u_arrmul12_fa11_9_y4
 .names a_0 h_u_arrmul12_and0_10_a_0
 1 1
 .names b_10 h_u_arrmul12_and0_10_b_10
@@ -1394,7 +1394,7 @@
 1 1
 .names h_u_arrmul12_fa1_9_y2 h_u_arrmul12_ha0_10_h_u_arrmul12_fa1_9_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_10_h_u_arrmul12_and0_10_y0 b=h_u_arrmul12_ha0_10_h_u_arrmul12_fa1_9_y2 out[0]=h_u_arrmul12_ha0_10_y0 out[1]=h_u_arrmul12_ha0_10_y1
+.subckt ha a=h_u_arrmul12_ha0_10_h_u_arrmul12_and0_10_y0 b=h_u_arrmul12_ha0_10_h_u_arrmul12_fa1_9_y2 ha_y0=h_u_arrmul12_ha0_10_y0 ha_y1=h_u_arrmul12_ha0_10_y1
 .names a_1 h_u_arrmul12_and1_10_a_1
 1 1
 .names b_10 h_u_arrmul12_and1_10_b_10
@@ -1406,7 +1406,7 @@
 1 1
 .names h_u_arrmul12_ha0_10_y1 h_u_arrmul12_fa1_10_h_u_arrmul12_ha0_10_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_10_h_u_arrmul12_and1_10_y0 b=h_u_arrmul12_fa1_10_h_u_arrmul12_fa2_9_y2 cin=h_u_arrmul12_fa1_10_h_u_arrmul12_ha0_10_y1 out[0]=h_u_arrmul12_fa1_10_y2 out[1]=h_u_arrmul12_fa1_10_y4
+.subckt fa a=h_u_arrmul12_fa1_10_h_u_arrmul12_and1_10_y0 b=h_u_arrmul12_fa1_10_h_u_arrmul12_fa2_9_y2 cin=h_u_arrmul12_fa1_10_h_u_arrmul12_ha0_10_y1 fa_y2=h_u_arrmul12_fa1_10_y2 fa_y4=h_u_arrmul12_fa1_10_y4
 .names a_2 h_u_arrmul12_and2_10_a_2
 1 1
 .names b_10 h_u_arrmul12_and2_10_b_10
@@ -1418,7 +1418,7 @@
 1 1
 .names h_u_arrmul12_fa1_10_y4 h_u_arrmul12_fa2_10_h_u_arrmul12_fa1_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_10_h_u_arrmul12_and2_10_y0 b=h_u_arrmul12_fa2_10_h_u_arrmul12_fa3_9_y2 cin=h_u_arrmul12_fa2_10_h_u_arrmul12_fa1_10_y4 out[0]=h_u_arrmul12_fa2_10_y2 out[1]=h_u_arrmul12_fa2_10_y4
+.subckt fa a=h_u_arrmul12_fa2_10_h_u_arrmul12_and2_10_y0 b=h_u_arrmul12_fa2_10_h_u_arrmul12_fa3_9_y2 cin=h_u_arrmul12_fa2_10_h_u_arrmul12_fa1_10_y4 fa_y2=h_u_arrmul12_fa2_10_y2 fa_y4=h_u_arrmul12_fa2_10_y4
 .names a_3 h_u_arrmul12_and3_10_a_3
 1 1
 .names b_10 h_u_arrmul12_and3_10_b_10
@@ -1430,7 +1430,7 @@
 1 1
 .names h_u_arrmul12_fa2_10_y4 h_u_arrmul12_fa3_10_h_u_arrmul12_fa2_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_10_h_u_arrmul12_and3_10_y0 b=h_u_arrmul12_fa3_10_h_u_arrmul12_fa4_9_y2 cin=h_u_arrmul12_fa3_10_h_u_arrmul12_fa2_10_y4 out[0]=h_u_arrmul12_fa3_10_y2 out[1]=h_u_arrmul12_fa3_10_y4
+.subckt fa a=h_u_arrmul12_fa3_10_h_u_arrmul12_and3_10_y0 b=h_u_arrmul12_fa3_10_h_u_arrmul12_fa4_9_y2 cin=h_u_arrmul12_fa3_10_h_u_arrmul12_fa2_10_y4 fa_y2=h_u_arrmul12_fa3_10_y2 fa_y4=h_u_arrmul12_fa3_10_y4
 .names a_4 h_u_arrmul12_and4_10_a_4
 1 1
 .names b_10 h_u_arrmul12_and4_10_b_10
@@ -1442,7 +1442,7 @@
 1 1
 .names h_u_arrmul12_fa3_10_y4 h_u_arrmul12_fa4_10_h_u_arrmul12_fa3_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_10_h_u_arrmul12_and4_10_y0 b=h_u_arrmul12_fa4_10_h_u_arrmul12_fa5_9_y2 cin=h_u_arrmul12_fa4_10_h_u_arrmul12_fa3_10_y4 out[0]=h_u_arrmul12_fa4_10_y2 out[1]=h_u_arrmul12_fa4_10_y4
+.subckt fa a=h_u_arrmul12_fa4_10_h_u_arrmul12_and4_10_y0 b=h_u_arrmul12_fa4_10_h_u_arrmul12_fa5_9_y2 cin=h_u_arrmul12_fa4_10_h_u_arrmul12_fa3_10_y4 fa_y2=h_u_arrmul12_fa4_10_y2 fa_y4=h_u_arrmul12_fa4_10_y4
 .names a_5 h_u_arrmul12_and5_10_a_5
 1 1
 .names b_10 h_u_arrmul12_and5_10_b_10
@@ -1454,7 +1454,7 @@
 1 1
 .names h_u_arrmul12_fa4_10_y4 h_u_arrmul12_fa5_10_h_u_arrmul12_fa4_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_10_h_u_arrmul12_and5_10_y0 b=h_u_arrmul12_fa5_10_h_u_arrmul12_fa6_9_y2 cin=h_u_arrmul12_fa5_10_h_u_arrmul12_fa4_10_y4 out[0]=h_u_arrmul12_fa5_10_y2 out[1]=h_u_arrmul12_fa5_10_y4
+.subckt fa a=h_u_arrmul12_fa5_10_h_u_arrmul12_and5_10_y0 b=h_u_arrmul12_fa5_10_h_u_arrmul12_fa6_9_y2 cin=h_u_arrmul12_fa5_10_h_u_arrmul12_fa4_10_y4 fa_y2=h_u_arrmul12_fa5_10_y2 fa_y4=h_u_arrmul12_fa5_10_y4
 .names a_6 h_u_arrmul12_and6_10_a_6
 1 1
 .names b_10 h_u_arrmul12_and6_10_b_10
@@ -1466,7 +1466,7 @@
 1 1
 .names h_u_arrmul12_fa5_10_y4 h_u_arrmul12_fa6_10_h_u_arrmul12_fa5_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_10_h_u_arrmul12_and6_10_y0 b=h_u_arrmul12_fa6_10_h_u_arrmul12_fa7_9_y2 cin=h_u_arrmul12_fa6_10_h_u_arrmul12_fa5_10_y4 out[0]=h_u_arrmul12_fa6_10_y2 out[1]=h_u_arrmul12_fa6_10_y4
+.subckt fa a=h_u_arrmul12_fa6_10_h_u_arrmul12_and6_10_y0 b=h_u_arrmul12_fa6_10_h_u_arrmul12_fa7_9_y2 cin=h_u_arrmul12_fa6_10_h_u_arrmul12_fa5_10_y4 fa_y2=h_u_arrmul12_fa6_10_y2 fa_y4=h_u_arrmul12_fa6_10_y4
 .names a_7 h_u_arrmul12_and7_10_a_7
 1 1
 .names b_10 h_u_arrmul12_and7_10_b_10
@@ -1478,7 +1478,7 @@
 1 1
 .names h_u_arrmul12_fa6_10_y4 h_u_arrmul12_fa7_10_h_u_arrmul12_fa6_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_10_h_u_arrmul12_and7_10_y0 b=h_u_arrmul12_fa7_10_h_u_arrmul12_fa8_9_y2 cin=h_u_arrmul12_fa7_10_h_u_arrmul12_fa6_10_y4 out[0]=h_u_arrmul12_fa7_10_y2 out[1]=h_u_arrmul12_fa7_10_y4
+.subckt fa a=h_u_arrmul12_fa7_10_h_u_arrmul12_and7_10_y0 b=h_u_arrmul12_fa7_10_h_u_arrmul12_fa8_9_y2 cin=h_u_arrmul12_fa7_10_h_u_arrmul12_fa6_10_y4 fa_y2=h_u_arrmul12_fa7_10_y2 fa_y4=h_u_arrmul12_fa7_10_y4
 .names a_8 h_u_arrmul12_and8_10_a_8
 1 1
 .names b_10 h_u_arrmul12_and8_10_b_10
@@ -1490,7 +1490,7 @@
 1 1
 .names h_u_arrmul12_fa7_10_y4 h_u_arrmul12_fa8_10_h_u_arrmul12_fa7_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_10_h_u_arrmul12_and8_10_y0 b=h_u_arrmul12_fa8_10_h_u_arrmul12_fa9_9_y2 cin=h_u_arrmul12_fa8_10_h_u_arrmul12_fa7_10_y4 out[0]=h_u_arrmul12_fa8_10_y2 out[1]=h_u_arrmul12_fa8_10_y4
+.subckt fa a=h_u_arrmul12_fa8_10_h_u_arrmul12_and8_10_y0 b=h_u_arrmul12_fa8_10_h_u_arrmul12_fa9_9_y2 cin=h_u_arrmul12_fa8_10_h_u_arrmul12_fa7_10_y4 fa_y2=h_u_arrmul12_fa8_10_y2 fa_y4=h_u_arrmul12_fa8_10_y4
 .names a_9 h_u_arrmul12_and9_10_a_9
 1 1
 .names b_10 h_u_arrmul12_and9_10_b_10
@@ -1502,7 +1502,7 @@
 1 1
 .names h_u_arrmul12_fa8_10_y4 h_u_arrmul12_fa9_10_h_u_arrmul12_fa8_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_10_h_u_arrmul12_and9_10_y0 b=h_u_arrmul12_fa9_10_h_u_arrmul12_fa10_9_y2 cin=h_u_arrmul12_fa9_10_h_u_arrmul12_fa8_10_y4 out[0]=h_u_arrmul12_fa9_10_y2 out[1]=h_u_arrmul12_fa9_10_y4
+.subckt fa a=h_u_arrmul12_fa9_10_h_u_arrmul12_and9_10_y0 b=h_u_arrmul12_fa9_10_h_u_arrmul12_fa10_9_y2 cin=h_u_arrmul12_fa9_10_h_u_arrmul12_fa8_10_y4 fa_y2=h_u_arrmul12_fa9_10_y2 fa_y4=h_u_arrmul12_fa9_10_y4
 .names a_10 h_u_arrmul12_and10_10_a_10
 1 1
 .names b_10 h_u_arrmul12_and10_10_b_10
@@ -1514,7 +1514,7 @@
 1 1
 .names h_u_arrmul12_fa9_10_y4 h_u_arrmul12_fa10_10_h_u_arrmul12_fa9_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_10_h_u_arrmul12_and10_10_y0 b=h_u_arrmul12_fa10_10_h_u_arrmul12_fa11_9_y2 cin=h_u_arrmul12_fa10_10_h_u_arrmul12_fa9_10_y4 out[0]=h_u_arrmul12_fa10_10_y2 out[1]=h_u_arrmul12_fa10_10_y4
+.subckt fa a=h_u_arrmul12_fa10_10_h_u_arrmul12_and10_10_y0 b=h_u_arrmul12_fa10_10_h_u_arrmul12_fa11_9_y2 cin=h_u_arrmul12_fa10_10_h_u_arrmul12_fa9_10_y4 fa_y2=h_u_arrmul12_fa10_10_y2 fa_y4=h_u_arrmul12_fa10_10_y4
 .names a_11 h_u_arrmul12_and11_10_a_11
 1 1
 .names b_10 h_u_arrmul12_and11_10_b_10
@@ -1526,7 +1526,7 @@
 1 1
 .names h_u_arrmul12_fa10_10_y4 h_u_arrmul12_fa11_10_h_u_arrmul12_fa10_10_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_10_h_u_arrmul12_and11_10_y0 b=h_u_arrmul12_fa11_10_h_u_arrmul12_fa11_9_y4 cin=h_u_arrmul12_fa11_10_h_u_arrmul12_fa10_10_y4 out[0]=h_u_arrmul12_fa11_10_y2 out[1]=h_u_arrmul12_fa11_10_y4
+.subckt fa a=h_u_arrmul12_fa11_10_h_u_arrmul12_and11_10_y0 b=h_u_arrmul12_fa11_10_h_u_arrmul12_fa11_9_y4 cin=h_u_arrmul12_fa11_10_h_u_arrmul12_fa10_10_y4 fa_y2=h_u_arrmul12_fa11_10_y2 fa_y4=h_u_arrmul12_fa11_10_y4
 .names a_0 h_u_arrmul12_and0_11_a_0
 1 1
 .names b_11 h_u_arrmul12_and0_11_b_11
@@ -1536,7 +1536,7 @@
 1 1
 .names h_u_arrmul12_fa1_10_y2 h_u_arrmul12_ha0_11_h_u_arrmul12_fa1_10_y2
 1 1
-.subckt ha a=h_u_arrmul12_ha0_11_h_u_arrmul12_and0_11_y0 b=h_u_arrmul12_ha0_11_h_u_arrmul12_fa1_10_y2 out[0]=h_u_arrmul12_ha0_11_y0 out[1]=h_u_arrmul12_ha0_11_y1
+.subckt ha a=h_u_arrmul12_ha0_11_h_u_arrmul12_and0_11_y0 b=h_u_arrmul12_ha0_11_h_u_arrmul12_fa1_10_y2 ha_y0=h_u_arrmul12_ha0_11_y0 ha_y1=h_u_arrmul12_ha0_11_y1
 .names a_1 h_u_arrmul12_and1_11_a_1
 1 1
 .names b_11 h_u_arrmul12_and1_11_b_11
@@ -1548,7 +1548,7 @@
 1 1
 .names h_u_arrmul12_ha0_11_y1 h_u_arrmul12_fa1_11_h_u_arrmul12_ha0_11_y1
 1 1
-.subckt fa a=h_u_arrmul12_fa1_11_h_u_arrmul12_and1_11_y0 b=h_u_arrmul12_fa1_11_h_u_arrmul12_fa2_10_y2 cin=h_u_arrmul12_fa1_11_h_u_arrmul12_ha0_11_y1 out[0]=h_u_arrmul12_fa1_11_y2 out[1]=h_u_arrmul12_fa1_11_y4
+.subckt fa a=h_u_arrmul12_fa1_11_h_u_arrmul12_and1_11_y0 b=h_u_arrmul12_fa1_11_h_u_arrmul12_fa2_10_y2 cin=h_u_arrmul12_fa1_11_h_u_arrmul12_ha0_11_y1 fa_y2=h_u_arrmul12_fa1_11_y2 fa_y4=h_u_arrmul12_fa1_11_y4
 .names a_2 h_u_arrmul12_and2_11_a_2
 1 1
 .names b_11 h_u_arrmul12_and2_11_b_11
@@ -1560,7 +1560,7 @@
 1 1
 .names h_u_arrmul12_fa1_11_y4 h_u_arrmul12_fa2_11_h_u_arrmul12_fa1_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa2_11_h_u_arrmul12_and2_11_y0 b=h_u_arrmul12_fa2_11_h_u_arrmul12_fa3_10_y2 cin=h_u_arrmul12_fa2_11_h_u_arrmul12_fa1_11_y4 out[0]=h_u_arrmul12_fa2_11_y2 out[1]=h_u_arrmul12_fa2_11_y4
+.subckt fa a=h_u_arrmul12_fa2_11_h_u_arrmul12_and2_11_y0 b=h_u_arrmul12_fa2_11_h_u_arrmul12_fa3_10_y2 cin=h_u_arrmul12_fa2_11_h_u_arrmul12_fa1_11_y4 fa_y2=h_u_arrmul12_fa2_11_y2 fa_y4=h_u_arrmul12_fa2_11_y4
 .names a_3 h_u_arrmul12_and3_11_a_3
 1 1
 .names b_11 h_u_arrmul12_and3_11_b_11
@@ -1572,7 +1572,7 @@
 1 1
 .names h_u_arrmul12_fa2_11_y4 h_u_arrmul12_fa3_11_h_u_arrmul12_fa2_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa3_11_h_u_arrmul12_and3_11_y0 b=h_u_arrmul12_fa3_11_h_u_arrmul12_fa4_10_y2 cin=h_u_arrmul12_fa3_11_h_u_arrmul12_fa2_11_y4 out[0]=h_u_arrmul12_fa3_11_y2 out[1]=h_u_arrmul12_fa3_11_y4
+.subckt fa a=h_u_arrmul12_fa3_11_h_u_arrmul12_and3_11_y0 b=h_u_arrmul12_fa3_11_h_u_arrmul12_fa4_10_y2 cin=h_u_arrmul12_fa3_11_h_u_arrmul12_fa2_11_y4 fa_y2=h_u_arrmul12_fa3_11_y2 fa_y4=h_u_arrmul12_fa3_11_y4
 .names a_4 h_u_arrmul12_and4_11_a_4
 1 1
 .names b_11 h_u_arrmul12_and4_11_b_11
@@ -1584,7 +1584,7 @@
 1 1
 .names h_u_arrmul12_fa3_11_y4 h_u_arrmul12_fa4_11_h_u_arrmul12_fa3_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa4_11_h_u_arrmul12_and4_11_y0 b=h_u_arrmul12_fa4_11_h_u_arrmul12_fa5_10_y2 cin=h_u_arrmul12_fa4_11_h_u_arrmul12_fa3_11_y4 out[0]=h_u_arrmul12_fa4_11_y2 out[1]=h_u_arrmul12_fa4_11_y4
+.subckt fa a=h_u_arrmul12_fa4_11_h_u_arrmul12_and4_11_y0 b=h_u_arrmul12_fa4_11_h_u_arrmul12_fa5_10_y2 cin=h_u_arrmul12_fa4_11_h_u_arrmul12_fa3_11_y4 fa_y2=h_u_arrmul12_fa4_11_y2 fa_y4=h_u_arrmul12_fa4_11_y4
 .names a_5 h_u_arrmul12_and5_11_a_5
 1 1
 .names b_11 h_u_arrmul12_and5_11_b_11
@@ -1596,7 +1596,7 @@
 1 1
 .names h_u_arrmul12_fa4_11_y4 h_u_arrmul12_fa5_11_h_u_arrmul12_fa4_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa5_11_h_u_arrmul12_and5_11_y0 b=h_u_arrmul12_fa5_11_h_u_arrmul12_fa6_10_y2 cin=h_u_arrmul12_fa5_11_h_u_arrmul12_fa4_11_y4 out[0]=h_u_arrmul12_fa5_11_y2 out[1]=h_u_arrmul12_fa5_11_y4
+.subckt fa a=h_u_arrmul12_fa5_11_h_u_arrmul12_and5_11_y0 b=h_u_arrmul12_fa5_11_h_u_arrmul12_fa6_10_y2 cin=h_u_arrmul12_fa5_11_h_u_arrmul12_fa4_11_y4 fa_y2=h_u_arrmul12_fa5_11_y2 fa_y4=h_u_arrmul12_fa5_11_y4
 .names a_6 h_u_arrmul12_and6_11_a_6
 1 1
 .names b_11 h_u_arrmul12_and6_11_b_11
@@ -1608,7 +1608,7 @@
 1 1
 .names h_u_arrmul12_fa5_11_y4 h_u_arrmul12_fa6_11_h_u_arrmul12_fa5_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa6_11_h_u_arrmul12_and6_11_y0 b=h_u_arrmul12_fa6_11_h_u_arrmul12_fa7_10_y2 cin=h_u_arrmul12_fa6_11_h_u_arrmul12_fa5_11_y4 out[0]=h_u_arrmul12_fa6_11_y2 out[1]=h_u_arrmul12_fa6_11_y4
+.subckt fa a=h_u_arrmul12_fa6_11_h_u_arrmul12_and6_11_y0 b=h_u_arrmul12_fa6_11_h_u_arrmul12_fa7_10_y2 cin=h_u_arrmul12_fa6_11_h_u_arrmul12_fa5_11_y4 fa_y2=h_u_arrmul12_fa6_11_y2 fa_y4=h_u_arrmul12_fa6_11_y4
 .names a_7 h_u_arrmul12_and7_11_a_7
 1 1
 .names b_11 h_u_arrmul12_and7_11_b_11
@@ -1620,7 +1620,7 @@
 1 1
 .names h_u_arrmul12_fa6_11_y4 h_u_arrmul12_fa7_11_h_u_arrmul12_fa6_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa7_11_h_u_arrmul12_and7_11_y0 b=h_u_arrmul12_fa7_11_h_u_arrmul12_fa8_10_y2 cin=h_u_arrmul12_fa7_11_h_u_arrmul12_fa6_11_y4 out[0]=h_u_arrmul12_fa7_11_y2 out[1]=h_u_arrmul12_fa7_11_y4
+.subckt fa a=h_u_arrmul12_fa7_11_h_u_arrmul12_and7_11_y0 b=h_u_arrmul12_fa7_11_h_u_arrmul12_fa8_10_y2 cin=h_u_arrmul12_fa7_11_h_u_arrmul12_fa6_11_y4 fa_y2=h_u_arrmul12_fa7_11_y2 fa_y4=h_u_arrmul12_fa7_11_y4
 .names a_8 h_u_arrmul12_and8_11_a_8
 1 1
 .names b_11 h_u_arrmul12_and8_11_b_11
@@ -1632,7 +1632,7 @@
 1 1
 .names h_u_arrmul12_fa7_11_y4 h_u_arrmul12_fa8_11_h_u_arrmul12_fa7_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa8_11_h_u_arrmul12_and8_11_y0 b=h_u_arrmul12_fa8_11_h_u_arrmul12_fa9_10_y2 cin=h_u_arrmul12_fa8_11_h_u_arrmul12_fa7_11_y4 out[0]=h_u_arrmul12_fa8_11_y2 out[1]=h_u_arrmul12_fa8_11_y4
+.subckt fa a=h_u_arrmul12_fa8_11_h_u_arrmul12_and8_11_y0 b=h_u_arrmul12_fa8_11_h_u_arrmul12_fa9_10_y2 cin=h_u_arrmul12_fa8_11_h_u_arrmul12_fa7_11_y4 fa_y2=h_u_arrmul12_fa8_11_y2 fa_y4=h_u_arrmul12_fa8_11_y4
 .names a_9 h_u_arrmul12_and9_11_a_9
 1 1
 .names b_11 h_u_arrmul12_and9_11_b_11
@@ -1644,7 +1644,7 @@
 1 1
 .names h_u_arrmul12_fa8_11_y4 h_u_arrmul12_fa9_11_h_u_arrmul12_fa8_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa9_11_h_u_arrmul12_and9_11_y0 b=h_u_arrmul12_fa9_11_h_u_arrmul12_fa10_10_y2 cin=h_u_arrmul12_fa9_11_h_u_arrmul12_fa8_11_y4 out[0]=h_u_arrmul12_fa9_11_y2 out[1]=h_u_arrmul12_fa9_11_y4
+.subckt fa a=h_u_arrmul12_fa9_11_h_u_arrmul12_and9_11_y0 b=h_u_arrmul12_fa9_11_h_u_arrmul12_fa10_10_y2 cin=h_u_arrmul12_fa9_11_h_u_arrmul12_fa8_11_y4 fa_y2=h_u_arrmul12_fa9_11_y2 fa_y4=h_u_arrmul12_fa9_11_y4
 .names a_10 h_u_arrmul12_and10_11_a_10
 1 1
 .names b_11 h_u_arrmul12_and10_11_b_11
@@ -1656,7 +1656,7 @@
 1 1
 .names h_u_arrmul12_fa9_11_y4 h_u_arrmul12_fa10_11_h_u_arrmul12_fa9_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa10_11_h_u_arrmul12_and10_11_y0 b=h_u_arrmul12_fa10_11_h_u_arrmul12_fa11_10_y2 cin=h_u_arrmul12_fa10_11_h_u_arrmul12_fa9_11_y4 out[0]=h_u_arrmul12_fa10_11_y2 out[1]=h_u_arrmul12_fa10_11_y4
+.subckt fa a=h_u_arrmul12_fa10_11_h_u_arrmul12_and10_11_y0 b=h_u_arrmul12_fa10_11_h_u_arrmul12_fa11_10_y2 cin=h_u_arrmul12_fa10_11_h_u_arrmul12_fa9_11_y4 fa_y2=h_u_arrmul12_fa10_11_y2 fa_y4=h_u_arrmul12_fa10_11_y4
 .names a_11 h_u_arrmul12_and11_11_a_11
 1 1
 .names b_11 h_u_arrmul12_and11_11_b_11
@@ -1668,7 +1668,7 @@
 1 1
 .names h_u_arrmul12_fa10_11_y4 h_u_arrmul12_fa11_11_h_u_arrmul12_fa10_11_y4
 1 1
-.subckt fa a=h_u_arrmul12_fa11_11_h_u_arrmul12_and11_11_y0 b=h_u_arrmul12_fa11_11_h_u_arrmul12_fa11_10_y4 cin=h_u_arrmul12_fa11_11_h_u_arrmul12_fa10_11_y4 out[0]=h_u_arrmul12_fa11_11_y2 out[1]=h_u_arrmul12_fa11_11_y4
+.subckt fa a=h_u_arrmul12_fa11_11_h_u_arrmul12_and11_11_y0 b=h_u_arrmul12_fa11_11_h_u_arrmul12_fa11_10_y4 cin=h_u_arrmul12_fa11_11_h_u_arrmul12_fa10_11_y4 fa_y2=h_u_arrmul12_fa11_11_y2 fa_y4=h_u_arrmul12_fa11_11_y4
 .names h_u_arrmul12_and0_0_y0 out[0]
 1 1
 .names h_u_arrmul12_ha0_1_y0 out[1]
@@ -1721,7 +1721,7 @@
 
 .model fa
 .inputs a b cin
-.outputs out[0] out[1]
+.outputs fa_y2 fa_y4
 .names a fa_a
 1 1
 .names b fa_b
@@ -1733,25 +1733,17 @@
 .subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
 .subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
 .subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
-.names fa_y2 out[0]
-1 1
-.names fa_y4 out[1]
-1 1
 .end
 
 .model ha
 .inputs a b
-.outputs out[0] out[1]
+.outputs ha_y0 ha_y1
 .names a ha_a
 1 1
 .names b ha_b
 1 1
 .subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
 .subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
-.names ha_y0 out[0]
-1 1
-.names ha_y1 out[1]
-1 1
 .end
 
 .model or_gate

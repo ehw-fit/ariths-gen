@@ -24,7 +24,10 @@ endmodule
 module fa(input a, input b, input cin, output fa_y2, output fa_y4);
   wire fa_a;
   wire fa_b;
+  wire fa_y0;
+  wire fa_y1;
   wire fa_cin;
+  wire fa_y3;
 
   assign fa_a = a;
   assign fa_b = b;

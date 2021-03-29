@@ -21,14 +21,14 @@
 1 1
 .names b_0 constant_wire_value_0_b_0
 1 1
-.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 out[0]=constant_wire_0
+.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 constant_wire_0=constant_wire_0
 .names a_0 h_u_pg_rca4_fa0_a_0
 1 1
 .names b_0 h_u_pg_rca4_fa0_b_0
 1 1
 .names constant_wire_0 h_u_pg_rca4_fa0_constant_wire_0
 1 1
-.subckt fa_cla a=h_u_pg_rca4_fa0_a_0 b=h_u_pg_rca4_fa0_b_0 cin=h_u_pg_rca4_fa0_constant_wire_0 out[0]=h_u_pg_rca4_fa0_y0 out[1]=h_u_pg_rca4_fa0_y1 out[2]=h_u_pg_rca4_fa0_y2
+.subckt fa_cla a=h_u_pg_rca4_fa0_a_0 b=h_u_pg_rca4_fa0_b_0 cin=h_u_pg_rca4_fa0_constant_wire_0 fa_cla_y0=h_u_pg_rca4_fa0_y0 fa_cla_y1=h_u_pg_rca4_fa0_y1 fa_cla_y2=h_u_pg_rca4_fa0_y2
 .names constant_wire_0 h_u_pg_rca4_and0_constant_wire_0
 1 1
 .names h_u_pg_rca4_fa0_y0 h_u_pg_rca4_and0_h_u_pg_rca4_fa0_y0
@@ -45,7 +45,7 @@
 1 1
 .names h_u_pg_rca4_or0_y0 h_u_pg_rca4_fa1_h_u_pg_rca4_or0_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca4_fa1_a_1 b=h_u_pg_rca4_fa1_b_1 cin=h_u_pg_rca4_fa1_h_u_pg_rca4_or0_y0 out[0]=h_u_pg_rca4_fa1_y0 out[1]=h_u_pg_rca4_fa1_y1 out[2]=h_u_pg_rca4_fa1_y2
+.subckt fa_cla a=h_u_pg_rca4_fa1_a_1 b=h_u_pg_rca4_fa1_b_1 cin=h_u_pg_rca4_fa1_h_u_pg_rca4_or0_y0 fa_cla_y0=h_u_pg_rca4_fa1_y0 fa_cla_y1=h_u_pg_rca4_fa1_y1 fa_cla_y2=h_u_pg_rca4_fa1_y2
 .names h_u_pg_rca4_or0_y0 h_u_pg_rca4_and1_h_u_pg_rca4_or0_y0
 1 1
 .names h_u_pg_rca4_fa1_y0 h_u_pg_rca4_and1_h_u_pg_rca4_fa1_y0
@@ -62,7 +62,7 @@
 1 1
 .names h_u_pg_rca4_or1_y0 h_u_pg_rca4_fa2_h_u_pg_rca4_or1_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca4_fa2_a_2 b=h_u_pg_rca4_fa2_b_2 cin=h_u_pg_rca4_fa2_h_u_pg_rca4_or1_y0 out[0]=h_u_pg_rca4_fa2_y0 out[1]=h_u_pg_rca4_fa2_y1 out[2]=h_u_pg_rca4_fa2_y2
+.subckt fa_cla a=h_u_pg_rca4_fa2_a_2 b=h_u_pg_rca4_fa2_b_2 cin=h_u_pg_rca4_fa2_h_u_pg_rca4_or1_y0 fa_cla_y0=h_u_pg_rca4_fa2_y0 fa_cla_y1=h_u_pg_rca4_fa2_y1 fa_cla_y2=h_u_pg_rca4_fa2_y2
 .names h_u_pg_rca4_or1_y0 h_u_pg_rca4_and2_h_u_pg_rca4_or1_y0
 1 1
 .names h_u_pg_rca4_fa2_y0 h_u_pg_rca4_and2_h_u_pg_rca4_fa2_y0
@@ -79,7 +79,7 @@
 1 1
 .names h_u_pg_rca4_or2_y0 h_u_pg_rca4_fa3_h_u_pg_rca4_or2_y0
 1 1
-.subckt fa_cla a=h_u_pg_rca4_fa3_a_3 b=h_u_pg_rca4_fa3_b_3 cin=h_u_pg_rca4_fa3_h_u_pg_rca4_or2_y0 out[0]=h_u_pg_rca4_fa3_y0 out[1]=h_u_pg_rca4_fa3_y1 out[2]=h_u_pg_rca4_fa3_y2
+.subckt fa_cla a=h_u_pg_rca4_fa3_a_3 b=h_u_pg_rca4_fa3_b_3 cin=h_u_pg_rca4_fa3_h_u_pg_rca4_or2_y0 fa_cla_y0=h_u_pg_rca4_fa3_y0 fa_cla_y1=h_u_pg_rca4_fa3_y1 fa_cla_y2=h_u_pg_rca4_fa3_y2
 .names h_u_pg_rca4_or2_y0 h_u_pg_rca4_and3_h_u_pg_rca4_or2_y0
 1 1
 .names h_u_pg_rca4_fa3_y0 h_u_pg_rca4_and3_h_u_pg_rca4_fa3_y0
@@ -104,7 +104,7 @@
 
 .model fa_cla
 .inputs a b cin
-.outputs out[0] out[1] out[2]
+.outputs fa_cla_y0 fa_cla_y1 fa_cla_y2
 .names a fa_cla_a
 1 1
 .names b fa_cla_b
@@ -114,17 +114,11 @@
 .subckt xor_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y0
 .subckt and_gate _a=fa_cla_a _b=fa_cla_b _y0=fa_cla_y1
 .subckt xor_gate _a=fa_cla_y0 _b=fa_cla_cin _y0=fa_cla_y2
-.names fa_cla_y0 out[0]
-1 1
-.names fa_cla_y1 out[1]
-1 1
-.names fa_cla_y2 out[2]
-1 1
 .end
 
 .model constant_wire_value_0
 .inputs a b
-.outputs out[0]
+.outputs constant_wire_0
 .names a constant_wire_value_0_a
 1 1
 .names b constant_wire_value_0_b
@@ -132,8 +126,6 @@
 .subckt xor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y0
 .subckt xnor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y1
 .subckt nor_gate _a=constant_wire_value_0_y0 _b=constant_wire_value_0_y1 _y0=constant_wire_0
-.names constant_wire_0 out[0]
-1 1
 .end
 
 .model or_gate
