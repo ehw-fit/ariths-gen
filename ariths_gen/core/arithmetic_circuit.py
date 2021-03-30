@@ -1,11 +1,21 @@
-from logic_gates import logic_gate, and_gate, nand_gate, or_gate, nor_gate, xor_gate, xnor_gate, not_gate
-from wire_components import wire, bus
-import math
+from ariths_gen.one_bit_circuits.logic_gates import(
+    LogicGate,
+    AndGate,
+    NandGate,
+    OrGate,
+    NorGate,
+    XorGate,
+    XnorGate,
+    NotGate  
+)
+
+from ariths_gen.wire_components import(
+    Wire,
+    Bus
+)
 
 """ ARITHMETIC CIRCUITS """
-
-
-class arithmetic_circuit():
+class ArithmeticCircuit():
     def __init__(self):
         self.components = []
         self.circuit_wires = []
@@ -26,9 +36,9 @@ class arithmetic_circuit():
     def get_unique_one_bit_components(self):
         one_bit_comps = []
         for c in self.components:
-            if isinstance(c, logic_gate):
+            if isinstance(c, LogicGate):
                 continue
-            elif type(getattr(c, 'a')) == wire:
+            elif type(getattr(c, 'a')) == Wire:
                 one_bit_comps.append(c)
             else:
                 one_bit_comps.extend(c.get_unique_one_bit_components())
@@ -38,9 +48,9 @@ class arithmetic_circuit():
     def get_unique_multi_bit_components(self):
         multi_bit_comps = []
         for c in self.components:
-            if isinstance(c, logic_gate):
+            if isinstance(c, LogicGate):
                 continue
-            elif type(getattr(c, 'a')) == wire:
+            elif type(getattr(c, 'a')) == Wire:
                 continue
             else:
                 multi_bit_comps.append(c)
@@ -80,7 +90,7 @@ class arithmetic_circuit():
         self.inputs = [i[0] for i in self.circuit_wires if i[0] not in [o.out for o in self.components]]
 
     # Search for circuit's wire unique index for cgp chromosome generation
-    def get_circuit_wire_index(self, wire: wire):
+    def get_circuit_wire_index(self, wire: Wire):
         for w in self.circuit_wires:
             if wire.name.endswith(w[1]):
                 return w[2]
@@ -89,7 +99,7 @@ class arithmetic_circuit():
     def get_circuit_gates(self):
         gates = []
         for c in self.components:
-            if isinstance(c, logic_gate):
+            if isinstance(c, LogicGate):
                 gates.append(c)
             else:
                 gates.extend((c.get_circuit_gates()))
@@ -98,7 +108,7 @@ class arithmetic_circuit():
     # Get list of all wires in circuit along with their index position for cgp chromosome generation
     def get_cgp_wires(self):
         self.circuit_wires = []
-        if isinstance(self.a, bus):
+        if isinstance(self.a, Bus):
             [self.circuit_wires.append((w, f"_{w.name}", len(self.circuit_wires))) for w in self.a.bus]
             [self.circuit_wires.append((w, f"_{w.name}", len(self.circuit_wires))) for w in self.b.bus]
         else:
@@ -138,11 +148,11 @@ class arithmetic_circuit():
     def get_inits_c_flat(self):
         return f"{self.a.get_wire_assign_c()}" + \
                f"{self.b.get_wire_assign_c()}" + \
-               "".join([c.get_assign_c_flat() if isinstance(c, logic_gate) else c.get_init_c_flat() for c in self.components])
+               "".join([c.get_assign_c_flat() if isinstance(c, LogicGate) else c.get_init_c_flat() for c in self.components])
 
     # For multi-bit circuit wires initialization
     def get_init_c_flat(self):
-        return "".join([c.get_assign_c_flat() if isinstance(c, logic_gate) else c.get_init_c_flat() for c in self.components])
+        return "".join([c.get_assign_c_flat() if isinstance(c, LogicGate) else c.get_init_c_flat() for c in self.components])
 
     def get_function_out_c_flat(self):
         return "".join([f"  {self.out.prefix} |= {o.return_wire_value_c(offset=self.out.bus.index(o))};\n" for o in self.out.bus])
@@ -166,14 +176,14 @@ class arithmetic_circuit():
 
     def get_function_block_c(self):
         # Obtain proper adder name with its bit width
-        adder_prefix = self.__class__(a=bus("a") , b=bus("b")).prefix + str(self.N)
-        adder_block = self.__class__(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"), prefix=adder_prefix)
+        adder_prefix = self.__class__(a=Bus("a") , b=Bus("b")).prefix + str(self.N)
+        adder_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_c()}\n\n"
 
     def get_declaration_c_hier(self):
         return "".join(self.a.get_wire_declaration_c()) + \
                "".join(self.b.get_wire_declaration_c()) + \
-               "".join([c.out.get_declaration_c() if isinstance(c, logic_gate) else c.get_wire_declaration_c_hier() for c in self.components])
+               "".join([c.out.get_declaration_c() if isinstance(c, LogicGate) else c.get_wire_declaration_c_hier() for c in self.components])
 
     def get_wire_declaration_c_hier(self):
         return f"  {self.c_data_type} {self.prefix}_{self.a.prefix} = 0;\n" + \
@@ -184,12 +194,12 @@ class arithmetic_circuit():
     def get_init_c_hier(self):
         return f"{self.a.get_wire_assign_c()}" + \
                f"{self.b.get_wire_assign_c()}" + \
-               "".join([f"  {c.out.name} = {c.get_gate_invocation_c()}" if isinstance(c, logic_gate) else c.get_out_invocation_c(circuit_prefix=self.prefix) for c in self.components])
+               "".join([f"  {c.out.name} = {c.get_gate_invocation_c()}" if isinstance(c, LogicGate) else c.get_out_invocation_c(circuit_prefix=self.prefix) for c in self.components])
 
     def get_out_invocation_c(self, circuit_prefix: str):
         # Getting name of circuit type and insitu copying out bus for proper C code generation without affecting actual generated composition
         circuit_type = self.prefix.replace(circuit_prefix+"_", "")
-        out = bus(prefix=self.prefix+"_"+self.out.prefix, wires_list=self.out.bus)
+        out = Bus(prefix=self.prefix+"_"+self.out.prefix, wires_list=self.out.bus)
         return "".join([f"  {self.prefix}_{self.a.prefix} |= {w.return_wire_value_c(offset=self.a.bus.index(w))};\n" for w in self.a.bus]) + \
                "".join([f"  {self.prefix}_{self.b.prefix} |= {w.return_wire_value_c(offset=self.b.bus.index(w))};\n" for w in self.b.bus]) + \
                f"  {out.prefix} = {circuit_type}({self.prefix}_{self.a.prefix}, {self.prefix}_{self.b.prefix});\n" + \
@@ -229,10 +239,10 @@ class arithmetic_circuit():
     def get_inits_v_flat(self):
         return f"{self.a.get_wire_assign_v()}" + \
                f"{self.b.get_wire_assign_v()}" + \
-               "".join([c.get_assign_v_flat() if isinstance(c, logic_gate) else c.get_init_v_flat() for c in self.components])
+               "".join([c.get_assign_v_flat() if isinstance(c, LogicGate) else c.get_init_v_flat() for c in self.components])
 
     def get_init_v_flat(self):
-        return "".join([c.get_assign_v_flat() if isinstance(c, logic_gate) else c.get_init_v_flat() for c in self.components])
+        return "".join([c.get_assign_v_flat() if isinstance(c, LogicGate) else c.get_init_v_flat() for c in self.components])
 
     def get_function_out_v_flat(self):
         return "".join([f"  assign {self.out.prefix}[{self.out.bus.index(o)}] = {o.prefix};\n" for o in self.out.bus])
@@ -254,14 +264,14 @@ class arithmetic_circuit():
 
     def get_function_block_v(self):
         # Obtain proper adder name with its bit width
-        adder_prefix = self.__class__(a=bus("a") , b=bus("b")).prefix + str(self.N)
-        adder_block = self.__class__(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"), prefix=adder_prefix)
+        adder_prefix = self.__class__(a=Bus("a") , b=Bus("b")).prefix + str(self.N)
+        adder_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_v()}\n\n"
 
     def get_declaration_v_hier(self):
         return "".join(self.a.get_wire_declaration_v()) + \
                "".join(self.b.get_wire_declaration_v()) + \
-               "".join([c.out.get_declaration_v() if isinstance(c, logic_gate) else c.get_wire_declaration_v_hier() for c in self.components])
+               "".join([c.out.get_declaration_v() if isinstance(c, LogicGate) else c.get_wire_declaration_v_hier() for c in self.components])
 
     def get_wire_declaration_v_hier(self):
         return f"  wire [{self.a.N-1}:0] {self.prefix}_{self.a.prefix};\n" + \
@@ -272,12 +282,12 @@ class arithmetic_circuit():
     def get_init_v_hier(self):
         return f"{self.a.get_wire_assign_v()}" + \
                f"{self.b.get_wire_assign_v()}" + \
-               "".join([c.get_gate_invocation_v() if isinstance(c, logic_gate) else c.get_invocation_v(circuit_prefix=self.prefix) for c in self.components])
+               "".join([c.get_gate_invocation_v() if isinstance(c, LogicGate) else c.get_invocation_v(circuit_prefix=self.prefix) for c in self.components])
 
     def get_invocation_v(self, circuit_prefix: str):
         # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
         circuit_type = self.prefix.replace(circuit_prefix+"_", "")
-        out = bus(prefix=self.prefix+"_"+self.out.prefix, wires_list=self.out.bus)
+        out = Bus(prefix=self.prefix+"_"+self.out.prefix, wires_list=self.out.bus)
         return "".join([f"  assign {self.prefix}_{self.a.prefix}[{self.a.bus.index(w)}] = {w.name};\n" for w in self.a.bus]) + \
                "".join([f"  assign {self.prefix}_{self.b.prefix}[{self.b.bus.index(w)}] = {w.name};\n" for w in self.b.bus]) + \
                f"  {circuit_type} {circuit_type}_{self.out.prefix}({self.prefix}_{self.a.prefix}, {self.prefix}_{self.b.prefix}, {out.prefix});\n" + \
@@ -317,7 +327,7 @@ class arithmetic_circuit():
                    f"{self.b.get_wire_assign_blif()}"
 
     def get_function_blif_flat(self):
-        return "".join(c.get_init_function_blif_flat() if isinstance(c, logic_gate) else c.get_function_blif_flat() for c in self.components)
+        return "".join(c.get_init_function_blif_flat() if isinstance(c, LogicGate) else c.get_function_blif_flat() for c in self.components)
 
     def get_function_out_blif(self):
         return f"{self.out.get_wire_assign_blif(output=True)}"
@@ -333,7 +343,7 @@ class arithmetic_circuit():
 
     # HIERARCHICAL BLIF #
     def get_function_blif_hier(self):
-        return "".join(c.get_invocation_blif_hier(init=True) if isinstance(c, logic_gate) else c.get_invocation_blif_hier(circuit_prefix=self.prefix) for c in self.components)
+        return "".join(c.get_invocation_blif_hier(init=True) if isinstance(c, LogicGate) else c.get_invocation_blif_hier(circuit_prefix=self.prefix) for c in self.components)
 
     def get_invocation_blif_hier(self, circuit_prefix: str):
         # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
@@ -359,8 +369,8 @@ class arithmetic_circuit():
 
     def get_function_block_blif(self):
         # Obtain proper adder name with its bit width
-        adder_prefix = self.__class__(a=bus("a") , b=bus("b")).prefix + str(self.N)
-        adder_block = self.__class__(a=bus(N=self.N, prefix="a"), b=bus(N=self.N, prefix="b"), prefix=adder_prefix)
+        adder_prefix = self.__class__(a=Bus("a") , b=Bus("b")).prefix + str(self.N)
+        adder_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit
@@ -388,102 +398,3 @@ class arithmetic_circuit():
         file_object.write(self.get_triplet_cgp())
         file_object.write(self.get_output_cgp())
         file_object.close()
-
-
-""" MULTIPLIER CIRCUITS """
-
-
-class multiplier_circuit(arithmetic_circuit):
-    def __init__(self):
-        super().__init__()
-
-    """ Array multipliers """
-    # Used in array multipliers to get previous row's component output wires
-    # for further connection to another component's input
-    def get_previous_partial_product(self, a_index: int, b_index: int, offset: int = 0):
-        # To get the index of previous row's connecting adder and its generated pp
-        index = ((b_index-2) * (self.N*2)) + ((self.N-1)+2*(a_index+2)) + offset
-
-        # Get carry wire as input for the last adder in current row
-        if a_index == self.N-1:
-            index = index-2
-            return self.components[index].get_carry_wire()
-        # Get sum wire as input for current adder
-        else:
-            return self.components[index].get_sum_wire()
-
-    """ Dadda multiplier """
-    # Used in dadda multipliers to get multiplier's maximum height
-    @staticmethod
-    def get_maximum_height(initial_value: int):
-        stage = 0
-        d = 2
-        while True:
-            stage += 1
-            max_height = d
-            # Calculating maximum height sequence
-            # d(j=1) = 2; d(j+1) = floor(1.5*d)
-            d = math.floor(1.5*d)
-            if d >= initial_value:
-                return stage, max_height
-
-    def init_column_heights(self, signed=False):
-        columns = [[num] if num <= self.N else [num - (num - self.N)*2] for num in range(1, self.out.N)]
-        columns = [self.add_column_wires(column=col, column_index=columns.index(col)) for col in columns]
-        return columns
-
-    def add_column_wires(self, column: list, column_index: int):
-        [column.append([]) for _ in range(column[0])]
-        if column_index <= self.N-1:
-            [column[column[0]-index].append(self.a.get_wire(index)) for index in range(0, column[0])]
-            [column[index+1].append(self.b.get_wire(index)) for index in range(0, column[0])]
-        else:
-            [column[self.a.N-index].append(self.a.get_wire(index)) for index in range(self.a.N-1, self.a.N-column[0]-1, -1)]
-            [column[index-(self.a.N-1-column[0])].append(self.b.get_wire(index)) for index in range(self.a.N-column[0], self.a.N)]
-
-        # TODO check and refactor
-        # Filling unsigned pp matrix with AND gates
-        if self.__class__.__name__ == "unsigned_dadda_multiplier" or self.__class__.__name__ == "unsigned_wallace_multiplier":
-            column[1:] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(1, len(column))]
-        # Filling signed pp matrix with AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
-        else:
-            # First half of partial product columns contains only AND gates
-            if column_index < self.N-1 or column_index == self.out.N-2:
-                column[1:] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(1, len(column))]
-            # Second half of partial product columns contains NAND/AND gates
-            else:
-                column[1] = nand_gate(a=column[1][0], b=column[1][1], prefix=self.prefix+'_nand_'+str(column[1][0].index)+'_'+str(column[1][1].index))
-                column[-1] = nand_gate(a=column[-1][0], b=column[-1][1], prefix=self.prefix+'_nand_'+str(column[-1][0].index)+'_'+str(column[-1][1].index))
-                if len(column[2:-1]) != 0:
-                    column[2:-1] = [and_gate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(2, len(column)-1)]
-        
-        return column
-
-    def get_column_height(self, column_num: int):
-        return self.columns[column_num][0]
-
-    def update_column_heights(self, curr_column: int, curr_height_change: int, next_column: int = 0, next_height_change: int = 0):
-        self.columns[curr_column][0] = self.get_column_height(curr_column)+curr_height_change
-        if next_column-1 == curr_column:
-            self.columns[next_column][0] = self.get_column_height(next_column)+next_height_change
-
-    def get_column_wire(self, column: int, bit: int):
-        if isinstance(self.columns[column][bit], and_gate) or isinstance(self.columns[column][bit], nand_gate):
-            self.add_component(self.columns[column][bit])
-            return self.get_previous_component(1).out
-        else:
-            return self.columns[column][bit]
-
-    def update_column_wires(self, curr_column: int, adder: arithmetic_circuit, next_column: int = 0):
-        if hasattr(adder, "c"):
-            self.columns[curr_column].pop(1)
-            self.columns[curr_column].pop(1)
-            self.columns[curr_column].pop(1)
-            self.columns[curr_column].insert(self.get_column_height(curr_column), adder.get_sum_wire())
-        else:
-            self.columns[curr_column].pop(1)
-            self.columns[curr_column].pop(1)
-            self.columns[curr_column].insert(self.get_column_height(curr_column), adder.get_sum_wire())
-
-        if next_column-1 == curr_column:
-            self.columns[next_column].insert(1, adder.get_carry_wire())

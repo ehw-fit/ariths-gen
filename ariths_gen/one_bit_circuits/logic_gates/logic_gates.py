@@ -1,13 +1,13 @@
-from wire_components import wire
+from ariths_gen.wire_components import Wire
 
 """ LOGIC GATE COMPONENTS """
 
 
 # Two-input #
-class logic_gate():
-    def __init__(self, a: wire, b: wire, prefix: str = "gate"):
-        self.a = wire(name=prefix+"_"+a.name.replace(prefix+"_", ""), value=a.value)
-        self.b = wire(name=prefix+"_"+b.name.replace(prefix+"_", ""), value=b.value)
+class LogicGate():
+    def __init__(self, a: Wire, b: Wire, prefix: str = "gate"):
+        self.a = Wire(name=prefix+"_"+a.name.replace(prefix+"_", ""), value=a.value)
+        self.b = Wire(name=prefix+"_"+b.name.replace(prefix+"_", ""), value=b.value)
         self.prefix = prefix
 
     def get_component_types(self):
@@ -46,7 +46,7 @@ class logic_gate():
 
     # HIERARCHICAL C #
     def get_function_block_c(self):
-        gate_block = not_gate(a=wire(name="a")) if isinstance(self, not_gate) else type(self)(a=wire(name="a"), b=wire(name="b"))
+        gate_block = NotGate(a=Wire(name="a")) if isinstance(self, NotGate) else type(self)(a=Wire(name="a"), b=Wire(name="b"))
         return f"{gate_block.get_prototype_c()}" + \
                f"  return "+(gate_block.get_function_c())+";\n}\n\n"
 
@@ -55,7 +55,7 @@ class logic_gate():
         b_name = self.b.name.replace(self.prefix+"_", "") if remove_prefix is True else self.b.name
         return f"{self.gate_type}({a_name}, {b_name});\n"
 
-    def get_gate_output_c(self, a: wire, b: wire, offset: int = 0):
+    def get_gate_output_c(self, a: Wire, b: Wire, offset: int = 0):
         return f"({self.gate_type}({a.name}, {b.name}) & 0x01) << {offset}"
 
     """ VERILOG CODE GENERATION """
@@ -84,7 +84,7 @@ class logic_gate():
 
     # HIERARCHICAL VERILOG #
     def get_function_block_v(self):
-        gate_block = not_gate(a=wire(name="a")) if isinstance(self, not_gate) else type(self)(a=wire(name="a"), b=wire(name="b"))
+        gate_block = NotGate(a=Wire(name="a")) if isinstance(self, NotGate) else type(self)(a=Wire(name="a"), b=Wire(name="b"))
         return f"{gate_block.get_prototype_v()}" + \
                f"  assign {gate_block.out.name} = {gate_block.get_init_v_flat()};\n" + \
                f"endmodule\n\n"
@@ -119,7 +119,7 @@ class logic_gate():
 
     # HIERARCHICAL BLIF #
     def get_function_block_blif(self):
-        gate_block = not_gate(a=wire(name="a")) if isinstance(self, not_gate) else type(self)(a=wire(name="a"), b=wire(name="b"))
+        gate_block = NotGate(a=Wire(name="a")) if isinstance(self, NotGate) else type(self)(a=Wire(name="a"), b=Wire(name="b"))
         return f"{gate_block.get_prototype_blif()}" + \
                f"{gate_block.get_declaration_blif()}" + \
                f"{gate_block.get_function_blif_flat()}" + \
@@ -153,8 +153,8 @@ class logic_gate():
         file_object.close()
 
 
-class inverted_logic_gate(logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "gate"):
+class InvertedLogicGate(LogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "gate"):
         super().__init__(a, b, prefix)
 
     """ C CODE GENERATION """
@@ -171,13 +171,13 @@ class inverted_logic_gate(logic_gate):
         return "~("+(super().get_init_v_flat())+")"
 
 
-class and_gate(logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
+class AndGate(LogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "and_gate"
         self.cgp_function = 2
         self.operator = "&"
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ BLIF CODE GENERATION """
     def get_function_blif_flat(self):
@@ -185,13 +185,13 @@ class and_gate(logic_gate):
                f"11 1\n"
 
 
-class nand_gate(inverted_logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
+class NandGate(InvertedLogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "nand_gate"
         self.cgp_function = 5
         self.operator = "&"
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ BLIF CODE GENERATION """
     def get_function_blif_flat(self):
@@ -199,13 +199,13 @@ class nand_gate(inverted_logic_gate):
                f"0- 1\n-0 1\n"
 
 
-class or_gate(logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
+class OrGate(LogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "or_gate"
         self.cgp_function = 3
         self.operator = "|"
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ BLIF CODE GENERATION """
     def get_function_blif_flat(self):
@@ -213,13 +213,13 @@ class or_gate(logic_gate):
                f"1- 1\n-1 1\n"
 
 
-class nor_gate(inverted_logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
+class NorGate(InvertedLogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "nor_gate"
         self.cgp_function = 6
         self.operator = "|"
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ BLIF CODE GENERATION """
     def get_function_blif_flat(self):
@@ -227,13 +227,13 @@ class nor_gate(inverted_logic_gate):
                f"00 1\n"
 
 
-class xor_gate(logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "", outid: int = 0):
+class XorGate(LogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "xor_gate"
         self.cgp_function = 4
         self.operator = "^"
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ BLIF CODE GENERATION """
     def get_function_blif_flat(self):
@@ -241,13 +241,13 @@ class xor_gate(logic_gate):
                f"01 1\n10 1\n"
 
 
-class xnor_gate(inverted_logic_gate):
-    def __init__(self, a: wire, b: wire, prefix: str = "", outid:  int = 0):
+class XnorGate(InvertedLogicGate):
+    def __init__(self, a: Wire, b: Wire, prefix: str = "", outid:  int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "xnor_gate"
         self.cgp_function = 7
         self.operator = "^"
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ BLIF CODE GENERATION """
     def get_function_blif_flat(self):
@@ -256,14 +256,14 @@ class xnor_gate(inverted_logic_gate):
 
 
 # Single-input #
-class not_gate(inverted_logic_gate):
-    def __init__(self, a: wire, prefix: str = "", outid: int = 0):
+class NotGate(InvertedLogicGate):
+    def __init__(self, a: Wire, prefix: str = "", outid: int = 0):
         self.gate_type = "not_gate"
         self.cgp_function = 1
         self.operator = "~"
-        self.a = wire(name=prefix+"_"+a.name.replace(prefix+"_", ""), value=a.value)
+        self.a = Wire(name=prefix+"_"+a.name.replace(prefix+"_", ""), value=a.value)
         self.prefix = prefix
-        self.out = wire(name=prefix+"_y"+str(outid))
+        self.out = Wire(name=prefix+"_y"+str(outid))
 
     """ C CODE GENERATION """
     # FLAT C #
@@ -288,7 +288,7 @@ class not_gate(inverted_logic_gate):
         a_name = self.a.name.replace(self.prefix+"_", "") if remove_prefix is True else self.a.name
         return f"{self.gate_type}({a_name});"
 
-    def get_gate_output_c(self, a: wire, offset: int = 0):
+    def get_gate_output_c(self, a: Wire, offset: int = 0):
         return f"({self.gate_type}({a.name}) & 0x01) << {offset}"
 
     """ VERILOG CODE GENERATION """
