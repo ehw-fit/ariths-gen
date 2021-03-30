@@ -5,3 +5,4 @@ Makefile
 *.c
 *.v
 t.py
+*__pycache__*
