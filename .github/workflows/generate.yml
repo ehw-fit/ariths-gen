@@ -1,0 +1,42 @@
+# This is a basic workflow to help you get started with Actions
+
+name: BUILD
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.x
+      uses: actions/setup-python@v2
+      with:
+        # Semantic version range syntax or exact version of a Python version
+        python-version: '3.x'
+        # Optional - x64 or x86 architecture, defaults to x64
+        architecture: 'x64'
+    # You can test your matrix by printing the current Python version
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
+    - name: Run generating
+      run: python ariths_gen.py
+    - name: Listing
+      run: ls build
+    - name: Listing2
+      run: ls 
+
+    - name: Upload results
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: arithmetic-circuits
+        path: build
