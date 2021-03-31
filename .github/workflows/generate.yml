@@ -30,6 +30,8 @@ jobs:
       run: python -c "import sys; print(sys.version)"
     - name: Run generating
       run: python ariths_gen.py
+    - name: Create documentation
+      run: pdoc --html ariths_gen
     - name: Listing
       run: ls build
     - name: Listing2

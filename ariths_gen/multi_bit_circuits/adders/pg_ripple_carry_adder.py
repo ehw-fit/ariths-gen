@@ -1,12 +1,12 @@
-from ariths_gen.wire_components import(
+from ariths_gen.wire_components import (
     Wire,
     Bus
 )
-from ariths_gen.core import(
+from ariths_gen.core import (
     ArithmeticCircuit,
     MultiplierCircuit
 )
-from ariths_gen.one_bit_circuits.one_bit_components import(
+from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     PGLogicBlock,
     ConstantWireValue0,
@@ -14,7 +14,7 @@ from ariths_gen.one_bit_circuits.one_bit_components import(
     FullAdder,
     FullAdderPG
 )
-from ariths_gen.one_bit_circuits.logic_gates import(
+from ariths_gen.one_bit_circuits.logic_gates import (
     LogicGate,
     AndGate,
     NandGate,
@@ -25,7 +25,43 @@ from ariths_gen.one_bit_circuits.logic_gates import(
     NotGate
 )
 
+
 class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
+    """Class representing unsigned ripple carry adder with propagate/generate logic.
+
+    Unsigned ripple carry adder with PG logic represents slightly different rca implementation
+    of N-bit unsigned adder which is composed of N one bit full adders with P/G logic.
+
+    ```
+      B3 A3       B2 A2       B1 A1       B0 A0
+      │  │        │  │        │  │        │  │
+    ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+    │  PG  │    │  PG  │    │  PG  │    │  PG  │
+    │  FA  │    │  FA  │    │  FA  │    │  FA  │
+    │      │    │      │    │      │    │      │
+    └─┬──┬┬┘    └─┬┬┬──┘    └─┬┬┬──┘    └─┬┬┬──┘
+      │  ││G3P3S3 │││G2P2S2   │││G1P1S1   │││ G0P0S0
+      │ ┌▼▼───────▼▼▼─────────▼▼▼─────────▼▼▼──┐
+      │ │          Group PG logic              │
+      │ │                                      │
+      │ └─┬───────┬──────────┬──────────┬──────┘
+      │   │       │          │          │
+    ┌─▼───▼───────▼──────────▼──────────▼──────┐
+    │                Sum logic                 │
+    │                                          │
+    └┬────┬───────┬──────────┬──────────┬──────┘
+     │    │       │          │          │
+     ▼    ▼       ▼          ▼          ▼
+    Cout  S3      S1         S0         S0
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of unsigned P/G rca. Defaults to "u_pg_rca".
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "u_pg_rca"):
         super().__init__()
         self.N = max(a.N, b.N)
@@ -49,7 +85,7 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
                 obj_fa_cla = FullAdderPG(self.a.get_wire(input_index), self.b.get_wire(input_index), constant_wire_0.out.get_wire(), prefix=self.prefix+"_fa"+str(input_index))
             else:
                 obj_fa_cla = FullAdderPG(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().out, prefix=self.prefix+"_fa"+str(input_index))
-            
+
             self.add_component(obj_fa_cla)
             self.out.connect(input_index, obj_fa_cla.get_sum_wire())
 
@@ -57,13 +93,49 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
             obj_or = OrGate(obj_and.out, self.get_previous_component().get_generate_wire(), prefix=self.prefix+"_or"+str(input_index))
             self.add_component(obj_and)
             self.add_component(obj_or)
-            
+
             # Connecting last output bit to last cout
             if input_index == (self.N-1):
                 self.out.connect(self.N, obj_or.out)
 
 
 class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
+    """Class representing signed ripple carry adder with propagate/generate logic.
+
+    Signed ripple carry adder with PG logic represents slightly different rca implementation
+    of N-bit signed adder which is composed of N one bit full adders with P/G logic.
+    At last XOR gates are used to ensure proper sign extension.
+
+    ```
+      B3 A3       B2 A2       B1 A1       B0 A0
+      │  │        │  │        │  │        │  │
+    ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+    │  PG  │    │  PG  │    │  PG  │    │  PG  │
+    │  FA  │    │  FA  │    │  FA  │    │  FA  │
+    │      │    │      │    │      │    │      │
+    └─┬──┬┬┘    └─┬┬┬──┘    └─┬┬┬──┘    └─┬┬┬──┘
+      │  ││G3P3S3 │││G2P2S2   │││G1P1S1   │││ G0P0S0
+      │ ┌▼▼───────▼▼▼─────────▼▼▼─────────▼▼▼──┐
+      │ │          Group PG logic              │
+      │ │                                      │
+      │ └─┬───────┬──────────┬──────────┬──────┘
+      │   │       │          │          │
+    ┌─▼───▼───────▼──────────▼──────────▼──────┐
+    │                Sum logic                 │
+    │           with sign extension            │
+    └┬────┬───────┬──────────┬──────────┬──────┘
+     │    │       │          │          │
+     ▼    ▼       ▼          ▼          ▼
+    Cout  S3      S1         S0         S0
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of signed P/G rca. Defaults to "s_pg_rca".
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "s_pg_rca"):
         super().__init__(a=a, b=b, prefix=prefix)
         self.c_data_type = "int64_t"

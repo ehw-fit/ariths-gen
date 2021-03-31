@@ -2,8 +2,25 @@ from ariths_gen.core import TwoInputOneBitCircuit
 from ariths_gen.one_bit_circuits.logic_gates import LogicGate, AndGate, NandGate, OrGate, NorGate, XorGate, XnorGate, NotGate
 from ariths_gen.wire_components import Wire, Bus
 
-# TWO INPUT CIRCUITS
+
 class HalfAdder(TwoInputOneBitCircuit):
+    """Class representing two input one bit half adder.
+
+    ```
+       ┌──────┐
+    ──►│      ├─► Sum
+       │      │
+    ──►│      ├─► Cout
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        prefix (str, optional): Prefix name of full adder. Defaults to "ha".
+    """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "ha"):
         super().__init__()
         self.c_data_type = "uint8_t"
@@ -27,6 +44,23 @@ class HalfAdder(TwoInputOneBitCircuit):
 
 
 class PGLogicBlock(TwoInputOneBitCircuit):
+    """Class representing two input one bit propagate/generate logic block.
+
+    ```
+       ┌──────┐
+    ──►│      ├─► P
+       │      │
+    ──►│      ├─► G
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        prefix (str, optional): Prefix name of full adder. Defaults to "pg_logic".
+    """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "pg_logic"):
         super().__init__()
         self.c_data_type = "uint8_t"
@@ -57,7 +91,25 @@ class PGLogicBlock(TwoInputOneBitCircuit):
     def get_sum_wire(self):
         return self.out.get_wire(2)
 
+
 class ConstantWireValue0(TwoInputOneBitCircuit):
+    """Class representing two input one bit constant wire with value 0 generation block.
+
+    ```
+       ┌──────┐
+    ──►│      │
+       │      ├─►0
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        prefix (str, optional): Prefix name of full adder. Defaults to "constant_wire_value_0".
+    """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "constant_wire_value_0"):
         super().__init__()
         self.c_data_type = "uint8_t"
@@ -83,6 +135,23 @@ class ConstantWireValue0(TwoInputOneBitCircuit):
 
 
 class ConstantWireValue1(TwoInputOneBitCircuit):
+    """Class representing two input one bit constant wire with value 1 generation block.
+
+    ```
+       ┌──────┐
+    ──►│      │
+       │      ├─►1
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        prefix (str, optional): Prefix name of full adder. Defaults to "constant_wire_value_1".
+    """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "constant_wire_value_1"):
         super().__init__()
         self.c_data_type = "uint8_t"

@@ -6,6 +6,10 @@ Script checks correct functionality of various architectures of unsigned/signed 
 **Note** that these circuits were manually modified to allow such a testing (added main with nested loops and asserts)! 
 
 ## Execute permission
-    chmod +x c_tests.sh
+```bash
+chmod +x c_tests.sh
+```
 ## Usage
-    ./c_tests.sh
+```bash
+./c_tests.sh
+```

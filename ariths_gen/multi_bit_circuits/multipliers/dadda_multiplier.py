@@ -1,20 +1,20 @@
 from ariths_gen.multi_bit_circuits.adders.ripple_carry_adder import UnsignedRippleCarryAdder
-from ariths_gen.wire_components import(
+from ariths_gen.wire_components import (
     Wire,
     Bus
 )
-from ariths_gen.core import(
+from ariths_gen.core import (
     ArithmeticCircuit,
     MultiplierCircuit
 )
-from ariths_gen.one_bit_circuits.one_bit_components import(
+from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     ConstantWireValue0,
     ConstantWireValue1,
     FullAdder,
     FullAdderPG
 )
-from ariths_gen.one_bit_circuits.logic_gates import(
+from ariths_gen.one_bit_circuits.logic_gates import (
     LogicGate,
     AndGate,
     NandGate,
@@ -25,7 +25,26 @@ from ariths_gen.one_bit_circuits.logic_gates import(
     NotGate
 )
 
+
 class UnsignedDaddaMultiplier(MultiplierCircuit):
+    """Class representing unsigned dadda multiplier.
+
+    Unsigned dadda multiplier represents fast N-bit multiplier which utilizes
+    the functionality of reduction algorithm proposed by Luigi Dadda.
+    Dadda algorithm is described more in detail here:
+    https://en.wikipedia.org/wiki/Dadda_multiplier
+
+    It is composed of much less inner components (half/full adders, AND gates) as opposed
+    to e.g. wallace and array multipliers.
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of unsigned dadda multiplier. Defaults to "u_dadda_rca".
+        unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedRippleCarryAdder.
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "u_dadda_rca", unsigned_adder_class_name: str = UnsignedRippleCarryAdder):
         super().__init__()
         self.N = max(a.N, b.N)
@@ -103,7 +122,7 @@ class UnsignedDaddaMultiplier(MultiplierCircuit):
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
             # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_prefix = unsigned_adder_class_name(a=a , b=b).prefix + str(len(self.columns)-1)
+            adder_prefix = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
 
             adder_a = Bus(prefix=f"{adder_prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
             adder_b = Bus(prefix=f"{adder_prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])
@@ -114,6 +133,25 @@ class UnsignedDaddaMultiplier(MultiplierCircuit):
 
 
 class SignedDaddaMultiplier(MultiplierCircuit):
+    """Class representing signed dadda multiplier.
+
+    Signed dadda multiplier represents fast N-bit multiplier which utilizes
+    the functionality of reduction algorithm proposed by Luigi Dadda and uses Baugh-Wooley algorithm
+    to perform signed multiplication.
+    Dadda algorithm is described more in detail here:
+    https://en.wikipedia.org/wiki/Dadda_multiplier
+
+    It is composed of much less inner components (half/full adders, AND/NAND gates) as opposed
+    to e.g. wallace and array multipliers.
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of signed dadda multiplier. Defaults to "s_dadda_rca".
+        unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedRippleCarryAdder.
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "s_dadda_rca", unsigned_adder_class_name: str = UnsignedRippleCarryAdder):
         super().__init__()
         self.N = max(a.N, b.N)
@@ -141,7 +179,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
             self.add_component(constant_wire_1)
 
             # Adding constant wire with value 1 to achieve signedness
-            # (adding constant value bit to last column (with one bit) to combine them in XOR gate to get the correct final multplication output bit at the end)        
+            # (adding constant value bit to last column (with one bit) to combine them in XOR gate to get the correct final multplication output bit at the end)
             self.columns[self.N].insert(1, constant_wire_1.out.get_wire())
             self.update_column_heights(curr_column=self.N, curr_height_change=1)
 
@@ -202,7 +240,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
             # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_prefix = unsigned_adder_class_name(a=a , b=b).prefix + str(len(self.columns)-1)
+            adder_prefix = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
 
             adder_a = Bus(prefix=f"{adder_prefix}_a", wires_list=[self.get_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
             adder_b = Bus(prefix=f"{adder_prefix}_b", wires_list=[self.get_column_wire(column=col, bit=2) for col in range(1, len(self.columns))])

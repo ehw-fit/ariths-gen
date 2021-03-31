@@ -1,8 +1,8 @@
-from .arithmetic_circuit import(
+from .arithmetic_circuit import (
     ArithmeticCircuit
 )
 
-from ariths_gen.one_bit_circuits.logic_gates import(
+from ariths_gen.one_bit_circuits.logic_gates import (
     LogicGate,
     AndGate,
     NandGate,
@@ -10,18 +10,21 @@ from ariths_gen.one_bit_circuits.logic_gates import(
     NorGate,
     XorGate,
     XnorGate,
-    NotGate  
+    NotGate
 )
 
-from ariths_gen.wire_components import(
+from ariths_gen.wire_components import (
     Wire,
     Bus
 )
 
 import math
 
-""" MULTIPLIER CIRCUITS """
+
 class MultiplierCircuit(ArithmeticCircuit):
+    """Class represents a general multiplier circuit derived from `ArithmeticCircuit` class.
+    """
+
     def __init__(self):
         super().__init__()
 
@@ -84,7 +87,7 @@ class MultiplierCircuit(ArithmeticCircuit):
                 column[-1] = NandGate(a=column[-1][0], b=column[-1][1], prefix=self.prefix+'_nand_'+str(column[-1][0].index)+'_'+str(column[-1][1].index))
                 if len(column[2:-1]) != 0:
                     column[2:-1] = [AndGate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index)) for i in range(2, len(column)-1)]
-        
+
         return column
 
     def get_column_height(self, column_num: int):

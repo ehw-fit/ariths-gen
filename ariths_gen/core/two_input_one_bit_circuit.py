@@ -1,8 +1,11 @@
-from .arithmetic_circuit import(
+from .arithmetic_circuit import (
     ArithmeticCircuit
 )
 
+
 class TwoInputOneBitCircuit(ArithmeticCircuit):
+    """Class represents a general two input one bit circuit and implements their generation to various representations. It is derived from `ArithmeticCircuit` class.
+    """
     def __init__(self):
         super().__init__()
 
@@ -17,7 +20,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
 
     # Wires values initialization and assignment
     def get_init_c_flat(self):
-        return "".join([i.get_assign_c(name=i.get_wire_value_c(name=i.name.replace(self.prefix+"_",""))) for i in self.inputs]) + \
+        return "".join([i.get_assign_c(name=i.get_wire_value_c(name=i.name.replace(self.prefix+"_", ""))) for i in self.inputs]) + \
                "".join([f"  {c.out.name} = {c.get_init_c_flat()};\n" for c in self.components])
 
     # Generating flat C code representation of circuit
@@ -51,7 +54,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         return "".join([c[0].get_declaration_c() for c in self.circuit_wires])
 
     def get_init_c_hier(self):
-        return "".join([i.get_assign_c(name=i.get_wire_value_c(name=i.name.replace(self.prefix+"_",""))) for i in self.inputs]) + \
+        return "".join([i.get_assign_c(name=i.get_wire_value_c(name=i.name.replace(self.prefix+"_", ""))) for i in self.inputs]) + \
                "".join([f"  {c.out.name} = {c.get_gate_invocation_c(remove_prefix=False)}" for c in self.components])
 
     def get_function_out_c_hier(self):
@@ -69,7 +72,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
 
     # Wires values initialization and assignment
     def get_init_v_flat(self):
-        return "".join([i.get_assign_v(name=i.name.replace(self.prefix+"_","")) for i in self.inputs]) + \
+        return "".join([i.get_assign_v(name=i.name.replace(self.prefix+"_", "")) for i in self.inputs]) + \
                "".join([f"  assign {c.out.name} = {c.get_init_v_flat()};\n" for c in self.components])
 
     # Generating flat Verilog code representation of circuit
@@ -100,7 +103,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         return "".join([c[0].get_declaration_v() for c in self.circuit_wires if c[0] not in self.out.bus])
 
     def get_init_v_hier(self):
-        return "".join([i.get_assign_v(name=i.name.replace(self.prefix+"_","")) for i in self.inputs])
+        return "".join([i.get_assign_v(name=i.name.replace(self.prefix+"_", "")) for i in self.inputs])
 
     def get_function_out_v_hier(self):
         return "".join([f"{c.get_gate_invocation_v(remove_prefix=False)}" for c in self.components])
@@ -114,7 +117,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
     def get_wire_mapping_blif(self):
         # For unique mapping of all circuit's input interconnections
         self.get_circuit_wires()
-        return "".join([i.get_assign_blif(name=i.name.replace(self.prefix+"_","")) for i in self.inputs])
+        return "".join([i.get_assign_blif(name=i.name.replace(self.prefix+"_", "")) for i in self.inputs])
 
     def get_function_blif_flat(self):
         return f"{self.get_wire_mapping_blif()}"+"".join([c.get_function_blif_flat() for c in self.components])

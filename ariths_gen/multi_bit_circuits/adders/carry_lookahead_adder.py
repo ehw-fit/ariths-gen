@@ -1,12 +1,12 @@
-from ariths_gen.wire_components import(
+from ariths_gen.wire_components import (
     Wire,
     Bus
 )
-from ariths_gen.core import(
+from ariths_gen.core import (
     ArithmeticCircuit,
     MultiplierCircuit
 )
-from ariths_gen.one_bit_circuits.one_bit_components import(
+from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     PGLogicBlock,
     ConstantWireValue0,
@@ -14,7 +14,7 @@ from ariths_gen.one_bit_circuits.one_bit_components import(
     FullAdder,
     FullAdderPG
 )
-from ariths_gen.one_bit_circuits.logic_gates import(
+from ariths_gen.one_bit_circuits.logic_gates import (
     LogicGate,
     AndGate,
     NandGate,
@@ -25,7 +25,39 @@ from ariths_gen.one_bit_circuits.logic_gates import(
     NotGate
 )
 
+
 class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
+    """Class representing unsigned carry look-ahead adder.
+
+    Unsigned carry look-ahead adder represents faster adder circuit which is composed
+    of more complex circuitry but provides much less propagation delay as opposed to rca.
+    It is mainly composed of propagate/generate blocks and many AND/OR gates to calculate carries individually.
+
+    ```
+      B3 A3      B2 A2      B1 A1      B0 A0
+      │  │       │  │       │  │       │  │
+    ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
+    │  PG  │   │  PG  │   │  PG  │   │  PG  │
+    │ block│   │ block│   │ block│   │ block│
+    │      │   │      │   │      │   │      │
+    └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘
+      │  │ G3P3  │  │ G2P2  │  │ G1P1  │  │ G0P0
+    ┌─▼──▼───────▼──▼───────▼──▼───────▼──▼─┐
+    │         Carry Lookahead logic         │
+    │                                       │
+    └┬────┬───────┬──────────┬──────────┬───┘
+     │    │       │          │          │
+     ▼    ▼       ▼          ▼          ▼
+    Cout  S3      S1         S0         S0
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of unsigned cla. Defaults to "u_cla".
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "u_cla"):
         super().__init__()
         self.N = max(a.N, b.N)
@@ -49,7 +81,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
         self.add_component(constant_wire_0)
         # Used as a first generate wire for obtaining next carry bits
         self.generate.append(constant_wire_0.out.get_wire())
-        
+
         # Gradual addition of propagate/generate logic blocks and AND/OR gates for Cout bits generation, XOR gates for Sum bits generation
         for input_index in range(self.N):
             pg_block = PGLogicBlock(self.a.get_wire(input_index), self.b.get_wire(input_index), prefix=self.prefix+"_pg_logic"+str(input_index))
@@ -73,7 +105,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
                 obj_sum_xor = XorGate(pg_block.get_sum_wire(), self.get_previous_component(2).out, prefix=self.prefix+"_xor"+str(input_index))
                 self.add_component(obj_sum_xor)
                 self.out.connect(input_index, obj_sum_xor.out)
-                
+
                 # For each pg pair values algorithmically combine two input AND gates to replace multiple input gates (resolves fan-in issue)
                 composite_and_gates = []
                 # And combine AND gate pairs into OR gates
@@ -100,22 +132,54 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
                         composite_and_gates.append(obj_and)
 
                     composite_or_gates.append(composite_and_gates.pop())
-                
+
                 # Final OR gates cascade using generated AND gates representing multiple input AND gates (cascade of multiple two input ones)
                 for a in range(len(composite_or_gates)-1):
                     obj_or = OrGate(self.get_previous_component().out, composite_or_gates[a].out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)))
                     self.add_component(obj_or)
-                
+
                 # Carry bit generation
                 obj_cout_or = OrGate(pg_block.get_generate_wire(), self.get_previous_component().out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)))
                 self.add_component(obj_cout_or)
-            
+
             # Connecting last output bit to last cout
             if input_index == (self.N-1):
                 self.out.connect(self.N, obj_cout_or.out)
-         
+
 
 class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
+    """Class representing signed carry look-ahead adder.
+
+    Signed carry look-ahead adder represents faster adder circuit which is composed
+    of more complex circuitry but provides much less propagation delay as opposed to rca.
+    It is mainly composed of propagate/generate blocks and many AND/OR gates to calculate carries individually.
+    At last XOR gates are used to ensure proper sign extension.
+
+    ```
+      B3 A3      B2 A2      B1 A1      B0 A0
+      │  │       │  │       │  │       │  │
+    ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
+    │  PG  │   │  PG  │   │  PG  │   │  PG  │
+    │ block│   │ block│   │ block│   │ block│
+    │      │   │      │   │      │   │      │
+    └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘
+      │  │ G3P3  │  │ G2P2  │  │ G1P1  │  │ G0P0
+    ┌─▼──▼───────▼──▼───────▼──▼───────▼──▼─┐
+    │         Carry Lookahead logic         │
+    │          with sign extension          │
+    └┬────┬───────┬──────────┬──────────┬───┘
+     │    │       │          │          │
+     ▼    ▼       ▼          ▼          ▼
+    Cout  S3      S1         S0         S0
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of signed cla. Defaults to "s_cla".
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "s_cla"):
         super().__init__(a=a, b=b, prefix=prefix)
         self.c_data_type = "int64_t"

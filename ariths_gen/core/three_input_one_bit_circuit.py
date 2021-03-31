@@ -1,8 +1,11 @@
-from .two_input_one_bit_circuit import(
+from .two_input_one_bit_circuit import (
     TwoInputOneBitCircuit
 )
 
+
 class ThreeInputOneBitCircuit(TwoInputOneBitCircuit):
+    """Class represents a general three input one bit circuit and implements their generation to various representations. It is derived from `TwoInputOneBitCircuit` class.
+    """
     def __init__(self):
         super().__init__()
 
@@ -17,7 +20,7 @@ class ThreeInputOneBitCircuit(TwoInputOneBitCircuit):
     def get_out_invocation_c(self, **kwargs):
         circuit_class = self.__class__()
         return "".join([f'  {o.name} = ({circuit_class.prefix}({self.a.name}, {self.b.name}, {self.c.name}) >> {self.out.bus.index(o)}) & 0x01;\n' for o in self.out.bus])
-    
+
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
     # Module prototype with three inputs

@@ -2,8 +2,26 @@ from ariths_gen.core import ThreeInputOneBitCircuit
 from ariths_gen.one_bit_circuits.logic_gates import LogicGate, AndGate, NandGate, OrGate, NorGate, XorGate, XnorGate, NotGate
 from ariths_gen.wire_components import Wire, Bus
 
-# THREE INPUT CIRCUITS
+
 class FullAdder(ThreeInputOneBitCircuit):
+    """Class representing three input one bit full adder.
+
+    ```
+       ┌──────┐
+    ──►│      ├─► Sum
+    ──►│      │
+    ──►│      ├─► Cout
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
+        prefix (str, optional): Prefix name of full adder. Defaults to "fa".
+    """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa"):
         super().__init__()
         self.c_data_type = "uint8_t"
@@ -38,6 +56,24 @@ class FullAdder(ThreeInputOneBitCircuit):
 
 
 class FullAdderPG(ThreeInputOneBitCircuit):
+    """Class representing modified three input one bit full adder with propagate/generate logic.
+
+    ```
+       ┌──────┐
+    ──►│      ├─► P
+    ──►│      ├─► G
+    ──►│      ├─► Sum
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
+        prefix (str, optional): Prefix name of full adder. Defaults to "fa_cla".
+    """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa_cla"):
         super().__init__()
         self.c_data_type = "uint8_t"
@@ -61,7 +97,7 @@ class FullAdderPG(ThreeInputOneBitCircuit):
         sum_xor = XorGate(propagate_xor.out, c, prefix=self.prefix, outid=2)
         self.add_component(sum_xor)
         self.out.connect(2, sum_xor.out)
-    
+
     def get_propagate_wire(self):
         return self.out.get_wire(0)
 

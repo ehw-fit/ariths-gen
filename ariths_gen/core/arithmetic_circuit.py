@@ -1,4 +1,4 @@
-from ariths_gen.one_bit_circuits.logic_gates import(
+from ariths_gen.one_bit_circuits.logic_gates import (
     LogicGate,
     AndGate,
     NandGate,
@@ -6,16 +6,18 @@ from ariths_gen.one_bit_circuits.logic_gates import(
     NorGate,
     XorGate,
     XnorGate,
-    NotGate  
+    NotGate
 )
 
-from ariths_gen.wire_components import(
+from ariths_gen.wire_components import (
     Wire,
     Bus
 )
 
-""" ARITHMETIC CIRCUITS """
+
 class ArithmeticCircuit():
+    """Class represents a general arithmetic circuit and ensures their generation to various representations.
+    """
     def __init__(self):
         self.components = []
         self.circuit_wires = []
@@ -176,7 +178,7 @@ class ArithmeticCircuit():
 
     def get_function_block_c(self):
         # Obtain proper adder name with its bit width
-        adder_prefix = self.__class__(a=Bus("a") , b=Bus("b")).prefix + str(self.N)
+        adder_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         adder_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_c()}\n\n"
 
@@ -264,7 +266,7 @@ class ArithmeticCircuit():
 
     def get_function_block_v(self):
         # Obtain proper adder name with its bit width
-        adder_prefix = self.__class__(a=Bus("a") , b=Bus("b")).prefix + str(self.N)
+        adder_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         adder_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_v()}\n\n"
 
@@ -369,7 +371,7 @@ class ArithmeticCircuit():
 
     def get_function_block_blif(self):
         # Obtain proper adder name with its bit width
-        adder_prefix = self.__class__(a=Bus("a") , b=Bus("b")).prefix + str(self.N)
+        adder_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         adder_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=adder_prefix)
         return f"{adder_block.get_circuit_blif()}"
 

@@ -1,10 +1,25 @@
 from ariths_gen.wire_components import Wire
 
-""" LOGIC GATE COMPONENTS """
-
 
 # Two-input #
 class LogicGate():
+    """Class representing two input logic gates.
+
+    ```
+       ┌──────┐
+    ──►│ FUNC │
+       │      ├─►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "gate".
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "gate"):
         self.a = Wire(name=prefix+"_"+a.name.replace(prefix+"_", ""), value=a.value)
         self.b = Wire(name=prefix+"_"+b.name.replace(prefix+"_", ""), value=b.value)
@@ -154,6 +169,23 @@ class LogicGate():
 
 
 class InvertedLogicGate(LogicGate):
+    """Class representing two input inverted logic gates.
+
+    ```
+       ┌──────┐
+    ──►│ FUNC │
+       │      │O──►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "gate".
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "gate"):
         super().__init__(a, b, prefix)
 
@@ -172,6 +204,24 @@ class InvertedLogicGate(LogicGate):
 
 
 class AndGate(LogicGate):
+    """Class representing two input and gate.
+
+    ```
+       ┌──────┐
+    ──►│  &   │
+       │      ├─►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "and_gate"
@@ -186,6 +236,24 @@ class AndGate(LogicGate):
 
 
 class NandGate(InvertedLogicGate):
+    """Class representing two input nand gate.
+
+    ```
+       ┌──────┐
+    ──►│ &    │
+       │      │O──►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "nand_gate"
@@ -200,6 +268,24 @@ class NandGate(InvertedLogicGate):
 
 
 class OrGate(LogicGate):
+    """Class representing two input or gate.
+
+    ```
+       ┌──────┐
+    ──►│ ≥1   │
+       │      ├─►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "or_gate"
@@ -214,6 +300,24 @@ class OrGate(LogicGate):
 
 
 class NorGate(InvertedLogicGate):
+    """Class representing two input nor gate.
+
+    ```
+       ┌──────┐
+    ──►│ ≥1   │
+       │      │O──►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "nor_gate"
@@ -228,6 +332,24 @@ class NorGate(InvertedLogicGate):
 
 
 class XorGate(LogicGate):
+    """Class representing two input xor gate.
+
+    ```
+       ┌──────┐
+    ──►│ =1   │
+       │      ├─►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "", outid: int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "xor_gate"
@@ -242,6 +364,24 @@ class XorGate(LogicGate):
 
 
 class XnorGate(InvertedLogicGate):
+    """Class representing two input xnor gate.
+
+    ```
+       ┌──────┐
+    ──►│ =1   │
+       │      │O──►
+    ──►│      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): First input wire.
+        b (Wire): Second input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, b: Wire, prefix: str = "", outid:  int = 0):
         super().__init__(a, b, prefix)
         self.gate_type = "xnor_gate"
@@ -257,6 +397,23 @@ class XnorGate(InvertedLogicGate):
 
 # Single-input #
 class NotGate(InvertedLogicGate):
+    """Class representing one input not gate.
+
+    ```
+       ┌──────┐
+       │  1   │
+    ──►│      │O─►
+       │      │
+       └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire): Input wire.
+        prefix (str, optional): Prefix name of logic gate. Defaults to "".
+        outid (int, optional): Index of output wire. Defaults to 0.
+    """
     def __init__(self, a: Wire, prefix: str = "", outid: int = 0):
         self.gate_type = "not_gate"
         self.cgp_function = 1

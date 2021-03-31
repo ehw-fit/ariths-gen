@@ -1,19 +1,19 @@
-from ariths_gen.wire_components import(
+from ariths_gen.wire_components import (
     Wire,
     Bus
 )
-from ariths_gen.core import(
+from ariths_gen.core import (
     ArithmeticCircuit,
     MultiplierCircuit
 )
-from ariths_gen.one_bit_circuits.one_bit_components import(
+from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     ConstantWireValue0,
     ConstantWireValue1,
     FullAdder,
     FullAdderPG
 )
-from ariths_gen.one_bit_circuits.logic_gates import(
+from ariths_gen.one_bit_circuits.logic_gates import (
     LogicGate,
     AndGate,
     NandGate,
@@ -24,8 +24,23 @@ from ariths_gen.one_bit_circuits.logic_gates import(
     NotGate
 )
 
-# MULTIPLIERS
+
 class UnsignedArrayMultiplier(MultiplierCircuit):
+    """Class representing unsigned array multiplier.
+
+    Unsigned array multiplier represents N-bit multiplier composed of
+    many AND gates and half/full adders to calculate partial products and
+    gradually sum them.
+
+    Downside is its rather big area because it is composed of many logic gates.
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to "u_arrmul".
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "u_arrmul"):
         super().__init__()
         self.N = max(a.N, b.N)
@@ -85,6 +100,21 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
 
 
 class SignedArrayMultiplier(MultiplierCircuit):
+    """Class representing signed array multiplier.
+
+    Signed array multiplier represents N-bit multiplier composed of
+    many AND/NAND gates and half/full adders to calculate partial products and
+    gradually sum them.
+
+    Downside is its rather big area because it is composed of many logic gates.
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of signed array multiplier. Defaults to "s_arrmul".
+    """
     def __init__(self, a: Bus, b: Bus, prefix: str = "s_arrmul"):
         super().__init__()
         self.c_data_type = "int64_t"
