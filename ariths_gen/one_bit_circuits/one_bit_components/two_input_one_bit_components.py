@@ -49,8 +49,8 @@ class PGLogicBlock(TwoInputOneBitCircuit):
     ```
        ┌──────┐
     ──►│      ├─► P
-       │      │
-    ──►│      ├─► G
+       │      ├─► G
+    ──►│      ├─► S
        └──────┘
     ```
 
@@ -83,12 +83,27 @@ class PGLogicBlock(TwoInputOneBitCircuit):
         self.out.connect(2, sum_xor.out)
 
     def get_propagate_wire(self):
+        """Get output wire carrying propagate signal value.
+
+        Returns:
+           Wire: Return propagate wire.
+        """
         return self.out.get_wire(0)
 
     def get_generate_wire(self):
+        """Get output wire carrying generate signal value.
+
+        Returns:
+           Wire: Return generate wire.
+        """
         return self.out.get_wire(1)
 
     def get_sum_wire(self):
+        """Get output wire carrying sum value.
+
+        Returns:
+           Wire: Return sum wire.
+        """
         return self.out.get_wire(2)
 
 

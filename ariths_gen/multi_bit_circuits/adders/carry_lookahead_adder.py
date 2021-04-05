@@ -40,9 +40,9 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     │  PG  │   │  PG  │   │  PG  │   │  PG  │
     │ block│   │ block│   │ block│   │ block│
     │      │   │      │   │      │   │      │
-    └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘
-      │  │ G3P3  │  │ G2P2  │  │ G1P1  │  │ G0P0
-    ┌─▼──▼───────▼──▼───────▼──▼───────▼──▼─┐
+    └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘
+      │││G3P3S3  │││G2P2S2  │││G1P1S1  │││G0P0S0
+    ┌─▼▼▼────────▼▼▼────────▼▼▼────────▼▼▼──┐
     │         Carry Lookahead logic         │
     │                                       │
     └┬────┬───────┬──────────┬──────────┬───┘
@@ -162,9 +162,9 @@ class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
     │  PG  │   │  PG  │   │  PG  │   │  PG  │
     │ block│   │ block│   │ block│   │ block│
     │      │   │      │   │      │   │      │
-    └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘   └─┬──┬─┘
-      │  │ G3P3  │  │ G2P2  │  │ G1P1  │  │ G0P0
-    ┌─▼──▼───────▼──▼───────▼──▼───────▼──▼─┐
+    └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘
+      │││G3P3S3  │││G2P2S2  │││G1P1S1  │││G0P0S0
+    ┌─▼▼▼────────▼▼▼────────▼▼▼────────▼▼▼──┐
     │         Carry Lookahead logic         │
     │          with sign extension          │
     └┬────┬───────┬──────────┬──────────┬───┘

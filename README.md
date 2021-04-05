@@ -20,7 +20,7 @@ python3 ariths_gen.py
 ## Documentation
 Code documentation is provided using **pdoc** documentation generator tool. Source: https://pdoc3.github.io/pdoc/.
 
-### Instalation
+### Installation
 ```bash
 pip3 install pdoc3	
 ```
