@@ -13,35 +13,14 @@ class Bus():
     """
     def __init__(self, prefix: str = "bus", N: int = 1, wires_list: list = None):
         if wires_list is None:
-            self.bus = [Wire(name=prefix+"_"+str(i), index=i) for i in range(N)]
             self.prefix = prefix
+            # Adding wires into current bus's wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+            self.bus = [Wire(name=prefix+f"[{i}]", prefix=prefix, index=i, parent_bus=self) for i in range(N)]
             self.N = N
         else:
-            self.bus = wires_list
             self.prefix = prefix
+            self.bus = wires_list
             self.N = len(self.bus)
-
-    # Connecting output wire of the inner circuit component to the input of another component
-    # (or to the wire of the circuit's output bus)
-    def connect(self, bus_wire_index: int, inner_component_out_wire: Wire):
-        """Connects given 'Wire' object to a 'bus_wire_index' within this bus.
-
-        Args:
-            bus_wire_index (int): Index in bus to store given wire in.
-            inner_component_out_wire (Wire): Wire of some other component (mostly its output) to store in the bus.
-        """
-        self.bus[bus_wire_index] = inner_component_out_wire
-
-    def get_wire(self, wire_index: int = 0):
-        """Retrieves a wire from the bus by a given index.
-
-        Args:
-            wire_index (int, optional): Index of wire to retrieve from the bus. Defaults to 0.
-
-        Returns:
-            Wire: Return wire from the bus.
-        """
-        return self.bus[wire_index]
 
     def bus_extend(self, N: int, prefix: str = "bus"):
         """Provides bus extension to contain more wires.
@@ -50,9 +29,45 @@ class Bus():
             N (int): Number of wires in the bus. Defaults to 1.
             prefix (str, optional): Prefix name of the bus. Defaults to "bus".
         """
+        # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
         if self.N < N:
-            self.bus += [Wire(name=prefix+"_"+str(i), index=i) for i in range(self.N, N)]
+            # Adding wires into current bus's wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+            self.bus += [Wire(name=prefix+f"[{i}]", prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
             self.N = N
+
+    def get_wire(self, wire_index: int = 0):
+        """Retrieves a wire from the bus by a given index.
+
+        Args:
+            wire_index (int, optional): Index of wire to be retrieved from the bus. Defaults to 0.
+
+        Returns:
+            Wire: Returning wire from the bus.
+        """
+        return self.bus[wire_index]
+
+    # Connecting output wire of the inner circuit component to desired position in the described circuit's output bus
+    def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):
+        """Connects given 'Wire' object to a 'bus_wire_index' within this bus.
+
+        Used for connection of output wire of the inner circuit component
+        to the appropriate wire of the circuit's output bus.
+
+        Args:
+            bus_wire_index (int): Index in bus to store given wire in.
+            inner_component_out_wire (Wire): Wire of some other component (mostly its output) to store in the bus.
+            inserted_wire_desired_index(int, optional): Optional desired explicit index, where 'inner_component_out_wire' value resides in the inner components's output bus. Otherwise 'inner_component_out_wire' self index value is used. Defaults to -1.
+        """
+        inserted_wire_index = inserted_wire_desired_index if inserted_wire_desired_index != -1 else inner_component_out_wire.index
+        # Used for connection of constant wire value into a bus
+        if inner_component_out_wire.is_const():
+            self.bus[bus_wire_index] = inner_component_out_wire
+        # Proper connection of wires that themselves are not yet a member of any other bus and also those that could be part of some bus but do not have `inserted_wire_desired_index` defined
+        elif inner_component_out_wire.parent_bus is None or inserted_wire_desired_index == -1:
+            self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+        # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
+        elif inserted_wire_desired_index != -1:
+            self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
 
     """ C CODE GENERATION """
     def get_declaration_c(self):
@@ -66,76 +81,81 @@ class Bus():
         else:
             return f"  uint8_t {self.prefix} = 0;\n"
 
-    def get_wire_declaration_c(self):
-        """Declare each wire from the bus independently.
+    def return_bus_wires_values_c_flat(self):
+        """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.
 
         Returns:
-            str: C code for declaration and initialization of bus wires.
+            str: C code for assigning wire values into bus represented in C code variable.
         """
-        return "".join([w.get_declaration_c() for w in self.bus])
+        return "".join([f"  {self.prefix} |= {w.return_wire_value_c_flat(offset=self.bus.index(w))}" for w in self.bus])
 
-    def get_wire_assign_c(self, bus_prefix: str = ""):
-        """Assign all bits from the bus to each individual wires in C code.
-
-        Args:
-            bus_prefix (str, optional): Custom bus prefix to use for assignment. Defaults to "".
+    def return_bus_wires_values_c_hier(self):
+        """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for hierarchical generation.
 
         Returns:
-            str: C code for bus wires assignments.
+            str: C code for assigning wire values into bus represented in C code variable.
         """
-        bus_prefix = self.prefix if bus_prefix == "" else bus_prefix
-        return "".join([w.get_assign_c(name=w.get_wire_value_c(name=bus_prefix, offset=self.bus.index(w))) for w in self.bus])
-
-    def return_wire_value_c(self, offset: int = 0):
-        """Retrieve wire value from desired index position in the bus.
-
-        Args:
-            offset (int, optional): Offset position of the wire to be retrieved. Defaults to 0.
-        """
-        self.get_wire(wire_index=offset).return_wire_value_c(offset=offset)
+        return "".join([f"  {self.prefix} |= {w.return_wire_value_c_hier(offset=self.bus.index(w))}" for w in self.bus])
 
     """ VERILOG CODE GENERATION """
-    def get_wire_declaration_v(self):
-        """Declare each wire from the bus independently.
+    def return_bus_wires_values_v_flat(self):
+        """Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for flat generation.
 
         Returns:
-            str: Verilog code for declaration of bus wires.
+            str: Verilog code for assigning wire values into bus represented in Verilog code bus variable.
         """
-        return "".join([w.get_declaration_v() for w in self.bus])
+        return "".join([f"  assign {self.prefix}[{self.bus.index(w)}] = {w.return_wire_value_v_flat()}" for w in self.bus])
 
-    def get_wire_assign_v(self, bus_prefix: str = ""):
-        """Assign all bits from the bus to each individual wires in Verilog code.
-
-        Args:
-            bus_prefix (str, optional): Custom bus prefix to use for assignment. Defaults to "".
+    def return_bus_wires_values_v_hier(self):
+        """Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.
 
         Returns:
-            str: Verilog code for bus wires assignments.
+            str: Verilog code for assigning wire values into bus represented in Verilog code variable.
         """
-        bus_prefix = self.prefix if bus_prefix == "" else bus_prefix
-        return "".join([w.get_assign_v(name=self.prefix, offset=self.bus.index(w), array=True) for w in self.bus])
+        return "".join([f"  assign {self.prefix}[{self.bus.index(w)}] = {w.return_wire_value_v_hier()}" for w in self.bus])
+
+    def get_unique_assign_out_wires_v(self):
+        """Returns bus's wires used for hierarchical one bit subcomponent's function block invocation and output wires assignments.
+
+        Returns:
+            str: Verilog code unique bus wires for proper subcomponent's function block invocation.
+        """
+        unique_out_wires = []
+        [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
+        return "".join([f", {unique_out_wires.pop(unique_out_wires.index(o.prefix))}" if o.prefix in unique_out_wires else "" for o in self.bus])
 
     """ BLIF CODE GENERATION """
     def get_wire_declaration_blif(self, array: bool = True):
-        """Declare each wire from the bus independently.
+        """Declare each wire from the bus independently in Blif code representation.
 
-        Argument `array` specifies whether to declare wires from bus by their offset e.g. out[0]
-        or by their wire name e.g. out_0.
         Args:
-            array (bool, optional): Determines in which manner bus wire names are declared. Defaults to True.
+            array (bool, optional): Specifies whether to declare wires from bus by their offset e.g. out[0] or by their wire name e.g. out_0. Defaults to True.
 
         Returns:
-            str: Blif code for declaration of bus wires.
+            str: Blif code for declaration of individual bus wires.
         """
-        return "".join([w.get_declaration_blif(name=self.prefix, offset=self.bus.index(w), array=array) for w in self.bus])
+        return "".join([f" {w.get_declaration_blif(prefix=self.prefix, offset=self.bus.index(w), array=array)}" for w in self.bus])
 
     def get_wire_assign_blif(self, output: bool = False):
-        """Assign all bits from the bus as each individual wires in Blif code.
+        """Assign all bits from the bus as each individual wires or assign wires into the corresponding output bus position in Blif code representation.
 
         Args:
-            output (bool, optional): Specifies whether bus wires are used as outputs (assigned to) or as inputs (assigned from). Defaults to False.
+            output (bool, optional): Specifies whether bus wires are used as outputs (True, assigned to) or as inputs (False, assigned from). Defaults to False.
 
         Returns:
             str: Blif code for bus wires assignments.
         """
-        return "".join([w.get_assign_blif(name=self.prefix+f"[{self.bus.index(w)}]", output=output) for w in self.bus])
+        return "".join([w.get_assign_blif(prefix=self.prefix+f"[{self.bus.index(w)}]", output=output) for w in self.bus])
+
+    def get_unique_assign_out_wires_blif(self, function_block_out_bus: object):
+        """Assigns unique output wires to their respective outputs of subcomponent's function block modul in hierarchical Blif subcomponent's invocation.
+
+        Args:
+            function_block_out_bus (object): Specifies output bus of corresponding function block's outputs for proper subcomponent modul invocation.
+
+        Returns:
+            str: Blif code for proper subcomponent's function block invocation with respective output wires assignment.
+        """
+        unique_out_wires = []
+        [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
+        return "".join([f" {function_block_out_bus.get_wire(self.bus.index(o)).name}={unique_out_wires.pop(unique_out_wires.index(o.prefix))}" if o.prefix in unique_out_wires else "" for o in self.bus])

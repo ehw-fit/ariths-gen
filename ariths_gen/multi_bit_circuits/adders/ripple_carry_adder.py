@@ -1,21 +1,20 @@
 from ariths_gen.wire_components import (
     Wire,
+    ConstantWireValue0,
+    ConstantWireValue1,
     Bus
 )
-from ariths_gen.core import (
+from ariths_gen.core.arithmetic_circuits import (
     ArithmeticCircuit,
     MultiplierCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     PGLogicBlock,
-    ConstantWireValue0,
-    ConstantWireValue1,
     FullAdder,
     FullAdderPG
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    LogicGate,
     AndGate,
     NandGate,
     OrGate,
@@ -65,7 +64,7 @@ class UnsignedRippleCarryAdder(ArithmeticCircuit):
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Output wires for N sum bits and additional cout bit
-        self.out = Bus("out", self.N+1)
+        self.out = Bus(self.prefix+"_out", self.N+1)
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):
@@ -115,8 +114,8 @@ class SignedRippleCarryAdder(UnsignedRippleCarryAdder, ArithmeticCircuit):
         self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
-        sign_xor_1 = XorGate(self.get_previous_component(1).a, self.get_previous_component(1).b, prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)))
+        sign_xor_1 = XorGate(self.get_previous_component(1).a, self.get_previous_component(1).b, prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
         self.add_component(sign_xor_1)
-        sign_xor_2 = XorGate(sign_xor_1.out, self.get_previous_component(2).get_carry_wire(), prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)))
+        sign_xor_2 = XorGate(sign_xor_1.out, self.get_previous_component(2).get_carry_wire(), prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
         self.add_component(sign_xor_2)
         self.out.connect(self.N, sign_xor_2.out)

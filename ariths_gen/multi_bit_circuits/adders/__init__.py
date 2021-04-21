@@ -12,3 +12,8 @@ from ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder import(
     UnsignedCarryLookaheadAdder,
     SignedCarryLookaheadAdder
 )
+
+from ariths_gen.multi_bit_circuits.adders.carry_skip_adder import(
+    UnsignedCarrySkipAdder,
+    SignedCarrySkipAdder
+)

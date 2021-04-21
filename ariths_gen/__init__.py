@@ -10,5 +10,6 @@ from ariths_gen.one_bit_circuits import(
 
 from ariths_gen.multi_bit_circuits import(
     adders,
-    multipliers
+    multipliers,
+    dividers
 )
