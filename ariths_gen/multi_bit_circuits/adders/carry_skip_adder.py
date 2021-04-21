@@ -35,7 +35,7 @@ class UnsignedCarrySkipAdder(ArithmeticCircuit):
 
     Unsigned carry skip (bypass) adder represents faster adder circuit which is composed
     of more complex circuitry but provides much less propagation delay as opposed to rca.
-    
+
     Each carry bypass block is composed of these logic parts:
     Propagate XOR gates compute propagate signals of corresponding bit pairs, these signals
     are then combined in multiple input AND gate (cascaded two input gates).
@@ -44,22 +44,23 @@ class UnsignedCarrySkipAdder(ArithmeticCircuit):
     Finally multiplexer lies at the end of each carry bypass block and is used to propagate block's input carry
     if multiple input AND gate output, which serves as select signal, is 1 or to wait for rippling of cout from the block's adders if it is 0.
 
-    ```TODO
-      B3 A3      B2 A2      B1 A1      B0 A0
-      │  │       │  │       │  │       │  │
-    ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
-    │  PG  │   │  PG  │   │  PG  │   │  PG  │
-    │ block│   │ block│   │ block│   │ block│
-    │      │   │      │   │      │   │      │
-    └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘
-      │││G3P3S3  │││G2P2S2  │││G1P1S1  │││G0P0S0
-    ┌─▼▼▼────────▼▼▼────────▼▼▼────────▼▼▼──┐
-    │         Carry Lookahead logic         │
-    │                                       │
-    └┬────┬───────┬──────────┬──────────┬───┘
-     │    │       │          │          │
-     ▼    ▼       ▼          ▼          ▼
-    Cout  S3      S1         S0         S0
+    ```
+                     ┼   ┼                      ┼   ┼
+                 ┌───▼───▼───┐              ┌───▼───▼───┐
+            ┌────┤ Propagate │         ┌────┤ Propagate │
+            │SEL │  signals  │         │SEL │  signals  │
+       ┌────▼─┐  └───────────┘    ┌────▼─┐  └───────────┘
+       │      │                   │      │
+    ┌──┤2:1MUX│◄────────────────┬─┤2:1MUX│◄────────────────┬─Cin
+    │  │      │                 │ │      │                 │
+    │  └────▲─┘      ┼   ┼      │ └────▲─┘      ┼   ┼      │
+    │       │    ┌───▼───▼───┐  │      │    ┌───▼───▼───┐  │
+    │       │    │  Adders   │◄─┘      │    │  Adders   │◄─┘
+    │       └────┤           │         └────┤           │
+    │            └─────┬─────┘              └─────┬─────┘
+    │                  │                          │
+    ▼                  ▼                          ▼
+    Cout               Sums                       Sums
     ```
 
     Description of the __init__ method.
@@ -103,7 +104,7 @@ class UnsignedCarrySkipAdder(ArithmeticCircuit):
                     obj_adder = HalfAdder(a=self.a.get_wire((N_blocks*bypass_block_size)+i), b=self.b.get_wire((N_blocks*bypass_block_size)+i), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
                 else:
                     obj_adder = FullAdder(a=self.a.get_wire((N_blocks*bypass_block_size)+i), b=self.b.get_wire((N_blocks*bypass_block_size)+i), c=cout, prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
-                
+
                 cout = obj_adder.get_carry_wire()
                 self.add_component(obj_adder)
                 # Connecting adder's output sum bit to its proper position within the described circuit's output bus
@@ -131,7 +132,7 @@ class SignedCarrySkipAdder(UnsignedCarrySkipAdder, ArithmeticCircuit):
 
     Signed carry skip (bypass) adder represents faster adder circuit which is composed
     of more complex circuitry but provides much less propagation delay as opposed to rca.
-    
+
     Each carry bypass block is composed of these logic parts:
     Propagate XOR gates compute propagate signals of corresponding bit pairs, these signals
     are then combined in multiple input AND gate (cascaded two input gates).
@@ -139,25 +140,26 @@ class SignedCarrySkipAdder(UnsignedCarrySkipAdder, ArithmeticCircuit):
     additionally these adders compute individual output sum bits.
     Finally multiplexer lies at the end of each carry bypass block and is used to propagate block's input carry
     if multiple input AND gate output, which serves as select signal, is 1 or to wait for rippling of cout from the block's adders if it is 0.
-    
+
     At last XOR gates are used to ensure proper sign extension.
 
-    ```TODO
-      B3 A3      B2 A2      B1 A1      B0 A0
-      │  │       │  │       │  │       │  │
-    ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
-    │  PG  │   │  PG  │   │  PG  │   │  PG  │
-    │ block│   │ block│   │ block│   │ block│
-    │      │   │      │   │      │   │      │
-    └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘
-      │││G3P3S3  │││G2P2S2  │││G1P1S1  │││G0P0S0
-    ┌─▼▼▼────────▼▼▼────────▼▼▼────────▼▼▼──┐
-    │         Carry Lookahead logic         │
-    │          with sign extension          │
-    └┬────┬───────┬──────────┬──────────┬───┘
-     │    │       │          │          │
-     ▼    ▼       ▼          ▼          ▼
-    Cout  S3      S1         S0         S0
+    ```
+                       ┼   ┼                      ┼   ┼
+                   ┌───▼───▼───┐              ┌───▼───▼───┐
+              ┌────┤ Propagate │         ┌────┤ Propagate │
+              │SEL │  signals  │         │SEL │  signals  │
+         ┌────▼─┐  └───────────┘    ┌────▼─┐  └───────────┘
+         │      │                   │      │
+       ┌─┤2:1MUX│◄────────────────┬─┤2:1MUX│◄────────────────┬─Cin
+       │ │      │                 │ │      │                 │
+       │ └────▲─┘      ┼   ┼      │ └────▲─┘      ┼   ┼      │
+    ┌──▼───┐  │    ┌───▼───▼───┐  │      │    ┌───▼───▼───┐  │
+    │ SIGN │  │    │  Adders   │◄─┘      │    │  Adders   │◄─┘
+    │Extend│  └────┤           │         └────┤           │
+    └──┬───┘       └─────┬─────┘              └─────┬─────┘
+       │                 │                          │
+       ▼                 ▼                          ▼
+      Cout              Sums                       Sums
     ```
 
     Description of the __init__ method.

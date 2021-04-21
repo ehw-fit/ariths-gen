@@ -7,11 +7,11 @@ class AndGate(TwoInputLogicGate):
     """Class representing two input AND gate.
 
     ```
-       ┌──────┐
-    ──►│  &   │
-       │      ├─►
-    ──►│      │
-       └──────┘
+        ┌──────┐
+    ───►│  &   │
+        │      ├─►
+    ───►│      │
+        └──────┘
     ```
 
     Description of the __init__ method.
@@ -66,11 +66,11 @@ class NandGate(TwoInputInvertedLogicGate):
     """Class representing two input NAND gate.
 
     ```
-       ┌──────┐
-    ──►│ &    │
-       │      │O──►
-    ──►│      │
-       └──────┘
+        ┌──────┐
+    ───►│ &    │
+        │      │O──►
+    ───►│      │
+        └──────┘
     ```
 
     Description of the __init__ method.
@@ -129,11 +129,11 @@ class OrGate(TwoInputLogicGate):
     """Class representing two input OR gate.
 
     ```
-       ┌──────┐
-    ──►│ ≥1   │
-       │      ├─►
-    ──►│      │
-       └──────┘
+        ┌──────┐
+    ───►│ ≥1   │
+        │      ├─►
+    ───►│      │
+        └──────┘
     ```
 
     Description of the __init__ method.
@@ -188,11 +188,11 @@ class NorGate(TwoInputInvertedLogicGate):
     """Class representing two input NOR gate.
 
     ```
-       ┌──────┐
-    ──►│ ≥1   │
-       │      │O──►
-    ──►│      │
-       └──────┘
+        ┌──────┐
+    ───►│ ≥1   │
+        │      │O──►
+    ───►│      │
+        └──────┘
     ```
 
     Description of the __init__ method.
@@ -251,11 +251,11 @@ class XorGate(TwoInputLogicGate):
     """Class representing two input XOR gate.
 
     ```
-       ┌──────┐
-    ──►│ =1   │
-       │      ├─►
-    ──►│      │
-       └──────┘
+        ┌──────┐
+    ───►│ =1   │
+        │      ├─►
+    ───►│      │
+        └──────┘
     ```
 
     Description of the __init__ method.
@@ -314,11 +314,11 @@ class XnorGate(TwoInputInvertedLogicGate):
     """Class representing two input XNOR gate.
 
     ```
-       ┌──────┐
-    ──►│ =1   │
-       │      │O──►
-    ──►│      │
-       └──────┘
+        ┌──────┐
+    ───►│ =1   │
+        │      │O──►
+    ───►│      │
+        └──────┘
     ```
 
     Description of the __init__ method.
@@ -378,11 +378,11 @@ class NotGate(OneInputLogicGate):
     """Class representing one input NOT gate.
 
     ```
-       ┌──────┐
-       │  1   │
-    ──►│      │O─►
-       │      │
-       └──────┘
+        ┌──────┐
+        │  1   │
+    ───►│      │O─►
+        │      │
+        └──────┘
     ```
 
     Description of the __init__ method.

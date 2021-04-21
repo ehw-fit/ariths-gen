@@ -35,6 +35,9 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     of more complex circuitry but provides much less propagation delay as opposed to rca.
     It is mainly composed of propagate/generate blocks and many AND/OR gates to calculate carries individually.
 
+    Class enables to choose the size of composite inner cla blocks (default is 4). These cla blocks are then cascaded
+    to form the final N bit adder.
+
     ```
       B3 A3      B2 A2      B1 A1      B0 A0
       │  │       │  │       │  │       │  │
@@ -58,10 +61,10 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
+        cla_block_size (int, optional): Size of each composite cla adder block size. Defaults to 4.
         prefix (str, optional): Prefix name of unsigned cla. Defaults to "u_cla".
     """
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "u_cla"):
-        #TODO
         super().__init__()
         self.N = max(a.N, b.N)
         self.prefix = prefix
@@ -143,7 +146,6 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
             N_wires -= block_size
             N_blocks += 1
 
-
         # Connection of final Cout
         self.out.connect(self.N, cin)
 
@@ -154,6 +156,9 @@ class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
     Signed carry-lookahead adder represents faster adder circuit which is composed
     of more complex circuitry but provides much less propagation delay as opposed to rca.
     It is mainly composed of propagate/generate blocks and many AND/OR gates to calculate carries individually.
+
+    Class enables to choose the size of composite inner cla blocks (default is 4). These cla blocks are then cascaded
+    to form the final N bit adder.
     At last XOR gates are used to ensure proper sign extension.
 
     ```
@@ -179,6 +184,7 @@ class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
+        cla_block_size (int, optional): Size of each composite cla adder block size. Defaults to 4.
         prefix (str, optional): Prefix name of signed cla. Defaults to "s_cla".
     """
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "s_cla"):
