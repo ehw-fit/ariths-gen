@@ -1,310 +1,160 @@
 .model h_u_wallace_rca4
-.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
-.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7]
-.names a[0] a_0
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs h_u_wallace_rca4_out[0] h_u_wallace_rca4_out[1] h_u_wallace_rca4_out[2] h_u_wallace_rca4_out[3] h_u_wallace_rca4_out[4] h_u_wallace_rca4_out[5] h_u_wallace_rca4_out[6] h_u_wallace_rca4_out[7]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[2] b=b[0] out=h_u_wallace_rca4_and_2_0
+.subckt and_gate a=a[1] b=b[1] out=h_u_wallace_rca4_and_1_1
+.subckt ha a=h_u_wallace_rca4_and_2_0 b=h_u_wallace_rca4_and_1_1 ha_xor0=h_u_wallace_rca4_ha0_xor0 ha_and0=h_u_wallace_rca4_ha0_and0
+.subckt and_gate a=a[3] b=b[0] out=h_u_wallace_rca4_and_3_0
+.subckt and_gate a=a[2] b=b[1] out=h_u_wallace_rca4_and_2_1
+.subckt fa a=h_u_wallace_rca4_ha0_and0 b=h_u_wallace_rca4_and_3_0 cin=h_u_wallace_rca4_and_2_1 fa_xor1=h_u_wallace_rca4_fa0_xor1 fa_or0=h_u_wallace_rca4_fa0_or0
+.subckt and_gate a=a[3] b=b[1] out=h_u_wallace_rca4_and_3_1
+.subckt and_gate a=a[2] b=b[2] out=h_u_wallace_rca4_and_2_2
+.subckt fa a=h_u_wallace_rca4_fa0_or0 b=h_u_wallace_rca4_and_3_1 cin=h_u_wallace_rca4_and_2_2 fa_xor1=h_u_wallace_rca4_fa1_xor1 fa_or0=h_u_wallace_rca4_fa1_or0
+.subckt and_gate a=a[1] b=b[2] out=h_u_wallace_rca4_and_1_2
+.subckt and_gate a=a[0] b=b[3] out=h_u_wallace_rca4_and_0_3
+.subckt ha a=h_u_wallace_rca4_and_1_2 b=h_u_wallace_rca4_and_0_3 ha_xor0=h_u_wallace_rca4_ha1_xor0 ha_and0=h_u_wallace_rca4_ha1_and0
+.subckt and_gate a=a[1] b=b[3] out=h_u_wallace_rca4_and_1_3
+.subckt ha a=h_u_wallace_rca4_ha1_and0 b=h_u_wallace_rca4_and_1_3 ha_xor0=h_u_wallace_rca4_ha2_xor0 ha_and0=h_u_wallace_rca4_ha2_and0
+.subckt and_gate a=a[3] b=b[2] out=h_u_wallace_rca4_and_3_2
+.subckt fa a=h_u_wallace_rca4_ha2_and0 b=h_u_wallace_rca4_fa1_or0 cin=h_u_wallace_rca4_and_3_2 fa_xor1=h_u_wallace_rca4_fa2_xor1 fa_or0=h_u_wallace_rca4_fa2_or0
+.subckt and_gate a=a[0] b=b[0] out=h_u_wallace_rca4_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=h_u_wallace_rca4_and_1_0
+.subckt and_gate a=a[0] b=b[2] out=h_u_wallace_rca4_and_0_2
+.subckt and_gate a=a[2] b=b[3] out=h_u_wallace_rca4_and_2_3
+.subckt and_gate a=a[0] b=b[1] out=h_u_wallace_rca4_and_0_1
+.subckt and_gate a=a[3] b=b[3] out=h_u_wallace_rca4_and_3_3
+.names h_u_wallace_rca4_and_1_0 h_u_wallace_rca4_u_rca6_a[0]
 1 1
-.names a[1] a_1
+.names h_u_wallace_rca4_and_0_2 h_u_wallace_rca4_u_rca6_a[1]
 1 1
-.names a[2] a_2
+.names h_u_wallace_rca4_fa0_xor1 h_u_wallace_rca4_u_rca6_a[2]
 1 1
-.names a[3] a_3
+.names h_u_wallace_rca4_fa1_xor1 h_u_wallace_rca4_u_rca6_a[3]
 1 1
-.names b[0] b_0
+.names h_u_wallace_rca4_and_2_3 h_u_wallace_rca4_u_rca6_a[4]
 1 1
-.names b[1] b_1
+.names h_u_wallace_rca4_fa2_or0 h_u_wallace_rca4_u_rca6_a[5]
 1 1
-.names b[2] b_2
+.names h_u_wallace_rca4_and_0_1 h_u_wallace_rca4_u_rca6_b[0]
 1 1
-.names b[3] b_3
+.names h_u_wallace_rca4_ha0_xor0 h_u_wallace_rca4_u_rca6_b[1]
 1 1
-.names a_2 h_u_wallace_rca4_and_2_0_a_2
+.names h_u_wallace_rca4_ha1_xor0 h_u_wallace_rca4_u_rca6_b[2]
 1 1
-.names b_0 h_u_wallace_rca4_and_2_0_b_0
+.names h_u_wallace_rca4_ha2_xor0 h_u_wallace_rca4_u_rca6_b[3]
 1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_2_0_a_2 _b=h_u_wallace_rca4_and_2_0_b_0 _y0=h_u_wallace_rca4_and_2_0_y0
-.names a_1 h_u_wallace_rca4_and_1_1_a_1
+.names h_u_wallace_rca4_fa2_xor1 h_u_wallace_rca4_u_rca6_b[4]
 1 1
-.names b_1 h_u_wallace_rca4_and_1_1_b_1
+.names h_u_wallace_rca4_and_3_3 h_u_wallace_rca4_u_rca6_b[5]
 1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_1_1_a_1 _b=h_u_wallace_rca4_and_1_1_b_1 _y0=h_u_wallace_rca4_and_1_1_y0
-.names h_u_wallace_rca4_and_2_0_y0 h_u_wallace_rca4_ha0_h_u_wallace_rca4_and_2_0_y0
+.subckt u_rca6 a[0]=h_u_wallace_rca4_u_rca6_a[0] a[1]=h_u_wallace_rca4_u_rca6_a[1] a[2]=h_u_wallace_rca4_u_rca6_a[2] a[3]=h_u_wallace_rca4_u_rca6_a[3] a[4]=h_u_wallace_rca4_u_rca6_a[4] a[5]=h_u_wallace_rca4_u_rca6_a[5] b[0]=h_u_wallace_rca4_u_rca6_b[0] b[1]=h_u_wallace_rca4_u_rca6_b[1] b[2]=h_u_wallace_rca4_u_rca6_b[2] b[3]=h_u_wallace_rca4_u_rca6_b[3] b[4]=h_u_wallace_rca4_u_rca6_b[4] b[5]=h_u_wallace_rca4_u_rca6_b[5] u_rca6_out[0]=h_u_wallace_rca4_u_rca6_ha_xor0 u_rca6_out[1]=h_u_wallace_rca4_u_rca6_fa1_xor1 u_rca6_out[2]=h_u_wallace_rca4_u_rca6_fa2_xor1 u_rca6_out[3]=h_u_wallace_rca4_u_rca6_fa3_xor1 u_rca6_out[4]=h_u_wallace_rca4_u_rca6_fa4_xor1 u_rca6_out[5]=h_u_wallace_rca4_u_rca6_fa5_xor1 u_rca6_out[6]=h_u_wallace_rca4_u_rca6_fa5_or0
+.names h_u_wallace_rca4_and_0_0 h_u_wallace_rca4_out[0]
 1 1
-.names h_u_wallace_rca4_and_1_1_y0 h_u_wallace_rca4_ha0_h_u_wallace_rca4_and_1_1_y0
+.names h_u_wallace_rca4_u_rca6_ha_xor0 h_u_wallace_rca4_out[1]
 1 1
-.subckt ha a=h_u_wallace_rca4_ha0_h_u_wallace_rca4_and_2_0_y0 b=h_u_wallace_rca4_ha0_h_u_wallace_rca4_and_1_1_y0 ha_y0=h_u_wallace_rca4_ha0_y0 ha_y1=h_u_wallace_rca4_ha0_y1
-.names a_3 h_u_wallace_rca4_and_3_0_a_3
+.names h_u_wallace_rca4_u_rca6_fa1_xor1 h_u_wallace_rca4_out[2]
 1 1
-.names b_0 h_u_wallace_rca4_and_3_0_b_0
+.names h_u_wallace_rca4_u_rca6_fa2_xor1 h_u_wallace_rca4_out[3]
 1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_3_0_a_3 _b=h_u_wallace_rca4_and_3_0_b_0 _y0=h_u_wallace_rca4_and_3_0_y0
-.names a_2 h_u_wallace_rca4_and_2_1_a_2
+.names h_u_wallace_rca4_u_rca6_fa3_xor1 h_u_wallace_rca4_out[4]
 1 1
-.names b_1 h_u_wallace_rca4_and_2_1_b_1
+.names h_u_wallace_rca4_u_rca6_fa4_xor1 h_u_wallace_rca4_out[5]
 1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_2_1_a_2 _b=h_u_wallace_rca4_and_2_1_b_1 _y0=h_u_wallace_rca4_and_2_1_y0
-.names h_u_wallace_rca4_ha0_y1 h_u_wallace_rca4_fa0_h_u_wallace_rca4_ha0_y1
+.names h_u_wallace_rca4_u_rca6_fa5_xor1 h_u_wallace_rca4_out[6]
 1 1
-.names h_u_wallace_rca4_and_3_0_y0 h_u_wallace_rca4_fa0_h_u_wallace_rca4_and_3_0_y0
-1 1
-.names h_u_wallace_rca4_and_2_1_y0 h_u_wallace_rca4_fa0_h_u_wallace_rca4_and_2_1_y0
-1 1
-.subckt fa a=h_u_wallace_rca4_fa0_h_u_wallace_rca4_ha0_y1 b=h_u_wallace_rca4_fa0_h_u_wallace_rca4_and_3_0_y0 cin=h_u_wallace_rca4_fa0_h_u_wallace_rca4_and_2_1_y0 fa_y2=h_u_wallace_rca4_fa0_y2 fa_y4=h_u_wallace_rca4_fa0_y4
-.names a_3 h_u_wallace_rca4_and_3_1_a_3
-1 1
-.names b_1 h_u_wallace_rca4_and_3_1_b_1
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_3_1_a_3 _b=h_u_wallace_rca4_and_3_1_b_1 _y0=h_u_wallace_rca4_and_3_1_y0
-.names a_2 h_u_wallace_rca4_and_2_2_a_2
-1 1
-.names b_2 h_u_wallace_rca4_and_2_2_b_2
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_2_2_a_2 _b=h_u_wallace_rca4_and_2_2_b_2 _y0=h_u_wallace_rca4_and_2_2_y0
-.names h_u_wallace_rca4_fa0_y4 h_u_wallace_rca4_fa1_h_u_wallace_rca4_fa0_y4
-1 1
-.names h_u_wallace_rca4_and_3_1_y0 h_u_wallace_rca4_fa1_h_u_wallace_rca4_and_3_1_y0
-1 1
-.names h_u_wallace_rca4_and_2_2_y0 h_u_wallace_rca4_fa1_h_u_wallace_rca4_and_2_2_y0
-1 1
-.subckt fa a=h_u_wallace_rca4_fa1_h_u_wallace_rca4_fa0_y4 b=h_u_wallace_rca4_fa1_h_u_wallace_rca4_and_3_1_y0 cin=h_u_wallace_rca4_fa1_h_u_wallace_rca4_and_2_2_y0 fa_y2=h_u_wallace_rca4_fa1_y2 fa_y4=h_u_wallace_rca4_fa1_y4
-.names a_1 h_u_wallace_rca4_and_1_2_a_1
-1 1
-.names b_2 h_u_wallace_rca4_and_1_2_b_2
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_1_2_a_1 _b=h_u_wallace_rca4_and_1_2_b_2 _y0=h_u_wallace_rca4_and_1_2_y0
-.names a_0 h_u_wallace_rca4_and_0_3_a_0
-1 1
-.names b_3 h_u_wallace_rca4_and_0_3_b_3
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_0_3_a_0 _b=h_u_wallace_rca4_and_0_3_b_3 _y0=h_u_wallace_rca4_and_0_3_y0
-.names h_u_wallace_rca4_and_1_2_y0 h_u_wallace_rca4_ha1_h_u_wallace_rca4_and_1_2_y0
-1 1
-.names h_u_wallace_rca4_and_0_3_y0 h_u_wallace_rca4_ha1_h_u_wallace_rca4_and_0_3_y0
-1 1
-.subckt ha a=h_u_wallace_rca4_ha1_h_u_wallace_rca4_and_1_2_y0 b=h_u_wallace_rca4_ha1_h_u_wallace_rca4_and_0_3_y0 ha_y0=h_u_wallace_rca4_ha1_y0 ha_y1=h_u_wallace_rca4_ha1_y1
-.names a_1 h_u_wallace_rca4_and_1_3_a_1
-1 1
-.names b_3 h_u_wallace_rca4_and_1_3_b_3
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_1_3_a_1 _b=h_u_wallace_rca4_and_1_3_b_3 _y0=h_u_wallace_rca4_and_1_3_y0
-.names h_u_wallace_rca4_ha1_y1 h_u_wallace_rca4_ha2_h_u_wallace_rca4_ha1_y1
-1 1
-.names h_u_wallace_rca4_and_1_3_y0 h_u_wallace_rca4_ha2_h_u_wallace_rca4_and_1_3_y0
-1 1
-.subckt ha a=h_u_wallace_rca4_ha2_h_u_wallace_rca4_ha1_y1 b=h_u_wallace_rca4_ha2_h_u_wallace_rca4_and_1_3_y0 ha_y0=h_u_wallace_rca4_ha2_y0 ha_y1=h_u_wallace_rca4_ha2_y1
-.names a_3 h_u_wallace_rca4_and_3_2_a_3
-1 1
-.names b_2 h_u_wallace_rca4_and_3_2_b_2
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_3_2_a_3 _b=h_u_wallace_rca4_and_3_2_b_2 _y0=h_u_wallace_rca4_and_3_2_y0
-.names h_u_wallace_rca4_ha2_y1 h_u_wallace_rca4_fa2_h_u_wallace_rca4_ha2_y1
-1 1
-.names h_u_wallace_rca4_fa1_y4 h_u_wallace_rca4_fa2_h_u_wallace_rca4_fa1_y4
-1 1
-.names h_u_wallace_rca4_and_3_2_y0 h_u_wallace_rca4_fa2_h_u_wallace_rca4_and_3_2_y0
-1 1
-.subckt fa a=h_u_wallace_rca4_fa2_h_u_wallace_rca4_ha2_y1 b=h_u_wallace_rca4_fa2_h_u_wallace_rca4_fa1_y4 cin=h_u_wallace_rca4_fa2_h_u_wallace_rca4_and_3_2_y0 fa_y2=h_u_wallace_rca4_fa2_y2 fa_y4=h_u_wallace_rca4_fa2_y4
-.names a_0 h_u_wallace_rca4_and_0_0_a_0
-1 1
-.names b_0 h_u_wallace_rca4_and_0_0_b_0
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_0_0_a_0 _b=h_u_wallace_rca4_and_0_0_b_0 _y0=h_u_wallace_rca4_and_0_0_y0
-.names a_1 h_u_wallace_rca4_and_1_0_a_1
-1 1
-.names b_0 h_u_wallace_rca4_and_1_0_b_0
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_1_0_a_1 _b=h_u_wallace_rca4_and_1_0_b_0 _y0=h_u_wallace_rca4_and_1_0_y0
-.names a_0 h_u_wallace_rca4_and_0_2_a_0
-1 1
-.names b_2 h_u_wallace_rca4_and_0_2_b_2
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_0_2_a_0 _b=h_u_wallace_rca4_and_0_2_b_2 _y0=h_u_wallace_rca4_and_0_2_y0
-.names a_2 h_u_wallace_rca4_and_2_3_a_2
-1 1
-.names b_3 h_u_wallace_rca4_and_2_3_b_3
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_2_3_a_2 _b=h_u_wallace_rca4_and_2_3_b_3 _y0=h_u_wallace_rca4_and_2_3_y0
-.names a_0 h_u_wallace_rca4_and_0_1_a_0
-1 1
-.names b_1 h_u_wallace_rca4_and_0_1_b_1
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_0_1_a_0 _b=h_u_wallace_rca4_and_0_1_b_1 _y0=h_u_wallace_rca4_and_0_1_y0
-.names a_3 h_u_wallace_rca4_and_3_3_a_3
-1 1
-.names b_3 h_u_wallace_rca4_and_3_3_b_3
-1 1
-.subckt and_gate _a=h_u_wallace_rca4_and_3_3_a_3 _b=h_u_wallace_rca4_and_3_3_b_3 _y0=h_u_wallace_rca4_and_3_3_y0
-.names h_u_wallace_rca4_and_1_0_y0 h_u_wallace_rca4_u_rca6_u_rca6_a[0]
-1 1
-.names h_u_wallace_rca4_and_0_2_y0 h_u_wallace_rca4_u_rca6_u_rca6_a[1]
-1 1
-.names h_u_wallace_rca4_fa0_y2 h_u_wallace_rca4_u_rca6_u_rca6_a[2]
-1 1
-.names h_u_wallace_rca4_fa1_y2 h_u_wallace_rca4_u_rca6_u_rca6_a[3]
-1 1
-.names h_u_wallace_rca4_and_2_3_y0 h_u_wallace_rca4_u_rca6_u_rca6_a[4]
-1 1
-.names h_u_wallace_rca4_fa2_y4 h_u_wallace_rca4_u_rca6_u_rca6_a[5]
-1 1
-.names h_u_wallace_rca4_and_0_1_y0 h_u_wallace_rca4_u_rca6_u_rca6_b[0]
-1 1
-.names h_u_wallace_rca4_ha0_y0 h_u_wallace_rca4_u_rca6_u_rca6_b[1]
-1 1
-.names h_u_wallace_rca4_ha1_y0 h_u_wallace_rca4_u_rca6_u_rca6_b[2]
-1 1
-.names h_u_wallace_rca4_ha2_y0 h_u_wallace_rca4_u_rca6_u_rca6_b[3]
-1 1
-.names h_u_wallace_rca4_fa2_y2 h_u_wallace_rca4_u_rca6_u_rca6_b[4]
-1 1
-.names h_u_wallace_rca4_and_3_3_y0 h_u_wallace_rca4_u_rca6_u_rca6_b[5]
-1 1
-.subckt u_rca6 a[0]=h_u_wallace_rca4_u_rca6_u_rca6_a[0] a[1]=h_u_wallace_rca4_u_rca6_u_rca6_a[1] a[2]=h_u_wallace_rca4_u_rca6_u_rca6_a[2] a[3]=h_u_wallace_rca4_u_rca6_u_rca6_a[3] a[4]=h_u_wallace_rca4_u_rca6_u_rca6_a[4] a[5]=h_u_wallace_rca4_u_rca6_u_rca6_a[5] b[0]=h_u_wallace_rca4_u_rca6_u_rca6_b[0] b[1]=h_u_wallace_rca4_u_rca6_u_rca6_b[1] b[2]=h_u_wallace_rca4_u_rca6_u_rca6_b[2] b[3]=h_u_wallace_rca4_u_rca6_u_rca6_b[3] b[4]=h_u_wallace_rca4_u_rca6_u_rca6_b[4] b[5]=h_u_wallace_rca4_u_rca6_u_rca6_b[5] out[0]=h_u_wallace_rca4_u_rca6_ha_y0 out[1]=h_u_wallace_rca4_u_rca6_fa1_y2 out[2]=h_u_wallace_rca4_u_rca6_fa2_y2 out[3]=h_u_wallace_rca4_u_rca6_fa3_y2 out[4]=h_u_wallace_rca4_u_rca6_fa4_y2 out[5]=h_u_wallace_rca4_u_rca6_fa5_y2 out[6]=h_u_wallace_rca4_u_rca6_fa5_y4
-.names h_u_wallace_rca4_and_0_0_y0 out[0]
-1 1
-.names h_u_wallace_rca4_u_rca6_ha_y0 out[1]
-1 1
-.names h_u_wallace_rca4_u_rca6_fa1_y2 out[2]
-1 1
-.names h_u_wallace_rca4_u_rca6_fa2_y2 out[3]
-1 1
-.names h_u_wallace_rca4_u_rca6_fa3_y2 out[4]
-1 1
-.names h_u_wallace_rca4_u_rca6_fa4_y2 out[5]
-1 1
-.names h_u_wallace_rca4_u_rca6_fa5_y2 out[6]
-1 1
-.names h_u_wallace_rca4_u_rca6_fa5_y4 out[7]
+.names h_u_wallace_rca4_u_rca6_fa5_or0 h_u_wallace_rca4_out[7]
 1 1
 .end
 
 .model u_rca6
-.inputs  a[0] a[1] a[2] a[3] a[4] a[5] b[0] b[1] b[2] b[3] b[4] b[5]
-.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6]
-.names a[0] a_0
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] b[0] b[1] b[2] b[3] b[4] b[5]
+.outputs u_rca6_out[0] u_rca6_out[1] u_rca6_out[2] u_rca6_out[3] u_rca6_out[4] u_rca6_out[5] u_rca6_out[6]
+.names vdd
+1
+.names gnd
+0
+.subckt ha a=a[0] b=b[0] ha_xor0=u_rca6_ha_xor0 ha_and0=u_rca6_ha_and0
+.subckt fa a=a[1] b=b[1] cin=u_rca6_ha_and0 fa_xor1=u_rca6_fa1_xor1 fa_or0=u_rca6_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=u_rca6_fa1_or0 fa_xor1=u_rca6_fa2_xor1 fa_or0=u_rca6_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=u_rca6_fa2_or0 fa_xor1=u_rca6_fa3_xor1 fa_or0=u_rca6_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=u_rca6_fa3_or0 fa_xor1=u_rca6_fa4_xor1 fa_or0=u_rca6_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=u_rca6_fa4_or0 fa_xor1=u_rca6_fa5_xor1 fa_or0=u_rca6_fa5_or0
+.names u_rca6_ha_xor0 u_rca6_out[0]
 1 1
-.names a[1] a_1
+.names u_rca6_fa1_xor1 u_rca6_out[1]
 1 1
-.names a[2] a_2
+.names u_rca6_fa2_xor1 u_rca6_out[2]
 1 1
-.names a[3] a_3
+.names u_rca6_fa3_xor1 u_rca6_out[3]
 1 1
-.names a[4] a_4
+.names u_rca6_fa4_xor1 u_rca6_out[4]
 1 1
-.names a[5] a_5
+.names u_rca6_fa5_xor1 u_rca6_out[5]
 1 1
-.names b[0] b_0
-1 1
-.names b[1] b_1
-1 1
-.names b[2] b_2
-1 1
-.names b[3] b_3
-1 1
-.names b[4] b_4
-1 1
-.names b[5] b_5
-1 1
-.names a_0 u_rca6_ha_a_0
-1 1
-.names b_0 u_rca6_ha_b_0
-1 1
-.subckt ha a=u_rca6_ha_a_0 b=u_rca6_ha_b_0 ha_y0=u_rca6_ha_y0 ha_y1=u_rca6_ha_y1
-.names a_1 u_rca6_fa1_a_1
-1 1
-.names b_1 u_rca6_fa1_b_1
-1 1
-.names u_rca6_ha_y1 u_rca6_fa1_u_rca6_ha_y1
-1 1
-.subckt fa a=u_rca6_fa1_a_1 b=u_rca6_fa1_b_1 cin=u_rca6_fa1_u_rca6_ha_y1 fa_y2=u_rca6_fa1_y2 fa_y4=u_rca6_fa1_y4
-.names a_2 u_rca6_fa2_a_2
-1 1
-.names b_2 u_rca6_fa2_b_2
-1 1
-.names u_rca6_fa1_y4 u_rca6_fa2_u_rca6_fa1_y4
-1 1
-.subckt fa a=u_rca6_fa2_a_2 b=u_rca6_fa2_b_2 cin=u_rca6_fa2_u_rca6_fa1_y4 fa_y2=u_rca6_fa2_y2 fa_y4=u_rca6_fa2_y4
-.names a_3 u_rca6_fa3_a_3
-1 1
-.names b_3 u_rca6_fa3_b_3
-1 1
-.names u_rca6_fa2_y4 u_rca6_fa3_u_rca6_fa2_y4
-1 1
-.subckt fa a=u_rca6_fa3_a_3 b=u_rca6_fa3_b_3 cin=u_rca6_fa3_u_rca6_fa2_y4 fa_y2=u_rca6_fa3_y2 fa_y4=u_rca6_fa3_y4
-.names a_4 u_rca6_fa4_a_4
-1 1
-.names b_4 u_rca6_fa4_b_4
-1 1
-.names u_rca6_fa3_y4 u_rca6_fa4_u_rca6_fa3_y4
-1 1
-.subckt fa a=u_rca6_fa4_a_4 b=u_rca6_fa4_b_4 cin=u_rca6_fa4_u_rca6_fa3_y4 fa_y2=u_rca6_fa4_y2 fa_y4=u_rca6_fa4_y4
-.names a_5 u_rca6_fa5_a_5
-1 1
-.names b_5 u_rca6_fa5_b_5
-1 1
-.names u_rca6_fa4_y4 u_rca6_fa5_u_rca6_fa4_y4
-1 1
-.subckt fa a=u_rca6_fa5_a_5 b=u_rca6_fa5_b_5 cin=u_rca6_fa5_u_rca6_fa4_y4 fa_y2=u_rca6_fa5_y2 fa_y4=u_rca6_fa5_y4
-.names u_rca6_ha_y0 out[0]
-1 1
-.names u_rca6_fa1_y2 out[1]
-1 1
-.names u_rca6_fa2_y2 out[2]
-1 1
-.names u_rca6_fa3_y2 out[3]
-1 1
-.names u_rca6_fa4_y2 out[4]
-1 1
-.names u_rca6_fa5_y2 out[5]
-1 1
-.names u_rca6_fa5_y4 out[6]
+.names u_rca6_fa5_or0 u_rca6_out[6]
 1 1
 .end
 
 .model fa
 .inputs a b cin
-.outputs fa_y2 fa_y4
-.names a fa_a
-1 1
-.names b fa_b
-1 1
-.names cin fa_cin
-1 1
-.subckt xor_gate _a=fa_a _b=fa_b _y0=fa_y0
-.subckt and_gate _a=fa_a _b=fa_b _y0=fa_y1
-.subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
-.subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
-.subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
 .end
 
 .model ha
 .inputs a b
-.outputs ha_y0 ha_y1
-.names a ha_a
-1 1
-.names b ha_b
-1 1
-.subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
-.subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
 .end
 
 .model or_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 1- 1
 -1 1
 .end
 
 .model xor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 01 1
 10 1
 .end
 
 .model and_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 11 1
 .end

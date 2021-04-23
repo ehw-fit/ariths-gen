@@ -1,7 +1,11 @@
 .model xnor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs xnor_gate
+.names vdd
+1
+.names gnd
+0
+.names a b xnor_gate
 00 1
 11 1
 .end

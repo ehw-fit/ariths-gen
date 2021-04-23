@@ -1,6 +1,10 @@
 .model and_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs and_gate
+.names vdd
+1
+.names gnd
+0
+.names a b and_gate
 11 1
 .end

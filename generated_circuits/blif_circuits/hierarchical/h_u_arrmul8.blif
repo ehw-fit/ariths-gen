@@ -1,814 +1,220 @@
 .model h_u_arrmul8
-.inputs  a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
-.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] out[12] out[13] out[14] out[15]
-.names a[0] a_0
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs h_u_arrmul8_out[0] h_u_arrmul8_out[1] h_u_arrmul8_out[2] h_u_arrmul8_out[3] h_u_arrmul8_out[4] h_u_arrmul8_out[5] h_u_arrmul8_out[6] h_u_arrmul8_out[7] h_u_arrmul8_out[8] h_u_arrmul8_out[9] h_u_arrmul8_out[10] h_u_arrmul8_out[11] h_u_arrmul8_out[12] h_u_arrmul8_out[13] h_u_arrmul8_out[14] h_u_arrmul8_out[15]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[0] b=b[0] out=h_u_arrmul8_and0_0
+.subckt and_gate a=a[1] b=b[0] out=h_u_arrmul8_and1_0
+.subckt and_gate a=a[2] b=b[0] out=h_u_arrmul8_and2_0
+.subckt and_gate a=a[3] b=b[0] out=h_u_arrmul8_and3_0
+.subckt and_gate a=a[4] b=b[0] out=h_u_arrmul8_and4_0
+.subckt and_gate a=a[5] b=b[0] out=h_u_arrmul8_and5_0
+.subckt and_gate a=a[6] b=b[0] out=h_u_arrmul8_and6_0
+.subckt and_gate a=a[7] b=b[0] out=h_u_arrmul8_and7_0
+.subckt and_gate a=a[0] b=b[1] out=h_u_arrmul8_and0_1
+.subckt ha a=h_u_arrmul8_and0_1 b=h_u_arrmul8_and1_0 ha_xor0=h_u_arrmul8_ha0_1_xor0 ha_and0=h_u_arrmul8_ha0_1_and0
+.subckt and_gate a=a[1] b=b[1] out=h_u_arrmul8_and1_1
+.subckt fa a=h_u_arrmul8_and1_1 b=h_u_arrmul8_and2_0 cin=h_u_arrmul8_ha0_1_and0 fa_xor1=h_u_arrmul8_fa1_1_xor1 fa_or0=h_u_arrmul8_fa1_1_or0
+.subckt and_gate a=a[2] b=b[1] out=h_u_arrmul8_and2_1
+.subckt fa a=h_u_arrmul8_and2_1 b=h_u_arrmul8_and3_0 cin=h_u_arrmul8_fa1_1_or0 fa_xor1=h_u_arrmul8_fa2_1_xor1 fa_or0=h_u_arrmul8_fa2_1_or0
+.subckt and_gate a=a[3] b=b[1] out=h_u_arrmul8_and3_1
+.subckt fa a=h_u_arrmul8_and3_1 b=h_u_arrmul8_and4_0 cin=h_u_arrmul8_fa2_1_or0 fa_xor1=h_u_arrmul8_fa3_1_xor1 fa_or0=h_u_arrmul8_fa3_1_or0
+.subckt and_gate a=a[4] b=b[1] out=h_u_arrmul8_and4_1
+.subckt fa a=h_u_arrmul8_and4_1 b=h_u_arrmul8_and5_0 cin=h_u_arrmul8_fa3_1_or0 fa_xor1=h_u_arrmul8_fa4_1_xor1 fa_or0=h_u_arrmul8_fa4_1_or0
+.subckt and_gate a=a[5] b=b[1] out=h_u_arrmul8_and5_1
+.subckt fa a=h_u_arrmul8_and5_1 b=h_u_arrmul8_and6_0 cin=h_u_arrmul8_fa4_1_or0 fa_xor1=h_u_arrmul8_fa5_1_xor1 fa_or0=h_u_arrmul8_fa5_1_or0
+.subckt and_gate a=a[6] b=b[1] out=h_u_arrmul8_and6_1
+.subckt fa a=h_u_arrmul8_and6_1 b=h_u_arrmul8_and7_0 cin=h_u_arrmul8_fa5_1_or0 fa_xor1=h_u_arrmul8_fa6_1_xor1 fa_or0=h_u_arrmul8_fa6_1_or0
+.subckt and_gate a=a[7] b=b[1] out=h_u_arrmul8_and7_1
+.subckt ha a=h_u_arrmul8_and7_1 b=h_u_arrmul8_fa6_1_or0 ha_xor0=h_u_arrmul8_ha7_1_xor0 ha_and0=h_u_arrmul8_ha7_1_and0
+.subckt and_gate a=a[0] b=b[2] out=h_u_arrmul8_and0_2
+.subckt ha a=h_u_arrmul8_and0_2 b=h_u_arrmul8_fa1_1_xor1 ha_xor0=h_u_arrmul8_ha0_2_xor0 ha_and0=h_u_arrmul8_ha0_2_and0
+.subckt and_gate a=a[1] b=b[2] out=h_u_arrmul8_and1_2
+.subckt fa a=h_u_arrmul8_and1_2 b=h_u_arrmul8_fa2_1_xor1 cin=h_u_arrmul8_ha0_2_and0 fa_xor1=h_u_arrmul8_fa1_2_xor1 fa_or0=h_u_arrmul8_fa1_2_or0
+.subckt and_gate a=a[2] b=b[2] out=h_u_arrmul8_and2_2
+.subckt fa a=h_u_arrmul8_and2_2 b=h_u_arrmul8_fa3_1_xor1 cin=h_u_arrmul8_fa1_2_or0 fa_xor1=h_u_arrmul8_fa2_2_xor1 fa_or0=h_u_arrmul8_fa2_2_or0
+.subckt and_gate a=a[3] b=b[2] out=h_u_arrmul8_and3_2
+.subckt fa a=h_u_arrmul8_and3_2 b=h_u_arrmul8_fa4_1_xor1 cin=h_u_arrmul8_fa2_2_or0 fa_xor1=h_u_arrmul8_fa3_2_xor1 fa_or0=h_u_arrmul8_fa3_2_or0
+.subckt and_gate a=a[4] b=b[2] out=h_u_arrmul8_and4_2
+.subckt fa a=h_u_arrmul8_and4_2 b=h_u_arrmul8_fa5_1_xor1 cin=h_u_arrmul8_fa3_2_or0 fa_xor1=h_u_arrmul8_fa4_2_xor1 fa_or0=h_u_arrmul8_fa4_2_or0
+.subckt and_gate a=a[5] b=b[2] out=h_u_arrmul8_and5_2
+.subckt fa a=h_u_arrmul8_and5_2 b=h_u_arrmul8_fa6_1_xor1 cin=h_u_arrmul8_fa4_2_or0 fa_xor1=h_u_arrmul8_fa5_2_xor1 fa_or0=h_u_arrmul8_fa5_2_or0
+.subckt and_gate a=a[6] b=b[2] out=h_u_arrmul8_and6_2
+.subckt fa a=h_u_arrmul8_and6_2 b=h_u_arrmul8_ha7_1_xor0 cin=h_u_arrmul8_fa5_2_or0 fa_xor1=h_u_arrmul8_fa6_2_xor1 fa_or0=h_u_arrmul8_fa6_2_or0
+.subckt and_gate a=a[7] b=b[2] out=h_u_arrmul8_and7_2
+.subckt fa a=h_u_arrmul8_and7_2 b=h_u_arrmul8_ha7_1_and0 cin=h_u_arrmul8_fa6_2_or0 fa_xor1=h_u_arrmul8_fa7_2_xor1 fa_or0=h_u_arrmul8_fa7_2_or0
+.subckt and_gate a=a[0] b=b[3] out=h_u_arrmul8_and0_3
+.subckt ha a=h_u_arrmul8_and0_3 b=h_u_arrmul8_fa1_2_xor1 ha_xor0=h_u_arrmul8_ha0_3_xor0 ha_and0=h_u_arrmul8_ha0_3_and0
+.subckt and_gate a=a[1] b=b[3] out=h_u_arrmul8_and1_3
+.subckt fa a=h_u_arrmul8_and1_3 b=h_u_arrmul8_fa2_2_xor1 cin=h_u_arrmul8_ha0_3_and0 fa_xor1=h_u_arrmul8_fa1_3_xor1 fa_or0=h_u_arrmul8_fa1_3_or0
+.subckt and_gate a=a[2] b=b[3] out=h_u_arrmul8_and2_3
+.subckt fa a=h_u_arrmul8_and2_3 b=h_u_arrmul8_fa3_2_xor1 cin=h_u_arrmul8_fa1_3_or0 fa_xor1=h_u_arrmul8_fa2_3_xor1 fa_or0=h_u_arrmul8_fa2_3_or0
+.subckt and_gate a=a[3] b=b[3] out=h_u_arrmul8_and3_3
+.subckt fa a=h_u_arrmul8_and3_3 b=h_u_arrmul8_fa4_2_xor1 cin=h_u_arrmul8_fa2_3_or0 fa_xor1=h_u_arrmul8_fa3_3_xor1 fa_or0=h_u_arrmul8_fa3_3_or0
+.subckt and_gate a=a[4] b=b[3] out=h_u_arrmul8_and4_3
+.subckt fa a=h_u_arrmul8_and4_3 b=h_u_arrmul8_fa5_2_xor1 cin=h_u_arrmul8_fa3_3_or0 fa_xor1=h_u_arrmul8_fa4_3_xor1 fa_or0=h_u_arrmul8_fa4_3_or0
+.subckt and_gate a=a[5] b=b[3] out=h_u_arrmul8_and5_3
+.subckt fa a=h_u_arrmul8_and5_3 b=h_u_arrmul8_fa6_2_xor1 cin=h_u_arrmul8_fa4_3_or0 fa_xor1=h_u_arrmul8_fa5_3_xor1 fa_or0=h_u_arrmul8_fa5_3_or0
+.subckt and_gate a=a[6] b=b[3] out=h_u_arrmul8_and6_3
+.subckt fa a=h_u_arrmul8_and6_3 b=h_u_arrmul8_fa7_2_xor1 cin=h_u_arrmul8_fa5_3_or0 fa_xor1=h_u_arrmul8_fa6_3_xor1 fa_or0=h_u_arrmul8_fa6_3_or0
+.subckt and_gate a=a[7] b=b[3] out=h_u_arrmul8_and7_3
+.subckt fa a=h_u_arrmul8_and7_3 b=h_u_arrmul8_fa7_2_or0 cin=h_u_arrmul8_fa6_3_or0 fa_xor1=h_u_arrmul8_fa7_3_xor1 fa_or0=h_u_arrmul8_fa7_3_or0
+.subckt and_gate a=a[0] b=b[4] out=h_u_arrmul8_and0_4
+.subckt ha a=h_u_arrmul8_and0_4 b=h_u_arrmul8_fa1_3_xor1 ha_xor0=h_u_arrmul8_ha0_4_xor0 ha_and0=h_u_arrmul8_ha0_4_and0
+.subckt and_gate a=a[1] b=b[4] out=h_u_arrmul8_and1_4
+.subckt fa a=h_u_arrmul8_and1_4 b=h_u_arrmul8_fa2_3_xor1 cin=h_u_arrmul8_ha0_4_and0 fa_xor1=h_u_arrmul8_fa1_4_xor1 fa_or0=h_u_arrmul8_fa1_4_or0
+.subckt and_gate a=a[2] b=b[4] out=h_u_arrmul8_and2_4
+.subckt fa a=h_u_arrmul8_and2_4 b=h_u_arrmul8_fa3_3_xor1 cin=h_u_arrmul8_fa1_4_or0 fa_xor1=h_u_arrmul8_fa2_4_xor1 fa_or0=h_u_arrmul8_fa2_4_or0
+.subckt and_gate a=a[3] b=b[4] out=h_u_arrmul8_and3_4
+.subckt fa a=h_u_arrmul8_and3_4 b=h_u_arrmul8_fa4_3_xor1 cin=h_u_arrmul8_fa2_4_or0 fa_xor1=h_u_arrmul8_fa3_4_xor1 fa_or0=h_u_arrmul8_fa3_4_or0
+.subckt and_gate a=a[4] b=b[4] out=h_u_arrmul8_and4_4
+.subckt fa a=h_u_arrmul8_and4_4 b=h_u_arrmul8_fa5_3_xor1 cin=h_u_arrmul8_fa3_4_or0 fa_xor1=h_u_arrmul8_fa4_4_xor1 fa_or0=h_u_arrmul8_fa4_4_or0
+.subckt and_gate a=a[5] b=b[4] out=h_u_arrmul8_and5_4
+.subckt fa a=h_u_arrmul8_and5_4 b=h_u_arrmul8_fa6_3_xor1 cin=h_u_arrmul8_fa4_4_or0 fa_xor1=h_u_arrmul8_fa5_4_xor1 fa_or0=h_u_arrmul8_fa5_4_or0
+.subckt and_gate a=a[6] b=b[4] out=h_u_arrmul8_and6_4
+.subckt fa a=h_u_arrmul8_and6_4 b=h_u_arrmul8_fa7_3_xor1 cin=h_u_arrmul8_fa5_4_or0 fa_xor1=h_u_arrmul8_fa6_4_xor1 fa_or0=h_u_arrmul8_fa6_4_or0
+.subckt and_gate a=a[7] b=b[4] out=h_u_arrmul8_and7_4
+.subckt fa a=h_u_arrmul8_and7_4 b=h_u_arrmul8_fa7_3_or0 cin=h_u_arrmul8_fa6_4_or0 fa_xor1=h_u_arrmul8_fa7_4_xor1 fa_or0=h_u_arrmul8_fa7_4_or0
+.subckt and_gate a=a[0] b=b[5] out=h_u_arrmul8_and0_5
+.subckt ha a=h_u_arrmul8_and0_5 b=h_u_arrmul8_fa1_4_xor1 ha_xor0=h_u_arrmul8_ha0_5_xor0 ha_and0=h_u_arrmul8_ha0_5_and0
+.subckt and_gate a=a[1] b=b[5] out=h_u_arrmul8_and1_5
+.subckt fa a=h_u_arrmul8_and1_5 b=h_u_arrmul8_fa2_4_xor1 cin=h_u_arrmul8_ha0_5_and0 fa_xor1=h_u_arrmul8_fa1_5_xor1 fa_or0=h_u_arrmul8_fa1_5_or0
+.subckt and_gate a=a[2] b=b[5] out=h_u_arrmul8_and2_5
+.subckt fa a=h_u_arrmul8_and2_5 b=h_u_arrmul8_fa3_4_xor1 cin=h_u_arrmul8_fa1_5_or0 fa_xor1=h_u_arrmul8_fa2_5_xor1 fa_or0=h_u_arrmul8_fa2_5_or0
+.subckt and_gate a=a[3] b=b[5] out=h_u_arrmul8_and3_5
+.subckt fa a=h_u_arrmul8_and3_5 b=h_u_arrmul8_fa4_4_xor1 cin=h_u_arrmul8_fa2_5_or0 fa_xor1=h_u_arrmul8_fa3_5_xor1 fa_or0=h_u_arrmul8_fa3_5_or0
+.subckt and_gate a=a[4] b=b[5] out=h_u_arrmul8_and4_5
+.subckt fa a=h_u_arrmul8_and4_5 b=h_u_arrmul8_fa5_4_xor1 cin=h_u_arrmul8_fa3_5_or0 fa_xor1=h_u_arrmul8_fa4_5_xor1 fa_or0=h_u_arrmul8_fa4_5_or0
+.subckt and_gate a=a[5] b=b[5] out=h_u_arrmul8_and5_5
+.subckt fa a=h_u_arrmul8_and5_5 b=h_u_arrmul8_fa6_4_xor1 cin=h_u_arrmul8_fa4_5_or0 fa_xor1=h_u_arrmul8_fa5_5_xor1 fa_or0=h_u_arrmul8_fa5_5_or0
+.subckt and_gate a=a[6] b=b[5] out=h_u_arrmul8_and6_5
+.subckt fa a=h_u_arrmul8_and6_5 b=h_u_arrmul8_fa7_4_xor1 cin=h_u_arrmul8_fa5_5_or0 fa_xor1=h_u_arrmul8_fa6_5_xor1 fa_or0=h_u_arrmul8_fa6_5_or0
+.subckt and_gate a=a[7] b=b[5] out=h_u_arrmul8_and7_5
+.subckt fa a=h_u_arrmul8_and7_5 b=h_u_arrmul8_fa7_4_or0 cin=h_u_arrmul8_fa6_5_or0 fa_xor1=h_u_arrmul8_fa7_5_xor1 fa_or0=h_u_arrmul8_fa7_5_or0
+.subckt and_gate a=a[0] b=b[6] out=h_u_arrmul8_and0_6
+.subckt ha a=h_u_arrmul8_and0_6 b=h_u_arrmul8_fa1_5_xor1 ha_xor0=h_u_arrmul8_ha0_6_xor0 ha_and0=h_u_arrmul8_ha0_6_and0
+.subckt and_gate a=a[1] b=b[6] out=h_u_arrmul8_and1_6
+.subckt fa a=h_u_arrmul8_and1_6 b=h_u_arrmul8_fa2_5_xor1 cin=h_u_arrmul8_ha0_6_and0 fa_xor1=h_u_arrmul8_fa1_6_xor1 fa_or0=h_u_arrmul8_fa1_6_or0
+.subckt and_gate a=a[2] b=b[6] out=h_u_arrmul8_and2_6
+.subckt fa a=h_u_arrmul8_and2_6 b=h_u_arrmul8_fa3_5_xor1 cin=h_u_arrmul8_fa1_6_or0 fa_xor1=h_u_arrmul8_fa2_6_xor1 fa_or0=h_u_arrmul8_fa2_6_or0
+.subckt and_gate a=a[3] b=b[6] out=h_u_arrmul8_and3_6
+.subckt fa a=h_u_arrmul8_and3_6 b=h_u_arrmul8_fa4_5_xor1 cin=h_u_arrmul8_fa2_6_or0 fa_xor1=h_u_arrmul8_fa3_6_xor1 fa_or0=h_u_arrmul8_fa3_6_or0
+.subckt and_gate a=a[4] b=b[6] out=h_u_arrmul8_and4_6
+.subckt fa a=h_u_arrmul8_and4_6 b=h_u_arrmul8_fa5_5_xor1 cin=h_u_arrmul8_fa3_6_or0 fa_xor1=h_u_arrmul8_fa4_6_xor1 fa_or0=h_u_arrmul8_fa4_6_or0
+.subckt and_gate a=a[5] b=b[6] out=h_u_arrmul8_and5_6
+.subckt fa a=h_u_arrmul8_and5_6 b=h_u_arrmul8_fa6_5_xor1 cin=h_u_arrmul8_fa4_6_or0 fa_xor1=h_u_arrmul8_fa5_6_xor1 fa_or0=h_u_arrmul8_fa5_6_or0
+.subckt and_gate a=a[6] b=b[6] out=h_u_arrmul8_and6_6
+.subckt fa a=h_u_arrmul8_and6_6 b=h_u_arrmul8_fa7_5_xor1 cin=h_u_arrmul8_fa5_6_or0 fa_xor1=h_u_arrmul8_fa6_6_xor1 fa_or0=h_u_arrmul8_fa6_6_or0
+.subckt and_gate a=a[7] b=b[6] out=h_u_arrmul8_and7_6
+.subckt fa a=h_u_arrmul8_and7_6 b=h_u_arrmul8_fa7_5_or0 cin=h_u_arrmul8_fa6_6_or0 fa_xor1=h_u_arrmul8_fa7_6_xor1 fa_or0=h_u_arrmul8_fa7_6_or0
+.subckt and_gate a=a[0] b=b[7] out=h_u_arrmul8_and0_7
+.subckt ha a=h_u_arrmul8_and0_7 b=h_u_arrmul8_fa1_6_xor1 ha_xor0=h_u_arrmul8_ha0_7_xor0 ha_and0=h_u_arrmul8_ha0_7_and0
+.subckt and_gate a=a[1] b=b[7] out=h_u_arrmul8_and1_7
+.subckt fa a=h_u_arrmul8_and1_7 b=h_u_arrmul8_fa2_6_xor1 cin=h_u_arrmul8_ha0_7_and0 fa_xor1=h_u_arrmul8_fa1_7_xor1 fa_or0=h_u_arrmul8_fa1_7_or0
+.subckt and_gate a=a[2] b=b[7] out=h_u_arrmul8_and2_7
+.subckt fa a=h_u_arrmul8_and2_7 b=h_u_arrmul8_fa3_6_xor1 cin=h_u_arrmul8_fa1_7_or0 fa_xor1=h_u_arrmul8_fa2_7_xor1 fa_or0=h_u_arrmul8_fa2_7_or0
+.subckt and_gate a=a[3] b=b[7] out=h_u_arrmul8_and3_7
+.subckt fa a=h_u_arrmul8_and3_7 b=h_u_arrmul8_fa4_6_xor1 cin=h_u_arrmul8_fa2_7_or0 fa_xor1=h_u_arrmul8_fa3_7_xor1 fa_or0=h_u_arrmul8_fa3_7_or0
+.subckt and_gate a=a[4] b=b[7] out=h_u_arrmul8_and4_7
+.subckt fa a=h_u_arrmul8_and4_7 b=h_u_arrmul8_fa5_6_xor1 cin=h_u_arrmul8_fa3_7_or0 fa_xor1=h_u_arrmul8_fa4_7_xor1 fa_or0=h_u_arrmul8_fa4_7_or0
+.subckt and_gate a=a[5] b=b[7] out=h_u_arrmul8_and5_7
+.subckt fa a=h_u_arrmul8_and5_7 b=h_u_arrmul8_fa6_6_xor1 cin=h_u_arrmul8_fa4_7_or0 fa_xor1=h_u_arrmul8_fa5_7_xor1 fa_or0=h_u_arrmul8_fa5_7_or0
+.subckt and_gate a=a[6] b=b[7] out=h_u_arrmul8_and6_7
+.subckt fa a=h_u_arrmul8_and6_7 b=h_u_arrmul8_fa7_6_xor1 cin=h_u_arrmul8_fa5_7_or0 fa_xor1=h_u_arrmul8_fa6_7_xor1 fa_or0=h_u_arrmul8_fa6_7_or0
+.subckt and_gate a=a[7] b=b[7] out=h_u_arrmul8_and7_7
+.subckt fa a=h_u_arrmul8_and7_7 b=h_u_arrmul8_fa7_6_or0 cin=h_u_arrmul8_fa6_7_or0 fa_xor1=h_u_arrmul8_fa7_7_xor1 fa_or0=h_u_arrmul8_fa7_7_or0
+.names h_u_arrmul8_and0_0 h_u_arrmul8_out[0]
 1 1
-.names a[1] a_1
+.names h_u_arrmul8_ha0_1_xor0 h_u_arrmul8_out[1]
 1 1
-.names a[2] a_2
+.names h_u_arrmul8_ha0_2_xor0 h_u_arrmul8_out[2]
 1 1
-.names a[3] a_3
+.names h_u_arrmul8_ha0_3_xor0 h_u_arrmul8_out[3]
 1 1
-.names a[4] a_4
+.names h_u_arrmul8_ha0_4_xor0 h_u_arrmul8_out[4]
 1 1
-.names a[5] a_5
+.names h_u_arrmul8_ha0_5_xor0 h_u_arrmul8_out[5]
 1 1
-.names a[6] a_6
+.names h_u_arrmul8_ha0_6_xor0 h_u_arrmul8_out[6]
 1 1
-.names a[7] a_7
+.names h_u_arrmul8_ha0_7_xor0 h_u_arrmul8_out[7]
 1 1
-.names b[0] b_0
+.names h_u_arrmul8_fa1_7_xor1 h_u_arrmul8_out[8]
 1 1
-.names b[1] b_1
+.names h_u_arrmul8_fa2_7_xor1 h_u_arrmul8_out[9]
 1 1
-.names b[2] b_2
+.names h_u_arrmul8_fa3_7_xor1 h_u_arrmul8_out[10]
 1 1
-.names b[3] b_3
+.names h_u_arrmul8_fa4_7_xor1 h_u_arrmul8_out[11]
 1 1
-.names b[4] b_4
+.names h_u_arrmul8_fa5_7_xor1 h_u_arrmul8_out[12]
 1 1
-.names b[5] b_5
+.names h_u_arrmul8_fa6_7_xor1 h_u_arrmul8_out[13]
 1 1
-.names b[6] b_6
+.names h_u_arrmul8_fa7_7_xor1 h_u_arrmul8_out[14]
 1 1
-.names b[7] b_7
-1 1
-.names a_0 h_u_arrmul8_and0_0_a_0
-1 1
-.names b_0 h_u_arrmul8_and0_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_0_a_0 _b=h_u_arrmul8_and0_0_b_0 _y0=h_u_arrmul8_and0_0_y0
-.names a_1 h_u_arrmul8_and1_0_a_1
-1 1
-.names b_0 h_u_arrmul8_and1_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_0_a_1 _b=h_u_arrmul8_and1_0_b_0 _y0=h_u_arrmul8_and1_0_y0
-.names a_2 h_u_arrmul8_and2_0_a_2
-1 1
-.names b_0 h_u_arrmul8_and2_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_0_a_2 _b=h_u_arrmul8_and2_0_b_0 _y0=h_u_arrmul8_and2_0_y0
-.names a_3 h_u_arrmul8_and3_0_a_3
-1 1
-.names b_0 h_u_arrmul8_and3_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_0_a_3 _b=h_u_arrmul8_and3_0_b_0 _y0=h_u_arrmul8_and3_0_y0
-.names a_4 h_u_arrmul8_and4_0_a_4
-1 1
-.names b_0 h_u_arrmul8_and4_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_0_a_4 _b=h_u_arrmul8_and4_0_b_0 _y0=h_u_arrmul8_and4_0_y0
-.names a_5 h_u_arrmul8_and5_0_a_5
-1 1
-.names b_0 h_u_arrmul8_and5_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_0_a_5 _b=h_u_arrmul8_and5_0_b_0 _y0=h_u_arrmul8_and5_0_y0
-.names a_6 h_u_arrmul8_and6_0_a_6
-1 1
-.names b_0 h_u_arrmul8_and6_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_0_a_6 _b=h_u_arrmul8_and6_0_b_0 _y0=h_u_arrmul8_and6_0_y0
-.names a_7 h_u_arrmul8_and7_0_a_7
-1 1
-.names b_0 h_u_arrmul8_and7_0_b_0
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_0_a_7 _b=h_u_arrmul8_and7_0_b_0 _y0=h_u_arrmul8_and7_0_y0
-.names a_0 h_u_arrmul8_and0_1_a_0
-1 1
-.names b_1 h_u_arrmul8_and0_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_1_a_0 _b=h_u_arrmul8_and0_1_b_1 _y0=h_u_arrmul8_and0_1_y0
-.names h_u_arrmul8_and0_1_y0 h_u_arrmul8_ha0_1_h_u_arrmul8_and0_1_y0
-1 1
-.names h_u_arrmul8_and1_0_y0 h_u_arrmul8_ha0_1_h_u_arrmul8_and1_0_y0
-1 1
-.subckt ha a=h_u_arrmul8_ha0_1_h_u_arrmul8_and0_1_y0 b=h_u_arrmul8_ha0_1_h_u_arrmul8_and1_0_y0 ha_y0=h_u_arrmul8_ha0_1_y0 ha_y1=h_u_arrmul8_ha0_1_y1
-.names a_1 h_u_arrmul8_and1_1_a_1
-1 1
-.names b_1 h_u_arrmul8_and1_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_1_a_1 _b=h_u_arrmul8_and1_1_b_1 _y0=h_u_arrmul8_and1_1_y0
-.names h_u_arrmul8_and1_1_y0 h_u_arrmul8_fa1_1_h_u_arrmul8_and1_1_y0
-1 1
-.names h_u_arrmul8_and2_0_y0 h_u_arrmul8_fa1_1_h_u_arrmul8_and2_0_y0
-1 1
-.names h_u_arrmul8_ha0_1_y1 h_u_arrmul8_fa1_1_h_u_arrmul8_ha0_1_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_1_h_u_arrmul8_and1_1_y0 b=h_u_arrmul8_fa1_1_h_u_arrmul8_and2_0_y0 cin=h_u_arrmul8_fa1_1_h_u_arrmul8_ha0_1_y1 fa_y2=h_u_arrmul8_fa1_1_y2 fa_y4=h_u_arrmul8_fa1_1_y4
-.names a_2 h_u_arrmul8_and2_1_a_2
-1 1
-.names b_1 h_u_arrmul8_and2_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_1_a_2 _b=h_u_arrmul8_and2_1_b_1 _y0=h_u_arrmul8_and2_1_y0
-.names h_u_arrmul8_and2_1_y0 h_u_arrmul8_fa2_1_h_u_arrmul8_and2_1_y0
-1 1
-.names h_u_arrmul8_and3_0_y0 h_u_arrmul8_fa2_1_h_u_arrmul8_and3_0_y0
-1 1
-.names h_u_arrmul8_fa1_1_y4 h_u_arrmul8_fa2_1_h_u_arrmul8_fa1_1_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_1_h_u_arrmul8_and2_1_y0 b=h_u_arrmul8_fa2_1_h_u_arrmul8_and3_0_y0 cin=h_u_arrmul8_fa2_1_h_u_arrmul8_fa1_1_y4 fa_y2=h_u_arrmul8_fa2_1_y2 fa_y4=h_u_arrmul8_fa2_1_y4
-.names a_3 h_u_arrmul8_and3_1_a_3
-1 1
-.names b_1 h_u_arrmul8_and3_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_1_a_3 _b=h_u_arrmul8_and3_1_b_1 _y0=h_u_arrmul8_and3_1_y0
-.names h_u_arrmul8_and3_1_y0 h_u_arrmul8_fa3_1_h_u_arrmul8_and3_1_y0
-1 1
-.names h_u_arrmul8_and4_0_y0 h_u_arrmul8_fa3_1_h_u_arrmul8_and4_0_y0
-1 1
-.names h_u_arrmul8_fa2_1_y4 h_u_arrmul8_fa3_1_h_u_arrmul8_fa2_1_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_1_h_u_arrmul8_and3_1_y0 b=h_u_arrmul8_fa3_1_h_u_arrmul8_and4_0_y0 cin=h_u_arrmul8_fa3_1_h_u_arrmul8_fa2_1_y4 fa_y2=h_u_arrmul8_fa3_1_y2 fa_y4=h_u_arrmul8_fa3_1_y4
-.names a_4 h_u_arrmul8_and4_1_a_4
-1 1
-.names b_1 h_u_arrmul8_and4_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_1_a_4 _b=h_u_arrmul8_and4_1_b_1 _y0=h_u_arrmul8_and4_1_y0
-.names h_u_arrmul8_and4_1_y0 h_u_arrmul8_fa4_1_h_u_arrmul8_and4_1_y0
-1 1
-.names h_u_arrmul8_and5_0_y0 h_u_arrmul8_fa4_1_h_u_arrmul8_and5_0_y0
-1 1
-.names h_u_arrmul8_fa3_1_y4 h_u_arrmul8_fa4_1_h_u_arrmul8_fa3_1_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_1_h_u_arrmul8_and4_1_y0 b=h_u_arrmul8_fa4_1_h_u_arrmul8_and5_0_y0 cin=h_u_arrmul8_fa4_1_h_u_arrmul8_fa3_1_y4 fa_y2=h_u_arrmul8_fa4_1_y2 fa_y4=h_u_arrmul8_fa4_1_y4
-.names a_5 h_u_arrmul8_and5_1_a_5
-1 1
-.names b_1 h_u_arrmul8_and5_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_1_a_5 _b=h_u_arrmul8_and5_1_b_1 _y0=h_u_arrmul8_and5_1_y0
-.names h_u_arrmul8_and5_1_y0 h_u_arrmul8_fa5_1_h_u_arrmul8_and5_1_y0
-1 1
-.names h_u_arrmul8_and6_0_y0 h_u_arrmul8_fa5_1_h_u_arrmul8_and6_0_y0
-1 1
-.names h_u_arrmul8_fa4_1_y4 h_u_arrmul8_fa5_1_h_u_arrmul8_fa4_1_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_1_h_u_arrmul8_and5_1_y0 b=h_u_arrmul8_fa5_1_h_u_arrmul8_and6_0_y0 cin=h_u_arrmul8_fa5_1_h_u_arrmul8_fa4_1_y4 fa_y2=h_u_arrmul8_fa5_1_y2 fa_y4=h_u_arrmul8_fa5_1_y4
-.names a_6 h_u_arrmul8_and6_1_a_6
-1 1
-.names b_1 h_u_arrmul8_and6_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_1_a_6 _b=h_u_arrmul8_and6_1_b_1 _y0=h_u_arrmul8_and6_1_y0
-.names h_u_arrmul8_and6_1_y0 h_u_arrmul8_fa6_1_h_u_arrmul8_and6_1_y0
-1 1
-.names h_u_arrmul8_and7_0_y0 h_u_arrmul8_fa6_1_h_u_arrmul8_and7_0_y0
-1 1
-.names h_u_arrmul8_fa5_1_y4 h_u_arrmul8_fa6_1_h_u_arrmul8_fa5_1_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_1_h_u_arrmul8_and6_1_y0 b=h_u_arrmul8_fa6_1_h_u_arrmul8_and7_0_y0 cin=h_u_arrmul8_fa6_1_h_u_arrmul8_fa5_1_y4 fa_y2=h_u_arrmul8_fa6_1_y2 fa_y4=h_u_arrmul8_fa6_1_y4
-.names a_7 h_u_arrmul8_and7_1_a_7
-1 1
-.names b_1 h_u_arrmul8_and7_1_b_1
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_1_a_7 _b=h_u_arrmul8_and7_1_b_1 _y0=h_u_arrmul8_and7_1_y0
-.names h_u_arrmul8_and7_1_y0 h_u_arrmul8_ha7_1_h_u_arrmul8_and7_1_y0
-1 1
-.names h_u_arrmul8_fa6_1_y4 h_u_arrmul8_ha7_1_h_u_arrmul8_fa6_1_y4
-1 1
-.subckt ha a=h_u_arrmul8_ha7_1_h_u_arrmul8_and7_1_y0 b=h_u_arrmul8_ha7_1_h_u_arrmul8_fa6_1_y4 ha_y0=h_u_arrmul8_ha7_1_y0 ha_y1=h_u_arrmul8_ha7_1_y1
-.names a_0 h_u_arrmul8_and0_2_a_0
-1 1
-.names b_2 h_u_arrmul8_and0_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_2_a_0 _b=h_u_arrmul8_and0_2_b_2 _y0=h_u_arrmul8_and0_2_y0
-.names h_u_arrmul8_and0_2_y0 h_u_arrmul8_ha0_2_h_u_arrmul8_and0_2_y0
-1 1
-.names h_u_arrmul8_fa1_1_y2 h_u_arrmul8_ha0_2_h_u_arrmul8_fa1_1_y2
-1 1
-.subckt ha a=h_u_arrmul8_ha0_2_h_u_arrmul8_and0_2_y0 b=h_u_arrmul8_ha0_2_h_u_arrmul8_fa1_1_y2 ha_y0=h_u_arrmul8_ha0_2_y0 ha_y1=h_u_arrmul8_ha0_2_y1
-.names a_1 h_u_arrmul8_and1_2_a_1
-1 1
-.names b_2 h_u_arrmul8_and1_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_2_a_1 _b=h_u_arrmul8_and1_2_b_2 _y0=h_u_arrmul8_and1_2_y0
-.names h_u_arrmul8_and1_2_y0 h_u_arrmul8_fa1_2_h_u_arrmul8_and1_2_y0
-1 1
-.names h_u_arrmul8_fa2_1_y2 h_u_arrmul8_fa1_2_h_u_arrmul8_fa2_1_y2
-1 1
-.names h_u_arrmul8_ha0_2_y1 h_u_arrmul8_fa1_2_h_u_arrmul8_ha0_2_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_2_h_u_arrmul8_and1_2_y0 b=h_u_arrmul8_fa1_2_h_u_arrmul8_fa2_1_y2 cin=h_u_arrmul8_fa1_2_h_u_arrmul8_ha0_2_y1 fa_y2=h_u_arrmul8_fa1_2_y2 fa_y4=h_u_arrmul8_fa1_2_y4
-.names a_2 h_u_arrmul8_and2_2_a_2
-1 1
-.names b_2 h_u_arrmul8_and2_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_2_a_2 _b=h_u_arrmul8_and2_2_b_2 _y0=h_u_arrmul8_and2_2_y0
-.names h_u_arrmul8_and2_2_y0 h_u_arrmul8_fa2_2_h_u_arrmul8_and2_2_y0
-1 1
-.names h_u_arrmul8_fa3_1_y2 h_u_arrmul8_fa2_2_h_u_arrmul8_fa3_1_y2
-1 1
-.names h_u_arrmul8_fa1_2_y4 h_u_arrmul8_fa2_2_h_u_arrmul8_fa1_2_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_2_h_u_arrmul8_and2_2_y0 b=h_u_arrmul8_fa2_2_h_u_arrmul8_fa3_1_y2 cin=h_u_arrmul8_fa2_2_h_u_arrmul8_fa1_2_y4 fa_y2=h_u_arrmul8_fa2_2_y2 fa_y4=h_u_arrmul8_fa2_2_y4
-.names a_3 h_u_arrmul8_and3_2_a_3
-1 1
-.names b_2 h_u_arrmul8_and3_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_2_a_3 _b=h_u_arrmul8_and3_2_b_2 _y0=h_u_arrmul8_and3_2_y0
-.names h_u_arrmul8_and3_2_y0 h_u_arrmul8_fa3_2_h_u_arrmul8_and3_2_y0
-1 1
-.names h_u_arrmul8_fa4_1_y2 h_u_arrmul8_fa3_2_h_u_arrmul8_fa4_1_y2
-1 1
-.names h_u_arrmul8_fa2_2_y4 h_u_arrmul8_fa3_2_h_u_arrmul8_fa2_2_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_2_h_u_arrmul8_and3_2_y0 b=h_u_arrmul8_fa3_2_h_u_arrmul8_fa4_1_y2 cin=h_u_arrmul8_fa3_2_h_u_arrmul8_fa2_2_y4 fa_y2=h_u_arrmul8_fa3_2_y2 fa_y4=h_u_arrmul8_fa3_2_y4
-.names a_4 h_u_arrmul8_and4_2_a_4
-1 1
-.names b_2 h_u_arrmul8_and4_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_2_a_4 _b=h_u_arrmul8_and4_2_b_2 _y0=h_u_arrmul8_and4_2_y0
-.names h_u_arrmul8_and4_2_y0 h_u_arrmul8_fa4_2_h_u_arrmul8_and4_2_y0
-1 1
-.names h_u_arrmul8_fa5_1_y2 h_u_arrmul8_fa4_2_h_u_arrmul8_fa5_1_y2
-1 1
-.names h_u_arrmul8_fa3_2_y4 h_u_arrmul8_fa4_2_h_u_arrmul8_fa3_2_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_2_h_u_arrmul8_and4_2_y0 b=h_u_arrmul8_fa4_2_h_u_arrmul8_fa5_1_y2 cin=h_u_arrmul8_fa4_2_h_u_arrmul8_fa3_2_y4 fa_y2=h_u_arrmul8_fa4_2_y2 fa_y4=h_u_arrmul8_fa4_2_y4
-.names a_5 h_u_arrmul8_and5_2_a_5
-1 1
-.names b_2 h_u_arrmul8_and5_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_2_a_5 _b=h_u_arrmul8_and5_2_b_2 _y0=h_u_arrmul8_and5_2_y0
-.names h_u_arrmul8_and5_2_y0 h_u_arrmul8_fa5_2_h_u_arrmul8_and5_2_y0
-1 1
-.names h_u_arrmul8_fa6_1_y2 h_u_arrmul8_fa5_2_h_u_arrmul8_fa6_1_y2
-1 1
-.names h_u_arrmul8_fa4_2_y4 h_u_arrmul8_fa5_2_h_u_arrmul8_fa4_2_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_2_h_u_arrmul8_and5_2_y0 b=h_u_arrmul8_fa5_2_h_u_arrmul8_fa6_1_y2 cin=h_u_arrmul8_fa5_2_h_u_arrmul8_fa4_2_y4 fa_y2=h_u_arrmul8_fa5_2_y2 fa_y4=h_u_arrmul8_fa5_2_y4
-.names a_6 h_u_arrmul8_and6_2_a_6
-1 1
-.names b_2 h_u_arrmul8_and6_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_2_a_6 _b=h_u_arrmul8_and6_2_b_2 _y0=h_u_arrmul8_and6_2_y0
-.names h_u_arrmul8_and6_2_y0 h_u_arrmul8_fa6_2_h_u_arrmul8_and6_2_y0
-1 1
-.names h_u_arrmul8_ha7_1_y0 h_u_arrmul8_fa6_2_h_u_arrmul8_ha7_1_y0
-1 1
-.names h_u_arrmul8_fa5_2_y4 h_u_arrmul8_fa6_2_h_u_arrmul8_fa5_2_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_2_h_u_arrmul8_and6_2_y0 b=h_u_arrmul8_fa6_2_h_u_arrmul8_ha7_1_y0 cin=h_u_arrmul8_fa6_2_h_u_arrmul8_fa5_2_y4 fa_y2=h_u_arrmul8_fa6_2_y2 fa_y4=h_u_arrmul8_fa6_2_y4
-.names a_7 h_u_arrmul8_and7_2_a_7
-1 1
-.names b_2 h_u_arrmul8_and7_2_b_2
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_2_a_7 _b=h_u_arrmul8_and7_2_b_2 _y0=h_u_arrmul8_and7_2_y0
-.names h_u_arrmul8_and7_2_y0 h_u_arrmul8_fa7_2_h_u_arrmul8_and7_2_y0
-1 1
-.names h_u_arrmul8_ha7_1_y1 h_u_arrmul8_fa7_2_h_u_arrmul8_ha7_1_y1
-1 1
-.names h_u_arrmul8_fa6_2_y4 h_u_arrmul8_fa7_2_h_u_arrmul8_fa6_2_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa7_2_h_u_arrmul8_and7_2_y0 b=h_u_arrmul8_fa7_2_h_u_arrmul8_ha7_1_y1 cin=h_u_arrmul8_fa7_2_h_u_arrmul8_fa6_2_y4 fa_y2=h_u_arrmul8_fa7_2_y2 fa_y4=h_u_arrmul8_fa7_2_y4
-.names a_0 h_u_arrmul8_and0_3_a_0
-1 1
-.names b_3 h_u_arrmul8_and0_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_3_a_0 _b=h_u_arrmul8_and0_3_b_3 _y0=h_u_arrmul8_and0_3_y0
-.names h_u_arrmul8_and0_3_y0 h_u_arrmul8_ha0_3_h_u_arrmul8_and0_3_y0
-1 1
-.names h_u_arrmul8_fa1_2_y2 h_u_arrmul8_ha0_3_h_u_arrmul8_fa1_2_y2
-1 1
-.subckt ha a=h_u_arrmul8_ha0_3_h_u_arrmul8_and0_3_y0 b=h_u_arrmul8_ha0_3_h_u_arrmul8_fa1_2_y2 ha_y0=h_u_arrmul8_ha0_3_y0 ha_y1=h_u_arrmul8_ha0_3_y1
-.names a_1 h_u_arrmul8_and1_3_a_1
-1 1
-.names b_3 h_u_arrmul8_and1_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_3_a_1 _b=h_u_arrmul8_and1_3_b_3 _y0=h_u_arrmul8_and1_3_y0
-.names h_u_arrmul8_and1_3_y0 h_u_arrmul8_fa1_3_h_u_arrmul8_and1_3_y0
-1 1
-.names h_u_arrmul8_fa2_2_y2 h_u_arrmul8_fa1_3_h_u_arrmul8_fa2_2_y2
-1 1
-.names h_u_arrmul8_ha0_3_y1 h_u_arrmul8_fa1_3_h_u_arrmul8_ha0_3_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_3_h_u_arrmul8_and1_3_y0 b=h_u_arrmul8_fa1_3_h_u_arrmul8_fa2_2_y2 cin=h_u_arrmul8_fa1_3_h_u_arrmul8_ha0_3_y1 fa_y2=h_u_arrmul8_fa1_3_y2 fa_y4=h_u_arrmul8_fa1_3_y4
-.names a_2 h_u_arrmul8_and2_3_a_2
-1 1
-.names b_3 h_u_arrmul8_and2_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_3_a_2 _b=h_u_arrmul8_and2_3_b_3 _y0=h_u_arrmul8_and2_3_y0
-.names h_u_arrmul8_and2_3_y0 h_u_arrmul8_fa2_3_h_u_arrmul8_and2_3_y0
-1 1
-.names h_u_arrmul8_fa3_2_y2 h_u_arrmul8_fa2_3_h_u_arrmul8_fa3_2_y2
-1 1
-.names h_u_arrmul8_fa1_3_y4 h_u_arrmul8_fa2_3_h_u_arrmul8_fa1_3_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_3_h_u_arrmul8_and2_3_y0 b=h_u_arrmul8_fa2_3_h_u_arrmul8_fa3_2_y2 cin=h_u_arrmul8_fa2_3_h_u_arrmul8_fa1_3_y4 fa_y2=h_u_arrmul8_fa2_3_y2 fa_y4=h_u_arrmul8_fa2_3_y4
-.names a_3 h_u_arrmul8_and3_3_a_3
-1 1
-.names b_3 h_u_arrmul8_and3_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_3_a_3 _b=h_u_arrmul8_and3_3_b_3 _y0=h_u_arrmul8_and3_3_y0
-.names h_u_arrmul8_and3_3_y0 h_u_arrmul8_fa3_3_h_u_arrmul8_and3_3_y0
-1 1
-.names h_u_arrmul8_fa4_2_y2 h_u_arrmul8_fa3_3_h_u_arrmul8_fa4_2_y2
-1 1
-.names h_u_arrmul8_fa2_3_y4 h_u_arrmul8_fa3_3_h_u_arrmul8_fa2_3_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_3_h_u_arrmul8_and3_3_y0 b=h_u_arrmul8_fa3_3_h_u_arrmul8_fa4_2_y2 cin=h_u_arrmul8_fa3_3_h_u_arrmul8_fa2_3_y4 fa_y2=h_u_arrmul8_fa3_3_y2 fa_y4=h_u_arrmul8_fa3_3_y4
-.names a_4 h_u_arrmul8_and4_3_a_4
-1 1
-.names b_3 h_u_arrmul8_and4_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_3_a_4 _b=h_u_arrmul8_and4_3_b_3 _y0=h_u_arrmul8_and4_3_y0
-.names h_u_arrmul8_and4_3_y0 h_u_arrmul8_fa4_3_h_u_arrmul8_and4_3_y0
-1 1
-.names h_u_arrmul8_fa5_2_y2 h_u_arrmul8_fa4_3_h_u_arrmul8_fa5_2_y2
-1 1
-.names h_u_arrmul8_fa3_3_y4 h_u_arrmul8_fa4_3_h_u_arrmul8_fa3_3_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_3_h_u_arrmul8_and4_3_y0 b=h_u_arrmul8_fa4_3_h_u_arrmul8_fa5_2_y2 cin=h_u_arrmul8_fa4_3_h_u_arrmul8_fa3_3_y4 fa_y2=h_u_arrmul8_fa4_3_y2 fa_y4=h_u_arrmul8_fa4_3_y4
-.names a_5 h_u_arrmul8_and5_3_a_5
-1 1
-.names b_3 h_u_arrmul8_and5_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_3_a_5 _b=h_u_arrmul8_and5_3_b_3 _y0=h_u_arrmul8_and5_3_y0
-.names h_u_arrmul8_and5_3_y0 h_u_arrmul8_fa5_3_h_u_arrmul8_and5_3_y0
-1 1
-.names h_u_arrmul8_fa6_2_y2 h_u_arrmul8_fa5_3_h_u_arrmul8_fa6_2_y2
-1 1
-.names h_u_arrmul8_fa4_3_y4 h_u_arrmul8_fa5_3_h_u_arrmul8_fa4_3_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_3_h_u_arrmul8_and5_3_y0 b=h_u_arrmul8_fa5_3_h_u_arrmul8_fa6_2_y2 cin=h_u_arrmul8_fa5_3_h_u_arrmul8_fa4_3_y4 fa_y2=h_u_arrmul8_fa5_3_y2 fa_y4=h_u_arrmul8_fa5_3_y4
-.names a_6 h_u_arrmul8_and6_3_a_6
-1 1
-.names b_3 h_u_arrmul8_and6_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_3_a_6 _b=h_u_arrmul8_and6_3_b_3 _y0=h_u_arrmul8_and6_3_y0
-.names h_u_arrmul8_and6_3_y0 h_u_arrmul8_fa6_3_h_u_arrmul8_and6_3_y0
-1 1
-.names h_u_arrmul8_fa7_2_y2 h_u_arrmul8_fa6_3_h_u_arrmul8_fa7_2_y2
-1 1
-.names h_u_arrmul8_fa5_3_y4 h_u_arrmul8_fa6_3_h_u_arrmul8_fa5_3_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_3_h_u_arrmul8_and6_3_y0 b=h_u_arrmul8_fa6_3_h_u_arrmul8_fa7_2_y2 cin=h_u_arrmul8_fa6_3_h_u_arrmul8_fa5_3_y4 fa_y2=h_u_arrmul8_fa6_3_y2 fa_y4=h_u_arrmul8_fa6_3_y4
-.names a_7 h_u_arrmul8_and7_3_a_7
-1 1
-.names b_3 h_u_arrmul8_and7_3_b_3
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_3_a_7 _b=h_u_arrmul8_and7_3_b_3 _y0=h_u_arrmul8_and7_3_y0
-.names h_u_arrmul8_and7_3_y0 h_u_arrmul8_fa7_3_h_u_arrmul8_and7_3_y0
-1 1
-.names h_u_arrmul8_fa7_2_y4 h_u_arrmul8_fa7_3_h_u_arrmul8_fa7_2_y4
-1 1
-.names h_u_arrmul8_fa6_3_y4 h_u_arrmul8_fa7_3_h_u_arrmul8_fa6_3_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa7_3_h_u_arrmul8_and7_3_y0 b=h_u_arrmul8_fa7_3_h_u_arrmul8_fa7_2_y4 cin=h_u_arrmul8_fa7_3_h_u_arrmul8_fa6_3_y4 fa_y2=h_u_arrmul8_fa7_3_y2 fa_y4=h_u_arrmul8_fa7_3_y4
-.names a_0 h_u_arrmul8_and0_4_a_0
-1 1
-.names b_4 h_u_arrmul8_and0_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_4_a_0 _b=h_u_arrmul8_and0_4_b_4 _y0=h_u_arrmul8_and0_4_y0
-.names h_u_arrmul8_and0_4_y0 h_u_arrmul8_ha0_4_h_u_arrmul8_and0_4_y0
-1 1
-.names h_u_arrmul8_fa1_3_y2 h_u_arrmul8_ha0_4_h_u_arrmul8_fa1_3_y2
-1 1
-.subckt ha a=h_u_arrmul8_ha0_4_h_u_arrmul8_and0_4_y0 b=h_u_arrmul8_ha0_4_h_u_arrmul8_fa1_3_y2 ha_y0=h_u_arrmul8_ha0_4_y0 ha_y1=h_u_arrmul8_ha0_4_y1
-.names a_1 h_u_arrmul8_and1_4_a_1
-1 1
-.names b_4 h_u_arrmul8_and1_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_4_a_1 _b=h_u_arrmul8_and1_4_b_4 _y0=h_u_arrmul8_and1_4_y0
-.names h_u_arrmul8_and1_4_y0 h_u_arrmul8_fa1_4_h_u_arrmul8_and1_4_y0
-1 1
-.names h_u_arrmul8_fa2_3_y2 h_u_arrmul8_fa1_4_h_u_arrmul8_fa2_3_y2
-1 1
-.names h_u_arrmul8_ha0_4_y1 h_u_arrmul8_fa1_4_h_u_arrmul8_ha0_4_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_4_h_u_arrmul8_and1_4_y0 b=h_u_arrmul8_fa1_4_h_u_arrmul8_fa2_3_y2 cin=h_u_arrmul8_fa1_4_h_u_arrmul8_ha0_4_y1 fa_y2=h_u_arrmul8_fa1_4_y2 fa_y4=h_u_arrmul8_fa1_4_y4
-.names a_2 h_u_arrmul8_and2_4_a_2
-1 1
-.names b_4 h_u_arrmul8_and2_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_4_a_2 _b=h_u_arrmul8_and2_4_b_4 _y0=h_u_arrmul8_and2_4_y0
-.names h_u_arrmul8_and2_4_y0 h_u_arrmul8_fa2_4_h_u_arrmul8_and2_4_y0
-1 1
-.names h_u_arrmul8_fa3_3_y2 h_u_arrmul8_fa2_4_h_u_arrmul8_fa3_3_y2
-1 1
-.names h_u_arrmul8_fa1_4_y4 h_u_arrmul8_fa2_4_h_u_arrmul8_fa1_4_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_4_h_u_arrmul8_and2_4_y0 b=h_u_arrmul8_fa2_4_h_u_arrmul8_fa3_3_y2 cin=h_u_arrmul8_fa2_4_h_u_arrmul8_fa1_4_y4 fa_y2=h_u_arrmul8_fa2_4_y2 fa_y4=h_u_arrmul8_fa2_4_y4
-.names a_3 h_u_arrmul8_and3_4_a_3
-1 1
-.names b_4 h_u_arrmul8_and3_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_4_a_3 _b=h_u_arrmul8_and3_4_b_4 _y0=h_u_arrmul8_and3_4_y0
-.names h_u_arrmul8_and3_4_y0 h_u_arrmul8_fa3_4_h_u_arrmul8_and3_4_y0
-1 1
-.names h_u_arrmul8_fa4_3_y2 h_u_arrmul8_fa3_4_h_u_arrmul8_fa4_3_y2
-1 1
-.names h_u_arrmul8_fa2_4_y4 h_u_arrmul8_fa3_4_h_u_arrmul8_fa2_4_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_4_h_u_arrmul8_and3_4_y0 b=h_u_arrmul8_fa3_4_h_u_arrmul8_fa4_3_y2 cin=h_u_arrmul8_fa3_4_h_u_arrmul8_fa2_4_y4 fa_y2=h_u_arrmul8_fa3_4_y2 fa_y4=h_u_arrmul8_fa3_4_y4
-.names a_4 h_u_arrmul8_and4_4_a_4
-1 1
-.names b_4 h_u_arrmul8_and4_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_4_a_4 _b=h_u_arrmul8_and4_4_b_4 _y0=h_u_arrmul8_and4_4_y0
-.names h_u_arrmul8_and4_4_y0 h_u_arrmul8_fa4_4_h_u_arrmul8_and4_4_y0
-1 1
-.names h_u_arrmul8_fa5_3_y2 h_u_arrmul8_fa4_4_h_u_arrmul8_fa5_3_y2
-1 1
-.names h_u_arrmul8_fa3_4_y4 h_u_arrmul8_fa4_4_h_u_arrmul8_fa3_4_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_4_h_u_arrmul8_and4_4_y0 b=h_u_arrmul8_fa4_4_h_u_arrmul8_fa5_3_y2 cin=h_u_arrmul8_fa4_4_h_u_arrmul8_fa3_4_y4 fa_y2=h_u_arrmul8_fa4_4_y2 fa_y4=h_u_arrmul8_fa4_4_y4
-.names a_5 h_u_arrmul8_and5_4_a_5
-1 1
-.names b_4 h_u_arrmul8_and5_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_4_a_5 _b=h_u_arrmul8_and5_4_b_4 _y0=h_u_arrmul8_and5_4_y0
-.names h_u_arrmul8_and5_4_y0 h_u_arrmul8_fa5_4_h_u_arrmul8_and5_4_y0
-1 1
-.names h_u_arrmul8_fa6_3_y2 h_u_arrmul8_fa5_4_h_u_arrmul8_fa6_3_y2
-1 1
-.names h_u_arrmul8_fa4_4_y4 h_u_arrmul8_fa5_4_h_u_arrmul8_fa4_4_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_4_h_u_arrmul8_and5_4_y0 b=h_u_arrmul8_fa5_4_h_u_arrmul8_fa6_3_y2 cin=h_u_arrmul8_fa5_4_h_u_arrmul8_fa4_4_y4 fa_y2=h_u_arrmul8_fa5_4_y2 fa_y4=h_u_arrmul8_fa5_4_y4
-.names a_6 h_u_arrmul8_and6_4_a_6
-1 1
-.names b_4 h_u_arrmul8_and6_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_4_a_6 _b=h_u_arrmul8_and6_4_b_4 _y0=h_u_arrmul8_and6_4_y0
-.names h_u_arrmul8_and6_4_y0 h_u_arrmul8_fa6_4_h_u_arrmul8_and6_4_y0
-1 1
-.names h_u_arrmul8_fa7_3_y2 h_u_arrmul8_fa6_4_h_u_arrmul8_fa7_3_y2
-1 1
-.names h_u_arrmul8_fa5_4_y4 h_u_arrmul8_fa6_4_h_u_arrmul8_fa5_4_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_4_h_u_arrmul8_and6_4_y0 b=h_u_arrmul8_fa6_4_h_u_arrmul8_fa7_3_y2 cin=h_u_arrmul8_fa6_4_h_u_arrmul8_fa5_4_y4 fa_y2=h_u_arrmul8_fa6_4_y2 fa_y4=h_u_arrmul8_fa6_4_y4
-.names a_7 h_u_arrmul8_and7_4_a_7
-1 1
-.names b_4 h_u_arrmul8_and7_4_b_4
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_4_a_7 _b=h_u_arrmul8_and7_4_b_4 _y0=h_u_arrmul8_and7_4_y0
-.names h_u_arrmul8_and7_4_y0 h_u_arrmul8_fa7_4_h_u_arrmul8_and7_4_y0
-1 1
-.names h_u_arrmul8_fa7_3_y4 h_u_arrmul8_fa7_4_h_u_arrmul8_fa7_3_y4
-1 1
-.names h_u_arrmul8_fa6_4_y4 h_u_arrmul8_fa7_4_h_u_arrmul8_fa6_4_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa7_4_h_u_arrmul8_and7_4_y0 b=h_u_arrmul8_fa7_4_h_u_arrmul8_fa7_3_y4 cin=h_u_arrmul8_fa7_4_h_u_arrmul8_fa6_4_y4 fa_y2=h_u_arrmul8_fa7_4_y2 fa_y4=h_u_arrmul8_fa7_4_y4
-.names a_0 h_u_arrmul8_and0_5_a_0
-1 1
-.names b_5 h_u_arrmul8_and0_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_5_a_0 _b=h_u_arrmul8_and0_5_b_5 _y0=h_u_arrmul8_and0_5_y0
-.names h_u_arrmul8_and0_5_y0 h_u_arrmul8_ha0_5_h_u_arrmul8_and0_5_y0
-1 1
-.names h_u_arrmul8_fa1_4_y2 h_u_arrmul8_ha0_5_h_u_arrmul8_fa1_4_y2
-1 1
-.subckt ha a=h_u_arrmul8_ha0_5_h_u_arrmul8_and0_5_y0 b=h_u_arrmul8_ha0_5_h_u_arrmul8_fa1_4_y2 ha_y0=h_u_arrmul8_ha0_5_y0 ha_y1=h_u_arrmul8_ha0_5_y1
-.names a_1 h_u_arrmul8_and1_5_a_1
-1 1
-.names b_5 h_u_arrmul8_and1_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_5_a_1 _b=h_u_arrmul8_and1_5_b_5 _y0=h_u_arrmul8_and1_5_y0
-.names h_u_arrmul8_and1_5_y0 h_u_arrmul8_fa1_5_h_u_arrmul8_and1_5_y0
-1 1
-.names h_u_arrmul8_fa2_4_y2 h_u_arrmul8_fa1_5_h_u_arrmul8_fa2_4_y2
-1 1
-.names h_u_arrmul8_ha0_5_y1 h_u_arrmul8_fa1_5_h_u_arrmul8_ha0_5_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_5_h_u_arrmul8_and1_5_y0 b=h_u_arrmul8_fa1_5_h_u_arrmul8_fa2_4_y2 cin=h_u_arrmul8_fa1_5_h_u_arrmul8_ha0_5_y1 fa_y2=h_u_arrmul8_fa1_5_y2 fa_y4=h_u_arrmul8_fa1_5_y4
-.names a_2 h_u_arrmul8_and2_5_a_2
-1 1
-.names b_5 h_u_arrmul8_and2_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_5_a_2 _b=h_u_arrmul8_and2_5_b_5 _y0=h_u_arrmul8_and2_5_y0
-.names h_u_arrmul8_and2_5_y0 h_u_arrmul8_fa2_5_h_u_arrmul8_and2_5_y0
-1 1
-.names h_u_arrmul8_fa3_4_y2 h_u_arrmul8_fa2_5_h_u_arrmul8_fa3_4_y2
-1 1
-.names h_u_arrmul8_fa1_5_y4 h_u_arrmul8_fa2_5_h_u_arrmul8_fa1_5_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_5_h_u_arrmul8_and2_5_y0 b=h_u_arrmul8_fa2_5_h_u_arrmul8_fa3_4_y2 cin=h_u_arrmul8_fa2_5_h_u_arrmul8_fa1_5_y4 fa_y2=h_u_arrmul8_fa2_5_y2 fa_y4=h_u_arrmul8_fa2_5_y4
-.names a_3 h_u_arrmul8_and3_5_a_3
-1 1
-.names b_5 h_u_arrmul8_and3_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_5_a_3 _b=h_u_arrmul8_and3_5_b_5 _y0=h_u_arrmul8_and3_5_y0
-.names h_u_arrmul8_and3_5_y0 h_u_arrmul8_fa3_5_h_u_arrmul8_and3_5_y0
-1 1
-.names h_u_arrmul8_fa4_4_y2 h_u_arrmul8_fa3_5_h_u_arrmul8_fa4_4_y2
-1 1
-.names h_u_arrmul8_fa2_5_y4 h_u_arrmul8_fa3_5_h_u_arrmul8_fa2_5_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_5_h_u_arrmul8_and3_5_y0 b=h_u_arrmul8_fa3_5_h_u_arrmul8_fa4_4_y2 cin=h_u_arrmul8_fa3_5_h_u_arrmul8_fa2_5_y4 fa_y2=h_u_arrmul8_fa3_5_y2 fa_y4=h_u_arrmul8_fa3_5_y4
-.names a_4 h_u_arrmul8_and4_5_a_4
-1 1
-.names b_5 h_u_arrmul8_and4_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_5_a_4 _b=h_u_arrmul8_and4_5_b_5 _y0=h_u_arrmul8_and4_5_y0
-.names h_u_arrmul8_and4_5_y0 h_u_arrmul8_fa4_5_h_u_arrmul8_and4_5_y0
-1 1
-.names h_u_arrmul8_fa5_4_y2 h_u_arrmul8_fa4_5_h_u_arrmul8_fa5_4_y2
-1 1
-.names h_u_arrmul8_fa3_5_y4 h_u_arrmul8_fa4_5_h_u_arrmul8_fa3_5_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_5_h_u_arrmul8_and4_5_y0 b=h_u_arrmul8_fa4_5_h_u_arrmul8_fa5_4_y2 cin=h_u_arrmul8_fa4_5_h_u_arrmul8_fa3_5_y4 fa_y2=h_u_arrmul8_fa4_5_y2 fa_y4=h_u_arrmul8_fa4_5_y4
-.names a_5 h_u_arrmul8_and5_5_a_5
-1 1
-.names b_5 h_u_arrmul8_and5_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_5_a_5 _b=h_u_arrmul8_and5_5_b_5 _y0=h_u_arrmul8_and5_5_y0
-.names h_u_arrmul8_and5_5_y0 h_u_arrmul8_fa5_5_h_u_arrmul8_and5_5_y0
-1 1
-.names h_u_arrmul8_fa6_4_y2 h_u_arrmul8_fa5_5_h_u_arrmul8_fa6_4_y2
-1 1
-.names h_u_arrmul8_fa4_5_y4 h_u_arrmul8_fa5_5_h_u_arrmul8_fa4_5_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_5_h_u_arrmul8_and5_5_y0 b=h_u_arrmul8_fa5_5_h_u_arrmul8_fa6_4_y2 cin=h_u_arrmul8_fa5_5_h_u_arrmul8_fa4_5_y4 fa_y2=h_u_arrmul8_fa5_5_y2 fa_y4=h_u_arrmul8_fa5_5_y4
-.names a_6 h_u_arrmul8_and6_5_a_6
-1 1
-.names b_5 h_u_arrmul8_and6_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_5_a_6 _b=h_u_arrmul8_and6_5_b_5 _y0=h_u_arrmul8_and6_5_y0
-.names h_u_arrmul8_and6_5_y0 h_u_arrmul8_fa6_5_h_u_arrmul8_and6_5_y0
-1 1
-.names h_u_arrmul8_fa7_4_y2 h_u_arrmul8_fa6_5_h_u_arrmul8_fa7_4_y2
-1 1
-.names h_u_arrmul8_fa5_5_y4 h_u_arrmul8_fa6_5_h_u_arrmul8_fa5_5_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_5_h_u_arrmul8_and6_5_y0 b=h_u_arrmul8_fa6_5_h_u_arrmul8_fa7_4_y2 cin=h_u_arrmul8_fa6_5_h_u_arrmul8_fa5_5_y4 fa_y2=h_u_arrmul8_fa6_5_y2 fa_y4=h_u_arrmul8_fa6_5_y4
-.names a_7 h_u_arrmul8_and7_5_a_7
-1 1
-.names b_5 h_u_arrmul8_and7_5_b_5
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_5_a_7 _b=h_u_arrmul8_and7_5_b_5 _y0=h_u_arrmul8_and7_5_y0
-.names h_u_arrmul8_and7_5_y0 h_u_arrmul8_fa7_5_h_u_arrmul8_and7_5_y0
-1 1
-.names h_u_arrmul8_fa7_4_y4 h_u_arrmul8_fa7_5_h_u_arrmul8_fa7_4_y4
-1 1
-.names h_u_arrmul8_fa6_5_y4 h_u_arrmul8_fa7_5_h_u_arrmul8_fa6_5_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa7_5_h_u_arrmul8_and7_5_y0 b=h_u_arrmul8_fa7_5_h_u_arrmul8_fa7_4_y4 cin=h_u_arrmul8_fa7_5_h_u_arrmul8_fa6_5_y4 fa_y2=h_u_arrmul8_fa7_5_y2 fa_y4=h_u_arrmul8_fa7_5_y4
-.names a_0 h_u_arrmul8_and0_6_a_0
-1 1
-.names b_6 h_u_arrmul8_and0_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_6_a_0 _b=h_u_arrmul8_and0_6_b_6 _y0=h_u_arrmul8_and0_6_y0
-.names h_u_arrmul8_and0_6_y0 h_u_arrmul8_ha0_6_h_u_arrmul8_and0_6_y0
-1 1
-.names h_u_arrmul8_fa1_5_y2 h_u_arrmul8_ha0_6_h_u_arrmul8_fa1_5_y2
-1 1
-.subckt ha a=h_u_arrmul8_ha0_6_h_u_arrmul8_and0_6_y0 b=h_u_arrmul8_ha0_6_h_u_arrmul8_fa1_5_y2 ha_y0=h_u_arrmul8_ha0_6_y0 ha_y1=h_u_arrmul8_ha0_6_y1
-.names a_1 h_u_arrmul8_and1_6_a_1
-1 1
-.names b_6 h_u_arrmul8_and1_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_6_a_1 _b=h_u_arrmul8_and1_6_b_6 _y0=h_u_arrmul8_and1_6_y0
-.names h_u_arrmul8_and1_6_y0 h_u_arrmul8_fa1_6_h_u_arrmul8_and1_6_y0
-1 1
-.names h_u_arrmul8_fa2_5_y2 h_u_arrmul8_fa1_6_h_u_arrmul8_fa2_5_y2
-1 1
-.names h_u_arrmul8_ha0_6_y1 h_u_arrmul8_fa1_6_h_u_arrmul8_ha0_6_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_6_h_u_arrmul8_and1_6_y0 b=h_u_arrmul8_fa1_6_h_u_arrmul8_fa2_5_y2 cin=h_u_arrmul8_fa1_6_h_u_arrmul8_ha0_6_y1 fa_y2=h_u_arrmul8_fa1_6_y2 fa_y4=h_u_arrmul8_fa1_6_y4
-.names a_2 h_u_arrmul8_and2_6_a_2
-1 1
-.names b_6 h_u_arrmul8_and2_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_6_a_2 _b=h_u_arrmul8_and2_6_b_6 _y0=h_u_arrmul8_and2_6_y0
-.names h_u_arrmul8_and2_6_y0 h_u_arrmul8_fa2_6_h_u_arrmul8_and2_6_y0
-1 1
-.names h_u_arrmul8_fa3_5_y2 h_u_arrmul8_fa2_6_h_u_arrmul8_fa3_5_y2
-1 1
-.names h_u_arrmul8_fa1_6_y4 h_u_arrmul8_fa2_6_h_u_arrmul8_fa1_6_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_6_h_u_arrmul8_and2_6_y0 b=h_u_arrmul8_fa2_6_h_u_arrmul8_fa3_5_y2 cin=h_u_arrmul8_fa2_6_h_u_arrmul8_fa1_6_y4 fa_y2=h_u_arrmul8_fa2_6_y2 fa_y4=h_u_arrmul8_fa2_6_y4
-.names a_3 h_u_arrmul8_and3_6_a_3
-1 1
-.names b_6 h_u_arrmul8_and3_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_6_a_3 _b=h_u_arrmul8_and3_6_b_6 _y0=h_u_arrmul8_and3_6_y0
-.names h_u_arrmul8_and3_6_y0 h_u_arrmul8_fa3_6_h_u_arrmul8_and3_6_y0
-1 1
-.names h_u_arrmul8_fa4_5_y2 h_u_arrmul8_fa3_6_h_u_arrmul8_fa4_5_y2
-1 1
-.names h_u_arrmul8_fa2_6_y4 h_u_arrmul8_fa3_6_h_u_arrmul8_fa2_6_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_6_h_u_arrmul8_and3_6_y0 b=h_u_arrmul8_fa3_6_h_u_arrmul8_fa4_5_y2 cin=h_u_arrmul8_fa3_6_h_u_arrmul8_fa2_6_y4 fa_y2=h_u_arrmul8_fa3_6_y2 fa_y4=h_u_arrmul8_fa3_6_y4
-.names a_4 h_u_arrmul8_and4_6_a_4
-1 1
-.names b_6 h_u_arrmul8_and4_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_6_a_4 _b=h_u_arrmul8_and4_6_b_6 _y0=h_u_arrmul8_and4_6_y0
-.names h_u_arrmul8_and4_6_y0 h_u_arrmul8_fa4_6_h_u_arrmul8_and4_6_y0
-1 1
-.names h_u_arrmul8_fa5_5_y2 h_u_arrmul8_fa4_6_h_u_arrmul8_fa5_5_y2
-1 1
-.names h_u_arrmul8_fa3_6_y4 h_u_arrmul8_fa4_6_h_u_arrmul8_fa3_6_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_6_h_u_arrmul8_and4_6_y0 b=h_u_arrmul8_fa4_6_h_u_arrmul8_fa5_5_y2 cin=h_u_arrmul8_fa4_6_h_u_arrmul8_fa3_6_y4 fa_y2=h_u_arrmul8_fa4_6_y2 fa_y4=h_u_arrmul8_fa4_6_y4
-.names a_5 h_u_arrmul8_and5_6_a_5
-1 1
-.names b_6 h_u_arrmul8_and5_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_6_a_5 _b=h_u_arrmul8_and5_6_b_6 _y0=h_u_arrmul8_and5_6_y0
-.names h_u_arrmul8_and5_6_y0 h_u_arrmul8_fa5_6_h_u_arrmul8_and5_6_y0
-1 1
-.names h_u_arrmul8_fa6_5_y2 h_u_arrmul8_fa5_6_h_u_arrmul8_fa6_5_y2
-1 1
-.names h_u_arrmul8_fa4_6_y4 h_u_arrmul8_fa5_6_h_u_arrmul8_fa4_6_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_6_h_u_arrmul8_and5_6_y0 b=h_u_arrmul8_fa5_6_h_u_arrmul8_fa6_5_y2 cin=h_u_arrmul8_fa5_6_h_u_arrmul8_fa4_6_y4 fa_y2=h_u_arrmul8_fa5_6_y2 fa_y4=h_u_arrmul8_fa5_6_y4
-.names a_6 h_u_arrmul8_and6_6_a_6
-1 1
-.names b_6 h_u_arrmul8_and6_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_6_a_6 _b=h_u_arrmul8_and6_6_b_6 _y0=h_u_arrmul8_and6_6_y0
-.names h_u_arrmul8_and6_6_y0 h_u_arrmul8_fa6_6_h_u_arrmul8_and6_6_y0
-1 1
-.names h_u_arrmul8_fa7_5_y2 h_u_arrmul8_fa6_6_h_u_arrmul8_fa7_5_y2
-1 1
-.names h_u_arrmul8_fa5_6_y4 h_u_arrmul8_fa6_6_h_u_arrmul8_fa5_6_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_6_h_u_arrmul8_and6_6_y0 b=h_u_arrmul8_fa6_6_h_u_arrmul8_fa7_5_y2 cin=h_u_arrmul8_fa6_6_h_u_arrmul8_fa5_6_y4 fa_y2=h_u_arrmul8_fa6_6_y2 fa_y4=h_u_arrmul8_fa6_6_y4
-.names a_7 h_u_arrmul8_and7_6_a_7
-1 1
-.names b_6 h_u_arrmul8_and7_6_b_6
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_6_a_7 _b=h_u_arrmul8_and7_6_b_6 _y0=h_u_arrmul8_and7_6_y0
-.names h_u_arrmul8_and7_6_y0 h_u_arrmul8_fa7_6_h_u_arrmul8_and7_6_y0
-1 1
-.names h_u_arrmul8_fa7_5_y4 h_u_arrmul8_fa7_6_h_u_arrmul8_fa7_5_y4
-1 1
-.names h_u_arrmul8_fa6_6_y4 h_u_arrmul8_fa7_6_h_u_arrmul8_fa6_6_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa7_6_h_u_arrmul8_and7_6_y0 b=h_u_arrmul8_fa7_6_h_u_arrmul8_fa7_5_y4 cin=h_u_arrmul8_fa7_6_h_u_arrmul8_fa6_6_y4 fa_y2=h_u_arrmul8_fa7_6_y2 fa_y4=h_u_arrmul8_fa7_6_y4
-.names a_0 h_u_arrmul8_and0_7_a_0
-1 1
-.names b_7 h_u_arrmul8_and0_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and0_7_a_0 _b=h_u_arrmul8_and0_7_b_7 _y0=h_u_arrmul8_and0_7_y0
-.names h_u_arrmul8_and0_7_y0 h_u_arrmul8_ha0_7_h_u_arrmul8_and0_7_y0
-1 1
-.names h_u_arrmul8_fa1_6_y2 h_u_arrmul8_ha0_7_h_u_arrmul8_fa1_6_y2
-1 1
-.subckt ha a=h_u_arrmul8_ha0_7_h_u_arrmul8_and0_7_y0 b=h_u_arrmul8_ha0_7_h_u_arrmul8_fa1_6_y2 ha_y0=h_u_arrmul8_ha0_7_y0 ha_y1=h_u_arrmul8_ha0_7_y1
-.names a_1 h_u_arrmul8_and1_7_a_1
-1 1
-.names b_7 h_u_arrmul8_and1_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and1_7_a_1 _b=h_u_arrmul8_and1_7_b_7 _y0=h_u_arrmul8_and1_7_y0
-.names h_u_arrmul8_and1_7_y0 h_u_arrmul8_fa1_7_h_u_arrmul8_and1_7_y0
-1 1
-.names h_u_arrmul8_fa2_6_y2 h_u_arrmul8_fa1_7_h_u_arrmul8_fa2_6_y2
-1 1
-.names h_u_arrmul8_ha0_7_y1 h_u_arrmul8_fa1_7_h_u_arrmul8_ha0_7_y1
-1 1
-.subckt fa a=h_u_arrmul8_fa1_7_h_u_arrmul8_and1_7_y0 b=h_u_arrmul8_fa1_7_h_u_arrmul8_fa2_6_y2 cin=h_u_arrmul8_fa1_7_h_u_arrmul8_ha0_7_y1 fa_y2=h_u_arrmul8_fa1_7_y2 fa_y4=h_u_arrmul8_fa1_7_y4
-.names a_2 h_u_arrmul8_and2_7_a_2
-1 1
-.names b_7 h_u_arrmul8_and2_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and2_7_a_2 _b=h_u_arrmul8_and2_7_b_7 _y0=h_u_arrmul8_and2_7_y0
-.names h_u_arrmul8_and2_7_y0 h_u_arrmul8_fa2_7_h_u_arrmul8_and2_7_y0
-1 1
-.names h_u_arrmul8_fa3_6_y2 h_u_arrmul8_fa2_7_h_u_arrmul8_fa3_6_y2
-1 1
-.names h_u_arrmul8_fa1_7_y4 h_u_arrmul8_fa2_7_h_u_arrmul8_fa1_7_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa2_7_h_u_arrmul8_and2_7_y0 b=h_u_arrmul8_fa2_7_h_u_arrmul8_fa3_6_y2 cin=h_u_arrmul8_fa2_7_h_u_arrmul8_fa1_7_y4 fa_y2=h_u_arrmul8_fa2_7_y2 fa_y4=h_u_arrmul8_fa2_7_y4
-.names a_3 h_u_arrmul8_and3_7_a_3
-1 1
-.names b_7 h_u_arrmul8_and3_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and3_7_a_3 _b=h_u_arrmul8_and3_7_b_7 _y0=h_u_arrmul8_and3_7_y0
-.names h_u_arrmul8_and3_7_y0 h_u_arrmul8_fa3_7_h_u_arrmul8_and3_7_y0
-1 1
-.names h_u_arrmul8_fa4_6_y2 h_u_arrmul8_fa3_7_h_u_arrmul8_fa4_6_y2
-1 1
-.names h_u_arrmul8_fa2_7_y4 h_u_arrmul8_fa3_7_h_u_arrmul8_fa2_7_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa3_7_h_u_arrmul8_and3_7_y0 b=h_u_arrmul8_fa3_7_h_u_arrmul8_fa4_6_y2 cin=h_u_arrmul8_fa3_7_h_u_arrmul8_fa2_7_y4 fa_y2=h_u_arrmul8_fa3_7_y2 fa_y4=h_u_arrmul8_fa3_7_y4
-.names a_4 h_u_arrmul8_and4_7_a_4
-1 1
-.names b_7 h_u_arrmul8_and4_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and4_7_a_4 _b=h_u_arrmul8_and4_7_b_7 _y0=h_u_arrmul8_and4_7_y0
-.names h_u_arrmul8_and4_7_y0 h_u_arrmul8_fa4_7_h_u_arrmul8_and4_7_y0
-1 1
-.names h_u_arrmul8_fa5_6_y2 h_u_arrmul8_fa4_7_h_u_arrmul8_fa5_6_y2
-1 1
-.names h_u_arrmul8_fa3_7_y4 h_u_arrmul8_fa4_7_h_u_arrmul8_fa3_7_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa4_7_h_u_arrmul8_and4_7_y0 b=h_u_arrmul8_fa4_7_h_u_arrmul8_fa5_6_y2 cin=h_u_arrmul8_fa4_7_h_u_arrmul8_fa3_7_y4 fa_y2=h_u_arrmul8_fa4_7_y2 fa_y4=h_u_arrmul8_fa4_7_y4
-.names a_5 h_u_arrmul8_and5_7_a_5
-1 1
-.names b_7 h_u_arrmul8_and5_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and5_7_a_5 _b=h_u_arrmul8_and5_7_b_7 _y0=h_u_arrmul8_and5_7_y0
-.names h_u_arrmul8_and5_7_y0 h_u_arrmul8_fa5_7_h_u_arrmul8_and5_7_y0
-1 1
-.names h_u_arrmul8_fa6_6_y2 h_u_arrmul8_fa5_7_h_u_arrmul8_fa6_6_y2
-1 1
-.names h_u_arrmul8_fa4_7_y4 h_u_arrmul8_fa5_7_h_u_arrmul8_fa4_7_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa5_7_h_u_arrmul8_and5_7_y0 b=h_u_arrmul8_fa5_7_h_u_arrmul8_fa6_6_y2 cin=h_u_arrmul8_fa5_7_h_u_arrmul8_fa4_7_y4 fa_y2=h_u_arrmul8_fa5_7_y2 fa_y4=h_u_arrmul8_fa5_7_y4
-.names a_6 h_u_arrmul8_and6_7_a_6
-1 1
-.names b_7 h_u_arrmul8_and6_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and6_7_a_6 _b=h_u_arrmul8_and6_7_b_7 _y0=h_u_arrmul8_and6_7_y0
-.names h_u_arrmul8_and6_7_y0 h_u_arrmul8_fa6_7_h_u_arrmul8_and6_7_y0
-1 1
-.names h_u_arrmul8_fa7_6_y2 h_u_arrmul8_fa6_7_h_u_arrmul8_fa7_6_y2
-1 1
-.names h_u_arrmul8_fa5_7_y4 h_u_arrmul8_fa6_7_h_u_arrmul8_fa5_7_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa6_7_h_u_arrmul8_and6_7_y0 b=h_u_arrmul8_fa6_7_h_u_arrmul8_fa7_6_y2 cin=h_u_arrmul8_fa6_7_h_u_arrmul8_fa5_7_y4 fa_y2=h_u_arrmul8_fa6_7_y2 fa_y4=h_u_arrmul8_fa6_7_y4
-.names a_7 h_u_arrmul8_and7_7_a_7
-1 1
-.names b_7 h_u_arrmul8_and7_7_b_7
-1 1
-.subckt and_gate _a=h_u_arrmul8_and7_7_a_7 _b=h_u_arrmul8_and7_7_b_7 _y0=h_u_arrmul8_and7_7_y0
-.names h_u_arrmul8_and7_7_y0 h_u_arrmul8_fa7_7_h_u_arrmul8_and7_7_y0
-1 1
-.names h_u_arrmul8_fa7_6_y4 h_u_arrmul8_fa7_7_h_u_arrmul8_fa7_6_y4
-1 1
-.names h_u_arrmul8_fa6_7_y4 h_u_arrmul8_fa7_7_h_u_arrmul8_fa6_7_y4
-1 1
-.subckt fa a=h_u_arrmul8_fa7_7_h_u_arrmul8_and7_7_y0 b=h_u_arrmul8_fa7_7_h_u_arrmul8_fa7_6_y4 cin=h_u_arrmul8_fa7_7_h_u_arrmul8_fa6_7_y4 fa_y2=h_u_arrmul8_fa7_7_y2 fa_y4=h_u_arrmul8_fa7_7_y4
-.names h_u_arrmul8_and0_0_y0 out[0]
-1 1
-.names h_u_arrmul8_ha0_1_y0 out[1]
-1 1
-.names h_u_arrmul8_ha0_2_y0 out[2]
-1 1
-.names h_u_arrmul8_ha0_3_y0 out[3]
-1 1
-.names h_u_arrmul8_ha0_4_y0 out[4]
-1 1
-.names h_u_arrmul8_ha0_5_y0 out[5]
-1 1
-.names h_u_arrmul8_ha0_6_y0 out[6]
-1 1
-.names h_u_arrmul8_ha0_7_y0 out[7]
-1 1
-.names h_u_arrmul8_fa1_7_y2 out[8]
-1 1
-.names h_u_arrmul8_fa2_7_y2 out[9]
-1 1
-.names h_u_arrmul8_fa3_7_y2 out[10]
-1 1
-.names h_u_arrmul8_fa4_7_y2 out[11]
-1 1
-.names h_u_arrmul8_fa5_7_y2 out[12]
-1 1
-.names h_u_arrmul8_fa6_7_y2 out[13]
-1 1
-.names h_u_arrmul8_fa7_7_y2 out[14]
-1 1
-.names h_u_arrmul8_fa7_7_y4 out[15]
+.names h_u_arrmul8_fa7_7_or0 h_u_arrmul8_out[15]
 1 1
 .end
 
 .model fa
 .inputs a b cin
-.outputs fa_y2 fa_y4
-.names a fa_a
-1 1
-.names b fa_b
-1 1
-.names cin fa_cin
-1 1
-.subckt xor_gate _a=fa_a _b=fa_b _y0=fa_y0
-.subckt and_gate _a=fa_a _b=fa_b _y0=fa_y1
-.subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
-.subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
-.subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
 .end
 
 .model ha
 .inputs a b
-.outputs ha_y0 ha_y1
-.names a ha_a
-1 1
-.names b ha_b
-1 1
-.subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
-.subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
 .end
 
 .model or_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 1- 1
 -1 1
 .end
 
 .model xor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 01 1
 10 1
 .end
 
 .model and_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 11 1
 .end

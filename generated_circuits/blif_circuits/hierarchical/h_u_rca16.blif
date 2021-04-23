@@ -1,262 +1,118 @@
 .model h_u_rca16
-.inputs  a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
-.outputs out[0] out[1] out[2] out[3] out[4] out[5] out[6] out[7] out[8] out[9] out[10] out[11] out[12] out[13] out[14] out[15] out[16]
-.names a[0] a_0
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs h_u_rca16_out[0] h_u_rca16_out[1] h_u_rca16_out[2] h_u_rca16_out[3] h_u_rca16_out[4] h_u_rca16_out[5] h_u_rca16_out[6] h_u_rca16_out[7] h_u_rca16_out[8] h_u_rca16_out[9] h_u_rca16_out[10] h_u_rca16_out[11] h_u_rca16_out[12] h_u_rca16_out[13] h_u_rca16_out[14] h_u_rca16_out[15] h_u_rca16_out[16]
+.names vdd
+1
+.names gnd
+0
+.subckt ha a=a[0] b=b[0] ha_xor0=h_u_rca16_ha_xor0 ha_and0=h_u_rca16_ha_and0
+.subckt fa a=a[1] b=b[1] cin=h_u_rca16_ha_and0 fa_xor1=h_u_rca16_fa1_xor1 fa_or0=h_u_rca16_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=h_u_rca16_fa1_or0 fa_xor1=h_u_rca16_fa2_xor1 fa_or0=h_u_rca16_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=h_u_rca16_fa2_or0 fa_xor1=h_u_rca16_fa3_xor1 fa_or0=h_u_rca16_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=h_u_rca16_fa3_or0 fa_xor1=h_u_rca16_fa4_xor1 fa_or0=h_u_rca16_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=h_u_rca16_fa4_or0 fa_xor1=h_u_rca16_fa5_xor1 fa_or0=h_u_rca16_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=h_u_rca16_fa5_or0 fa_xor1=h_u_rca16_fa6_xor1 fa_or0=h_u_rca16_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=h_u_rca16_fa6_or0 fa_xor1=h_u_rca16_fa7_xor1 fa_or0=h_u_rca16_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=h_u_rca16_fa7_or0 fa_xor1=h_u_rca16_fa8_xor1 fa_or0=h_u_rca16_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=h_u_rca16_fa8_or0 fa_xor1=h_u_rca16_fa9_xor1 fa_or0=h_u_rca16_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=h_u_rca16_fa9_or0 fa_xor1=h_u_rca16_fa10_xor1 fa_or0=h_u_rca16_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=h_u_rca16_fa10_or0 fa_xor1=h_u_rca16_fa11_xor1 fa_or0=h_u_rca16_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=h_u_rca16_fa11_or0 fa_xor1=h_u_rca16_fa12_xor1 fa_or0=h_u_rca16_fa12_or0
+.subckt fa a=a[13] b=b[13] cin=h_u_rca16_fa12_or0 fa_xor1=h_u_rca16_fa13_xor1 fa_or0=h_u_rca16_fa13_or0
+.subckt fa a=a[14] b=b[14] cin=h_u_rca16_fa13_or0 fa_xor1=h_u_rca16_fa14_xor1 fa_or0=h_u_rca16_fa14_or0
+.subckt fa a=a[15] b=b[15] cin=h_u_rca16_fa14_or0 fa_xor1=h_u_rca16_fa15_xor1 fa_or0=h_u_rca16_fa15_or0
+.names h_u_rca16_ha_xor0 h_u_rca16_out[0]
 1 1
-.names a[1] a_1
+.names h_u_rca16_fa1_xor1 h_u_rca16_out[1]
 1 1
-.names a[2] a_2
+.names h_u_rca16_fa2_xor1 h_u_rca16_out[2]
 1 1
-.names a[3] a_3
+.names h_u_rca16_fa3_xor1 h_u_rca16_out[3]
 1 1
-.names a[4] a_4
+.names h_u_rca16_fa4_xor1 h_u_rca16_out[4]
 1 1
-.names a[5] a_5
+.names h_u_rca16_fa5_xor1 h_u_rca16_out[5]
 1 1
-.names a[6] a_6
+.names h_u_rca16_fa6_xor1 h_u_rca16_out[6]
 1 1
-.names a[7] a_7
+.names h_u_rca16_fa7_xor1 h_u_rca16_out[7]
 1 1
-.names a[8] a_8
+.names h_u_rca16_fa8_xor1 h_u_rca16_out[8]
 1 1
-.names a[9] a_9
+.names h_u_rca16_fa9_xor1 h_u_rca16_out[9]
 1 1
-.names a[10] a_10
+.names h_u_rca16_fa10_xor1 h_u_rca16_out[10]
 1 1
-.names a[11] a_11
+.names h_u_rca16_fa11_xor1 h_u_rca16_out[11]
 1 1
-.names a[12] a_12
+.names h_u_rca16_fa12_xor1 h_u_rca16_out[12]
 1 1
-.names a[13] a_13
+.names h_u_rca16_fa13_xor1 h_u_rca16_out[13]
 1 1
-.names a[14] a_14
+.names h_u_rca16_fa14_xor1 h_u_rca16_out[14]
 1 1
-.names a[15] a_15
+.names h_u_rca16_fa15_xor1 h_u_rca16_out[15]
 1 1
-.names b[0] b_0
-1 1
-.names b[1] b_1
-1 1
-.names b[2] b_2
-1 1
-.names b[3] b_3
-1 1
-.names b[4] b_4
-1 1
-.names b[5] b_5
-1 1
-.names b[6] b_6
-1 1
-.names b[7] b_7
-1 1
-.names b[8] b_8
-1 1
-.names b[9] b_9
-1 1
-.names b[10] b_10
-1 1
-.names b[11] b_11
-1 1
-.names b[12] b_12
-1 1
-.names b[13] b_13
-1 1
-.names b[14] b_14
-1 1
-.names b[15] b_15
-1 1
-.names a_0 h_u_rca16_ha_a_0
-1 1
-.names b_0 h_u_rca16_ha_b_0
-1 1
-.subckt ha a=h_u_rca16_ha_a_0 b=h_u_rca16_ha_b_0 ha_y0=h_u_rca16_ha_y0 ha_y1=h_u_rca16_ha_y1
-.names a_1 h_u_rca16_fa1_a_1
-1 1
-.names b_1 h_u_rca16_fa1_b_1
-1 1
-.names h_u_rca16_ha_y1 h_u_rca16_fa1_h_u_rca16_ha_y1
-1 1
-.subckt fa a=h_u_rca16_fa1_a_1 b=h_u_rca16_fa1_b_1 cin=h_u_rca16_fa1_h_u_rca16_ha_y1 fa_y2=h_u_rca16_fa1_y2 fa_y4=h_u_rca16_fa1_y4
-.names a_2 h_u_rca16_fa2_a_2
-1 1
-.names b_2 h_u_rca16_fa2_b_2
-1 1
-.names h_u_rca16_fa1_y4 h_u_rca16_fa2_h_u_rca16_fa1_y4
-1 1
-.subckt fa a=h_u_rca16_fa2_a_2 b=h_u_rca16_fa2_b_2 cin=h_u_rca16_fa2_h_u_rca16_fa1_y4 fa_y2=h_u_rca16_fa2_y2 fa_y4=h_u_rca16_fa2_y4
-.names a_3 h_u_rca16_fa3_a_3
-1 1
-.names b_3 h_u_rca16_fa3_b_3
-1 1
-.names h_u_rca16_fa2_y4 h_u_rca16_fa3_h_u_rca16_fa2_y4
-1 1
-.subckt fa a=h_u_rca16_fa3_a_3 b=h_u_rca16_fa3_b_3 cin=h_u_rca16_fa3_h_u_rca16_fa2_y4 fa_y2=h_u_rca16_fa3_y2 fa_y4=h_u_rca16_fa3_y4
-.names a_4 h_u_rca16_fa4_a_4
-1 1
-.names b_4 h_u_rca16_fa4_b_4
-1 1
-.names h_u_rca16_fa3_y4 h_u_rca16_fa4_h_u_rca16_fa3_y4
-1 1
-.subckt fa a=h_u_rca16_fa4_a_4 b=h_u_rca16_fa4_b_4 cin=h_u_rca16_fa4_h_u_rca16_fa3_y4 fa_y2=h_u_rca16_fa4_y2 fa_y4=h_u_rca16_fa4_y4
-.names a_5 h_u_rca16_fa5_a_5
-1 1
-.names b_5 h_u_rca16_fa5_b_5
-1 1
-.names h_u_rca16_fa4_y4 h_u_rca16_fa5_h_u_rca16_fa4_y4
-1 1
-.subckt fa a=h_u_rca16_fa5_a_5 b=h_u_rca16_fa5_b_5 cin=h_u_rca16_fa5_h_u_rca16_fa4_y4 fa_y2=h_u_rca16_fa5_y2 fa_y4=h_u_rca16_fa5_y4
-.names a_6 h_u_rca16_fa6_a_6
-1 1
-.names b_6 h_u_rca16_fa6_b_6
-1 1
-.names h_u_rca16_fa5_y4 h_u_rca16_fa6_h_u_rca16_fa5_y4
-1 1
-.subckt fa a=h_u_rca16_fa6_a_6 b=h_u_rca16_fa6_b_6 cin=h_u_rca16_fa6_h_u_rca16_fa5_y4 fa_y2=h_u_rca16_fa6_y2 fa_y4=h_u_rca16_fa6_y4
-.names a_7 h_u_rca16_fa7_a_7
-1 1
-.names b_7 h_u_rca16_fa7_b_7
-1 1
-.names h_u_rca16_fa6_y4 h_u_rca16_fa7_h_u_rca16_fa6_y4
-1 1
-.subckt fa a=h_u_rca16_fa7_a_7 b=h_u_rca16_fa7_b_7 cin=h_u_rca16_fa7_h_u_rca16_fa6_y4 fa_y2=h_u_rca16_fa7_y2 fa_y4=h_u_rca16_fa7_y4
-.names a_8 h_u_rca16_fa8_a_8
-1 1
-.names b_8 h_u_rca16_fa8_b_8
-1 1
-.names h_u_rca16_fa7_y4 h_u_rca16_fa8_h_u_rca16_fa7_y4
-1 1
-.subckt fa a=h_u_rca16_fa8_a_8 b=h_u_rca16_fa8_b_8 cin=h_u_rca16_fa8_h_u_rca16_fa7_y4 fa_y2=h_u_rca16_fa8_y2 fa_y4=h_u_rca16_fa8_y4
-.names a_9 h_u_rca16_fa9_a_9
-1 1
-.names b_9 h_u_rca16_fa9_b_9
-1 1
-.names h_u_rca16_fa8_y4 h_u_rca16_fa9_h_u_rca16_fa8_y4
-1 1
-.subckt fa a=h_u_rca16_fa9_a_9 b=h_u_rca16_fa9_b_9 cin=h_u_rca16_fa9_h_u_rca16_fa8_y4 fa_y2=h_u_rca16_fa9_y2 fa_y4=h_u_rca16_fa9_y4
-.names a_10 h_u_rca16_fa10_a_10
-1 1
-.names b_10 h_u_rca16_fa10_b_10
-1 1
-.names h_u_rca16_fa9_y4 h_u_rca16_fa10_h_u_rca16_fa9_y4
-1 1
-.subckt fa a=h_u_rca16_fa10_a_10 b=h_u_rca16_fa10_b_10 cin=h_u_rca16_fa10_h_u_rca16_fa9_y4 fa_y2=h_u_rca16_fa10_y2 fa_y4=h_u_rca16_fa10_y4
-.names a_11 h_u_rca16_fa11_a_11
-1 1
-.names b_11 h_u_rca16_fa11_b_11
-1 1
-.names h_u_rca16_fa10_y4 h_u_rca16_fa11_h_u_rca16_fa10_y4
-1 1
-.subckt fa a=h_u_rca16_fa11_a_11 b=h_u_rca16_fa11_b_11 cin=h_u_rca16_fa11_h_u_rca16_fa10_y4 fa_y2=h_u_rca16_fa11_y2 fa_y4=h_u_rca16_fa11_y4
-.names a_12 h_u_rca16_fa12_a_12
-1 1
-.names b_12 h_u_rca16_fa12_b_12
-1 1
-.names h_u_rca16_fa11_y4 h_u_rca16_fa12_h_u_rca16_fa11_y4
-1 1
-.subckt fa a=h_u_rca16_fa12_a_12 b=h_u_rca16_fa12_b_12 cin=h_u_rca16_fa12_h_u_rca16_fa11_y4 fa_y2=h_u_rca16_fa12_y2 fa_y4=h_u_rca16_fa12_y4
-.names a_13 h_u_rca16_fa13_a_13
-1 1
-.names b_13 h_u_rca16_fa13_b_13
-1 1
-.names h_u_rca16_fa12_y4 h_u_rca16_fa13_h_u_rca16_fa12_y4
-1 1
-.subckt fa a=h_u_rca16_fa13_a_13 b=h_u_rca16_fa13_b_13 cin=h_u_rca16_fa13_h_u_rca16_fa12_y4 fa_y2=h_u_rca16_fa13_y2 fa_y4=h_u_rca16_fa13_y4
-.names a_14 h_u_rca16_fa14_a_14
-1 1
-.names b_14 h_u_rca16_fa14_b_14
-1 1
-.names h_u_rca16_fa13_y4 h_u_rca16_fa14_h_u_rca16_fa13_y4
-1 1
-.subckt fa a=h_u_rca16_fa14_a_14 b=h_u_rca16_fa14_b_14 cin=h_u_rca16_fa14_h_u_rca16_fa13_y4 fa_y2=h_u_rca16_fa14_y2 fa_y4=h_u_rca16_fa14_y4
-.names a_15 h_u_rca16_fa15_a_15
-1 1
-.names b_15 h_u_rca16_fa15_b_15
-1 1
-.names h_u_rca16_fa14_y4 h_u_rca16_fa15_h_u_rca16_fa14_y4
-1 1
-.subckt fa a=h_u_rca16_fa15_a_15 b=h_u_rca16_fa15_b_15 cin=h_u_rca16_fa15_h_u_rca16_fa14_y4 fa_y2=h_u_rca16_fa15_y2 fa_y4=h_u_rca16_fa15_y4
-.names h_u_rca16_ha_y0 out[0]
-1 1
-.names h_u_rca16_fa1_y2 out[1]
-1 1
-.names h_u_rca16_fa2_y2 out[2]
-1 1
-.names h_u_rca16_fa3_y2 out[3]
-1 1
-.names h_u_rca16_fa4_y2 out[4]
-1 1
-.names h_u_rca16_fa5_y2 out[5]
-1 1
-.names h_u_rca16_fa6_y2 out[6]
-1 1
-.names h_u_rca16_fa7_y2 out[7]
-1 1
-.names h_u_rca16_fa8_y2 out[8]
-1 1
-.names h_u_rca16_fa9_y2 out[9]
-1 1
-.names h_u_rca16_fa10_y2 out[10]
-1 1
-.names h_u_rca16_fa11_y2 out[11]
-1 1
-.names h_u_rca16_fa12_y2 out[12]
-1 1
-.names h_u_rca16_fa13_y2 out[13]
-1 1
-.names h_u_rca16_fa14_y2 out[14]
-1 1
-.names h_u_rca16_fa15_y2 out[15]
-1 1
-.names h_u_rca16_fa15_y4 out[16]
+.names h_u_rca16_fa15_or0 h_u_rca16_out[16]
 1 1
 .end
 
 .model fa
 .inputs a b cin
-.outputs fa_y2 fa_y4
-.names a fa_a
-1 1
-.names b fa_b
-1 1
-.names cin fa_cin
-1 1
-.subckt xor_gate _a=fa_a _b=fa_b _y0=fa_y0
-.subckt and_gate _a=fa_a _b=fa_b _y0=fa_y1
-.subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
-.subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
-.subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
 .end
 
 .model ha
 .inputs a b
-.outputs ha_y0 ha_y1
-.names a ha_a
-1 1
-.names b ha_b
-1 1
-.subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
-.subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
 .end
 
 .model or_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 1- 1
 -1 1
 .end
 
 .model and_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 11 1
 .end
 
 .model xor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 01 1
 10 1
 .end

@@ -1,337 +1,90 @@
 .model h_u_cla4
-.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
-.outputs out[0] out[1] out[2] out[3] out[4]
-.names a[0] a_0
-1 1
-.names a[1] a_1
-1 1
-.names a[2] a_2
-1 1
-.names a[3] a_3
-1 1
-.names b[0] b_0
-1 1
-.names b[1] b_1
-1 1
-.names b[2] b_2
-1 1
-.names b[3] b_3
-1 1
-.names a_0 constant_wire_value_0_a_0
-1 1
-.names b_0 constant_wire_value_0_b_0
-1 1
-.subckt constant_wire_value_0 a=constant_wire_value_0_a_0 b=constant_wire_value_0_b_0 constant_wire_0=constant_wire_0
-.names a_0 h_u_cla4_pg_logic0_a_0
-1 1
-.names b_0 h_u_cla4_pg_logic0_b_0
-1 1
-.subckt pg_logic a=h_u_cla4_pg_logic0_a_0 b=h_u_cla4_pg_logic0_b_0 pg_logic_y0=h_u_cla4_pg_logic0_y0 pg_logic_y1=h_u_cla4_pg_logic0_y1 pg_logic_y2=h_u_cla4_pg_logic0_y2
-.names h_u_cla4_pg_logic0_y2 h_u_cla4_xor0_h_u_cla4_pg_logic0_y2
-1 1
-.names constant_wire_0 h_u_cla4_xor0_constant_wire_0
-1 1
-.subckt xor_gate _a=h_u_cla4_xor0_h_u_cla4_pg_logic0_y2 _b=h_u_cla4_xor0_constant_wire_0 _y0=h_u_cla4_xor0_y0
-.names h_u_cla4_pg_logic0_y0 h_u_cla4_and0_h_u_cla4_pg_logic0_y0
-1 1
-.names constant_wire_0 h_u_cla4_and0_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and0_h_u_cla4_pg_logic0_y0 _b=h_u_cla4_and0_constant_wire_0 _y0=h_u_cla4_and0_y0
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_or0_h_u_cla4_pg_logic0_y1
-1 1
-.names h_u_cla4_and0_y0 h_u_cla4_or0_h_u_cla4_and0_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or0_h_u_cla4_pg_logic0_y1 _b=h_u_cla4_or0_h_u_cla4_and0_y0 _y0=h_u_cla4_or0_y0
-.names a_1 h_u_cla4_pg_logic1_a_1
-1 1
-.names b_1 h_u_cla4_pg_logic1_b_1
-1 1
-.subckt pg_logic a=h_u_cla4_pg_logic1_a_1 b=h_u_cla4_pg_logic1_b_1 pg_logic_y0=h_u_cla4_pg_logic1_y0 pg_logic_y1=h_u_cla4_pg_logic1_y1 pg_logic_y2=h_u_cla4_pg_logic1_y2
-.names h_u_cla4_pg_logic1_y2 h_u_cla4_xor1_h_u_cla4_pg_logic1_y2
-1 1
-.names h_u_cla4_or0_y0 h_u_cla4_xor1_h_u_cla4_or0_y0
-1 1
-.subckt xor_gate _a=h_u_cla4_xor1_h_u_cla4_pg_logic1_y2 _b=h_u_cla4_xor1_h_u_cla4_or0_y0 _y0=h_u_cla4_xor1_y0
-.names h_u_cla4_pg_logic0_y0 h_u_cla4_and1_h_u_cla4_pg_logic0_y0
-1 1
-.names constant_wire_0 h_u_cla4_and1_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and1_h_u_cla4_pg_logic0_y0 _b=h_u_cla4_and1_constant_wire_0 _y0=h_u_cla4_and1_y0
-.names h_u_cla4_pg_logic1_y0 h_u_cla4_and2_h_u_cla4_pg_logic1_y0
-1 1
-.names constant_wire_0 h_u_cla4_and2_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and2_h_u_cla4_pg_logic1_y0 _b=h_u_cla4_and2_constant_wire_0 _y0=h_u_cla4_and2_y0
-.names h_u_cla4_and2_y0 h_u_cla4_and3_h_u_cla4_and2_y0
-1 1
-.names h_u_cla4_and1_y0 h_u_cla4_and3_h_u_cla4_and1_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and3_h_u_cla4_and2_y0 _b=h_u_cla4_and3_h_u_cla4_and1_y0 _y0=h_u_cla4_and3_y0
-.names h_u_cla4_pg_logic1_y0 h_u_cla4_and4_h_u_cla4_pg_logic1_y0
-1 1
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_and4_h_u_cla4_pg_logic0_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and4_h_u_cla4_pg_logic1_y0 _b=h_u_cla4_and4_h_u_cla4_pg_logic0_y1 _y0=h_u_cla4_and4_y0
-.names h_u_cla4_and4_y0 h_u_cla4_or1_h_u_cla4_and4_y0
-1 1
-.names h_u_cla4_and3_y0 h_u_cla4_or1_h_u_cla4_and3_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or1_h_u_cla4_and4_y0 _b=h_u_cla4_or1_h_u_cla4_and3_y0 _y0=h_u_cla4_or1_y0
-.names h_u_cla4_pg_logic1_y1 h_u_cla4_or2_h_u_cla4_pg_logic1_y1
-1 1
-.names h_u_cla4_or1_y0 h_u_cla4_or2_h_u_cla4_or1_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or2_h_u_cla4_pg_logic1_y1 _b=h_u_cla4_or2_h_u_cla4_or1_y0 _y0=h_u_cla4_or2_y0
-.names a_2 h_u_cla4_pg_logic2_a_2
-1 1
-.names b_2 h_u_cla4_pg_logic2_b_2
-1 1
-.subckt pg_logic a=h_u_cla4_pg_logic2_a_2 b=h_u_cla4_pg_logic2_b_2 pg_logic_y0=h_u_cla4_pg_logic2_y0 pg_logic_y1=h_u_cla4_pg_logic2_y1 pg_logic_y2=h_u_cla4_pg_logic2_y2
-.names h_u_cla4_pg_logic2_y2 h_u_cla4_xor2_h_u_cla4_pg_logic2_y2
-1 1
-.names h_u_cla4_or2_y0 h_u_cla4_xor2_h_u_cla4_or2_y0
-1 1
-.subckt xor_gate _a=h_u_cla4_xor2_h_u_cla4_pg_logic2_y2 _b=h_u_cla4_xor2_h_u_cla4_or2_y0 _y0=h_u_cla4_xor2_y0
-.names h_u_cla4_pg_logic0_y0 h_u_cla4_and5_h_u_cla4_pg_logic0_y0
-1 1
-.names constant_wire_0 h_u_cla4_and5_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and5_h_u_cla4_pg_logic0_y0 _b=h_u_cla4_and5_constant_wire_0 _y0=h_u_cla4_and5_y0
-.names h_u_cla4_pg_logic1_y0 h_u_cla4_and6_h_u_cla4_pg_logic1_y0
-1 1
-.names constant_wire_0 h_u_cla4_and6_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and6_h_u_cla4_pg_logic1_y0 _b=h_u_cla4_and6_constant_wire_0 _y0=h_u_cla4_and6_y0
-.names h_u_cla4_and6_y0 h_u_cla4_and7_h_u_cla4_and6_y0
-1 1
-.names h_u_cla4_and5_y0 h_u_cla4_and7_h_u_cla4_and5_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and7_h_u_cla4_and6_y0 _b=h_u_cla4_and7_h_u_cla4_and5_y0 _y0=h_u_cla4_and7_y0
-.names h_u_cla4_pg_logic2_y0 h_u_cla4_and8_h_u_cla4_pg_logic2_y0
-1 1
-.names constant_wire_0 h_u_cla4_and8_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and8_h_u_cla4_pg_logic2_y0 _b=h_u_cla4_and8_constant_wire_0 _y0=h_u_cla4_and8_y0
-.names h_u_cla4_and8_y0 h_u_cla4_and9_h_u_cla4_and8_y0
-1 1
-.names h_u_cla4_and7_y0 h_u_cla4_and9_h_u_cla4_and7_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and9_h_u_cla4_and8_y0 _b=h_u_cla4_and9_h_u_cla4_and7_y0 _y0=h_u_cla4_and9_y0
-.names h_u_cla4_pg_logic1_y0 h_u_cla4_and10_h_u_cla4_pg_logic1_y0
-1 1
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_and10_h_u_cla4_pg_logic0_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and10_h_u_cla4_pg_logic1_y0 _b=h_u_cla4_and10_h_u_cla4_pg_logic0_y1 _y0=h_u_cla4_and10_y0
-.names h_u_cla4_pg_logic2_y0 h_u_cla4_and11_h_u_cla4_pg_logic2_y0
-1 1
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_and11_h_u_cla4_pg_logic0_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and11_h_u_cla4_pg_logic2_y0 _b=h_u_cla4_and11_h_u_cla4_pg_logic0_y1 _y0=h_u_cla4_and11_y0
-.names h_u_cla4_and11_y0 h_u_cla4_and12_h_u_cla4_and11_y0
-1 1
-.names h_u_cla4_and10_y0 h_u_cla4_and12_h_u_cla4_and10_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and12_h_u_cla4_and11_y0 _b=h_u_cla4_and12_h_u_cla4_and10_y0 _y0=h_u_cla4_and12_y0
-.names h_u_cla4_pg_logic2_y0 h_u_cla4_and13_h_u_cla4_pg_logic2_y0
-1 1
-.names h_u_cla4_pg_logic1_y1 h_u_cla4_and13_h_u_cla4_pg_logic1_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and13_h_u_cla4_pg_logic2_y0 _b=h_u_cla4_and13_h_u_cla4_pg_logic1_y1 _y0=h_u_cla4_and13_y0
-.names h_u_cla4_and13_y0 h_u_cla4_or3_h_u_cla4_and13_y0
-1 1
-.names h_u_cla4_and9_y0 h_u_cla4_or3_h_u_cla4_and9_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or3_h_u_cla4_and13_y0 _b=h_u_cla4_or3_h_u_cla4_and9_y0 _y0=h_u_cla4_or3_y0
-.names h_u_cla4_or3_y0 h_u_cla4_or4_h_u_cla4_or3_y0
-1 1
-.names h_u_cla4_and12_y0 h_u_cla4_or4_h_u_cla4_and12_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or4_h_u_cla4_or3_y0 _b=h_u_cla4_or4_h_u_cla4_and12_y0 _y0=h_u_cla4_or4_y0
-.names h_u_cla4_pg_logic2_y1 h_u_cla4_or5_h_u_cla4_pg_logic2_y1
-1 1
-.names h_u_cla4_or4_y0 h_u_cla4_or5_h_u_cla4_or4_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or5_h_u_cla4_pg_logic2_y1 _b=h_u_cla4_or5_h_u_cla4_or4_y0 _y0=h_u_cla4_or5_y0
-.names a_3 h_u_cla4_pg_logic3_a_3
-1 1
-.names b_3 h_u_cla4_pg_logic3_b_3
-1 1
-.subckt pg_logic a=h_u_cla4_pg_logic3_a_3 b=h_u_cla4_pg_logic3_b_3 pg_logic_y0=h_u_cla4_pg_logic3_y0 pg_logic_y1=h_u_cla4_pg_logic3_y1 pg_logic_y2=h_u_cla4_pg_logic3_y2
-.names h_u_cla4_pg_logic3_y2 h_u_cla4_xor3_h_u_cla4_pg_logic3_y2
-1 1
-.names h_u_cla4_or5_y0 h_u_cla4_xor3_h_u_cla4_or5_y0
-1 1
-.subckt xor_gate _a=h_u_cla4_xor3_h_u_cla4_pg_logic3_y2 _b=h_u_cla4_xor3_h_u_cla4_or5_y0 _y0=h_u_cla4_xor3_y0
-.names h_u_cla4_pg_logic0_y0 h_u_cla4_and14_h_u_cla4_pg_logic0_y0
-1 1
-.names constant_wire_0 h_u_cla4_and14_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and14_h_u_cla4_pg_logic0_y0 _b=h_u_cla4_and14_constant_wire_0 _y0=h_u_cla4_and14_y0
-.names h_u_cla4_pg_logic1_y0 h_u_cla4_and15_h_u_cla4_pg_logic1_y0
-1 1
-.names constant_wire_0 h_u_cla4_and15_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and15_h_u_cla4_pg_logic1_y0 _b=h_u_cla4_and15_constant_wire_0 _y0=h_u_cla4_and15_y0
-.names h_u_cla4_and15_y0 h_u_cla4_and16_h_u_cla4_and15_y0
-1 1
-.names h_u_cla4_and14_y0 h_u_cla4_and16_h_u_cla4_and14_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and16_h_u_cla4_and15_y0 _b=h_u_cla4_and16_h_u_cla4_and14_y0 _y0=h_u_cla4_and16_y0
-.names h_u_cla4_pg_logic2_y0 h_u_cla4_and17_h_u_cla4_pg_logic2_y0
-1 1
-.names constant_wire_0 h_u_cla4_and17_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and17_h_u_cla4_pg_logic2_y0 _b=h_u_cla4_and17_constant_wire_0 _y0=h_u_cla4_and17_y0
-.names h_u_cla4_and17_y0 h_u_cla4_and18_h_u_cla4_and17_y0
-1 1
-.names h_u_cla4_and16_y0 h_u_cla4_and18_h_u_cla4_and16_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and18_h_u_cla4_and17_y0 _b=h_u_cla4_and18_h_u_cla4_and16_y0 _y0=h_u_cla4_and18_y0
-.names h_u_cla4_pg_logic3_y0 h_u_cla4_and19_h_u_cla4_pg_logic3_y0
-1 1
-.names constant_wire_0 h_u_cla4_and19_constant_wire_0
-1 1
-.subckt and_gate _a=h_u_cla4_and19_h_u_cla4_pg_logic3_y0 _b=h_u_cla4_and19_constant_wire_0 _y0=h_u_cla4_and19_y0
-.names h_u_cla4_and19_y0 h_u_cla4_and20_h_u_cla4_and19_y0
-1 1
-.names h_u_cla4_and18_y0 h_u_cla4_and20_h_u_cla4_and18_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and20_h_u_cla4_and19_y0 _b=h_u_cla4_and20_h_u_cla4_and18_y0 _y0=h_u_cla4_and20_y0
-.names h_u_cla4_pg_logic1_y0 h_u_cla4_and21_h_u_cla4_pg_logic1_y0
-1 1
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_and21_h_u_cla4_pg_logic0_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and21_h_u_cla4_pg_logic1_y0 _b=h_u_cla4_and21_h_u_cla4_pg_logic0_y1 _y0=h_u_cla4_and21_y0
-.names h_u_cla4_pg_logic2_y0 h_u_cla4_and22_h_u_cla4_pg_logic2_y0
-1 1
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_and22_h_u_cla4_pg_logic0_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and22_h_u_cla4_pg_logic2_y0 _b=h_u_cla4_and22_h_u_cla4_pg_logic0_y1 _y0=h_u_cla4_and22_y0
-.names h_u_cla4_and22_y0 h_u_cla4_and23_h_u_cla4_and22_y0
-1 1
-.names h_u_cla4_and21_y0 h_u_cla4_and23_h_u_cla4_and21_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and23_h_u_cla4_and22_y0 _b=h_u_cla4_and23_h_u_cla4_and21_y0 _y0=h_u_cla4_and23_y0
-.names h_u_cla4_pg_logic3_y0 h_u_cla4_and24_h_u_cla4_pg_logic3_y0
-1 1
-.names h_u_cla4_pg_logic0_y1 h_u_cla4_and24_h_u_cla4_pg_logic0_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and24_h_u_cla4_pg_logic3_y0 _b=h_u_cla4_and24_h_u_cla4_pg_logic0_y1 _y0=h_u_cla4_and24_y0
-.names h_u_cla4_and24_y0 h_u_cla4_and25_h_u_cla4_and24_y0
-1 1
-.names h_u_cla4_and23_y0 h_u_cla4_and25_h_u_cla4_and23_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and25_h_u_cla4_and24_y0 _b=h_u_cla4_and25_h_u_cla4_and23_y0 _y0=h_u_cla4_and25_y0
-.names h_u_cla4_pg_logic2_y0 h_u_cla4_and26_h_u_cla4_pg_logic2_y0
-1 1
-.names h_u_cla4_pg_logic1_y1 h_u_cla4_and26_h_u_cla4_pg_logic1_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and26_h_u_cla4_pg_logic2_y0 _b=h_u_cla4_and26_h_u_cla4_pg_logic1_y1 _y0=h_u_cla4_and26_y0
-.names h_u_cla4_pg_logic3_y0 h_u_cla4_and27_h_u_cla4_pg_logic3_y0
-1 1
-.names h_u_cla4_pg_logic1_y1 h_u_cla4_and27_h_u_cla4_pg_logic1_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and27_h_u_cla4_pg_logic3_y0 _b=h_u_cla4_and27_h_u_cla4_pg_logic1_y1 _y0=h_u_cla4_and27_y0
-.names h_u_cla4_and27_y0 h_u_cla4_and28_h_u_cla4_and27_y0
-1 1
-.names h_u_cla4_and26_y0 h_u_cla4_and28_h_u_cla4_and26_y0
-1 1
-.subckt and_gate _a=h_u_cla4_and28_h_u_cla4_and27_y0 _b=h_u_cla4_and28_h_u_cla4_and26_y0 _y0=h_u_cla4_and28_y0
-.names h_u_cla4_pg_logic3_y0 h_u_cla4_and29_h_u_cla4_pg_logic3_y0
-1 1
-.names h_u_cla4_pg_logic2_y1 h_u_cla4_and29_h_u_cla4_pg_logic2_y1
-1 1
-.subckt and_gate _a=h_u_cla4_and29_h_u_cla4_pg_logic3_y0 _b=h_u_cla4_and29_h_u_cla4_pg_logic2_y1 _y0=h_u_cla4_and29_y0
-.names h_u_cla4_and29_y0 h_u_cla4_or6_h_u_cla4_and29_y0
-1 1
-.names h_u_cla4_and20_y0 h_u_cla4_or6_h_u_cla4_and20_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or6_h_u_cla4_and29_y0 _b=h_u_cla4_or6_h_u_cla4_and20_y0 _y0=h_u_cla4_or6_y0
-.names h_u_cla4_or6_y0 h_u_cla4_or7_h_u_cla4_or6_y0
-1 1
-.names h_u_cla4_and25_y0 h_u_cla4_or7_h_u_cla4_and25_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or7_h_u_cla4_or6_y0 _b=h_u_cla4_or7_h_u_cla4_and25_y0 _y0=h_u_cla4_or7_y0
-.names h_u_cla4_or7_y0 h_u_cla4_or8_h_u_cla4_or7_y0
-1 1
-.names h_u_cla4_and28_y0 h_u_cla4_or8_h_u_cla4_and28_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or8_h_u_cla4_or7_y0 _b=h_u_cla4_or8_h_u_cla4_and28_y0 _y0=h_u_cla4_or8_y0
-.names h_u_cla4_pg_logic3_y1 h_u_cla4_or9_h_u_cla4_pg_logic3_y1
-1 1
-.names h_u_cla4_or8_y0 h_u_cla4_or9_h_u_cla4_or8_y0
-1 1
-.subckt or_gate _a=h_u_cla4_or9_h_u_cla4_pg_logic3_y1 _b=h_u_cla4_or9_h_u_cla4_or8_y0 _y0=h_u_cla4_or9_y0
-.names h_u_cla4_xor0_y0 out[0]
-1 1
-.names h_u_cla4_xor1_y0 out[1]
-1 1
-.names h_u_cla4_xor2_y0 out[2]
-1 1
-.names h_u_cla4_xor3_y0 out[3]
-1 1
-.names h_u_cla4_or9_y0 out[4]
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs h_u_cla4_out[0] h_u_cla4_out[1] h_u_cla4_out[2] h_u_cla4_out[3] h_u_cla4_out[4]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_logic a=a[0] b=b[0] pg_logic_or0=h_u_cla4_pg_logic0_or0 pg_logic_and0=h_u_cla4_pg_logic0_and0 pg_logic_xor0=h_u_cla4_pg_logic0_xor0
+.subckt pg_logic a=a[1] b=b[1] pg_logic_or0=h_u_cla4_pg_logic1_or0 pg_logic_and0=h_u_cla4_pg_logic1_and0 pg_logic_xor0=h_u_cla4_pg_logic1_xor0
+.subckt xor_gate a=h_u_cla4_pg_logic1_xor0 b=h_u_cla4_pg_logic0_and0 out=h_u_cla4_xor1
+.subckt and_gate a=h_u_cla4_pg_logic0_and0 b=h_u_cla4_pg_logic1_or0 out=h_u_cla4_and0
+.subckt or_gate a=h_u_cla4_pg_logic1_and0 b=h_u_cla4_and0 out=h_u_cla4_or0
+.subckt pg_logic a=a[2] b=b[2] pg_logic_or0=h_u_cla4_pg_logic2_or0 pg_logic_and0=h_u_cla4_pg_logic2_and0 pg_logic_xor0=h_u_cla4_pg_logic2_xor0
+.subckt xor_gate a=h_u_cla4_pg_logic2_xor0 b=h_u_cla4_or0 out=h_u_cla4_xor2
+.subckt and_gate a=h_u_cla4_pg_logic2_or0 b=h_u_cla4_pg_logic0_or0 out=h_u_cla4_and1
+.subckt and_gate a=h_u_cla4_pg_logic0_and0 b=h_u_cla4_pg_logic2_or0 out=h_u_cla4_and2
+.subckt and_gate a=h_u_cla4_and2 b=h_u_cla4_pg_logic1_or0 out=h_u_cla4_and3
+.subckt and_gate a=h_u_cla4_pg_logic1_and0 b=h_u_cla4_pg_logic2_or0 out=h_u_cla4_and4
+.subckt or_gate a=h_u_cla4_and3 b=h_u_cla4_and4 out=h_u_cla4_or1
+.subckt or_gate a=h_u_cla4_pg_logic2_and0 b=h_u_cla4_or1 out=h_u_cla4_or2
+.subckt pg_logic a=a[3] b=b[3] pg_logic_or0=h_u_cla4_pg_logic3_or0 pg_logic_and0=h_u_cla4_pg_logic3_and0 pg_logic_xor0=h_u_cla4_pg_logic3_xor0
+.subckt xor_gate a=h_u_cla4_pg_logic3_xor0 b=h_u_cla4_or2 out=h_u_cla4_xor3
+.subckt and_gate a=h_u_cla4_pg_logic3_or0 b=h_u_cla4_pg_logic1_or0 out=h_u_cla4_and5
+.subckt and_gate a=h_u_cla4_pg_logic0_and0 b=h_u_cla4_pg_logic2_or0 out=h_u_cla4_and6
+.subckt and_gate a=h_u_cla4_pg_logic3_or0 b=h_u_cla4_pg_logic1_or0 out=h_u_cla4_and7
+.subckt and_gate a=h_u_cla4_and6 b=h_u_cla4_and7 out=h_u_cla4_and8
+.subckt and_gate a=h_u_cla4_pg_logic1_and0 b=h_u_cla4_pg_logic3_or0 out=h_u_cla4_and9
+.subckt and_gate a=h_u_cla4_and9 b=h_u_cla4_pg_logic2_or0 out=h_u_cla4_and10
+.subckt and_gate a=h_u_cla4_pg_logic2_and0 b=h_u_cla4_pg_logic3_or0 out=h_u_cla4_and11
+.subckt or_gate a=h_u_cla4_and8 b=h_u_cla4_and11 out=h_u_cla4_or3
+.subckt or_gate a=h_u_cla4_and10 b=h_u_cla4_or3 out=h_u_cla4_or4
+.subckt or_gate a=h_u_cla4_pg_logic3_and0 b=h_u_cla4_or4 out=h_u_cla4_or5
+.names h_u_cla4_pg_logic0_xor0 h_u_cla4_out[0]
+1 1
+.names h_u_cla4_xor1 h_u_cla4_out[1]
+1 1
+.names h_u_cla4_xor2 h_u_cla4_out[2]
+1 1
+.names h_u_cla4_xor3 h_u_cla4_out[3]
+1 1
+.names h_u_cla4_or5 h_u_cla4_out[4]
 1 1
 .end
 
 .model pg_logic
 .inputs a b
-.outputs pg_logic_y0 pg_logic_y1 pg_logic_y2
-.names a pg_logic_a
-1 1
-.names b pg_logic_b
-1 1
-.subckt or_gate _a=pg_logic_a _b=pg_logic_b _y0=pg_logic_y0
-.subckt and_gate _a=pg_logic_a _b=pg_logic_b _y0=pg_logic_y1
-.subckt xor_gate _a=pg_logic_a _b=pg_logic_b _y0=pg_logic_y2
+.outputs pg_logic_or0 pg_logic_and0 pg_logic_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt or_gate a=a b=b out=pg_logic_or0
+.subckt and_gate a=a b=b out=pg_logic_and0
+.subckt xor_gate a=a b=b out=pg_logic_xor0
 .end
 
-.model constant_wire_value_0
+.model xor_gate
 .inputs a b
-.outputs constant_wire_0
-.names a constant_wire_value_0_a
-1 1
-.names b constant_wire_value_0_b
-1 1
-.subckt xor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y0
-.subckt xnor_gate _a=constant_wire_value_0_a _b=constant_wire_value_0_b _y0=constant_wire_value_0_y1
-.subckt nor_gate _a=constant_wire_value_0_y0 _b=constant_wire_value_0_y1 _y0=constant_wire_0
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
 .end
 
 .model and_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 11 1
 .end
 
 .model or_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 1- 1
 -1 1
-.end
-
-.model nor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
-00 1
-.end
-
-.model xnor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
-00 1
-11 1
-.end
-
-.model xor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
-01 1
-10 1
 .end

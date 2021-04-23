@@ -1,3 +1,3 @@
-module xnor_gate(input _a, input _b, output _y0);
-  assign _y0 = ~(_a ^ _b);
+module xnor_gate(input a, input b, output xnor_gate);
+  assign xnor_gate = ~(a ^ b);
 endmodule

@@ -1,3 +1,3 @@
-module and_gate(input _a, input _b, output _y0);
-  assign _y0 = _a & _b;
+module and_gate(input a, input b, output and_gate);
+  assign and_gate = a & b;
 endmodule

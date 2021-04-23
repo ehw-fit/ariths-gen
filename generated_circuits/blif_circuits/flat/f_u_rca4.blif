@@ -1,96 +1,62 @@
 .model f_u_rca4
-.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
-.outputs out[0] out[1] out[2] out[3] out[4]
-.names a[0] a_0
-1 1
-.names a[1] a_1
-1 1
-.names a[2] a_2
-1 1
-.names a[3] a_3
-1 1
-.names b[0] b_0
-1 1
-.names b[1] b_1
-1 1
-.names b[2] b_2
-1 1
-.names b[3] b_3
-1 1
-.names a_0 f_u_rca4_ha_a_0
-1 1
-.names b_0 f_u_rca4_ha_b_0
-1 1
-.names f_u_rca4_ha_a_0 f_u_rca4_ha_b_0 f_u_rca4_ha_y0
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs f_u_rca4_out[0] f_u_rca4_out[1] f_u_rca4_out[2] f_u_rca4_out[3] f_u_rca4_out[4]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] f_u_rca4_ha_xor0
 01 1
 10 1
-.names f_u_rca4_ha_a_0 f_u_rca4_ha_b_0 f_u_rca4_ha_y1
+.names a[0] b[0] f_u_rca4_ha_and0
 11 1
-.names a_1 f_u_rca4_fa1_a_1
-1 1
-.names b_1 f_u_rca4_fa1_b_1
-1 1
-.names f_u_rca4_ha_y1 f_u_rca4_fa1_f_u_rca4_ha_y1
-1 1
-.names f_u_rca4_fa1_a_1 f_u_rca4_fa1_b_1 f_u_rca4_fa1_y0
+.names a[1] b[1] f_u_rca4_fa1_xor0
 01 1
 10 1
-.names f_u_rca4_fa1_a_1 f_u_rca4_fa1_b_1 f_u_rca4_fa1_y1
+.names a[1] b[1] f_u_rca4_fa1_and0
 11 1
-.names f_u_rca4_fa1_y0 f_u_rca4_fa1_f_u_rca4_ha_y1 f_u_rca4_fa1_y2
+.names f_u_rca4_fa1_xor0 f_u_rca4_ha_and0 f_u_rca4_fa1_xor1
 01 1
 10 1
-.names f_u_rca4_fa1_y0 f_u_rca4_fa1_f_u_rca4_ha_y1 f_u_rca4_fa1_y3
+.names f_u_rca4_fa1_xor0 f_u_rca4_ha_and0 f_u_rca4_fa1_and1
 11 1
-.names f_u_rca4_fa1_y1 f_u_rca4_fa1_y3 f_u_rca4_fa1_y4
+.names f_u_rca4_fa1_and0 f_u_rca4_fa1_and1 f_u_rca4_fa1_or0
 1- 1
 -1 1
-.names a_2 f_u_rca4_fa2_a_2
-1 1
-.names b_2 f_u_rca4_fa2_b_2
-1 1
-.names f_u_rca4_fa1_y4 f_u_rca4_fa2_f_u_rca4_fa1_y4
-1 1
-.names f_u_rca4_fa2_a_2 f_u_rca4_fa2_b_2 f_u_rca4_fa2_y0
+.names a[2] b[2] f_u_rca4_fa2_xor0
 01 1
 10 1
-.names f_u_rca4_fa2_a_2 f_u_rca4_fa2_b_2 f_u_rca4_fa2_y1
+.names a[2] b[2] f_u_rca4_fa2_and0
 11 1
-.names f_u_rca4_fa2_y0 f_u_rca4_fa2_f_u_rca4_fa1_y4 f_u_rca4_fa2_y2
+.names f_u_rca4_fa2_xor0 f_u_rca4_fa1_or0 f_u_rca4_fa2_xor1
 01 1
 10 1
-.names f_u_rca4_fa2_y0 f_u_rca4_fa2_f_u_rca4_fa1_y4 f_u_rca4_fa2_y3
+.names f_u_rca4_fa2_xor0 f_u_rca4_fa1_or0 f_u_rca4_fa2_and1
 11 1
-.names f_u_rca4_fa2_y1 f_u_rca4_fa2_y3 f_u_rca4_fa2_y4
+.names f_u_rca4_fa2_and0 f_u_rca4_fa2_and1 f_u_rca4_fa2_or0
 1- 1
 -1 1
-.names a_3 f_u_rca4_fa3_a_3
-1 1
-.names b_3 f_u_rca4_fa3_b_3
-1 1
-.names f_u_rca4_fa2_y4 f_u_rca4_fa3_f_u_rca4_fa2_y4
-1 1
-.names f_u_rca4_fa3_a_3 f_u_rca4_fa3_b_3 f_u_rca4_fa3_y0
+.names a[3] b[3] f_u_rca4_fa3_xor0
 01 1
 10 1
-.names f_u_rca4_fa3_a_3 f_u_rca4_fa3_b_3 f_u_rca4_fa3_y1
+.names a[3] b[3] f_u_rca4_fa3_and0
 11 1
-.names f_u_rca4_fa3_y0 f_u_rca4_fa3_f_u_rca4_fa2_y4 f_u_rca4_fa3_y2
+.names f_u_rca4_fa3_xor0 f_u_rca4_fa2_or0 f_u_rca4_fa3_xor1
 01 1
 10 1
-.names f_u_rca4_fa3_y0 f_u_rca4_fa3_f_u_rca4_fa2_y4 f_u_rca4_fa3_y3
+.names f_u_rca4_fa3_xor0 f_u_rca4_fa2_or0 f_u_rca4_fa3_and1
 11 1
-.names f_u_rca4_fa3_y1 f_u_rca4_fa3_y3 f_u_rca4_fa3_y4
+.names f_u_rca4_fa3_and0 f_u_rca4_fa3_and1 f_u_rca4_fa3_or0
 1- 1
 -1 1
-.names f_u_rca4_ha_y0 out[0]
+.names f_u_rca4_ha_xor0 f_u_rca4_out[0]
 1 1
-.names f_u_rca4_fa1_y2 out[1]
+.names f_u_rca4_fa1_xor1 f_u_rca4_out[1]
 1 1
-.names f_u_rca4_fa2_y2 out[2]
+.names f_u_rca4_fa2_xor1 f_u_rca4_out[2]
 1 1
-.names f_u_rca4_fa3_y2 out[3]
+.names f_u_rca4_fa3_xor1 f_u_rca4_out[3]
 1 1
-.names f_u_rca4_fa3_y4 out[4]
+.names f_u_rca4_fa3_or0 f_u_rca4_out[4]
 1 1
 .end

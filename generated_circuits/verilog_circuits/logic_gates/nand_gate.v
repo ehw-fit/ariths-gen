@@ -1,3 +1,3 @@
-module nand_gate(input _a, input _b, output _y0);
-  assign _y0 = ~(_a & _b);
+module nand_gate(input a, input b, output nand_gate);
+  assign nand_gate = ~(a & b);
 endmodule

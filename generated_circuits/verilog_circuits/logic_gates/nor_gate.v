@@ -1,3 +1,3 @@
-module nor_gate(input _a, input _b, output _y0);
-  assign _y0 = ~(_a | _b);
+module nor_gate(input a, input b, output nor_gate);
+  assign nor_gate = ~(a | b);
 endmodule

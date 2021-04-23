@@ -1,6 +1,10 @@
 .model not_gate
-.inputs _a
-.outputs _y0
-.names _a _y0
+.inputs a
+.outputs not_gate
+.names vdd
+1
+.names gnd
+0
+.names a not_gate
 0 1
 .end

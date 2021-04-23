@@ -197,10 +197,10 @@ class FullSubtractor(ThreeInputOneBitCircuit):
         self.out.connect(0, difference_xor.out)
 
         # Borrow out
-        not_obj = NotGate(a=xor_obj.out, prefix=self.prefix+"_not"+str(self.get_instance_num(cls=NotGate)), outid=1, parent_component=self)
+        not_obj = NotGate(a=xor_obj.out, prefix=self.prefix+"_not"+str(self.get_instance_num(cls=NotGate)), parent_component=self)
         self.add_component(not_obj)
 
-        and_obj = AndGate(a=not_obj.out, b=self.c, prefix=self.prefix+"_and"+str(self.get_instance_num(cls=AndGate)), outid=1, parent_component=self)
+        and_obj = AndGate(a=not_obj.out, b=self.c, prefix=self.prefix+"_and"+str(self.get_instance_num(cls=AndGate)), parent_component=self)
         self.add_component(and_obj)
 
         borrow_out_or = OrGate(a=and_obj.out, b=self.get_previous_component(4).out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)), outid=1, parent_component=self)

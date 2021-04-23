@@ -1,106 +1,84 @@
 .model h_s_rca4
-.inputs  a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
-.outputs out[0] out[1] out[2] out[3] out[4]
-.names a[0] a_0
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs h_s_rca4_out[0] h_s_rca4_out[1] h_s_rca4_out[2] h_s_rca4_out[3] h_s_rca4_out[4]
+.names vdd
+1
+.names gnd
+0
+.subckt ha a=a[0] b=b[0] ha_xor0=h_s_rca4_ha_xor0 ha_and0=h_s_rca4_ha_and0
+.subckt fa a=a[1] b=b[1] cin=h_s_rca4_ha_and0 fa_xor1=h_s_rca4_fa1_xor1 fa_or0=h_s_rca4_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=h_s_rca4_fa1_or0 fa_xor1=h_s_rca4_fa2_xor1 fa_or0=h_s_rca4_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=h_s_rca4_fa2_or0 fa_xor1=h_s_rca4_fa3_xor1 fa_or0=h_s_rca4_fa3_or0
+.subckt xor_gate a=a[3] b=b[3] out=h_s_rca4_xor0
+.subckt xor_gate a=h_s_rca4_xor0 b=h_s_rca4_fa3_or0 out=h_s_rca4_xor1
+.names h_s_rca4_ha_xor0 h_s_rca4_out[0]
 1 1
-.names a[1] a_1
+.names h_s_rca4_fa1_xor1 h_s_rca4_out[1]
 1 1
-.names a[2] a_2
+.names h_s_rca4_fa2_xor1 h_s_rca4_out[2]
 1 1
-.names a[3] a_3
+.names h_s_rca4_fa3_xor1 h_s_rca4_out[3]
 1 1
-.names b[0] b_0
-1 1
-.names b[1] b_1
-1 1
-.names b[2] b_2
-1 1
-.names b[3] b_3
-1 1
-.names a_0 h_s_rca4_ha_a_0
-1 1
-.names b_0 h_s_rca4_ha_b_0
-1 1
-.subckt ha a=h_s_rca4_ha_a_0 b=h_s_rca4_ha_b_0 ha_y0=h_s_rca4_ha_y0 ha_y1=h_s_rca4_ha_y1
-.names a_1 h_s_rca4_fa1_a_1
-1 1
-.names b_1 h_s_rca4_fa1_b_1
-1 1
-.names h_s_rca4_ha_y1 h_s_rca4_fa1_h_s_rca4_ha_y1
-1 1
-.subckt fa a=h_s_rca4_fa1_a_1 b=h_s_rca4_fa1_b_1 cin=h_s_rca4_fa1_h_s_rca4_ha_y1 fa_y2=h_s_rca4_fa1_y2 fa_y4=h_s_rca4_fa1_y4
-.names a_2 h_s_rca4_fa2_a_2
-1 1
-.names b_2 h_s_rca4_fa2_b_2
-1 1
-.names h_s_rca4_fa1_y4 h_s_rca4_fa2_h_s_rca4_fa1_y4
-1 1
-.subckt fa a=h_s_rca4_fa2_a_2 b=h_s_rca4_fa2_b_2 cin=h_s_rca4_fa2_h_s_rca4_fa1_y4 fa_y2=h_s_rca4_fa2_y2 fa_y4=h_s_rca4_fa2_y4
-.names a_3 h_s_rca4_fa3_a_3
-1 1
-.names b_3 h_s_rca4_fa3_b_3
-1 1
-.names h_s_rca4_fa2_y4 h_s_rca4_fa3_h_s_rca4_fa2_y4
-1 1
-.subckt fa a=h_s_rca4_fa3_a_3 b=h_s_rca4_fa3_b_3 cin=h_s_rca4_fa3_h_s_rca4_fa2_y4 fa_y2=h_s_rca4_fa3_y2 fa_y4=h_s_rca4_fa3_y4
-.names h_s_rca4_ha_y0 out[0]
-1 1
-.names h_s_rca4_fa1_y2 out[1]
-1 1
-.names h_s_rca4_fa2_y2 out[2]
-1 1
-.names h_s_rca4_fa3_y2 out[3]
-1 1
-.names h_s_rca4_fa3_y4 out[4]
+.names h_s_rca4_xor1 h_s_rca4_out[4]
 1 1
 .end
 
 .model fa
 .inputs a b cin
-.outputs fa_y2 fa_y4
-.names a fa_a
-1 1
-.names b fa_b
-1 1
-.names cin fa_cin
-1 1
-.subckt xor_gate _a=fa_a _b=fa_b _y0=fa_y0
-.subckt and_gate _a=fa_a _b=fa_b _y0=fa_y1
-.subckt xor_gate _a=fa_y0 _b=fa_cin _y0=fa_y2
-.subckt and_gate _a=fa_y0 _b=fa_cin _y0=fa_y3
-.subckt or_gate _a=fa_y1 _b=fa_y3 _y0=fa_y4
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
 .end
 
 .model ha
 .inputs a b
-.outputs ha_y0 ha_y1
-.names a ha_a
-1 1
-.names b ha_b
-1 1
-.subckt xor_gate _a=ha_a _b=ha_b _y0=ha_y0
-.subckt and_gate _a=ha_a _b=ha_b _y0=ha_y1
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
 .end
 
 .model or_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 1- 1
 -1 1
 .end
 
 .model and_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 11 1
 .end
 
 .model xor_gate
-.inputs _a _b
-.outputs _y0
-.names _a _b _y0
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
 01 1
 10 1
 .end
