@@ -128,7 +128,7 @@ class ThreeInputOneBitCircuit(TwoInputOneBitCircuit):
             str: Hierarchical Verilog code subcomponent's module invocation and output assignment.
         """
         circuit_block = self.__class__()
-        return f"  {circuit_block.prefix} {circuit_block.prefix}_{self.out.prefix}({self.a.get_wire_value_v_hier()}, {self.b.get_wire_value_v_hier()}, {self.c.get_wire_value_v_hier()}{self.out.get_unique_assign_out_wires_v()});\n"
+        return f"  {circuit_block.prefix} {circuit_block.prefix}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.get_wire_value_v_hier()}), .{circuit_block.b.prefix}({self.b.get_wire_value_v_hier()}), .{circuit_block.c.prefix}({self.c.get_wire_value_v_hier()}){self.out.get_unique_assign_out_wires_v(circuit_block)});\n"
 
     """ BLIF CODE GENERATION """
     # FLAT BLIF #

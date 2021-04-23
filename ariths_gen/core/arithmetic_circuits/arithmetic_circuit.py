@@ -481,8 +481,12 @@ class ArithmeticCircuit():
         """
         # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
         circuit_type = self.prefix.replace(circuit_prefix+"_", "")
+
+        # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-            f"  {circuit_type} {circuit_type}_{self.out.prefix}({self.a.prefix}, {self.b.prefix}, {self.out.prefix});\n"
+            f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
     def get_function_out_v_hier(self):
         """Generates hierarchical Verilog code assignment of corresponding arithmetic circuit's output bus wires.

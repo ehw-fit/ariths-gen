@@ -11,19 +11,19 @@ module or_gate(input a, input b, output out);
 endmodule
 
 module ha(input [0:0] a, input [0:0] b, output [0:0] ha_xor0, output [0:0] ha_and0);
-  xor_gate xor_gate_ha_xor0(a[0], b[0], ha_xor0);
-  and_gate and_gate_ha_and0(a[0], b[0], ha_and0);
+  xor_gate xor_gate_ha_xor0(.a(a[0]), .b(b[0]), .out(ha_xor0));
+  and_gate and_gate_ha_and0(.a(a[0]), .b(b[0]), .out(ha_and0));
 endmodule
 
 module fa(input [0:0] a, input [0:0] b, input [0:0] cin, output [0:0] fa_xor1, output [0:0] fa_or0);
   wire [0:0] fa_xor0;
   wire [0:0] fa_and0;
   wire [0:0] fa_and1;
-  xor_gate xor_gate_fa_xor0(a[0], b[0], fa_xor0);
-  and_gate and_gate_fa_and0(a[0], b[0], fa_and0);
-  xor_gate xor_gate_fa_xor1(fa_xor0[0], cin[0], fa_xor1);
-  and_gate and_gate_fa_and1(fa_xor0[0], cin[0], fa_and1);
-  or_gate or_gate_fa_or0(fa_and0[0], fa_and1[0], fa_or0);
+  xor_gate xor_gate_fa_xor0(.a(a[0]), .b(b[0]), .out(fa_xor0));
+  and_gate and_gate_fa_and0(.a(a[0]), .b(b[0]), .out(fa_and0));
+  xor_gate xor_gate_fa_xor1(.a(fa_xor0[0]), .b(cin[0]), .out(fa_xor1));
+  and_gate and_gate_fa_and1(.a(fa_xor0[0]), .b(cin[0]), .out(fa_and1));
+  or_gate or_gate_fa_or0(.a(fa_and0[0]), .b(fa_and1[0]), .out(fa_or0));
 endmodule
 
 module h_u_rca12(input [11:0] a, input [11:0] b, output [12:0] h_u_rca12_out);
@@ -52,18 +52,18 @@ module h_u_rca12(input [11:0] a, input [11:0] b, output [12:0] h_u_rca12_out);
   wire [0:0] h_u_rca12_fa11_xor1;
   wire [0:0] h_u_rca12_fa11_or0;
 
-  ha ha_h_u_rca12_ha_out(a[0], b[0], h_u_rca12_ha_xor0, h_u_rca12_ha_and0);
-  fa fa_h_u_rca12_fa1_out(a[1], b[1], h_u_rca12_ha_and0[0], h_u_rca12_fa1_xor1, h_u_rca12_fa1_or0);
-  fa fa_h_u_rca12_fa2_out(a[2], b[2], h_u_rca12_fa1_or0[0], h_u_rca12_fa2_xor1, h_u_rca12_fa2_or0);
-  fa fa_h_u_rca12_fa3_out(a[3], b[3], h_u_rca12_fa2_or0[0], h_u_rca12_fa3_xor1, h_u_rca12_fa3_or0);
-  fa fa_h_u_rca12_fa4_out(a[4], b[4], h_u_rca12_fa3_or0[0], h_u_rca12_fa4_xor1, h_u_rca12_fa4_or0);
-  fa fa_h_u_rca12_fa5_out(a[5], b[5], h_u_rca12_fa4_or0[0], h_u_rca12_fa5_xor1, h_u_rca12_fa5_or0);
-  fa fa_h_u_rca12_fa6_out(a[6], b[6], h_u_rca12_fa5_or0[0], h_u_rca12_fa6_xor1, h_u_rca12_fa6_or0);
-  fa fa_h_u_rca12_fa7_out(a[7], b[7], h_u_rca12_fa6_or0[0], h_u_rca12_fa7_xor1, h_u_rca12_fa7_or0);
-  fa fa_h_u_rca12_fa8_out(a[8], b[8], h_u_rca12_fa7_or0[0], h_u_rca12_fa8_xor1, h_u_rca12_fa8_or0);
-  fa fa_h_u_rca12_fa9_out(a[9], b[9], h_u_rca12_fa8_or0[0], h_u_rca12_fa9_xor1, h_u_rca12_fa9_or0);
-  fa fa_h_u_rca12_fa10_out(a[10], b[10], h_u_rca12_fa9_or0[0], h_u_rca12_fa10_xor1, h_u_rca12_fa10_or0);
-  fa fa_h_u_rca12_fa11_out(a[11], b[11], h_u_rca12_fa10_or0[0], h_u_rca12_fa11_xor1, h_u_rca12_fa11_or0);
+  ha ha_h_u_rca12_ha_out(.a(a[0]), .b(b[0]), .ha_xor0(h_u_rca12_ha_xor0), .ha_and0(h_u_rca12_ha_and0));
+  fa fa_h_u_rca12_fa1_out(.a(a[1]), .b(b[1]), .cin(h_u_rca12_ha_and0[0]), .fa_xor1(h_u_rca12_fa1_xor1), .fa_or0(h_u_rca12_fa1_or0));
+  fa fa_h_u_rca12_fa2_out(.a(a[2]), .b(b[2]), .cin(h_u_rca12_fa1_or0[0]), .fa_xor1(h_u_rca12_fa2_xor1), .fa_or0(h_u_rca12_fa2_or0));
+  fa fa_h_u_rca12_fa3_out(.a(a[3]), .b(b[3]), .cin(h_u_rca12_fa2_or0[0]), .fa_xor1(h_u_rca12_fa3_xor1), .fa_or0(h_u_rca12_fa3_or0));
+  fa fa_h_u_rca12_fa4_out(.a(a[4]), .b(b[4]), .cin(h_u_rca12_fa3_or0[0]), .fa_xor1(h_u_rca12_fa4_xor1), .fa_or0(h_u_rca12_fa4_or0));
+  fa fa_h_u_rca12_fa5_out(.a(a[5]), .b(b[5]), .cin(h_u_rca12_fa4_or0[0]), .fa_xor1(h_u_rca12_fa5_xor1), .fa_or0(h_u_rca12_fa5_or0));
+  fa fa_h_u_rca12_fa6_out(.a(a[6]), .b(b[6]), .cin(h_u_rca12_fa5_or0[0]), .fa_xor1(h_u_rca12_fa6_xor1), .fa_or0(h_u_rca12_fa6_or0));
+  fa fa_h_u_rca12_fa7_out(.a(a[7]), .b(b[7]), .cin(h_u_rca12_fa6_or0[0]), .fa_xor1(h_u_rca12_fa7_xor1), .fa_or0(h_u_rca12_fa7_or0));
+  fa fa_h_u_rca12_fa8_out(.a(a[8]), .b(b[8]), .cin(h_u_rca12_fa7_or0[0]), .fa_xor1(h_u_rca12_fa8_xor1), .fa_or0(h_u_rca12_fa8_or0));
+  fa fa_h_u_rca12_fa9_out(.a(a[9]), .b(b[9]), .cin(h_u_rca12_fa8_or0[0]), .fa_xor1(h_u_rca12_fa9_xor1), .fa_or0(h_u_rca12_fa9_or0));
+  fa fa_h_u_rca12_fa10_out(.a(a[10]), .b(b[10]), .cin(h_u_rca12_fa9_or0[0]), .fa_xor1(h_u_rca12_fa10_xor1), .fa_or0(h_u_rca12_fa10_or0));
+  fa fa_h_u_rca12_fa11_out(.a(a[11]), .b(b[11]), .cin(h_u_rca12_fa10_or0[0]), .fa_xor1(h_u_rca12_fa11_xor1), .fa_or0(h_u_rca12_fa11_or0));
 
   assign h_u_rca12_out[0] = h_u_rca12_ha_xor0[0];
   assign h_u_rca12_out[1] = h_u_rca12_fa1_xor1[0];

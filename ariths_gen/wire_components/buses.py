@@ -114,15 +114,18 @@ class Bus():
         """
         return "".join([f"  assign {self.prefix}[{self.bus.index(w)}] = {w.return_wire_value_v_hier()}" for w in self.bus])
 
-    def get_unique_assign_out_wires_v(self):
+    def get_unique_assign_out_wires_v(self, circuit_block: object):
         """Returns bus's wires used for hierarchical one bit subcomponent's function block invocation and output wires assignments.
+
+        Args:
+            circuit_block (object): Object describing corresponding function block that is being invoked for proper output wires assignment during instantiation.
 
         Returns:
             str: Verilog code unique bus wires for proper subcomponent's function block invocation.
         """
         unique_out_wires = []
         [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
-        return "".join([f", {unique_out_wires.pop(unique_out_wires.index(o.prefix))}" if o.prefix in unique_out_wires else "" for o in self.bus])
+        return "".join([f", .{circuit_block.out.get_wire(self.bus.index(o)).prefix}({unique_out_wires.pop(unique_out_wires.index(o.prefix))})" if o.prefix in unique_out_wires else f", .{circuit_block.out.get_wire(self.bus.index(o)).prefix}()" for o in self.bus])
 
     """ BLIF CODE GENERATION """
     def get_wire_declaration_blif(self, array: bool = True):

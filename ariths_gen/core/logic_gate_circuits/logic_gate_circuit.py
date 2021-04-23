@@ -306,7 +306,8 @@ class TwoInputLogicGate():
         if self.disable_generation:
             return ""
         else:
-            return f"  {self.gate_type} {self.gate_type}_{self.out.prefix}({self.a.get_wire_value_v_hier()}, {self.b.get_wire_value_v_hier()}, {self.out.prefix});\n"
+            gate_block = self.__class__(a=Wire(name="a"), b=Wire(name="b"), prefix="out")
+            return f"  {self.gate_type} {self.gate_type}_{self.out.prefix}(.{gate_block.a.prefix}({self.a.get_wire_value_v_hier()}), .{gate_block.b.prefix}({self.b.get_wire_value_v_hier()}), .{gate_block.out.prefix}({self.out.prefix}));\n"
 
     """ BLIF CODE GENERATION """
     # FLAT BLIF #
@@ -657,7 +658,8 @@ class OneInputLogicGate(TwoInputLogicGate):
         if self.disable_generation:
             return ""
         else:
-            return f"  {self.gate_type} {self.gate_type}_{self.out.prefix}({self.a.get_wire_value_v_hier()}, {self.out.prefix});\n"
+            gate_block = self.__class__(a=Wire(name="a"), prefix="out")
+            return f"  {self.gate_type} {self.gate_type}_{self.out.prefix}(.{gate_block.a.prefix}({self.a.get_wire_value_v_hier()}), .{gate_block.out.prefix}({self.out.prefix}));\n"
 
     """ BLIF CODE GENERATION """
     # FLAT BLIF #
