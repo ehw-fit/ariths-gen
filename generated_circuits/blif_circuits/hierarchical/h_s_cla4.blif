@@ -1,0 +1,92 @@
+.model h_s_cla4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs h_s_cla4_out[0] h_s_cla4_out[1] h_s_cla4_out[2] h_s_cla4_out[3] h_s_cla4_out[4]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_logic a=a[0] b=b[0] pg_logic_or0=h_s_cla4_pg_logic0_or0 pg_logic_and0=h_s_cla4_pg_logic0_and0 pg_logic_xor0=h_s_cla4_pg_logic0_xor0
+.subckt pg_logic a=a[1] b=b[1] pg_logic_or0=h_s_cla4_pg_logic1_or0 pg_logic_and0=h_s_cla4_pg_logic1_and0 pg_logic_xor0=h_s_cla4_pg_logic1_xor0
+.subckt xor_gate a=h_s_cla4_pg_logic1_xor0 b=h_s_cla4_pg_logic0_and0 out=h_s_cla4_xor1
+.subckt and_gate a=h_s_cla4_pg_logic0_and0 b=h_s_cla4_pg_logic1_or0 out=h_s_cla4_and0
+.subckt or_gate a=h_s_cla4_pg_logic1_and0 b=h_s_cla4_and0 out=h_s_cla4_or0
+.subckt pg_logic a=a[2] b=b[2] pg_logic_or0=h_s_cla4_pg_logic2_or0 pg_logic_and0=h_s_cla4_pg_logic2_and0 pg_logic_xor0=h_s_cla4_pg_logic2_xor0
+.subckt xor_gate a=h_s_cla4_pg_logic2_xor0 b=h_s_cla4_or0 out=h_s_cla4_xor2
+.subckt and_gate a=h_s_cla4_pg_logic2_or0 b=h_s_cla4_pg_logic0_or0 out=h_s_cla4_and1
+.subckt and_gate a=h_s_cla4_pg_logic0_and0 b=h_s_cla4_pg_logic2_or0 out=h_s_cla4_and2
+.subckt and_gate a=h_s_cla4_and2 b=h_s_cla4_pg_logic1_or0 out=h_s_cla4_and3
+.subckt and_gate a=h_s_cla4_pg_logic1_and0 b=h_s_cla4_pg_logic2_or0 out=h_s_cla4_and4
+.subckt or_gate a=h_s_cla4_and3 b=h_s_cla4_and4 out=h_s_cla4_or1
+.subckt or_gate a=h_s_cla4_pg_logic2_and0 b=h_s_cla4_or1 out=h_s_cla4_or2
+.subckt pg_logic a=a[3] b=b[3] pg_logic_or0=h_s_cla4_pg_logic3_or0 pg_logic_and0=h_s_cla4_pg_logic3_and0 pg_logic_xor0=h_s_cla4_pg_logic3_xor0
+.subckt xor_gate a=h_s_cla4_pg_logic3_xor0 b=h_s_cla4_or2 out=h_s_cla4_xor3
+.subckt and_gate a=h_s_cla4_pg_logic3_or0 b=h_s_cla4_pg_logic1_or0 out=h_s_cla4_and5
+.subckt and_gate a=h_s_cla4_pg_logic0_and0 b=h_s_cla4_pg_logic2_or0 out=h_s_cla4_and6
+.subckt and_gate a=h_s_cla4_pg_logic3_or0 b=h_s_cla4_pg_logic1_or0 out=h_s_cla4_and7
+.subckt and_gate a=h_s_cla4_and6 b=h_s_cla4_and7 out=h_s_cla4_and8
+.subckt and_gate a=h_s_cla4_pg_logic1_and0 b=h_s_cla4_pg_logic3_or0 out=h_s_cla4_and9
+.subckt and_gate a=h_s_cla4_and9 b=h_s_cla4_pg_logic2_or0 out=h_s_cla4_and10
+.subckt and_gate a=h_s_cla4_pg_logic2_and0 b=h_s_cla4_pg_logic3_or0 out=h_s_cla4_and11
+.subckt or_gate a=h_s_cla4_and8 b=h_s_cla4_and11 out=h_s_cla4_or3
+.subckt or_gate a=h_s_cla4_and10 b=h_s_cla4_or3 out=h_s_cla4_or4
+.subckt or_gate a=h_s_cla4_pg_logic3_and0 b=h_s_cla4_or4 out=h_s_cla4_or5
+.subckt xor_gate a=a[3] b=b[3] out=h_s_cla4_xor4
+.subckt xor_gate a=h_s_cla4_xor4 b=h_s_cla4_or5 out=h_s_cla4_xor5
+.names h_s_cla4_pg_logic0_xor0 h_s_cla4_out[0]
+1 1
+.names h_s_cla4_xor1 h_s_cla4_out[1]
+1 1
+.names h_s_cla4_xor2 h_s_cla4_out[2]
+1 1
+.names h_s_cla4_xor3 h_s_cla4_out[3]
+1 1
+.names h_s_cla4_xor5 h_s_cla4_out[4]
+1 1
+.end
+
+.model pg_logic
+.inputs a b
+.outputs pg_logic_or0 pg_logic_and0 pg_logic_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt or_gate a=a b=b out=pg_logic_or0
+.subckt and_gate a=a b=b out=pg_logic_and0
+.subckt xor_gate a=a b=b out=pg_logic_xor0
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end

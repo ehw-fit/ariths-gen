@@ -1,0 +1,47 @@
+module f_s_rca4(input [3:0] a, input [3:0] b, output [4:0] f_s_rca4_out);
+  wire f_s_rca4_ha_xor0;
+  wire f_s_rca4_ha_and0;
+  wire f_s_rca4_fa1_xor0;
+  wire f_s_rca4_fa1_and0;
+  wire f_s_rca4_fa1_xor1;
+  wire f_s_rca4_fa1_and1;
+  wire f_s_rca4_fa1_or0;
+  wire f_s_rca4_fa2_xor0;
+  wire f_s_rca4_fa2_and0;
+  wire f_s_rca4_fa2_xor1;
+  wire f_s_rca4_fa2_and1;
+  wire f_s_rca4_fa2_or0;
+  wire f_s_rca4_fa3_xor0;
+  wire f_s_rca4_fa3_and0;
+  wire f_s_rca4_fa3_xor1;
+  wire f_s_rca4_fa3_and1;
+  wire f_s_rca4_fa3_or0;
+  wire f_s_rca4_xor0;
+  wire f_s_rca4_xor1;
+
+  assign f_s_rca4_ha_xor0 = a[0] ^ b[0];
+  assign f_s_rca4_ha_and0 = a[0] & b[0];
+  assign f_s_rca4_fa1_xor0 = a[1] ^ b[1];
+  assign f_s_rca4_fa1_and0 = a[1] & b[1];
+  assign f_s_rca4_fa1_xor1 = f_s_rca4_fa1_xor0 ^ f_s_rca4_ha_and0;
+  assign f_s_rca4_fa1_and1 = f_s_rca4_fa1_xor0 & f_s_rca4_ha_and0;
+  assign f_s_rca4_fa1_or0 = f_s_rca4_fa1_and0 | f_s_rca4_fa1_and1;
+  assign f_s_rca4_fa2_xor0 = a[2] ^ b[2];
+  assign f_s_rca4_fa2_and0 = a[2] & b[2];
+  assign f_s_rca4_fa2_xor1 = f_s_rca4_fa2_xor0 ^ f_s_rca4_fa1_or0;
+  assign f_s_rca4_fa2_and1 = f_s_rca4_fa2_xor0 & f_s_rca4_fa1_or0;
+  assign f_s_rca4_fa2_or0 = f_s_rca4_fa2_and0 | f_s_rca4_fa2_and1;
+  assign f_s_rca4_fa3_xor0 = a[3] ^ b[3];
+  assign f_s_rca4_fa3_and0 = a[3] & b[3];
+  assign f_s_rca4_fa3_xor1 = f_s_rca4_fa3_xor0 ^ f_s_rca4_fa2_or0;
+  assign f_s_rca4_fa3_and1 = f_s_rca4_fa3_xor0 & f_s_rca4_fa2_or0;
+  assign f_s_rca4_fa3_or0 = f_s_rca4_fa3_and0 | f_s_rca4_fa3_and1;
+  assign f_s_rca4_xor0 = a[3] ^ b[3];
+  assign f_s_rca4_xor1 = f_s_rca4_xor0 ^ f_s_rca4_fa3_or0;
+
+  assign f_s_rca4_out[0] = f_s_rca4_ha_xor0;
+  assign f_s_rca4_out[1] = f_s_rca4_fa1_xor1;
+  assign f_s_rca4_out[2] = f_s_rca4_fa2_xor1;
+  assign f_s_rca4_out[3] = f_s_rca4_fa3_xor1;
+  assign f_s_rca4_out[4] = f_s_rca4_xor1;
+endmodule

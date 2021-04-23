@@ -1,0 +1,116 @@
+.model h_s_csa4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs h_s_csa4_out[0] h_s_csa4_out[1] h_s_csa4_out[2] h_s_csa4_out[3] h_s_csa4_out[4]
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a[0] b=b[0] out=h_s_csa4_xor0
+.subckt ha a=a[0] b=b[0] ha_xor0=h_s_csa4_ha0_xor0 ha_and0=h_s_csa4_ha0_and0
+.subckt xor_gate a=a[1] b=b[1] out=h_s_csa4_xor1
+.subckt fa a=a[1] b=b[1] cin=h_s_csa4_ha0_and0 fa_xor1=h_s_csa4_fa0_xor1 fa_or0=h_s_csa4_fa0_or0
+.subckt xor_gate a=a[2] b=b[2] out=h_s_csa4_xor2
+.subckt fa a=a[2] b=b[2] cin=h_s_csa4_fa0_or0 fa_xor1=h_s_csa4_fa1_xor1 fa_or0=h_s_csa4_fa1_or0
+.subckt xor_gate a=a[3] b=b[3] out=h_s_csa4_xor3
+.subckt fa a=a[3] b=b[3] cin=h_s_csa4_fa1_or0 fa_xor1=h_s_csa4_fa2_xor1 fa_or0=h_s_csa4_fa2_or0
+.subckt and_gate a=h_s_csa4_xor0 b=h_s_csa4_xor2 out=h_s_csa4_and_propagate00
+.subckt and_gate a=h_s_csa4_xor1 b=h_s_csa4_xor3 out=h_s_csa4_and_propagate01
+.subckt and_gate a=h_s_csa4_and_propagate00 b=h_s_csa4_and_propagate01 out=h_s_csa4_and_propagate02
+.subckt mux2to1 d0=h_s_csa4_fa2_or0 d1=gnd sel=h_s_csa4_and_propagate02 mux2to1_xor0=h_s_csa4_mux2to10_and1
+.subckt xor_gate a=a[3] b=b[3] out=h_s_csa4_xor4
+.subckt xor_gate a=h_s_csa4_xor4 b=h_s_csa4_mux2to10_and1 out=h_s_csa4_xor5
+.names h_s_csa4_ha0_xor0 h_s_csa4_out[0]
+1 1
+.names h_s_csa4_fa0_xor1 h_s_csa4_out[1]
+1 1
+.names h_s_csa4_fa1_xor1 h_s_csa4_out[2]
+1 1
+.names h_s_csa4_fa2_xor1 h_s_csa4_out[3]
+1 1
+.names h_s_csa4_xor5 h_s_csa4_out[4]
+1 1
+.end
+
+.model mux2to1
+.inputs d0 d1 sel
+.outputs mux2to1_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=d1 b=sel out=mux2to1_and0
+.subckt not_gate a=sel out=mux2to1_not0
+.subckt and_gate a=d0 b=mux2to1_not0 out=mux2to1_and1
+.subckt xor_gate a=mux2to1_and0 b=mux2to1_and1 out=mux2to1_xor0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model not_gate
+.inputs a
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a out
+0 1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end

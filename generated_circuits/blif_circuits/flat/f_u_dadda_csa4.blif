@@ -1,0 +1,219 @@
+.model f_u_dadda_csa4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs f_u_dadda_csa4_out[0] f_u_dadda_csa4_out[1] f_u_dadda_csa4_out[2] f_u_dadda_csa4_out[3] f_u_dadda_csa4_out[4] f_u_dadda_csa4_out[5] f_u_dadda_csa4_out[6] f_u_dadda_csa4_out[7]
+.names vdd
+1
+.names gnd
+0
+.names a[3] b[0] f_u_dadda_csa4_and_3_0
+11 1
+.names a[2] b[1] f_u_dadda_csa4_and_2_1
+11 1
+.names f_u_dadda_csa4_and_3_0 f_u_dadda_csa4_and_2_1 f_u_dadda_csa4_ha0_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_3_0 f_u_dadda_csa4_and_2_1 f_u_dadda_csa4_ha0_and0
+11 1
+.names a[3] b[1] f_u_dadda_csa4_and_3_1
+11 1
+.names f_u_dadda_csa4_ha0_and0 f_u_dadda_csa4_and_3_1 f_u_dadda_csa4_ha1_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_ha0_and0 f_u_dadda_csa4_and_3_1 f_u_dadda_csa4_ha1_and0
+11 1
+.names a[2] b[0] f_u_dadda_csa4_and_2_0
+11 1
+.names a[1] b[1] f_u_dadda_csa4_and_1_1
+11 1
+.names f_u_dadda_csa4_and_2_0 f_u_dadda_csa4_and_1_1 f_u_dadda_csa4_ha2_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_2_0 f_u_dadda_csa4_and_1_1 f_u_dadda_csa4_ha2_and0
+11 1
+.names a[1] b[2] f_u_dadda_csa4_and_1_2
+11 1
+.names a[0] b[3] f_u_dadda_csa4_and_0_3
+11 1
+.names f_u_dadda_csa4_ha2_and0 f_u_dadda_csa4_and_1_2 f_u_dadda_csa4_fa0_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_ha2_and0 f_u_dadda_csa4_and_1_2 f_u_dadda_csa4_fa0_and0
+11 1
+.names f_u_dadda_csa4_fa0_xor0 f_u_dadda_csa4_and_0_3 f_u_dadda_csa4_fa0_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_fa0_xor0 f_u_dadda_csa4_and_0_3 f_u_dadda_csa4_fa0_and1
+11 1
+.names f_u_dadda_csa4_fa0_and0 f_u_dadda_csa4_fa0_and1 f_u_dadda_csa4_fa0_or0
+1- 1
+-1 1
+.names a[2] b[2] f_u_dadda_csa4_and_2_2
+11 1
+.names a[1] b[3] f_u_dadda_csa4_and_1_3
+11 1
+.names f_u_dadda_csa4_fa0_or0 f_u_dadda_csa4_and_2_2 f_u_dadda_csa4_fa1_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_fa0_or0 f_u_dadda_csa4_and_2_2 f_u_dadda_csa4_fa1_and0
+11 1
+.names f_u_dadda_csa4_fa1_xor0 f_u_dadda_csa4_and_1_3 f_u_dadda_csa4_fa1_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_fa1_xor0 f_u_dadda_csa4_and_1_3 f_u_dadda_csa4_fa1_and1
+11 1
+.names f_u_dadda_csa4_fa1_and0 f_u_dadda_csa4_fa1_and1 f_u_dadda_csa4_fa1_or0
+1- 1
+-1 1
+.names a[3] b[2] f_u_dadda_csa4_and_3_2
+11 1
+.names f_u_dadda_csa4_fa1_or0 f_u_dadda_csa4_ha1_and0 f_u_dadda_csa4_fa2_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_fa1_or0 f_u_dadda_csa4_ha1_and0 f_u_dadda_csa4_fa2_and0
+11 1
+.names f_u_dadda_csa4_fa2_xor0 f_u_dadda_csa4_and_3_2 f_u_dadda_csa4_fa2_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_fa2_xor0 f_u_dadda_csa4_and_3_2 f_u_dadda_csa4_fa2_and1
+11 1
+.names f_u_dadda_csa4_fa2_and0 f_u_dadda_csa4_fa2_and1 f_u_dadda_csa4_fa2_or0
+1- 1
+-1 1
+.names a[0] b[0] f_u_dadda_csa4_and_0_0
+11 1
+.names a[1] b[0] f_u_dadda_csa4_and_1_0
+11 1
+.names a[0] b[2] f_u_dadda_csa4_and_0_2
+11 1
+.names a[2] b[3] f_u_dadda_csa4_and_2_3
+11 1
+.names a[0] b[1] f_u_dadda_csa4_and_0_1
+11 1
+.names a[3] b[3] f_u_dadda_csa4_and_3_3
+11 1
+.names f_u_dadda_csa4_and_1_0 f_u_dadda_csa4_and_0_1 f_u_dadda_csa4_u_csa6_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_1_0 f_u_dadda_csa4_and_0_1 f_u_dadda_csa4_u_csa6_ha0_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_1_0 f_u_dadda_csa4_and_0_1 f_u_dadda_csa4_u_csa6_ha0_and0
+11 1
+.names f_u_dadda_csa4_and_0_2 f_u_dadda_csa4_ha2_xor0 f_u_dadda_csa4_u_csa6_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_and_0_2 f_u_dadda_csa4_ha2_xor0 f_u_dadda_csa4_u_csa6_fa0_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_0_2 f_u_dadda_csa4_ha2_xor0 f_u_dadda_csa4_u_csa6_fa0_and0
+11 1
+.names f_u_dadda_csa4_u_csa6_fa0_xor0 f_u_dadda_csa4_u_csa6_ha0_and0 f_u_dadda_csa4_u_csa6_fa0_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_u_csa6_fa0_xor0 f_u_dadda_csa4_u_csa6_ha0_and0 f_u_dadda_csa4_u_csa6_fa0_and1
+11 1
+.names f_u_dadda_csa4_u_csa6_fa0_and0 f_u_dadda_csa4_u_csa6_fa0_and1 f_u_dadda_csa4_u_csa6_fa0_or0
+1- 1
+-1 1
+.names f_u_dadda_csa4_ha0_xor0 f_u_dadda_csa4_fa0_xor1 f_u_dadda_csa4_u_csa6_xor2
+01 1
+10 1
+.names f_u_dadda_csa4_ha0_xor0 f_u_dadda_csa4_fa0_xor1 f_u_dadda_csa4_u_csa6_fa1_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_ha0_xor0 f_u_dadda_csa4_fa0_xor1 f_u_dadda_csa4_u_csa6_fa1_and0
+11 1
+.names f_u_dadda_csa4_u_csa6_fa1_xor0 f_u_dadda_csa4_u_csa6_fa0_or0 f_u_dadda_csa4_u_csa6_fa1_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_u_csa6_fa1_xor0 f_u_dadda_csa4_u_csa6_fa0_or0 f_u_dadda_csa4_u_csa6_fa1_and1
+11 1
+.names f_u_dadda_csa4_u_csa6_fa1_and0 f_u_dadda_csa4_u_csa6_fa1_and1 f_u_dadda_csa4_u_csa6_fa1_or0
+1- 1
+-1 1
+.names f_u_dadda_csa4_ha1_xor0 f_u_dadda_csa4_fa1_xor1 f_u_dadda_csa4_u_csa6_xor3
+01 1
+10 1
+.names f_u_dadda_csa4_ha1_xor0 f_u_dadda_csa4_fa1_xor1 f_u_dadda_csa4_u_csa6_fa2_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_ha1_xor0 f_u_dadda_csa4_fa1_xor1 f_u_dadda_csa4_u_csa6_fa2_and0
+11 1
+.names f_u_dadda_csa4_u_csa6_fa2_xor0 f_u_dadda_csa4_u_csa6_fa1_or0 f_u_dadda_csa4_u_csa6_fa2_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_u_csa6_fa2_xor0 f_u_dadda_csa4_u_csa6_fa1_or0 f_u_dadda_csa4_u_csa6_fa2_and1
+11 1
+.names f_u_dadda_csa4_u_csa6_fa2_and0 f_u_dadda_csa4_u_csa6_fa2_and1 f_u_dadda_csa4_u_csa6_fa2_or0
+1- 1
+-1 1
+.names f_u_dadda_csa4_u_csa6_xor0 f_u_dadda_csa4_u_csa6_xor2 f_u_dadda_csa4_u_csa6_and_propagate00
+11 1
+.names f_u_dadda_csa4_u_csa6_xor1 f_u_dadda_csa4_u_csa6_xor3 f_u_dadda_csa4_u_csa6_and_propagate01
+11 1
+.names f_u_dadda_csa4_u_csa6_and_propagate00 f_u_dadda_csa4_u_csa6_and_propagate01 f_u_dadda_csa4_u_csa6_and_propagate02
+11 1
+.names f_u_dadda_csa4_u_csa6_and_propagate02 f_u_dadda_csa4_u_csa6_mux2to10_not0
+0 1
+.names f_u_dadda_csa4_u_csa6_fa2_or0 f_u_dadda_csa4_u_csa6_mux2to10_not0 f_u_dadda_csa4_u_csa6_mux2to10_and1
+11 1
+.names f_u_dadda_csa4_and_2_3 f_u_dadda_csa4_fa2_xor1 f_u_dadda_csa4_u_csa6_xor4
+01 1
+10 1
+.names f_u_dadda_csa4_and_2_3 f_u_dadda_csa4_fa2_xor1 f_u_dadda_csa4_u_csa6_fa3_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_2_3 f_u_dadda_csa4_fa2_xor1 f_u_dadda_csa4_u_csa6_fa3_and0
+11 1
+.names f_u_dadda_csa4_u_csa6_fa3_xor0 f_u_dadda_csa4_u_csa6_mux2to10_and1 f_u_dadda_csa4_u_csa6_fa3_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_u_csa6_fa3_xor0 f_u_dadda_csa4_u_csa6_mux2to10_and1 f_u_dadda_csa4_u_csa6_fa3_and1
+11 1
+.names f_u_dadda_csa4_u_csa6_fa3_and0 f_u_dadda_csa4_u_csa6_fa3_and1 f_u_dadda_csa4_u_csa6_fa3_or0
+1- 1
+-1 1
+.names f_u_dadda_csa4_fa2_or0 f_u_dadda_csa4_and_3_3 f_u_dadda_csa4_u_csa6_xor5
+01 1
+10 1
+.names f_u_dadda_csa4_fa2_or0 f_u_dadda_csa4_and_3_3 f_u_dadda_csa4_u_csa6_fa4_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_fa2_or0 f_u_dadda_csa4_and_3_3 f_u_dadda_csa4_u_csa6_fa4_and0
+11 1
+.names f_u_dadda_csa4_u_csa6_fa4_xor0 f_u_dadda_csa4_u_csa6_fa3_or0 f_u_dadda_csa4_u_csa6_fa4_xor1
+01 1
+10 1
+.names f_u_dadda_csa4_u_csa6_fa4_xor0 f_u_dadda_csa4_u_csa6_fa3_or0 f_u_dadda_csa4_u_csa6_fa4_and1
+11 1
+.names f_u_dadda_csa4_u_csa6_fa4_and0 f_u_dadda_csa4_u_csa6_fa4_and1 f_u_dadda_csa4_u_csa6_fa4_or0
+1- 1
+-1 1
+.names f_u_dadda_csa4_u_csa6_xor4 f_u_dadda_csa4_u_csa6_xor5 f_u_dadda_csa4_u_csa6_and_propagate13
+11 1
+.names f_u_dadda_csa4_u_csa6_mux2to10_and1 f_u_dadda_csa4_u_csa6_and_propagate13 f_u_dadda_csa4_u_csa6_mux2to11_and0
+11 1
+.names f_u_dadda_csa4_u_csa6_and_propagate13 f_u_dadda_csa4_u_csa6_mux2to11_not0
+0 1
+.names f_u_dadda_csa4_u_csa6_fa4_or0 f_u_dadda_csa4_u_csa6_mux2to11_not0 f_u_dadda_csa4_u_csa6_mux2to11_and1
+11 1
+.names f_u_dadda_csa4_u_csa6_mux2to11_and0 f_u_dadda_csa4_u_csa6_mux2to11_and1 f_u_dadda_csa4_u_csa6_mux2to11_xor0
+01 1
+10 1
+.names f_u_dadda_csa4_and_0_0 f_u_dadda_csa4_out[0]
+1 1
+.names f_u_dadda_csa4_u_csa6_ha0_xor0 f_u_dadda_csa4_out[1]
+1 1
+.names f_u_dadda_csa4_u_csa6_fa0_xor1 f_u_dadda_csa4_out[2]
+1 1
+.names f_u_dadda_csa4_u_csa6_fa1_xor1 f_u_dadda_csa4_out[3]
+1 1
+.names f_u_dadda_csa4_u_csa6_fa2_xor1 f_u_dadda_csa4_out[4]
+1 1
+.names f_u_dadda_csa4_u_csa6_fa3_xor1 f_u_dadda_csa4_out[5]
+1 1
+.names f_u_dadda_csa4_u_csa6_fa4_xor1 f_u_dadda_csa4_out[6]
+1 1
+.names f_u_dadda_csa4_u_csa6_mux2to11_xor0 f_u_dadda_csa4_out[7]
+1 1
+.end
