@@ -1,0 +1,351 @@
+.model f_s_cska16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs f_s_cska16_out[0] f_s_cska16_out[1] f_s_cska16_out[2] f_s_cska16_out[3] f_s_cska16_out[4] f_s_cska16_out[5] f_s_cska16_out[6] f_s_cska16_out[7] f_s_cska16_out[8] f_s_cska16_out[9] f_s_cska16_out[10] f_s_cska16_out[11] f_s_cska16_out[12] f_s_cska16_out[13] f_s_cska16_out[14] f_s_cska16_out[15] f_s_cska16_out[16]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] f_s_cska16_xor0
+01 1
+10 1
+.names a[0] b[0] f_s_cska16_ha0_xor0
+01 1
+10 1
+.names a[0] b[0] f_s_cska16_ha0_and0
+11 1
+.names a[1] b[1] f_s_cska16_xor1
+01 1
+10 1
+.names a[1] b[1] f_s_cska16_fa0_xor0
+01 1
+10 1
+.names a[1] b[1] f_s_cska16_fa0_and0
+11 1
+.names f_s_cska16_fa0_xor0 f_s_cska16_ha0_and0 f_s_cska16_fa0_xor1
+01 1
+10 1
+.names f_s_cska16_fa0_xor0 f_s_cska16_ha0_and0 f_s_cska16_fa0_and1
+11 1
+.names f_s_cska16_fa0_and0 f_s_cska16_fa0_and1 f_s_cska16_fa0_or0
+1- 1
+-1 1
+.names a[2] b[2] f_s_cska16_xor2
+01 1
+10 1
+.names a[2] b[2] f_s_cska16_fa1_xor0
+01 1
+10 1
+.names a[2] b[2] f_s_cska16_fa1_and0
+11 1
+.names f_s_cska16_fa1_xor0 f_s_cska16_fa0_or0 f_s_cska16_fa1_xor1
+01 1
+10 1
+.names f_s_cska16_fa1_xor0 f_s_cska16_fa0_or0 f_s_cska16_fa1_and1
+11 1
+.names f_s_cska16_fa1_and0 f_s_cska16_fa1_and1 f_s_cska16_fa1_or0
+1- 1
+-1 1
+.names a[3] b[3] f_s_cska16_xor3
+01 1
+10 1
+.names a[3] b[3] f_s_cska16_fa2_xor0
+01 1
+10 1
+.names a[3] b[3] f_s_cska16_fa2_and0
+11 1
+.names f_s_cska16_fa2_xor0 f_s_cska16_fa1_or0 f_s_cska16_fa2_xor1
+01 1
+10 1
+.names f_s_cska16_fa2_xor0 f_s_cska16_fa1_or0 f_s_cska16_fa2_and1
+11 1
+.names f_s_cska16_fa2_and0 f_s_cska16_fa2_and1 f_s_cska16_fa2_or0
+1- 1
+-1 1
+.names f_s_cska16_xor0 f_s_cska16_xor2 f_s_cska16_and_propagate00
+11 1
+.names f_s_cska16_xor1 f_s_cska16_xor3 f_s_cska16_and_propagate01
+11 1
+.names f_s_cska16_and_propagate00 f_s_cska16_and_propagate01 f_s_cska16_and_propagate02
+11 1
+.names f_s_cska16_and_propagate02 f_s_cska16_mux2to10_not0
+0 1
+.names f_s_cska16_fa2_or0 f_s_cska16_mux2to10_not0 f_s_cska16_mux2to10_and1
+11 1
+.names a[4] b[4] f_s_cska16_xor4
+01 1
+10 1
+.names a[4] b[4] f_s_cska16_fa3_xor0
+01 1
+10 1
+.names a[4] b[4] f_s_cska16_fa3_and0
+11 1
+.names f_s_cska16_fa3_xor0 f_s_cska16_mux2to10_and1 f_s_cska16_fa3_xor1
+01 1
+10 1
+.names f_s_cska16_fa3_xor0 f_s_cska16_mux2to10_and1 f_s_cska16_fa3_and1
+11 1
+.names f_s_cska16_fa3_and0 f_s_cska16_fa3_and1 f_s_cska16_fa3_or0
+1- 1
+-1 1
+.names a[5] b[5] f_s_cska16_xor5
+01 1
+10 1
+.names a[5] b[5] f_s_cska16_fa4_xor0
+01 1
+10 1
+.names a[5] b[5] f_s_cska16_fa4_and0
+11 1
+.names f_s_cska16_fa4_xor0 f_s_cska16_fa3_or0 f_s_cska16_fa4_xor1
+01 1
+10 1
+.names f_s_cska16_fa4_xor0 f_s_cska16_fa3_or0 f_s_cska16_fa4_and1
+11 1
+.names f_s_cska16_fa4_and0 f_s_cska16_fa4_and1 f_s_cska16_fa4_or0
+1- 1
+-1 1
+.names a[6] b[6] f_s_cska16_xor6
+01 1
+10 1
+.names a[6] b[6] f_s_cska16_fa5_xor0
+01 1
+10 1
+.names a[6] b[6] f_s_cska16_fa5_and0
+11 1
+.names f_s_cska16_fa5_xor0 f_s_cska16_fa4_or0 f_s_cska16_fa5_xor1
+01 1
+10 1
+.names f_s_cska16_fa5_xor0 f_s_cska16_fa4_or0 f_s_cska16_fa5_and1
+11 1
+.names f_s_cska16_fa5_and0 f_s_cska16_fa5_and1 f_s_cska16_fa5_or0
+1- 1
+-1 1
+.names a[7] b[7] f_s_cska16_xor7
+01 1
+10 1
+.names a[7] b[7] f_s_cska16_fa6_xor0
+01 1
+10 1
+.names a[7] b[7] f_s_cska16_fa6_and0
+11 1
+.names f_s_cska16_fa6_xor0 f_s_cska16_fa5_or0 f_s_cska16_fa6_xor1
+01 1
+10 1
+.names f_s_cska16_fa6_xor0 f_s_cska16_fa5_or0 f_s_cska16_fa6_and1
+11 1
+.names f_s_cska16_fa6_and0 f_s_cska16_fa6_and1 f_s_cska16_fa6_or0
+1- 1
+-1 1
+.names f_s_cska16_xor4 f_s_cska16_xor6 f_s_cska16_and_propagate13
+11 1
+.names f_s_cska16_xor5 f_s_cska16_xor7 f_s_cska16_and_propagate14
+11 1
+.names f_s_cska16_and_propagate13 f_s_cska16_and_propagate14 f_s_cska16_and_propagate15
+11 1
+.names f_s_cska16_mux2to10_and1 f_s_cska16_and_propagate15 f_s_cska16_mux2to11_and0
+11 1
+.names f_s_cska16_and_propagate15 f_s_cska16_mux2to11_not0
+0 1
+.names f_s_cska16_fa6_or0 f_s_cska16_mux2to11_not0 f_s_cska16_mux2to11_and1
+11 1
+.names f_s_cska16_mux2to11_and0 f_s_cska16_mux2to11_and1 f_s_cska16_mux2to11_xor0
+01 1
+10 1
+.names a[8] b[8] f_s_cska16_xor8
+01 1
+10 1
+.names a[8] b[8] f_s_cska16_fa7_xor0
+01 1
+10 1
+.names a[8] b[8] f_s_cska16_fa7_and0
+11 1
+.names f_s_cska16_fa7_xor0 f_s_cska16_mux2to11_xor0 f_s_cska16_fa7_xor1
+01 1
+10 1
+.names f_s_cska16_fa7_xor0 f_s_cska16_mux2to11_xor0 f_s_cska16_fa7_and1
+11 1
+.names f_s_cska16_fa7_and0 f_s_cska16_fa7_and1 f_s_cska16_fa7_or0
+1- 1
+-1 1
+.names a[9] b[9] f_s_cska16_xor9
+01 1
+10 1
+.names a[9] b[9] f_s_cska16_fa8_xor0
+01 1
+10 1
+.names a[9] b[9] f_s_cska16_fa8_and0
+11 1
+.names f_s_cska16_fa8_xor0 f_s_cska16_fa7_or0 f_s_cska16_fa8_xor1
+01 1
+10 1
+.names f_s_cska16_fa8_xor0 f_s_cska16_fa7_or0 f_s_cska16_fa8_and1
+11 1
+.names f_s_cska16_fa8_and0 f_s_cska16_fa8_and1 f_s_cska16_fa8_or0
+1- 1
+-1 1
+.names a[10] b[10] f_s_cska16_xor10
+01 1
+10 1
+.names a[10] b[10] f_s_cska16_fa9_xor0
+01 1
+10 1
+.names a[10] b[10] f_s_cska16_fa9_and0
+11 1
+.names f_s_cska16_fa9_xor0 f_s_cska16_fa8_or0 f_s_cska16_fa9_xor1
+01 1
+10 1
+.names f_s_cska16_fa9_xor0 f_s_cska16_fa8_or0 f_s_cska16_fa9_and1
+11 1
+.names f_s_cska16_fa9_and0 f_s_cska16_fa9_and1 f_s_cska16_fa9_or0
+1- 1
+-1 1
+.names a[11] b[11] f_s_cska16_xor11
+01 1
+10 1
+.names a[11] b[11] f_s_cska16_fa10_xor0
+01 1
+10 1
+.names a[11] b[11] f_s_cska16_fa10_and0
+11 1
+.names f_s_cska16_fa10_xor0 f_s_cska16_fa9_or0 f_s_cska16_fa10_xor1
+01 1
+10 1
+.names f_s_cska16_fa10_xor0 f_s_cska16_fa9_or0 f_s_cska16_fa10_and1
+11 1
+.names f_s_cska16_fa10_and0 f_s_cska16_fa10_and1 f_s_cska16_fa10_or0
+1- 1
+-1 1
+.names f_s_cska16_xor8 f_s_cska16_xor10 f_s_cska16_and_propagate26
+11 1
+.names f_s_cska16_xor9 f_s_cska16_xor11 f_s_cska16_and_propagate27
+11 1
+.names f_s_cska16_and_propagate26 f_s_cska16_and_propagate27 f_s_cska16_and_propagate28
+11 1
+.names f_s_cska16_mux2to11_xor0 f_s_cska16_and_propagate28 f_s_cska16_mux2to12_and0
+11 1
+.names f_s_cska16_and_propagate28 f_s_cska16_mux2to12_not0
+0 1
+.names f_s_cska16_fa10_or0 f_s_cska16_mux2to12_not0 f_s_cska16_mux2to12_and1
+11 1
+.names f_s_cska16_mux2to12_and0 f_s_cska16_mux2to12_and1 f_s_cska16_mux2to12_xor0
+01 1
+10 1
+.names a[12] b[12] f_s_cska16_xor12
+01 1
+10 1
+.names a[12] b[12] f_s_cska16_fa11_xor0
+01 1
+10 1
+.names a[12] b[12] f_s_cska16_fa11_and0
+11 1
+.names f_s_cska16_fa11_xor0 f_s_cska16_mux2to12_xor0 f_s_cska16_fa11_xor1
+01 1
+10 1
+.names f_s_cska16_fa11_xor0 f_s_cska16_mux2to12_xor0 f_s_cska16_fa11_and1
+11 1
+.names f_s_cska16_fa11_and0 f_s_cska16_fa11_and1 f_s_cska16_fa11_or0
+1- 1
+-1 1
+.names a[13] b[13] f_s_cska16_xor13
+01 1
+10 1
+.names a[13] b[13] f_s_cska16_fa12_xor0
+01 1
+10 1
+.names a[13] b[13] f_s_cska16_fa12_and0
+11 1
+.names f_s_cska16_fa12_xor0 f_s_cska16_fa11_or0 f_s_cska16_fa12_xor1
+01 1
+10 1
+.names f_s_cska16_fa12_xor0 f_s_cska16_fa11_or0 f_s_cska16_fa12_and1
+11 1
+.names f_s_cska16_fa12_and0 f_s_cska16_fa12_and1 f_s_cska16_fa12_or0
+1- 1
+-1 1
+.names a[14] b[14] f_s_cska16_xor14
+01 1
+10 1
+.names a[14] b[14] f_s_cska16_fa13_xor0
+01 1
+10 1
+.names a[14] b[14] f_s_cska16_fa13_and0
+11 1
+.names f_s_cska16_fa13_xor0 f_s_cska16_fa12_or0 f_s_cska16_fa13_xor1
+01 1
+10 1
+.names f_s_cska16_fa13_xor0 f_s_cska16_fa12_or0 f_s_cska16_fa13_and1
+11 1
+.names f_s_cska16_fa13_and0 f_s_cska16_fa13_and1 f_s_cska16_fa13_or0
+1- 1
+-1 1
+.names a[15] b[15] f_s_cska16_xor15
+01 1
+10 1
+.names a[15] b[15] f_s_cska16_fa14_xor0
+01 1
+10 1
+.names a[15] b[15] f_s_cska16_fa14_and0
+11 1
+.names f_s_cska16_fa14_xor0 f_s_cska16_fa13_or0 f_s_cska16_fa14_xor1
+01 1
+10 1
+.names f_s_cska16_fa14_xor0 f_s_cska16_fa13_or0 f_s_cska16_fa14_and1
+11 1
+.names f_s_cska16_fa14_and0 f_s_cska16_fa14_and1 f_s_cska16_fa14_or0
+1- 1
+-1 1
+.names f_s_cska16_xor12 f_s_cska16_xor14 f_s_cska16_and_propagate39
+11 1
+.names f_s_cska16_xor13 f_s_cska16_xor15 f_s_cska16_and_propagate310
+11 1
+.names f_s_cska16_and_propagate39 f_s_cska16_and_propagate310 f_s_cska16_and_propagate311
+11 1
+.names f_s_cska16_mux2to12_xor0 f_s_cska16_and_propagate311 f_s_cska16_mux2to13_and0
+11 1
+.names f_s_cska16_and_propagate311 f_s_cska16_mux2to13_not0
+0 1
+.names f_s_cska16_fa14_or0 f_s_cska16_mux2to13_not0 f_s_cska16_mux2to13_and1
+11 1
+.names f_s_cska16_mux2to13_and0 f_s_cska16_mux2to13_and1 f_s_cska16_mux2to13_xor0
+01 1
+10 1
+.names a[15] b[15] f_s_cska16_xor16
+01 1
+10 1
+.names f_s_cska16_xor16 f_s_cska16_mux2to13_xor0 f_s_cska16_xor17
+01 1
+10 1
+.names f_s_cska16_ha0_xor0 f_s_cska16_out[0]
+1 1
+.names f_s_cska16_fa0_xor1 f_s_cska16_out[1]
+1 1
+.names f_s_cska16_fa1_xor1 f_s_cska16_out[2]
+1 1
+.names f_s_cska16_fa2_xor1 f_s_cska16_out[3]
+1 1
+.names f_s_cska16_fa3_xor1 f_s_cska16_out[4]
+1 1
+.names f_s_cska16_fa4_xor1 f_s_cska16_out[5]
+1 1
+.names f_s_cska16_fa5_xor1 f_s_cska16_out[6]
+1 1
+.names f_s_cska16_fa6_xor1 f_s_cska16_out[7]
+1 1
+.names f_s_cska16_fa7_xor1 f_s_cska16_out[8]
+1 1
+.names f_s_cska16_fa8_xor1 f_s_cska16_out[9]
+1 1
+.names f_s_cska16_fa9_xor1 f_s_cska16_out[10]
+1 1
+.names f_s_cska16_fa10_xor1 f_s_cska16_out[11]
+1 1
+.names f_s_cska16_fa11_xor1 f_s_cska16_out[12]
+1 1
+.names f_s_cska16_fa12_xor1 f_s_cska16_out[13]
+1 1
+.names f_s_cska16_fa13_xor1 f_s_cska16_out[14]
+1 1
+.names f_s_cska16_fa14_xor1 f_s_cska16_out[15]
+1 1
+.names f_s_cska16_xor17 f_s_cska16_out[16]
+1 1
+.end

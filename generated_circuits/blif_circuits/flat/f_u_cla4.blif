@@ -1,0 +1,101 @@
+.model f_u_cla4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs f_u_cla4_out[0] f_u_cla4_out[1] f_u_cla4_out[2] f_u_cla4_out[3] f_u_cla4_out[4]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] f_u_cla4_pg_logic0_or0
+1- 1
+-1 1
+.names a[0] b[0] f_u_cla4_pg_logic0_and0
+11 1
+.names a[0] b[0] f_u_cla4_pg_logic0_xor0
+01 1
+10 1
+.names a[1] b[1] f_u_cla4_pg_logic1_or0
+1- 1
+-1 1
+.names a[1] b[1] f_u_cla4_pg_logic1_and0
+11 1
+.names a[1] b[1] f_u_cla4_pg_logic1_xor0
+01 1
+10 1
+.names f_u_cla4_pg_logic1_xor0 f_u_cla4_pg_logic0_and0 f_u_cla4_xor1
+01 1
+10 1
+.names f_u_cla4_pg_logic0_and0 f_u_cla4_pg_logic1_or0 f_u_cla4_and0
+11 1
+.names f_u_cla4_pg_logic1_and0 f_u_cla4_and0 f_u_cla4_or0
+1- 1
+-1 1
+.names a[2] b[2] f_u_cla4_pg_logic2_or0
+1- 1
+-1 1
+.names a[2] b[2] f_u_cla4_pg_logic2_and0
+11 1
+.names a[2] b[2] f_u_cla4_pg_logic2_xor0
+01 1
+10 1
+.names f_u_cla4_pg_logic2_xor0 f_u_cla4_or0 f_u_cla4_xor2
+01 1
+10 1
+.names f_u_cla4_pg_logic2_or0 f_u_cla4_pg_logic0_or0 f_u_cla4_and1
+11 1
+.names f_u_cla4_pg_logic0_and0 f_u_cla4_pg_logic2_or0 f_u_cla4_and2
+11 1
+.names f_u_cla4_and2 f_u_cla4_pg_logic1_or0 f_u_cla4_and3
+11 1
+.names f_u_cla4_pg_logic1_and0 f_u_cla4_pg_logic2_or0 f_u_cla4_and4
+11 1
+.names f_u_cla4_and3 f_u_cla4_and4 f_u_cla4_or1
+1- 1
+-1 1
+.names f_u_cla4_pg_logic2_and0 f_u_cla4_or1 f_u_cla4_or2
+1- 1
+-1 1
+.names a[3] b[3] f_u_cla4_pg_logic3_or0
+1- 1
+-1 1
+.names a[3] b[3] f_u_cla4_pg_logic3_and0
+11 1
+.names a[3] b[3] f_u_cla4_pg_logic3_xor0
+01 1
+10 1
+.names f_u_cla4_pg_logic3_xor0 f_u_cla4_or2 f_u_cla4_xor3
+01 1
+10 1
+.names f_u_cla4_pg_logic3_or0 f_u_cla4_pg_logic1_or0 f_u_cla4_and5
+11 1
+.names f_u_cla4_pg_logic0_and0 f_u_cla4_pg_logic2_or0 f_u_cla4_and6
+11 1
+.names f_u_cla4_pg_logic3_or0 f_u_cla4_pg_logic1_or0 f_u_cla4_and7
+11 1
+.names f_u_cla4_and6 f_u_cla4_and7 f_u_cla4_and8
+11 1
+.names f_u_cla4_pg_logic1_and0 f_u_cla4_pg_logic3_or0 f_u_cla4_and9
+11 1
+.names f_u_cla4_and9 f_u_cla4_pg_logic2_or0 f_u_cla4_and10
+11 1
+.names f_u_cla4_pg_logic2_and0 f_u_cla4_pg_logic3_or0 f_u_cla4_and11
+11 1
+.names f_u_cla4_and8 f_u_cla4_and11 f_u_cla4_or3
+1- 1
+-1 1
+.names f_u_cla4_and10 f_u_cla4_or3 f_u_cla4_or4
+1- 1
+-1 1
+.names f_u_cla4_pg_logic3_and0 f_u_cla4_or4 f_u_cla4_or5
+1- 1
+-1 1
+.names f_u_cla4_pg_logic0_xor0 f_u_cla4_out[0]
+1 1
+.names f_u_cla4_xor1 f_u_cla4_out[1]
+1 1
+.names f_u_cla4_xor2 f_u_cla4_out[2]
+1 1
+.names f_u_cla4_xor3 f_u_cla4_out[3]
+1 1
+.names f_u_cla4_or5 f_u_cla4_out[4]
+1 1
+.end

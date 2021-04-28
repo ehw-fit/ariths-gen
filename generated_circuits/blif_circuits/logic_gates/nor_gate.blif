@@ -1,0 +1,10 @@
+.model nor_gate
+.inputs a b
+.outputs nor_gate
+.names vdd
+1
+.names gnd
+0
+.names a b nor_gate
+00 1
+.end

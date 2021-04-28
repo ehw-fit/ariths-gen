@@ -1,0 +1,11 @@
+.model xnor_gate
+.inputs a b
+.outputs xnor_gate
+.names vdd
+1
+.names gnd
+0
+.names a b xnor_gate
+00 1
+11 1
+.end

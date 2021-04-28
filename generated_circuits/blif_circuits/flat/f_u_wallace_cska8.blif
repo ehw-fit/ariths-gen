@@ -1,0 +1,925 @@
+.model f_u_wallace_cska8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs f_u_wallace_cska8_out[0] f_u_wallace_cska8_out[1] f_u_wallace_cska8_out[2] f_u_wallace_cska8_out[3] f_u_wallace_cska8_out[4] f_u_wallace_cska8_out[5] f_u_wallace_cska8_out[6] f_u_wallace_cska8_out[7] f_u_wallace_cska8_out[8] f_u_wallace_cska8_out[9] f_u_wallace_cska8_out[10] f_u_wallace_cska8_out[11] f_u_wallace_cska8_out[12] f_u_wallace_cska8_out[13] f_u_wallace_cska8_out[14] f_u_wallace_cska8_out[15]
+.names vdd
+1
+.names gnd
+0
+.names a[2] b[0] f_u_wallace_cska8_and_2_0
+11 1
+.names a[1] b[1] f_u_wallace_cska8_and_1_1
+11 1
+.names f_u_wallace_cska8_and_2_0 f_u_wallace_cska8_and_1_1 f_u_wallace_cska8_ha0_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_2_0 f_u_wallace_cska8_and_1_1 f_u_wallace_cska8_ha0_and0
+11 1
+.names a[3] b[0] f_u_wallace_cska8_and_3_0
+11 1
+.names a[2] b[1] f_u_wallace_cska8_and_2_1
+11 1
+.names f_u_wallace_cska8_ha0_and0 f_u_wallace_cska8_and_3_0 f_u_wallace_cska8_fa0_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha0_and0 f_u_wallace_cska8_and_3_0 f_u_wallace_cska8_fa0_and0
+11 1
+.names f_u_wallace_cska8_fa0_xor0 f_u_wallace_cska8_and_2_1 f_u_wallace_cska8_fa0_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa0_xor0 f_u_wallace_cska8_and_2_1 f_u_wallace_cska8_fa0_and1
+11 1
+.names f_u_wallace_cska8_fa0_and0 f_u_wallace_cska8_fa0_and1 f_u_wallace_cska8_fa0_or0
+1- 1
+-1 1
+.names a[4] b[0] f_u_wallace_cska8_and_4_0
+11 1
+.names a[3] b[1] f_u_wallace_cska8_and_3_1
+11 1
+.names f_u_wallace_cska8_fa0_or0 f_u_wallace_cska8_and_4_0 f_u_wallace_cska8_fa1_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa0_or0 f_u_wallace_cska8_and_4_0 f_u_wallace_cska8_fa1_and0
+11 1
+.names f_u_wallace_cska8_fa1_xor0 f_u_wallace_cska8_and_3_1 f_u_wallace_cska8_fa1_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa1_xor0 f_u_wallace_cska8_and_3_1 f_u_wallace_cska8_fa1_and1
+11 1
+.names f_u_wallace_cska8_fa1_and0 f_u_wallace_cska8_fa1_and1 f_u_wallace_cska8_fa1_or0
+1- 1
+-1 1
+.names a[5] b[0] f_u_wallace_cska8_and_5_0
+11 1
+.names a[4] b[1] f_u_wallace_cska8_and_4_1
+11 1
+.names f_u_wallace_cska8_fa1_or0 f_u_wallace_cska8_and_5_0 f_u_wallace_cska8_fa2_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa1_or0 f_u_wallace_cska8_and_5_0 f_u_wallace_cska8_fa2_and0
+11 1
+.names f_u_wallace_cska8_fa2_xor0 f_u_wallace_cska8_and_4_1 f_u_wallace_cska8_fa2_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa2_xor0 f_u_wallace_cska8_and_4_1 f_u_wallace_cska8_fa2_and1
+11 1
+.names f_u_wallace_cska8_fa2_and0 f_u_wallace_cska8_fa2_and1 f_u_wallace_cska8_fa2_or0
+1- 1
+-1 1
+.names a[6] b[0] f_u_wallace_cska8_and_6_0
+11 1
+.names a[5] b[1] f_u_wallace_cska8_and_5_1
+11 1
+.names f_u_wallace_cska8_fa2_or0 f_u_wallace_cska8_and_6_0 f_u_wallace_cska8_fa3_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa2_or0 f_u_wallace_cska8_and_6_0 f_u_wallace_cska8_fa3_and0
+11 1
+.names f_u_wallace_cska8_fa3_xor0 f_u_wallace_cska8_and_5_1 f_u_wallace_cska8_fa3_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa3_xor0 f_u_wallace_cska8_and_5_1 f_u_wallace_cska8_fa3_and1
+11 1
+.names f_u_wallace_cska8_fa3_and0 f_u_wallace_cska8_fa3_and1 f_u_wallace_cska8_fa3_or0
+1- 1
+-1 1
+.names a[7] b[0] f_u_wallace_cska8_and_7_0
+11 1
+.names a[6] b[1] f_u_wallace_cska8_and_6_1
+11 1
+.names f_u_wallace_cska8_fa3_or0 f_u_wallace_cska8_and_7_0 f_u_wallace_cska8_fa4_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa3_or0 f_u_wallace_cska8_and_7_0 f_u_wallace_cska8_fa4_and0
+11 1
+.names f_u_wallace_cska8_fa4_xor0 f_u_wallace_cska8_and_6_1 f_u_wallace_cska8_fa4_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa4_xor0 f_u_wallace_cska8_and_6_1 f_u_wallace_cska8_fa4_and1
+11 1
+.names f_u_wallace_cska8_fa4_and0 f_u_wallace_cska8_fa4_and1 f_u_wallace_cska8_fa4_or0
+1- 1
+-1 1
+.names a[7] b[1] f_u_wallace_cska8_and_7_1
+11 1
+.names a[6] b[2] f_u_wallace_cska8_and_6_2
+11 1
+.names f_u_wallace_cska8_fa4_or0 f_u_wallace_cska8_and_7_1 f_u_wallace_cska8_fa5_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa4_or0 f_u_wallace_cska8_and_7_1 f_u_wallace_cska8_fa5_and0
+11 1
+.names f_u_wallace_cska8_fa5_xor0 f_u_wallace_cska8_and_6_2 f_u_wallace_cska8_fa5_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa5_xor0 f_u_wallace_cska8_and_6_2 f_u_wallace_cska8_fa5_and1
+11 1
+.names f_u_wallace_cska8_fa5_and0 f_u_wallace_cska8_fa5_and1 f_u_wallace_cska8_fa5_or0
+1- 1
+-1 1
+.names a[7] b[2] f_u_wallace_cska8_and_7_2
+11 1
+.names a[6] b[3] f_u_wallace_cska8_and_6_3
+11 1
+.names f_u_wallace_cska8_fa5_or0 f_u_wallace_cska8_and_7_2 f_u_wallace_cska8_fa6_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa5_or0 f_u_wallace_cska8_and_7_2 f_u_wallace_cska8_fa6_and0
+11 1
+.names f_u_wallace_cska8_fa6_xor0 f_u_wallace_cska8_and_6_3 f_u_wallace_cska8_fa6_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa6_xor0 f_u_wallace_cska8_and_6_3 f_u_wallace_cska8_fa6_and1
+11 1
+.names f_u_wallace_cska8_fa6_and0 f_u_wallace_cska8_fa6_and1 f_u_wallace_cska8_fa6_or0
+1- 1
+-1 1
+.names a[7] b[3] f_u_wallace_cska8_and_7_3
+11 1
+.names a[6] b[4] f_u_wallace_cska8_and_6_4
+11 1
+.names f_u_wallace_cska8_fa6_or0 f_u_wallace_cska8_and_7_3 f_u_wallace_cska8_fa7_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa6_or0 f_u_wallace_cska8_and_7_3 f_u_wallace_cska8_fa7_and0
+11 1
+.names f_u_wallace_cska8_fa7_xor0 f_u_wallace_cska8_and_6_4 f_u_wallace_cska8_fa7_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa7_xor0 f_u_wallace_cska8_and_6_4 f_u_wallace_cska8_fa7_and1
+11 1
+.names f_u_wallace_cska8_fa7_and0 f_u_wallace_cska8_fa7_and1 f_u_wallace_cska8_fa7_or0
+1- 1
+-1 1
+.names a[7] b[4] f_u_wallace_cska8_and_7_4
+11 1
+.names a[6] b[5] f_u_wallace_cska8_and_6_5
+11 1
+.names f_u_wallace_cska8_fa7_or0 f_u_wallace_cska8_and_7_4 f_u_wallace_cska8_fa8_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa7_or0 f_u_wallace_cska8_and_7_4 f_u_wallace_cska8_fa8_and0
+11 1
+.names f_u_wallace_cska8_fa8_xor0 f_u_wallace_cska8_and_6_5 f_u_wallace_cska8_fa8_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa8_xor0 f_u_wallace_cska8_and_6_5 f_u_wallace_cska8_fa8_and1
+11 1
+.names f_u_wallace_cska8_fa8_and0 f_u_wallace_cska8_fa8_and1 f_u_wallace_cska8_fa8_or0
+1- 1
+-1 1
+.names a[7] b[5] f_u_wallace_cska8_and_7_5
+11 1
+.names a[6] b[6] f_u_wallace_cska8_and_6_6
+11 1
+.names f_u_wallace_cska8_fa8_or0 f_u_wallace_cska8_and_7_5 f_u_wallace_cska8_fa9_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa8_or0 f_u_wallace_cska8_and_7_5 f_u_wallace_cska8_fa9_and0
+11 1
+.names f_u_wallace_cska8_fa9_xor0 f_u_wallace_cska8_and_6_6 f_u_wallace_cska8_fa9_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa9_xor0 f_u_wallace_cska8_and_6_6 f_u_wallace_cska8_fa9_and1
+11 1
+.names f_u_wallace_cska8_fa9_and0 f_u_wallace_cska8_fa9_and1 f_u_wallace_cska8_fa9_or0
+1- 1
+-1 1
+.names a[1] b[2] f_u_wallace_cska8_and_1_2
+11 1
+.names a[0] b[3] f_u_wallace_cska8_and_0_3
+11 1
+.names f_u_wallace_cska8_and_1_2 f_u_wallace_cska8_and_0_3 f_u_wallace_cska8_ha1_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_1_2 f_u_wallace_cska8_and_0_3 f_u_wallace_cska8_ha1_and0
+11 1
+.names a[2] b[2] f_u_wallace_cska8_and_2_2
+11 1
+.names a[1] b[3] f_u_wallace_cska8_and_1_3
+11 1
+.names f_u_wallace_cska8_ha1_and0 f_u_wallace_cska8_and_2_2 f_u_wallace_cska8_fa10_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha1_and0 f_u_wallace_cska8_and_2_2 f_u_wallace_cska8_fa10_and0
+11 1
+.names f_u_wallace_cska8_fa10_xor0 f_u_wallace_cska8_and_1_3 f_u_wallace_cska8_fa10_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa10_xor0 f_u_wallace_cska8_and_1_3 f_u_wallace_cska8_fa10_and1
+11 1
+.names f_u_wallace_cska8_fa10_and0 f_u_wallace_cska8_fa10_and1 f_u_wallace_cska8_fa10_or0
+1- 1
+-1 1
+.names a[3] b[2] f_u_wallace_cska8_and_3_2
+11 1
+.names a[2] b[3] f_u_wallace_cska8_and_2_3
+11 1
+.names f_u_wallace_cska8_fa10_or0 f_u_wallace_cska8_and_3_2 f_u_wallace_cska8_fa11_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa10_or0 f_u_wallace_cska8_and_3_2 f_u_wallace_cska8_fa11_and0
+11 1
+.names f_u_wallace_cska8_fa11_xor0 f_u_wallace_cska8_and_2_3 f_u_wallace_cska8_fa11_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa11_xor0 f_u_wallace_cska8_and_2_3 f_u_wallace_cska8_fa11_and1
+11 1
+.names f_u_wallace_cska8_fa11_and0 f_u_wallace_cska8_fa11_and1 f_u_wallace_cska8_fa11_or0
+1- 1
+-1 1
+.names a[4] b[2] f_u_wallace_cska8_and_4_2
+11 1
+.names a[3] b[3] f_u_wallace_cska8_and_3_3
+11 1
+.names f_u_wallace_cska8_fa11_or0 f_u_wallace_cska8_and_4_2 f_u_wallace_cska8_fa12_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa11_or0 f_u_wallace_cska8_and_4_2 f_u_wallace_cska8_fa12_and0
+11 1
+.names f_u_wallace_cska8_fa12_xor0 f_u_wallace_cska8_and_3_3 f_u_wallace_cska8_fa12_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa12_xor0 f_u_wallace_cska8_and_3_3 f_u_wallace_cska8_fa12_and1
+11 1
+.names f_u_wallace_cska8_fa12_and0 f_u_wallace_cska8_fa12_and1 f_u_wallace_cska8_fa12_or0
+1- 1
+-1 1
+.names a[5] b[2] f_u_wallace_cska8_and_5_2
+11 1
+.names a[4] b[3] f_u_wallace_cska8_and_4_3
+11 1
+.names f_u_wallace_cska8_fa12_or0 f_u_wallace_cska8_and_5_2 f_u_wallace_cska8_fa13_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa12_or0 f_u_wallace_cska8_and_5_2 f_u_wallace_cska8_fa13_and0
+11 1
+.names f_u_wallace_cska8_fa13_xor0 f_u_wallace_cska8_and_4_3 f_u_wallace_cska8_fa13_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa13_xor0 f_u_wallace_cska8_and_4_3 f_u_wallace_cska8_fa13_and1
+11 1
+.names f_u_wallace_cska8_fa13_and0 f_u_wallace_cska8_fa13_and1 f_u_wallace_cska8_fa13_or0
+1- 1
+-1 1
+.names a[5] b[3] f_u_wallace_cska8_and_5_3
+11 1
+.names a[4] b[4] f_u_wallace_cska8_and_4_4
+11 1
+.names f_u_wallace_cska8_fa13_or0 f_u_wallace_cska8_and_5_3 f_u_wallace_cska8_fa14_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa13_or0 f_u_wallace_cska8_and_5_3 f_u_wallace_cska8_fa14_and0
+11 1
+.names f_u_wallace_cska8_fa14_xor0 f_u_wallace_cska8_and_4_4 f_u_wallace_cska8_fa14_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa14_xor0 f_u_wallace_cska8_and_4_4 f_u_wallace_cska8_fa14_and1
+11 1
+.names f_u_wallace_cska8_fa14_and0 f_u_wallace_cska8_fa14_and1 f_u_wallace_cska8_fa14_or0
+1- 1
+-1 1
+.names a[5] b[4] f_u_wallace_cska8_and_5_4
+11 1
+.names a[4] b[5] f_u_wallace_cska8_and_4_5
+11 1
+.names f_u_wallace_cska8_fa14_or0 f_u_wallace_cska8_and_5_4 f_u_wallace_cska8_fa15_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa14_or0 f_u_wallace_cska8_and_5_4 f_u_wallace_cska8_fa15_and0
+11 1
+.names f_u_wallace_cska8_fa15_xor0 f_u_wallace_cska8_and_4_5 f_u_wallace_cska8_fa15_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa15_xor0 f_u_wallace_cska8_and_4_5 f_u_wallace_cska8_fa15_and1
+11 1
+.names f_u_wallace_cska8_fa15_and0 f_u_wallace_cska8_fa15_and1 f_u_wallace_cska8_fa15_or0
+1- 1
+-1 1
+.names a[5] b[5] f_u_wallace_cska8_and_5_5
+11 1
+.names a[4] b[6] f_u_wallace_cska8_and_4_6
+11 1
+.names f_u_wallace_cska8_fa15_or0 f_u_wallace_cska8_and_5_5 f_u_wallace_cska8_fa16_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa15_or0 f_u_wallace_cska8_and_5_5 f_u_wallace_cska8_fa16_and0
+11 1
+.names f_u_wallace_cska8_fa16_xor0 f_u_wallace_cska8_and_4_6 f_u_wallace_cska8_fa16_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa16_xor0 f_u_wallace_cska8_and_4_6 f_u_wallace_cska8_fa16_and1
+11 1
+.names f_u_wallace_cska8_fa16_and0 f_u_wallace_cska8_fa16_and1 f_u_wallace_cska8_fa16_or0
+1- 1
+-1 1
+.names a[5] b[6] f_u_wallace_cska8_and_5_6
+11 1
+.names a[4] b[7] f_u_wallace_cska8_and_4_7
+11 1
+.names f_u_wallace_cska8_fa16_or0 f_u_wallace_cska8_and_5_6 f_u_wallace_cska8_fa17_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa16_or0 f_u_wallace_cska8_and_5_6 f_u_wallace_cska8_fa17_and0
+11 1
+.names f_u_wallace_cska8_fa17_xor0 f_u_wallace_cska8_and_4_7 f_u_wallace_cska8_fa17_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa17_xor0 f_u_wallace_cska8_and_4_7 f_u_wallace_cska8_fa17_and1
+11 1
+.names f_u_wallace_cska8_fa17_and0 f_u_wallace_cska8_fa17_and1 f_u_wallace_cska8_fa17_or0
+1- 1
+-1 1
+.names a[0] b[4] f_u_wallace_cska8_and_0_4
+11 1
+.names f_u_wallace_cska8_and_0_4 f_u_wallace_cska8_fa1_xor1 f_u_wallace_cska8_ha2_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_0_4 f_u_wallace_cska8_fa1_xor1 f_u_wallace_cska8_ha2_and0
+11 1
+.names a[1] b[4] f_u_wallace_cska8_and_1_4
+11 1
+.names a[0] b[5] f_u_wallace_cska8_and_0_5
+11 1
+.names f_u_wallace_cska8_ha2_and0 f_u_wallace_cska8_and_1_4 f_u_wallace_cska8_fa18_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha2_and0 f_u_wallace_cska8_and_1_4 f_u_wallace_cska8_fa18_and0
+11 1
+.names f_u_wallace_cska8_fa18_xor0 f_u_wallace_cska8_and_0_5 f_u_wallace_cska8_fa18_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa18_xor0 f_u_wallace_cska8_and_0_5 f_u_wallace_cska8_fa18_and1
+11 1
+.names f_u_wallace_cska8_fa18_and0 f_u_wallace_cska8_fa18_and1 f_u_wallace_cska8_fa18_or0
+1- 1
+-1 1
+.names a[2] b[4] f_u_wallace_cska8_and_2_4
+11 1
+.names a[1] b[5] f_u_wallace_cska8_and_1_5
+11 1
+.names f_u_wallace_cska8_fa18_or0 f_u_wallace_cska8_and_2_4 f_u_wallace_cska8_fa19_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa18_or0 f_u_wallace_cska8_and_2_4 f_u_wallace_cska8_fa19_and0
+11 1
+.names f_u_wallace_cska8_fa19_xor0 f_u_wallace_cska8_and_1_5 f_u_wallace_cska8_fa19_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa19_xor0 f_u_wallace_cska8_and_1_5 f_u_wallace_cska8_fa19_and1
+11 1
+.names f_u_wallace_cska8_fa19_and0 f_u_wallace_cska8_fa19_and1 f_u_wallace_cska8_fa19_or0
+1- 1
+-1 1
+.names a[3] b[4] f_u_wallace_cska8_and_3_4
+11 1
+.names a[2] b[5] f_u_wallace_cska8_and_2_5
+11 1
+.names f_u_wallace_cska8_fa19_or0 f_u_wallace_cska8_and_3_4 f_u_wallace_cska8_fa20_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa19_or0 f_u_wallace_cska8_and_3_4 f_u_wallace_cska8_fa20_and0
+11 1
+.names f_u_wallace_cska8_fa20_xor0 f_u_wallace_cska8_and_2_5 f_u_wallace_cska8_fa20_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa20_xor0 f_u_wallace_cska8_and_2_5 f_u_wallace_cska8_fa20_and1
+11 1
+.names f_u_wallace_cska8_fa20_and0 f_u_wallace_cska8_fa20_and1 f_u_wallace_cska8_fa20_or0
+1- 1
+-1 1
+.names a[3] b[5] f_u_wallace_cska8_and_3_5
+11 1
+.names a[2] b[6] f_u_wallace_cska8_and_2_6
+11 1
+.names f_u_wallace_cska8_fa20_or0 f_u_wallace_cska8_and_3_5 f_u_wallace_cska8_fa21_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa20_or0 f_u_wallace_cska8_and_3_5 f_u_wallace_cska8_fa21_and0
+11 1
+.names f_u_wallace_cska8_fa21_xor0 f_u_wallace_cska8_and_2_6 f_u_wallace_cska8_fa21_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa21_xor0 f_u_wallace_cska8_and_2_6 f_u_wallace_cska8_fa21_and1
+11 1
+.names f_u_wallace_cska8_fa21_and0 f_u_wallace_cska8_fa21_and1 f_u_wallace_cska8_fa21_or0
+1- 1
+-1 1
+.names a[3] b[6] f_u_wallace_cska8_and_3_6
+11 1
+.names a[2] b[7] f_u_wallace_cska8_and_2_7
+11 1
+.names f_u_wallace_cska8_fa21_or0 f_u_wallace_cska8_and_3_6 f_u_wallace_cska8_fa22_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa21_or0 f_u_wallace_cska8_and_3_6 f_u_wallace_cska8_fa22_and0
+11 1
+.names f_u_wallace_cska8_fa22_xor0 f_u_wallace_cska8_and_2_7 f_u_wallace_cska8_fa22_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa22_xor0 f_u_wallace_cska8_and_2_7 f_u_wallace_cska8_fa22_and1
+11 1
+.names f_u_wallace_cska8_fa22_and0 f_u_wallace_cska8_fa22_and1 f_u_wallace_cska8_fa22_or0
+1- 1
+-1 1
+.names a[3] b[7] f_u_wallace_cska8_and_3_7
+11 1
+.names f_u_wallace_cska8_fa22_or0 f_u_wallace_cska8_and_3_7 f_u_wallace_cska8_fa23_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa22_or0 f_u_wallace_cska8_and_3_7 f_u_wallace_cska8_fa23_and0
+11 1
+.names f_u_wallace_cska8_fa23_xor0 f_u_wallace_cska8_fa7_xor1 f_u_wallace_cska8_fa23_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa23_xor0 f_u_wallace_cska8_fa7_xor1 f_u_wallace_cska8_fa23_and1
+11 1
+.names f_u_wallace_cska8_fa23_and0 f_u_wallace_cska8_fa23_and1 f_u_wallace_cska8_fa23_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa2_xor1 f_u_wallace_cska8_fa11_xor1 f_u_wallace_cska8_ha3_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa2_xor1 f_u_wallace_cska8_fa11_xor1 f_u_wallace_cska8_ha3_and0
+11 1
+.names a[0] b[6] f_u_wallace_cska8_and_0_6
+11 1
+.names f_u_wallace_cska8_ha3_and0 f_u_wallace_cska8_and_0_6 f_u_wallace_cska8_fa24_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha3_and0 f_u_wallace_cska8_and_0_6 f_u_wallace_cska8_fa24_and0
+11 1
+.names f_u_wallace_cska8_fa24_xor0 f_u_wallace_cska8_fa3_xor1 f_u_wallace_cska8_fa24_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa24_xor0 f_u_wallace_cska8_fa3_xor1 f_u_wallace_cska8_fa24_and1
+11 1
+.names f_u_wallace_cska8_fa24_and0 f_u_wallace_cska8_fa24_and1 f_u_wallace_cska8_fa24_or0
+1- 1
+-1 1
+.names a[1] b[6] f_u_wallace_cska8_and_1_6
+11 1
+.names a[0] b[7] f_u_wallace_cska8_and_0_7
+11 1
+.names f_u_wallace_cska8_fa24_or0 f_u_wallace_cska8_and_1_6 f_u_wallace_cska8_fa25_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa24_or0 f_u_wallace_cska8_and_1_6 f_u_wallace_cska8_fa25_and0
+11 1
+.names f_u_wallace_cska8_fa25_xor0 f_u_wallace_cska8_and_0_7 f_u_wallace_cska8_fa25_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa25_xor0 f_u_wallace_cska8_and_0_7 f_u_wallace_cska8_fa25_and1
+11 1
+.names f_u_wallace_cska8_fa25_and0 f_u_wallace_cska8_fa25_and1 f_u_wallace_cska8_fa25_or0
+1- 1
+-1 1
+.names a[1] b[7] f_u_wallace_cska8_and_1_7
+11 1
+.names f_u_wallace_cska8_fa25_or0 f_u_wallace_cska8_and_1_7 f_u_wallace_cska8_fa26_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa25_or0 f_u_wallace_cska8_and_1_7 f_u_wallace_cska8_fa26_and0
+11 1
+.names f_u_wallace_cska8_fa26_xor0 f_u_wallace_cska8_fa5_xor1 f_u_wallace_cska8_fa26_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa26_xor0 f_u_wallace_cska8_fa5_xor1 f_u_wallace_cska8_fa26_and1
+11 1
+.names f_u_wallace_cska8_fa26_and0 f_u_wallace_cska8_fa26_and1 f_u_wallace_cska8_fa26_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa26_or0 f_u_wallace_cska8_fa6_xor1 f_u_wallace_cska8_fa27_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa26_or0 f_u_wallace_cska8_fa6_xor1 f_u_wallace_cska8_fa27_and0
+11 1
+.names f_u_wallace_cska8_fa27_xor0 f_u_wallace_cska8_fa15_xor1 f_u_wallace_cska8_fa27_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa27_xor0 f_u_wallace_cska8_fa15_xor1 f_u_wallace_cska8_fa27_and1
+11 1
+.names f_u_wallace_cska8_fa27_and0 f_u_wallace_cska8_fa27_and1 f_u_wallace_cska8_fa27_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa12_xor1 f_u_wallace_cska8_fa19_xor1 f_u_wallace_cska8_ha4_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa12_xor1 f_u_wallace_cska8_fa19_xor1 f_u_wallace_cska8_ha4_and0
+11 1
+.names f_u_wallace_cska8_ha4_and0 f_u_wallace_cska8_fa4_xor1 f_u_wallace_cska8_fa28_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha4_and0 f_u_wallace_cska8_fa4_xor1 f_u_wallace_cska8_fa28_and0
+11 1
+.names f_u_wallace_cska8_fa28_xor0 f_u_wallace_cska8_fa13_xor1 f_u_wallace_cska8_fa28_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa28_xor0 f_u_wallace_cska8_fa13_xor1 f_u_wallace_cska8_fa28_and1
+11 1
+.names f_u_wallace_cska8_fa28_and0 f_u_wallace_cska8_fa28_and1 f_u_wallace_cska8_fa28_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa28_or0 f_u_wallace_cska8_fa14_xor1 f_u_wallace_cska8_fa29_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa28_or0 f_u_wallace_cska8_fa14_xor1 f_u_wallace_cska8_fa29_and0
+11 1
+.names f_u_wallace_cska8_fa29_xor0 f_u_wallace_cska8_fa21_xor1 f_u_wallace_cska8_fa29_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa29_xor0 f_u_wallace_cska8_fa21_xor1 f_u_wallace_cska8_fa29_and1
+11 1
+.names f_u_wallace_cska8_fa29_and0 f_u_wallace_cska8_fa29_and1 f_u_wallace_cska8_fa29_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa20_xor1 f_u_wallace_cska8_fa25_xor1 f_u_wallace_cska8_ha5_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa20_xor1 f_u_wallace_cska8_fa25_xor1 f_u_wallace_cska8_ha5_and0
+11 1
+.names f_u_wallace_cska8_ha5_and0 f_u_wallace_cska8_fa26_xor1 f_u_wallace_cska8_ha6_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha5_and0 f_u_wallace_cska8_fa26_xor1 f_u_wallace_cska8_ha6_and0
+11 1
+.names f_u_wallace_cska8_ha6_and0 f_u_wallace_cska8_fa29_or0 f_u_wallace_cska8_fa30_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_ha6_and0 f_u_wallace_cska8_fa29_or0 f_u_wallace_cska8_fa30_and0
+11 1
+.names f_u_wallace_cska8_fa30_xor0 f_u_wallace_cska8_fa22_xor1 f_u_wallace_cska8_fa30_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa30_xor0 f_u_wallace_cska8_fa22_xor1 f_u_wallace_cska8_fa30_and1
+11 1
+.names f_u_wallace_cska8_fa30_and0 f_u_wallace_cska8_fa30_and1 f_u_wallace_cska8_fa30_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa30_or0 f_u_wallace_cska8_fa27_or0 f_u_wallace_cska8_fa31_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa30_or0 f_u_wallace_cska8_fa27_or0 f_u_wallace_cska8_fa31_and0
+11 1
+.names f_u_wallace_cska8_fa31_xor0 f_u_wallace_cska8_fa16_xor1 f_u_wallace_cska8_fa31_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa31_xor0 f_u_wallace_cska8_fa16_xor1 f_u_wallace_cska8_fa31_and1
+11 1
+.names f_u_wallace_cska8_fa31_and0 f_u_wallace_cska8_fa31_and1 f_u_wallace_cska8_fa31_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa31_or0 f_u_wallace_cska8_fa23_or0 f_u_wallace_cska8_fa32_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa31_or0 f_u_wallace_cska8_fa23_or0 f_u_wallace_cska8_fa32_and0
+11 1
+.names f_u_wallace_cska8_fa32_xor0 f_u_wallace_cska8_fa8_xor1 f_u_wallace_cska8_fa32_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa32_xor0 f_u_wallace_cska8_fa8_xor1 f_u_wallace_cska8_fa32_and1
+11 1
+.names f_u_wallace_cska8_fa32_and0 f_u_wallace_cska8_fa32_and1 f_u_wallace_cska8_fa32_or0
+1- 1
+-1 1
+.names a[5] b[7] f_u_wallace_cska8_and_5_7
+11 1
+.names f_u_wallace_cska8_fa32_or0 f_u_wallace_cska8_fa17_or0 f_u_wallace_cska8_fa33_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa32_or0 f_u_wallace_cska8_fa17_or0 f_u_wallace_cska8_fa33_and0
+11 1
+.names f_u_wallace_cska8_fa33_xor0 f_u_wallace_cska8_and_5_7 f_u_wallace_cska8_fa33_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa33_xor0 f_u_wallace_cska8_and_5_7 f_u_wallace_cska8_fa33_and1
+11 1
+.names f_u_wallace_cska8_fa33_and0 f_u_wallace_cska8_fa33_and1 f_u_wallace_cska8_fa33_or0
+1- 1
+-1 1
+.names a[7] b[6] f_u_wallace_cska8_and_7_6
+11 1
+.names f_u_wallace_cska8_fa33_or0 f_u_wallace_cska8_fa9_or0 f_u_wallace_cska8_fa34_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa33_or0 f_u_wallace_cska8_fa9_or0 f_u_wallace_cska8_fa34_and0
+11 1
+.names f_u_wallace_cska8_fa34_xor0 f_u_wallace_cska8_and_7_6 f_u_wallace_cska8_fa34_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_fa34_xor0 f_u_wallace_cska8_and_7_6 f_u_wallace_cska8_fa34_and1
+11 1
+.names f_u_wallace_cska8_fa34_and0 f_u_wallace_cska8_fa34_and1 f_u_wallace_cska8_fa34_or0
+1- 1
+-1 1
+.names a[0] b[0] f_u_wallace_cska8_and_0_0
+11 1
+.names a[1] b[0] f_u_wallace_cska8_and_1_0
+11 1
+.names a[0] b[2] f_u_wallace_cska8_and_0_2
+11 1
+.names a[6] b[7] f_u_wallace_cska8_and_6_7
+11 1
+.names a[0] b[1] f_u_wallace_cska8_and_0_1
+11 1
+.names a[7] b[7] f_u_wallace_cska8_and_7_7
+11 1
+.names f_u_wallace_cska8_and_1_0 f_u_wallace_cska8_and_0_1 f_u_wallace_cska8_u_cska14_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_1_0 f_u_wallace_cska8_and_0_1 f_u_wallace_cska8_u_cska14_ha0_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_1_0 f_u_wallace_cska8_and_0_1 f_u_wallace_cska8_u_cska14_ha0_and0
+11 1
+.names f_u_wallace_cska8_and_0_2 f_u_wallace_cska8_ha0_xor0 f_u_wallace_cska8_u_cska14_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_and_0_2 f_u_wallace_cska8_ha0_xor0 f_u_wallace_cska8_u_cska14_fa0_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_0_2 f_u_wallace_cska8_ha0_xor0 f_u_wallace_cska8_u_cska14_fa0_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa0_xor0 f_u_wallace_cska8_u_cska14_ha0_and0 f_u_wallace_cska8_u_cska14_fa0_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa0_xor0 f_u_wallace_cska8_u_cska14_ha0_and0 f_u_wallace_cska8_u_cska14_fa0_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa0_and0 f_u_wallace_cska8_u_cska14_fa0_and1 f_u_wallace_cska8_u_cska14_fa0_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa0_xor1 f_u_wallace_cska8_ha1_xor0 f_u_wallace_cska8_u_cska14_xor2
+01 1
+10 1
+.names f_u_wallace_cska8_fa0_xor1 f_u_wallace_cska8_ha1_xor0 f_u_wallace_cska8_u_cska14_fa1_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa0_xor1 f_u_wallace_cska8_ha1_xor0 f_u_wallace_cska8_u_cska14_fa1_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa1_xor0 f_u_wallace_cska8_u_cska14_fa0_or0 f_u_wallace_cska8_u_cska14_fa1_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa1_xor0 f_u_wallace_cska8_u_cska14_fa0_or0 f_u_wallace_cska8_u_cska14_fa1_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa1_and0 f_u_wallace_cska8_u_cska14_fa1_and1 f_u_wallace_cska8_u_cska14_fa1_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa10_xor1 f_u_wallace_cska8_ha2_xor0 f_u_wallace_cska8_u_cska14_xor3
+01 1
+10 1
+.names f_u_wallace_cska8_fa10_xor1 f_u_wallace_cska8_ha2_xor0 f_u_wallace_cska8_u_cska14_fa2_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa10_xor1 f_u_wallace_cska8_ha2_xor0 f_u_wallace_cska8_u_cska14_fa2_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa2_xor0 f_u_wallace_cska8_u_cska14_fa1_or0 f_u_wallace_cska8_u_cska14_fa2_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa2_xor0 f_u_wallace_cska8_u_cska14_fa1_or0 f_u_wallace_cska8_u_cska14_fa2_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa2_and0 f_u_wallace_cska8_u_cska14_fa2_and1 f_u_wallace_cska8_u_cska14_fa2_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_u_cska14_xor0 f_u_wallace_cska8_u_cska14_xor2 f_u_wallace_cska8_u_cska14_and_propagate00
+11 1
+.names f_u_wallace_cska8_u_cska14_xor1 f_u_wallace_cska8_u_cska14_xor3 f_u_wallace_cska8_u_cska14_and_propagate01
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate00 f_u_wallace_cska8_u_cska14_and_propagate01 f_u_wallace_cska8_u_cska14_and_propagate02
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate02 f_u_wallace_cska8_u_cska14_mux2to10_not0
+0 1
+.names f_u_wallace_cska8_u_cska14_fa2_or0 f_u_wallace_cska8_u_cska14_mux2to10_not0 f_u_wallace_cska8_u_cska14_mux2to10_and1
+11 1
+.names f_u_wallace_cska8_fa18_xor1 f_u_wallace_cska8_ha3_xor0 f_u_wallace_cska8_u_cska14_xor4
+01 1
+10 1
+.names f_u_wallace_cska8_fa18_xor1 f_u_wallace_cska8_ha3_xor0 f_u_wallace_cska8_u_cska14_fa3_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa18_xor1 f_u_wallace_cska8_ha3_xor0 f_u_wallace_cska8_u_cska14_fa3_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa3_xor0 f_u_wallace_cska8_u_cska14_mux2to10_and1 f_u_wallace_cska8_u_cska14_fa3_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa3_xor0 f_u_wallace_cska8_u_cska14_mux2to10_and1 f_u_wallace_cska8_u_cska14_fa3_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa3_and0 f_u_wallace_cska8_u_cska14_fa3_and1 f_u_wallace_cska8_u_cska14_fa3_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa24_xor1 f_u_wallace_cska8_ha4_xor0 f_u_wallace_cska8_u_cska14_xor5
+01 1
+10 1
+.names f_u_wallace_cska8_fa24_xor1 f_u_wallace_cska8_ha4_xor0 f_u_wallace_cska8_u_cska14_fa4_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa24_xor1 f_u_wallace_cska8_ha4_xor0 f_u_wallace_cska8_u_cska14_fa4_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa4_xor0 f_u_wallace_cska8_u_cska14_fa3_or0 f_u_wallace_cska8_u_cska14_fa4_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa4_xor0 f_u_wallace_cska8_u_cska14_fa3_or0 f_u_wallace_cska8_u_cska14_fa4_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa4_and0 f_u_wallace_cska8_u_cska14_fa4_and1 f_u_wallace_cska8_u_cska14_fa4_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa28_xor1 f_u_wallace_cska8_ha5_xor0 f_u_wallace_cska8_u_cska14_xor6
+01 1
+10 1
+.names f_u_wallace_cska8_fa28_xor1 f_u_wallace_cska8_ha5_xor0 f_u_wallace_cska8_u_cska14_fa5_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa28_xor1 f_u_wallace_cska8_ha5_xor0 f_u_wallace_cska8_u_cska14_fa5_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa5_xor0 f_u_wallace_cska8_u_cska14_fa4_or0 f_u_wallace_cska8_u_cska14_fa5_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa5_xor0 f_u_wallace_cska8_u_cska14_fa4_or0 f_u_wallace_cska8_u_cska14_fa5_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa5_and0 f_u_wallace_cska8_u_cska14_fa5_and1 f_u_wallace_cska8_u_cska14_fa5_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa29_xor1 f_u_wallace_cska8_ha6_xor0 f_u_wallace_cska8_u_cska14_xor7
+01 1
+10 1
+.names f_u_wallace_cska8_fa29_xor1 f_u_wallace_cska8_ha6_xor0 f_u_wallace_cska8_u_cska14_fa6_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa29_xor1 f_u_wallace_cska8_ha6_xor0 f_u_wallace_cska8_u_cska14_fa6_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa6_xor0 f_u_wallace_cska8_u_cska14_fa5_or0 f_u_wallace_cska8_u_cska14_fa6_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa6_xor0 f_u_wallace_cska8_u_cska14_fa5_or0 f_u_wallace_cska8_u_cska14_fa6_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa6_and0 f_u_wallace_cska8_u_cska14_fa6_and1 f_u_wallace_cska8_u_cska14_fa6_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_u_cska14_xor4 f_u_wallace_cska8_u_cska14_xor6 f_u_wallace_cska8_u_cska14_and_propagate13
+11 1
+.names f_u_wallace_cska8_u_cska14_xor5 f_u_wallace_cska8_u_cska14_xor7 f_u_wallace_cska8_u_cska14_and_propagate14
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate13 f_u_wallace_cska8_u_cska14_and_propagate14 f_u_wallace_cska8_u_cska14_and_propagate15
+11 1
+.names f_u_wallace_cska8_u_cska14_mux2to10_and1 f_u_wallace_cska8_u_cska14_and_propagate15 f_u_wallace_cska8_u_cska14_mux2to11_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate15 f_u_wallace_cska8_u_cska14_mux2to11_not0
+0 1
+.names f_u_wallace_cska8_u_cska14_fa6_or0 f_u_wallace_cska8_u_cska14_mux2to11_not0 f_u_wallace_cska8_u_cska14_mux2to11_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_mux2to11_and0 f_u_wallace_cska8_u_cska14_mux2to11_and1 f_u_wallace_cska8_u_cska14_mux2to11_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa27_xor1 f_u_wallace_cska8_fa30_xor1 f_u_wallace_cska8_u_cska14_xor8
+01 1
+10 1
+.names f_u_wallace_cska8_fa27_xor1 f_u_wallace_cska8_fa30_xor1 f_u_wallace_cska8_u_cska14_fa7_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa27_xor1 f_u_wallace_cska8_fa30_xor1 f_u_wallace_cska8_u_cska14_fa7_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa7_xor0 f_u_wallace_cska8_u_cska14_mux2to11_xor0 f_u_wallace_cska8_u_cska14_fa7_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa7_xor0 f_u_wallace_cska8_u_cska14_mux2to11_xor0 f_u_wallace_cska8_u_cska14_fa7_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa7_and0 f_u_wallace_cska8_u_cska14_fa7_and1 f_u_wallace_cska8_u_cska14_fa7_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa23_xor1 f_u_wallace_cska8_fa31_xor1 f_u_wallace_cska8_u_cska14_xor9
+01 1
+10 1
+.names f_u_wallace_cska8_fa23_xor1 f_u_wallace_cska8_fa31_xor1 f_u_wallace_cska8_u_cska14_fa8_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa23_xor1 f_u_wallace_cska8_fa31_xor1 f_u_wallace_cska8_u_cska14_fa8_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa8_xor0 f_u_wallace_cska8_u_cska14_fa7_or0 f_u_wallace_cska8_u_cska14_fa8_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa8_xor0 f_u_wallace_cska8_u_cska14_fa7_or0 f_u_wallace_cska8_u_cska14_fa8_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa8_and0 f_u_wallace_cska8_u_cska14_fa8_and1 f_u_wallace_cska8_u_cska14_fa8_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa17_xor1 f_u_wallace_cska8_fa32_xor1 f_u_wallace_cska8_u_cska14_xor10
+01 1
+10 1
+.names f_u_wallace_cska8_fa17_xor1 f_u_wallace_cska8_fa32_xor1 f_u_wallace_cska8_u_cska14_fa9_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa17_xor1 f_u_wallace_cska8_fa32_xor1 f_u_wallace_cska8_u_cska14_fa9_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa9_xor0 f_u_wallace_cska8_u_cska14_fa8_or0 f_u_wallace_cska8_u_cska14_fa9_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa9_xor0 f_u_wallace_cska8_u_cska14_fa8_or0 f_u_wallace_cska8_u_cska14_fa9_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa9_and0 f_u_wallace_cska8_u_cska14_fa9_and1 f_u_wallace_cska8_u_cska14_fa9_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa9_xor1 f_u_wallace_cska8_fa33_xor1 f_u_wallace_cska8_u_cska14_xor11
+01 1
+10 1
+.names f_u_wallace_cska8_fa9_xor1 f_u_wallace_cska8_fa33_xor1 f_u_wallace_cska8_u_cska14_fa10_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa9_xor1 f_u_wallace_cska8_fa33_xor1 f_u_wallace_cska8_u_cska14_fa10_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa10_xor0 f_u_wallace_cska8_u_cska14_fa9_or0 f_u_wallace_cska8_u_cska14_fa10_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa10_xor0 f_u_wallace_cska8_u_cska14_fa9_or0 f_u_wallace_cska8_u_cska14_fa10_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa10_and0 f_u_wallace_cska8_u_cska14_fa10_and1 f_u_wallace_cska8_u_cska14_fa10_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_u_cska14_xor8 f_u_wallace_cska8_u_cska14_xor10 f_u_wallace_cska8_u_cska14_and_propagate26
+11 1
+.names f_u_wallace_cska8_u_cska14_xor9 f_u_wallace_cska8_u_cska14_xor11 f_u_wallace_cska8_u_cska14_and_propagate27
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate26 f_u_wallace_cska8_u_cska14_and_propagate27 f_u_wallace_cska8_u_cska14_and_propagate28
+11 1
+.names f_u_wallace_cska8_u_cska14_mux2to11_xor0 f_u_wallace_cska8_u_cska14_and_propagate28 f_u_wallace_cska8_u_cska14_mux2to12_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate28 f_u_wallace_cska8_u_cska14_mux2to12_not0
+0 1
+.names f_u_wallace_cska8_u_cska14_fa10_or0 f_u_wallace_cska8_u_cska14_mux2to12_not0 f_u_wallace_cska8_u_cska14_mux2to12_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_mux2to12_and0 f_u_wallace_cska8_u_cska14_mux2to12_and1 f_u_wallace_cska8_u_cska14_mux2to12_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_6_7 f_u_wallace_cska8_fa34_xor1 f_u_wallace_cska8_u_cska14_xor12
+01 1
+10 1
+.names f_u_wallace_cska8_and_6_7 f_u_wallace_cska8_fa34_xor1 f_u_wallace_cska8_u_cska14_fa11_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_6_7 f_u_wallace_cska8_fa34_xor1 f_u_wallace_cska8_u_cska14_fa11_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa11_xor0 f_u_wallace_cska8_u_cska14_mux2to12_xor0 f_u_wallace_cska8_u_cska14_fa11_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa11_xor0 f_u_wallace_cska8_u_cska14_mux2to12_xor0 f_u_wallace_cska8_u_cska14_fa11_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa11_and0 f_u_wallace_cska8_u_cska14_fa11_and1 f_u_wallace_cska8_u_cska14_fa11_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_fa34_or0 f_u_wallace_cska8_and_7_7 f_u_wallace_cska8_u_cska14_xor13
+01 1
+10 1
+.names f_u_wallace_cska8_fa34_or0 f_u_wallace_cska8_and_7_7 f_u_wallace_cska8_u_cska14_fa12_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_fa34_or0 f_u_wallace_cska8_and_7_7 f_u_wallace_cska8_u_cska14_fa12_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_fa12_xor0 f_u_wallace_cska8_u_cska14_fa11_or0 f_u_wallace_cska8_u_cska14_fa12_xor1
+01 1
+10 1
+.names f_u_wallace_cska8_u_cska14_fa12_xor0 f_u_wallace_cska8_u_cska14_fa11_or0 f_u_wallace_cska8_u_cska14_fa12_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_fa12_and0 f_u_wallace_cska8_u_cska14_fa12_and1 f_u_wallace_cska8_u_cska14_fa12_or0
+1- 1
+-1 1
+.names f_u_wallace_cska8_u_cska14_xor12 f_u_wallace_cska8_u_cska14_xor13 f_u_wallace_cska8_u_cska14_and_propagate39
+11 1
+.names f_u_wallace_cska8_u_cska14_mux2to12_xor0 f_u_wallace_cska8_u_cska14_and_propagate39 f_u_wallace_cska8_u_cska14_mux2to13_and0
+11 1
+.names f_u_wallace_cska8_u_cska14_and_propagate39 f_u_wallace_cska8_u_cska14_mux2to13_not0
+0 1
+.names f_u_wallace_cska8_u_cska14_fa12_or0 f_u_wallace_cska8_u_cska14_mux2to13_not0 f_u_wallace_cska8_u_cska14_mux2to13_and1
+11 1
+.names f_u_wallace_cska8_u_cska14_mux2to13_and0 f_u_wallace_cska8_u_cska14_mux2to13_and1 f_u_wallace_cska8_u_cska14_mux2to13_xor0
+01 1
+10 1
+.names f_u_wallace_cska8_and_0_0 f_u_wallace_cska8_out[0]
+1 1
+.names f_u_wallace_cska8_u_cska14_ha0_xor0 f_u_wallace_cska8_out[1]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa0_xor1 f_u_wallace_cska8_out[2]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa1_xor1 f_u_wallace_cska8_out[3]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa2_xor1 f_u_wallace_cska8_out[4]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa3_xor1 f_u_wallace_cska8_out[5]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa4_xor1 f_u_wallace_cska8_out[6]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa5_xor1 f_u_wallace_cska8_out[7]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa6_xor1 f_u_wallace_cska8_out[8]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa7_xor1 f_u_wallace_cska8_out[9]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa8_xor1 f_u_wallace_cska8_out[10]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa9_xor1 f_u_wallace_cska8_out[11]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa10_xor1 f_u_wallace_cska8_out[12]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa11_xor1 f_u_wallace_cska8_out[13]
+1 1
+.names f_u_wallace_cska8_u_cska14_fa12_xor1 f_u_wallace_cska8_out[14]
+1 1
+.names f_u_wallace_cska8_u_cska14_mux2to13_xor0 f_u_wallace_cska8_out[15]
+1 1
+.end

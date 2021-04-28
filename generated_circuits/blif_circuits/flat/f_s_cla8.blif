@@ -1,0 +1,229 @@
+.model f_s_cla8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs f_s_cla8_out[0] f_s_cla8_out[1] f_s_cla8_out[2] f_s_cla8_out[3] f_s_cla8_out[4] f_s_cla8_out[5] f_s_cla8_out[6] f_s_cla8_out[7] f_s_cla8_out[8]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] f_s_cla8_pg_logic0_or0
+1- 1
+-1 1
+.names a[0] b[0] f_s_cla8_pg_logic0_and0
+11 1
+.names a[0] b[0] f_s_cla8_pg_logic0_xor0
+01 1
+10 1
+.names a[1] b[1] f_s_cla8_pg_logic1_or0
+1- 1
+-1 1
+.names a[1] b[1] f_s_cla8_pg_logic1_and0
+11 1
+.names a[1] b[1] f_s_cla8_pg_logic1_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic1_xor0 f_s_cla8_pg_logic0_and0 f_s_cla8_xor1
+01 1
+10 1
+.names f_s_cla8_pg_logic0_and0 f_s_cla8_pg_logic1_or0 f_s_cla8_and0
+11 1
+.names f_s_cla8_pg_logic1_and0 f_s_cla8_and0 f_s_cla8_or0
+1- 1
+-1 1
+.names a[2] b[2] f_s_cla8_pg_logic2_or0
+1- 1
+-1 1
+.names a[2] b[2] f_s_cla8_pg_logic2_and0
+11 1
+.names a[2] b[2] f_s_cla8_pg_logic2_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic2_xor0 f_s_cla8_or0 f_s_cla8_xor2
+01 1
+10 1
+.names f_s_cla8_pg_logic2_or0 f_s_cla8_pg_logic0_or0 f_s_cla8_and1
+11 1
+.names f_s_cla8_pg_logic0_and0 f_s_cla8_pg_logic2_or0 f_s_cla8_and2
+11 1
+.names f_s_cla8_and2 f_s_cla8_pg_logic1_or0 f_s_cla8_and3
+11 1
+.names f_s_cla8_pg_logic1_and0 f_s_cla8_pg_logic2_or0 f_s_cla8_and4
+11 1
+.names f_s_cla8_and3 f_s_cla8_and4 f_s_cla8_or1
+1- 1
+-1 1
+.names f_s_cla8_pg_logic2_and0 f_s_cla8_or1 f_s_cla8_or2
+1- 1
+-1 1
+.names a[3] b[3] f_s_cla8_pg_logic3_or0
+1- 1
+-1 1
+.names a[3] b[3] f_s_cla8_pg_logic3_and0
+11 1
+.names a[3] b[3] f_s_cla8_pg_logic3_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic3_xor0 f_s_cla8_or2 f_s_cla8_xor3
+01 1
+10 1
+.names f_s_cla8_pg_logic3_or0 f_s_cla8_pg_logic1_or0 f_s_cla8_and5
+11 1
+.names f_s_cla8_pg_logic0_and0 f_s_cla8_pg_logic2_or0 f_s_cla8_and6
+11 1
+.names f_s_cla8_pg_logic3_or0 f_s_cla8_pg_logic1_or0 f_s_cla8_and7
+11 1
+.names f_s_cla8_and6 f_s_cla8_and7 f_s_cla8_and8
+11 1
+.names f_s_cla8_pg_logic1_and0 f_s_cla8_pg_logic3_or0 f_s_cla8_and9
+11 1
+.names f_s_cla8_and9 f_s_cla8_pg_logic2_or0 f_s_cla8_and10
+11 1
+.names f_s_cla8_pg_logic2_and0 f_s_cla8_pg_logic3_or0 f_s_cla8_and11
+11 1
+.names f_s_cla8_and8 f_s_cla8_and11 f_s_cla8_or3
+1- 1
+-1 1
+.names f_s_cla8_and10 f_s_cla8_or3 f_s_cla8_or4
+1- 1
+-1 1
+.names f_s_cla8_pg_logic3_and0 f_s_cla8_or4 f_s_cla8_or5
+1- 1
+-1 1
+.names a[4] b[4] f_s_cla8_pg_logic4_or0
+1- 1
+-1 1
+.names a[4] b[4] f_s_cla8_pg_logic4_and0
+11 1
+.names a[4] b[4] f_s_cla8_pg_logic4_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic4_xor0 f_s_cla8_or5 f_s_cla8_xor4
+01 1
+10 1
+.names f_s_cla8_or5 f_s_cla8_pg_logic4_or0 f_s_cla8_and12
+11 1
+.names f_s_cla8_pg_logic4_and0 f_s_cla8_and12 f_s_cla8_or6
+1- 1
+-1 1
+.names a[5] b[5] f_s_cla8_pg_logic5_or0
+1- 1
+-1 1
+.names a[5] b[5] f_s_cla8_pg_logic5_and0
+11 1
+.names a[5] b[5] f_s_cla8_pg_logic5_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic5_xor0 f_s_cla8_or6 f_s_cla8_xor5
+01 1
+10 1
+.names f_s_cla8_or5 f_s_cla8_pg_logic5_or0 f_s_cla8_and13
+11 1
+.names f_s_cla8_and13 f_s_cla8_pg_logic4_or0 f_s_cla8_and14
+11 1
+.names f_s_cla8_pg_logic4_and0 f_s_cla8_pg_logic5_or0 f_s_cla8_and15
+11 1
+.names f_s_cla8_and14 f_s_cla8_and15 f_s_cla8_or7
+1- 1
+-1 1
+.names f_s_cla8_pg_logic5_and0 f_s_cla8_or7 f_s_cla8_or8
+1- 1
+-1 1
+.names a[6] b[6] f_s_cla8_pg_logic6_or0
+1- 1
+-1 1
+.names a[6] b[6] f_s_cla8_pg_logic6_and0
+11 1
+.names a[6] b[6] f_s_cla8_pg_logic6_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic6_xor0 f_s_cla8_or8 f_s_cla8_xor6
+01 1
+10 1
+.names f_s_cla8_or5 f_s_cla8_pg_logic5_or0 f_s_cla8_and16
+11 1
+.names f_s_cla8_pg_logic6_or0 f_s_cla8_pg_logic4_or0 f_s_cla8_and17
+11 1
+.names f_s_cla8_and16 f_s_cla8_and17 f_s_cla8_and18
+11 1
+.names f_s_cla8_pg_logic4_and0 f_s_cla8_pg_logic6_or0 f_s_cla8_and19
+11 1
+.names f_s_cla8_and19 f_s_cla8_pg_logic5_or0 f_s_cla8_and20
+11 1
+.names f_s_cla8_pg_logic5_and0 f_s_cla8_pg_logic6_or0 f_s_cla8_and21
+11 1
+.names f_s_cla8_and18 f_s_cla8_and20 f_s_cla8_or9
+1- 1
+-1 1
+.names f_s_cla8_or9 f_s_cla8_and21 f_s_cla8_or10
+1- 1
+-1 1
+.names f_s_cla8_pg_logic6_and0 f_s_cla8_or10 f_s_cla8_or11
+1- 1
+-1 1
+.names a[7] b[7] f_s_cla8_pg_logic7_or0
+1- 1
+-1 1
+.names a[7] b[7] f_s_cla8_pg_logic7_and0
+11 1
+.names a[7] b[7] f_s_cla8_pg_logic7_xor0
+01 1
+10 1
+.names f_s_cla8_pg_logic7_xor0 f_s_cla8_or11 f_s_cla8_xor7
+01 1
+10 1
+.names f_s_cla8_or5 f_s_cla8_pg_logic6_or0 f_s_cla8_and22
+11 1
+.names f_s_cla8_pg_logic7_or0 f_s_cla8_pg_logic5_or0 f_s_cla8_and23
+11 1
+.names f_s_cla8_and22 f_s_cla8_and23 f_s_cla8_and24
+11 1
+.names f_s_cla8_and24 f_s_cla8_pg_logic4_or0 f_s_cla8_and25
+11 1
+.names f_s_cla8_pg_logic4_and0 f_s_cla8_pg_logic6_or0 f_s_cla8_and26
+11 1
+.names f_s_cla8_pg_logic7_or0 f_s_cla8_pg_logic5_or0 f_s_cla8_and27
+11 1
+.names f_s_cla8_and26 f_s_cla8_and27 f_s_cla8_and28
+11 1
+.names f_s_cla8_pg_logic5_and0 f_s_cla8_pg_logic7_or0 f_s_cla8_and29
+11 1
+.names f_s_cla8_and29 f_s_cla8_pg_logic6_or0 f_s_cla8_and30
+11 1
+.names f_s_cla8_pg_logic6_and0 f_s_cla8_pg_logic7_or0 f_s_cla8_and31
+11 1
+.names f_s_cla8_and25 f_s_cla8_and30 f_s_cla8_or12
+1- 1
+-1 1
+.names f_s_cla8_and28 f_s_cla8_and31 f_s_cla8_or13
+1- 1
+-1 1
+.names f_s_cla8_or12 f_s_cla8_or13 f_s_cla8_or14
+1- 1
+-1 1
+.names f_s_cla8_pg_logic7_and0 f_s_cla8_or14 f_s_cla8_or15
+1- 1
+-1 1
+.names a[7] b[7] f_s_cla8_xor8
+01 1
+10 1
+.names f_s_cla8_xor8 f_s_cla8_or15 f_s_cla8_xor9
+01 1
+10 1
+.names f_s_cla8_pg_logic0_xor0 f_s_cla8_out[0]
+1 1
+.names f_s_cla8_xor1 f_s_cla8_out[1]
+1 1
+.names f_s_cla8_xor2 f_s_cla8_out[2]
+1 1
+.names f_s_cla8_xor3 f_s_cla8_out[3]
+1 1
+.names f_s_cla8_xor4 f_s_cla8_out[4]
+1 1
+.names f_s_cla8_xor5 f_s_cla8_out[5]
+1 1
+.names f_s_cla8_xor6 f_s_cla8_out[6]
+1 1
+.names f_s_cla8_xor7 f_s_cla8_out[7]
+1 1
+.names f_s_cla8_xor9 f_s_cla8_out[8]
+1 1
+.end

@@ -1,0 +1,1709 @@
+.model h_s_dadda_cska24
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] a[16] a[17] a[18] a[19] a[20] a[21] a[22] a[23] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15] b[16] b[17] b[18] b[19] b[20] b[21] b[22] b[23]
+.outputs h_s_dadda_cska24_out[0] h_s_dadda_cska24_out[1] h_s_dadda_cska24_out[2] h_s_dadda_cska24_out[3] h_s_dadda_cska24_out[4] h_s_dadda_cska24_out[5] h_s_dadda_cska24_out[6] h_s_dadda_cska24_out[7] h_s_dadda_cska24_out[8] h_s_dadda_cska24_out[9] h_s_dadda_cska24_out[10] h_s_dadda_cska24_out[11] h_s_dadda_cska24_out[12] h_s_dadda_cska24_out[13] h_s_dadda_cska24_out[14] h_s_dadda_cska24_out[15] h_s_dadda_cska24_out[16] h_s_dadda_cska24_out[17] h_s_dadda_cska24_out[18] h_s_dadda_cska24_out[19] h_s_dadda_cska24_out[20] h_s_dadda_cska24_out[21] h_s_dadda_cska24_out[22] h_s_dadda_cska24_out[23] h_s_dadda_cska24_out[24] h_s_dadda_cska24_out[25] h_s_dadda_cska24_out[26] h_s_dadda_cska24_out[27] h_s_dadda_cska24_out[28] h_s_dadda_cska24_out[29] h_s_dadda_cska24_out[30] h_s_dadda_cska24_out[31] h_s_dadda_cska24_out[32] h_s_dadda_cska24_out[33] h_s_dadda_cska24_out[34] h_s_dadda_cska24_out[35] h_s_dadda_cska24_out[36] h_s_dadda_cska24_out[37] h_s_dadda_cska24_out[38] h_s_dadda_cska24_out[39] h_s_dadda_cska24_out[40] h_s_dadda_cska24_out[41] h_s_dadda_cska24_out[42] h_s_dadda_cska24_out[43] h_s_dadda_cska24_out[44] h_s_dadda_cska24_out[45] h_s_dadda_cska24_out[46] h_s_dadda_cska24_out[47]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[19] b=b[0] out=h_s_dadda_cska24_and_19_0
+.subckt and_gate a=a[18] b=b[1] out=h_s_dadda_cska24_and_18_1
+.subckt ha a=h_s_dadda_cska24_and_19_0 b=h_s_dadda_cska24_and_18_1 ha_xor0=h_s_dadda_cska24_ha0_xor0 ha_and0=h_s_dadda_cska24_ha0_and0
+.subckt and_gate a=a[20] b=b[0] out=h_s_dadda_cska24_and_20_0
+.subckt and_gate a=a[19] b=b[1] out=h_s_dadda_cska24_and_19_1
+.subckt fa a=h_s_dadda_cska24_ha0_and0 b=h_s_dadda_cska24_and_20_0 cin=h_s_dadda_cska24_and_19_1 fa_xor1=h_s_dadda_cska24_fa0_xor1 fa_or0=h_s_dadda_cska24_fa0_or0
+.subckt and_gate a=a[18] b=b[2] out=h_s_dadda_cska24_and_18_2
+.subckt and_gate a=a[17] b=b[3] out=h_s_dadda_cska24_and_17_3
+.subckt ha a=h_s_dadda_cska24_and_18_2 b=h_s_dadda_cska24_and_17_3 ha_xor0=h_s_dadda_cska24_ha1_xor0 ha_and0=h_s_dadda_cska24_ha1_and0
+.subckt and_gate a=a[21] b=b[0] out=h_s_dadda_cska24_and_21_0
+.subckt fa a=h_s_dadda_cska24_ha1_and0 b=h_s_dadda_cska24_fa0_or0 cin=h_s_dadda_cska24_and_21_0 fa_xor1=h_s_dadda_cska24_fa1_xor1 fa_or0=h_s_dadda_cska24_fa1_or0
+.subckt and_gate a=a[20] b=b[1] out=h_s_dadda_cska24_and_20_1
+.subckt and_gate a=a[19] b=b[2] out=h_s_dadda_cska24_and_19_2
+.subckt and_gate a=a[18] b=b[3] out=h_s_dadda_cska24_and_18_3
+.subckt fa a=h_s_dadda_cska24_and_20_1 b=h_s_dadda_cska24_and_19_2 cin=h_s_dadda_cska24_and_18_3 fa_xor1=h_s_dadda_cska24_fa2_xor1 fa_or0=h_s_dadda_cska24_fa2_or0
+.subckt and_gate a=a[17] b=b[4] out=h_s_dadda_cska24_and_17_4
+.subckt and_gate a=a[16] b=b[5] out=h_s_dadda_cska24_and_16_5
+.subckt ha a=h_s_dadda_cska24_and_17_4 b=h_s_dadda_cska24_and_16_5 ha_xor0=h_s_dadda_cska24_ha2_xor0 ha_and0=h_s_dadda_cska24_ha2_and0
+.subckt fa a=h_s_dadda_cska24_ha2_and0 b=h_s_dadda_cska24_fa2_or0 cin=h_s_dadda_cska24_fa1_or0 fa_xor1=h_s_dadda_cska24_fa3_xor1 fa_or0=h_s_dadda_cska24_fa3_or0
+.subckt and_gate a=a[22] b=b[0] out=h_s_dadda_cska24_and_22_0
+.subckt and_gate a=a[21] b=b[1] out=h_s_dadda_cska24_and_21_1
+.subckt and_gate a=a[20] b=b[2] out=h_s_dadda_cska24_and_20_2
+.subckt fa a=h_s_dadda_cska24_and_22_0 b=h_s_dadda_cska24_and_21_1 cin=h_s_dadda_cska24_and_20_2 fa_xor1=h_s_dadda_cska24_fa4_xor1 fa_or0=h_s_dadda_cska24_fa4_or0
+.subckt and_gate a=a[19] b=b[3] out=h_s_dadda_cska24_and_19_3
+.subckt and_gate a=a[18] b=b[4] out=h_s_dadda_cska24_and_18_4
+.subckt and_gate a=a[17] b=b[5] out=h_s_dadda_cska24_and_17_5
+.subckt fa a=h_s_dadda_cska24_and_19_3 b=h_s_dadda_cska24_and_18_4 cin=h_s_dadda_cska24_and_17_5 fa_xor1=h_s_dadda_cska24_fa5_xor1 fa_or0=h_s_dadda_cska24_fa5_or0
+.subckt and_gate a=a[16] b=b[6] out=h_s_dadda_cska24_and_16_6
+.subckt and_gate a=a[15] b=b[7] out=h_s_dadda_cska24_and_15_7
+.subckt ha a=h_s_dadda_cska24_and_16_6 b=h_s_dadda_cska24_and_15_7 ha_xor0=h_s_dadda_cska24_ha3_xor0 ha_and0=h_s_dadda_cska24_ha3_and0
+.subckt fa a=h_s_dadda_cska24_ha3_and0 b=h_s_dadda_cska24_fa5_or0 cin=h_s_dadda_cska24_fa4_or0 fa_xor1=h_s_dadda_cska24_fa6_xor1 fa_or0=h_s_dadda_cska24_fa6_or0
+.subckt nand_gate a=a[23] b=b[0] out=h_s_dadda_cska24_nand_23_0
+.subckt and_gate a=a[22] b=b[1] out=h_s_dadda_cska24_and_22_1
+.subckt fa a=h_s_dadda_cska24_fa3_or0 b=h_s_dadda_cska24_nand_23_0 cin=h_s_dadda_cska24_and_22_1 fa_xor1=h_s_dadda_cska24_fa7_xor1 fa_or0=h_s_dadda_cska24_fa7_or0
+.subckt and_gate a=a[21] b=b[2] out=h_s_dadda_cska24_and_21_2
+.subckt and_gate a=a[20] b=b[3] out=h_s_dadda_cska24_and_20_3
+.subckt and_gate a=a[19] b=b[4] out=h_s_dadda_cska24_and_19_4
+.subckt fa a=h_s_dadda_cska24_and_21_2 b=h_s_dadda_cska24_and_20_3 cin=h_s_dadda_cska24_and_19_4 fa_xor1=h_s_dadda_cska24_fa8_xor1 fa_or0=h_s_dadda_cska24_fa8_or0
+.subckt and_gate a=a[18] b=b[5] out=h_s_dadda_cska24_and_18_5
+.subckt and_gate a=a[17] b=b[6] out=h_s_dadda_cska24_and_17_6
+.subckt and_gate a=a[16] b=b[7] out=h_s_dadda_cska24_and_16_7
+.subckt fa a=h_s_dadda_cska24_and_18_5 b=h_s_dadda_cska24_and_17_6 cin=h_s_dadda_cska24_and_16_7 fa_xor1=h_s_dadda_cska24_fa9_xor1 fa_or0=h_s_dadda_cska24_fa9_or0
+.subckt and_gate a=a[15] b=b[8] out=h_s_dadda_cska24_and_15_8
+.subckt and_gate a=a[14] b=b[9] out=h_s_dadda_cska24_and_14_9
+.subckt ha a=h_s_dadda_cska24_and_15_8 b=h_s_dadda_cska24_and_14_9 ha_xor0=h_s_dadda_cska24_ha4_xor0 ha_and0=h_s_dadda_cska24_ha4_and0
+.subckt fa a=h_s_dadda_cska24_ha4_and0 b=h_s_dadda_cska24_fa9_or0 cin=h_s_dadda_cska24_fa8_or0 fa_xor1=h_s_dadda_cska24_fa10_xor1 fa_or0=h_s_dadda_cska24_fa10_or0
+.subckt fa a=h_s_dadda_cska24_fa7_or0 b=h_s_dadda_cska24_fa6_or0 cin=vdd fa_xor1=h_s_dadda_cska24_fa11_xor1 fa_or0=h_s_dadda_cska24_fa11_or0
+.subckt nand_gate a=a[23] b=b[1] out=h_s_dadda_cska24_nand_23_1
+.subckt and_gate a=a[22] b=b[2] out=h_s_dadda_cska24_and_22_2
+.subckt and_gate a=a[21] b=b[3] out=h_s_dadda_cska24_and_21_3
+.subckt fa a=h_s_dadda_cska24_nand_23_1 b=h_s_dadda_cska24_and_22_2 cin=h_s_dadda_cska24_and_21_3 fa_xor1=h_s_dadda_cska24_fa12_xor1 fa_or0=h_s_dadda_cska24_fa12_or0
+.subckt and_gate a=a[20] b=b[4] out=h_s_dadda_cska24_and_20_4
+.subckt and_gate a=a[19] b=b[5] out=h_s_dadda_cska24_and_19_5
+.subckt and_gate a=a[18] b=b[6] out=h_s_dadda_cska24_and_18_6
+.subckt fa a=h_s_dadda_cska24_and_20_4 b=h_s_dadda_cska24_and_19_5 cin=h_s_dadda_cska24_and_18_6 fa_xor1=h_s_dadda_cska24_fa13_xor1 fa_or0=h_s_dadda_cska24_fa13_or0
+.subckt and_gate a=a[17] b=b[7] out=h_s_dadda_cska24_and_17_7
+.subckt and_gate a=a[16] b=b[8] out=h_s_dadda_cska24_and_16_8
+.subckt and_gate a=a[15] b=b[9] out=h_s_dadda_cska24_and_15_9
+.subckt fa a=h_s_dadda_cska24_and_17_7 b=h_s_dadda_cska24_and_16_8 cin=h_s_dadda_cska24_and_15_9 fa_xor1=h_s_dadda_cska24_fa14_xor1 fa_or0=h_s_dadda_cska24_fa14_or0
+.subckt fa a=h_s_dadda_cska24_fa14_or0 b=h_s_dadda_cska24_fa13_or0 cin=h_s_dadda_cska24_fa12_or0 fa_xor1=h_s_dadda_cska24_fa15_xor1 fa_or0=h_s_dadda_cska24_fa15_or0
+.subckt nand_gate a=a[23] b=b[2] out=h_s_dadda_cska24_nand_23_2
+.subckt fa a=h_s_dadda_cska24_fa11_or0 b=h_s_dadda_cska24_fa10_or0 cin=h_s_dadda_cska24_nand_23_2 fa_xor1=h_s_dadda_cska24_fa16_xor1 fa_or0=h_s_dadda_cska24_fa16_or0
+.subckt and_gate a=a[22] b=b[3] out=h_s_dadda_cska24_and_22_3
+.subckt and_gate a=a[21] b=b[4] out=h_s_dadda_cska24_and_21_4
+.subckt and_gate a=a[20] b=b[5] out=h_s_dadda_cska24_and_20_5
+.subckt fa a=h_s_dadda_cska24_and_22_3 b=h_s_dadda_cska24_and_21_4 cin=h_s_dadda_cska24_and_20_5 fa_xor1=h_s_dadda_cska24_fa17_xor1 fa_or0=h_s_dadda_cska24_fa17_or0
+.subckt and_gate a=a[19] b=b[6] out=h_s_dadda_cska24_and_19_6
+.subckt and_gate a=a[18] b=b[7] out=h_s_dadda_cska24_and_18_7
+.subckt and_gate a=a[17] b=b[8] out=h_s_dadda_cska24_and_17_8
+.subckt fa a=h_s_dadda_cska24_and_19_6 b=h_s_dadda_cska24_and_18_7 cin=h_s_dadda_cska24_and_17_8 fa_xor1=h_s_dadda_cska24_fa18_xor1 fa_or0=h_s_dadda_cska24_fa18_or0
+.subckt fa a=h_s_dadda_cska24_fa18_or0 b=h_s_dadda_cska24_fa17_or0 cin=h_s_dadda_cska24_fa16_or0 fa_xor1=h_s_dadda_cska24_fa19_xor1 fa_or0=h_s_dadda_cska24_fa19_or0
+.subckt nand_gate a=a[23] b=b[3] out=h_s_dadda_cska24_nand_23_3
+.subckt and_gate a=a[22] b=b[4] out=h_s_dadda_cska24_and_22_4
+.subckt fa a=h_s_dadda_cska24_fa15_or0 b=h_s_dadda_cska24_nand_23_3 cin=h_s_dadda_cska24_and_22_4 fa_xor1=h_s_dadda_cska24_fa20_xor1 fa_or0=h_s_dadda_cska24_fa20_or0
+.subckt and_gate a=a[21] b=b[5] out=h_s_dadda_cska24_and_21_5
+.subckt and_gate a=a[20] b=b[6] out=h_s_dadda_cska24_and_20_6
+.subckt and_gate a=a[19] b=b[7] out=h_s_dadda_cska24_and_19_7
+.subckt fa a=h_s_dadda_cska24_and_21_5 b=h_s_dadda_cska24_and_20_6 cin=h_s_dadda_cska24_and_19_7 fa_xor1=h_s_dadda_cska24_fa21_xor1 fa_or0=h_s_dadda_cska24_fa21_or0
+.subckt fa a=h_s_dadda_cska24_fa21_or0 b=h_s_dadda_cska24_fa20_or0 cin=h_s_dadda_cska24_fa19_or0 fa_xor1=h_s_dadda_cska24_fa22_xor1 fa_or0=h_s_dadda_cska24_fa22_or0
+.subckt nand_gate a=a[23] b=b[4] out=h_s_dadda_cska24_nand_23_4
+.subckt and_gate a=a[22] b=b[5] out=h_s_dadda_cska24_and_22_5
+.subckt and_gate a=a[21] b=b[6] out=h_s_dadda_cska24_and_21_6
+.subckt fa a=h_s_dadda_cska24_nand_23_4 b=h_s_dadda_cska24_and_22_5 cin=h_s_dadda_cska24_and_21_6 fa_xor1=h_s_dadda_cska24_fa23_xor1 fa_or0=h_s_dadda_cska24_fa23_or0
+.subckt nand_gate a=a[23] b=b[5] out=h_s_dadda_cska24_nand_23_5
+.subckt fa a=h_s_dadda_cska24_fa23_or0 b=h_s_dadda_cska24_fa22_or0 cin=h_s_dadda_cska24_nand_23_5 fa_xor1=h_s_dadda_cska24_fa24_xor1 fa_or0=h_s_dadda_cska24_fa24_or0
+.subckt and_gate a=a[6] b=b[0] out=h_s_dadda_cska24_and_6_0
+.subckt and_gate a=a[5] b=b[1] out=h_s_dadda_cska24_and_5_1
+.subckt ha a=h_s_dadda_cska24_and_6_0 b=h_s_dadda_cska24_and_5_1 ha_xor0=h_s_dadda_cska24_ha5_xor0 ha_and0=h_s_dadda_cska24_ha5_and0
+.subckt and_gate a=a[7] b=b[0] out=h_s_dadda_cska24_and_7_0
+.subckt and_gate a=a[6] b=b[1] out=h_s_dadda_cska24_and_6_1
+.subckt fa a=h_s_dadda_cska24_ha5_and0 b=h_s_dadda_cska24_and_7_0 cin=h_s_dadda_cska24_and_6_1 fa_xor1=h_s_dadda_cska24_fa25_xor1 fa_or0=h_s_dadda_cska24_fa25_or0
+.subckt and_gate a=a[5] b=b[2] out=h_s_dadda_cska24_and_5_2
+.subckt and_gate a=a[4] b=b[3] out=h_s_dadda_cska24_and_4_3
+.subckt ha a=h_s_dadda_cska24_and_5_2 b=h_s_dadda_cska24_and_4_3 ha_xor0=h_s_dadda_cska24_ha6_xor0 ha_and0=h_s_dadda_cska24_ha6_and0
+.subckt and_gate a=a[8] b=b[0] out=h_s_dadda_cska24_and_8_0
+.subckt fa a=h_s_dadda_cska24_ha6_and0 b=h_s_dadda_cska24_fa25_or0 cin=h_s_dadda_cska24_and_8_0 fa_xor1=h_s_dadda_cska24_fa26_xor1 fa_or0=h_s_dadda_cska24_fa26_or0
+.subckt and_gate a=a[7] b=b[1] out=h_s_dadda_cska24_and_7_1
+.subckt and_gate a=a[6] b=b[2] out=h_s_dadda_cska24_and_6_2
+.subckt and_gate a=a[5] b=b[3] out=h_s_dadda_cska24_and_5_3
+.subckt fa a=h_s_dadda_cska24_and_7_1 b=h_s_dadda_cska24_and_6_2 cin=h_s_dadda_cska24_and_5_3 fa_xor1=h_s_dadda_cska24_fa27_xor1 fa_or0=h_s_dadda_cska24_fa27_or0
+.subckt and_gate a=a[4] b=b[4] out=h_s_dadda_cska24_and_4_4
+.subckt and_gate a=a[3] b=b[5] out=h_s_dadda_cska24_and_3_5
+.subckt ha a=h_s_dadda_cska24_and_4_4 b=h_s_dadda_cska24_and_3_5 ha_xor0=h_s_dadda_cska24_ha7_xor0 ha_and0=h_s_dadda_cska24_ha7_and0
+.subckt fa a=h_s_dadda_cska24_ha7_and0 b=h_s_dadda_cska24_fa27_or0 cin=h_s_dadda_cska24_fa26_or0 fa_xor1=h_s_dadda_cska24_fa28_xor1 fa_or0=h_s_dadda_cska24_fa28_or0
+.subckt and_gate a=a[9] b=b[0] out=h_s_dadda_cska24_and_9_0
+.subckt and_gate a=a[8] b=b[1] out=h_s_dadda_cska24_and_8_1
+.subckt and_gate a=a[7] b=b[2] out=h_s_dadda_cska24_and_7_2
+.subckt fa a=h_s_dadda_cska24_and_9_0 b=h_s_dadda_cska24_and_8_1 cin=h_s_dadda_cska24_and_7_2 fa_xor1=h_s_dadda_cska24_fa29_xor1 fa_or0=h_s_dadda_cska24_fa29_or0
+.subckt and_gate a=a[6] b=b[3] out=h_s_dadda_cska24_and_6_3
+.subckt and_gate a=a[5] b=b[4] out=h_s_dadda_cska24_and_5_4
+.subckt and_gate a=a[4] b=b[5] out=h_s_dadda_cska24_and_4_5
+.subckt fa a=h_s_dadda_cska24_and_6_3 b=h_s_dadda_cska24_and_5_4 cin=h_s_dadda_cska24_and_4_5 fa_xor1=h_s_dadda_cska24_fa30_xor1 fa_or0=h_s_dadda_cska24_fa30_or0
+.subckt and_gate a=a[3] b=b[6] out=h_s_dadda_cska24_and_3_6
+.subckt and_gate a=a[2] b=b[7] out=h_s_dadda_cska24_and_2_7
+.subckt ha a=h_s_dadda_cska24_and_3_6 b=h_s_dadda_cska24_and_2_7 ha_xor0=h_s_dadda_cska24_ha8_xor0 ha_and0=h_s_dadda_cska24_ha8_and0
+.subckt fa a=h_s_dadda_cska24_ha8_and0 b=h_s_dadda_cska24_fa30_or0 cin=h_s_dadda_cska24_fa29_or0 fa_xor1=h_s_dadda_cska24_fa31_xor1 fa_or0=h_s_dadda_cska24_fa31_or0
+.subckt and_gate a=a[10] b=b[0] out=h_s_dadda_cska24_and_10_0
+.subckt and_gate a=a[9] b=b[1] out=h_s_dadda_cska24_and_9_1
+.subckt fa a=h_s_dadda_cska24_fa28_or0 b=h_s_dadda_cska24_and_10_0 cin=h_s_dadda_cska24_and_9_1 fa_xor1=h_s_dadda_cska24_fa32_xor1 fa_or0=h_s_dadda_cska24_fa32_or0
+.subckt and_gate a=a[8] b=b[2] out=h_s_dadda_cska24_and_8_2
+.subckt and_gate a=a[7] b=b[3] out=h_s_dadda_cska24_and_7_3
+.subckt and_gate a=a[6] b=b[4] out=h_s_dadda_cska24_and_6_4
+.subckt fa a=h_s_dadda_cska24_and_8_2 b=h_s_dadda_cska24_and_7_3 cin=h_s_dadda_cska24_and_6_4 fa_xor1=h_s_dadda_cska24_fa33_xor1 fa_or0=h_s_dadda_cska24_fa33_or0
+.subckt and_gate a=a[5] b=b[5] out=h_s_dadda_cska24_and_5_5
+.subckt and_gate a=a[4] b=b[6] out=h_s_dadda_cska24_and_4_6
+.subckt and_gate a=a[3] b=b[7] out=h_s_dadda_cska24_and_3_7
+.subckt fa a=h_s_dadda_cska24_and_5_5 b=h_s_dadda_cska24_and_4_6 cin=h_s_dadda_cska24_and_3_7 fa_xor1=h_s_dadda_cska24_fa34_xor1 fa_or0=h_s_dadda_cska24_fa34_or0
+.subckt and_gate a=a[2] b=b[8] out=h_s_dadda_cska24_and_2_8
+.subckt and_gate a=a[1] b=b[9] out=h_s_dadda_cska24_and_1_9
+.subckt ha a=h_s_dadda_cska24_and_2_8 b=h_s_dadda_cska24_and_1_9 ha_xor0=h_s_dadda_cska24_ha9_xor0 ha_and0=h_s_dadda_cska24_ha9_and0
+.subckt fa a=h_s_dadda_cska24_ha9_and0 b=h_s_dadda_cska24_fa34_or0 cin=h_s_dadda_cska24_fa33_or0 fa_xor1=h_s_dadda_cska24_fa35_xor1 fa_or0=h_s_dadda_cska24_fa35_or0
+.subckt and_gate a=a[11] b=b[0] out=h_s_dadda_cska24_and_11_0
+.subckt fa a=h_s_dadda_cska24_fa32_or0 b=h_s_dadda_cska24_fa31_or0 cin=h_s_dadda_cska24_and_11_0 fa_xor1=h_s_dadda_cska24_fa36_xor1 fa_or0=h_s_dadda_cska24_fa36_or0
+.subckt and_gate a=a[10] b=b[1] out=h_s_dadda_cska24_and_10_1
+.subckt and_gate a=a[9] b=b[2] out=h_s_dadda_cska24_and_9_2
+.subckt and_gate a=a[8] b=b[3] out=h_s_dadda_cska24_and_8_3
+.subckt fa a=h_s_dadda_cska24_and_10_1 b=h_s_dadda_cska24_and_9_2 cin=h_s_dadda_cska24_and_8_3 fa_xor1=h_s_dadda_cska24_fa37_xor1 fa_or0=h_s_dadda_cska24_fa37_or0
+.subckt and_gate a=a[7] b=b[4] out=h_s_dadda_cska24_and_7_4
+.subckt and_gate a=a[6] b=b[5] out=h_s_dadda_cska24_and_6_5
+.subckt and_gate a=a[5] b=b[6] out=h_s_dadda_cska24_and_5_6
+.subckt fa a=h_s_dadda_cska24_and_7_4 b=h_s_dadda_cska24_and_6_5 cin=h_s_dadda_cska24_and_5_6 fa_xor1=h_s_dadda_cska24_fa38_xor1 fa_or0=h_s_dadda_cska24_fa38_or0
+.subckt and_gate a=a[4] b=b[7] out=h_s_dadda_cska24_and_4_7
+.subckt and_gate a=a[3] b=b[8] out=h_s_dadda_cska24_and_3_8
+.subckt and_gate a=a[2] b=b[9] out=h_s_dadda_cska24_and_2_9
+.subckt fa a=h_s_dadda_cska24_and_4_7 b=h_s_dadda_cska24_and_3_8 cin=h_s_dadda_cska24_and_2_9 fa_xor1=h_s_dadda_cska24_fa39_xor1 fa_or0=h_s_dadda_cska24_fa39_or0
+.subckt and_gate a=a[1] b=b[10] out=h_s_dadda_cska24_and_1_10
+.subckt and_gate a=a[0] b=b[11] out=h_s_dadda_cska24_and_0_11
+.subckt ha a=h_s_dadda_cska24_and_1_10 b=h_s_dadda_cska24_and_0_11 ha_xor0=h_s_dadda_cska24_ha10_xor0 ha_and0=h_s_dadda_cska24_ha10_and0
+.subckt fa a=h_s_dadda_cska24_ha10_and0 b=h_s_dadda_cska24_fa39_or0 cin=h_s_dadda_cska24_fa38_or0 fa_xor1=h_s_dadda_cska24_fa40_xor1 fa_or0=h_s_dadda_cska24_fa40_or0
+.subckt fa a=h_s_dadda_cska24_fa37_or0 b=h_s_dadda_cska24_fa36_or0 cin=h_s_dadda_cska24_fa35_or0 fa_xor1=h_s_dadda_cska24_fa41_xor1 fa_or0=h_s_dadda_cska24_fa41_or0
+.subckt and_gate a=a[12] b=b[0] out=h_s_dadda_cska24_and_12_0
+.subckt and_gate a=a[11] b=b[1] out=h_s_dadda_cska24_and_11_1
+.subckt and_gate a=a[10] b=b[2] out=h_s_dadda_cska24_and_10_2
+.subckt fa a=h_s_dadda_cska24_and_12_0 b=h_s_dadda_cska24_and_11_1 cin=h_s_dadda_cska24_and_10_2 fa_xor1=h_s_dadda_cska24_fa42_xor1 fa_or0=h_s_dadda_cska24_fa42_or0
+.subckt and_gate a=a[9] b=b[3] out=h_s_dadda_cska24_and_9_3
+.subckt and_gate a=a[8] b=b[4] out=h_s_dadda_cska24_and_8_4
+.subckt and_gate a=a[7] b=b[5] out=h_s_dadda_cska24_and_7_5
+.subckt fa a=h_s_dadda_cska24_and_9_3 b=h_s_dadda_cska24_and_8_4 cin=h_s_dadda_cska24_and_7_5 fa_xor1=h_s_dadda_cska24_fa43_xor1 fa_or0=h_s_dadda_cska24_fa43_or0
+.subckt and_gate a=a[6] b=b[6] out=h_s_dadda_cska24_and_6_6
+.subckt and_gate a=a[5] b=b[7] out=h_s_dadda_cska24_and_5_7
+.subckt and_gate a=a[4] b=b[8] out=h_s_dadda_cska24_and_4_8
+.subckt fa a=h_s_dadda_cska24_and_6_6 b=h_s_dadda_cska24_and_5_7 cin=h_s_dadda_cska24_and_4_8 fa_xor1=h_s_dadda_cska24_fa44_xor1 fa_or0=h_s_dadda_cska24_fa44_or0
+.subckt and_gate a=a[3] b=b[9] out=h_s_dadda_cska24_and_3_9
+.subckt and_gate a=a[2] b=b[10] out=h_s_dadda_cska24_and_2_10
+.subckt and_gate a=a[1] b=b[11] out=h_s_dadda_cska24_and_1_11
+.subckt fa a=h_s_dadda_cska24_and_3_9 b=h_s_dadda_cska24_and_2_10 cin=h_s_dadda_cska24_and_1_11 fa_xor1=h_s_dadda_cska24_fa45_xor1 fa_or0=h_s_dadda_cska24_fa45_or0
+.subckt and_gate a=a[0] b=b[12] out=h_s_dadda_cska24_and_0_12
+.subckt ha a=h_s_dadda_cska24_and_0_12 b=h_s_dadda_cska24_fa40_xor1 ha_xor0=h_s_dadda_cska24_ha11_xor0 ha_and0=h_s_dadda_cska24_ha11_and0
+.subckt fa a=h_s_dadda_cska24_ha11_and0 b=h_s_dadda_cska24_fa45_or0 cin=h_s_dadda_cska24_fa44_or0 fa_xor1=h_s_dadda_cska24_fa46_xor1 fa_or0=h_s_dadda_cska24_fa46_or0
+.subckt fa a=h_s_dadda_cska24_fa43_or0 b=h_s_dadda_cska24_fa42_or0 cin=h_s_dadda_cska24_fa41_or0 fa_xor1=h_s_dadda_cska24_fa47_xor1 fa_or0=h_s_dadda_cska24_fa47_or0
+.subckt and_gate a=a[13] b=b[0] out=h_s_dadda_cska24_and_13_0
+.subckt and_gate a=a[12] b=b[1] out=h_s_dadda_cska24_and_12_1
+.subckt fa a=h_s_dadda_cska24_fa40_or0 b=h_s_dadda_cska24_and_13_0 cin=h_s_dadda_cska24_and_12_1 fa_xor1=h_s_dadda_cska24_fa48_xor1 fa_or0=h_s_dadda_cska24_fa48_or0
+.subckt and_gate a=a[11] b=b[2] out=h_s_dadda_cska24_and_11_2
+.subckt and_gate a=a[10] b=b[3] out=h_s_dadda_cska24_and_10_3
+.subckt and_gate a=a[9] b=b[4] out=h_s_dadda_cska24_and_9_4
+.subckt fa a=h_s_dadda_cska24_and_11_2 b=h_s_dadda_cska24_and_10_3 cin=h_s_dadda_cska24_and_9_4 fa_xor1=h_s_dadda_cska24_fa49_xor1 fa_or0=h_s_dadda_cska24_fa49_or0
+.subckt and_gate a=a[8] b=b[5] out=h_s_dadda_cska24_and_8_5
+.subckt and_gate a=a[7] b=b[6] out=h_s_dadda_cska24_and_7_6
+.subckt and_gate a=a[6] b=b[7] out=h_s_dadda_cska24_and_6_7
+.subckt fa a=h_s_dadda_cska24_and_8_5 b=h_s_dadda_cska24_and_7_6 cin=h_s_dadda_cska24_and_6_7 fa_xor1=h_s_dadda_cska24_fa50_xor1 fa_or0=h_s_dadda_cska24_fa50_or0
+.subckt and_gate a=a[5] b=b[8] out=h_s_dadda_cska24_and_5_8
+.subckt and_gate a=a[4] b=b[9] out=h_s_dadda_cska24_and_4_9
+.subckt and_gate a=a[3] b=b[10] out=h_s_dadda_cska24_and_3_10
+.subckt fa a=h_s_dadda_cska24_and_5_8 b=h_s_dadda_cska24_and_4_9 cin=h_s_dadda_cska24_and_3_10 fa_xor1=h_s_dadda_cska24_fa51_xor1 fa_or0=h_s_dadda_cska24_fa51_or0
+.subckt and_gate a=a[2] b=b[11] out=h_s_dadda_cska24_and_2_11
+.subckt and_gate a=a[1] b=b[12] out=h_s_dadda_cska24_and_1_12
+.subckt and_gate a=a[0] b=b[13] out=h_s_dadda_cska24_and_0_13
+.subckt fa a=h_s_dadda_cska24_and_2_11 b=h_s_dadda_cska24_and_1_12 cin=h_s_dadda_cska24_and_0_13 fa_xor1=h_s_dadda_cska24_fa52_xor1 fa_or0=h_s_dadda_cska24_fa52_or0
+.subckt ha a=h_s_dadda_cska24_fa46_xor1 b=h_s_dadda_cska24_fa47_xor1 ha_xor0=h_s_dadda_cska24_ha12_xor0 ha_and0=h_s_dadda_cska24_ha12_and0
+.subckt fa a=h_s_dadda_cska24_ha12_and0 b=h_s_dadda_cska24_fa52_or0 cin=h_s_dadda_cska24_fa51_or0 fa_xor1=h_s_dadda_cska24_fa53_xor1 fa_or0=h_s_dadda_cska24_fa53_or0
+.subckt fa a=h_s_dadda_cska24_fa50_or0 b=h_s_dadda_cska24_fa49_or0 cin=h_s_dadda_cska24_fa48_or0 fa_xor1=h_s_dadda_cska24_fa54_xor1 fa_or0=h_s_dadda_cska24_fa54_or0
+.subckt and_gate a=a[14] b=b[0] out=h_s_dadda_cska24_and_14_0
+.subckt fa a=h_s_dadda_cska24_fa47_or0 b=h_s_dadda_cska24_fa46_or0 cin=h_s_dadda_cska24_and_14_0 fa_xor1=h_s_dadda_cska24_fa55_xor1 fa_or0=h_s_dadda_cska24_fa55_or0
+.subckt and_gate a=a[13] b=b[1] out=h_s_dadda_cska24_and_13_1
+.subckt and_gate a=a[12] b=b[2] out=h_s_dadda_cska24_and_12_2
+.subckt and_gate a=a[11] b=b[3] out=h_s_dadda_cska24_and_11_3
+.subckt fa a=h_s_dadda_cska24_and_13_1 b=h_s_dadda_cska24_and_12_2 cin=h_s_dadda_cska24_and_11_3 fa_xor1=h_s_dadda_cska24_fa56_xor1 fa_or0=h_s_dadda_cska24_fa56_or0
+.subckt and_gate a=a[10] b=b[4] out=h_s_dadda_cska24_and_10_4
+.subckt and_gate a=a[9] b=b[5] out=h_s_dadda_cska24_and_9_5
+.subckt and_gate a=a[8] b=b[6] out=h_s_dadda_cska24_and_8_6
+.subckt fa a=h_s_dadda_cska24_and_10_4 b=h_s_dadda_cska24_and_9_5 cin=h_s_dadda_cska24_and_8_6 fa_xor1=h_s_dadda_cska24_fa57_xor1 fa_or0=h_s_dadda_cska24_fa57_or0
+.subckt and_gate a=a[7] b=b[7] out=h_s_dadda_cska24_and_7_7
+.subckt and_gate a=a[6] b=b[8] out=h_s_dadda_cska24_and_6_8
+.subckt and_gate a=a[5] b=b[9] out=h_s_dadda_cska24_and_5_9
+.subckt fa a=h_s_dadda_cska24_and_7_7 b=h_s_dadda_cska24_and_6_8 cin=h_s_dadda_cska24_and_5_9 fa_xor1=h_s_dadda_cska24_fa58_xor1 fa_or0=h_s_dadda_cska24_fa58_or0
+.subckt and_gate a=a[4] b=b[10] out=h_s_dadda_cska24_and_4_10
+.subckt and_gate a=a[3] b=b[11] out=h_s_dadda_cska24_and_3_11
+.subckt and_gate a=a[2] b=b[12] out=h_s_dadda_cska24_and_2_12
+.subckt fa a=h_s_dadda_cska24_and_4_10 b=h_s_dadda_cska24_and_3_11 cin=h_s_dadda_cska24_and_2_12 fa_xor1=h_s_dadda_cska24_fa59_xor1 fa_or0=h_s_dadda_cska24_fa59_or0
+.subckt and_gate a=a[1] b=b[13] out=h_s_dadda_cska24_and_1_13
+.subckt and_gate a=a[0] b=b[14] out=h_s_dadda_cska24_and_0_14
+.subckt fa a=h_s_dadda_cska24_and_1_13 b=h_s_dadda_cska24_and_0_14 cin=h_s_dadda_cska24_fa53_xor1 fa_xor1=h_s_dadda_cska24_fa60_xor1 fa_or0=h_s_dadda_cska24_fa60_or0
+.subckt ha a=h_s_dadda_cska24_fa54_xor1 b=h_s_dadda_cska24_fa55_xor1 ha_xor0=h_s_dadda_cska24_ha13_xor0 ha_and0=h_s_dadda_cska24_ha13_and0
+.subckt fa a=h_s_dadda_cska24_ha13_and0 b=h_s_dadda_cska24_fa60_or0 cin=h_s_dadda_cska24_fa59_or0 fa_xor1=h_s_dadda_cska24_fa61_xor1 fa_or0=h_s_dadda_cska24_fa61_or0
+.subckt fa a=h_s_dadda_cska24_fa58_or0 b=h_s_dadda_cska24_fa57_or0 cin=h_s_dadda_cska24_fa56_or0 fa_xor1=h_s_dadda_cska24_fa62_xor1 fa_or0=h_s_dadda_cska24_fa62_or0
+.subckt fa a=h_s_dadda_cska24_fa55_or0 b=h_s_dadda_cska24_fa54_or0 cin=h_s_dadda_cska24_fa53_or0 fa_xor1=h_s_dadda_cska24_fa63_xor1 fa_or0=h_s_dadda_cska24_fa63_or0
+.subckt and_gate a=a[15] b=b[0] out=h_s_dadda_cska24_and_15_0
+.subckt and_gate a=a[14] b=b[1] out=h_s_dadda_cska24_and_14_1
+.subckt and_gate a=a[13] b=b[2] out=h_s_dadda_cska24_and_13_2
+.subckt fa a=h_s_dadda_cska24_and_15_0 b=h_s_dadda_cska24_and_14_1 cin=h_s_dadda_cska24_and_13_2 fa_xor1=h_s_dadda_cska24_fa64_xor1 fa_or0=h_s_dadda_cska24_fa64_or0
+.subckt and_gate a=a[12] b=b[3] out=h_s_dadda_cska24_and_12_3
+.subckt and_gate a=a[11] b=b[4] out=h_s_dadda_cska24_and_11_4
+.subckt and_gate a=a[10] b=b[5] out=h_s_dadda_cska24_and_10_5
+.subckt fa a=h_s_dadda_cska24_and_12_3 b=h_s_dadda_cska24_and_11_4 cin=h_s_dadda_cska24_and_10_5 fa_xor1=h_s_dadda_cska24_fa65_xor1 fa_or0=h_s_dadda_cska24_fa65_or0
+.subckt and_gate a=a[9] b=b[6] out=h_s_dadda_cska24_and_9_6
+.subckt and_gate a=a[8] b=b[7] out=h_s_dadda_cska24_and_8_7
+.subckt and_gate a=a[7] b=b[8] out=h_s_dadda_cska24_and_7_8
+.subckt fa a=h_s_dadda_cska24_and_9_6 b=h_s_dadda_cska24_and_8_7 cin=h_s_dadda_cska24_and_7_8 fa_xor1=h_s_dadda_cska24_fa66_xor1 fa_or0=h_s_dadda_cska24_fa66_or0
+.subckt and_gate a=a[6] b=b[9] out=h_s_dadda_cska24_and_6_9
+.subckt and_gate a=a[5] b=b[10] out=h_s_dadda_cska24_and_5_10
+.subckt and_gate a=a[4] b=b[11] out=h_s_dadda_cska24_and_4_11
+.subckt fa a=h_s_dadda_cska24_and_6_9 b=h_s_dadda_cska24_and_5_10 cin=h_s_dadda_cska24_and_4_11 fa_xor1=h_s_dadda_cska24_fa67_xor1 fa_or0=h_s_dadda_cska24_fa67_or0
+.subckt and_gate a=a[3] b=b[12] out=h_s_dadda_cska24_and_3_12
+.subckt and_gate a=a[2] b=b[13] out=h_s_dadda_cska24_and_2_13
+.subckt and_gate a=a[1] b=b[14] out=h_s_dadda_cska24_and_1_14
+.subckt fa a=h_s_dadda_cska24_and_3_12 b=h_s_dadda_cska24_and_2_13 cin=h_s_dadda_cska24_and_1_14 fa_xor1=h_s_dadda_cska24_fa68_xor1 fa_or0=h_s_dadda_cska24_fa68_or0
+.subckt and_gate a=a[0] b=b[15] out=h_s_dadda_cska24_and_0_15
+.subckt fa a=h_s_dadda_cska24_and_0_15 b=h_s_dadda_cska24_fa61_xor1 cin=h_s_dadda_cska24_fa62_xor1 fa_xor1=h_s_dadda_cska24_fa69_xor1 fa_or0=h_s_dadda_cska24_fa69_or0
+.subckt ha a=h_s_dadda_cska24_fa63_xor1 b=h_s_dadda_cska24_fa64_xor1 ha_xor0=h_s_dadda_cska24_ha14_xor0 ha_and0=h_s_dadda_cska24_ha14_and0
+.subckt fa a=h_s_dadda_cska24_ha14_and0 b=h_s_dadda_cska24_fa69_or0 cin=h_s_dadda_cska24_fa68_or0 fa_xor1=h_s_dadda_cska24_fa70_xor1 fa_or0=h_s_dadda_cska24_fa70_or0
+.subckt fa a=h_s_dadda_cska24_fa67_or0 b=h_s_dadda_cska24_fa66_or0 cin=h_s_dadda_cska24_fa65_or0 fa_xor1=h_s_dadda_cska24_fa71_xor1 fa_or0=h_s_dadda_cska24_fa71_or0
+.subckt fa a=h_s_dadda_cska24_fa64_or0 b=h_s_dadda_cska24_fa63_or0 cin=h_s_dadda_cska24_fa62_or0 fa_xor1=h_s_dadda_cska24_fa72_xor1 fa_or0=h_s_dadda_cska24_fa72_or0
+.subckt and_gate a=a[16] b=b[0] out=h_s_dadda_cska24_and_16_0
+.subckt and_gate a=a[15] b=b[1] out=h_s_dadda_cska24_and_15_1
+.subckt fa a=h_s_dadda_cska24_fa61_or0 b=h_s_dadda_cska24_and_16_0 cin=h_s_dadda_cska24_and_15_1 fa_xor1=h_s_dadda_cska24_fa73_xor1 fa_or0=h_s_dadda_cska24_fa73_or0
+.subckt and_gate a=a[14] b=b[2] out=h_s_dadda_cska24_and_14_2
+.subckt and_gate a=a[13] b=b[3] out=h_s_dadda_cska24_and_13_3
+.subckt and_gate a=a[12] b=b[4] out=h_s_dadda_cska24_and_12_4
+.subckt fa a=h_s_dadda_cska24_and_14_2 b=h_s_dadda_cska24_and_13_3 cin=h_s_dadda_cska24_and_12_4 fa_xor1=h_s_dadda_cska24_fa74_xor1 fa_or0=h_s_dadda_cska24_fa74_or0
+.subckt and_gate a=a[11] b=b[5] out=h_s_dadda_cska24_and_11_5
+.subckt and_gate a=a[10] b=b[6] out=h_s_dadda_cska24_and_10_6
+.subckt and_gate a=a[9] b=b[7] out=h_s_dadda_cska24_and_9_7
+.subckt fa a=h_s_dadda_cska24_and_11_5 b=h_s_dadda_cska24_and_10_6 cin=h_s_dadda_cska24_and_9_7 fa_xor1=h_s_dadda_cska24_fa75_xor1 fa_or0=h_s_dadda_cska24_fa75_or0
+.subckt and_gate a=a[8] b=b[8] out=h_s_dadda_cska24_and_8_8
+.subckt and_gate a=a[7] b=b[9] out=h_s_dadda_cska24_and_7_9
+.subckt and_gate a=a[6] b=b[10] out=h_s_dadda_cska24_and_6_10
+.subckt fa a=h_s_dadda_cska24_and_8_8 b=h_s_dadda_cska24_and_7_9 cin=h_s_dadda_cska24_and_6_10 fa_xor1=h_s_dadda_cska24_fa76_xor1 fa_or0=h_s_dadda_cska24_fa76_or0
+.subckt and_gate a=a[5] b=b[11] out=h_s_dadda_cska24_and_5_11
+.subckt and_gate a=a[4] b=b[12] out=h_s_dadda_cska24_and_4_12
+.subckt and_gate a=a[3] b=b[13] out=h_s_dadda_cska24_and_3_13
+.subckt fa a=h_s_dadda_cska24_and_5_11 b=h_s_dadda_cska24_and_4_12 cin=h_s_dadda_cska24_and_3_13 fa_xor1=h_s_dadda_cska24_fa77_xor1 fa_or0=h_s_dadda_cska24_fa77_or0
+.subckt and_gate a=a[2] b=b[14] out=h_s_dadda_cska24_and_2_14
+.subckt and_gate a=a[1] b=b[15] out=h_s_dadda_cska24_and_1_15
+.subckt and_gate a=a[0] b=b[16] out=h_s_dadda_cska24_and_0_16
+.subckt fa a=h_s_dadda_cska24_and_2_14 b=h_s_dadda_cska24_and_1_15 cin=h_s_dadda_cska24_and_0_16 fa_xor1=h_s_dadda_cska24_fa78_xor1 fa_or0=h_s_dadda_cska24_fa78_or0
+.subckt fa a=h_s_dadda_cska24_fa70_xor1 b=h_s_dadda_cska24_fa71_xor1 cin=h_s_dadda_cska24_fa72_xor1 fa_xor1=h_s_dadda_cska24_fa79_xor1 fa_or0=h_s_dadda_cska24_fa79_or0
+.subckt ha a=h_s_dadda_cska24_fa73_xor1 b=h_s_dadda_cska24_fa74_xor1 ha_xor0=h_s_dadda_cska24_ha15_xor0 ha_and0=h_s_dadda_cska24_ha15_and0
+.subckt fa a=h_s_dadda_cska24_ha15_and0 b=h_s_dadda_cska24_fa79_or0 cin=h_s_dadda_cska24_fa78_or0 fa_xor1=h_s_dadda_cska24_fa80_xor1 fa_or0=h_s_dadda_cska24_fa80_or0
+.subckt fa a=h_s_dadda_cska24_fa77_or0 b=h_s_dadda_cska24_fa76_or0 cin=h_s_dadda_cska24_fa75_or0 fa_xor1=h_s_dadda_cska24_fa81_xor1 fa_or0=h_s_dadda_cska24_fa81_or0
+.subckt fa a=h_s_dadda_cska24_fa74_or0 b=h_s_dadda_cska24_fa73_or0 cin=h_s_dadda_cska24_fa72_or0 fa_xor1=h_s_dadda_cska24_fa82_xor1 fa_or0=h_s_dadda_cska24_fa82_or0
+.subckt and_gate a=a[17] b=b[0] out=h_s_dadda_cska24_and_17_0
+.subckt fa a=h_s_dadda_cska24_fa71_or0 b=h_s_dadda_cska24_fa70_or0 cin=h_s_dadda_cska24_and_17_0 fa_xor1=h_s_dadda_cska24_fa83_xor1 fa_or0=h_s_dadda_cska24_fa83_or0
+.subckt and_gate a=a[16] b=b[1] out=h_s_dadda_cska24_and_16_1
+.subckt and_gate a=a[15] b=b[2] out=h_s_dadda_cska24_and_15_2
+.subckt and_gate a=a[14] b=b[3] out=h_s_dadda_cska24_and_14_3
+.subckt fa a=h_s_dadda_cska24_and_16_1 b=h_s_dadda_cska24_and_15_2 cin=h_s_dadda_cska24_and_14_3 fa_xor1=h_s_dadda_cska24_fa84_xor1 fa_or0=h_s_dadda_cska24_fa84_or0
+.subckt and_gate a=a[13] b=b[4] out=h_s_dadda_cska24_and_13_4
+.subckt and_gate a=a[12] b=b[5] out=h_s_dadda_cska24_and_12_5
+.subckt and_gate a=a[11] b=b[6] out=h_s_dadda_cska24_and_11_6
+.subckt fa a=h_s_dadda_cska24_and_13_4 b=h_s_dadda_cska24_and_12_5 cin=h_s_dadda_cska24_and_11_6 fa_xor1=h_s_dadda_cska24_fa85_xor1 fa_or0=h_s_dadda_cska24_fa85_or0
+.subckt and_gate a=a[10] b=b[7] out=h_s_dadda_cska24_and_10_7
+.subckt and_gate a=a[9] b=b[8] out=h_s_dadda_cska24_and_9_8
+.subckt and_gate a=a[8] b=b[9] out=h_s_dadda_cska24_and_8_9
+.subckt fa a=h_s_dadda_cska24_and_10_7 b=h_s_dadda_cska24_and_9_8 cin=h_s_dadda_cska24_and_8_9 fa_xor1=h_s_dadda_cska24_fa86_xor1 fa_or0=h_s_dadda_cska24_fa86_or0
+.subckt and_gate a=a[7] b=b[10] out=h_s_dadda_cska24_and_7_10
+.subckt and_gate a=a[6] b=b[11] out=h_s_dadda_cska24_and_6_11
+.subckt and_gate a=a[5] b=b[12] out=h_s_dadda_cska24_and_5_12
+.subckt fa a=h_s_dadda_cska24_and_7_10 b=h_s_dadda_cska24_and_6_11 cin=h_s_dadda_cska24_and_5_12 fa_xor1=h_s_dadda_cska24_fa87_xor1 fa_or0=h_s_dadda_cska24_fa87_or0
+.subckt and_gate a=a[4] b=b[13] out=h_s_dadda_cska24_and_4_13
+.subckt and_gate a=a[3] b=b[14] out=h_s_dadda_cska24_and_3_14
+.subckt and_gate a=a[2] b=b[15] out=h_s_dadda_cska24_and_2_15
+.subckt fa a=h_s_dadda_cska24_and_4_13 b=h_s_dadda_cska24_and_3_14 cin=h_s_dadda_cska24_and_2_15 fa_xor1=h_s_dadda_cska24_fa88_xor1 fa_or0=h_s_dadda_cska24_fa88_or0
+.subckt and_gate a=a[1] b=b[16] out=h_s_dadda_cska24_and_1_16
+.subckt and_gate a=a[0] b=b[17] out=h_s_dadda_cska24_and_0_17
+.subckt fa a=h_s_dadda_cska24_and_1_16 b=h_s_dadda_cska24_and_0_17 cin=h_s_dadda_cska24_fa80_xor1 fa_xor1=h_s_dadda_cska24_fa89_xor1 fa_or0=h_s_dadda_cska24_fa89_or0
+.subckt fa a=h_s_dadda_cska24_fa81_xor1 b=h_s_dadda_cska24_fa82_xor1 cin=h_s_dadda_cska24_fa83_xor1 fa_xor1=h_s_dadda_cska24_fa90_xor1 fa_or0=h_s_dadda_cska24_fa90_or0
+.subckt ha a=h_s_dadda_cska24_fa84_xor1 b=h_s_dadda_cska24_fa85_xor1 ha_xor0=h_s_dadda_cska24_ha16_xor0 ha_and0=h_s_dadda_cska24_ha16_and0
+.subckt fa a=h_s_dadda_cska24_ha16_and0 b=h_s_dadda_cska24_fa90_or0 cin=h_s_dadda_cska24_fa89_or0 fa_xor1=h_s_dadda_cska24_fa91_xor1 fa_or0=h_s_dadda_cska24_fa91_or0
+.subckt fa a=h_s_dadda_cska24_fa88_or0 b=h_s_dadda_cska24_fa87_or0 cin=h_s_dadda_cska24_fa86_or0 fa_xor1=h_s_dadda_cska24_fa92_xor1 fa_or0=h_s_dadda_cska24_fa92_or0
+.subckt fa a=h_s_dadda_cska24_fa85_or0 b=h_s_dadda_cska24_fa84_or0 cin=h_s_dadda_cska24_fa83_or0 fa_xor1=h_s_dadda_cska24_fa93_xor1 fa_or0=h_s_dadda_cska24_fa93_or0
+.subckt fa a=h_s_dadda_cska24_fa82_or0 b=h_s_dadda_cska24_fa81_or0 cin=h_s_dadda_cska24_fa80_or0 fa_xor1=h_s_dadda_cska24_fa94_xor1 fa_or0=h_s_dadda_cska24_fa94_or0
+.subckt and_gate a=a[18] b=b[0] out=h_s_dadda_cska24_and_18_0
+.subckt and_gate a=a[17] b=b[1] out=h_s_dadda_cska24_and_17_1
+.subckt and_gate a=a[16] b=b[2] out=h_s_dadda_cska24_and_16_2
+.subckt fa a=h_s_dadda_cska24_and_18_0 b=h_s_dadda_cska24_and_17_1 cin=h_s_dadda_cska24_and_16_2 fa_xor1=h_s_dadda_cska24_fa95_xor1 fa_or0=h_s_dadda_cska24_fa95_or0
+.subckt and_gate a=a[15] b=b[3] out=h_s_dadda_cska24_and_15_3
+.subckt and_gate a=a[14] b=b[4] out=h_s_dadda_cska24_and_14_4
+.subckt and_gate a=a[13] b=b[5] out=h_s_dadda_cska24_and_13_5
+.subckt fa a=h_s_dadda_cska24_and_15_3 b=h_s_dadda_cska24_and_14_4 cin=h_s_dadda_cska24_and_13_5 fa_xor1=h_s_dadda_cska24_fa96_xor1 fa_or0=h_s_dadda_cska24_fa96_or0
+.subckt and_gate a=a[12] b=b[6] out=h_s_dadda_cska24_and_12_6
+.subckt and_gate a=a[11] b=b[7] out=h_s_dadda_cska24_and_11_7
+.subckt and_gate a=a[10] b=b[8] out=h_s_dadda_cska24_and_10_8
+.subckt fa a=h_s_dadda_cska24_and_12_6 b=h_s_dadda_cska24_and_11_7 cin=h_s_dadda_cska24_and_10_8 fa_xor1=h_s_dadda_cska24_fa97_xor1 fa_or0=h_s_dadda_cska24_fa97_or0
+.subckt and_gate a=a[9] b=b[9] out=h_s_dadda_cska24_and_9_9
+.subckt and_gate a=a[8] b=b[10] out=h_s_dadda_cska24_and_8_10
+.subckt and_gate a=a[7] b=b[11] out=h_s_dadda_cska24_and_7_11
+.subckt fa a=h_s_dadda_cska24_and_9_9 b=h_s_dadda_cska24_and_8_10 cin=h_s_dadda_cska24_and_7_11 fa_xor1=h_s_dadda_cska24_fa98_xor1 fa_or0=h_s_dadda_cska24_fa98_or0
+.subckt and_gate a=a[6] b=b[12] out=h_s_dadda_cska24_and_6_12
+.subckt and_gate a=a[5] b=b[13] out=h_s_dadda_cska24_and_5_13
+.subckt and_gate a=a[4] b=b[14] out=h_s_dadda_cska24_and_4_14
+.subckt fa a=h_s_dadda_cska24_and_6_12 b=h_s_dadda_cska24_and_5_13 cin=h_s_dadda_cska24_and_4_14 fa_xor1=h_s_dadda_cska24_fa99_xor1 fa_or0=h_s_dadda_cska24_fa99_or0
+.subckt and_gate a=a[3] b=b[15] out=h_s_dadda_cska24_and_3_15
+.subckt and_gate a=a[2] b=b[16] out=h_s_dadda_cska24_and_2_16
+.subckt and_gate a=a[1] b=b[17] out=h_s_dadda_cska24_and_1_17
+.subckt fa a=h_s_dadda_cska24_and_3_15 b=h_s_dadda_cska24_and_2_16 cin=h_s_dadda_cska24_and_1_17 fa_xor1=h_s_dadda_cska24_fa100_xor1 fa_or0=h_s_dadda_cska24_fa100_or0
+.subckt and_gate a=a[0] b=b[18] out=h_s_dadda_cska24_and_0_18
+.subckt fa a=h_s_dadda_cska24_and_0_18 b=h_s_dadda_cska24_fa91_xor1 cin=h_s_dadda_cska24_fa92_xor1 fa_xor1=h_s_dadda_cska24_fa101_xor1 fa_or0=h_s_dadda_cska24_fa101_or0
+.subckt fa a=h_s_dadda_cska24_fa93_xor1 b=h_s_dadda_cska24_fa94_xor1 cin=h_s_dadda_cska24_fa95_xor1 fa_xor1=h_s_dadda_cska24_fa102_xor1 fa_or0=h_s_dadda_cska24_fa102_or0
+.subckt ha a=h_s_dadda_cska24_fa96_xor1 b=h_s_dadda_cska24_fa97_xor1 ha_xor0=h_s_dadda_cska24_ha17_xor0 ha_and0=h_s_dadda_cska24_ha17_and0
+.subckt fa a=h_s_dadda_cska24_ha17_and0 b=h_s_dadda_cska24_fa102_or0 cin=h_s_dadda_cska24_fa101_or0 fa_xor1=h_s_dadda_cska24_fa103_xor1 fa_or0=h_s_dadda_cska24_fa103_or0
+.subckt fa a=h_s_dadda_cska24_fa100_or0 b=h_s_dadda_cska24_fa99_or0 cin=h_s_dadda_cska24_fa98_or0 fa_xor1=h_s_dadda_cska24_fa104_xor1 fa_or0=h_s_dadda_cska24_fa104_or0
+.subckt fa a=h_s_dadda_cska24_fa97_or0 b=h_s_dadda_cska24_fa96_or0 cin=h_s_dadda_cska24_fa95_or0 fa_xor1=h_s_dadda_cska24_fa105_xor1 fa_or0=h_s_dadda_cska24_fa105_or0
+.subckt fa a=h_s_dadda_cska24_fa94_or0 b=h_s_dadda_cska24_fa93_or0 cin=h_s_dadda_cska24_fa92_or0 fa_xor1=h_s_dadda_cska24_fa106_xor1 fa_or0=h_s_dadda_cska24_fa106_or0
+.subckt and_gate a=a[17] b=b[2] out=h_s_dadda_cska24_and_17_2
+.subckt and_gate a=a[16] b=b[3] out=h_s_dadda_cska24_and_16_3
+.subckt fa a=h_s_dadda_cska24_fa91_or0 b=h_s_dadda_cska24_and_17_2 cin=h_s_dadda_cska24_and_16_3 fa_xor1=h_s_dadda_cska24_fa107_xor1 fa_or0=h_s_dadda_cska24_fa107_or0
+.subckt and_gate a=a[15] b=b[4] out=h_s_dadda_cska24_and_15_4
+.subckt and_gate a=a[14] b=b[5] out=h_s_dadda_cska24_and_14_5
+.subckt and_gate a=a[13] b=b[6] out=h_s_dadda_cska24_and_13_6
+.subckt fa a=h_s_dadda_cska24_and_15_4 b=h_s_dadda_cska24_and_14_5 cin=h_s_dadda_cska24_and_13_6 fa_xor1=h_s_dadda_cska24_fa108_xor1 fa_or0=h_s_dadda_cska24_fa108_or0
+.subckt and_gate a=a[12] b=b[7] out=h_s_dadda_cska24_and_12_7
+.subckt and_gate a=a[11] b=b[8] out=h_s_dadda_cska24_and_11_8
+.subckt and_gate a=a[10] b=b[9] out=h_s_dadda_cska24_and_10_9
+.subckt fa a=h_s_dadda_cska24_and_12_7 b=h_s_dadda_cska24_and_11_8 cin=h_s_dadda_cska24_and_10_9 fa_xor1=h_s_dadda_cska24_fa109_xor1 fa_or0=h_s_dadda_cska24_fa109_or0
+.subckt and_gate a=a[9] b=b[10] out=h_s_dadda_cska24_and_9_10
+.subckt and_gate a=a[8] b=b[11] out=h_s_dadda_cska24_and_8_11
+.subckt and_gate a=a[7] b=b[12] out=h_s_dadda_cska24_and_7_12
+.subckt fa a=h_s_dadda_cska24_and_9_10 b=h_s_dadda_cska24_and_8_11 cin=h_s_dadda_cska24_and_7_12 fa_xor1=h_s_dadda_cska24_fa110_xor1 fa_or0=h_s_dadda_cska24_fa110_or0
+.subckt and_gate a=a[6] b=b[13] out=h_s_dadda_cska24_and_6_13
+.subckt and_gate a=a[5] b=b[14] out=h_s_dadda_cska24_and_5_14
+.subckt and_gate a=a[4] b=b[15] out=h_s_dadda_cska24_and_4_15
+.subckt fa a=h_s_dadda_cska24_and_6_13 b=h_s_dadda_cska24_and_5_14 cin=h_s_dadda_cska24_and_4_15 fa_xor1=h_s_dadda_cska24_fa111_xor1 fa_or0=h_s_dadda_cska24_fa111_or0
+.subckt and_gate a=a[3] b=b[16] out=h_s_dadda_cska24_and_3_16
+.subckt and_gate a=a[2] b=b[17] out=h_s_dadda_cska24_and_2_17
+.subckt and_gate a=a[1] b=b[18] out=h_s_dadda_cska24_and_1_18
+.subckt fa a=h_s_dadda_cska24_and_3_16 b=h_s_dadda_cska24_and_2_17 cin=h_s_dadda_cska24_and_1_18 fa_xor1=h_s_dadda_cska24_fa112_xor1 fa_or0=h_s_dadda_cska24_fa112_or0
+.subckt and_gate a=a[0] b=b[19] out=h_s_dadda_cska24_and_0_19
+.subckt fa a=h_s_dadda_cska24_and_0_19 b=h_s_dadda_cska24_ha0_xor0 cin=h_s_dadda_cska24_fa103_xor1 fa_xor1=h_s_dadda_cska24_fa113_xor1 fa_or0=h_s_dadda_cska24_fa113_or0
+.subckt fa a=h_s_dadda_cska24_fa104_xor1 b=h_s_dadda_cska24_fa105_xor1 cin=h_s_dadda_cska24_fa106_xor1 fa_xor1=h_s_dadda_cska24_fa114_xor1 fa_or0=h_s_dadda_cska24_fa114_or0
+.subckt fa a=h_s_dadda_cska24_fa107_xor1 b=h_s_dadda_cska24_fa108_xor1 cin=h_s_dadda_cska24_fa109_xor1 fa_xor1=h_s_dadda_cska24_fa115_xor1 fa_or0=h_s_dadda_cska24_fa115_or0
+.subckt fa a=h_s_dadda_cska24_fa115_or0 b=h_s_dadda_cska24_fa114_or0 cin=h_s_dadda_cska24_fa113_or0 fa_xor1=h_s_dadda_cska24_fa116_xor1 fa_or0=h_s_dadda_cska24_fa116_or0
+.subckt fa a=h_s_dadda_cska24_fa112_or0 b=h_s_dadda_cska24_fa111_or0 cin=h_s_dadda_cska24_fa110_or0 fa_xor1=h_s_dadda_cska24_fa117_xor1 fa_or0=h_s_dadda_cska24_fa117_or0
+.subckt fa a=h_s_dadda_cska24_fa109_or0 b=h_s_dadda_cska24_fa108_or0 cin=h_s_dadda_cska24_fa107_or0 fa_xor1=h_s_dadda_cska24_fa118_xor1 fa_or0=h_s_dadda_cska24_fa118_or0
+.subckt fa a=h_s_dadda_cska24_fa106_or0 b=h_s_dadda_cska24_fa105_or0 cin=h_s_dadda_cska24_fa104_or0 fa_xor1=h_s_dadda_cska24_fa119_xor1 fa_or0=h_s_dadda_cska24_fa119_or0
+.subckt and_gate a=a[16] b=b[4] out=h_s_dadda_cska24_and_16_4
+.subckt and_gate a=a[15] b=b[5] out=h_s_dadda_cska24_and_15_5
+.subckt fa a=h_s_dadda_cska24_fa103_or0 b=h_s_dadda_cska24_and_16_4 cin=h_s_dadda_cska24_and_15_5 fa_xor1=h_s_dadda_cska24_fa120_xor1 fa_or0=h_s_dadda_cska24_fa120_or0
+.subckt and_gate a=a[14] b=b[6] out=h_s_dadda_cska24_and_14_6
+.subckt and_gate a=a[13] b=b[7] out=h_s_dadda_cska24_and_13_7
+.subckt and_gate a=a[12] b=b[8] out=h_s_dadda_cska24_and_12_8
+.subckt fa a=h_s_dadda_cska24_and_14_6 b=h_s_dadda_cska24_and_13_7 cin=h_s_dadda_cska24_and_12_8 fa_xor1=h_s_dadda_cska24_fa121_xor1 fa_or0=h_s_dadda_cska24_fa121_or0
+.subckt and_gate a=a[11] b=b[9] out=h_s_dadda_cska24_and_11_9
+.subckt and_gate a=a[10] b=b[10] out=h_s_dadda_cska24_and_10_10
+.subckt and_gate a=a[9] b=b[11] out=h_s_dadda_cska24_and_9_11
+.subckt fa a=h_s_dadda_cska24_and_11_9 b=h_s_dadda_cska24_and_10_10 cin=h_s_dadda_cska24_and_9_11 fa_xor1=h_s_dadda_cska24_fa122_xor1 fa_or0=h_s_dadda_cska24_fa122_or0
+.subckt and_gate a=a[8] b=b[12] out=h_s_dadda_cska24_and_8_12
+.subckt and_gate a=a[7] b=b[13] out=h_s_dadda_cska24_and_7_13
+.subckt and_gate a=a[6] b=b[14] out=h_s_dadda_cska24_and_6_14
+.subckt fa a=h_s_dadda_cska24_and_8_12 b=h_s_dadda_cska24_and_7_13 cin=h_s_dadda_cska24_and_6_14 fa_xor1=h_s_dadda_cska24_fa123_xor1 fa_or0=h_s_dadda_cska24_fa123_or0
+.subckt and_gate a=a[5] b=b[15] out=h_s_dadda_cska24_and_5_15
+.subckt and_gate a=a[4] b=b[16] out=h_s_dadda_cska24_and_4_16
+.subckt and_gate a=a[3] b=b[17] out=h_s_dadda_cska24_and_3_17
+.subckt fa a=h_s_dadda_cska24_and_5_15 b=h_s_dadda_cska24_and_4_16 cin=h_s_dadda_cska24_and_3_17 fa_xor1=h_s_dadda_cska24_fa124_xor1 fa_or0=h_s_dadda_cska24_fa124_or0
+.subckt and_gate a=a[2] b=b[18] out=h_s_dadda_cska24_and_2_18
+.subckt and_gate a=a[1] b=b[19] out=h_s_dadda_cska24_and_1_19
+.subckt and_gate a=a[0] b=b[20] out=h_s_dadda_cska24_and_0_20
+.subckt fa a=h_s_dadda_cska24_and_2_18 b=h_s_dadda_cska24_and_1_19 cin=h_s_dadda_cska24_and_0_20 fa_xor1=h_s_dadda_cska24_fa125_xor1 fa_or0=h_s_dadda_cska24_fa125_or0
+.subckt fa a=h_s_dadda_cska24_fa0_xor1 b=h_s_dadda_cska24_ha1_xor0 cin=h_s_dadda_cska24_fa116_xor1 fa_xor1=h_s_dadda_cska24_fa126_xor1 fa_or0=h_s_dadda_cska24_fa126_or0
+.subckt fa a=h_s_dadda_cska24_fa117_xor1 b=h_s_dadda_cska24_fa118_xor1 cin=h_s_dadda_cska24_fa119_xor1 fa_xor1=h_s_dadda_cska24_fa127_xor1 fa_or0=h_s_dadda_cska24_fa127_or0
+.subckt fa a=h_s_dadda_cska24_fa120_xor1 b=h_s_dadda_cska24_fa121_xor1 cin=h_s_dadda_cska24_fa122_xor1 fa_xor1=h_s_dadda_cska24_fa128_xor1 fa_or0=h_s_dadda_cska24_fa128_or0
+.subckt fa a=h_s_dadda_cska24_fa128_or0 b=h_s_dadda_cska24_fa127_or0 cin=h_s_dadda_cska24_fa126_or0 fa_xor1=h_s_dadda_cska24_fa129_xor1 fa_or0=h_s_dadda_cska24_fa129_or0
+.subckt fa a=h_s_dadda_cska24_fa125_or0 b=h_s_dadda_cska24_fa124_or0 cin=h_s_dadda_cska24_fa123_or0 fa_xor1=h_s_dadda_cska24_fa130_xor1 fa_or0=h_s_dadda_cska24_fa130_or0
+.subckt fa a=h_s_dadda_cska24_fa122_or0 b=h_s_dadda_cska24_fa121_or0 cin=h_s_dadda_cska24_fa120_or0 fa_xor1=h_s_dadda_cska24_fa131_xor1 fa_or0=h_s_dadda_cska24_fa131_or0
+.subckt fa a=h_s_dadda_cska24_fa119_or0 b=h_s_dadda_cska24_fa118_or0 cin=h_s_dadda_cska24_fa117_or0 fa_xor1=h_s_dadda_cska24_fa132_xor1 fa_or0=h_s_dadda_cska24_fa132_or0
+.subckt and_gate a=a[15] b=b[6] out=h_s_dadda_cska24_and_15_6
+.subckt and_gate a=a[14] b=b[7] out=h_s_dadda_cska24_and_14_7
+.subckt fa a=h_s_dadda_cska24_fa116_or0 b=h_s_dadda_cska24_and_15_6 cin=h_s_dadda_cska24_and_14_7 fa_xor1=h_s_dadda_cska24_fa133_xor1 fa_or0=h_s_dadda_cska24_fa133_or0
+.subckt and_gate a=a[13] b=b[8] out=h_s_dadda_cska24_and_13_8
+.subckt and_gate a=a[12] b=b[9] out=h_s_dadda_cska24_and_12_9
+.subckt and_gate a=a[11] b=b[10] out=h_s_dadda_cska24_and_11_10
+.subckt fa a=h_s_dadda_cska24_and_13_8 b=h_s_dadda_cska24_and_12_9 cin=h_s_dadda_cska24_and_11_10 fa_xor1=h_s_dadda_cska24_fa134_xor1 fa_or0=h_s_dadda_cska24_fa134_or0
+.subckt and_gate a=a[10] b=b[11] out=h_s_dadda_cska24_and_10_11
+.subckt and_gate a=a[9] b=b[12] out=h_s_dadda_cska24_and_9_12
+.subckt and_gate a=a[8] b=b[13] out=h_s_dadda_cska24_and_8_13
+.subckt fa a=h_s_dadda_cska24_and_10_11 b=h_s_dadda_cska24_and_9_12 cin=h_s_dadda_cska24_and_8_13 fa_xor1=h_s_dadda_cska24_fa135_xor1 fa_or0=h_s_dadda_cska24_fa135_or0
+.subckt and_gate a=a[7] b=b[14] out=h_s_dadda_cska24_and_7_14
+.subckt and_gate a=a[6] b=b[15] out=h_s_dadda_cska24_and_6_15
+.subckt and_gate a=a[5] b=b[16] out=h_s_dadda_cska24_and_5_16
+.subckt fa a=h_s_dadda_cska24_and_7_14 b=h_s_dadda_cska24_and_6_15 cin=h_s_dadda_cska24_and_5_16 fa_xor1=h_s_dadda_cska24_fa136_xor1 fa_or0=h_s_dadda_cska24_fa136_or0
+.subckt and_gate a=a[4] b=b[17] out=h_s_dadda_cska24_and_4_17
+.subckt and_gate a=a[3] b=b[18] out=h_s_dadda_cska24_and_3_18
+.subckt and_gate a=a[2] b=b[19] out=h_s_dadda_cska24_and_2_19
+.subckt fa a=h_s_dadda_cska24_and_4_17 b=h_s_dadda_cska24_and_3_18 cin=h_s_dadda_cska24_and_2_19 fa_xor1=h_s_dadda_cska24_fa137_xor1 fa_or0=h_s_dadda_cska24_fa137_or0
+.subckt and_gate a=a[1] b=b[20] out=h_s_dadda_cska24_and_1_20
+.subckt and_gate a=a[0] b=b[21] out=h_s_dadda_cska24_and_0_21
+.subckt fa a=h_s_dadda_cska24_and_1_20 b=h_s_dadda_cska24_and_0_21 cin=h_s_dadda_cska24_fa1_xor1 fa_xor1=h_s_dadda_cska24_fa138_xor1 fa_or0=h_s_dadda_cska24_fa138_or0
+.subckt fa a=h_s_dadda_cska24_fa2_xor1 b=h_s_dadda_cska24_ha2_xor0 cin=h_s_dadda_cska24_fa129_xor1 fa_xor1=h_s_dadda_cska24_fa139_xor1 fa_or0=h_s_dadda_cska24_fa139_or0
+.subckt fa a=h_s_dadda_cska24_fa130_xor1 b=h_s_dadda_cska24_fa131_xor1 cin=h_s_dadda_cska24_fa132_xor1 fa_xor1=h_s_dadda_cska24_fa140_xor1 fa_or0=h_s_dadda_cska24_fa140_or0
+.subckt fa a=h_s_dadda_cska24_fa133_xor1 b=h_s_dadda_cska24_fa134_xor1 cin=h_s_dadda_cska24_fa135_xor1 fa_xor1=h_s_dadda_cska24_fa141_xor1 fa_or0=h_s_dadda_cska24_fa141_or0
+.subckt fa a=h_s_dadda_cska24_fa141_or0 b=h_s_dadda_cska24_fa140_or0 cin=h_s_dadda_cska24_fa139_or0 fa_xor1=h_s_dadda_cska24_fa142_xor1 fa_or0=h_s_dadda_cska24_fa142_or0
+.subckt fa a=h_s_dadda_cska24_fa138_or0 b=h_s_dadda_cska24_fa137_or0 cin=h_s_dadda_cska24_fa136_or0 fa_xor1=h_s_dadda_cska24_fa143_xor1 fa_or0=h_s_dadda_cska24_fa143_or0
+.subckt fa a=h_s_dadda_cska24_fa135_or0 b=h_s_dadda_cska24_fa134_or0 cin=h_s_dadda_cska24_fa133_or0 fa_xor1=h_s_dadda_cska24_fa144_xor1 fa_or0=h_s_dadda_cska24_fa144_or0
+.subckt fa a=h_s_dadda_cska24_fa132_or0 b=h_s_dadda_cska24_fa131_or0 cin=h_s_dadda_cska24_fa130_or0 fa_xor1=h_s_dadda_cska24_fa145_xor1 fa_or0=h_s_dadda_cska24_fa145_or0
+.subckt and_gate a=a[14] b=b[8] out=h_s_dadda_cska24_and_14_8
+.subckt and_gate a=a[13] b=b[9] out=h_s_dadda_cska24_and_13_9
+.subckt fa a=h_s_dadda_cska24_fa129_or0 b=h_s_dadda_cska24_and_14_8 cin=h_s_dadda_cska24_and_13_9 fa_xor1=h_s_dadda_cska24_fa146_xor1 fa_or0=h_s_dadda_cska24_fa146_or0
+.subckt and_gate a=a[12] b=b[10] out=h_s_dadda_cska24_and_12_10
+.subckt and_gate a=a[11] b=b[11] out=h_s_dadda_cska24_and_11_11
+.subckt and_gate a=a[10] b=b[12] out=h_s_dadda_cska24_and_10_12
+.subckt fa a=h_s_dadda_cska24_and_12_10 b=h_s_dadda_cska24_and_11_11 cin=h_s_dadda_cska24_and_10_12 fa_xor1=h_s_dadda_cska24_fa147_xor1 fa_or0=h_s_dadda_cska24_fa147_or0
+.subckt and_gate a=a[9] b=b[13] out=h_s_dadda_cska24_and_9_13
+.subckt and_gate a=a[8] b=b[14] out=h_s_dadda_cska24_and_8_14
+.subckt and_gate a=a[7] b=b[15] out=h_s_dadda_cska24_and_7_15
+.subckt fa a=h_s_dadda_cska24_and_9_13 b=h_s_dadda_cska24_and_8_14 cin=h_s_dadda_cska24_and_7_15 fa_xor1=h_s_dadda_cska24_fa148_xor1 fa_or0=h_s_dadda_cska24_fa148_or0
+.subckt and_gate a=a[6] b=b[16] out=h_s_dadda_cska24_and_6_16
+.subckt and_gate a=a[5] b=b[17] out=h_s_dadda_cska24_and_5_17
+.subckt and_gate a=a[4] b=b[18] out=h_s_dadda_cska24_and_4_18
+.subckt fa a=h_s_dadda_cska24_and_6_16 b=h_s_dadda_cska24_and_5_17 cin=h_s_dadda_cska24_and_4_18 fa_xor1=h_s_dadda_cska24_fa149_xor1 fa_or0=h_s_dadda_cska24_fa149_or0
+.subckt and_gate a=a[3] b=b[19] out=h_s_dadda_cska24_and_3_19
+.subckt and_gate a=a[2] b=b[20] out=h_s_dadda_cska24_and_2_20
+.subckt and_gate a=a[1] b=b[21] out=h_s_dadda_cska24_and_1_21
+.subckt fa a=h_s_dadda_cska24_and_3_19 b=h_s_dadda_cska24_and_2_20 cin=h_s_dadda_cska24_and_1_21 fa_xor1=h_s_dadda_cska24_fa150_xor1 fa_or0=h_s_dadda_cska24_fa150_or0
+.subckt and_gate a=a[0] b=b[22] out=h_s_dadda_cska24_and_0_22
+.subckt fa a=h_s_dadda_cska24_and_0_22 b=h_s_dadda_cska24_fa3_xor1 cin=h_s_dadda_cska24_fa4_xor1 fa_xor1=h_s_dadda_cska24_fa151_xor1 fa_or0=h_s_dadda_cska24_fa151_or0
+.subckt fa a=h_s_dadda_cska24_fa5_xor1 b=h_s_dadda_cska24_ha3_xor0 cin=h_s_dadda_cska24_fa142_xor1 fa_xor1=h_s_dadda_cska24_fa152_xor1 fa_or0=h_s_dadda_cska24_fa152_or0
+.subckt fa a=h_s_dadda_cska24_fa143_xor1 b=h_s_dadda_cska24_fa144_xor1 cin=h_s_dadda_cska24_fa145_xor1 fa_xor1=h_s_dadda_cska24_fa153_xor1 fa_or0=h_s_dadda_cska24_fa153_or0
+.subckt fa a=h_s_dadda_cska24_fa146_xor1 b=h_s_dadda_cska24_fa147_xor1 cin=h_s_dadda_cska24_fa148_xor1 fa_xor1=h_s_dadda_cska24_fa154_xor1 fa_or0=h_s_dadda_cska24_fa154_or0
+.subckt fa a=h_s_dadda_cska24_fa154_or0 b=h_s_dadda_cska24_fa153_or0 cin=h_s_dadda_cska24_fa152_or0 fa_xor1=h_s_dadda_cska24_fa155_xor1 fa_or0=h_s_dadda_cska24_fa155_or0
+.subckt fa a=h_s_dadda_cska24_fa151_or0 b=h_s_dadda_cska24_fa150_or0 cin=h_s_dadda_cska24_fa149_or0 fa_xor1=h_s_dadda_cska24_fa156_xor1 fa_or0=h_s_dadda_cska24_fa156_or0
+.subckt fa a=h_s_dadda_cska24_fa148_or0 b=h_s_dadda_cska24_fa147_or0 cin=h_s_dadda_cska24_fa146_or0 fa_xor1=h_s_dadda_cska24_fa157_xor1 fa_or0=h_s_dadda_cska24_fa157_or0
+.subckt fa a=h_s_dadda_cska24_fa145_or0 b=h_s_dadda_cska24_fa144_or0 cin=h_s_dadda_cska24_fa143_or0 fa_xor1=h_s_dadda_cska24_fa158_xor1 fa_or0=h_s_dadda_cska24_fa158_or0
+.subckt and_gate a=a[13] b=b[10] out=h_s_dadda_cska24_and_13_10
+.subckt and_gate a=a[12] b=b[11] out=h_s_dadda_cska24_and_12_11
+.subckt fa a=h_s_dadda_cska24_fa142_or0 b=h_s_dadda_cska24_and_13_10 cin=h_s_dadda_cska24_and_12_11 fa_xor1=h_s_dadda_cska24_fa159_xor1 fa_or0=h_s_dadda_cska24_fa159_or0
+.subckt and_gate a=a[11] b=b[12] out=h_s_dadda_cska24_and_11_12
+.subckt and_gate a=a[10] b=b[13] out=h_s_dadda_cska24_and_10_13
+.subckt and_gate a=a[9] b=b[14] out=h_s_dadda_cska24_and_9_14
+.subckt fa a=h_s_dadda_cska24_and_11_12 b=h_s_dadda_cska24_and_10_13 cin=h_s_dadda_cska24_and_9_14 fa_xor1=h_s_dadda_cska24_fa160_xor1 fa_or0=h_s_dadda_cska24_fa160_or0
+.subckt and_gate a=a[8] b=b[15] out=h_s_dadda_cska24_and_8_15
+.subckt and_gate a=a[7] b=b[16] out=h_s_dadda_cska24_and_7_16
+.subckt and_gate a=a[6] b=b[17] out=h_s_dadda_cska24_and_6_17
+.subckt fa a=h_s_dadda_cska24_and_8_15 b=h_s_dadda_cska24_and_7_16 cin=h_s_dadda_cska24_and_6_17 fa_xor1=h_s_dadda_cska24_fa161_xor1 fa_or0=h_s_dadda_cska24_fa161_or0
+.subckt and_gate a=a[5] b=b[18] out=h_s_dadda_cska24_and_5_18
+.subckt and_gate a=a[4] b=b[19] out=h_s_dadda_cska24_and_4_19
+.subckt and_gate a=a[3] b=b[20] out=h_s_dadda_cska24_and_3_20
+.subckt fa a=h_s_dadda_cska24_and_5_18 b=h_s_dadda_cska24_and_4_19 cin=h_s_dadda_cska24_and_3_20 fa_xor1=h_s_dadda_cska24_fa162_xor1 fa_or0=h_s_dadda_cska24_fa162_or0
+.subckt and_gate a=a[2] b=b[21] out=h_s_dadda_cska24_and_2_21
+.subckt and_gate a=a[1] b=b[22] out=h_s_dadda_cska24_and_1_22
+.subckt nand_gate a=a[0] b=b[23] out=h_s_dadda_cska24_nand_0_23
+.subckt fa a=h_s_dadda_cska24_and_2_21 b=h_s_dadda_cska24_and_1_22 cin=h_s_dadda_cska24_nand_0_23 fa_xor1=h_s_dadda_cska24_fa163_xor1 fa_or0=h_s_dadda_cska24_fa163_or0
+.subckt fa a=h_s_dadda_cska24_fa6_xor1 b=h_s_dadda_cska24_fa7_xor1 cin=h_s_dadda_cska24_fa8_xor1 fa_xor1=h_s_dadda_cska24_fa164_xor1 fa_or0=h_s_dadda_cska24_fa164_or0
+.subckt fa a=h_s_dadda_cska24_fa9_xor1 b=h_s_dadda_cska24_ha4_xor0 cin=h_s_dadda_cska24_fa155_xor1 fa_xor1=h_s_dadda_cska24_fa165_xor1 fa_or0=h_s_dadda_cska24_fa165_or0
+.subckt fa a=h_s_dadda_cska24_fa156_xor1 b=h_s_dadda_cska24_fa157_xor1 cin=h_s_dadda_cska24_fa158_xor1 fa_xor1=h_s_dadda_cska24_fa166_xor1 fa_or0=h_s_dadda_cska24_fa166_or0
+.subckt fa a=h_s_dadda_cska24_fa159_xor1 b=h_s_dadda_cska24_fa160_xor1 cin=h_s_dadda_cska24_fa161_xor1 fa_xor1=h_s_dadda_cska24_fa167_xor1 fa_or0=h_s_dadda_cska24_fa167_or0
+.subckt fa a=h_s_dadda_cska24_fa167_or0 b=h_s_dadda_cska24_fa166_or0 cin=h_s_dadda_cska24_fa165_or0 fa_xor1=h_s_dadda_cska24_fa168_xor1 fa_or0=h_s_dadda_cska24_fa168_or0
+.subckt fa a=h_s_dadda_cska24_fa164_or0 b=h_s_dadda_cska24_fa163_or0 cin=h_s_dadda_cska24_fa162_or0 fa_xor1=h_s_dadda_cska24_fa169_xor1 fa_or0=h_s_dadda_cska24_fa169_or0
+.subckt fa a=h_s_dadda_cska24_fa161_or0 b=h_s_dadda_cska24_fa160_or0 cin=h_s_dadda_cska24_fa159_or0 fa_xor1=h_s_dadda_cska24_fa170_xor1 fa_or0=h_s_dadda_cska24_fa170_or0
+.subckt fa a=h_s_dadda_cska24_fa158_or0 b=h_s_dadda_cska24_fa157_or0 cin=h_s_dadda_cska24_fa156_or0 fa_xor1=h_s_dadda_cska24_fa171_xor1 fa_or0=h_s_dadda_cska24_fa171_or0
+.subckt and_gate a=a[14] b=b[10] out=h_s_dadda_cska24_and_14_10
+.subckt and_gate a=a[13] b=b[11] out=h_s_dadda_cska24_and_13_11
+.subckt fa a=h_s_dadda_cska24_fa155_or0 b=h_s_dadda_cska24_and_14_10 cin=h_s_dadda_cska24_and_13_11 fa_xor1=h_s_dadda_cska24_fa172_xor1 fa_or0=h_s_dadda_cska24_fa172_or0
+.subckt and_gate a=a[12] b=b[12] out=h_s_dadda_cska24_and_12_12
+.subckt and_gate a=a[11] b=b[13] out=h_s_dadda_cska24_and_11_13
+.subckt and_gate a=a[10] b=b[14] out=h_s_dadda_cska24_and_10_14
+.subckt fa a=h_s_dadda_cska24_and_12_12 b=h_s_dadda_cska24_and_11_13 cin=h_s_dadda_cska24_and_10_14 fa_xor1=h_s_dadda_cska24_fa173_xor1 fa_or0=h_s_dadda_cska24_fa173_or0
+.subckt and_gate a=a[9] b=b[15] out=h_s_dadda_cska24_and_9_15
+.subckt and_gate a=a[8] b=b[16] out=h_s_dadda_cska24_and_8_16
+.subckt and_gate a=a[7] b=b[17] out=h_s_dadda_cska24_and_7_17
+.subckt fa a=h_s_dadda_cska24_and_9_15 b=h_s_dadda_cska24_and_8_16 cin=h_s_dadda_cska24_and_7_17 fa_xor1=h_s_dadda_cska24_fa174_xor1 fa_or0=h_s_dadda_cska24_fa174_or0
+.subckt and_gate a=a[6] b=b[18] out=h_s_dadda_cska24_and_6_18
+.subckt and_gate a=a[5] b=b[19] out=h_s_dadda_cska24_and_5_19
+.subckt and_gate a=a[4] b=b[20] out=h_s_dadda_cska24_and_4_20
+.subckt fa a=h_s_dadda_cska24_and_6_18 b=h_s_dadda_cska24_and_5_19 cin=h_s_dadda_cska24_and_4_20 fa_xor1=h_s_dadda_cska24_fa175_xor1 fa_or0=h_s_dadda_cska24_fa175_or0
+.subckt and_gate a=a[3] b=b[21] out=h_s_dadda_cska24_and_3_21
+.subckt and_gate a=a[2] b=b[22] out=h_s_dadda_cska24_and_2_22
+.subckt nand_gate a=a[1] b=b[23] out=h_s_dadda_cska24_nand_1_23
+.subckt fa a=h_s_dadda_cska24_and_3_21 b=h_s_dadda_cska24_and_2_22 cin=h_s_dadda_cska24_nand_1_23 fa_xor1=h_s_dadda_cska24_fa176_xor1 fa_or0=h_s_dadda_cska24_fa176_or0
+.subckt fa a=h_s_dadda_cska24_fa10_xor1 b=h_s_dadda_cska24_fa11_xor1 cin=h_s_dadda_cska24_fa12_xor1 fa_xor1=h_s_dadda_cska24_fa177_xor1 fa_or0=h_s_dadda_cska24_fa177_or0
+.subckt fa a=h_s_dadda_cska24_fa13_xor1 b=h_s_dadda_cska24_fa14_xor1 cin=h_s_dadda_cska24_fa168_xor1 fa_xor1=h_s_dadda_cska24_fa178_xor1 fa_or0=h_s_dadda_cska24_fa178_or0
+.subckt fa a=h_s_dadda_cska24_fa169_xor1 b=h_s_dadda_cska24_fa170_xor1 cin=h_s_dadda_cska24_fa171_xor1 fa_xor1=h_s_dadda_cska24_fa179_xor1 fa_or0=h_s_dadda_cska24_fa179_or0
+.subckt fa a=h_s_dadda_cska24_fa172_xor1 b=h_s_dadda_cska24_fa173_xor1 cin=h_s_dadda_cska24_fa174_xor1 fa_xor1=h_s_dadda_cska24_fa180_xor1 fa_or0=h_s_dadda_cska24_fa180_or0
+.subckt fa a=h_s_dadda_cska24_fa180_or0 b=h_s_dadda_cska24_fa179_or0 cin=h_s_dadda_cska24_fa178_or0 fa_xor1=h_s_dadda_cska24_fa181_xor1 fa_or0=h_s_dadda_cska24_fa181_or0
+.subckt fa a=h_s_dadda_cska24_fa177_or0 b=h_s_dadda_cska24_fa176_or0 cin=h_s_dadda_cska24_fa175_or0 fa_xor1=h_s_dadda_cska24_fa182_xor1 fa_or0=h_s_dadda_cska24_fa182_or0
+.subckt fa a=h_s_dadda_cska24_fa174_or0 b=h_s_dadda_cska24_fa173_or0 cin=h_s_dadda_cska24_fa172_or0 fa_xor1=h_s_dadda_cska24_fa183_xor1 fa_or0=h_s_dadda_cska24_fa183_or0
+.subckt fa a=h_s_dadda_cska24_fa171_or0 b=h_s_dadda_cska24_fa170_or0 cin=h_s_dadda_cska24_fa169_or0 fa_xor1=h_s_dadda_cska24_fa184_xor1 fa_or0=h_s_dadda_cska24_fa184_or0
+.subckt and_gate a=a[16] b=b[9] out=h_s_dadda_cska24_and_16_9
+.subckt and_gate a=a[15] b=b[10] out=h_s_dadda_cska24_and_15_10
+.subckt fa a=h_s_dadda_cska24_fa168_or0 b=h_s_dadda_cska24_and_16_9 cin=h_s_dadda_cska24_and_15_10 fa_xor1=h_s_dadda_cska24_fa185_xor1 fa_or0=h_s_dadda_cska24_fa185_or0
+.subckt and_gate a=a[14] b=b[11] out=h_s_dadda_cska24_and_14_11
+.subckt and_gate a=a[13] b=b[12] out=h_s_dadda_cska24_and_13_12
+.subckt and_gate a=a[12] b=b[13] out=h_s_dadda_cska24_and_12_13
+.subckt fa a=h_s_dadda_cska24_and_14_11 b=h_s_dadda_cska24_and_13_12 cin=h_s_dadda_cska24_and_12_13 fa_xor1=h_s_dadda_cska24_fa186_xor1 fa_or0=h_s_dadda_cska24_fa186_or0
+.subckt and_gate a=a[11] b=b[14] out=h_s_dadda_cska24_and_11_14
+.subckt and_gate a=a[10] b=b[15] out=h_s_dadda_cska24_and_10_15
+.subckt and_gate a=a[9] b=b[16] out=h_s_dadda_cska24_and_9_16
+.subckt fa a=h_s_dadda_cska24_and_11_14 b=h_s_dadda_cska24_and_10_15 cin=h_s_dadda_cska24_and_9_16 fa_xor1=h_s_dadda_cska24_fa187_xor1 fa_or0=h_s_dadda_cska24_fa187_or0
+.subckt and_gate a=a[8] b=b[17] out=h_s_dadda_cska24_and_8_17
+.subckt and_gate a=a[7] b=b[18] out=h_s_dadda_cska24_and_7_18
+.subckt and_gate a=a[6] b=b[19] out=h_s_dadda_cska24_and_6_19
+.subckt fa a=h_s_dadda_cska24_and_8_17 b=h_s_dadda_cska24_and_7_18 cin=h_s_dadda_cska24_and_6_19 fa_xor1=h_s_dadda_cska24_fa188_xor1 fa_or0=h_s_dadda_cska24_fa188_or0
+.subckt and_gate a=a[5] b=b[20] out=h_s_dadda_cska24_and_5_20
+.subckt and_gate a=a[4] b=b[21] out=h_s_dadda_cska24_and_4_21
+.subckt and_gate a=a[3] b=b[22] out=h_s_dadda_cska24_and_3_22
+.subckt fa a=h_s_dadda_cska24_and_5_20 b=h_s_dadda_cska24_and_4_21 cin=h_s_dadda_cska24_and_3_22 fa_xor1=h_s_dadda_cska24_fa189_xor1 fa_or0=h_s_dadda_cska24_fa189_or0
+.subckt nand_gate a=a[2] b=b[23] out=h_s_dadda_cska24_nand_2_23
+.subckt fa a=h_s_dadda_cska24_nand_2_23 b=h_s_dadda_cska24_fa15_xor1 cin=h_s_dadda_cska24_fa16_xor1 fa_xor1=h_s_dadda_cska24_fa190_xor1 fa_or0=h_s_dadda_cska24_fa190_or0
+.subckt fa a=h_s_dadda_cska24_fa17_xor1 b=h_s_dadda_cska24_fa18_xor1 cin=h_s_dadda_cska24_fa181_xor1 fa_xor1=h_s_dadda_cska24_fa191_xor1 fa_or0=h_s_dadda_cska24_fa191_or0
+.subckt fa a=h_s_dadda_cska24_fa182_xor1 b=h_s_dadda_cska24_fa183_xor1 cin=h_s_dadda_cska24_fa184_xor1 fa_xor1=h_s_dadda_cska24_fa192_xor1 fa_or0=h_s_dadda_cska24_fa192_or0
+.subckt fa a=h_s_dadda_cska24_fa185_xor1 b=h_s_dadda_cska24_fa186_xor1 cin=h_s_dadda_cska24_fa187_xor1 fa_xor1=h_s_dadda_cska24_fa193_xor1 fa_or0=h_s_dadda_cska24_fa193_or0
+.subckt fa a=h_s_dadda_cska24_fa193_or0 b=h_s_dadda_cska24_fa192_or0 cin=h_s_dadda_cska24_fa191_or0 fa_xor1=h_s_dadda_cska24_fa194_xor1 fa_or0=h_s_dadda_cska24_fa194_or0
+.subckt fa a=h_s_dadda_cska24_fa190_or0 b=h_s_dadda_cska24_fa189_or0 cin=h_s_dadda_cska24_fa188_or0 fa_xor1=h_s_dadda_cska24_fa195_xor1 fa_or0=h_s_dadda_cska24_fa195_or0
+.subckt fa a=h_s_dadda_cska24_fa187_or0 b=h_s_dadda_cska24_fa186_or0 cin=h_s_dadda_cska24_fa185_or0 fa_xor1=h_s_dadda_cska24_fa196_xor1 fa_or0=h_s_dadda_cska24_fa196_or0
+.subckt fa a=h_s_dadda_cska24_fa184_or0 b=h_s_dadda_cska24_fa183_or0 cin=h_s_dadda_cska24_fa182_or0 fa_xor1=h_s_dadda_cska24_fa197_xor1 fa_or0=h_s_dadda_cska24_fa197_or0
+.subckt and_gate a=a[18] b=b[8] out=h_s_dadda_cska24_and_18_8
+.subckt and_gate a=a[17] b=b[9] out=h_s_dadda_cska24_and_17_9
+.subckt fa a=h_s_dadda_cska24_fa181_or0 b=h_s_dadda_cska24_and_18_8 cin=h_s_dadda_cska24_and_17_9 fa_xor1=h_s_dadda_cska24_fa198_xor1 fa_or0=h_s_dadda_cska24_fa198_or0
+.subckt and_gate a=a[16] b=b[10] out=h_s_dadda_cska24_and_16_10
+.subckt and_gate a=a[15] b=b[11] out=h_s_dadda_cska24_and_15_11
+.subckt and_gate a=a[14] b=b[12] out=h_s_dadda_cska24_and_14_12
+.subckt fa a=h_s_dadda_cska24_and_16_10 b=h_s_dadda_cska24_and_15_11 cin=h_s_dadda_cska24_and_14_12 fa_xor1=h_s_dadda_cska24_fa199_xor1 fa_or0=h_s_dadda_cska24_fa199_or0
+.subckt and_gate a=a[13] b=b[13] out=h_s_dadda_cska24_and_13_13
+.subckt and_gate a=a[12] b=b[14] out=h_s_dadda_cska24_and_12_14
+.subckt and_gate a=a[11] b=b[15] out=h_s_dadda_cska24_and_11_15
+.subckt fa a=h_s_dadda_cska24_and_13_13 b=h_s_dadda_cska24_and_12_14 cin=h_s_dadda_cska24_and_11_15 fa_xor1=h_s_dadda_cska24_fa200_xor1 fa_or0=h_s_dadda_cska24_fa200_or0
+.subckt and_gate a=a[10] b=b[16] out=h_s_dadda_cska24_and_10_16
+.subckt and_gate a=a[9] b=b[17] out=h_s_dadda_cska24_and_9_17
+.subckt and_gate a=a[8] b=b[18] out=h_s_dadda_cska24_and_8_18
+.subckt fa a=h_s_dadda_cska24_and_10_16 b=h_s_dadda_cska24_and_9_17 cin=h_s_dadda_cska24_and_8_18 fa_xor1=h_s_dadda_cska24_fa201_xor1 fa_or0=h_s_dadda_cska24_fa201_or0
+.subckt and_gate a=a[7] b=b[19] out=h_s_dadda_cska24_and_7_19
+.subckt and_gate a=a[6] b=b[20] out=h_s_dadda_cska24_and_6_20
+.subckt and_gate a=a[5] b=b[21] out=h_s_dadda_cska24_and_5_21
+.subckt fa a=h_s_dadda_cska24_and_7_19 b=h_s_dadda_cska24_and_6_20 cin=h_s_dadda_cska24_and_5_21 fa_xor1=h_s_dadda_cska24_fa202_xor1 fa_or0=h_s_dadda_cska24_fa202_or0
+.subckt and_gate a=a[4] b=b[22] out=h_s_dadda_cska24_and_4_22
+.subckt nand_gate a=a[3] b=b[23] out=h_s_dadda_cska24_nand_3_23
+.subckt fa a=h_s_dadda_cska24_and_4_22 b=h_s_dadda_cska24_nand_3_23 cin=h_s_dadda_cska24_fa19_xor1 fa_xor1=h_s_dadda_cska24_fa203_xor1 fa_or0=h_s_dadda_cska24_fa203_or0
+.subckt fa a=h_s_dadda_cska24_fa20_xor1 b=h_s_dadda_cska24_fa21_xor1 cin=h_s_dadda_cska24_fa194_xor1 fa_xor1=h_s_dadda_cska24_fa204_xor1 fa_or0=h_s_dadda_cska24_fa204_or0
+.subckt fa a=h_s_dadda_cska24_fa195_xor1 b=h_s_dadda_cska24_fa196_xor1 cin=h_s_dadda_cska24_fa197_xor1 fa_xor1=h_s_dadda_cska24_fa205_xor1 fa_or0=h_s_dadda_cska24_fa205_or0
+.subckt fa a=h_s_dadda_cska24_fa198_xor1 b=h_s_dadda_cska24_fa199_xor1 cin=h_s_dadda_cska24_fa200_xor1 fa_xor1=h_s_dadda_cska24_fa206_xor1 fa_or0=h_s_dadda_cska24_fa206_or0
+.subckt fa a=h_s_dadda_cska24_fa206_or0 b=h_s_dadda_cska24_fa205_or0 cin=h_s_dadda_cska24_fa204_or0 fa_xor1=h_s_dadda_cska24_fa207_xor1 fa_or0=h_s_dadda_cska24_fa207_or0
+.subckt fa a=h_s_dadda_cska24_fa203_or0 b=h_s_dadda_cska24_fa202_or0 cin=h_s_dadda_cska24_fa201_or0 fa_xor1=h_s_dadda_cska24_fa208_xor1 fa_or0=h_s_dadda_cska24_fa208_or0
+.subckt fa a=h_s_dadda_cska24_fa200_or0 b=h_s_dadda_cska24_fa199_or0 cin=h_s_dadda_cska24_fa198_or0 fa_xor1=h_s_dadda_cska24_fa209_xor1 fa_or0=h_s_dadda_cska24_fa209_or0
+.subckt fa a=h_s_dadda_cska24_fa197_or0 b=h_s_dadda_cska24_fa196_or0 cin=h_s_dadda_cska24_fa195_or0 fa_xor1=h_s_dadda_cska24_fa210_xor1 fa_or0=h_s_dadda_cska24_fa210_or0
+.subckt and_gate a=a[20] b=b[7] out=h_s_dadda_cska24_and_20_7
+.subckt and_gate a=a[19] b=b[8] out=h_s_dadda_cska24_and_19_8
+.subckt fa a=h_s_dadda_cska24_fa194_or0 b=h_s_dadda_cska24_and_20_7 cin=h_s_dadda_cska24_and_19_8 fa_xor1=h_s_dadda_cska24_fa211_xor1 fa_or0=h_s_dadda_cska24_fa211_or0
+.subckt and_gate a=a[18] b=b[9] out=h_s_dadda_cska24_and_18_9
+.subckt and_gate a=a[17] b=b[10] out=h_s_dadda_cska24_and_17_10
+.subckt and_gate a=a[16] b=b[11] out=h_s_dadda_cska24_and_16_11
+.subckt fa a=h_s_dadda_cska24_and_18_9 b=h_s_dadda_cska24_and_17_10 cin=h_s_dadda_cska24_and_16_11 fa_xor1=h_s_dadda_cska24_fa212_xor1 fa_or0=h_s_dadda_cska24_fa212_or0
+.subckt and_gate a=a[15] b=b[12] out=h_s_dadda_cska24_and_15_12
+.subckt and_gate a=a[14] b=b[13] out=h_s_dadda_cska24_and_14_13
+.subckt and_gate a=a[13] b=b[14] out=h_s_dadda_cska24_and_13_14
+.subckt fa a=h_s_dadda_cska24_and_15_12 b=h_s_dadda_cska24_and_14_13 cin=h_s_dadda_cska24_and_13_14 fa_xor1=h_s_dadda_cska24_fa213_xor1 fa_or0=h_s_dadda_cska24_fa213_or0
+.subckt and_gate a=a[12] b=b[15] out=h_s_dadda_cska24_and_12_15
+.subckt and_gate a=a[11] b=b[16] out=h_s_dadda_cska24_and_11_16
+.subckt and_gate a=a[10] b=b[17] out=h_s_dadda_cska24_and_10_17
+.subckt fa a=h_s_dadda_cska24_and_12_15 b=h_s_dadda_cska24_and_11_16 cin=h_s_dadda_cska24_and_10_17 fa_xor1=h_s_dadda_cska24_fa214_xor1 fa_or0=h_s_dadda_cska24_fa214_or0
+.subckt and_gate a=a[9] b=b[18] out=h_s_dadda_cska24_and_9_18
+.subckt and_gate a=a[8] b=b[19] out=h_s_dadda_cska24_and_8_19
+.subckt and_gate a=a[7] b=b[20] out=h_s_dadda_cska24_and_7_20
+.subckt fa a=h_s_dadda_cska24_and_9_18 b=h_s_dadda_cska24_and_8_19 cin=h_s_dadda_cska24_and_7_20 fa_xor1=h_s_dadda_cska24_fa215_xor1 fa_or0=h_s_dadda_cska24_fa215_or0
+.subckt and_gate a=a[6] b=b[21] out=h_s_dadda_cska24_and_6_21
+.subckt and_gate a=a[5] b=b[22] out=h_s_dadda_cska24_and_5_22
+.subckt nand_gate a=a[4] b=b[23] out=h_s_dadda_cska24_nand_4_23
+.subckt fa a=h_s_dadda_cska24_and_6_21 b=h_s_dadda_cska24_and_5_22 cin=h_s_dadda_cska24_nand_4_23 fa_xor1=h_s_dadda_cska24_fa216_xor1 fa_or0=h_s_dadda_cska24_fa216_or0
+.subckt fa a=h_s_dadda_cska24_fa22_xor1 b=h_s_dadda_cska24_fa23_xor1 cin=h_s_dadda_cska24_fa207_xor1 fa_xor1=h_s_dadda_cska24_fa217_xor1 fa_or0=h_s_dadda_cska24_fa217_or0
+.subckt fa a=h_s_dadda_cska24_fa208_xor1 b=h_s_dadda_cska24_fa209_xor1 cin=h_s_dadda_cska24_fa210_xor1 fa_xor1=h_s_dadda_cska24_fa218_xor1 fa_or0=h_s_dadda_cska24_fa218_or0
+.subckt fa a=h_s_dadda_cska24_fa211_xor1 b=h_s_dadda_cska24_fa212_xor1 cin=h_s_dadda_cska24_fa213_xor1 fa_xor1=h_s_dadda_cska24_fa219_xor1 fa_or0=h_s_dadda_cska24_fa219_or0
+.subckt fa a=h_s_dadda_cska24_fa219_or0 b=h_s_dadda_cska24_fa218_or0 cin=h_s_dadda_cska24_fa217_or0 fa_xor1=h_s_dadda_cska24_fa220_xor1 fa_or0=h_s_dadda_cska24_fa220_or0
+.subckt fa a=h_s_dadda_cska24_fa216_or0 b=h_s_dadda_cska24_fa215_or0 cin=h_s_dadda_cska24_fa214_or0 fa_xor1=h_s_dadda_cska24_fa221_xor1 fa_or0=h_s_dadda_cska24_fa221_or0
+.subckt fa a=h_s_dadda_cska24_fa213_or0 b=h_s_dadda_cska24_fa212_or0 cin=h_s_dadda_cska24_fa211_or0 fa_xor1=h_s_dadda_cska24_fa222_xor1 fa_or0=h_s_dadda_cska24_fa222_or0
+.subckt fa a=h_s_dadda_cska24_fa210_or0 b=h_s_dadda_cska24_fa209_or0 cin=h_s_dadda_cska24_fa208_or0 fa_xor1=h_s_dadda_cska24_fa223_xor1 fa_or0=h_s_dadda_cska24_fa223_or0
+.subckt and_gate a=a[22] b=b[6] out=h_s_dadda_cska24_and_22_6
+.subckt and_gate a=a[21] b=b[7] out=h_s_dadda_cska24_and_21_7
+.subckt fa a=h_s_dadda_cska24_fa207_or0 b=h_s_dadda_cska24_and_22_6 cin=h_s_dadda_cska24_and_21_7 fa_xor1=h_s_dadda_cska24_fa224_xor1 fa_or0=h_s_dadda_cska24_fa224_or0
+.subckt and_gate a=a[20] b=b[8] out=h_s_dadda_cska24_and_20_8
+.subckt and_gate a=a[19] b=b[9] out=h_s_dadda_cska24_and_19_9
+.subckt and_gate a=a[18] b=b[10] out=h_s_dadda_cska24_and_18_10
+.subckt fa a=h_s_dadda_cska24_and_20_8 b=h_s_dadda_cska24_and_19_9 cin=h_s_dadda_cska24_and_18_10 fa_xor1=h_s_dadda_cska24_fa225_xor1 fa_or0=h_s_dadda_cska24_fa225_or0
+.subckt and_gate a=a[17] b=b[11] out=h_s_dadda_cska24_and_17_11
+.subckt and_gate a=a[16] b=b[12] out=h_s_dadda_cska24_and_16_12
+.subckt and_gate a=a[15] b=b[13] out=h_s_dadda_cska24_and_15_13
+.subckt fa a=h_s_dadda_cska24_and_17_11 b=h_s_dadda_cska24_and_16_12 cin=h_s_dadda_cska24_and_15_13 fa_xor1=h_s_dadda_cska24_fa226_xor1 fa_or0=h_s_dadda_cska24_fa226_or0
+.subckt and_gate a=a[14] b=b[14] out=h_s_dadda_cska24_and_14_14
+.subckt and_gate a=a[13] b=b[15] out=h_s_dadda_cska24_and_13_15
+.subckt and_gate a=a[12] b=b[16] out=h_s_dadda_cska24_and_12_16
+.subckt fa a=h_s_dadda_cska24_and_14_14 b=h_s_dadda_cska24_and_13_15 cin=h_s_dadda_cska24_and_12_16 fa_xor1=h_s_dadda_cska24_fa227_xor1 fa_or0=h_s_dadda_cska24_fa227_or0
+.subckt and_gate a=a[11] b=b[17] out=h_s_dadda_cska24_and_11_17
+.subckt and_gate a=a[10] b=b[18] out=h_s_dadda_cska24_and_10_18
+.subckt and_gate a=a[9] b=b[19] out=h_s_dadda_cska24_and_9_19
+.subckt fa a=h_s_dadda_cska24_and_11_17 b=h_s_dadda_cska24_and_10_18 cin=h_s_dadda_cska24_and_9_19 fa_xor1=h_s_dadda_cska24_fa228_xor1 fa_or0=h_s_dadda_cska24_fa228_or0
+.subckt and_gate a=a[8] b=b[20] out=h_s_dadda_cska24_and_8_20
+.subckt and_gate a=a[7] b=b[21] out=h_s_dadda_cska24_and_7_21
+.subckt and_gate a=a[6] b=b[22] out=h_s_dadda_cska24_and_6_22
+.subckt fa a=h_s_dadda_cska24_and_8_20 b=h_s_dadda_cska24_and_7_21 cin=h_s_dadda_cska24_and_6_22 fa_xor1=h_s_dadda_cska24_fa229_xor1 fa_or0=h_s_dadda_cska24_fa229_or0
+.subckt nand_gate a=a[5] b=b[23] out=h_s_dadda_cska24_nand_5_23
+.subckt fa a=h_s_dadda_cska24_nand_5_23 b=h_s_dadda_cska24_fa24_xor1 cin=h_s_dadda_cska24_fa220_xor1 fa_xor1=h_s_dadda_cska24_fa230_xor1 fa_or0=h_s_dadda_cska24_fa230_or0
+.subckt fa a=h_s_dadda_cska24_fa221_xor1 b=h_s_dadda_cska24_fa222_xor1 cin=h_s_dadda_cska24_fa223_xor1 fa_xor1=h_s_dadda_cska24_fa231_xor1 fa_or0=h_s_dadda_cska24_fa231_or0
+.subckt fa a=h_s_dadda_cska24_fa224_xor1 b=h_s_dadda_cska24_fa225_xor1 cin=h_s_dadda_cska24_fa226_xor1 fa_xor1=h_s_dadda_cska24_fa232_xor1 fa_or0=h_s_dadda_cska24_fa232_or0
+.subckt fa a=h_s_dadda_cska24_fa232_or0 b=h_s_dadda_cska24_fa231_or0 cin=h_s_dadda_cska24_fa230_or0 fa_xor1=h_s_dadda_cska24_fa233_xor1 fa_or0=h_s_dadda_cska24_fa233_or0
+.subckt fa a=h_s_dadda_cska24_fa229_or0 b=h_s_dadda_cska24_fa228_or0 cin=h_s_dadda_cska24_fa227_or0 fa_xor1=h_s_dadda_cska24_fa234_xor1 fa_or0=h_s_dadda_cska24_fa234_or0
+.subckt fa a=h_s_dadda_cska24_fa226_or0 b=h_s_dadda_cska24_fa225_or0 cin=h_s_dadda_cska24_fa224_or0 fa_xor1=h_s_dadda_cska24_fa235_xor1 fa_or0=h_s_dadda_cska24_fa235_or0
+.subckt fa a=h_s_dadda_cska24_fa223_or0 b=h_s_dadda_cska24_fa222_or0 cin=h_s_dadda_cska24_fa221_or0 fa_xor1=h_s_dadda_cska24_fa236_xor1 fa_or0=h_s_dadda_cska24_fa236_or0
+.subckt nand_gate a=a[23] b=b[6] out=h_s_dadda_cska24_nand_23_6
+.subckt fa a=h_s_dadda_cska24_fa220_or0 b=h_s_dadda_cska24_fa24_or0 cin=h_s_dadda_cska24_nand_23_6 fa_xor1=h_s_dadda_cska24_fa237_xor1 fa_or0=h_s_dadda_cska24_fa237_or0
+.subckt and_gate a=a[22] b=b[7] out=h_s_dadda_cska24_and_22_7
+.subckt and_gate a=a[21] b=b[8] out=h_s_dadda_cska24_and_21_8
+.subckt and_gate a=a[20] b=b[9] out=h_s_dadda_cska24_and_20_9
+.subckt fa a=h_s_dadda_cska24_and_22_7 b=h_s_dadda_cska24_and_21_8 cin=h_s_dadda_cska24_and_20_9 fa_xor1=h_s_dadda_cska24_fa238_xor1 fa_or0=h_s_dadda_cska24_fa238_or0
+.subckt and_gate a=a[19] b=b[10] out=h_s_dadda_cska24_and_19_10
+.subckt and_gate a=a[18] b=b[11] out=h_s_dadda_cska24_and_18_11
+.subckt and_gate a=a[17] b=b[12] out=h_s_dadda_cska24_and_17_12
+.subckt fa a=h_s_dadda_cska24_and_19_10 b=h_s_dadda_cska24_and_18_11 cin=h_s_dadda_cska24_and_17_12 fa_xor1=h_s_dadda_cska24_fa239_xor1 fa_or0=h_s_dadda_cska24_fa239_or0
+.subckt and_gate a=a[16] b=b[13] out=h_s_dadda_cska24_and_16_13
+.subckt and_gate a=a[15] b=b[14] out=h_s_dadda_cska24_and_15_14
+.subckt and_gate a=a[14] b=b[15] out=h_s_dadda_cska24_and_14_15
+.subckt fa a=h_s_dadda_cska24_and_16_13 b=h_s_dadda_cska24_and_15_14 cin=h_s_dadda_cska24_and_14_15 fa_xor1=h_s_dadda_cska24_fa240_xor1 fa_or0=h_s_dadda_cska24_fa240_or0
+.subckt and_gate a=a[13] b=b[16] out=h_s_dadda_cska24_and_13_16
+.subckt and_gate a=a[12] b=b[17] out=h_s_dadda_cska24_and_12_17
+.subckt and_gate a=a[11] b=b[18] out=h_s_dadda_cska24_and_11_18
+.subckt fa a=h_s_dadda_cska24_and_13_16 b=h_s_dadda_cska24_and_12_17 cin=h_s_dadda_cska24_and_11_18 fa_xor1=h_s_dadda_cska24_fa241_xor1 fa_or0=h_s_dadda_cska24_fa241_or0
+.subckt and_gate a=a[10] b=b[19] out=h_s_dadda_cska24_and_10_19
+.subckt and_gate a=a[9] b=b[20] out=h_s_dadda_cska24_and_9_20
+.subckt and_gate a=a[8] b=b[21] out=h_s_dadda_cska24_and_8_21
+.subckt fa a=h_s_dadda_cska24_and_10_19 b=h_s_dadda_cska24_and_9_20 cin=h_s_dadda_cska24_and_8_21 fa_xor1=h_s_dadda_cska24_fa242_xor1 fa_or0=h_s_dadda_cska24_fa242_or0
+.subckt and_gate a=a[7] b=b[22] out=h_s_dadda_cska24_and_7_22
+.subckt nand_gate a=a[6] b=b[23] out=h_s_dadda_cska24_nand_6_23
+.subckt fa a=h_s_dadda_cska24_and_7_22 b=h_s_dadda_cska24_nand_6_23 cin=h_s_dadda_cska24_fa233_xor1 fa_xor1=h_s_dadda_cska24_fa243_xor1 fa_or0=h_s_dadda_cska24_fa243_or0
+.subckt fa a=h_s_dadda_cska24_fa234_xor1 b=h_s_dadda_cska24_fa235_xor1 cin=h_s_dadda_cska24_fa236_xor1 fa_xor1=h_s_dadda_cska24_fa244_xor1 fa_or0=h_s_dadda_cska24_fa244_or0
+.subckt fa a=h_s_dadda_cska24_fa237_xor1 b=h_s_dadda_cska24_fa238_xor1 cin=h_s_dadda_cska24_fa239_xor1 fa_xor1=h_s_dadda_cska24_fa245_xor1 fa_or0=h_s_dadda_cska24_fa245_or0
+.subckt fa a=h_s_dadda_cska24_fa245_or0 b=h_s_dadda_cska24_fa244_or0 cin=h_s_dadda_cska24_fa243_or0 fa_xor1=h_s_dadda_cska24_fa246_xor1 fa_or0=h_s_dadda_cska24_fa246_or0
+.subckt fa a=h_s_dadda_cska24_fa242_or0 b=h_s_dadda_cska24_fa241_or0 cin=h_s_dadda_cska24_fa240_or0 fa_xor1=h_s_dadda_cska24_fa247_xor1 fa_or0=h_s_dadda_cska24_fa247_or0
+.subckt fa a=h_s_dadda_cska24_fa239_or0 b=h_s_dadda_cska24_fa238_or0 cin=h_s_dadda_cska24_fa237_or0 fa_xor1=h_s_dadda_cska24_fa248_xor1 fa_or0=h_s_dadda_cska24_fa248_or0
+.subckt fa a=h_s_dadda_cska24_fa236_or0 b=h_s_dadda_cska24_fa235_or0 cin=h_s_dadda_cska24_fa234_or0 fa_xor1=h_s_dadda_cska24_fa249_xor1 fa_or0=h_s_dadda_cska24_fa249_or0
+.subckt nand_gate a=a[23] b=b[7] out=h_s_dadda_cska24_nand_23_7
+.subckt and_gate a=a[22] b=b[8] out=h_s_dadda_cska24_and_22_8
+.subckt fa a=h_s_dadda_cska24_fa233_or0 b=h_s_dadda_cska24_nand_23_7 cin=h_s_dadda_cska24_and_22_8 fa_xor1=h_s_dadda_cska24_fa250_xor1 fa_or0=h_s_dadda_cska24_fa250_or0
+.subckt and_gate a=a[21] b=b[9] out=h_s_dadda_cska24_and_21_9
+.subckt and_gate a=a[20] b=b[10] out=h_s_dadda_cska24_and_20_10
+.subckt and_gate a=a[19] b=b[11] out=h_s_dadda_cska24_and_19_11
+.subckt fa a=h_s_dadda_cska24_and_21_9 b=h_s_dadda_cska24_and_20_10 cin=h_s_dadda_cska24_and_19_11 fa_xor1=h_s_dadda_cska24_fa251_xor1 fa_or0=h_s_dadda_cska24_fa251_or0
+.subckt and_gate a=a[18] b=b[12] out=h_s_dadda_cska24_and_18_12
+.subckt and_gate a=a[17] b=b[13] out=h_s_dadda_cska24_and_17_13
+.subckt and_gate a=a[16] b=b[14] out=h_s_dadda_cska24_and_16_14
+.subckt fa a=h_s_dadda_cska24_and_18_12 b=h_s_dadda_cska24_and_17_13 cin=h_s_dadda_cska24_and_16_14 fa_xor1=h_s_dadda_cska24_fa252_xor1 fa_or0=h_s_dadda_cska24_fa252_or0
+.subckt and_gate a=a[15] b=b[15] out=h_s_dadda_cska24_and_15_15
+.subckt and_gate a=a[14] b=b[16] out=h_s_dadda_cska24_and_14_16
+.subckt and_gate a=a[13] b=b[17] out=h_s_dadda_cska24_and_13_17
+.subckt fa a=h_s_dadda_cska24_and_15_15 b=h_s_dadda_cska24_and_14_16 cin=h_s_dadda_cska24_and_13_17 fa_xor1=h_s_dadda_cska24_fa253_xor1 fa_or0=h_s_dadda_cska24_fa253_or0
+.subckt and_gate a=a[12] b=b[18] out=h_s_dadda_cska24_and_12_18
+.subckt and_gate a=a[11] b=b[19] out=h_s_dadda_cska24_and_11_19
+.subckt and_gate a=a[10] b=b[20] out=h_s_dadda_cska24_and_10_20
+.subckt fa a=h_s_dadda_cska24_and_12_18 b=h_s_dadda_cska24_and_11_19 cin=h_s_dadda_cska24_and_10_20 fa_xor1=h_s_dadda_cska24_fa254_xor1 fa_or0=h_s_dadda_cska24_fa254_or0
+.subckt and_gate a=a[9] b=b[21] out=h_s_dadda_cska24_and_9_21
+.subckt and_gate a=a[8] b=b[22] out=h_s_dadda_cska24_and_8_22
+.subckt nand_gate a=a[7] b=b[23] out=h_s_dadda_cska24_nand_7_23
+.subckt fa a=h_s_dadda_cska24_and_9_21 b=h_s_dadda_cska24_and_8_22 cin=h_s_dadda_cska24_nand_7_23 fa_xor1=h_s_dadda_cska24_fa255_xor1 fa_or0=h_s_dadda_cska24_fa255_or0
+.subckt fa a=h_s_dadda_cska24_fa246_xor1 b=h_s_dadda_cska24_fa247_xor1 cin=h_s_dadda_cska24_fa248_xor1 fa_xor1=h_s_dadda_cska24_fa256_xor1 fa_or0=h_s_dadda_cska24_fa256_or0
+.subckt fa a=h_s_dadda_cska24_fa249_xor1 b=h_s_dadda_cska24_fa250_xor1 cin=h_s_dadda_cska24_fa251_xor1 fa_xor1=h_s_dadda_cska24_fa257_xor1 fa_or0=h_s_dadda_cska24_fa257_or0
+.subckt fa a=h_s_dadda_cska24_fa257_or0 b=h_s_dadda_cska24_fa256_or0 cin=h_s_dadda_cska24_fa255_or0 fa_xor1=h_s_dadda_cska24_fa258_xor1 fa_or0=h_s_dadda_cska24_fa258_or0
+.subckt fa a=h_s_dadda_cska24_fa254_or0 b=h_s_dadda_cska24_fa253_or0 cin=h_s_dadda_cska24_fa252_or0 fa_xor1=h_s_dadda_cska24_fa259_xor1 fa_or0=h_s_dadda_cska24_fa259_or0
+.subckt fa a=h_s_dadda_cska24_fa251_or0 b=h_s_dadda_cska24_fa250_or0 cin=h_s_dadda_cska24_fa249_or0 fa_xor1=h_s_dadda_cska24_fa260_xor1 fa_or0=h_s_dadda_cska24_fa260_or0
+.subckt fa a=h_s_dadda_cska24_fa248_or0 b=h_s_dadda_cska24_fa247_or0 cin=h_s_dadda_cska24_fa246_or0 fa_xor1=h_s_dadda_cska24_fa261_xor1 fa_or0=h_s_dadda_cska24_fa261_or0
+.subckt nand_gate a=a[23] b=b[8] out=h_s_dadda_cska24_nand_23_8
+.subckt and_gate a=a[22] b=b[9] out=h_s_dadda_cska24_and_22_9
+.subckt and_gate a=a[21] b=b[10] out=h_s_dadda_cska24_and_21_10
+.subckt fa a=h_s_dadda_cska24_nand_23_8 b=h_s_dadda_cska24_and_22_9 cin=h_s_dadda_cska24_and_21_10 fa_xor1=h_s_dadda_cska24_fa262_xor1 fa_or0=h_s_dadda_cska24_fa262_or0
+.subckt and_gate a=a[20] b=b[11] out=h_s_dadda_cska24_and_20_11
+.subckt and_gate a=a[19] b=b[12] out=h_s_dadda_cska24_and_19_12
+.subckt and_gate a=a[18] b=b[13] out=h_s_dadda_cska24_and_18_13
+.subckt fa a=h_s_dadda_cska24_and_20_11 b=h_s_dadda_cska24_and_19_12 cin=h_s_dadda_cska24_and_18_13 fa_xor1=h_s_dadda_cska24_fa263_xor1 fa_or0=h_s_dadda_cska24_fa263_or0
+.subckt and_gate a=a[17] b=b[14] out=h_s_dadda_cska24_and_17_14
+.subckt and_gate a=a[16] b=b[15] out=h_s_dadda_cska24_and_16_15
+.subckt and_gate a=a[15] b=b[16] out=h_s_dadda_cska24_and_15_16
+.subckt fa a=h_s_dadda_cska24_and_17_14 b=h_s_dadda_cska24_and_16_15 cin=h_s_dadda_cska24_and_15_16 fa_xor1=h_s_dadda_cska24_fa264_xor1 fa_or0=h_s_dadda_cska24_fa264_or0
+.subckt and_gate a=a[14] b=b[17] out=h_s_dadda_cska24_and_14_17
+.subckt and_gate a=a[13] b=b[18] out=h_s_dadda_cska24_and_13_18
+.subckt and_gate a=a[12] b=b[19] out=h_s_dadda_cska24_and_12_19
+.subckt fa a=h_s_dadda_cska24_and_14_17 b=h_s_dadda_cska24_and_13_18 cin=h_s_dadda_cska24_and_12_19 fa_xor1=h_s_dadda_cska24_fa265_xor1 fa_or0=h_s_dadda_cska24_fa265_or0
+.subckt and_gate a=a[11] b=b[20] out=h_s_dadda_cska24_and_11_20
+.subckt and_gate a=a[10] b=b[21] out=h_s_dadda_cska24_and_10_21
+.subckt and_gate a=a[9] b=b[22] out=h_s_dadda_cska24_and_9_22
+.subckt fa a=h_s_dadda_cska24_and_11_20 b=h_s_dadda_cska24_and_10_21 cin=h_s_dadda_cska24_and_9_22 fa_xor1=h_s_dadda_cska24_fa266_xor1 fa_or0=h_s_dadda_cska24_fa266_or0
+.subckt nand_gate a=a[8] b=b[23] out=h_s_dadda_cska24_nand_8_23
+.subckt fa a=h_s_dadda_cska24_nand_8_23 b=h_s_dadda_cska24_fa258_xor1 cin=h_s_dadda_cska24_fa259_xor1 fa_xor1=h_s_dadda_cska24_fa267_xor1 fa_or0=h_s_dadda_cska24_fa267_or0
+.subckt fa a=h_s_dadda_cska24_fa260_xor1 b=h_s_dadda_cska24_fa261_xor1 cin=h_s_dadda_cska24_fa262_xor1 fa_xor1=h_s_dadda_cska24_fa268_xor1 fa_or0=h_s_dadda_cska24_fa268_or0
+.subckt fa a=h_s_dadda_cska24_fa268_or0 b=h_s_dadda_cska24_fa267_or0 cin=h_s_dadda_cska24_fa266_or0 fa_xor1=h_s_dadda_cska24_fa269_xor1 fa_or0=h_s_dadda_cska24_fa269_or0
+.subckt fa a=h_s_dadda_cska24_fa265_or0 b=h_s_dadda_cska24_fa264_or0 cin=h_s_dadda_cska24_fa263_or0 fa_xor1=h_s_dadda_cska24_fa270_xor1 fa_or0=h_s_dadda_cska24_fa270_or0
+.subckt fa a=h_s_dadda_cska24_fa262_or0 b=h_s_dadda_cska24_fa261_or0 cin=h_s_dadda_cska24_fa260_or0 fa_xor1=h_s_dadda_cska24_fa271_xor1 fa_or0=h_s_dadda_cska24_fa271_or0
+.subckt nand_gate a=a[23] b=b[9] out=h_s_dadda_cska24_nand_23_9
+.subckt fa a=h_s_dadda_cska24_fa259_or0 b=h_s_dadda_cska24_fa258_or0 cin=h_s_dadda_cska24_nand_23_9 fa_xor1=h_s_dadda_cska24_fa272_xor1 fa_or0=h_s_dadda_cska24_fa272_or0
+.subckt and_gate a=a[22] b=b[10] out=h_s_dadda_cska24_and_22_10
+.subckt and_gate a=a[21] b=b[11] out=h_s_dadda_cska24_and_21_11
+.subckt and_gate a=a[20] b=b[12] out=h_s_dadda_cska24_and_20_12
+.subckt fa a=h_s_dadda_cska24_and_22_10 b=h_s_dadda_cska24_and_21_11 cin=h_s_dadda_cska24_and_20_12 fa_xor1=h_s_dadda_cska24_fa273_xor1 fa_or0=h_s_dadda_cska24_fa273_or0
+.subckt and_gate a=a[19] b=b[13] out=h_s_dadda_cska24_and_19_13
+.subckt and_gate a=a[18] b=b[14] out=h_s_dadda_cska24_and_18_14
+.subckt and_gate a=a[17] b=b[15] out=h_s_dadda_cska24_and_17_15
+.subckt fa a=h_s_dadda_cska24_and_19_13 b=h_s_dadda_cska24_and_18_14 cin=h_s_dadda_cska24_and_17_15 fa_xor1=h_s_dadda_cska24_fa274_xor1 fa_or0=h_s_dadda_cska24_fa274_or0
+.subckt and_gate a=a[16] b=b[16] out=h_s_dadda_cska24_and_16_16
+.subckt and_gate a=a[15] b=b[17] out=h_s_dadda_cska24_and_15_17
+.subckt and_gate a=a[14] b=b[18] out=h_s_dadda_cska24_and_14_18
+.subckt fa a=h_s_dadda_cska24_and_16_16 b=h_s_dadda_cska24_and_15_17 cin=h_s_dadda_cska24_and_14_18 fa_xor1=h_s_dadda_cska24_fa275_xor1 fa_or0=h_s_dadda_cska24_fa275_or0
+.subckt and_gate a=a[13] b=b[19] out=h_s_dadda_cska24_and_13_19
+.subckt and_gate a=a[12] b=b[20] out=h_s_dadda_cska24_and_12_20
+.subckt and_gate a=a[11] b=b[21] out=h_s_dadda_cska24_and_11_21
+.subckt fa a=h_s_dadda_cska24_and_13_19 b=h_s_dadda_cska24_and_12_20 cin=h_s_dadda_cska24_and_11_21 fa_xor1=h_s_dadda_cska24_fa276_xor1 fa_or0=h_s_dadda_cska24_fa276_or0
+.subckt and_gate a=a[10] b=b[22] out=h_s_dadda_cska24_and_10_22
+.subckt nand_gate a=a[9] b=b[23] out=h_s_dadda_cska24_nand_9_23
+.subckt fa a=h_s_dadda_cska24_and_10_22 b=h_s_dadda_cska24_nand_9_23 cin=h_s_dadda_cska24_fa269_xor1 fa_xor1=h_s_dadda_cska24_fa277_xor1 fa_or0=h_s_dadda_cska24_fa277_or0
+.subckt fa a=h_s_dadda_cska24_fa270_xor1 b=h_s_dadda_cska24_fa271_xor1 cin=h_s_dadda_cska24_fa272_xor1 fa_xor1=h_s_dadda_cska24_fa278_xor1 fa_or0=h_s_dadda_cska24_fa278_or0
+.subckt fa a=h_s_dadda_cska24_fa278_or0 b=h_s_dadda_cska24_fa277_or0 cin=h_s_dadda_cska24_fa276_or0 fa_xor1=h_s_dadda_cska24_fa279_xor1 fa_or0=h_s_dadda_cska24_fa279_or0
+.subckt fa a=h_s_dadda_cska24_fa275_or0 b=h_s_dadda_cska24_fa274_or0 cin=h_s_dadda_cska24_fa273_or0 fa_xor1=h_s_dadda_cska24_fa280_xor1 fa_or0=h_s_dadda_cska24_fa280_or0
+.subckt fa a=h_s_dadda_cska24_fa272_or0 b=h_s_dadda_cska24_fa271_or0 cin=h_s_dadda_cska24_fa270_or0 fa_xor1=h_s_dadda_cska24_fa281_xor1 fa_or0=h_s_dadda_cska24_fa281_or0
+.subckt nand_gate a=a[23] b=b[10] out=h_s_dadda_cska24_nand_23_10
+.subckt and_gate a=a[22] b=b[11] out=h_s_dadda_cska24_and_22_11
+.subckt fa a=h_s_dadda_cska24_fa269_or0 b=h_s_dadda_cska24_nand_23_10 cin=h_s_dadda_cska24_and_22_11 fa_xor1=h_s_dadda_cska24_fa282_xor1 fa_or0=h_s_dadda_cska24_fa282_or0
+.subckt and_gate a=a[21] b=b[12] out=h_s_dadda_cska24_and_21_12
+.subckt and_gate a=a[20] b=b[13] out=h_s_dadda_cska24_and_20_13
+.subckt and_gate a=a[19] b=b[14] out=h_s_dadda_cska24_and_19_14
+.subckt fa a=h_s_dadda_cska24_and_21_12 b=h_s_dadda_cska24_and_20_13 cin=h_s_dadda_cska24_and_19_14 fa_xor1=h_s_dadda_cska24_fa283_xor1 fa_or0=h_s_dadda_cska24_fa283_or0
+.subckt and_gate a=a[18] b=b[15] out=h_s_dadda_cska24_and_18_15
+.subckt and_gate a=a[17] b=b[16] out=h_s_dadda_cska24_and_17_16
+.subckt and_gate a=a[16] b=b[17] out=h_s_dadda_cska24_and_16_17
+.subckt fa a=h_s_dadda_cska24_and_18_15 b=h_s_dadda_cska24_and_17_16 cin=h_s_dadda_cska24_and_16_17 fa_xor1=h_s_dadda_cska24_fa284_xor1 fa_or0=h_s_dadda_cska24_fa284_or0
+.subckt and_gate a=a[15] b=b[18] out=h_s_dadda_cska24_and_15_18
+.subckt and_gate a=a[14] b=b[19] out=h_s_dadda_cska24_and_14_19
+.subckt and_gate a=a[13] b=b[20] out=h_s_dadda_cska24_and_13_20
+.subckt fa a=h_s_dadda_cska24_and_15_18 b=h_s_dadda_cska24_and_14_19 cin=h_s_dadda_cska24_and_13_20 fa_xor1=h_s_dadda_cska24_fa285_xor1 fa_or0=h_s_dadda_cska24_fa285_or0
+.subckt and_gate a=a[12] b=b[21] out=h_s_dadda_cska24_and_12_21
+.subckt and_gate a=a[11] b=b[22] out=h_s_dadda_cska24_and_11_22
+.subckt nand_gate a=a[10] b=b[23] out=h_s_dadda_cska24_nand_10_23
+.subckt fa a=h_s_dadda_cska24_and_12_21 b=h_s_dadda_cska24_and_11_22 cin=h_s_dadda_cska24_nand_10_23 fa_xor1=h_s_dadda_cska24_fa286_xor1 fa_or0=h_s_dadda_cska24_fa286_or0
+.subckt fa a=h_s_dadda_cska24_fa279_xor1 b=h_s_dadda_cska24_fa280_xor1 cin=h_s_dadda_cska24_fa281_xor1 fa_xor1=h_s_dadda_cska24_fa287_xor1 fa_or0=h_s_dadda_cska24_fa287_or0
+.subckt fa a=h_s_dadda_cska24_fa287_or0 b=h_s_dadda_cska24_fa286_or0 cin=h_s_dadda_cska24_fa285_or0 fa_xor1=h_s_dadda_cska24_fa288_xor1 fa_or0=h_s_dadda_cska24_fa288_or0
+.subckt fa a=h_s_dadda_cska24_fa284_or0 b=h_s_dadda_cska24_fa283_or0 cin=h_s_dadda_cska24_fa282_or0 fa_xor1=h_s_dadda_cska24_fa289_xor1 fa_or0=h_s_dadda_cska24_fa289_or0
+.subckt fa a=h_s_dadda_cska24_fa281_or0 b=h_s_dadda_cska24_fa280_or0 cin=h_s_dadda_cska24_fa279_or0 fa_xor1=h_s_dadda_cska24_fa290_xor1 fa_or0=h_s_dadda_cska24_fa290_or0
+.subckt nand_gate a=a[23] b=b[11] out=h_s_dadda_cska24_nand_23_11
+.subckt and_gate a=a[22] b=b[12] out=h_s_dadda_cska24_and_22_12
+.subckt and_gate a=a[21] b=b[13] out=h_s_dadda_cska24_and_21_13
+.subckt fa a=h_s_dadda_cska24_nand_23_11 b=h_s_dadda_cska24_and_22_12 cin=h_s_dadda_cska24_and_21_13 fa_xor1=h_s_dadda_cska24_fa291_xor1 fa_or0=h_s_dadda_cska24_fa291_or0
+.subckt and_gate a=a[20] b=b[14] out=h_s_dadda_cska24_and_20_14
+.subckt and_gate a=a[19] b=b[15] out=h_s_dadda_cska24_and_19_15
+.subckt and_gate a=a[18] b=b[16] out=h_s_dadda_cska24_and_18_16
+.subckt fa a=h_s_dadda_cska24_and_20_14 b=h_s_dadda_cska24_and_19_15 cin=h_s_dadda_cska24_and_18_16 fa_xor1=h_s_dadda_cska24_fa292_xor1 fa_or0=h_s_dadda_cska24_fa292_or0
+.subckt and_gate a=a[17] b=b[17] out=h_s_dadda_cska24_and_17_17
+.subckt and_gate a=a[16] b=b[18] out=h_s_dadda_cska24_and_16_18
+.subckt and_gate a=a[15] b=b[19] out=h_s_dadda_cska24_and_15_19
+.subckt fa a=h_s_dadda_cska24_and_17_17 b=h_s_dadda_cska24_and_16_18 cin=h_s_dadda_cska24_and_15_19 fa_xor1=h_s_dadda_cska24_fa293_xor1 fa_or0=h_s_dadda_cska24_fa293_or0
+.subckt and_gate a=a[14] b=b[20] out=h_s_dadda_cska24_and_14_20
+.subckt and_gate a=a[13] b=b[21] out=h_s_dadda_cska24_and_13_21
+.subckt and_gate a=a[12] b=b[22] out=h_s_dadda_cska24_and_12_22
+.subckt fa a=h_s_dadda_cska24_and_14_20 b=h_s_dadda_cska24_and_13_21 cin=h_s_dadda_cska24_and_12_22 fa_xor1=h_s_dadda_cska24_fa294_xor1 fa_or0=h_s_dadda_cska24_fa294_or0
+.subckt nand_gate a=a[11] b=b[23] out=h_s_dadda_cska24_nand_11_23
+.subckt fa a=h_s_dadda_cska24_nand_11_23 b=h_s_dadda_cska24_fa288_xor1 cin=h_s_dadda_cska24_fa289_xor1 fa_xor1=h_s_dadda_cska24_fa295_xor1 fa_or0=h_s_dadda_cska24_fa295_or0
+.subckt fa a=h_s_dadda_cska24_fa295_or0 b=h_s_dadda_cska24_fa294_or0 cin=h_s_dadda_cska24_fa293_or0 fa_xor1=h_s_dadda_cska24_fa296_xor1 fa_or0=h_s_dadda_cska24_fa296_or0
+.subckt fa a=h_s_dadda_cska24_fa292_or0 b=h_s_dadda_cska24_fa291_or0 cin=h_s_dadda_cska24_fa290_or0 fa_xor1=h_s_dadda_cska24_fa297_xor1 fa_or0=h_s_dadda_cska24_fa297_or0
+.subckt nand_gate a=a[23] b=b[12] out=h_s_dadda_cska24_nand_23_12
+.subckt fa a=h_s_dadda_cska24_fa289_or0 b=h_s_dadda_cska24_fa288_or0 cin=h_s_dadda_cska24_nand_23_12 fa_xor1=h_s_dadda_cska24_fa298_xor1 fa_or0=h_s_dadda_cska24_fa298_or0
+.subckt and_gate a=a[22] b=b[13] out=h_s_dadda_cska24_and_22_13
+.subckt and_gate a=a[21] b=b[14] out=h_s_dadda_cska24_and_21_14
+.subckt and_gate a=a[20] b=b[15] out=h_s_dadda_cska24_and_20_15
+.subckt fa a=h_s_dadda_cska24_and_22_13 b=h_s_dadda_cska24_and_21_14 cin=h_s_dadda_cska24_and_20_15 fa_xor1=h_s_dadda_cska24_fa299_xor1 fa_or0=h_s_dadda_cska24_fa299_or0
+.subckt and_gate a=a[19] b=b[16] out=h_s_dadda_cska24_and_19_16
+.subckt and_gate a=a[18] b=b[17] out=h_s_dadda_cska24_and_18_17
+.subckt and_gate a=a[17] b=b[18] out=h_s_dadda_cska24_and_17_18
+.subckt fa a=h_s_dadda_cska24_and_19_16 b=h_s_dadda_cska24_and_18_17 cin=h_s_dadda_cska24_and_17_18 fa_xor1=h_s_dadda_cska24_fa300_xor1 fa_or0=h_s_dadda_cska24_fa300_or0
+.subckt and_gate a=a[16] b=b[19] out=h_s_dadda_cska24_and_16_19
+.subckt and_gate a=a[15] b=b[20] out=h_s_dadda_cska24_and_15_20
+.subckt and_gate a=a[14] b=b[21] out=h_s_dadda_cska24_and_14_21
+.subckt fa a=h_s_dadda_cska24_and_16_19 b=h_s_dadda_cska24_and_15_20 cin=h_s_dadda_cska24_and_14_21 fa_xor1=h_s_dadda_cska24_fa301_xor1 fa_or0=h_s_dadda_cska24_fa301_or0
+.subckt and_gate a=a[13] b=b[22] out=h_s_dadda_cska24_and_13_22
+.subckt nand_gate a=a[12] b=b[23] out=h_s_dadda_cska24_nand_12_23
+.subckt fa a=h_s_dadda_cska24_and_13_22 b=h_s_dadda_cska24_nand_12_23 cin=h_s_dadda_cska24_fa296_xor1 fa_xor1=h_s_dadda_cska24_fa302_xor1 fa_or0=h_s_dadda_cska24_fa302_or0
+.subckt fa a=h_s_dadda_cska24_fa302_or0 b=h_s_dadda_cska24_fa301_or0 cin=h_s_dadda_cska24_fa300_or0 fa_xor1=h_s_dadda_cska24_fa303_xor1 fa_or0=h_s_dadda_cska24_fa303_or0
+.subckt fa a=h_s_dadda_cska24_fa299_or0 b=h_s_dadda_cska24_fa298_or0 cin=h_s_dadda_cska24_fa297_or0 fa_xor1=h_s_dadda_cska24_fa304_xor1 fa_or0=h_s_dadda_cska24_fa304_or0
+.subckt nand_gate a=a[23] b=b[13] out=h_s_dadda_cska24_nand_23_13
+.subckt and_gate a=a[22] b=b[14] out=h_s_dadda_cska24_and_22_14
+.subckt fa a=h_s_dadda_cska24_fa296_or0 b=h_s_dadda_cska24_nand_23_13 cin=h_s_dadda_cska24_and_22_14 fa_xor1=h_s_dadda_cska24_fa305_xor1 fa_or0=h_s_dadda_cska24_fa305_or0
+.subckt and_gate a=a[21] b=b[15] out=h_s_dadda_cska24_and_21_15
+.subckt and_gate a=a[20] b=b[16] out=h_s_dadda_cska24_and_20_16
+.subckt and_gate a=a[19] b=b[17] out=h_s_dadda_cska24_and_19_17
+.subckt fa a=h_s_dadda_cska24_and_21_15 b=h_s_dadda_cska24_and_20_16 cin=h_s_dadda_cska24_and_19_17 fa_xor1=h_s_dadda_cska24_fa306_xor1 fa_or0=h_s_dadda_cska24_fa306_or0
+.subckt and_gate a=a[18] b=b[18] out=h_s_dadda_cska24_and_18_18
+.subckt and_gate a=a[17] b=b[19] out=h_s_dadda_cska24_and_17_19
+.subckt and_gate a=a[16] b=b[20] out=h_s_dadda_cska24_and_16_20
+.subckt fa a=h_s_dadda_cska24_and_18_18 b=h_s_dadda_cska24_and_17_19 cin=h_s_dadda_cska24_and_16_20 fa_xor1=h_s_dadda_cska24_fa307_xor1 fa_or0=h_s_dadda_cska24_fa307_or0
+.subckt and_gate a=a[15] b=b[21] out=h_s_dadda_cska24_and_15_21
+.subckt and_gate a=a[14] b=b[22] out=h_s_dadda_cska24_and_14_22
+.subckt nand_gate a=a[13] b=b[23] out=h_s_dadda_cska24_nand_13_23
+.subckt fa a=h_s_dadda_cska24_and_15_21 b=h_s_dadda_cska24_and_14_22 cin=h_s_dadda_cska24_nand_13_23 fa_xor1=h_s_dadda_cska24_fa308_xor1 fa_or0=h_s_dadda_cska24_fa308_or0
+.subckt fa a=h_s_dadda_cska24_fa308_or0 b=h_s_dadda_cska24_fa307_or0 cin=h_s_dadda_cska24_fa306_or0 fa_xor1=h_s_dadda_cska24_fa309_xor1 fa_or0=h_s_dadda_cska24_fa309_or0
+.subckt fa a=h_s_dadda_cska24_fa305_or0 b=h_s_dadda_cska24_fa304_or0 cin=h_s_dadda_cska24_fa303_or0 fa_xor1=h_s_dadda_cska24_fa310_xor1 fa_or0=h_s_dadda_cska24_fa310_or0
+.subckt nand_gate a=a[23] b=b[14] out=h_s_dadda_cska24_nand_23_14
+.subckt and_gate a=a[22] b=b[15] out=h_s_dadda_cska24_and_22_15
+.subckt and_gate a=a[21] b=b[16] out=h_s_dadda_cska24_and_21_16
+.subckt fa a=h_s_dadda_cska24_nand_23_14 b=h_s_dadda_cska24_and_22_15 cin=h_s_dadda_cska24_and_21_16 fa_xor1=h_s_dadda_cska24_fa311_xor1 fa_or0=h_s_dadda_cska24_fa311_or0
+.subckt and_gate a=a[20] b=b[17] out=h_s_dadda_cska24_and_20_17
+.subckt and_gate a=a[19] b=b[18] out=h_s_dadda_cska24_and_19_18
+.subckt and_gate a=a[18] b=b[19] out=h_s_dadda_cska24_and_18_19
+.subckt fa a=h_s_dadda_cska24_and_20_17 b=h_s_dadda_cska24_and_19_18 cin=h_s_dadda_cska24_and_18_19 fa_xor1=h_s_dadda_cska24_fa312_xor1 fa_or0=h_s_dadda_cska24_fa312_or0
+.subckt and_gate a=a[17] b=b[20] out=h_s_dadda_cska24_and_17_20
+.subckt and_gate a=a[16] b=b[21] out=h_s_dadda_cska24_and_16_21
+.subckt and_gate a=a[15] b=b[22] out=h_s_dadda_cska24_and_15_22
+.subckt fa a=h_s_dadda_cska24_and_17_20 b=h_s_dadda_cska24_and_16_21 cin=h_s_dadda_cska24_and_15_22 fa_xor1=h_s_dadda_cska24_fa313_xor1 fa_or0=h_s_dadda_cska24_fa313_or0
+.subckt fa a=h_s_dadda_cska24_fa313_or0 b=h_s_dadda_cska24_fa312_or0 cin=h_s_dadda_cska24_fa311_or0 fa_xor1=h_s_dadda_cska24_fa314_xor1 fa_or0=h_s_dadda_cska24_fa314_or0
+.subckt nand_gate a=a[23] b=b[15] out=h_s_dadda_cska24_nand_23_15
+.subckt fa a=h_s_dadda_cska24_fa310_or0 b=h_s_dadda_cska24_fa309_or0 cin=h_s_dadda_cska24_nand_23_15 fa_xor1=h_s_dadda_cska24_fa315_xor1 fa_or0=h_s_dadda_cska24_fa315_or0
+.subckt and_gate a=a[22] b=b[16] out=h_s_dadda_cska24_and_22_16
+.subckt and_gate a=a[21] b=b[17] out=h_s_dadda_cska24_and_21_17
+.subckt and_gate a=a[20] b=b[18] out=h_s_dadda_cska24_and_20_18
+.subckt fa a=h_s_dadda_cska24_and_22_16 b=h_s_dadda_cska24_and_21_17 cin=h_s_dadda_cska24_and_20_18 fa_xor1=h_s_dadda_cska24_fa316_xor1 fa_or0=h_s_dadda_cska24_fa316_or0
+.subckt and_gate a=a[19] b=b[19] out=h_s_dadda_cska24_and_19_19
+.subckt and_gate a=a[18] b=b[20] out=h_s_dadda_cska24_and_18_20
+.subckt and_gate a=a[17] b=b[21] out=h_s_dadda_cska24_and_17_21
+.subckt fa a=h_s_dadda_cska24_and_19_19 b=h_s_dadda_cska24_and_18_20 cin=h_s_dadda_cska24_and_17_21 fa_xor1=h_s_dadda_cska24_fa317_xor1 fa_or0=h_s_dadda_cska24_fa317_or0
+.subckt fa a=h_s_dadda_cska24_fa317_or0 b=h_s_dadda_cska24_fa316_or0 cin=h_s_dadda_cska24_fa315_or0 fa_xor1=h_s_dadda_cska24_fa318_xor1 fa_or0=h_s_dadda_cska24_fa318_or0
+.subckt nand_gate a=a[23] b=b[16] out=h_s_dadda_cska24_nand_23_16
+.subckt and_gate a=a[22] b=b[17] out=h_s_dadda_cska24_and_22_17
+.subckt fa a=h_s_dadda_cska24_fa314_or0 b=h_s_dadda_cska24_nand_23_16 cin=h_s_dadda_cska24_and_22_17 fa_xor1=h_s_dadda_cska24_fa319_xor1 fa_or0=h_s_dadda_cska24_fa319_or0
+.subckt and_gate a=a[21] b=b[18] out=h_s_dadda_cska24_and_21_18
+.subckt and_gate a=a[20] b=b[19] out=h_s_dadda_cska24_and_20_19
+.subckt and_gate a=a[19] b=b[20] out=h_s_dadda_cska24_and_19_20
+.subckt fa a=h_s_dadda_cska24_and_21_18 b=h_s_dadda_cska24_and_20_19 cin=h_s_dadda_cska24_and_19_20 fa_xor1=h_s_dadda_cska24_fa320_xor1 fa_or0=h_s_dadda_cska24_fa320_or0
+.subckt fa a=h_s_dadda_cska24_fa320_or0 b=h_s_dadda_cska24_fa319_or0 cin=h_s_dadda_cska24_fa318_or0 fa_xor1=h_s_dadda_cska24_fa321_xor1 fa_or0=h_s_dadda_cska24_fa321_or0
+.subckt nand_gate a=a[23] b=b[17] out=h_s_dadda_cska24_nand_23_17
+.subckt and_gate a=a[22] b=b[18] out=h_s_dadda_cska24_and_22_18
+.subckt and_gate a=a[21] b=b[19] out=h_s_dadda_cska24_and_21_19
+.subckt fa a=h_s_dadda_cska24_nand_23_17 b=h_s_dadda_cska24_and_22_18 cin=h_s_dadda_cska24_and_21_19 fa_xor1=h_s_dadda_cska24_fa322_xor1 fa_or0=h_s_dadda_cska24_fa322_or0
+.subckt nand_gate a=a[23] b=b[18] out=h_s_dadda_cska24_nand_23_18
+.subckt fa a=h_s_dadda_cska24_fa322_or0 b=h_s_dadda_cska24_fa321_or0 cin=h_s_dadda_cska24_nand_23_18 fa_xor1=h_s_dadda_cska24_fa323_xor1 fa_or0=h_s_dadda_cska24_fa323_or0
+.subckt and_gate a=a[4] b=b[0] out=h_s_dadda_cska24_and_4_0
+.subckt and_gate a=a[3] b=b[1] out=h_s_dadda_cska24_and_3_1
+.subckt ha a=h_s_dadda_cska24_and_4_0 b=h_s_dadda_cska24_and_3_1 ha_xor0=h_s_dadda_cska24_ha18_xor0 ha_and0=h_s_dadda_cska24_ha18_and0
+.subckt and_gate a=a[5] b=b[0] out=h_s_dadda_cska24_and_5_0
+.subckt and_gate a=a[4] b=b[1] out=h_s_dadda_cska24_and_4_1
+.subckt fa a=h_s_dadda_cska24_ha18_and0 b=h_s_dadda_cska24_and_5_0 cin=h_s_dadda_cska24_and_4_1 fa_xor1=h_s_dadda_cska24_fa324_xor1 fa_or0=h_s_dadda_cska24_fa324_or0
+.subckt and_gate a=a[3] b=b[2] out=h_s_dadda_cska24_and_3_2
+.subckt and_gate a=a[2] b=b[3] out=h_s_dadda_cska24_and_2_3
+.subckt ha a=h_s_dadda_cska24_and_3_2 b=h_s_dadda_cska24_and_2_3 ha_xor0=h_s_dadda_cska24_ha19_xor0 ha_and0=h_s_dadda_cska24_ha19_and0
+.subckt and_gate a=a[4] b=b[2] out=h_s_dadda_cska24_and_4_2
+.subckt fa a=h_s_dadda_cska24_ha19_and0 b=h_s_dadda_cska24_fa324_or0 cin=h_s_dadda_cska24_and_4_2 fa_xor1=h_s_dadda_cska24_fa325_xor1 fa_or0=h_s_dadda_cska24_fa325_or0
+.subckt and_gate a=a[3] b=b[3] out=h_s_dadda_cska24_and_3_3
+.subckt and_gate a=a[2] b=b[4] out=h_s_dadda_cska24_and_2_4
+.subckt and_gate a=a[1] b=b[5] out=h_s_dadda_cska24_and_1_5
+.subckt fa a=h_s_dadda_cska24_and_3_3 b=h_s_dadda_cska24_and_2_4 cin=h_s_dadda_cska24_and_1_5 fa_xor1=h_s_dadda_cska24_fa326_xor1 fa_or0=h_s_dadda_cska24_fa326_or0
+.subckt and_gate a=a[3] b=b[4] out=h_s_dadda_cska24_and_3_4
+.subckt fa a=h_s_dadda_cska24_fa326_or0 b=h_s_dadda_cska24_fa325_or0 cin=h_s_dadda_cska24_and_3_4 fa_xor1=h_s_dadda_cska24_fa327_xor1 fa_or0=h_s_dadda_cska24_fa327_or0
+.subckt and_gate a=a[2] b=b[5] out=h_s_dadda_cska24_and_2_5
+.subckt and_gate a=a[1] b=b[6] out=h_s_dadda_cska24_and_1_6
+.subckt and_gate a=a[0] b=b[7] out=h_s_dadda_cska24_and_0_7
+.subckt fa a=h_s_dadda_cska24_and_2_5 b=h_s_dadda_cska24_and_1_6 cin=h_s_dadda_cska24_and_0_7 fa_xor1=h_s_dadda_cska24_fa328_xor1 fa_or0=h_s_dadda_cska24_fa328_or0
+.subckt and_gate a=a[2] b=b[6] out=h_s_dadda_cska24_and_2_6
+.subckt fa a=h_s_dadda_cska24_fa328_or0 b=h_s_dadda_cska24_fa327_or0 cin=h_s_dadda_cska24_and_2_6 fa_xor1=h_s_dadda_cska24_fa329_xor1 fa_or0=h_s_dadda_cska24_fa329_or0
+.subckt and_gate a=a[1] b=b[7] out=h_s_dadda_cska24_and_1_7
+.subckt and_gate a=a[0] b=b[8] out=h_s_dadda_cska24_and_0_8
+.subckt fa a=h_s_dadda_cska24_and_1_7 b=h_s_dadda_cska24_and_0_8 cin=h_s_dadda_cska24_fa26_xor1 fa_xor1=h_s_dadda_cska24_fa330_xor1 fa_or0=h_s_dadda_cska24_fa330_or0
+.subckt and_gate a=a[1] b=b[8] out=h_s_dadda_cska24_and_1_8
+.subckt fa a=h_s_dadda_cska24_fa330_or0 b=h_s_dadda_cska24_fa329_or0 cin=h_s_dadda_cska24_and_1_8 fa_xor1=h_s_dadda_cska24_fa331_xor1 fa_or0=h_s_dadda_cska24_fa331_or0
+.subckt and_gate a=a[0] b=b[9] out=h_s_dadda_cska24_and_0_9
+.subckt fa a=h_s_dadda_cska24_and_0_9 b=h_s_dadda_cska24_fa28_xor1 cin=h_s_dadda_cska24_fa29_xor1 fa_xor1=h_s_dadda_cska24_fa332_xor1 fa_or0=h_s_dadda_cska24_fa332_or0
+.subckt and_gate a=a[0] b=b[10] out=h_s_dadda_cska24_and_0_10
+.subckt fa a=h_s_dadda_cska24_fa332_or0 b=h_s_dadda_cska24_fa331_or0 cin=h_s_dadda_cska24_and_0_10 fa_xor1=h_s_dadda_cska24_fa333_xor1 fa_or0=h_s_dadda_cska24_fa333_or0
+.subckt fa a=h_s_dadda_cska24_fa31_xor1 b=h_s_dadda_cska24_fa32_xor1 cin=h_s_dadda_cska24_fa33_xor1 fa_xor1=h_s_dadda_cska24_fa334_xor1 fa_or0=h_s_dadda_cska24_fa334_or0
+.subckt fa a=h_s_dadda_cska24_fa334_or0 b=h_s_dadda_cska24_fa333_or0 cin=h_s_dadda_cska24_fa35_xor1 fa_xor1=h_s_dadda_cska24_fa335_xor1 fa_or0=h_s_dadda_cska24_fa335_or0
+.subckt fa a=h_s_dadda_cska24_fa36_xor1 b=h_s_dadda_cska24_fa37_xor1 cin=h_s_dadda_cska24_fa38_xor1 fa_xor1=h_s_dadda_cska24_fa336_xor1 fa_or0=h_s_dadda_cska24_fa336_or0
+.subckt fa a=h_s_dadda_cska24_fa336_or0 b=h_s_dadda_cska24_fa335_or0 cin=h_s_dadda_cska24_fa41_xor1 fa_xor1=h_s_dadda_cska24_fa337_xor1 fa_or0=h_s_dadda_cska24_fa337_or0
+.subckt fa a=h_s_dadda_cska24_fa42_xor1 b=h_s_dadda_cska24_fa43_xor1 cin=h_s_dadda_cska24_fa44_xor1 fa_xor1=h_s_dadda_cska24_fa338_xor1 fa_or0=h_s_dadda_cska24_fa338_or0
+.subckt fa a=h_s_dadda_cska24_fa338_or0 b=h_s_dadda_cska24_fa337_or0 cin=h_s_dadda_cska24_fa48_xor1 fa_xor1=h_s_dadda_cska24_fa339_xor1 fa_or0=h_s_dadda_cska24_fa339_or0
+.subckt fa a=h_s_dadda_cska24_fa49_xor1 b=h_s_dadda_cska24_fa50_xor1 cin=h_s_dadda_cska24_fa51_xor1 fa_xor1=h_s_dadda_cska24_fa340_xor1 fa_or0=h_s_dadda_cska24_fa340_or0
+.subckt fa a=h_s_dadda_cska24_fa340_or0 b=h_s_dadda_cska24_fa339_or0 cin=h_s_dadda_cska24_fa56_xor1 fa_xor1=h_s_dadda_cska24_fa341_xor1 fa_or0=h_s_dadda_cska24_fa341_or0
+.subckt fa a=h_s_dadda_cska24_fa57_xor1 b=h_s_dadda_cska24_fa58_xor1 cin=h_s_dadda_cska24_fa59_xor1 fa_xor1=h_s_dadda_cska24_fa342_xor1 fa_or0=h_s_dadda_cska24_fa342_or0
+.subckt fa a=h_s_dadda_cska24_fa342_or0 b=h_s_dadda_cska24_fa341_or0 cin=h_s_dadda_cska24_fa65_xor1 fa_xor1=h_s_dadda_cska24_fa343_xor1 fa_or0=h_s_dadda_cska24_fa343_or0
+.subckt fa a=h_s_dadda_cska24_fa66_xor1 b=h_s_dadda_cska24_fa67_xor1 cin=h_s_dadda_cska24_fa68_xor1 fa_xor1=h_s_dadda_cska24_fa344_xor1 fa_or0=h_s_dadda_cska24_fa344_or0
+.subckt fa a=h_s_dadda_cska24_fa344_or0 b=h_s_dadda_cska24_fa343_or0 cin=h_s_dadda_cska24_fa75_xor1 fa_xor1=h_s_dadda_cska24_fa345_xor1 fa_or0=h_s_dadda_cska24_fa345_or0
+.subckt fa a=h_s_dadda_cska24_fa76_xor1 b=h_s_dadda_cska24_fa77_xor1 cin=h_s_dadda_cska24_fa78_xor1 fa_xor1=h_s_dadda_cska24_fa346_xor1 fa_or0=h_s_dadda_cska24_fa346_or0
+.subckt fa a=h_s_dadda_cska24_fa346_or0 b=h_s_dadda_cska24_fa345_or0 cin=h_s_dadda_cska24_fa86_xor1 fa_xor1=h_s_dadda_cska24_fa347_xor1 fa_or0=h_s_dadda_cska24_fa347_or0
+.subckt fa a=h_s_dadda_cska24_fa87_xor1 b=h_s_dadda_cska24_fa88_xor1 cin=h_s_dadda_cska24_fa89_xor1 fa_xor1=h_s_dadda_cska24_fa348_xor1 fa_or0=h_s_dadda_cska24_fa348_or0
+.subckt fa a=h_s_dadda_cska24_fa348_or0 b=h_s_dadda_cska24_fa347_or0 cin=h_s_dadda_cska24_fa98_xor1 fa_xor1=h_s_dadda_cska24_fa349_xor1 fa_or0=h_s_dadda_cska24_fa349_or0
+.subckt fa a=h_s_dadda_cska24_fa99_xor1 b=h_s_dadda_cska24_fa100_xor1 cin=h_s_dadda_cska24_fa101_xor1 fa_xor1=h_s_dadda_cska24_fa350_xor1 fa_or0=h_s_dadda_cska24_fa350_or0
+.subckt fa a=h_s_dadda_cska24_fa350_or0 b=h_s_dadda_cska24_fa349_or0 cin=h_s_dadda_cska24_fa110_xor1 fa_xor1=h_s_dadda_cska24_fa351_xor1 fa_or0=h_s_dadda_cska24_fa351_or0
+.subckt fa a=h_s_dadda_cska24_fa111_xor1 b=h_s_dadda_cska24_fa112_xor1 cin=h_s_dadda_cska24_fa113_xor1 fa_xor1=h_s_dadda_cska24_fa352_xor1 fa_or0=h_s_dadda_cska24_fa352_or0
+.subckt fa a=h_s_dadda_cska24_fa352_or0 b=h_s_dadda_cska24_fa351_or0 cin=h_s_dadda_cska24_fa123_xor1 fa_xor1=h_s_dadda_cska24_fa353_xor1 fa_or0=h_s_dadda_cska24_fa353_or0
+.subckt fa a=h_s_dadda_cska24_fa124_xor1 b=h_s_dadda_cska24_fa125_xor1 cin=h_s_dadda_cska24_fa126_xor1 fa_xor1=h_s_dadda_cska24_fa354_xor1 fa_or0=h_s_dadda_cska24_fa354_or0
+.subckt fa a=h_s_dadda_cska24_fa354_or0 b=h_s_dadda_cska24_fa353_or0 cin=h_s_dadda_cska24_fa136_xor1 fa_xor1=h_s_dadda_cska24_fa355_xor1 fa_or0=h_s_dadda_cska24_fa355_or0
+.subckt fa a=h_s_dadda_cska24_fa137_xor1 b=h_s_dadda_cska24_fa138_xor1 cin=h_s_dadda_cska24_fa139_xor1 fa_xor1=h_s_dadda_cska24_fa356_xor1 fa_or0=h_s_dadda_cska24_fa356_or0
+.subckt fa a=h_s_dadda_cska24_fa356_or0 b=h_s_dadda_cska24_fa355_or0 cin=h_s_dadda_cska24_fa149_xor1 fa_xor1=h_s_dadda_cska24_fa357_xor1 fa_or0=h_s_dadda_cska24_fa357_or0
+.subckt fa a=h_s_dadda_cska24_fa150_xor1 b=h_s_dadda_cska24_fa151_xor1 cin=h_s_dadda_cska24_fa152_xor1 fa_xor1=h_s_dadda_cska24_fa358_xor1 fa_or0=h_s_dadda_cska24_fa358_or0
+.subckt fa a=h_s_dadda_cska24_fa358_or0 b=h_s_dadda_cska24_fa357_or0 cin=h_s_dadda_cska24_fa162_xor1 fa_xor1=h_s_dadda_cska24_fa359_xor1 fa_or0=h_s_dadda_cska24_fa359_or0
+.subckt fa a=h_s_dadda_cska24_fa163_xor1 b=h_s_dadda_cska24_fa164_xor1 cin=h_s_dadda_cska24_fa165_xor1 fa_xor1=h_s_dadda_cska24_fa360_xor1 fa_or0=h_s_dadda_cska24_fa360_or0
+.subckt fa a=h_s_dadda_cska24_fa360_or0 b=h_s_dadda_cska24_fa359_or0 cin=h_s_dadda_cska24_fa175_xor1 fa_xor1=h_s_dadda_cska24_fa361_xor1 fa_or0=h_s_dadda_cska24_fa361_or0
+.subckt fa a=h_s_dadda_cska24_fa176_xor1 b=h_s_dadda_cska24_fa177_xor1 cin=h_s_dadda_cska24_fa178_xor1 fa_xor1=h_s_dadda_cska24_fa362_xor1 fa_or0=h_s_dadda_cska24_fa362_or0
+.subckt fa a=h_s_dadda_cska24_fa362_or0 b=h_s_dadda_cska24_fa361_or0 cin=h_s_dadda_cska24_fa188_xor1 fa_xor1=h_s_dadda_cska24_fa363_xor1 fa_or0=h_s_dadda_cska24_fa363_or0
+.subckt fa a=h_s_dadda_cska24_fa189_xor1 b=h_s_dadda_cska24_fa190_xor1 cin=h_s_dadda_cska24_fa191_xor1 fa_xor1=h_s_dadda_cska24_fa364_xor1 fa_or0=h_s_dadda_cska24_fa364_or0
+.subckt fa a=h_s_dadda_cska24_fa364_or0 b=h_s_dadda_cska24_fa363_or0 cin=h_s_dadda_cska24_fa201_xor1 fa_xor1=h_s_dadda_cska24_fa365_xor1 fa_or0=h_s_dadda_cska24_fa365_or0
+.subckt fa a=h_s_dadda_cska24_fa202_xor1 b=h_s_dadda_cska24_fa203_xor1 cin=h_s_dadda_cska24_fa204_xor1 fa_xor1=h_s_dadda_cska24_fa366_xor1 fa_or0=h_s_dadda_cska24_fa366_or0
+.subckt fa a=h_s_dadda_cska24_fa366_or0 b=h_s_dadda_cska24_fa365_or0 cin=h_s_dadda_cska24_fa214_xor1 fa_xor1=h_s_dadda_cska24_fa367_xor1 fa_or0=h_s_dadda_cska24_fa367_or0
+.subckt fa a=h_s_dadda_cska24_fa215_xor1 b=h_s_dadda_cska24_fa216_xor1 cin=h_s_dadda_cska24_fa217_xor1 fa_xor1=h_s_dadda_cska24_fa368_xor1 fa_or0=h_s_dadda_cska24_fa368_or0
+.subckt fa a=h_s_dadda_cska24_fa368_or0 b=h_s_dadda_cska24_fa367_or0 cin=h_s_dadda_cska24_fa227_xor1 fa_xor1=h_s_dadda_cska24_fa369_xor1 fa_or0=h_s_dadda_cska24_fa369_or0
+.subckt fa a=h_s_dadda_cska24_fa228_xor1 b=h_s_dadda_cska24_fa229_xor1 cin=h_s_dadda_cska24_fa230_xor1 fa_xor1=h_s_dadda_cska24_fa370_xor1 fa_or0=h_s_dadda_cska24_fa370_or0
+.subckt fa a=h_s_dadda_cska24_fa370_or0 b=h_s_dadda_cska24_fa369_or0 cin=h_s_dadda_cska24_fa240_xor1 fa_xor1=h_s_dadda_cska24_fa371_xor1 fa_or0=h_s_dadda_cska24_fa371_or0
+.subckt fa a=h_s_dadda_cska24_fa241_xor1 b=h_s_dadda_cska24_fa242_xor1 cin=h_s_dadda_cska24_fa243_xor1 fa_xor1=h_s_dadda_cska24_fa372_xor1 fa_or0=h_s_dadda_cska24_fa372_or0
+.subckt fa a=h_s_dadda_cska24_fa372_or0 b=h_s_dadda_cska24_fa371_or0 cin=h_s_dadda_cska24_fa252_xor1 fa_xor1=h_s_dadda_cska24_fa373_xor1 fa_or0=h_s_dadda_cska24_fa373_or0
+.subckt fa a=h_s_dadda_cska24_fa253_xor1 b=h_s_dadda_cska24_fa254_xor1 cin=h_s_dadda_cska24_fa255_xor1 fa_xor1=h_s_dadda_cska24_fa374_xor1 fa_or0=h_s_dadda_cska24_fa374_or0
+.subckt fa a=h_s_dadda_cska24_fa374_or0 b=h_s_dadda_cska24_fa373_or0 cin=h_s_dadda_cska24_fa263_xor1 fa_xor1=h_s_dadda_cska24_fa375_xor1 fa_or0=h_s_dadda_cska24_fa375_or0
+.subckt fa a=h_s_dadda_cska24_fa264_xor1 b=h_s_dadda_cska24_fa265_xor1 cin=h_s_dadda_cska24_fa266_xor1 fa_xor1=h_s_dadda_cska24_fa376_xor1 fa_or0=h_s_dadda_cska24_fa376_or0
+.subckt fa a=h_s_dadda_cska24_fa376_or0 b=h_s_dadda_cska24_fa375_or0 cin=h_s_dadda_cska24_fa273_xor1 fa_xor1=h_s_dadda_cska24_fa377_xor1 fa_or0=h_s_dadda_cska24_fa377_or0
+.subckt fa a=h_s_dadda_cska24_fa274_xor1 b=h_s_dadda_cska24_fa275_xor1 cin=h_s_dadda_cska24_fa276_xor1 fa_xor1=h_s_dadda_cska24_fa378_xor1 fa_or0=h_s_dadda_cska24_fa378_or0
+.subckt fa a=h_s_dadda_cska24_fa378_or0 b=h_s_dadda_cska24_fa377_or0 cin=h_s_dadda_cska24_fa282_xor1 fa_xor1=h_s_dadda_cska24_fa379_xor1 fa_or0=h_s_dadda_cska24_fa379_or0
+.subckt fa a=h_s_dadda_cska24_fa283_xor1 b=h_s_dadda_cska24_fa284_xor1 cin=h_s_dadda_cska24_fa285_xor1 fa_xor1=h_s_dadda_cska24_fa380_xor1 fa_or0=h_s_dadda_cska24_fa380_or0
+.subckt fa a=h_s_dadda_cska24_fa380_or0 b=h_s_dadda_cska24_fa379_or0 cin=h_s_dadda_cska24_fa290_xor1 fa_xor1=h_s_dadda_cska24_fa381_xor1 fa_or0=h_s_dadda_cska24_fa381_or0
+.subckt fa a=h_s_dadda_cska24_fa291_xor1 b=h_s_dadda_cska24_fa292_xor1 cin=h_s_dadda_cska24_fa293_xor1 fa_xor1=h_s_dadda_cska24_fa382_xor1 fa_or0=h_s_dadda_cska24_fa382_or0
+.subckt fa a=h_s_dadda_cska24_fa382_or0 b=h_s_dadda_cska24_fa381_or0 cin=h_s_dadda_cska24_fa297_xor1 fa_xor1=h_s_dadda_cska24_fa383_xor1 fa_or0=h_s_dadda_cska24_fa383_or0
+.subckt fa a=h_s_dadda_cska24_fa298_xor1 b=h_s_dadda_cska24_fa299_xor1 cin=h_s_dadda_cska24_fa300_xor1 fa_xor1=h_s_dadda_cska24_fa384_xor1 fa_or0=h_s_dadda_cska24_fa384_or0
+.subckt fa a=h_s_dadda_cska24_fa384_or0 b=h_s_dadda_cska24_fa383_or0 cin=h_s_dadda_cska24_fa303_xor1 fa_xor1=h_s_dadda_cska24_fa385_xor1 fa_or0=h_s_dadda_cska24_fa385_or0
+.subckt fa a=h_s_dadda_cska24_fa304_xor1 b=h_s_dadda_cska24_fa305_xor1 cin=h_s_dadda_cska24_fa306_xor1 fa_xor1=h_s_dadda_cska24_fa386_xor1 fa_or0=h_s_dadda_cska24_fa386_or0
+.subckt nand_gate a=a[14] b=b[23] out=h_s_dadda_cska24_nand_14_23
+.subckt fa a=h_s_dadda_cska24_fa386_or0 b=h_s_dadda_cska24_fa385_or0 cin=h_s_dadda_cska24_nand_14_23 fa_xor1=h_s_dadda_cska24_fa387_xor1 fa_or0=h_s_dadda_cska24_fa387_or0
+.subckt fa a=h_s_dadda_cska24_fa309_xor1 b=h_s_dadda_cska24_fa310_xor1 cin=h_s_dadda_cska24_fa311_xor1 fa_xor1=h_s_dadda_cska24_fa388_xor1 fa_or0=h_s_dadda_cska24_fa388_or0
+.subckt and_gate a=a[16] b=b[22] out=h_s_dadda_cska24_and_16_22
+.subckt fa a=h_s_dadda_cska24_fa388_or0 b=h_s_dadda_cska24_fa387_or0 cin=h_s_dadda_cska24_and_16_22 fa_xor1=h_s_dadda_cska24_fa389_xor1 fa_or0=h_s_dadda_cska24_fa389_or0
+.subckt nand_gate a=a[15] b=b[23] out=h_s_dadda_cska24_nand_15_23
+.subckt fa a=h_s_dadda_cska24_nand_15_23 b=h_s_dadda_cska24_fa314_xor1 cin=h_s_dadda_cska24_fa315_xor1 fa_xor1=h_s_dadda_cska24_fa390_xor1 fa_or0=h_s_dadda_cska24_fa390_or0
+.subckt and_gate a=a[18] b=b[21] out=h_s_dadda_cska24_and_18_21
+.subckt fa a=h_s_dadda_cska24_fa390_or0 b=h_s_dadda_cska24_fa389_or0 cin=h_s_dadda_cska24_and_18_21 fa_xor1=h_s_dadda_cska24_fa391_xor1 fa_or0=h_s_dadda_cska24_fa391_or0
+.subckt and_gate a=a[17] b=b[22] out=h_s_dadda_cska24_and_17_22
+.subckt nand_gate a=a[16] b=b[23] out=h_s_dadda_cska24_nand_16_23
+.subckt fa a=h_s_dadda_cska24_and_17_22 b=h_s_dadda_cska24_nand_16_23 cin=h_s_dadda_cska24_fa318_xor1 fa_xor1=h_s_dadda_cska24_fa392_xor1 fa_or0=h_s_dadda_cska24_fa392_or0
+.subckt and_gate a=a[20] b=b[20] out=h_s_dadda_cska24_and_20_20
+.subckt fa a=h_s_dadda_cska24_fa392_or0 b=h_s_dadda_cska24_fa391_or0 cin=h_s_dadda_cska24_and_20_20 fa_xor1=h_s_dadda_cska24_fa393_xor1 fa_or0=h_s_dadda_cska24_fa393_or0
+.subckt and_gate a=a[19] b=b[21] out=h_s_dadda_cska24_and_19_21
+.subckt and_gate a=a[18] b=b[22] out=h_s_dadda_cska24_and_18_22
+.subckt nand_gate a=a[17] b=b[23] out=h_s_dadda_cska24_nand_17_23
+.subckt fa a=h_s_dadda_cska24_and_19_21 b=h_s_dadda_cska24_and_18_22 cin=h_s_dadda_cska24_nand_17_23 fa_xor1=h_s_dadda_cska24_fa394_xor1 fa_or0=h_s_dadda_cska24_fa394_or0
+.subckt and_gate a=a[22] b=b[19] out=h_s_dadda_cska24_and_22_19
+.subckt fa a=h_s_dadda_cska24_fa394_or0 b=h_s_dadda_cska24_fa393_or0 cin=h_s_dadda_cska24_and_22_19 fa_xor1=h_s_dadda_cska24_fa395_xor1 fa_or0=h_s_dadda_cska24_fa395_or0
+.subckt and_gate a=a[21] b=b[20] out=h_s_dadda_cska24_and_21_20
+.subckt and_gate a=a[20] b=b[21] out=h_s_dadda_cska24_and_20_21
+.subckt and_gate a=a[19] b=b[22] out=h_s_dadda_cska24_and_19_22
+.subckt fa a=h_s_dadda_cska24_and_21_20 b=h_s_dadda_cska24_and_20_21 cin=h_s_dadda_cska24_and_19_22 fa_xor1=h_s_dadda_cska24_fa396_xor1 fa_or0=h_s_dadda_cska24_fa396_or0
+.subckt fa a=h_s_dadda_cska24_fa396_or0 b=h_s_dadda_cska24_fa395_or0 cin=h_s_dadda_cska24_fa323_or0 fa_xor1=h_s_dadda_cska24_fa397_xor1 fa_or0=h_s_dadda_cska24_fa397_or0
+.subckt nand_gate a=a[23] b=b[19] out=h_s_dadda_cska24_nand_23_19
+.subckt and_gate a=a[22] b=b[20] out=h_s_dadda_cska24_and_22_20
+.subckt and_gate a=a[21] b=b[21] out=h_s_dadda_cska24_and_21_21
+.subckt fa a=h_s_dadda_cska24_nand_23_19 b=h_s_dadda_cska24_and_22_20 cin=h_s_dadda_cska24_and_21_21 fa_xor1=h_s_dadda_cska24_fa398_xor1 fa_or0=h_s_dadda_cska24_fa398_or0
+.subckt nand_gate a=a[23] b=b[20] out=h_s_dadda_cska24_nand_23_20
+.subckt fa a=h_s_dadda_cska24_fa398_or0 b=h_s_dadda_cska24_fa397_or0 cin=h_s_dadda_cska24_nand_23_20 fa_xor1=h_s_dadda_cska24_fa399_xor1 fa_or0=h_s_dadda_cska24_fa399_or0
+.subckt and_gate a=a[3] b=b[0] out=h_s_dadda_cska24_and_3_0
+.subckt and_gate a=a[2] b=b[1] out=h_s_dadda_cska24_and_2_1
+.subckt ha a=h_s_dadda_cska24_and_3_0 b=h_s_dadda_cska24_and_2_1 ha_xor0=h_s_dadda_cska24_ha20_xor0 ha_and0=h_s_dadda_cska24_ha20_and0
+.subckt and_gate a=a[2] b=b[2] out=h_s_dadda_cska24_and_2_2
+.subckt and_gate a=a[1] b=b[3] out=h_s_dadda_cska24_and_1_3
+.subckt fa a=h_s_dadda_cska24_ha20_and0 b=h_s_dadda_cska24_and_2_2 cin=h_s_dadda_cska24_and_1_3 fa_xor1=h_s_dadda_cska24_fa400_xor1 fa_or0=h_s_dadda_cska24_fa400_or0
+.subckt and_gate a=a[1] b=b[4] out=h_s_dadda_cska24_and_1_4
+.subckt and_gate a=a[0] b=b[5] out=h_s_dadda_cska24_and_0_5
+.subckt fa a=h_s_dadda_cska24_fa400_or0 b=h_s_dadda_cska24_and_1_4 cin=h_s_dadda_cska24_and_0_5 fa_xor1=h_s_dadda_cska24_fa401_xor1 fa_or0=h_s_dadda_cska24_fa401_or0
+.subckt and_gate a=a[0] b=b[6] out=h_s_dadda_cska24_and_0_6
+.subckt fa a=h_s_dadda_cska24_fa401_or0 b=h_s_dadda_cska24_and_0_6 cin=h_s_dadda_cska24_ha5_xor0 fa_xor1=h_s_dadda_cska24_fa402_xor1 fa_or0=h_s_dadda_cska24_fa402_or0
+.subckt fa a=h_s_dadda_cska24_fa402_or0 b=h_s_dadda_cska24_fa25_xor1 cin=h_s_dadda_cska24_ha6_xor0 fa_xor1=h_s_dadda_cska24_fa403_xor1 fa_or0=h_s_dadda_cska24_fa403_or0
+.subckt fa a=h_s_dadda_cska24_fa403_or0 b=h_s_dadda_cska24_fa27_xor1 cin=h_s_dadda_cska24_ha7_xor0 fa_xor1=h_s_dadda_cska24_fa404_xor1 fa_or0=h_s_dadda_cska24_fa404_or0
+.subckt fa a=h_s_dadda_cska24_fa404_or0 b=h_s_dadda_cska24_fa30_xor1 cin=h_s_dadda_cska24_ha8_xor0 fa_xor1=h_s_dadda_cska24_fa405_xor1 fa_or0=h_s_dadda_cska24_fa405_or0
+.subckt fa a=h_s_dadda_cska24_fa405_or0 b=h_s_dadda_cska24_fa34_xor1 cin=h_s_dadda_cska24_ha9_xor0 fa_xor1=h_s_dadda_cska24_fa406_xor1 fa_or0=h_s_dadda_cska24_fa406_or0
+.subckt fa a=h_s_dadda_cska24_fa406_or0 b=h_s_dadda_cska24_fa39_xor1 cin=h_s_dadda_cska24_ha10_xor0 fa_xor1=h_s_dadda_cska24_fa407_xor1 fa_or0=h_s_dadda_cska24_fa407_or0
+.subckt fa a=h_s_dadda_cska24_fa407_or0 b=h_s_dadda_cska24_fa45_xor1 cin=h_s_dadda_cska24_ha11_xor0 fa_xor1=h_s_dadda_cska24_fa408_xor1 fa_or0=h_s_dadda_cska24_fa408_or0
+.subckt fa a=h_s_dadda_cska24_fa408_or0 b=h_s_dadda_cska24_fa52_xor1 cin=h_s_dadda_cska24_ha12_xor0 fa_xor1=h_s_dadda_cska24_fa409_xor1 fa_or0=h_s_dadda_cska24_fa409_or0
+.subckt fa a=h_s_dadda_cska24_fa409_or0 b=h_s_dadda_cska24_fa60_xor1 cin=h_s_dadda_cska24_ha13_xor0 fa_xor1=h_s_dadda_cska24_fa410_xor1 fa_or0=h_s_dadda_cska24_fa410_or0
+.subckt fa a=h_s_dadda_cska24_fa410_or0 b=h_s_dadda_cska24_fa69_xor1 cin=h_s_dadda_cska24_ha14_xor0 fa_xor1=h_s_dadda_cska24_fa411_xor1 fa_or0=h_s_dadda_cska24_fa411_or0
+.subckt fa a=h_s_dadda_cska24_fa411_or0 b=h_s_dadda_cska24_fa79_xor1 cin=h_s_dadda_cska24_ha15_xor0 fa_xor1=h_s_dadda_cska24_fa412_xor1 fa_or0=h_s_dadda_cska24_fa412_or0
+.subckt fa a=h_s_dadda_cska24_fa412_or0 b=h_s_dadda_cska24_fa90_xor1 cin=h_s_dadda_cska24_ha16_xor0 fa_xor1=h_s_dadda_cska24_fa413_xor1 fa_or0=h_s_dadda_cska24_fa413_or0
+.subckt fa a=h_s_dadda_cska24_fa413_or0 b=h_s_dadda_cska24_fa102_xor1 cin=h_s_dadda_cska24_ha17_xor0 fa_xor1=h_s_dadda_cska24_fa414_xor1 fa_or0=h_s_dadda_cska24_fa414_or0
+.subckt fa a=h_s_dadda_cska24_fa414_or0 b=h_s_dadda_cska24_fa114_xor1 cin=h_s_dadda_cska24_fa115_xor1 fa_xor1=h_s_dadda_cska24_fa415_xor1 fa_or0=h_s_dadda_cska24_fa415_or0
+.subckt fa a=h_s_dadda_cska24_fa415_or0 b=h_s_dadda_cska24_fa127_xor1 cin=h_s_dadda_cska24_fa128_xor1 fa_xor1=h_s_dadda_cska24_fa416_xor1 fa_or0=h_s_dadda_cska24_fa416_or0
+.subckt fa a=h_s_dadda_cska24_fa416_or0 b=h_s_dadda_cska24_fa140_xor1 cin=h_s_dadda_cska24_fa141_xor1 fa_xor1=h_s_dadda_cska24_fa417_xor1 fa_or0=h_s_dadda_cska24_fa417_or0
+.subckt fa a=h_s_dadda_cska24_fa417_or0 b=h_s_dadda_cska24_fa153_xor1 cin=h_s_dadda_cska24_fa154_xor1 fa_xor1=h_s_dadda_cska24_fa418_xor1 fa_or0=h_s_dadda_cska24_fa418_or0
+.subckt fa a=h_s_dadda_cska24_fa418_or0 b=h_s_dadda_cska24_fa166_xor1 cin=h_s_dadda_cska24_fa167_xor1 fa_xor1=h_s_dadda_cska24_fa419_xor1 fa_or0=h_s_dadda_cska24_fa419_or0
+.subckt fa a=h_s_dadda_cska24_fa419_or0 b=h_s_dadda_cska24_fa179_xor1 cin=h_s_dadda_cska24_fa180_xor1 fa_xor1=h_s_dadda_cska24_fa420_xor1 fa_or0=h_s_dadda_cska24_fa420_or0
+.subckt fa a=h_s_dadda_cska24_fa420_or0 b=h_s_dadda_cska24_fa192_xor1 cin=h_s_dadda_cska24_fa193_xor1 fa_xor1=h_s_dadda_cska24_fa421_xor1 fa_or0=h_s_dadda_cska24_fa421_or0
+.subckt fa a=h_s_dadda_cska24_fa421_or0 b=h_s_dadda_cska24_fa205_xor1 cin=h_s_dadda_cska24_fa206_xor1 fa_xor1=h_s_dadda_cska24_fa422_xor1 fa_or0=h_s_dadda_cska24_fa422_or0
+.subckt fa a=h_s_dadda_cska24_fa422_or0 b=h_s_dadda_cska24_fa218_xor1 cin=h_s_dadda_cska24_fa219_xor1 fa_xor1=h_s_dadda_cska24_fa423_xor1 fa_or0=h_s_dadda_cska24_fa423_or0
+.subckt fa a=h_s_dadda_cska24_fa423_or0 b=h_s_dadda_cska24_fa231_xor1 cin=h_s_dadda_cska24_fa232_xor1 fa_xor1=h_s_dadda_cska24_fa424_xor1 fa_or0=h_s_dadda_cska24_fa424_or0
+.subckt fa a=h_s_dadda_cska24_fa424_or0 b=h_s_dadda_cska24_fa244_xor1 cin=h_s_dadda_cska24_fa245_xor1 fa_xor1=h_s_dadda_cska24_fa425_xor1 fa_or0=h_s_dadda_cska24_fa425_or0
+.subckt fa a=h_s_dadda_cska24_fa425_or0 b=h_s_dadda_cska24_fa256_xor1 cin=h_s_dadda_cska24_fa257_xor1 fa_xor1=h_s_dadda_cska24_fa426_xor1 fa_or0=h_s_dadda_cska24_fa426_or0
+.subckt fa a=h_s_dadda_cska24_fa426_or0 b=h_s_dadda_cska24_fa267_xor1 cin=h_s_dadda_cska24_fa268_xor1 fa_xor1=h_s_dadda_cska24_fa427_xor1 fa_or0=h_s_dadda_cska24_fa427_or0
+.subckt fa a=h_s_dadda_cska24_fa427_or0 b=h_s_dadda_cska24_fa277_xor1 cin=h_s_dadda_cska24_fa278_xor1 fa_xor1=h_s_dadda_cska24_fa428_xor1 fa_or0=h_s_dadda_cska24_fa428_or0
+.subckt fa a=h_s_dadda_cska24_fa428_or0 b=h_s_dadda_cska24_fa286_xor1 cin=h_s_dadda_cska24_fa287_xor1 fa_xor1=h_s_dadda_cska24_fa429_xor1 fa_or0=h_s_dadda_cska24_fa429_or0
+.subckt fa a=h_s_dadda_cska24_fa429_or0 b=h_s_dadda_cska24_fa294_xor1 cin=h_s_dadda_cska24_fa295_xor1 fa_xor1=h_s_dadda_cska24_fa430_xor1 fa_or0=h_s_dadda_cska24_fa430_or0
+.subckt fa a=h_s_dadda_cska24_fa430_or0 b=h_s_dadda_cska24_fa301_xor1 cin=h_s_dadda_cska24_fa302_xor1 fa_xor1=h_s_dadda_cska24_fa431_xor1 fa_or0=h_s_dadda_cska24_fa431_or0
+.subckt fa a=h_s_dadda_cska24_fa431_or0 b=h_s_dadda_cska24_fa307_xor1 cin=h_s_dadda_cska24_fa308_xor1 fa_xor1=h_s_dadda_cska24_fa432_xor1 fa_or0=h_s_dadda_cska24_fa432_or0
+.subckt fa a=h_s_dadda_cska24_fa432_or0 b=h_s_dadda_cska24_fa312_xor1 cin=h_s_dadda_cska24_fa313_xor1 fa_xor1=h_s_dadda_cska24_fa433_xor1 fa_or0=h_s_dadda_cska24_fa433_or0
+.subckt fa a=h_s_dadda_cska24_fa433_or0 b=h_s_dadda_cska24_fa316_xor1 cin=h_s_dadda_cska24_fa317_xor1 fa_xor1=h_s_dadda_cska24_fa434_xor1 fa_or0=h_s_dadda_cska24_fa434_or0
+.subckt fa a=h_s_dadda_cska24_fa434_or0 b=h_s_dadda_cska24_fa319_xor1 cin=h_s_dadda_cska24_fa320_xor1 fa_xor1=h_s_dadda_cska24_fa435_xor1 fa_or0=h_s_dadda_cska24_fa435_or0
+.subckt fa a=h_s_dadda_cska24_fa435_or0 b=h_s_dadda_cska24_fa321_xor1 cin=h_s_dadda_cska24_fa322_xor1 fa_xor1=h_s_dadda_cska24_fa436_xor1 fa_or0=h_s_dadda_cska24_fa436_or0
+.subckt nand_gate a=a[18] b=b[23] out=h_s_dadda_cska24_nand_18_23
+.subckt fa a=h_s_dadda_cska24_fa436_or0 b=h_s_dadda_cska24_nand_18_23 cin=h_s_dadda_cska24_fa323_xor1 fa_xor1=h_s_dadda_cska24_fa437_xor1 fa_or0=h_s_dadda_cska24_fa437_or0
+.subckt and_gate a=a[20] b=b[22] out=h_s_dadda_cska24_and_20_22
+.subckt nand_gate a=a[19] b=b[23] out=h_s_dadda_cska24_nand_19_23
+.subckt fa a=h_s_dadda_cska24_fa437_or0 b=h_s_dadda_cska24_and_20_22 cin=h_s_dadda_cska24_nand_19_23 fa_xor1=h_s_dadda_cska24_fa438_xor1 fa_or0=h_s_dadda_cska24_fa438_or0
+.subckt and_gate a=a[22] b=b[21] out=h_s_dadda_cska24_and_22_21
+.subckt and_gate a=a[21] b=b[22] out=h_s_dadda_cska24_and_21_22
+.subckt fa a=h_s_dadda_cska24_fa438_or0 b=h_s_dadda_cska24_and_22_21 cin=h_s_dadda_cska24_and_21_22 fa_xor1=h_s_dadda_cska24_fa439_xor1 fa_or0=h_s_dadda_cska24_fa439_or0
+.subckt nand_gate a=a[23] b=b[21] out=h_s_dadda_cska24_nand_23_21
+.subckt fa a=h_s_dadda_cska24_fa439_or0 b=h_s_dadda_cska24_fa399_or0 cin=h_s_dadda_cska24_nand_23_21 fa_xor1=h_s_dadda_cska24_fa440_xor1 fa_or0=h_s_dadda_cska24_fa440_or0
+.subckt and_gate a=a[2] b=b[0] out=h_s_dadda_cska24_and_2_0
+.subckt and_gate a=a[1] b=b[1] out=h_s_dadda_cska24_and_1_1
+.subckt ha a=h_s_dadda_cska24_and_2_0 b=h_s_dadda_cska24_and_1_1 ha_xor0=h_s_dadda_cska24_ha21_xor0 ha_and0=h_s_dadda_cska24_ha21_and0
+.subckt and_gate a=a[1] b=b[2] out=h_s_dadda_cska24_and_1_2
+.subckt and_gate a=a[0] b=b[3] out=h_s_dadda_cska24_and_0_3
+.subckt fa a=h_s_dadda_cska24_ha21_and0 b=h_s_dadda_cska24_and_1_2 cin=h_s_dadda_cska24_and_0_3 fa_xor1=h_s_dadda_cska24_fa441_xor1 fa_or0=h_s_dadda_cska24_fa441_or0
+.subckt and_gate a=a[0] b=b[4] out=h_s_dadda_cska24_and_0_4
+.subckt fa a=h_s_dadda_cska24_fa441_or0 b=h_s_dadda_cska24_and_0_4 cin=h_s_dadda_cska24_ha18_xor0 fa_xor1=h_s_dadda_cska24_fa442_xor1 fa_or0=h_s_dadda_cska24_fa442_or0
+.subckt fa a=h_s_dadda_cska24_fa442_or0 b=h_s_dadda_cska24_fa324_xor1 cin=h_s_dadda_cska24_ha19_xor0 fa_xor1=h_s_dadda_cska24_fa443_xor1 fa_or0=h_s_dadda_cska24_fa443_or0
+.subckt fa a=h_s_dadda_cska24_fa443_or0 b=h_s_dadda_cska24_fa325_xor1 cin=h_s_dadda_cska24_fa326_xor1 fa_xor1=h_s_dadda_cska24_fa444_xor1 fa_or0=h_s_dadda_cska24_fa444_or0
+.subckt fa a=h_s_dadda_cska24_fa444_or0 b=h_s_dadda_cska24_fa327_xor1 cin=h_s_dadda_cska24_fa328_xor1 fa_xor1=h_s_dadda_cska24_fa445_xor1 fa_or0=h_s_dadda_cska24_fa445_or0
+.subckt fa a=h_s_dadda_cska24_fa445_or0 b=h_s_dadda_cska24_fa329_xor1 cin=h_s_dadda_cska24_fa330_xor1 fa_xor1=h_s_dadda_cska24_fa446_xor1 fa_or0=h_s_dadda_cska24_fa446_or0
+.subckt fa a=h_s_dadda_cska24_fa446_or0 b=h_s_dadda_cska24_fa331_xor1 cin=h_s_dadda_cska24_fa332_xor1 fa_xor1=h_s_dadda_cska24_fa447_xor1 fa_or0=h_s_dadda_cska24_fa447_or0
+.subckt fa a=h_s_dadda_cska24_fa447_or0 b=h_s_dadda_cska24_fa333_xor1 cin=h_s_dadda_cska24_fa334_xor1 fa_xor1=h_s_dadda_cska24_fa448_xor1 fa_or0=h_s_dadda_cska24_fa448_or0
+.subckt fa a=h_s_dadda_cska24_fa448_or0 b=h_s_dadda_cska24_fa335_xor1 cin=h_s_dadda_cska24_fa336_xor1 fa_xor1=h_s_dadda_cska24_fa449_xor1 fa_or0=h_s_dadda_cska24_fa449_or0
+.subckt fa a=h_s_dadda_cska24_fa449_or0 b=h_s_dadda_cska24_fa337_xor1 cin=h_s_dadda_cska24_fa338_xor1 fa_xor1=h_s_dadda_cska24_fa450_xor1 fa_or0=h_s_dadda_cska24_fa450_or0
+.subckt fa a=h_s_dadda_cska24_fa450_or0 b=h_s_dadda_cska24_fa339_xor1 cin=h_s_dadda_cska24_fa340_xor1 fa_xor1=h_s_dadda_cska24_fa451_xor1 fa_or0=h_s_dadda_cska24_fa451_or0
+.subckt fa a=h_s_dadda_cska24_fa451_or0 b=h_s_dadda_cska24_fa341_xor1 cin=h_s_dadda_cska24_fa342_xor1 fa_xor1=h_s_dadda_cska24_fa452_xor1 fa_or0=h_s_dadda_cska24_fa452_or0
+.subckt fa a=h_s_dadda_cska24_fa452_or0 b=h_s_dadda_cska24_fa343_xor1 cin=h_s_dadda_cska24_fa344_xor1 fa_xor1=h_s_dadda_cska24_fa453_xor1 fa_or0=h_s_dadda_cska24_fa453_or0
+.subckt fa a=h_s_dadda_cska24_fa453_or0 b=h_s_dadda_cska24_fa345_xor1 cin=h_s_dadda_cska24_fa346_xor1 fa_xor1=h_s_dadda_cska24_fa454_xor1 fa_or0=h_s_dadda_cska24_fa454_or0
+.subckt fa a=h_s_dadda_cska24_fa454_or0 b=h_s_dadda_cska24_fa347_xor1 cin=h_s_dadda_cska24_fa348_xor1 fa_xor1=h_s_dadda_cska24_fa455_xor1 fa_or0=h_s_dadda_cska24_fa455_or0
+.subckt fa a=h_s_dadda_cska24_fa455_or0 b=h_s_dadda_cska24_fa349_xor1 cin=h_s_dadda_cska24_fa350_xor1 fa_xor1=h_s_dadda_cska24_fa456_xor1 fa_or0=h_s_dadda_cska24_fa456_or0
+.subckt fa a=h_s_dadda_cska24_fa456_or0 b=h_s_dadda_cska24_fa351_xor1 cin=h_s_dadda_cska24_fa352_xor1 fa_xor1=h_s_dadda_cska24_fa457_xor1 fa_or0=h_s_dadda_cska24_fa457_or0
+.subckt fa a=h_s_dadda_cska24_fa457_or0 b=h_s_dadda_cska24_fa353_xor1 cin=h_s_dadda_cska24_fa354_xor1 fa_xor1=h_s_dadda_cska24_fa458_xor1 fa_or0=h_s_dadda_cska24_fa458_or0
+.subckt fa a=h_s_dadda_cska24_fa458_or0 b=h_s_dadda_cska24_fa355_xor1 cin=h_s_dadda_cska24_fa356_xor1 fa_xor1=h_s_dadda_cska24_fa459_xor1 fa_or0=h_s_dadda_cska24_fa459_or0
+.subckt fa a=h_s_dadda_cska24_fa459_or0 b=h_s_dadda_cska24_fa357_xor1 cin=h_s_dadda_cska24_fa358_xor1 fa_xor1=h_s_dadda_cska24_fa460_xor1 fa_or0=h_s_dadda_cska24_fa460_or0
+.subckt fa a=h_s_dadda_cska24_fa460_or0 b=h_s_dadda_cska24_fa359_xor1 cin=h_s_dadda_cska24_fa360_xor1 fa_xor1=h_s_dadda_cska24_fa461_xor1 fa_or0=h_s_dadda_cska24_fa461_or0
+.subckt fa a=h_s_dadda_cska24_fa461_or0 b=h_s_dadda_cska24_fa361_xor1 cin=h_s_dadda_cska24_fa362_xor1 fa_xor1=h_s_dadda_cska24_fa462_xor1 fa_or0=h_s_dadda_cska24_fa462_or0
+.subckt fa a=h_s_dadda_cska24_fa462_or0 b=h_s_dadda_cska24_fa363_xor1 cin=h_s_dadda_cska24_fa364_xor1 fa_xor1=h_s_dadda_cska24_fa463_xor1 fa_or0=h_s_dadda_cska24_fa463_or0
+.subckt fa a=h_s_dadda_cska24_fa463_or0 b=h_s_dadda_cska24_fa365_xor1 cin=h_s_dadda_cska24_fa366_xor1 fa_xor1=h_s_dadda_cska24_fa464_xor1 fa_or0=h_s_dadda_cska24_fa464_or0
+.subckt fa a=h_s_dadda_cska24_fa464_or0 b=h_s_dadda_cska24_fa367_xor1 cin=h_s_dadda_cska24_fa368_xor1 fa_xor1=h_s_dadda_cska24_fa465_xor1 fa_or0=h_s_dadda_cska24_fa465_or0
+.subckt fa a=h_s_dadda_cska24_fa465_or0 b=h_s_dadda_cska24_fa369_xor1 cin=h_s_dadda_cska24_fa370_xor1 fa_xor1=h_s_dadda_cska24_fa466_xor1 fa_or0=h_s_dadda_cska24_fa466_or0
+.subckt fa a=h_s_dadda_cska24_fa466_or0 b=h_s_dadda_cska24_fa371_xor1 cin=h_s_dadda_cska24_fa372_xor1 fa_xor1=h_s_dadda_cska24_fa467_xor1 fa_or0=h_s_dadda_cska24_fa467_or0
+.subckt fa a=h_s_dadda_cska24_fa467_or0 b=h_s_dadda_cska24_fa373_xor1 cin=h_s_dadda_cska24_fa374_xor1 fa_xor1=h_s_dadda_cska24_fa468_xor1 fa_or0=h_s_dadda_cska24_fa468_or0
+.subckt fa a=h_s_dadda_cska24_fa468_or0 b=h_s_dadda_cska24_fa375_xor1 cin=h_s_dadda_cska24_fa376_xor1 fa_xor1=h_s_dadda_cska24_fa469_xor1 fa_or0=h_s_dadda_cska24_fa469_or0
+.subckt fa a=h_s_dadda_cska24_fa469_or0 b=h_s_dadda_cska24_fa377_xor1 cin=h_s_dadda_cska24_fa378_xor1 fa_xor1=h_s_dadda_cska24_fa470_xor1 fa_or0=h_s_dadda_cska24_fa470_or0
+.subckt fa a=h_s_dadda_cska24_fa470_or0 b=h_s_dadda_cska24_fa379_xor1 cin=h_s_dadda_cska24_fa380_xor1 fa_xor1=h_s_dadda_cska24_fa471_xor1 fa_or0=h_s_dadda_cska24_fa471_or0
+.subckt fa a=h_s_dadda_cska24_fa471_or0 b=h_s_dadda_cska24_fa381_xor1 cin=h_s_dadda_cska24_fa382_xor1 fa_xor1=h_s_dadda_cska24_fa472_xor1 fa_or0=h_s_dadda_cska24_fa472_or0
+.subckt fa a=h_s_dadda_cska24_fa472_or0 b=h_s_dadda_cska24_fa383_xor1 cin=h_s_dadda_cska24_fa384_xor1 fa_xor1=h_s_dadda_cska24_fa473_xor1 fa_or0=h_s_dadda_cska24_fa473_or0
+.subckt fa a=h_s_dadda_cska24_fa473_or0 b=h_s_dadda_cska24_fa385_xor1 cin=h_s_dadda_cska24_fa386_xor1 fa_xor1=h_s_dadda_cska24_fa474_xor1 fa_or0=h_s_dadda_cska24_fa474_or0
+.subckt fa a=h_s_dadda_cska24_fa474_or0 b=h_s_dadda_cska24_fa387_xor1 cin=h_s_dadda_cska24_fa388_xor1 fa_xor1=h_s_dadda_cska24_fa475_xor1 fa_or0=h_s_dadda_cska24_fa475_or0
+.subckt fa a=h_s_dadda_cska24_fa475_or0 b=h_s_dadda_cska24_fa389_xor1 cin=h_s_dadda_cska24_fa390_xor1 fa_xor1=h_s_dadda_cska24_fa476_xor1 fa_or0=h_s_dadda_cska24_fa476_or0
+.subckt fa a=h_s_dadda_cska24_fa476_or0 b=h_s_dadda_cska24_fa391_xor1 cin=h_s_dadda_cska24_fa392_xor1 fa_xor1=h_s_dadda_cska24_fa477_xor1 fa_or0=h_s_dadda_cska24_fa477_or0
+.subckt fa a=h_s_dadda_cska24_fa477_or0 b=h_s_dadda_cska24_fa393_xor1 cin=h_s_dadda_cska24_fa394_xor1 fa_xor1=h_s_dadda_cska24_fa478_xor1 fa_or0=h_s_dadda_cska24_fa478_or0
+.subckt fa a=h_s_dadda_cska24_fa478_or0 b=h_s_dadda_cska24_fa395_xor1 cin=h_s_dadda_cska24_fa396_xor1 fa_xor1=h_s_dadda_cska24_fa479_xor1 fa_or0=h_s_dadda_cska24_fa479_or0
+.subckt fa a=h_s_dadda_cska24_fa479_or0 b=h_s_dadda_cska24_fa397_xor1 cin=h_s_dadda_cska24_fa398_xor1 fa_xor1=h_s_dadda_cska24_fa480_xor1 fa_or0=h_s_dadda_cska24_fa480_or0
+.subckt nand_gate a=a[20] b=b[23] out=h_s_dadda_cska24_nand_20_23
+.subckt fa a=h_s_dadda_cska24_fa480_or0 b=h_s_dadda_cska24_nand_20_23 cin=h_s_dadda_cska24_fa399_xor1 fa_xor1=h_s_dadda_cska24_fa481_xor1 fa_or0=h_s_dadda_cska24_fa481_or0
+.subckt and_gate a=a[22] b=b[22] out=h_s_dadda_cska24_and_22_22
+.subckt nand_gate a=a[21] b=b[23] out=h_s_dadda_cska24_nand_21_23
+.subckt fa a=h_s_dadda_cska24_fa481_or0 b=h_s_dadda_cska24_and_22_22 cin=h_s_dadda_cska24_nand_21_23 fa_xor1=h_s_dadda_cska24_fa482_xor1 fa_or0=h_s_dadda_cska24_fa482_or0
+.subckt nand_gate a=a[23] b=b[22] out=h_s_dadda_cska24_nand_23_22
+.subckt fa a=h_s_dadda_cska24_fa482_or0 b=h_s_dadda_cska24_fa440_or0 cin=h_s_dadda_cska24_nand_23_22 fa_xor1=h_s_dadda_cska24_fa483_xor1 fa_or0=h_s_dadda_cska24_fa483_or0
+.subckt and_gate a=a[0] b=b[0] out=h_s_dadda_cska24_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=h_s_dadda_cska24_and_1_0
+.subckt and_gate a=a[0] b=b[2] out=h_s_dadda_cska24_and_0_2
+.subckt nand_gate a=a[22] b=b[23] out=h_s_dadda_cska24_nand_22_23
+.subckt and_gate a=a[0] b=b[1] out=h_s_dadda_cska24_and_0_1
+.subckt and_gate a=a[23] b=b[23] out=h_s_dadda_cska24_and_23_23
+.names h_s_dadda_cska24_and_1_0 h_s_dadda_cska24_u_cska46_a[0]
+1 1
+.names h_s_dadda_cska24_and_0_2 h_s_dadda_cska24_u_cska46_a[1]
+1 1
+.names h_s_dadda_cska24_ha20_xor0 h_s_dadda_cska24_u_cska46_a[2]
+1 1
+.names h_s_dadda_cska24_fa400_xor1 h_s_dadda_cska24_u_cska46_a[3]
+1 1
+.names h_s_dadda_cska24_fa401_xor1 h_s_dadda_cska24_u_cska46_a[4]
+1 1
+.names h_s_dadda_cska24_fa402_xor1 h_s_dadda_cska24_u_cska46_a[5]
+1 1
+.names h_s_dadda_cska24_fa403_xor1 h_s_dadda_cska24_u_cska46_a[6]
+1 1
+.names h_s_dadda_cska24_fa404_xor1 h_s_dadda_cska24_u_cska46_a[7]
+1 1
+.names h_s_dadda_cska24_fa405_xor1 h_s_dadda_cska24_u_cska46_a[8]
+1 1
+.names h_s_dadda_cska24_fa406_xor1 h_s_dadda_cska24_u_cska46_a[9]
+1 1
+.names h_s_dadda_cska24_fa407_xor1 h_s_dadda_cska24_u_cska46_a[10]
+1 1
+.names h_s_dadda_cska24_fa408_xor1 h_s_dadda_cska24_u_cska46_a[11]
+1 1
+.names h_s_dadda_cska24_fa409_xor1 h_s_dadda_cska24_u_cska46_a[12]
+1 1
+.names h_s_dadda_cska24_fa410_xor1 h_s_dadda_cska24_u_cska46_a[13]
+1 1
+.names h_s_dadda_cska24_fa411_xor1 h_s_dadda_cska24_u_cska46_a[14]
+1 1
+.names h_s_dadda_cska24_fa412_xor1 h_s_dadda_cska24_u_cska46_a[15]
+1 1
+.names h_s_dadda_cska24_fa413_xor1 h_s_dadda_cska24_u_cska46_a[16]
+1 1
+.names h_s_dadda_cska24_fa414_xor1 h_s_dadda_cska24_u_cska46_a[17]
+1 1
+.names h_s_dadda_cska24_fa415_xor1 h_s_dadda_cska24_u_cska46_a[18]
+1 1
+.names h_s_dadda_cska24_fa416_xor1 h_s_dadda_cska24_u_cska46_a[19]
+1 1
+.names h_s_dadda_cska24_fa417_xor1 h_s_dadda_cska24_u_cska46_a[20]
+1 1
+.names h_s_dadda_cska24_fa418_xor1 h_s_dadda_cska24_u_cska46_a[21]
+1 1
+.names h_s_dadda_cska24_fa419_xor1 h_s_dadda_cska24_u_cska46_a[22]
+1 1
+.names h_s_dadda_cska24_fa420_xor1 h_s_dadda_cska24_u_cska46_a[23]
+1 1
+.names h_s_dadda_cska24_fa421_xor1 h_s_dadda_cska24_u_cska46_a[24]
+1 1
+.names h_s_dadda_cska24_fa422_xor1 h_s_dadda_cska24_u_cska46_a[25]
+1 1
+.names h_s_dadda_cska24_fa423_xor1 h_s_dadda_cska24_u_cska46_a[26]
+1 1
+.names h_s_dadda_cska24_fa424_xor1 h_s_dadda_cska24_u_cska46_a[27]
+1 1
+.names h_s_dadda_cska24_fa425_xor1 h_s_dadda_cska24_u_cska46_a[28]
+1 1
+.names h_s_dadda_cska24_fa426_xor1 h_s_dadda_cska24_u_cska46_a[29]
+1 1
+.names h_s_dadda_cska24_fa427_xor1 h_s_dadda_cska24_u_cska46_a[30]
+1 1
+.names h_s_dadda_cska24_fa428_xor1 h_s_dadda_cska24_u_cska46_a[31]
+1 1
+.names h_s_dadda_cska24_fa429_xor1 h_s_dadda_cska24_u_cska46_a[32]
+1 1
+.names h_s_dadda_cska24_fa430_xor1 h_s_dadda_cska24_u_cska46_a[33]
+1 1
+.names h_s_dadda_cska24_fa431_xor1 h_s_dadda_cska24_u_cska46_a[34]
+1 1
+.names h_s_dadda_cska24_fa432_xor1 h_s_dadda_cska24_u_cska46_a[35]
+1 1
+.names h_s_dadda_cska24_fa433_xor1 h_s_dadda_cska24_u_cska46_a[36]
+1 1
+.names h_s_dadda_cska24_fa434_xor1 h_s_dadda_cska24_u_cska46_a[37]
+1 1
+.names h_s_dadda_cska24_fa435_xor1 h_s_dadda_cska24_u_cska46_a[38]
+1 1
+.names h_s_dadda_cska24_fa436_xor1 h_s_dadda_cska24_u_cska46_a[39]
+1 1
+.names h_s_dadda_cska24_fa437_xor1 h_s_dadda_cska24_u_cska46_a[40]
+1 1
+.names h_s_dadda_cska24_fa438_xor1 h_s_dadda_cska24_u_cska46_a[41]
+1 1
+.names h_s_dadda_cska24_fa439_xor1 h_s_dadda_cska24_u_cska46_a[42]
+1 1
+.names h_s_dadda_cska24_fa440_xor1 h_s_dadda_cska24_u_cska46_a[43]
+1 1
+.names h_s_dadda_cska24_nand_22_23 h_s_dadda_cska24_u_cska46_a[44]
+1 1
+.names h_s_dadda_cska24_fa483_or0 h_s_dadda_cska24_u_cska46_a[45]
+1 1
+.names h_s_dadda_cska24_and_0_1 h_s_dadda_cska24_u_cska46_b[0]
+1 1
+.names h_s_dadda_cska24_ha21_xor0 h_s_dadda_cska24_u_cska46_b[1]
+1 1
+.names h_s_dadda_cska24_fa441_xor1 h_s_dadda_cska24_u_cska46_b[2]
+1 1
+.names h_s_dadda_cska24_fa442_xor1 h_s_dadda_cska24_u_cska46_b[3]
+1 1
+.names h_s_dadda_cska24_fa443_xor1 h_s_dadda_cska24_u_cska46_b[4]
+1 1
+.names h_s_dadda_cska24_fa444_xor1 h_s_dadda_cska24_u_cska46_b[5]
+1 1
+.names h_s_dadda_cska24_fa445_xor1 h_s_dadda_cska24_u_cska46_b[6]
+1 1
+.names h_s_dadda_cska24_fa446_xor1 h_s_dadda_cska24_u_cska46_b[7]
+1 1
+.names h_s_dadda_cska24_fa447_xor1 h_s_dadda_cska24_u_cska46_b[8]
+1 1
+.names h_s_dadda_cska24_fa448_xor1 h_s_dadda_cska24_u_cska46_b[9]
+1 1
+.names h_s_dadda_cska24_fa449_xor1 h_s_dadda_cska24_u_cska46_b[10]
+1 1
+.names h_s_dadda_cska24_fa450_xor1 h_s_dadda_cska24_u_cska46_b[11]
+1 1
+.names h_s_dadda_cska24_fa451_xor1 h_s_dadda_cska24_u_cska46_b[12]
+1 1
+.names h_s_dadda_cska24_fa452_xor1 h_s_dadda_cska24_u_cska46_b[13]
+1 1
+.names h_s_dadda_cska24_fa453_xor1 h_s_dadda_cska24_u_cska46_b[14]
+1 1
+.names h_s_dadda_cska24_fa454_xor1 h_s_dadda_cska24_u_cska46_b[15]
+1 1
+.names h_s_dadda_cska24_fa455_xor1 h_s_dadda_cska24_u_cska46_b[16]
+1 1
+.names h_s_dadda_cska24_fa456_xor1 h_s_dadda_cska24_u_cska46_b[17]
+1 1
+.names h_s_dadda_cska24_fa457_xor1 h_s_dadda_cska24_u_cska46_b[18]
+1 1
+.names h_s_dadda_cska24_fa458_xor1 h_s_dadda_cska24_u_cska46_b[19]
+1 1
+.names h_s_dadda_cska24_fa459_xor1 h_s_dadda_cska24_u_cska46_b[20]
+1 1
+.names h_s_dadda_cska24_fa460_xor1 h_s_dadda_cska24_u_cska46_b[21]
+1 1
+.names h_s_dadda_cska24_fa461_xor1 h_s_dadda_cska24_u_cska46_b[22]
+1 1
+.names h_s_dadda_cska24_fa462_xor1 h_s_dadda_cska24_u_cska46_b[23]
+1 1
+.names h_s_dadda_cska24_fa463_xor1 h_s_dadda_cska24_u_cska46_b[24]
+1 1
+.names h_s_dadda_cska24_fa464_xor1 h_s_dadda_cska24_u_cska46_b[25]
+1 1
+.names h_s_dadda_cska24_fa465_xor1 h_s_dadda_cska24_u_cska46_b[26]
+1 1
+.names h_s_dadda_cska24_fa466_xor1 h_s_dadda_cska24_u_cska46_b[27]
+1 1
+.names h_s_dadda_cska24_fa467_xor1 h_s_dadda_cska24_u_cska46_b[28]
+1 1
+.names h_s_dadda_cska24_fa468_xor1 h_s_dadda_cska24_u_cska46_b[29]
+1 1
+.names h_s_dadda_cska24_fa469_xor1 h_s_dadda_cska24_u_cska46_b[30]
+1 1
+.names h_s_dadda_cska24_fa470_xor1 h_s_dadda_cska24_u_cska46_b[31]
+1 1
+.names h_s_dadda_cska24_fa471_xor1 h_s_dadda_cska24_u_cska46_b[32]
+1 1
+.names h_s_dadda_cska24_fa472_xor1 h_s_dadda_cska24_u_cska46_b[33]
+1 1
+.names h_s_dadda_cska24_fa473_xor1 h_s_dadda_cska24_u_cska46_b[34]
+1 1
+.names h_s_dadda_cska24_fa474_xor1 h_s_dadda_cska24_u_cska46_b[35]
+1 1
+.names h_s_dadda_cska24_fa475_xor1 h_s_dadda_cska24_u_cska46_b[36]
+1 1
+.names h_s_dadda_cska24_fa476_xor1 h_s_dadda_cska24_u_cska46_b[37]
+1 1
+.names h_s_dadda_cska24_fa477_xor1 h_s_dadda_cska24_u_cska46_b[38]
+1 1
+.names h_s_dadda_cska24_fa478_xor1 h_s_dadda_cska24_u_cska46_b[39]
+1 1
+.names h_s_dadda_cska24_fa479_xor1 h_s_dadda_cska24_u_cska46_b[40]
+1 1
+.names h_s_dadda_cska24_fa480_xor1 h_s_dadda_cska24_u_cska46_b[41]
+1 1
+.names h_s_dadda_cska24_fa481_xor1 h_s_dadda_cska24_u_cska46_b[42]
+1 1
+.names h_s_dadda_cska24_fa482_xor1 h_s_dadda_cska24_u_cska46_b[43]
+1 1
+.names h_s_dadda_cska24_fa483_xor1 h_s_dadda_cska24_u_cska46_b[44]
+1 1
+.names h_s_dadda_cska24_and_23_23 h_s_dadda_cska24_u_cska46_b[45]
+1 1
+.subckt u_cska46 a[0]=h_s_dadda_cska24_u_cska46_a[0] a[1]=h_s_dadda_cska24_u_cska46_a[1] a[2]=h_s_dadda_cska24_u_cska46_a[2] a[3]=h_s_dadda_cska24_u_cska46_a[3] a[4]=h_s_dadda_cska24_u_cska46_a[4] a[5]=h_s_dadda_cska24_u_cska46_a[5] a[6]=h_s_dadda_cska24_u_cska46_a[6] a[7]=h_s_dadda_cska24_u_cska46_a[7] a[8]=h_s_dadda_cska24_u_cska46_a[8] a[9]=h_s_dadda_cska24_u_cska46_a[9] a[10]=h_s_dadda_cska24_u_cska46_a[10] a[11]=h_s_dadda_cska24_u_cska46_a[11] a[12]=h_s_dadda_cska24_u_cska46_a[12] a[13]=h_s_dadda_cska24_u_cska46_a[13] a[14]=h_s_dadda_cska24_u_cska46_a[14] a[15]=h_s_dadda_cska24_u_cska46_a[15] a[16]=h_s_dadda_cska24_u_cska46_a[16] a[17]=h_s_dadda_cska24_u_cska46_a[17] a[18]=h_s_dadda_cska24_u_cska46_a[18] a[19]=h_s_dadda_cska24_u_cska46_a[19] a[20]=h_s_dadda_cska24_u_cska46_a[20] a[21]=h_s_dadda_cska24_u_cska46_a[21] a[22]=h_s_dadda_cska24_u_cska46_a[22] a[23]=h_s_dadda_cska24_u_cska46_a[23] a[24]=h_s_dadda_cska24_u_cska46_a[24] a[25]=h_s_dadda_cska24_u_cska46_a[25] a[26]=h_s_dadda_cska24_u_cska46_a[26] a[27]=h_s_dadda_cska24_u_cska46_a[27] a[28]=h_s_dadda_cska24_u_cska46_a[28] a[29]=h_s_dadda_cska24_u_cska46_a[29] a[30]=h_s_dadda_cska24_u_cska46_a[30] a[31]=h_s_dadda_cska24_u_cska46_a[31] a[32]=h_s_dadda_cska24_u_cska46_a[32] a[33]=h_s_dadda_cska24_u_cska46_a[33] a[34]=h_s_dadda_cska24_u_cska46_a[34] a[35]=h_s_dadda_cska24_u_cska46_a[35] a[36]=h_s_dadda_cska24_u_cska46_a[36] a[37]=h_s_dadda_cska24_u_cska46_a[37] a[38]=h_s_dadda_cska24_u_cska46_a[38] a[39]=h_s_dadda_cska24_u_cska46_a[39] a[40]=h_s_dadda_cska24_u_cska46_a[40] a[41]=h_s_dadda_cska24_u_cska46_a[41] a[42]=h_s_dadda_cska24_u_cska46_a[42] a[43]=h_s_dadda_cska24_u_cska46_a[43] a[44]=h_s_dadda_cska24_u_cska46_a[44] a[45]=h_s_dadda_cska24_u_cska46_a[45] b[0]=h_s_dadda_cska24_u_cska46_b[0] b[1]=h_s_dadda_cska24_u_cska46_b[1] b[2]=h_s_dadda_cska24_u_cska46_b[2] b[3]=h_s_dadda_cska24_u_cska46_b[3] b[4]=h_s_dadda_cska24_u_cska46_b[4] b[5]=h_s_dadda_cska24_u_cska46_b[5] b[6]=h_s_dadda_cska24_u_cska46_b[6] b[7]=h_s_dadda_cska24_u_cska46_b[7] b[8]=h_s_dadda_cska24_u_cska46_b[8] b[9]=h_s_dadda_cska24_u_cska46_b[9] b[10]=h_s_dadda_cska24_u_cska46_b[10] b[11]=h_s_dadda_cska24_u_cska46_b[11] b[12]=h_s_dadda_cska24_u_cska46_b[12] b[13]=h_s_dadda_cska24_u_cska46_b[13] b[14]=h_s_dadda_cska24_u_cska46_b[14] b[15]=h_s_dadda_cska24_u_cska46_b[15] b[16]=h_s_dadda_cska24_u_cska46_b[16] b[17]=h_s_dadda_cska24_u_cska46_b[17] b[18]=h_s_dadda_cska24_u_cska46_b[18] b[19]=h_s_dadda_cska24_u_cska46_b[19] b[20]=h_s_dadda_cska24_u_cska46_b[20] b[21]=h_s_dadda_cska24_u_cska46_b[21] b[22]=h_s_dadda_cska24_u_cska46_b[22] b[23]=h_s_dadda_cska24_u_cska46_b[23] b[24]=h_s_dadda_cska24_u_cska46_b[24] b[25]=h_s_dadda_cska24_u_cska46_b[25] b[26]=h_s_dadda_cska24_u_cska46_b[26] b[27]=h_s_dadda_cska24_u_cska46_b[27] b[28]=h_s_dadda_cska24_u_cska46_b[28] b[29]=h_s_dadda_cska24_u_cska46_b[29] b[30]=h_s_dadda_cska24_u_cska46_b[30] b[31]=h_s_dadda_cska24_u_cska46_b[31] b[32]=h_s_dadda_cska24_u_cska46_b[32] b[33]=h_s_dadda_cska24_u_cska46_b[33] b[34]=h_s_dadda_cska24_u_cska46_b[34] b[35]=h_s_dadda_cska24_u_cska46_b[35] b[36]=h_s_dadda_cska24_u_cska46_b[36] b[37]=h_s_dadda_cska24_u_cska46_b[37] b[38]=h_s_dadda_cska24_u_cska46_b[38] b[39]=h_s_dadda_cska24_u_cska46_b[39] b[40]=h_s_dadda_cska24_u_cska46_b[40] b[41]=h_s_dadda_cska24_u_cska46_b[41] b[42]=h_s_dadda_cska24_u_cska46_b[42] b[43]=h_s_dadda_cska24_u_cska46_b[43] b[44]=h_s_dadda_cska24_u_cska46_b[44] b[45]=h_s_dadda_cska24_u_cska46_b[45] u_cska46_out[0]=h_s_dadda_cska24_u_cska46_ha0_xor0 u_cska46_out[1]=h_s_dadda_cska24_u_cska46_fa0_xor1 u_cska46_out[2]=h_s_dadda_cska24_u_cska46_fa1_xor1 u_cska46_out[3]=h_s_dadda_cska24_u_cska46_fa2_xor1 u_cska46_out[4]=h_s_dadda_cska24_u_cska46_fa3_xor1 u_cska46_out[5]=h_s_dadda_cska24_u_cska46_fa4_xor1 u_cska46_out[6]=h_s_dadda_cska24_u_cska46_fa5_xor1 u_cska46_out[7]=h_s_dadda_cska24_u_cska46_fa6_xor1 u_cska46_out[8]=h_s_dadda_cska24_u_cska46_fa7_xor1 u_cska46_out[9]=h_s_dadda_cska24_u_cska46_fa8_xor1 u_cska46_out[10]=h_s_dadda_cska24_u_cska46_fa9_xor1 u_cska46_out[11]=h_s_dadda_cska24_u_cska46_fa10_xor1 u_cska46_out[12]=h_s_dadda_cska24_u_cska46_fa11_xor1 u_cska46_out[13]=h_s_dadda_cska24_u_cska46_fa12_xor1 u_cska46_out[14]=h_s_dadda_cska24_u_cska46_fa13_xor1 u_cska46_out[15]=h_s_dadda_cska24_u_cska46_fa14_xor1 u_cska46_out[16]=h_s_dadda_cska24_u_cska46_fa15_xor1 u_cska46_out[17]=h_s_dadda_cska24_u_cska46_fa16_xor1 u_cska46_out[18]=h_s_dadda_cska24_u_cska46_fa17_xor1 u_cska46_out[19]=h_s_dadda_cska24_u_cska46_fa18_xor1 u_cska46_out[20]=h_s_dadda_cska24_u_cska46_fa19_xor1 u_cska46_out[21]=h_s_dadda_cska24_u_cska46_fa20_xor1 u_cska46_out[22]=h_s_dadda_cska24_u_cska46_fa21_xor1 u_cska46_out[23]=h_s_dadda_cska24_u_cska46_fa22_xor1 u_cska46_out[24]=h_s_dadda_cska24_u_cska46_fa23_xor1 u_cska46_out[25]=h_s_dadda_cska24_u_cska46_fa24_xor1 u_cska46_out[26]=h_s_dadda_cska24_u_cska46_fa25_xor1 u_cska46_out[27]=h_s_dadda_cska24_u_cska46_fa26_xor1 u_cska46_out[28]=h_s_dadda_cska24_u_cska46_fa27_xor1 u_cska46_out[29]=h_s_dadda_cska24_u_cska46_fa28_xor1 u_cska46_out[30]=h_s_dadda_cska24_u_cska46_fa29_xor1 u_cska46_out[31]=h_s_dadda_cska24_u_cska46_fa30_xor1 u_cska46_out[32]=h_s_dadda_cska24_u_cska46_fa31_xor1 u_cska46_out[33]=h_s_dadda_cska24_u_cska46_fa32_xor1 u_cska46_out[34]=h_s_dadda_cska24_u_cska46_fa33_xor1 u_cska46_out[35]=h_s_dadda_cska24_u_cska46_fa34_xor1 u_cska46_out[36]=h_s_dadda_cska24_u_cska46_fa35_xor1 u_cska46_out[37]=h_s_dadda_cska24_u_cska46_fa36_xor1 u_cska46_out[38]=h_s_dadda_cska24_u_cska46_fa37_xor1 u_cska46_out[39]=h_s_dadda_cska24_u_cska46_fa38_xor1 u_cska46_out[40]=h_s_dadda_cska24_u_cska46_fa39_xor1 u_cska46_out[41]=h_s_dadda_cska24_u_cska46_fa40_xor1 u_cska46_out[42]=h_s_dadda_cska24_u_cska46_fa41_xor1 u_cska46_out[43]=h_s_dadda_cska24_u_cska46_fa42_xor1 u_cska46_out[44]=h_s_dadda_cska24_u_cska46_fa43_xor1 u_cska46_out[45]=h_s_dadda_cska24_u_cska46_fa44_xor1 u_cska46_out[46]=h_s_dadda_cska24_u_cska46_mux2to111_xor0
+.subckt not_gate a=h_s_dadda_cska24_u_cska46_mux2to111_xor0 out=h_s_dadda_cska24_xor0
+.names h_s_dadda_cska24_and_0_0 h_s_dadda_cska24_out[0]
+1 1
+.names h_s_dadda_cska24_u_cska46_ha0_xor0 h_s_dadda_cska24_out[1]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa0_xor1 h_s_dadda_cska24_out[2]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa1_xor1 h_s_dadda_cska24_out[3]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa2_xor1 h_s_dadda_cska24_out[4]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa3_xor1 h_s_dadda_cska24_out[5]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa4_xor1 h_s_dadda_cska24_out[6]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa5_xor1 h_s_dadda_cska24_out[7]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa6_xor1 h_s_dadda_cska24_out[8]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa7_xor1 h_s_dadda_cska24_out[9]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa8_xor1 h_s_dadda_cska24_out[10]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa9_xor1 h_s_dadda_cska24_out[11]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa10_xor1 h_s_dadda_cska24_out[12]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa11_xor1 h_s_dadda_cska24_out[13]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa12_xor1 h_s_dadda_cska24_out[14]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa13_xor1 h_s_dadda_cska24_out[15]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa14_xor1 h_s_dadda_cska24_out[16]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa15_xor1 h_s_dadda_cska24_out[17]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa16_xor1 h_s_dadda_cska24_out[18]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa17_xor1 h_s_dadda_cska24_out[19]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa18_xor1 h_s_dadda_cska24_out[20]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa19_xor1 h_s_dadda_cska24_out[21]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa20_xor1 h_s_dadda_cska24_out[22]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa21_xor1 h_s_dadda_cska24_out[23]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa22_xor1 h_s_dadda_cska24_out[24]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa23_xor1 h_s_dadda_cska24_out[25]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa24_xor1 h_s_dadda_cska24_out[26]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa25_xor1 h_s_dadda_cska24_out[27]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa26_xor1 h_s_dadda_cska24_out[28]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa27_xor1 h_s_dadda_cska24_out[29]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa28_xor1 h_s_dadda_cska24_out[30]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa29_xor1 h_s_dadda_cska24_out[31]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa30_xor1 h_s_dadda_cska24_out[32]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa31_xor1 h_s_dadda_cska24_out[33]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa32_xor1 h_s_dadda_cska24_out[34]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa33_xor1 h_s_dadda_cska24_out[35]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa34_xor1 h_s_dadda_cska24_out[36]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa35_xor1 h_s_dadda_cska24_out[37]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa36_xor1 h_s_dadda_cska24_out[38]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa37_xor1 h_s_dadda_cska24_out[39]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa38_xor1 h_s_dadda_cska24_out[40]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa39_xor1 h_s_dadda_cska24_out[41]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa40_xor1 h_s_dadda_cska24_out[42]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa41_xor1 h_s_dadda_cska24_out[43]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa42_xor1 h_s_dadda_cska24_out[44]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa43_xor1 h_s_dadda_cska24_out[45]
+1 1
+.names h_s_dadda_cska24_u_cska46_fa44_xor1 h_s_dadda_cska24_out[46]
+1 1
+.names h_s_dadda_cska24_xor0 h_s_dadda_cska24_out[47]
+1 1
+.end
+
+.model u_cska46
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] a[16] a[17] a[18] a[19] a[20] a[21] a[22] a[23] a[24] a[25] a[26] a[27] a[28] a[29] a[30] a[31] a[32] a[33] a[34] a[35] a[36] a[37] a[38] a[39] a[40] a[41] a[42] a[43] a[44] a[45] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15] b[16] b[17] b[18] b[19] b[20] b[21] b[22] b[23] b[24] b[25] b[26] b[27] b[28] b[29] b[30] b[31] b[32] b[33] b[34] b[35] b[36] b[37] b[38] b[39] b[40] b[41] b[42] b[43] b[44] b[45]
+.outputs u_cska46_out[0] u_cska46_out[1] u_cska46_out[2] u_cska46_out[3] u_cska46_out[4] u_cska46_out[5] u_cska46_out[6] u_cska46_out[7] u_cska46_out[8] u_cska46_out[9] u_cska46_out[10] u_cska46_out[11] u_cska46_out[12] u_cska46_out[13] u_cska46_out[14] u_cska46_out[15] u_cska46_out[16] u_cska46_out[17] u_cska46_out[18] u_cska46_out[19] u_cska46_out[20] u_cska46_out[21] u_cska46_out[22] u_cska46_out[23] u_cska46_out[24] u_cska46_out[25] u_cska46_out[26] u_cska46_out[27] u_cska46_out[28] u_cska46_out[29] u_cska46_out[30] u_cska46_out[31] u_cska46_out[32] u_cska46_out[33] u_cska46_out[34] u_cska46_out[35] u_cska46_out[36] u_cska46_out[37] u_cska46_out[38] u_cska46_out[39] u_cska46_out[40] u_cska46_out[41] u_cska46_out[42] u_cska46_out[43] u_cska46_out[44] u_cska46_out[45] u_cska46_out[46]
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a[0] b=b[0] out=u_cska46_xor0
+.subckt ha a=a[0] b=b[0] ha_xor0=u_cska46_ha0_xor0 ha_and0=u_cska46_ha0_and0
+.subckt xor_gate a=a[1] b=b[1] out=u_cska46_xor1
+.subckt fa a=a[1] b=b[1] cin=u_cska46_ha0_and0 fa_xor1=u_cska46_fa0_xor1 fa_or0=u_cska46_fa0_or0
+.subckt xor_gate a=a[2] b=b[2] out=u_cska46_xor2
+.subckt fa a=a[2] b=b[2] cin=u_cska46_fa0_or0 fa_xor1=u_cska46_fa1_xor1 fa_or0=u_cska46_fa1_or0
+.subckt xor_gate a=a[3] b=b[3] out=u_cska46_xor3
+.subckt fa a=a[3] b=b[3] cin=u_cska46_fa1_or0 fa_xor1=u_cska46_fa2_xor1 fa_or0=u_cska46_fa2_or0
+.subckt and_gate a=u_cska46_xor0 b=u_cska46_xor2 out=u_cska46_and_propagate00
+.subckt and_gate a=u_cska46_xor1 b=u_cska46_xor3 out=u_cska46_and_propagate01
+.subckt and_gate a=u_cska46_and_propagate00 b=u_cska46_and_propagate01 out=u_cska46_and_propagate02
+.subckt mux2to1 d0=u_cska46_fa2_or0 d1=gnd sel=u_cska46_and_propagate02 mux2to1_xor0=u_cska46_mux2to10_and1
+.subckt xor_gate a=a[4] b=b[4] out=u_cska46_xor4
+.subckt fa a=a[4] b=b[4] cin=u_cska46_mux2to10_and1 fa_xor1=u_cska46_fa3_xor1 fa_or0=u_cska46_fa3_or0
+.subckt xor_gate a=a[5] b=b[5] out=u_cska46_xor5
+.subckt fa a=a[5] b=b[5] cin=u_cska46_fa3_or0 fa_xor1=u_cska46_fa4_xor1 fa_or0=u_cska46_fa4_or0
+.subckt xor_gate a=a[6] b=b[6] out=u_cska46_xor6
+.subckt fa a=a[6] b=b[6] cin=u_cska46_fa4_or0 fa_xor1=u_cska46_fa5_xor1 fa_or0=u_cska46_fa5_or0
+.subckt xor_gate a=a[7] b=b[7] out=u_cska46_xor7
+.subckt fa a=a[7] b=b[7] cin=u_cska46_fa5_or0 fa_xor1=u_cska46_fa6_xor1 fa_or0=u_cska46_fa6_or0
+.subckt and_gate a=u_cska46_xor4 b=u_cska46_xor6 out=u_cska46_and_propagate13
+.subckt and_gate a=u_cska46_xor5 b=u_cska46_xor7 out=u_cska46_and_propagate14
+.subckt and_gate a=u_cska46_and_propagate13 b=u_cska46_and_propagate14 out=u_cska46_and_propagate15
+.subckt mux2to1 d0=u_cska46_fa6_or0 d1=u_cska46_mux2to10_and1 sel=u_cska46_and_propagate15 mux2to1_xor0=u_cska46_mux2to11_xor0
+.subckt xor_gate a=a[8] b=b[8] out=u_cska46_xor8
+.subckt fa a=a[8] b=b[8] cin=u_cska46_mux2to11_xor0 fa_xor1=u_cska46_fa7_xor1 fa_or0=u_cska46_fa7_or0
+.subckt xor_gate a=a[9] b=b[9] out=u_cska46_xor9
+.subckt fa a=a[9] b=b[9] cin=u_cska46_fa7_or0 fa_xor1=u_cska46_fa8_xor1 fa_or0=u_cska46_fa8_or0
+.subckt xor_gate a=a[10] b=b[10] out=u_cska46_xor10
+.subckt fa a=a[10] b=b[10] cin=u_cska46_fa8_or0 fa_xor1=u_cska46_fa9_xor1 fa_or0=u_cska46_fa9_or0
+.subckt xor_gate a=a[11] b=b[11] out=u_cska46_xor11
+.subckt fa a=a[11] b=b[11] cin=u_cska46_fa9_or0 fa_xor1=u_cska46_fa10_xor1 fa_or0=u_cska46_fa10_or0
+.subckt and_gate a=u_cska46_xor8 b=u_cska46_xor10 out=u_cska46_and_propagate26
+.subckt and_gate a=u_cska46_xor9 b=u_cska46_xor11 out=u_cska46_and_propagate27
+.subckt and_gate a=u_cska46_and_propagate26 b=u_cska46_and_propagate27 out=u_cska46_and_propagate28
+.subckt mux2to1 d0=u_cska46_fa10_or0 d1=u_cska46_mux2to11_xor0 sel=u_cska46_and_propagate28 mux2to1_xor0=u_cska46_mux2to12_xor0
+.subckt xor_gate a=a[12] b=b[12] out=u_cska46_xor12
+.subckt fa a=a[12] b=b[12] cin=u_cska46_mux2to12_xor0 fa_xor1=u_cska46_fa11_xor1 fa_or0=u_cska46_fa11_or0
+.subckt xor_gate a=a[13] b=b[13] out=u_cska46_xor13
+.subckt fa a=a[13] b=b[13] cin=u_cska46_fa11_or0 fa_xor1=u_cska46_fa12_xor1 fa_or0=u_cska46_fa12_or0
+.subckt xor_gate a=a[14] b=b[14] out=u_cska46_xor14
+.subckt fa a=a[14] b=b[14] cin=u_cska46_fa12_or0 fa_xor1=u_cska46_fa13_xor1 fa_or0=u_cska46_fa13_or0
+.subckt xor_gate a=a[15] b=b[15] out=u_cska46_xor15
+.subckt fa a=a[15] b=b[15] cin=u_cska46_fa13_or0 fa_xor1=u_cska46_fa14_xor1 fa_or0=u_cska46_fa14_or0
+.subckt and_gate a=u_cska46_xor12 b=u_cska46_xor14 out=u_cska46_and_propagate39
+.subckt and_gate a=u_cska46_xor13 b=u_cska46_xor15 out=u_cska46_and_propagate310
+.subckt and_gate a=u_cska46_and_propagate39 b=u_cska46_and_propagate310 out=u_cska46_and_propagate311
+.subckt mux2to1 d0=u_cska46_fa14_or0 d1=u_cska46_mux2to12_xor0 sel=u_cska46_and_propagate311 mux2to1_xor0=u_cska46_mux2to13_xor0
+.subckt xor_gate a=a[16] b=b[16] out=u_cska46_xor16
+.subckt fa a=a[16] b=b[16] cin=u_cska46_mux2to13_xor0 fa_xor1=u_cska46_fa15_xor1 fa_or0=u_cska46_fa15_or0
+.subckt xor_gate a=a[17] b=b[17] out=u_cska46_xor17
+.subckt fa a=a[17] b=b[17] cin=u_cska46_fa15_or0 fa_xor1=u_cska46_fa16_xor1 fa_or0=u_cska46_fa16_or0
+.subckt xor_gate a=a[18] b=b[18] out=u_cska46_xor18
+.subckt fa a=a[18] b=b[18] cin=u_cska46_fa16_or0 fa_xor1=u_cska46_fa17_xor1 fa_or0=u_cska46_fa17_or0
+.subckt xor_gate a=a[19] b=b[19] out=u_cska46_xor19
+.subckt fa a=a[19] b=b[19] cin=u_cska46_fa17_or0 fa_xor1=u_cska46_fa18_xor1 fa_or0=u_cska46_fa18_or0
+.subckt and_gate a=u_cska46_xor16 b=u_cska46_xor18 out=u_cska46_and_propagate412
+.subckt and_gate a=u_cska46_xor17 b=u_cska46_xor19 out=u_cska46_and_propagate413
+.subckt and_gate a=u_cska46_and_propagate412 b=u_cska46_and_propagate413 out=u_cska46_and_propagate414
+.subckt mux2to1 d0=u_cska46_fa18_or0 d1=u_cska46_mux2to13_xor0 sel=u_cska46_and_propagate414 mux2to1_xor0=u_cska46_mux2to14_xor0
+.subckt xor_gate a=a[20] b=b[20] out=u_cska46_xor20
+.subckt fa a=a[20] b=b[20] cin=u_cska46_mux2to14_xor0 fa_xor1=u_cska46_fa19_xor1 fa_or0=u_cska46_fa19_or0
+.subckt xor_gate a=a[21] b=b[21] out=u_cska46_xor21
+.subckt fa a=a[21] b=b[21] cin=u_cska46_fa19_or0 fa_xor1=u_cska46_fa20_xor1 fa_or0=u_cska46_fa20_or0
+.subckt xor_gate a=a[22] b=b[22] out=u_cska46_xor22
+.subckt fa a=a[22] b=b[22] cin=u_cska46_fa20_or0 fa_xor1=u_cska46_fa21_xor1 fa_or0=u_cska46_fa21_or0
+.subckt xor_gate a=a[23] b=b[23] out=u_cska46_xor23
+.subckt fa a=a[23] b=b[23] cin=u_cska46_fa21_or0 fa_xor1=u_cska46_fa22_xor1 fa_or0=u_cska46_fa22_or0
+.subckt and_gate a=u_cska46_xor20 b=u_cska46_xor22 out=u_cska46_and_propagate515
+.subckt and_gate a=u_cska46_xor21 b=u_cska46_xor23 out=u_cska46_and_propagate516
+.subckt and_gate a=u_cska46_and_propagate515 b=u_cska46_and_propagate516 out=u_cska46_and_propagate517
+.subckt mux2to1 d0=u_cska46_fa22_or0 d1=u_cska46_mux2to14_xor0 sel=u_cska46_and_propagate517 mux2to1_xor0=u_cska46_mux2to15_xor0
+.subckt xor_gate a=a[24] b=b[24] out=u_cska46_xor24
+.subckt fa a=a[24] b=b[24] cin=u_cska46_mux2to15_xor0 fa_xor1=u_cska46_fa23_xor1 fa_or0=u_cska46_fa23_or0
+.subckt xor_gate a=a[25] b=b[25] out=u_cska46_xor25
+.subckt fa a=a[25] b=b[25] cin=u_cska46_fa23_or0 fa_xor1=u_cska46_fa24_xor1 fa_or0=u_cska46_fa24_or0
+.subckt xor_gate a=a[26] b=b[26] out=u_cska46_xor26
+.subckt fa a=a[26] b=b[26] cin=u_cska46_fa24_or0 fa_xor1=u_cska46_fa25_xor1 fa_or0=u_cska46_fa25_or0
+.subckt xor_gate a=a[27] b=b[27] out=u_cska46_xor27
+.subckt fa a=a[27] b=b[27] cin=u_cska46_fa25_or0 fa_xor1=u_cska46_fa26_xor1 fa_or0=u_cska46_fa26_or0
+.subckt and_gate a=u_cska46_xor24 b=u_cska46_xor26 out=u_cska46_and_propagate618
+.subckt and_gate a=u_cska46_xor25 b=u_cska46_xor27 out=u_cska46_and_propagate619
+.subckt and_gate a=u_cska46_and_propagate618 b=u_cska46_and_propagate619 out=u_cska46_and_propagate620
+.subckt mux2to1 d0=u_cska46_fa26_or0 d1=u_cska46_mux2to15_xor0 sel=u_cska46_and_propagate620 mux2to1_xor0=u_cska46_mux2to16_xor0
+.subckt xor_gate a=a[28] b=b[28] out=u_cska46_xor28
+.subckt fa a=a[28] b=b[28] cin=u_cska46_mux2to16_xor0 fa_xor1=u_cska46_fa27_xor1 fa_or0=u_cska46_fa27_or0
+.subckt xor_gate a=a[29] b=b[29] out=u_cska46_xor29
+.subckt fa a=a[29] b=b[29] cin=u_cska46_fa27_or0 fa_xor1=u_cska46_fa28_xor1 fa_or0=u_cska46_fa28_or0
+.subckt xor_gate a=a[30] b=b[30] out=u_cska46_xor30
+.subckt fa a=a[30] b=b[30] cin=u_cska46_fa28_or0 fa_xor1=u_cska46_fa29_xor1 fa_or0=u_cska46_fa29_or0
+.subckt xor_gate a=a[31] b=b[31] out=u_cska46_xor31
+.subckt fa a=a[31] b=b[31] cin=u_cska46_fa29_or0 fa_xor1=u_cska46_fa30_xor1 fa_or0=u_cska46_fa30_or0
+.subckt and_gate a=u_cska46_xor28 b=u_cska46_xor30 out=u_cska46_and_propagate721
+.subckt and_gate a=u_cska46_xor29 b=u_cska46_xor31 out=u_cska46_and_propagate722
+.subckt and_gate a=u_cska46_and_propagate721 b=u_cska46_and_propagate722 out=u_cska46_and_propagate723
+.subckt mux2to1 d0=u_cska46_fa30_or0 d1=u_cska46_mux2to16_xor0 sel=u_cska46_and_propagate723 mux2to1_xor0=u_cska46_mux2to17_xor0
+.subckt xor_gate a=a[32] b=b[32] out=u_cska46_xor32
+.subckt fa a=a[32] b=b[32] cin=u_cska46_mux2to17_xor0 fa_xor1=u_cska46_fa31_xor1 fa_or0=u_cska46_fa31_or0
+.subckt xor_gate a=a[33] b=b[33] out=u_cska46_xor33
+.subckt fa a=a[33] b=b[33] cin=u_cska46_fa31_or0 fa_xor1=u_cska46_fa32_xor1 fa_or0=u_cska46_fa32_or0
+.subckt xor_gate a=a[34] b=b[34] out=u_cska46_xor34
+.subckt fa a=a[34] b=b[34] cin=u_cska46_fa32_or0 fa_xor1=u_cska46_fa33_xor1 fa_or0=u_cska46_fa33_or0
+.subckt xor_gate a=a[35] b=b[35] out=u_cska46_xor35
+.subckt fa a=a[35] b=b[35] cin=u_cska46_fa33_or0 fa_xor1=u_cska46_fa34_xor1 fa_or0=u_cska46_fa34_or0
+.subckt and_gate a=u_cska46_xor32 b=u_cska46_xor34 out=u_cska46_and_propagate824
+.subckt and_gate a=u_cska46_xor33 b=u_cska46_xor35 out=u_cska46_and_propagate825
+.subckt and_gate a=u_cska46_and_propagate824 b=u_cska46_and_propagate825 out=u_cska46_and_propagate826
+.subckt mux2to1 d0=u_cska46_fa34_or0 d1=u_cska46_mux2to17_xor0 sel=u_cska46_and_propagate826 mux2to1_xor0=u_cska46_mux2to18_xor0
+.subckt xor_gate a=a[36] b=b[36] out=u_cska46_xor36
+.subckt fa a=a[36] b=b[36] cin=u_cska46_mux2to18_xor0 fa_xor1=u_cska46_fa35_xor1 fa_or0=u_cska46_fa35_or0
+.subckt xor_gate a=a[37] b=b[37] out=u_cska46_xor37
+.subckt fa a=a[37] b=b[37] cin=u_cska46_fa35_or0 fa_xor1=u_cska46_fa36_xor1 fa_or0=u_cska46_fa36_or0
+.subckt xor_gate a=a[38] b=b[38] out=u_cska46_xor38
+.subckt fa a=a[38] b=b[38] cin=u_cska46_fa36_or0 fa_xor1=u_cska46_fa37_xor1 fa_or0=u_cska46_fa37_or0
+.subckt xor_gate a=a[39] b=b[39] out=u_cska46_xor39
+.subckt fa a=a[39] b=b[39] cin=u_cska46_fa37_or0 fa_xor1=u_cska46_fa38_xor1 fa_or0=u_cska46_fa38_or0
+.subckt and_gate a=u_cska46_xor36 b=u_cska46_xor38 out=u_cska46_and_propagate927
+.subckt and_gate a=u_cska46_xor37 b=u_cska46_xor39 out=u_cska46_and_propagate928
+.subckt and_gate a=u_cska46_and_propagate927 b=u_cska46_and_propagate928 out=u_cska46_and_propagate929
+.subckt mux2to1 d0=u_cska46_fa38_or0 d1=u_cska46_mux2to18_xor0 sel=u_cska46_and_propagate929 mux2to1_xor0=u_cska46_mux2to19_xor0
+.subckt xor_gate a=a[40] b=b[40] out=u_cska46_xor40
+.subckt fa a=a[40] b=b[40] cin=u_cska46_mux2to19_xor0 fa_xor1=u_cska46_fa39_xor1 fa_or0=u_cska46_fa39_or0
+.subckt xor_gate a=a[41] b=b[41] out=u_cska46_xor41
+.subckt fa a=a[41] b=b[41] cin=u_cska46_fa39_or0 fa_xor1=u_cska46_fa40_xor1 fa_or0=u_cska46_fa40_or0
+.subckt xor_gate a=a[42] b=b[42] out=u_cska46_xor42
+.subckt fa a=a[42] b=b[42] cin=u_cska46_fa40_or0 fa_xor1=u_cska46_fa41_xor1 fa_or0=u_cska46_fa41_or0
+.subckt xor_gate a=a[43] b=b[43] out=u_cska46_xor43
+.subckt fa a=a[43] b=b[43] cin=u_cska46_fa41_or0 fa_xor1=u_cska46_fa42_xor1 fa_or0=u_cska46_fa42_or0
+.subckt and_gate a=u_cska46_xor40 b=u_cska46_xor42 out=u_cska46_and_propagate1030
+.subckt and_gate a=u_cska46_xor41 b=u_cska46_xor43 out=u_cska46_and_propagate1031
+.subckt and_gate a=u_cska46_and_propagate1030 b=u_cska46_and_propagate1031 out=u_cska46_and_propagate1032
+.subckt mux2to1 d0=u_cska46_fa42_or0 d1=u_cska46_mux2to19_xor0 sel=u_cska46_and_propagate1032 mux2to1_xor0=u_cska46_mux2to110_xor0
+.subckt xor_gate a=a[44] b=b[44] out=u_cska46_xor44
+.subckt fa a=a[44] b=b[44] cin=u_cska46_mux2to110_xor0 fa_xor1=u_cska46_fa43_xor1 fa_or0=u_cska46_fa43_or0
+.subckt xor_gate a=a[45] b=b[45] out=u_cska46_xor45
+.subckt fa a=a[45] b=b[45] cin=u_cska46_fa43_or0 fa_xor1=u_cska46_fa44_xor1 fa_or0=u_cska46_fa44_or0
+.subckt and_gate a=u_cska46_xor44 b=u_cska46_xor45 out=u_cska46_and_propagate1133
+.subckt mux2to1 d0=u_cska46_fa44_or0 d1=u_cska46_mux2to110_xor0 sel=u_cska46_and_propagate1133 mux2to1_xor0=u_cska46_mux2to111_xor0
+.names u_cska46_ha0_xor0 u_cska46_out[0]
+1 1
+.names u_cska46_fa0_xor1 u_cska46_out[1]
+1 1
+.names u_cska46_fa1_xor1 u_cska46_out[2]
+1 1
+.names u_cska46_fa2_xor1 u_cska46_out[3]
+1 1
+.names u_cska46_fa3_xor1 u_cska46_out[4]
+1 1
+.names u_cska46_fa4_xor1 u_cska46_out[5]
+1 1
+.names u_cska46_fa5_xor1 u_cska46_out[6]
+1 1
+.names u_cska46_fa6_xor1 u_cska46_out[7]
+1 1
+.names u_cska46_fa7_xor1 u_cska46_out[8]
+1 1
+.names u_cska46_fa8_xor1 u_cska46_out[9]
+1 1
+.names u_cska46_fa9_xor1 u_cska46_out[10]
+1 1
+.names u_cska46_fa10_xor1 u_cska46_out[11]
+1 1
+.names u_cska46_fa11_xor1 u_cska46_out[12]
+1 1
+.names u_cska46_fa12_xor1 u_cska46_out[13]
+1 1
+.names u_cska46_fa13_xor1 u_cska46_out[14]
+1 1
+.names u_cska46_fa14_xor1 u_cska46_out[15]
+1 1
+.names u_cska46_fa15_xor1 u_cska46_out[16]
+1 1
+.names u_cska46_fa16_xor1 u_cska46_out[17]
+1 1
+.names u_cska46_fa17_xor1 u_cska46_out[18]
+1 1
+.names u_cska46_fa18_xor1 u_cska46_out[19]
+1 1
+.names u_cska46_fa19_xor1 u_cska46_out[20]
+1 1
+.names u_cska46_fa20_xor1 u_cska46_out[21]
+1 1
+.names u_cska46_fa21_xor1 u_cska46_out[22]
+1 1
+.names u_cska46_fa22_xor1 u_cska46_out[23]
+1 1
+.names u_cska46_fa23_xor1 u_cska46_out[24]
+1 1
+.names u_cska46_fa24_xor1 u_cska46_out[25]
+1 1
+.names u_cska46_fa25_xor1 u_cska46_out[26]
+1 1
+.names u_cska46_fa26_xor1 u_cska46_out[27]
+1 1
+.names u_cska46_fa27_xor1 u_cska46_out[28]
+1 1
+.names u_cska46_fa28_xor1 u_cska46_out[29]
+1 1
+.names u_cska46_fa29_xor1 u_cska46_out[30]
+1 1
+.names u_cska46_fa30_xor1 u_cska46_out[31]
+1 1
+.names u_cska46_fa31_xor1 u_cska46_out[32]
+1 1
+.names u_cska46_fa32_xor1 u_cska46_out[33]
+1 1
+.names u_cska46_fa33_xor1 u_cska46_out[34]
+1 1
+.names u_cska46_fa34_xor1 u_cska46_out[35]
+1 1
+.names u_cska46_fa35_xor1 u_cska46_out[36]
+1 1
+.names u_cska46_fa36_xor1 u_cska46_out[37]
+1 1
+.names u_cska46_fa37_xor1 u_cska46_out[38]
+1 1
+.names u_cska46_fa38_xor1 u_cska46_out[39]
+1 1
+.names u_cska46_fa39_xor1 u_cska46_out[40]
+1 1
+.names u_cska46_fa40_xor1 u_cska46_out[41]
+1 1
+.names u_cska46_fa41_xor1 u_cska46_out[42]
+1 1
+.names u_cska46_fa42_xor1 u_cska46_out[43]
+1 1
+.names u_cska46_fa43_xor1 u_cska46_out[44]
+1 1
+.names u_cska46_fa44_xor1 u_cska46_out[45]
+1 1
+.names u_cska46_mux2to111_xor0 u_cska46_out[46]
+1 1
+.end
+
+.model mux2to1
+.inputs d0 d1 sel
+.outputs mux2to1_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=d1 b=sel out=mux2to1_and0
+.subckt not_gate a=sel out=mux2to1_not0
+.subckt and_gate a=d0 b=mux2to1_not0 out=mux2to1_and1
+.subckt xor_gate a=mux2to1_and0 b=mux2to1_and1 out=mux2to1_xor0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model not_gate
+.inputs a
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a out
+0 1
+.end
+
+.model nand_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+0- 1
+-0 1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end

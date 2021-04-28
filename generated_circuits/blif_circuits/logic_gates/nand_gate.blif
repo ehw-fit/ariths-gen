@@ -1,0 +1,11 @@
+.model nand_gate
+.inputs a b
+.outputs nand_gate
+.names vdd
+1
+.names gnd
+0
+.names a b nand_gate
+0- 1
+-0 1
+.end

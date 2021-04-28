@@ -1,0 +1,43 @@
+module f_u_pg_rca4(input [3:0] a, input [3:0] b, output [4:0] f_u_pg_rca4_out);
+  wire f_u_pg_rca4_pg_fa0_xor0;
+  wire f_u_pg_rca4_pg_fa0_and0;
+  wire f_u_pg_rca4_pg_fa1_xor0;
+  wire f_u_pg_rca4_pg_fa1_and0;
+  wire f_u_pg_rca4_pg_fa1_xor1;
+  wire f_u_pg_rca4_and1;
+  wire f_u_pg_rca4_or1;
+  wire f_u_pg_rca4_pg_fa2_xor0;
+  wire f_u_pg_rca4_pg_fa2_and0;
+  wire f_u_pg_rca4_pg_fa2_xor1;
+  wire f_u_pg_rca4_and2;
+  wire f_u_pg_rca4_or2;
+  wire f_u_pg_rca4_pg_fa3_xor0;
+  wire f_u_pg_rca4_pg_fa3_and0;
+  wire f_u_pg_rca4_pg_fa3_xor1;
+  wire f_u_pg_rca4_and3;
+  wire f_u_pg_rca4_or3;
+
+  assign f_u_pg_rca4_pg_fa0_xor0 = a[0] ^ b[0];
+  assign f_u_pg_rca4_pg_fa0_and0 = a[0] & b[0];
+  assign f_u_pg_rca4_pg_fa1_xor0 = a[1] ^ b[1];
+  assign f_u_pg_rca4_pg_fa1_and0 = a[1] & b[1];
+  assign f_u_pg_rca4_pg_fa1_xor1 = f_u_pg_rca4_pg_fa1_xor0 ^ f_u_pg_rca4_pg_fa0_and0;
+  assign f_u_pg_rca4_and1 = f_u_pg_rca4_pg_fa0_and0 & f_u_pg_rca4_pg_fa1_xor0;
+  assign f_u_pg_rca4_or1 = f_u_pg_rca4_and1 | f_u_pg_rca4_pg_fa1_and0;
+  assign f_u_pg_rca4_pg_fa2_xor0 = a[2] ^ b[2];
+  assign f_u_pg_rca4_pg_fa2_and0 = a[2] & b[2];
+  assign f_u_pg_rca4_pg_fa2_xor1 = f_u_pg_rca4_pg_fa2_xor0 ^ f_u_pg_rca4_or1;
+  assign f_u_pg_rca4_and2 = f_u_pg_rca4_or1 & f_u_pg_rca4_pg_fa2_xor0;
+  assign f_u_pg_rca4_or2 = f_u_pg_rca4_and2 | f_u_pg_rca4_pg_fa2_and0;
+  assign f_u_pg_rca4_pg_fa3_xor0 = a[3] ^ b[3];
+  assign f_u_pg_rca4_pg_fa3_and0 = a[3] & b[3];
+  assign f_u_pg_rca4_pg_fa3_xor1 = f_u_pg_rca4_pg_fa3_xor0 ^ f_u_pg_rca4_or2;
+  assign f_u_pg_rca4_and3 = f_u_pg_rca4_or2 & f_u_pg_rca4_pg_fa3_xor0;
+  assign f_u_pg_rca4_or3 = f_u_pg_rca4_and3 | f_u_pg_rca4_pg_fa3_and0;
+
+  assign f_u_pg_rca4_out[0] = f_u_pg_rca4_pg_fa0_xor0;
+  assign f_u_pg_rca4_out[1] = f_u_pg_rca4_pg_fa1_xor1;
+  assign f_u_pg_rca4_out[2] = f_u_pg_rca4_pg_fa2_xor1;
+  assign f_u_pg_rca4_out[3] = f_u_pg_rca4_pg_fa3_xor1;
+  assign f_u_pg_rca4_out[4] = f_u_pg_rca4_or3;
+endmodule

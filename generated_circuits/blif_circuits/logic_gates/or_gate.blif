@@ -1,0 +1,11 @@
+.model or_gate
+.inputs a b
+.outputs or_gate
+.names vdd
+1
+.names gnd
+0
+.names a b or_gate
+1- 1
+-1 1
+.end

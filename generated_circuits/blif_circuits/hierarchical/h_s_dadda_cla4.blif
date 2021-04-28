@@ -1,0 +1,226 @@
+.model h_s_dadda_cla4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs h_s_dadda_cla4_out[0] h_s_dadda_cla4_out[1] h_s_dadda_cla4_out[2] h_s_dadda_cla4_out[3] h_s_dadda_cla4_out[4] h_s_dadda_cla4_out[5] h_s_dadda_cla4_out[6] h_s_dadda_cla4_out[7]
+.names vdd
+1
+.names gnd
+0
+.subckt nand_gate a=a[3] b=b[0] out=h_s_dadda_cla4_nand_3_0
+.subckt and_gate a=a[2] b=b[1] out=h_s_dadda_cla4_and_2_1
+.subckt ha a=h_s_dadda_cla4_nand_3_0 b=h_s_dadda_cla4_and_2_1 ha_xor0=h_s_dadda_cla4_ha0_xor0 ha_and0=h_s_dadda_cla4_ha0_and0
+.subckt nand_gate a=a[3] b=b[1] out=h_s_dadda_cla4_nand_3_1
+.subckt fa a=h_s_dadda_cla4_ha0_and0 b=vdd cin=h_s_dadda_cla4_nand_3_1 fa_xor1=h_s_dadda_cla4_fa0_xor1 fa_or0=h_s_dadda_cla4_fa0_or0
+.subckt and_gate a=a[2] b=b[0] out=h_s_dadda_cla4_and_2_0
+.subckt and_gate a=a[1] b=b[1] out=h_s_dadda_cla4_and_1_1
+.subckt ha a=h_s_dadda_cla4_and_2_0 b=h_s_dadda_cla4_and_1_1 ha_xor0=h_s_dadda_cla4_ha1_xor0 ha_and0=h_s_dadda_cla4_ha1_and0
+.subckt and_gate a=a[1] b=b[2] out=h_s_dadda_cla4_and_1_2
+.subckt nand_gate a=a[0] b=b[3] out=h_s_dadda_cla4_nand_0_3
+.subckt fa a=h_s_dadda_cla4_ha1_and0 b=h_s_dadda_cla4_and_1_2 cin=h_s_dadda_cla4_nand_0_3 fa_xor1=h_s_dadda_cla4_fa1_xor1 fa_or0=h_s_dadda_cla4_fa1_or0
+.subckt and_gate a=a[2] b=b[2] out=h_s_dadda_cla4_and_2_2
+.subckt nand_gate a=a[1] b=b[3] out=h_s_dadda_cla4_nand_1_3
+.subckt fa a=h_s_dadda_cla4_fa1_or0 b=h_s_dadda_cla4_and_2_2 cin=h_s_dadda_cla4_nand_1_3 fa_xor1=h_s_dadda_cla4_fa2_xor1 fa_or0=h_s_dadda_cla4_fa2_or0
+.subckt nand_gate a=a[3] b=b[2] out=h_s_dadda_cla4_nand_3_2
+.subckt fa a=h_s_dadda_cla4_fa2_or0 b=h_s_dadda_cla4_fa0_or0 cin=h_s_dadda_cla4_nand_3_2 fa_xor1=h_s_dadda_cla4_fa3_xor1 fa_or0=h_s_dadda_cla4_fa3_or0
+.subckt and_gate a=a[0] b=b[0] out=h_s_dadda_cla4_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=h_s_dadda_cla4_and_1_0
+.subckt and_gate a=a[0] b=b[2] out=h_s_dadda_cla4_and_0_2
+.subckt nand_gate a=a[2] b=b[3] out=h_s_dadda_cla4_nand_2_3
+.subckt and_gate a=a[0] b=b[1] out=h_s_dadda_cla4_and_0_1
+.subckt and_gate a=a[3] b=b[3] out=h_s_dadda_cla4_and_3_3
+.names h_s_dadda_cla4_and_1_0 h_s_dadda_cla4_u_cla6_a[0]
+1 1
+.names h_s_dadda_cla4_and_0_2 h_s_dadda_cla4_u_cla6_a[1]
+1 1
+.names h_s_dadda_cla4_ha0_xor0 h_s_dadda_cla4_u_cla6_a[2]
+1 1
+.names h_s_dadda_cla4_fa0_xor1 h_s_dadda_cla4_u_cla6_a[3]
+1 1
+.names h_s_dadda_cla4_nand_2_3 h_s_dadda_cla4_u_cla6_a[4]
+1 1
+.names h_s_dadda_cla4_fa3_or0 h_s_dadda_cla4_u_cla6_a[5]
+1 1
+.names h_s_dadda_cla4_and_0_1 h_s_dadda_cla4_u_cla6_b[0]
+1 1
+.names h_s_dadda_cla4_ha1_xor0 h_s_dadda_cla4_u_cla6_b[1]
+1 1
+.names h_s_dadda_cla4_fa1_xor1 h_s_dadda_cla4_u_cla6_b[2]
+1 1
+.names h_s_dadda_cla4_fa2_xor1 h_s_dadda_cla4_u_cla6_b[3]
+1 1
+.names h_s_dadda_cla4_fa3_xor1 h_s_dadda_cla4_u_cla6_b[4]
+1 1
+.names h_s_dadda_cla4_and_3_3 h_s_dadda_cla4_u_cla6_b[5]
+1 1
+.subckt u_cla6 a[0]=h_s_dadda_cla4_u_cla6_a[0] a[1]=h_s_dadda_cla4_u_cla6_a[1] a[2]=h_s_dadda_cla4_u_cla6_a[2] a[3]=h_s_dadda_cla4_u_cla6_a[3] a[4]=h_s_dadda_cla4_u_cla6_a[4] a[5]=h_s_dadda_cla4_u_cla6_a[5] b[0]=h_s_dadda_cla4_u_cla6_b[0] b[1]=h_s_dadda_cla4_u_cla6_b[1] b[2]=h_s_dadda_cla4_u_cla6_b[2] b[3]=h_s_dadda_cla4_u_cla6_b[3] b[4]=h_s_dadda_cla4_u_cla6_b[4] b[5]=h_s_dadda_cla4_u_cla6_b[5] u_cla6_out[0]=h_s_dadda_cla4_u_cla6_pg_logic0_xor0 u_cla6_out[1]=h_s_dadda_cla4_u_cla6_xor1 u_cla6_out[2]=h_s_dadda_cla4_u_cla6_xor2 u_cla6_out[3]=h_s_dadda_cla4_u_cla6_xor3 u_cla6_out[4]=h_s_dadda_cla4_u_cla6_xor4 u_cla6_out[5]=h_s_dadda_cla4_u_cla6_xor5 u_cla6_out[6]=h_s_dadda_cla4_u_cla6_or8
+.subckt not_gate a=h_s_dadda_cla4_u_cla6_or8 out=h_s_dadda_cla4_xor0
+.names h_s_dadda_cla4_and_0_0 h_s_dadda_cla4_out[0]
+1 1
+.names h_s_dadda_cla4_u_cla6_pg_logic0_xor0 h_s_dadda_cla4_out[1]
+1 1
+.names h_s_dadda_cla4_u_cla6_xor1 h_s_dadda_cla4_out[2]
+1 1
+.names h_s_dadda_cla4_u_cla6_xor2 h_s_dadda_cla4_out[3]
+1 1
+.names h_s_dadda_cla4_u_cla6_xor3 h_s_dadda_cla4_out[4]
+1 1
+.names h_s_dadda_cla4_u_cla6_xor4 h_s_dadda_cla4_out[5]
+1 1
+.names h_s_dadda_cla4_u_cla6_xor5 h_s_dadda_cla4_out[6]
+1 1
+.names h_s_dadda_cla4_xor0 h_s_dadda_cla4_out[7]
+1 1
+.end
+
+.model u_cla6
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] b[0] b[1] b[2] b[3] b[4] b[5]
+.outputs u_cla6_out[0] u_cla6_out[1] u_cla6_out[2] u_cla6_out[3] u_cla6_out[4] u_cla6_out[5] u_cla6_out[6]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_logic a=a[0] b=b[0] pg_logic_or0=u_cla6_pg_logic0_or0 pg_logic_and0=u_cla6_pg_logic0_and0 pg_logic_xor0=u_cla6_pg_logic0_xor0
+.subckt pg_logic a=a[1] b=b[1] pg_logic_or0=u_cla6_pg_logic1_or0 pg_logic_and0=u_cla6_pg_logic1_and0 pg_logic_xor0=u_cla6_pg_logic1_xor0
+.subckt xor_gate a=u_cla6_pg_logic1_xor0 b=u_cla6_pg_logic0_and0 out=u_cla6_xor1
+.subckt and_gate a=u_cla6_pg_logic0_and0 b=u_cla6_pg_logic1_or0 out=u_cla6_and0
+.subckt or_gate a=u_cla6_pg_logic1_and0 b=u_cla6_and0 out=u_cla6_or0
+.subckt pg_logic a=a[2] b=b[2] pg_logic_or0=u_cla6_pg_logic2_or0 pg_logic_and0=u_cla6_pg_logic2_and0 pg_logic_xor0=u_cla6_pg_logic2_xor0
+.subckt xor_gate a=u_cla6_pg_logic2_xor0 b=u_cla6_or0 out=u_cla6_xor2
+.subckt and_gate a=u_cla6_pg_logic2_or0 b=u_cla6_pg_logic0_or0 out=u_cla6_and1
+.subckt and_gate a=u_cla6_pg_logic0_and0 b=u_cla6_pg_logic2_or0 out=u_cla6_and2
+.subckt and_gate a=u_cla6_and2 b=u_cla6_pg_logic1_or0 out=u_cla6_and3
+.subckt and_gate a=u_cla6_pg_logic1_and0 b=u_cla6_pg_logic2_or0 out=u_cla6_and4
+.subckt or_gate a=u_cla6_and3 b=u_cla6_and4 out=u_cla6_or1
+.subckt or_gate a=u_cla6_pg_logic2_and0 b=u_cla6_or1 out=u_cla6_or2
+.subckt pg_logic a=a[3] b=b[3] pg_logic_or0=u_cla6_pg_logic3_or0 pg_logic_and0=u_cla6_pg_logic3_and0 pg_logic_xor0=u_cla6_pg_logic3_xor0
+.subckt xor_gate a=u_cla6_pg_logic3_xor0 b=u_cla6_or2 out=u_cla6_xor3
+.subckt and_gate a=u_cla6_pg_logic3_or0 b=u_cla6_pg_logic1_or0 out=u_cla6_and5
+.subckt and_gate a=u_cla6_pg_logic0_and0 b=u_cla6_pg_logic2_or0 out=u_cla6_and6
+.subckt and_gate a=u_cla6_pg_logic3_or0 b=u_cla6_pg_logic1_or0 out=u_cla6_and7
+.subckt and_gate a=u_cla6_and6 b=u_cla6_and7 out=u_cla6_and8
+.subckt and_gate a=u_cla6_pg_logic1_and0 b=u_cla6_pg_logic3_or0 out=u_cla6_and9
+.subckt and_gate a=u_cla6_and9 b=u_cla6_pg_logic2_or0 out=u_cla6_and10
+.subckt and_gate a=u_cla6_pg_logic2_and0 b=u_cla6_pg_logic3_or0 out=u_cla6_and11
+.subckt or_gate a=u_cla6_and8 b=u_cla6_and11 out=u_cla6_or3
+.subckt or_gate a=u_cla6_and10 b=u_cla6_or3 out=u_cla6_or4
+.subckt or_gate a=u_cla6_pg_logic3_and0 b=u_cla6_or4 out=u_cla6_or5
+.subckt pg_logic a=a[4] b=b[4] pg_logic_or0=u_cla6_pg_logic4_or0 pg_logic_and0=u_cla6_pg_logic4_and0 pg_logic_xor0=u_cla6_pg_logic4_xor0
+.subckt xor_gate a=u_cla6_pg_logic4_xor0 b=u_cla6_or5 out=u_cla6_xor4
+.subckt and_gate a=u_cla6_or5 b=u_cla6_pg_logic4_or0 out=u_cla6_and12
+.subckt or_gate a=u_cla6_pg_logic4_and0 b=u_cla6_and12 out=u_cla6_or6
+.subckt pg_logic a=a[5] b=b[5] pg_logic_or0=u_cla6_pg_logic5_or0 pg_logic_and0=u_cla6_pg_logic5_and0 pg_logic_xor0=u_cla6_pg_logic5_xor0
+.subckt xor_gate a=u_cla6_pg_logic5_xor0 b=u_cla6_or6 out=u_cla6_xor5
+.subckt and_gate a=u_cla6_or5 b=u_cla6_pg_logic5_or0 out=u_cla6_and13
+.subckt and_gate a=u_cla6_and13 b=u_cla6_pg_logic4_or0 out=u_cla6_and14
+.subckt and_gate a=u_cla6_pg_logic4_and0 b=u_cla6_pg_logic5_or0 out=u_cla6_and15
+.subckt or_gate a=u_cla6_and14 b=u_cla6_and15 out=u_cla6_or7
+.subckt or_gate a=u_cla6_pg_logic5_and0 b=u_cla6_or7 out=u_cla6_or8
+.names u_cla6_pg_logic0_xor0 u_cla6_out[0]
+1 1
+.names u_cla6_xor1 u_cla6_out[1]
+1 1
+.names u_cla6_xor2 u_cla6_out[2]
+1 1
+.names u_cla6_xor3 u_cla6_out[3]
+1 1
+.names u_cla6_xor4 u_cla6_out[4]
+1 1
+.names u_cla6_xor5 u_cla6_out[5]
+1 1
+.names u_cla6_or8 u_cla6_out[6]
+1 1
+.end
+
+.model pg_logic
+.inputs a b
+.outputs pg_logic_or0 pg_logic_and0 pg_logic_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt or_gate a=a b=b out=pg_logic_or0
+.subckt and_gate a=a b=b out=pg_logic_and0
+.subckt xor_gate a=a b=b out=pg_logic_xor0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model not_gate
+.inputs a
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a out
+0 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model nand_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+0- 1
+-0 1
+.end
