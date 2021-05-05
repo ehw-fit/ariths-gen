@@ -1,4 +1,4 @@
-# Simple script for conversion of input CGP chromosome into output C code
+# A simple script to convert the input CGP chromosome to the corresponding output in C code
 # Script originally written by Vojtech Mrazek
 # Modifications to suite the appropriate needs of ArithsGen made by Jan Klhufek
 # Requires python2!
