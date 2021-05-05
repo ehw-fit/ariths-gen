@@ -42,7 +42,7 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedWallaceMultiplier,
     SignedArrayMultiplier,
     SignedDaddaMultiplier,
-    SignedWallaceMultiplier
+    SignedWallaceMultiplier,
 )
 
 from ariths_gen.multi_bit_circuits.dividers import (
