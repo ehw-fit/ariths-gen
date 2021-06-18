@@ -45,7 +45,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: arithmetic-circuits-8
-        
+        path: test_circuits        
     - name: Listing
       run: |
         ls
