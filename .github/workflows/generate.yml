@@ -29,7 +29,7 @@ jobs:
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
     - name: Run generating
-      run: python ariths_gen.py
+      run: python generate_test.py
     - name: Listing
       run: ls build
     - name: Listing2
@@ -38,5 +38,17 @@ jobs:
     - name: Upload results
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: arithmetic-circuits
+        name: arithmetic-circuits-8
         path: build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - name: Download all workflow run artifacts
+      uses: actions/download-artifact@v2
+    - name: Run 8b testing
+      run: |
+        cd tests
+        bash test_circuits.sh

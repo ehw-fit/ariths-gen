@@ -7,3 +7,5 @@ build/
 dist/
 test_circuits/
 tests/tmp.exe
+
+*.egg-info
