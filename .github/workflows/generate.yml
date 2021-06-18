@@ -54,10 +54,11 @@ jobs:
         cd tests
         bash test_circuits.sh
 
-  # This workflow contains a single job called "build"
+  # Only on main thread 
   documentation:
     runs-on: ubuntu-latest
     needs: test
+    if: github.ref == 'refs/heads/main'
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.x
