@@ -155,6 +155,7 @@ class SignedWallaceMultiplier(MultiplierCircuit):
         super().__init__()
         self.N = max(a.N, b.N)
         self.prefix = prefix
+        self.c_data_type = "int64_t"
         self.a = Bus(prefix=a.prefix, wires_list=a.bus)
         self.b = Bus(prefix=b.prefix, wires_list=b.bus)
 

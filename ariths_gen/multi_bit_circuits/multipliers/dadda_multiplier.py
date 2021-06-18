@@ -160,6 +160,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "s_dadda_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
         super().__init__()
+        self.c_data_type = "int64_t"
         self.N = max(a.N, b.N)
         self.prefix = prefix
         self.a = Bus(prefix=a.prefix, wires_list=a.bus)
