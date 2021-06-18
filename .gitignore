@@ -2,8 +2,8 @@ __pycache__/
 .vscode
 test.py
 Makefile
-*.c
-*.v
-*.blif
-*.chr
 *__pycache__*
+build/
+dist/
+test_circuits/
+tests/tmp.exe
