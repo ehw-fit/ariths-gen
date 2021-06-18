@@ -19,8 +19,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: docker://pandoc/core:2.9
-        with:
-          args: >-  # allows you to break string into multiple lines
+      with:
+        args: >-  # allows you to break string into multiple lines
             --html
             ariths_gen
     - name: Upload results
