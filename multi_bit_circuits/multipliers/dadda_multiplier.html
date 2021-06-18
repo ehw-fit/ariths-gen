@@ -188,6 +188,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_dadda_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
         super().__init__()
+        self.c_data_type = &#34;int64_t&#34;
         self.N = max(a.N, b.N)
         self.prefix = prefix
         self.a = Bus(prefix=a.prefix, wires_list=a.bus)
@@ -351,6 +352,7 @@ to e.g. wallace and array multipliers.</p>
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_dadda_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
         super().__init__()
+        self.c_data_type = &#34;int64_t&#34;
         self.N = max(a.N, b.N)
         self.prefix = prefix
         self.a = Bus(prefix=a.prefix, wires_list=a.bus)
