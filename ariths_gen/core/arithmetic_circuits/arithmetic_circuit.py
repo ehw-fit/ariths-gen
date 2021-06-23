@@ -687,7 +687,7 @@ class ArithmeticCircuit():
         Returns:
             str: List of arithmetic circuit's output wire indexes.
         """
-        return "(" + ",".join([str(self.get_circuit_wire_index(o)) for o in self.out.bus[::-1]]) + ")"
+        return "(" + ",".join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + ")"
 
     # Generating flat CGP chromosome representation of circuit
     def get_cgp_code_flat(self, file_object):

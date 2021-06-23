@@ -53,6 +53,12 @@ jobs:
       run: |
         cd tests
         bash test_circuits.sh
+        cd ..
+    - name: Run 8b CGP testing
+      run: |
+        cd tests
+        bash test_circuits_cgp.sh
+        cd ..
 
   # Only on main thread 
   documentation:
