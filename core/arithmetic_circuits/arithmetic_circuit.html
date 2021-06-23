@@ -715,7 +715,7 @@ class ArithmeticCircuit():
         Returns:
             str: List of arithmetic circuit&#39;s output wire indexes.
         &#34;&#34;&#34;
-        return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus[::-1]]) + &#34;)&#34;
+        return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + &#34;)&#34;
 
     # Generating flat CGP chromosome representation of circuit
     def get_cgp_code_flat(self, file_object):
@@ -1429,7 +1429,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: List of arithmetic circuit&#39;s output wire indexes.
         &#34;&#34;&#34;
-        return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus[::-1]]) + &#34;)&#34;
+        return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + &#34;)&#34;
 
     # Generating flat CGP chromosome representation of circuit
     def get_cgp_code_flat(self, file_object):
@@ -2755,7 +2755,7 @@ the upper component from which function block has been invoked.</p>
     Returns:
         str: List of arithmetic circuit&#39;s output wire indexes.
     &#34;&#34;&#34;
-    return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus[::-1]]) + &#34;)&#34;</code></pre>
+    return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + &#34;)&#34;</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_parameters_cgp"><code class="name flex">
