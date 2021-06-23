@@ -471,7 +471,7 @@ class TwoInputLogicGate():
             out_id = self.out.cgp_const
         else:
             out_id = a_id+1 if a_id > b_id else b_id+1
-        return self.get_triplet_cgp(a_id=a_id, b_id=b_id) + self.get_output_cgp(out_id=out_id)
+        return self.get_triplet_cgp(a_id=a_id, b_id=b_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)
 
     def get_cgp_code(self, file_object):
         """Generates flat CGP chromosome representation of corresponding logic gate itself.
@@ -754,4 +754,4 @@ class OneInputLogicGate(TwoInputLogicGate):
             out_id = self.out.cgp_const
         else:
             out_id = a_id+1 if a_id == 2 else 2
-        return self.get_triplet_cgp(a_id=a_id) + self.get_output_cgp(out_id=out_id)
+        return self.get_triplet_cgp(a_id=a_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)
