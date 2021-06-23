@@ -10,7 +10,7 @@ import argparse
 
 # Parse all nodes present in input CGP
 def parse_node(n):
-    return list(map(int, re.match(r"(\d+),(\d+),(\d+)", n).groups()))
+    return list(map(int, re.match(r"\[(\d+)\](\d+),(\d+),(\d+)", n).groups()))
 
 
 # Recursively detect wires required to get the result wire with id 'id' and activate them (will be generated)
@@ -56,10 +56,7 @@ def parse_chromosome(chromosome, signed=False, function=None):
     cdata_dict = [None for i in range(0, c_cols * c_rows)]
 
     for id, chromosome in enumerate(cdata):
-        a = chromosome[0]
-        b = chromosome[1]
-        f = chromosome[2]
-
+        cid, a, b, f = chromosome
         cdata_dict[id] = (id + 2 + c_in, a, b, f)
 
     # Reserve position for all wires present in the genotype

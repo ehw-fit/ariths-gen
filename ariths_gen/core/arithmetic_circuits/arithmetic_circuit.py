@@ -14,6 +14,7 @@ class ArithmeticCircuit():
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     """
+
     def __init__(self):
         self.components = []
         self.circuit_wires = []
@@ -123,8 +124,10 @@ class ArithmeticCircuit():
             list: List of unique component types describing the circuit.
         """
         gate_comps = self.get_unique_types(components=self.get_circuit_gates())
-        one_bit_comps = self.get_unique_types(components=self.get_one_bit_components())
-        multi_bit_comps = self.get_unique_types(components=self.get_multi_bit_components())
+        one_bit_comps = self.get_unique_types(
+            components=self.get_one_bit_components())
+        multi_bit_comps = self.get_unique_types(
+            components=self.get_multi_bit_components())
 
         all_components = gate_comps + one_bit_comps + multi_bit_comps
         return all_components
@@ -172,23 +175,31 @@ class ArithmeticCircuit():
         """
         self.circuit_wires = []
         if isinstance(self.a, Bus):
-            [self.circuit_wires.append((w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.a.bus]
-            [self.circuit_wires.append((w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.b.bus]
+            [self.circuit_wires.append(
+                (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.a.bus]
+            [self.circuit_wires.append(
+                (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.b.bus]
         else:
-            self.circuit_wires.append((self.a, f"{self.a.name}", self.save_wire_id(wire=self.a)))
-            self.circuit_wires.append((self.b, f"{self.b.name}", self.save_wire_id(wire=self.b)))
+            self.circuit_wires.append(
+                (self.a, f"{self.a.name}", self.save_wire_id(wire=self.a)))
+            self.circuit_wires.append(
+                (self.b, f"{self.b.name}", self.save_wire_id(wire=self.b)))
             if hasattr(self, 'c'):
-                self.circuit_wires.append((self.c, f"{self.c.name}", self.save_wire_id(wire=self.c)))
+                self.circuit_wires.append(
+                    (self.c, f"{self.c.name}", self.save_wire_id(wire=self.c)))
 
         for gate in self.circuit_gates:
             if not [item for item in self.circuit_wires if gate.a.name == item[1]]:
-                self.circuit_wires.append((gate.a, gate.a.name, self.save_wire_id(wire=gate.a)))
+                self.circuit_wires.append(
+                    (gate.a, gate.a.name, self.save_wire_id(wire=gate.a)))
 
             if hasattr(gate, 'b') and not [item for item in self.circuit_wires if gate.b.name == item[1]]:
-                self.circuit_wires.append((gate.b, gate.b.name, self.save_wire_id(wire=gate.b)))
+                self.circuit_wires.append(
+                    (gate.b, gate.b.name, self.save_wire_id(wire=gate.b)))
 
             if not [item for item in self.circuit_wires if gate.out.name == item[1]]:
-                self.circuit_wires.append((gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
+                self.circuit_wires.append(
+                    (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
 
     def get_circuit_wire_index(self, wire: Wire):
         """Searches for circuit's wire unique index position within the circuit. Used for cgp chromosome generation.
@@ -283,8 +294,10 @@ class ArithmeticCircuit():
             str: Hierarchical C code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=circuit_prefix)
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
@@ -369,6 +382,7 @@ class ArithmeticCircuit():
 
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
+
     def get_prototype_v(self):
         """Generates Verilog code module header to describe corresponding arithmetic circuit's interface in Verilog code.
 
@@ -433,8 +447,10 @@ class ArithmeticCircuit():
             str: Hierarchical Verilog code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=circuit_prefix)
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
@@ -483,8 +499,10 @@ class ArithmeticCircuit():
         circuit_type = self.prefix.replace(circuit_prefix+"_", "")
 
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=circuit_prefix)
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
@@ -521,6 +539,7 @@ class ArithmeticCircuit():
 
     """ BLIF CODE GENERATION """
     # FLAT BLIF #
+
     def get_prototype_blif(self):
         """Generates Blif code model name of described arithmetic circuit.
 
@@ -603,7 +622,8 @@ class ArithmeticCircuit():
                f".subckt {circuit_type}" + \
                "".join([f" a[{self.a.bus.index(w)}]={self.a.prefix}[{self.a.bus.index(w)}]" for w in self.a.bus]) + \
                "".join([f" b[{self.b.bus.index(w)}]={self.b.prefix}[{self.b.bus.index(w)}]" for w in self.b.bus]) + \
-               "".join([f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus]) + "\n"
+               "".join(
+                   [f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus]) + "\n"
 
     def get_circuit_blif(self):
         """Generates hierarchical Blif code subcomponent's function block.
@@ -635,8 +655,10 @@ class ArithmeticCircuit():
             str: Hierarchical Blif code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(N=self.N, prefix="b"), prefix=circuit_prefix)
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return f"{circuit_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit
@@ -652,6 +674,7 @@ class ArithmeticCircuit():
 
     """ CGP CODE GENERATION """
     # FLAT CGP #
+
     def get_parameters_cgp(self):
         """Generates CGP chromosome parameters of corresponding arithmetic circuit.
 
@@ -678,8 +701,8 @@ class ArithmeticCircuit():
             str: List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.
         """
         self.get_cgp_wires()
-        return "".join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a)) if isinstance(g, OneInputLogicGate) else
-                       g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b)) for g in self.circuit_gates])
+        return "".join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), out_id=self.get_circuit_wire_index(g.out)) if isinstance(g, OneInputLogicGate) else
+                       g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])
 
     def get_outputs_cgp(self):
         """Generates list of output wires indexes of described arithmetic circuit from MSB to LSB.
