@@ -127,7 +127,7 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
 
                     # 1 bit multiplier case
                     if a_multiplicand_index == self.N-1:
-                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0)
+                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0())
 
                 elif b_multiplier_index == self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
