@@ -15,12 +15,16 @@ class GeneralCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self, inputs):
+    def __init__(self, prefix: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+        self.prefix = prefix
+        self.inner_component = inner_component
+        self.inputs = inputs
+        self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
+
         self.components = []
         self.circuit_wires = []
         self.circuit_gates = []
         self.c_data_type = "uint64_t"
-        self.inputs = inputs
 
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.

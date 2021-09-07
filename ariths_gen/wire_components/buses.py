@@ -10,8 +10,10 @@ class Bus():
         prefix (str, optional): Prefix name of the bus. Defaults to "bus".
         N (int, optional): Number of wires in the bus. Defaults to 1.
         wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
     """
-    def __init__(self, prefix: str = "bus", N: int = 1, wires_list: list = None):
+    def __init__(self, prefix: str = "bus", N: int = 1, wires_list: list = None, out_bus: bool = False):
+        self.out_bus = out_bus
         if wires_list is None:
             self.prefix = prefix
             # Adding wires into current bus's wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
@@ -21,6 +23,14 @@ class Bus():
             self.prefix = prefix
             self.bus = wires_list
             self.N = len(self.bus)
+
+    def is_output_bus(self):
+        """Tells whether this Bus is an output bus.
+
+        Returns:
+            bool: Returns True if it is an output bus of some component.
+        """
+        return self.out_bus
 
     def bus_extend(self, N: int, prefix: str = "bus"):
         """Provides bus extension to contain more wires.
@@ -68,6 +78,14 @@ class Bus():
         # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+
+    # TODO
+    def connect_bus(self, connecting_bus, start_connection_pos: int = 0, end_connection_pos: int = -1):
+        if end_connection_pos == -1:
+            end_connection_pos = self.N
+        
+        # Nakonec je potřeba napojit výstup adderu na výstup mac
+        [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
 
     """ C CODE GENERATION """
     def get_declaration_c(self):

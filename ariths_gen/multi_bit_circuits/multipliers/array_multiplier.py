@@ -79,21 +79,16 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to "u_arrmul".
+        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to "".
+        name (str, optional): Name of unsigned array multiplier. Defaults to "u_arrmul".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "u_arrmul"):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_arrmul", **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+"_out", self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -191,22 +186,17 @@ class SignedArrayMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed array multiplier. Defaults to "s_arrmul".
+        prefix (str, optional): Prefix name of signed array multiplier. Defaults to "".
+        name (str, optional): Name of signed array multiplier. Defaults to "s_arrmul".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "s_arrmul"):
-        super().__init__()
-        self.c_data_type = "int64_t"
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_arrmul", **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        self.c_data_type = "int64_t"
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+"_out", self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):

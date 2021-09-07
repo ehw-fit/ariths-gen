@@ -15,12 +15,33 @@ class ArithmeticCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self):
+    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
+        if one_bit_circuit is False:
+            if prefix == "":
+                self.prefix = name
+            else:
+                self.prefix = prefix + "_" + name
+
+            self.inner_component = inner_component
+            if self.inner_component is True:
+                self.a = Bus(prefix=f"{self.prefix}_{a.prefix}", wires_list=a.bus)
+                self.b = Bus(prefix=f"{self.prefix}_{b.prefix}", wires_list=b.bus)
+
+                if a.is_output_bus():
+                    self.a.connect_bus(connecting_bus=a)
+                if b.is_output_bus():
+                    self.b.connect_bus(connecting_bus=b)
+            else:
+                self.a = Bus(prefix=f"{a.prefix}", wires_list=a.bus)
+                self.b = Bus(prefix=f"{b.prefix}", wires_list=b.bus)
+
+            # N output wires for given circuit
+            self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
+
         self.components = []
         self.circuit_wires = []
         self.circuit_gates = []
         self.c_data_type = "uint64_t"
-        self.N = 1
 
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
@@ -294,10 +315,8 @@ class ArithmeticCircuit():
             str: Hierarchical C code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"))
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
@@ -447,10 +466,8 @@ class ArithmeticCircuit():
             str: Hierarchical Verilog code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"))
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
@@ -499,10 +516,8 @@ class ArithmeticCircuit():
         circuit_type = self.prefix.replace(circuit_prefix+"_", "")
 
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"))
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
@@ -655,10 +670,8 @@ class ArithmeticCircuit():
             str: Hierarchical Blif code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"))
         return f"{circuit_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit
