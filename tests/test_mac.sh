@@ -8,7 +8,7 @@ test_circuit_mac () {
 
 
     for mode in "flat" "hier"; do
-        echo -e "===== Testing \e[33m$circuit\e[0m ($mode) ======"
+        echo -e "===== Testing \e[33mMAC\e[0m ($mode) ======"
 
         g++ -std=c++11 -pedantic -g -std=c++11 -pedantic -DCNAME="$circuit" $type.c ../test_circuits/mac/mac_$mode.c -o tmp.exe
         if ./tmp.exe ; then
