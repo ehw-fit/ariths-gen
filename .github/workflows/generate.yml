@@ -30,6 +30,8 @@ jobs:
       run: python -c "import sys; print(sys.version)"
     - name: Run generating
       run: python generate_test.py
+    - name: Run generating
+      run: python generate_mac.py
     - name: Upload results
       uses: actions/upload-artifact@v1.0.0
       with:
@@ -61,6 +63,11 @@ jobs:
       run: |
         cd tests
         bash test_circuits_cgp.sh
+        cd ..
+    - name: Run MAC testing
+      run: |
+        cd tests
+        bash test_mac.sh
         cd ..
 
   # Only on main thread 
