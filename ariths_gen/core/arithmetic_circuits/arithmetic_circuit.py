@@ -315,8 +315,10 @@ class ArithmeticCircuit():
             str: Hierarchical C code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"))
+            N=self.N, prefix="b"), name=circuit_prefix)
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
@@ -466,8 +468,10 @@ class ArithmeticCircuit():
             str: Hierarchical Verilog code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"))
+            N=self.N, prefix="b"), name=circuit_prefix)
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
@@ -516,8 +520,10 @@ class ArithmeticCircuit():
         circuit_type = self.prefix.replace(circuit_prefix+"_", "")
 
         # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"))
+            N=self.N, prefix="b"), name=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 

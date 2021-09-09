@@ -15,8 +15,11 @@ class GeneralCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self, prefix: str, out_N: int, inner_component: bool = False, inputs: list=[]):
-        self.prefix = prefix
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+        if prefix == "":
+            self.prefix = name
+        else:
+            self.prefix = prefix + "_" + name
         self.inner_component = inner_component
         self.inputs = inputs
         self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
