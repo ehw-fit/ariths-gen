@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>ariths_gen.multi_bit_circuits.adders.ripple_carry_adder API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -78,21 +78,16 @@ class UnsignedRippleCarryAdder(ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned rca. Defaults to &#34;u_rca&#34;.
+        prefix (str, optional): Prefix name of unsigned rca. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned rca. Defaults to &#34;u_rca&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;u_rca&#34;):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_rca&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for N sum bits and additional cout bit
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N+1)
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):
@@ -135,10 +130,11 @@ class SignedRippleCarryAdder(UnsignedRippleCarryAdder, ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed rca. Defaults to &#34;s_rca&#34;.
+        prefix (str, optional): Prefix name of signed rca. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed rca. Defaults to &#34;s_rca&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_rca&#34;):
-        super().__init__(a=a, b=b, prefix=prefix)
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_rca&#34;, **kwargs):
+        super().__init__(a=a, b=b, prefix=prefix, name=name, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
@@ -160,7 +156,7 @@ class SignedRippleCarryAdder(UnsignedRippleCarryAdder, ArithmeticCircuit):
 <dl>
 <dt id="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder"><code class="flex name class">
 <span>class <span class="ident">SignedRippleCarryAdder</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = 's_rca')</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_rca', **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing signed ripple carry adder.</p>
@@ -186,7 +182,9 @@ At last XOR gates are used to ensure proper sign extension.</p>
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of signed rca. Defaults to "s_rca".</dd>
+<dd>Prefix name of signed rca. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of signed rca. Defaults to "s_rca".</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -218,10 +216,11 @@ At last XOR gates are used to ensure proper sign extension.</p>
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed rca. Defaults to &#34;s_rca&#34;.
+        prefix (str, optional): Prefix name of signed rca. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed rca. Defaults to &#34;s_rca&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_rca&#34;):
-        super().__init__(a=a, b=b, prefix=prefix)
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_rca&#34;, **kwargs):
+        super().__init__(a=a, b=b, prefix=prefix, name=name, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
@@ -303,7 +302,7 @@ At last XOR gates are used to ensure proper sign extension.</p>
 </dd>
 <dt id="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder"><code class="flex name class">
 <span>class <span class="ident">UnsignedRippleCarryAdder</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = 'u_rca')</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_rca', **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing unsigned ripple carry adder.</p>
@@ -328,7 +327,9 @@ Cout   S3         S2         S1         S0
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned rca. Defaults to "u_rca".</dd>
+<dd>Prefix name of unsigned rca. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of unsigned rca. Defaults to "u_rca".</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -359,21 +360,16 @@ Cout   S3         S2         S1         S0
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned rca. Defaults to &#34;u_rca&#34;.
+        prefix (str, optional): Prefix name of unsigned rca. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned rca. Defaults to &#34;u_rca&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;u_rca&#34;):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_rca&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for N sum bits and additional cout bit
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N+1)
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):
@@ -490,7 +486,7 @@ Cout   S3         S2         S1         S0
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

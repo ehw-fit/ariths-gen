@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>ariths_gen.core.arithmetic_circuits.arithmetic_circuit API documentation</title>
+<title>ariths_gen.core.arithmetic_circuits.general_circuit API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>ariths_gen.core.arithmetic_circuits.arithmetic_circuit</code></h1>
+<h1 class="title">Module <code>ariths_gen.core.arithmetic_circuits.general_circuit</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -36,35 +36,21 @@ from ariths_gen.wire_components import (
 )
 
 
-class ArithmeticCircuit():
+class GeneralCircuit():
     &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures their generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
-        if one_bit_circuit is False:
-            if prefix == &#34;&#34;:
-                self.prefix = name
-            else:
-                self.prefix = prefix + &#34;_&#34; + name
-
-            self.inner_component = inner_component
-            if self.inner_component is True:
-                self.a = Bus(prefix=f&#34;{self.prefix}_{a.prefix}&#34;, wires_list=a.bus)
-                self.b = Bus(prefix=f&#34;{self.prefix}_{b.prefix}&#34;, wires_list=b.bus)
-
-                if a.is_output_bus():
-                    self.a.connect_bus(connecting_bus=a)
-                if b.is_output_bus():
-                    self.b.connect_bus(connecting_bus=b)
-            else:
-                self.a = Bus(prefix=f&#34;{a.prefix}&#34;, wires_list=a.bus)
-                self.b = Bus(prefix=f&#34;{b.prefix}&#34;, wires_list=b.bus)
-
-            # N output wires for given circuit
-            self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True)
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+        if prefix == &#34;&#34;:
+            self.prefix = name
+        else:
+            self.prefix = prefix + &#34;_&#34; + name
+        self.inner_component = inner_component
+        self.inputs = inputs
+        self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True)
 
         self.components = []
         self.circuit_wires = []
@@ -78,6 +64,7 @@ class ArithmeticCircuit():
             component: Subcomponent to be added into list of components composing described circuit.
         &#34;&#34;&#34;
         self.components.append(component)
+        return component
 
     def get_previous_component(self, number: int = 1):
         &#34;&#34;&#34;Retrieves previously added composite subcomponent from circuit&#39;s list of components.
@@ -283,7 +270,7 @@ class ArithmeticCircuit():
         Returns:
             str: Function&#39;s name and parameters in C code.
         &#34;&#34;&#34;
-        return f&#34;{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.prefix}, {self.c_data_type} {self.b.prefix})&#34; + &#34;{&#34; + &#34;\n&#34;
+        return f&#34;{self.c_data_type} {self.prefix}(&#34; + &#34;,&#34;.join([f&#34;{self.c_data_type} {x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;{&#34; + &#34;\n&#34;
 
     def get_declaration_c_flat(self):
         &#34;&#34;&#34;Generates flat C code declaration of input/output circuit wires.
@@ -346,7 +333,7 @@ class ArithmeticCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
 
     def get_declarations_c_hier(self):
@@ -438,7 +425,7 @@ class ArithmeticCircuit():
         Returns:
             str: Module&#39;s name and parameters in Verilog code.
         &#34;&#34;&#34;
-        return f&#34;module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
+        return f&#34;module {self.prefix}(&#34; + &#34;,&#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
 
     def get_declaration_v_flat(self):
         &#34;&#34;&#34;Generates flat Verilog code declaration of input/output circuit wires.
@@ -499,7 +486,7 @@ class ArithmeticCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
 
     def get_declarations_v_hier(self):
@@ -551,7 +538,7 @@ class ArithmeticCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
 
@@ -704,8 +691,10 @@ class ArithmeticCircuit():
             str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
         &#34;&#34;&#34;
         # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(
+            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;))
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_blif()}&#34;
 
     # Generating hierarchical BLIF code representation of circuit
@@ -781,9 +770,9 @@ class ArithmeticCircuit():
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit"><code class="flex name class">
-<span>class <span class="ident">ArithmeticCircuit</span></span>
-<span>(</span><span>a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False)</span>
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit"><code class="flex name class">
+<span>class <span class="ident">GeneralCircuit</span></span>
+<span>(</span><span>prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [])</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class represents a general arithmetic circuit and ensures their generation to various representations.</p>
@@ -793,35 +782,21 @@ that are later used for generation into various representations.</p></div>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class ArithmeticCircuit():
+<pre><code class="python">class GeneralCircuit():
     &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures their generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
-        if one_bit_circuit is False:
-            if prefix == &#34;&#34;:
-                self.prefix = name
-            else:
-                self.prefix = prefix + &#34;_&#34; + name
-
-            self.inner_component = inner_component
-            if self.inner_component is True:
-                self.a = Bus(prefix=f&#34;{self.prefix}_{a.prefix}&#34;, wires_list=a.bus)
-                self.b = Bus(prefix=f&#34;{self.prefix}_{b.prefix}&#34;, wires_list=b.bus)
-
-                if a.is_output_bus():
-                    self.a.connect_bus(connecting_bus=a)
-                if b.is_output_bus():
-                    self.b.connect_bus(connecting_bus=b)
-            else:
-                self.a = Bus(prefix=f&#34;{a.prefix}&#34;, wires_list=a.bus)
-                self.b = Bus(prefix=f&#34;{b.prefix}&#34;, wires_list=b.bus)
-
-            # N output wires for given circuit
-            self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True)
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+        if prefix == &#34;&#34;:
+            self.prefix = name
+        else:
+            self.prefix = prefix + &#34;_&#34; + name
+        self.inner_component = inner_component
+        self.inputs = inputs
+        self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True)
 
         self.components = []
         self.circuit_wires = []
@@ -835,6 +810,7 @@ that are later used for generation into various representations.</p></div>
             component: Subcomponent to be added into list of components composing described circuit.
         &#34;&#34;&#34;
         self.components.append(component)
+        return component
 
     def get_previous_component(self, number: int = 1):
         &#34;&#34;&#34;Retrieves previously added composite subcomponent from circuit&#39;s list of components.
@@ -1040,7 +1016,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Function&#39;s name and parameters in C code.
         &#34;&#34;&#34;
-        return f&#34;{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.prefix}, {self.c_data_type} {self.b.prefix})&#34; + &#34;{&#34; + &#34;\n&#34;
+        return f&#34;{self.c_data_type} {self.prefix}(&#34; + &#34;,&#34;.join([f&#34;{self.c_data_type} {x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;{&#34; + &#34;\n&#34;
 
     def get_declaration_c_flat(self):
         &#34;&#34;&#34;Generates flat C code declaration of input/output circuit wires.
@@ -1103,7 +1079,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
 
     def get_declarations_c_hier(self):
@@ -1195,7 +1171,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Module&#39;s name and parameters in Verilog code.
         &#34;&#34;&#34;
-        return f&#34;module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
+        return f&#34;module {self.prefix}(&#34; + &#34;,&#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
 
     def get_declaration_v_flat(self):
         &#34;&#34;&#34;Generates flat Verilog code declaration of input/output circuit wires.
@@ -1256,7 +1232,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
 
     def get_declarations_v_hier(self):
@@ -1308,7 +1284,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
 
@@ -1461,8 +1437,10 @@ that are later used for generation into various representations.</p></div>
             str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
         &#34;&#34;&#34;
         # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(
+            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;))
+            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_blif()}&#34;
 
     # Generating hierarchical BLIF code representation of circuit
@@ -1528,23 +1506,9 @@ that are later used for generation into various representations.</p></div>
         file_object.write(self.get_outputs_cgp())
         file_object.close()</code></pre>
 </details>
-<h3>Subclasses</h3>
-<ul class="hlist">
-<li><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit" href="multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit">MultiplierCircuit</a></li>
-<li><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit" href="../one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit">TwoInputOneBitCircuit</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.SignedCarryLookaheadAdder" href="../../multi_bit_circuits/adders/carry_lookahead_adder.html#ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.SignedCarryLookaheadAdder">SignedCarryLookaheadAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder" href="../../multi_bit_circuits/adders/carry_lookahead_adder.html#ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder">UnsignedCarryLookaheadAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.carry_skip_adder.SignedCarrySkipAdder" href="../../multi_bit_circuits/adders/carry_skip_adder.html#ariths_gen.multi_bit_circuits.adders.carry_skip_adder.SignedCarrySkipAdder">SignedCarrySkipAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.carry_skip_adder.UnsignedCarrySkipAdder" href="../../multi_bit_circuits/adders/carry_skip_adder.html#ariths_gen.multi_bit_circuits.adders.carry_skip_adder.UnsignedCarrySkipAdder">UnsignedCarrySkipAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder" href="../../multi_bit_circuits/adders/pg_ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder">SignedPGRippleCarryAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder" href="../../multi_bit_circuits/adders/pg_ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder">UnsignedPGRippleCarryAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder" href="../../multi_bit_circuits/adders/ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder">SignedRippleCarryAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder" href="../../multi_bit_circuits/adders/ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder">UnsignedRippleCarryAdder</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider" href="../../multi_bit_circuits/dividers/array_divider.html#ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider">ArrayDivider</a></li>
-</ul>
 <h3>Static methods</h3>
 <dl>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_includes_c"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c"><code class="name flex">
 <span>def <span class="ident">get_includes_c</span></span>(<span>)</span>
 </code></dt>
 <dd>
@@ -1568,7 +1532,7 @@ def get_includes_c():
     return f&#34;#include &lt;stdio.h&gt;\n#include &lt;stdint.h&gt;\n\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_unique_types"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types"><code class="name flex">
 <span>def <span class="ident">get_unique_types</span></span>(<span>components: list)</span>
 </code></dt>
 <dd>
@@ -1603,7 +1567,7 @@ def get_unique_types(components: list):
 </dl>
 <h3>Methods</h3>
 <dl>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.add_component"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component"><code class="name flex">
 <span>def <span class="ident">add_component</span></span>(<span>self, component)</span>
 </code></dt>
 <dd>
@@ -1623,10 +1587,11 @@ def get_unique_types(components: list):
     Args:
         component: Subcomponent to be added into list of components composing described circuit.
     &#34;&#34;&#34;
-    self.components.append(component)</code></pre>
+    self.components.append(component)
+    return component</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat"><code class="name flex">
 <span>def <span class="ident">get_blif_code_flat</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -1654,7 +1619,7 @@ def get_unique_types(components: list):
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier"><code class="name flex">
 <span>def <span class="ident">get_blif_code_hier</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -1679,7 +1644,7 @@ def get_unique_types(components: list):
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat"><code class="name flex">
 <span>def <span class="ident">get_c_code_flat</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -1709,7 +1674,7 @@ def get_unique_types(components: list):
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier"><code class="name flex">
 <span>def <span class="ident">get_c_code_hier</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -1735,7 +1700,7 @@ def get_unique_types(components: list):
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_carry_wire"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire"><code class="name flex">
 <span>def <span class="ident">get_carry_wire</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -1758,7 +1723,7 @@ def get_unique_types(components: list):
     return self.out.get_wire(1)</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_code_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat"><code class="name flex">
 <span>def <span class="ident">get_cgp_code_flat</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -1784,7 +1749,7 @@ def get_unique_types(components: list):
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_wires"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires"><code class="name flex">
 <span>def <span class="ident">get_cgp_wires</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -1832,7 +1797,7 @@ Other wires indexes start counting from 2 and up.</p></div>
                 (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_blif"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif"><code class="name flex">
 <span>def <span class="ident">get_circuit_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -1859,7 +1824,7 @@ Other wires indexes start counting from 2 and up.</p></div>
            f&#34;.end\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_c"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c"><code class="name flex">
 <span>def <span class="ident">get_circuit_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -1887,7 +1852,7 @@ Other wires indexes start counting from 2 and up.</p></div>
            f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_gates"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates"><code class="name flex">
 <span>def <span class="ident">get_circuit_gates</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -1917,7 +1882,7 @@ Other wires indexes start counting from 2 and up.</p></div>
     return gates</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_v"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v"><code class="name flex">
 <span>def <span class="ident">get_circuit_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -1944,7 +1909,7 @@ Other wires indexes start counting from 2 and up.</p></div>
            f&#34;endmodule&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_wire_index"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index"><code class="name flex">
 <span>def <span class="ident">get_circuit_wire_index</span></span>(<span>self, wire: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>)</span>
 </code></dt>
 <dd>
@@ -1980,7 +1945,7 @@ Other wires indexes start counting from 2 and up.</p></div>
                 return w[2]</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_component_types"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types"><code class="name flex">
 <span>def <span class="ident">get_component_types</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2013,7 +1978,7 @@ Other wires indexes start counting from 2 and up.</p></div>
     return all_components</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_blif"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_declaration_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2045,7 +2010,7 @@ Other wires indexes start counting from 2 and up.</p></div>
                f&#34;.names gnd\n0\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_c_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2068,7 +2033,7 @@ Other wires indexes start counting from 2 and up.</p></div>
     return f&#34;&#34;.join([c.get_declaration_c_flat() for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_c_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2098,7 +2063,7 @@ inside the upper component from which function block has been invoked.</p>
            f&#34;  {self.c_data_type} {self.out.prefix} = 0;\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_v_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2121,7 +2086,7 @@ inside the upper component from which function block has been invoked.</p>
     return f&#34;&#34;.join([c.get_declaration_v_flat() for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_v_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2151,7 +2116,7 @@ inside the upper component from which function block has been invoked.</p>
            f&#34;  wire [{self.out.N-1}:0] {self.out.prefix};\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_c_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier"><code class="name flex">
 <span>def <span class="ident">get_declarations_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2174,7 +2139,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_declaration_c_hier() for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_v_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier"><code class="name flex">
 <span>def <span class="ident">get_declarations_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2197,7 +2162,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_declaration_v_hier() for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blif_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat"><code class="name flex">
 <span>def <span class="ident">get_function_blif_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2220,7 +2185,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join(c.get_function_blif_flat() for c in self.components)</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_blif"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif"><code class="name flex">
 <span>def <span class="ident">get_function_block_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2241,12 +2206,14 @@ inside the upper component from which function block has been invoked.</p>
         str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
     &#34;&#34;&#34;
     # Obtain proper circuit name with its bit width
+    circuit_prefix = self.__class__(
+        a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;))
+        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
     return f&#34;{circuit_block.get_circuit_blif()}&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_c"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c"><code class="name flex">
 <span>def <span class="ident">get_function_block_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2270,11 +2237,11 @@ inside the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
     return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_v"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v"><code class="name flex">
 <span>def <span class="ident">get_function_block_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2298,11 +2265,11 @@ inside the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
     return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_blif"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif"><code class="name flex">
 <span>def <span class="ident">get_function_blocks_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2328,7 +2295,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;\n&#34;.join([c.get_function_block_blif() for c in self.component_types[::-1]])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_c"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c"><code class="name flex">
 <span>def <span class="ident">get_function_blocks_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2353,7 +2320,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_function_block_c() for c in self.component_types])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_v"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v"><code class="name flex">
 <span>def <span class="ident">get_function_blocks_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2378,7 +2345,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_function_block_v() for c in self.component_types])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_blif"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif"><code class="name flex">
 <span>def <span class="ident">get_function_out_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2401,7 +2368,7 @@ inside the upper component from which function block has been invoked.</p>
     return f&#34;{self.out.get_wire_assign_blif(output=True)}&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat"><code class="name flex">
 <span>def <span class="ident">get_function_out_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2424,7 +2391,7 @@ inside the upper component from which function block has been invoked.</p>
     return self.out.return_bus_wires_values_c_flat()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier"><code class="name flex">
 <span>def <span class="ident">get_function_out_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2447,7 +2414,7 @@ inside the upper component from which function block has been invoked.</p>
     return self.out.return_bus_wires_values_c_hier()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat"><code class="name flex">
 <span>def <span class="ident">get_function_out_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2470,7 +2437,7 @@ inside the upper component from which function block has been invoked.</p>
     return self.out.return_bus_wires_values_v_flat()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier"><code class="name flex">
 <span>def <span class="ident">get_function_out_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2493,7 +2460,7 @@ inside the upper component from which function block has been invoked.</p>
     return self.out.return_bus_wires_values_v_hier()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat"><code class="name flex">
 <span>def <span class="ident">get_init_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2516,7 +2483,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_assign_c_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_c_flat() for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier"><code class="name flex">
 <span>def <span class="ident">get_init_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2539,7 +2506,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_gate_invocation_c() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_c(circuit_prefix=self.prefix) for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat"><code class="name flex">
 <span>def <span class="ident">get_init_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2562,7 +2529,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_assign_v_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_v_flat() for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier"><code class="name flex">
 <span>def <span class="ident">get_init_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2585,7 +2552,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join([c.get_gate_invocation_v() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_v(circuit_prefix=self.prefix) for c in self.components])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_instance_num"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num"><code class="name flex">
 <span>def <span class="ident">get_instance_num</span></span>(<span>self, cls, count_disabled_gates: bool = True)</span>
 </code></dt>
 <dd>
@@ -2621,7 +2588,7 @@ inside the upper component from which function block has been invoked.</p>
         return sum(isinstance(c, cls) for c in self.components)</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_invocation_blif_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocation_blif_hier</span></span>(<span>self, circuit_prefix: str)</span>
 </code></dt>
 <dd>
@@ -2663,7 +2630,7 @@ inside the upper component from which function block has been invoked.</p>
                [f&#34; {circuit_type}_out[{self.out.bus.index(o)}]={o.name}&#34; for o in self.out.bus]) + &#34;\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_invocations_blif_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocations_blif_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2686,7 +2653,7 @@ inside the upper component from which function block has been invoked.</p>
     return &#34;&#34;.join(c.get_invocation_blif_hier(circuit_prefix=self.prefix) for c in self.components)</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_multi_bit_components"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components"><code class="name flex">
 <span>def <span class="ident">get_multi_bit_components</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2717,7 +2684,7 @@ inside the upper component from which function block has been invoked.</p>
     return multi_bit_comps</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_one_bit_components"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components"><code class="name flex">
 <span>def <span class="ident">get_one_bit_components</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2749,7 +2716,7 @@ inside the upper component from which function block has been invoked.</p>
     return one_bit_comps</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_out_invocation_c"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c"><code class="name flex">
 <span>def <span class="ident">get_out_invocation_c</span></span>(<span>self, circuit_prefix: str)</span>
 </code></dt>
 <dd>
@@ -2790,7 +2757,7 @@ the upper component from which function block has been invoked.</p>
         f&#34;  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_out_invocation_v"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v"><code class="name flex">
 <span>def <span class="ident">get_out_invocation_v</span></span>(<span>self, circuit_prefix: str)</span>
 </code></dt>
 <dd>
@@ -2832,12 +2799,12 @@ the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
     return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
         f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_outputs_cgp"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp"><code class="name flex">
 <span>def <span class="ident">get_outputs_cgp</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2860,7 +2827,7 @@ the upper component from which function block has been invoked.</p>
     return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + &#34;)&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_parameters_cgp"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp"><code class="name flex">
 <span>def <span class="ident">get_parameters_cgp</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2889,7 +2856,7 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     return f&#34;{{{self.a.N+self.a.N},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_previous_component"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component"><code class="name flex">
 <span>def <span class="ident">get_previous_component</span></span>(<span>self, number: int = 1)</span>
 </code></dt>
 <dd>
@@ -2920,7 +2887,7 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     return self.components[-number]</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_blif"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif"><code class="name flex">
 <span>def <span class="ident">get_prototype_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2943,7 +2910,7 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     return f&#34;.model {self.prefix}\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_c"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c"><code class="name flex">
 <span>def <span class="ident">get_prototype_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2963,10 +2930,10 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     Returns:
         str: Function&#39;s name and parameters in C code.
     &#34;&#34;&#34;
-    return f&#34;{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.prefix}, {self.c_data_type} {self.b.prefix})&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
+    return f&#34;{self.c_data_type} {self.prefix}(&#34; + &#34;,&#34;.join([f&#34;{self.c_data_type} {x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_v"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v"><code class="name flex">
 <span>def <span class="ident">get_prototype_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -2986,10 +2953,10 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     Returns:
         str: Module&#39;s name and parameters in Verilog code.
     &#34;&#34;&#34;
-    return f&#34;module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;</code></pre>
+    return f&#34;module {self.prefix}(&#34; + &#34;,&#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_sum_wire"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire"><code class="name flex">
 <span>def <span class="ident">get_sum_wire</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -3012,7 +2979,7 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     return self.out.get_wire(0)</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_triplets_cgp"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp"><code class="name flex">
 <span>def <span class="ident">get_triplets_cgp</span></span>(<span>self)</span>
 </code></dt>
 <dd>
@@ -3049,7 +3016,7 @@ Other wires indexes start counting from 2 and up.</p>
                    g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_flat"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat"><code class="name flex">
 <span>def <span class="ident">get_v_code_flat</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -3077,7 +3044,7 @@ Other wires indexes start counting from 2 and up.</p>
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_hier"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier"><code class="name flex">
 <span>def <span class="ident">get_v_code_hier</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
@@ -3102,7 +3069,7 @@ Other wires indexes start counting from 2 and up.</p>
     file_object.close()</code></pre>
 </details>
 </dd>
-<dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.save_wire_id"><code class="name flex">
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id"><code class="name flex">
 <span>def <span class="ident">save_wire_id</span></span>(<span>self, wire: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>)</span>
 </code></dt>
 <dd>
@@ -3162,65 +3129,65 @@ Other wires indexes start counting from 2 and up.</p>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></code></h4>
+<h4><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></code></h4>
 <ul class="">
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.add_component" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.add_component">add_component</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_carry_wire" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_carry_wire">get_carry_wire</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_code_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_wires" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_blif" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_c" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_c">get_circuit_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_gates" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_v" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_v">get_circuit_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_wire_index" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_component_types" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_component_types">get_component_types</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_blif" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_c_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_c_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_v_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_v_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_c_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_v_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blif_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_blif" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_c" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_c">get_function_block_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_v" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_block_v">get_function_block_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_blif" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_c" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_v" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_blif" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_includes_c" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_includes_c">get_includes_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_instance_num" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_instance_num">get_instance_num</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_invocation_blif_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_invocations_blif_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_multi_bit_components" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_one_bit_components" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_out_invocation_c" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_out_invocation_v" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_outputs_cgp" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_parameters_cgp" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_previous_component" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_previous_component">get_previous_component</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_blif" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_c" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_c">get_prototype_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_v" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_v">get_prototype_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_sum_wire" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_sum_wire">get_sum_wire</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_triplets_cgp" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_unique_types" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_unique_types">get_unique_types</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_flat" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_hier" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.save_wire_id" href="#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.save_wire_id">save_wire_id</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire">get_carry_wire</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire">get_sum_wire</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
 </ul>
 </li>
 </ul>

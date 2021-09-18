@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>ariths_gen.wire_components.buses API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -38,8 +38,10 @@ class Bus():
         prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
         N (int, optional): Number of wires in the bus. Defaults to 1.
         wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
     &#34;&#34;&#34;
-    def __init__(self, prefix: str = &#34;bus&#34;, N: int = 1, wires_list: list = None):
+    def __init__(self, prefix: str = &#34;bus&#34;, N: int = 1, wires_list: list = None, out_bus: bool = False):
+        self.out_bus = out_bus
         if wires_list is None:
             self.prefix = prefix
             # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
@@ -49,6 +51,14 @@ class Bus():
             self.prefix = prefix
             self.bus = wires_list
             self.N = len(self.bus)
+
+    def is_output_bus(self):
+        &#34;&#34;&#34;Tells whether this Bus is an output bus.
+
+        Returns:
+            bool: Returns True if it is an output bus of some component.
+        &#34;&#34;&#34;
+        return self.out_bus
 
     def bus_extend(self, N: int, prefix: str = &#34;bus&#34;):
         &#34;&#34;&#34;Provides bus extension to contain more wires.
@@ -96,6 +106,14 @@ class Bus():
         # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+
+    # TODO
+    def connect_bus(self, connecting_bus, start_connection_pos: int = 0, end_connection_pos: int = -1):
+        if end_connection_pos == -1:
+            end_connection_pos = self.N
+        
+        # Nakonec je potřeba napojit výstup adderu na výstup mac
+        [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_declaration_c(self):
@@ -203,7 +221,7 @@ class Bus():
 <dl>
 <dt id="ariths_gen.wire_components.buses.Bus"><code class="flex name class">
 <span>class <span class="ident">Bus</span></span>
-<span>(</span><span>prefix: str = 'bus', N: int = 1, wires_list: list = None)</span>
+<span>(</span><span>prefix: str = 'bus', N: int = 1, wires_list: list = None, out_bus: bool = False)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing bus of wires used as inputs/outputs of bigger circuits.</p>
@@ -216,6 +234,8 @@ class Bus():
 <dd>Number of wires in the bus. Defaults to 1.</dd>
 <dt><strong><code>wires_list</code></strong> :&ensp;<code>list</code>, optional</dt>
 <dd>List of Wire objects used to clone one bus to another. Defaults to 0.</dd>
+<dt><strong><code>out_bus</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether this Bus is an output bus of some previous component. Defaults to False.</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -230,8 +250,10 @@ class Bus():
         prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
         N (int, optional): Number of wires in the bus. Defaults to 1.
         wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
     &#34;&#34;&#34;
-    def __init__(self, prefix: str = &#34;bus&#34;, N: int = 1, wires_list: list = None):
+    def __init__(self, prefix: str = &#34;bus&#34;, N: int = 1, wires_list: list = None, out_bus: bool = False):
+        self.out_bus = out_bus
         if wires_list is None:
             self.prefix = prefix
             # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
@@ -241,6 +263,14 @@ class Bus():
             self.prefix = prefix
             self.bus = wires_list
             self.N = len(self.bus)
+
+    def is_output_bus(self):
+        &#34;&#34;&#34;Tells whether this Bus is an output bus.
+
+        Returns:
+            bool: Returns True if it is an output bus of some component.
+        &#34;&#34;&#34;
+        return self.out_bus
 
     def bus_extend(self, N: int, prefix: str = &#34;bus&#34;):
         &#34;&#34;&#34;Provides bus extension to contain more wires.
@@ -288,6 +318,14 @@ class Bus():
         # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+
+    # TODO
+    def connect_bus(self, connecting_bus, start_connection_pos: int = 0, end_connection_pos: int = -1):
+        if end_connection_pos == -1:
+            end_connection_pos = self.N
+        
+        # Nakonec je potřeba napojit výstup adderu na výstup mac
+        [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_declaration_c(self):
@@ -455,6 +493,23 @@ to the appropriate wire of the circuit's output bus.</p>
     # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
     elif inserted_wire_desired_index != -1:
         self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)</code></pre>
+</details>
+</dd>
+<dt id="ariths_gen.wire_components.buses.Bus.connect_bus"><code class="name flex">
+<span>def <span class="ident">connect_bus</span></span>(<span>self, connecting_bus, start_connection_pos: int = 0, end_connection_pos: int = -1)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def connect_bus(self, connecting_bus, start_connection_pos: int = 0, end_connection_pos: int = -1):
+    if end_connection_pos == -1:
+        end_connection_pos = self.N
+    
+    # Nakonec je potřeba napojit výstup adderu na výstup mac
+    [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_declaration_c"><code class="name flex">
@@ -642,6 +697,29 @@ to the appropriate wire of the circuit's output bus.</p>
     return &#34;&#34;.join([f&#34; {w.get_declaration_blif(prefix=self.prefix, offset=self.bus.index(w), array=array)}&#34; for w in self.bus])</code></pre>
 </details>
 </dd>
+<dt id="ariths_gen.wire_components.buses.Bus.is_output_bus"><code class="name flex">
+<span>def <span class="ident">is_output_bus</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Tells whether this Bus is an output bus.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Returns True if it is an output bus of some component.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_output_bus(self):
+    &#34;&#34;&#34;Tells whether this Bus is an output bus.
+
+    Returns:
+        bool: Returns True if it is an output bus of some component.
+    &#34;&#34;&#34;
+    return self.out_bus</code></pre>
+</details>
+</dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_c_flat</span></span>(<span>self)</span>
 </code></dt>
@@ -757,12 +835,14 @@ to the appropriate wire of the circuit's output bus.</p>
 <ul class="">
 <li><code><a title="ariths_gen.wire_components.buses.Bus.bus_extend" href="#ariths_gen.wire_components.buses.Bus.bus_extend">bus_extend</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.connect" href="#ariths_gen.wire_components.buses.Bus.connect">connect</a></code></li>
+<li><code><a title="ariths_gen.wire_components.buses.Bus.connect_bus" href="#ariths_gen.wire_components.buses.Bus.connect_bus">connect_bus</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_declaration_c" href="#ariths_gen.wire_components.buses.Bus.get_declaration_c">get_declaration_c</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_blif" href="#ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_blif">get_unique_assign_out_wires_blif</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_v" href="#ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_v">get_unique_assign_out_wires_v</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire" href="#ariths_gen.wire_components.buses.Bus.get_wire">get_wire</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire_assign_blif" href="#ariths_gen.wire_components.buses.Bus.get_wire_assign_blif">get_wire_assign_blif</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire_declaration_blif" href="#ariths_gen.wire_components.buses.Bus.get_wire_declaration_blif">get_wire_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.wire_components.buses.Bus.is_output_bus" href="#ariths_gen.wire_components.buses.Bus.is_output_bus">is_output_bus</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_flat" href="#ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_flat">return_bus_wires_values_c_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_hier" href="#ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_hier">return_bus_wires_values_c_hier</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_v_flat" href="#ariths_gen.wire_components.buses.Bus.return_bus_wires_values_v_flat">return_bus_wires_values_v_flat</a></code></li>
@@ -775,7 +855,7 @@ to the appropriate wire of the circuit's output bus.</p>
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

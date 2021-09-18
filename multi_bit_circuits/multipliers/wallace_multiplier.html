@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>ariths_gen.multi_bit_circuits.multipliers.wallace_multiplier API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -72,22 +72,17 @@ class UnsignedWallaceMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned wallace multiplier. Defaults to &#34;u_wallace_cla&#34;.
+        prefix (str, optional): Prefix name of unsigned wallace multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned wallace multiplier. Defaults to &#34;u_wallace_cla&#34;.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;u_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Initialize all columns partial products forming AND gates matrix
         self.columns = self.init_column_heights()
@@ -145,11 +140,10 @@ class UnsignedWallaceMultiplier(MultiplierCircuit):
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
             # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_prefix = self.prefix + &#34;_&#34; + unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
-
-            adder_a = Bus(prefix=f&#34;{adder_prefix}_a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
-            adder_b = Bus(prefix=f&#34;{adder_prefix}_b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=adder_prefix)
+            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
+            adder_a = Bus(prefix=f&#34;a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
+            adder_b = Bus(prefix=f&#34;b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
@@ -176,23 +170,18 @@ class SignedWallaceMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed wallace multiplier. Defaults to &#34;s_wallace_cla&#34;.
+        prefix (str, optional): Prefix name of signed wallace multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed wallace multiplier. Defaults to &#34;s_wallace_cla&#34;.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
         self.columns = self.init_column_heights(signed=True)
@@ -259,11 +248,10 @@ class SignedWallaceMultiplier(MultiplierCircuit):
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
             # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_prefix = self.prefix + &#34;_&#34; + unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
-
-            adder_a = Bus(prefix=f&#34;{adder_prefix}_a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
-            adder_b = Bus(prefix=f&#34;{adder_prefix}_b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=adder_prefix)
+            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
+            adder_a = Bus(prefix=f&#34;a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
+            adder_b = Bus(prefix=f&#34;b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
@@ -285,7 +273,7 @@ class SignedWallaceMultiplier(MultiplierCircuit):
 <dl>
 <dt id="ariths_gen.multi_bit_circuits.multipliers.wallace_multiplier.SignedWallaceMultiplier"><code class="flex name class">
 <span>class <span class="ident">SignedWallaceMultiplier</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = 's_wallace_cla', unsigned_adder_class_name: str = ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder)</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_wallace_cla', unsigned_adder_class_name: str = ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder, **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing signed wallace multiplier.</p>
@@ -306,7 +294,9 @@ additional XOR gate serve the necessary sign extension.</p>
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of signed wallace multiplier. Defaults to "s_wallace_cla".</dd>
+<dd>Prefix name of signed wallace multiplier. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of signed wallace multiplier. Defaults to "s_wallace_cla".</dd>
 <dt><strong><code>unsigned_adder_class_name</code></strong> :&ensp;<code>str</code>, optional</dt>
 <dd>Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.</dd>
 </dl></div>
@@ -335,23 +325,18 @@ additional XOR gate serve the necessary sign extension.</p>
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed wallace multiplier. Defaults to &#34;s_wallace_cla&#34;.
+        prefix (str, optional): Prefix name of signed wallace multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed wallace multiplier. Defaults to &#34;s_wallace_cla&#34;.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
         self.columns = self.init_column_heights(signed=True)
@@ -418,11 +403,10 @@ additional XOR gate serve the necessary sign extension.</p>
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
             # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_prefix = self.prefix + &#34;_&#34; + unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
-
-            adder_a = Bus(prefix=f&#34;{adder_prefix}_a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
-            adder_b = Bus(prefix=f&#34;{adder_prefix}_b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=adder_prefix)
+            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
+            adder_a = Bus(prefix=f&#34;a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
+            adder_b = Bus(prefix=f&#34;b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
@@ -513,7 +497,7 @@ additional XOR gate serve the necessary sign extension.</p>
 </dd>
 <dt id="ariths_gen.multi_bit_circuits.multipliers.wallace_multiplier.UnsignedWallaceMultiplier"><code class="flex name class">
 <span>class <span class="ident">UnsignedWallaceMultiplier</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = 'u_wallace_cla', unsigned_adder_class_name: str = ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder)</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_wallace_cla', unsigned_adder_class_name: str = ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder, **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing unsigned wallace multiplier.</p>
@@ -532,7 +516,9 @@ At last the reduced pairs are inserted into chosen multi bit unsigned adder to e
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned wallace multiplier. Defaults to "u_wallace_cla".</dd>
+<dd>Prefix name of unsigned wallace multiplier. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of unsigned wallace multiplier. Defaults to "u_wallace_cla".</dd>
 <dt><strong><code>unsigned_adder_class_name</code></strong> :&ensp;<code>str</code>, optional</dt>
 <dd>Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.</dd>
 </dl></div>
@@ -559,22 +545,17 @@ At last the reduced pairs are inserted into chosen multi bit unsigned adder to e
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned wallace multiplier. Defaults to &#34;u_wallace_cla&#34;.
+        prefix (str, optional): Prefix name of unsigned wallace multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned wallace multiplier. Defaults to &#34;u_wallace_cla&#34;.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;u_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Initialize all columns partial products forming AND gates matrix
         self.columns = self.init_column_heights()
@@ -632,11 +613,10 @@ At last the reduced pairs are inserted into chosen multi bit unsigned adder to e
         # Final addition of remaining bits using chosen unsigned multi bit adder
         else:
             # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_prefix = self.prefix + &#34;_&#34; + unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
-
-            adder_a = Bus(prefix=f&#34;{adder_prefix}_a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
-            adder_b = Bus(prefix=f&#34;{adder_prefix}_b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=adder_prefix)
+            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
+            adder_a = Bus(prefix=f&#34;a&#34;, wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
+            adder_b = Bus(prefix=f&#34;b&#34;, wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]</code></pre>
@@ -748,7 +728,7 @@ At last the reduced pairs are inserted into chosen multi bit unsigned adder to e
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.9.2" />
+<meta name="generator" content="pdoc 0.10.0" />
 <title>ariths_gen.multi_bit_circuits.multipliers.array_multiplier API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
@@ -107,21 +107,16 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to &#34;u_arrmul&#34;.
+        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned array multiplier. Defaults to &#34;u_arrmul&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;u_arrmul&#34;):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -155,7 +150,7 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
 
                     # 1 bit multiplier case
                     if a_multiplicand_index == self.N-1:
-                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0)
+                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0())
 
                 elif b_multiplier_index == self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
@@ -219,22 +214,17 @@ class SignedArrayMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed array multiplier. Defaults to &#34;s_arrmul&#34;.
+        prefix (str, optional): Prefix name of signed array multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed array multiplier. Defaults to &#34;s_arrmul&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_arrmul&#34;):
-        super().__init__()
-        self.c_data_type = &#34;int64_t&#34;
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -297,7 +287,7 @@ class SignedArrayMultiplier(MultiplierCircuit):
 <dl>
 <dt id="ariths_gen.multi_bit_circuits.multipliers.array_multiplier.SignedArrayMultiplier"><code class="flex name class">
 <span>class <span class="ident">SignedArrayMultiplier</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = 's_arrmul')</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_arrmul', **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing signed array multiplier.</p>
@@ -352,7 +342,9 @@ gradually sum them.</p>
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of signed array multiplier. Defaults to "s_arrmul".</dd>
+<dd>Prefix name of signed array multiplier. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of signed array multiplier. Defaults to "s_arrmul".</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -413,22 +405,17 @@ gradually sum them.</p>
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed array multiplier. Defaults to &#34;s_arrmul&#34;.
+        prefix (str, optional): Prefix name of signed array multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed array multiplier. Defaults to &#34;s_arrmul&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;s_arrmul&#34;):
-        super().__init__()
-        self.c_data_type = &#34;int64_t&#34;
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -560,7 +547,7 @@ gradually sum them.</p>
 </dd>
 <dt id="ariths_gen.multi_bit_circuits.multipliers.array_multiplier.UnsignedArrayMultiplier"><code class="flex name class">
 <span>class <span class="ident">UnsignedArrayMultiplier</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = 'u_arrmul')</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_arrmul', **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class representing unsigned array multiplier.</p>
@@ -615,7 +602,9 @@ P7       P6       P5       P4       P3       P2       P1       P0
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned array multiplier. Defaults to "u_arrmul".</dd>
+<dd>Prefix name of unsigned array multiplier. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of unsigned array multiplier. Defaults to "u_arrmul".</dd>
 </dl></div>
 <details class="source">
 <summary>
@@ -676,21 +665,16 @@ P7       P6       P5       P4       P3       P2       P1       P0
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to &#34;u_arrmul&#34;.
+        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned array multiplier. Defaults to &#34;u_arrmul&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;u_arrmul&#34;):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for multiplication product
-        self.out = Bus(self.prefix+&#34;_out&#34;, self.N*2)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -724,7 +708,7 @@ P7       P6       P5       P4       P3       P2       P1       P0
 
                     # 1 bit multiplier case
                     if a_multiplicand_index == self.N-1:
-                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0)
+                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0())
 
                 elif b_multiplier_index == self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
@@ -839,7 +823,7 @@ P7       P6       P5       P4       P3       P2       P1       P0
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.2</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
 </footer>
 </body>
 </html>
