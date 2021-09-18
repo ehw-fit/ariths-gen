@@ -416,7 +416,7 @@ class TwoInputLogicGate():
         """
         return "{2,1,1,1,2,1,0}"
 
-    def get_triplet_cgp(self, a_id: int, b_id: int):
+    def get_triplet_cgp(self, a_id: int, b_id: int, out_id: int):
         """Generates logic gate triplet (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.
 
         Each triplet represents unique logic gate within the described circuit. Besides the contained input wires indexes and gate's inner logic function, an output wire
@@ -429,11 +429,12 @@ class TwoInputLogicGate():
         Args:
             a_id (int): First input wire index position.
             b_id (int): Second input wire index position.
+            out_id (int): The output wire index position
 
         Returns:
             str: Triplet describing function of corresponding two input logic gate.
         """
-        return f"({a_id},{b_id},{self.cgp_function})"
+        return f"([{out_id}]{a_id},{b_id},{self.cgp_function})"
 
     @staticmethod
     def get_output_cgp(out_id: int):
@@ -470,7 +471,7 @@ class TwoInputLogicGate():
             out_id = self.out.cgp_const
         else:
             out_id = a_id+1 if a_id > b_id else b_id+1
-        return self.get_triplet_cgp(a_id=a_id, b_id=b_id) + self.get_output_cgp(out_id=out_id)
+        return self.get_triplet_cgp(a_id=a_id, b_id=b_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)
 
     def get_cgp_code(self, file_object):
         """Generates flat CGP chromosome representation of corresponding logic gate itself.
@@ -706,7 +707,7 @@ class OneInputLogicGate(TwoInputLogicGate):
 
     """ CGP CODE GENERATION """
     # FLAT CGP #
-    def get_triplet_cgp(self, a_id: int):
+    def get_triplet_cgp(self, a_id: int, out_id: int):
         """Generates logic gate triplet (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.
 
         Each triplet represents unique logic gate within the described circuit. In this case of one input logic gate, the same input wire index is driven to both inputs.
@@ -719,11 +720,12 @@ class OneInputLogicGate(TwoInputLogicGate):
 
         Args:
             a_id (int): First (used also as the second) input wire index position.
+            out_id (int): Outpu wire index position
 
         Returns:
             str: Triplet describing function of corresponding one input logic gate.
         """
-        return f"({a_id},{a_id},{self.cgp_function})"
+        return f"([{out_id}]{a_id},{a_id},{self.cgp_function})"
 
     @staticmethod
     def get_output_cgp(out_id: int):
@@ -752,4 +754,4 @@ class OneInputLogicGate(TwoInputLogicGate):
             out_id = self.out.cgp_const
         else:
             out_id = a_id+1 if a_id == 2 else 2
-        return self.get_triplet_cgp(a_id=a_id) + self.get_output_cgp(out_id=out_id)
+        return self.get_triplet_cgp(a_id=a_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)

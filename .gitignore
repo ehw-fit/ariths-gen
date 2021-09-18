@@ -8,5 +8,6 @@ dist/
 test_circuits/
 tests/tmp.exe
 tests/tmp.c
+html/
 
 *.egg-info

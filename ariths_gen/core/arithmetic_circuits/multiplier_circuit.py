@@ -29,8 +29,8 @@ class MultiplierCircuit(ArithmeticCircuit):
     that are later used for generation into various representations.
     """
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, a, b, prefix, name, out_N, **kwargs):
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
     # Array multipliers
     def get_previous_partial_product(self, a_index: int, b_index: int):

@@ -80,116 +80,116 @@ if __name__ == "__main__":
 
         # RCA
         name = f"u_rca{N}"
-        circuit = UnsignedRippleCarryAdder(a, b, prefix=name)
+        circuit = UnsignedRippleCarryAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         name = f"s_rca{N}"
-        circuit = SignedRippleCarryAdder(a, b, prefix=name)
+        circuit = SignedRippleCarryAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         # RCA with PG
         name = f"u_pg_rca{N}"
-        circuit = UnsignedPGRippleCarryAdder(a, b, prefix=name)
+        circuit = UnsignedPGRippleCarryAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         name = f"s_pg_rca{N}"
-        circuit = SignedPGRippleCarryAdder(a, b, prefix=name)
+        circuit = SignedPGRippleCarryAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         # CSKA with 4 bit CSKA blocks (default)
         name = f"u_cska{N}"
-        circuit = UnsignedCarrySkipAdder(a, b, prefix=name)
+        circuit = UnsignedCarrySkipAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         name = f"s_cska{N}"
-        circuit = SignedCarrySkipAdder(a, b, prefix=name)
+        circuit = SignedCarrySkipAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         # CLA with 4 bit CLA blocks (default)
         name = f"u_cla{N}"
-        circuit = UnsignedCarryLookaheadAdder(a, b, prefix=name)
+        circuit = UnsignedCarryLookaheadAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         name = f"s_cla{N}"
-        circuit = SignedCarryLookaheadAdder(a, b, prefix=name)
+        circuit = SignedCarryLookaheadAdder(a, b, name=name)
         export_circuit(circuit, name)
 
         # Arrmul
         name = f"u_arrmul{N}"
-        circuit = UnsignedArrayMultiplier(a, b, prefix=name)
+        circuit = UnsignedArrayMultiplier(a, b, name=name)
         export_circuit(circuit, name)
 
         name = f"s_arrmul{N}"
-        circuit = SignedArrayMultiplier(a, b, prefix=name)
+        circuit = SignedArrayMultiplier(a, b, name=name)
         export_circuit(circuit, name)
 
         # Wallace
         name = f"u_wallace_cla{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_cla{N}"
-        circuit = SignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
 
         name = f"u_wallace_rca{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_rca{N}"
-        circuit = SignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"u_wallace_pg_rca{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_pg_rca{N}"
-        circuit = SignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"u_wallace_cska{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_cska{N}"
-        circuit = SignedWallaceMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
         # Dadda
         name = f"u_dadda_cla{N}"
-        circuit = UnsignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        circuit = UnsignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
 
         name = f"s_dadda_cla{N}"
-        circuit = SignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        circuit = SignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
 
         name = f"u_dadda_rca{N}"
-        circuit = UnsignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        circuit = UnsignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"s_dadda_rca{N}"
-        circuit = SignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        circuit = SignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"u_dadda_pg_rca{N}"
-        circuit = UnsignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        circuit = UnsignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"s_dadda_pg_rca{N}"
-        circuit = SignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        circuit = SignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"u_dadda_cska{N}"
-        circuit = UnsignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        circuit = UnsignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
         name = f"s_dadda_cska{N}"
-        circuit = SignedDaddaMultiplier(a, b, prefix=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        circuit = SignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
         # Arrdiv
         name = f"arrdiv{N}"
-        circuit = ArrayDivider(a, b, prefix=name)
+        circuit = ArrayDivider(a, b, name=name)
         export_circuit(circuit, name)

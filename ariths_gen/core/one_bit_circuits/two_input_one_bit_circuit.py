@@ -16,7 +16,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         prefix (str, optional): Prefix name of circuit. Defaults to "two_input_one_bit_circuit".
     """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "two_input_one_bit_circuit"):
-        super().__init__()
+        super().__init__(a=a, b=b, prefix=prefix, name="", out_N=1, one_bit_circuit = True)
         self.c_data_type = "uint8_t"
         self.prefix = prefix
         self.a = a

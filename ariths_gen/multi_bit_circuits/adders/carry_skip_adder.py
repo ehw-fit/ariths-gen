@@ -69,21 +69,16 @@ class UnsignedCarrySkipAdder(ArithmeticCircuit):
         a (Bus): First input bus.
         b (Bus): Second input bus.
         bypass_block_size (int, optional): Size of each composite bypass adder block size. Defaults to 4.
-        prefix (str, optional): Prefix name of unsigned cska. Defaults to "u_cska".
+        prefix (str, optional): Prefix name of unsigned cska. Defaults to "".
+        name (str, optional): Name of unsigned cska. Defaults to "u_cska".
     """
-    def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = "u_cska"):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = "", name: str = "u_cska", **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for N sum bits and additional cout bit
-        self.out = Bus(self.prefix+"_out", self.N+1)
 
         # To signify current number of blocks and number of bits that remain to be added into function blocks
         N_blocks = 0
@@ -168,10 +163,11 @@ class SignedCarrySkipAdder(UnsignedCarrySkipAdder, ArithmeticCircuit):
         a (Bus): First input bus.
         b (Bus): Second input bus.
         bypass_block_size (int, optional): Size of each composite bypass adder block size. Defaults to 4.
-        prefix (str, optional): Prefix name of signed cska. Defaults to "s_cska".
+        prefix (str, optional): Prefix name of signed cska. Defaults to "".
+        name (str, optional): Name of signed cska. Defaults to "s_cska".
     """
-    def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = "s_cska"):
-        super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix)
+    def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = "", name: str = "s_cska", **kwargs):
+        super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix, name=name, **kwargs)
         self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition

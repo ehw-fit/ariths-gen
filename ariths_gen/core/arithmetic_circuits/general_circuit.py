@@ -8,35 +8,21 @@ from ariths_gen.wire_components import (
 )
 
 
-class ArithmeticCircuit():
+class GeneralCircuit():
     """Class represents a general arithmetic circuit and ensures their generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     """
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
-        if one_bit_circuit is False:
-            if prefix == "":
-                self.prefix = name
-            else:
-                self.prefix = prefix + "_" + name
-
-            self.inner_component = inner_component
-            if self.inner_component is True:
-                self.a = Bus(prefix=f"{self.prefix}_{a.prefix}", wires_list=a.bus)
-                self.b = Bus(prefix=f"{self.prefix}_{b.prefix}", wires_list=b.bus)
-
-                if a.is_output_bus():
-                    self.a.connect_bus(connecting_bus=a)
-                if b.is_output_bus():
-                    self.b.connect_bus(connecting_bus=b)
-            else:
-                self.a = Bus(prefix=f"{a.prefix}", wires_list=a.bus)
-                self.b = Bus(prefix=f"{b.prefix}", wires_list=b.bus)
-
-            # N output wires for given circuit
-            self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+        if prefix == "":
+            self.prefix = name
+        else:
+            self.prefix = prefix + "_" + name
+        self.inner_component = inner_component
+        self.inputs = inputs
+        self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
 
         self.components = []
         self.circuit_wires = []
@@ -50,6 +36,7 @@ class ArithmeticCircuit():
             component: Subcomponent to be added into list of components composing described circuit.
         """
         self.components.append(component)
+        return component
 
     def get_previous_component(self, number: int = 1):
         """Retrieves previously added composite subcomponent from circuit's list of components.
@@ -255,7 +242,7 @@ class ArithmeticCircuit():
         Returns:
             str: Function's name and parameters in C code.
         """
-        return f"{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.prefix}, {self.c_data_type} {self.b.prefix})" + "{" + "\n"
+        return f"{self.c_data_type} {self.prefix}(" + ",".join([f"{self.c_data_type} {x.prefix}" for x in self.inputs]) + ")" + "{" + "\n"
 
     def get_declaration_c_flat(self):
         """Generates flat C code declaration of input/output circuit wires.
@@ -318,7 +305,7 @@ class ArithmeticCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
@@ -410,7 +397,7 @@ class ArithmeticCircuit():
         Returns:
             str: Module's name and parameters in Verilog code.
         """
-        return f"module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.out.N-1}:0] {self.out.prefix});\n"
+        return f"module {self.prefix}(" + ",".join(f"input [{x.N-1}:0] {x.prefix}" for x in self.inputs) + f", output [{self.out.N-1}:0] {self.out.prefix});\n"
 
     def get_declaration_v_flat(self):
         """Generates flat Verilog code declaration of input/output circuit wires.
@@ -471,7 +458,7 @@ class ArithmeticCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
@@ -523,7 +510,7 @@ class ArithmeticCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
@@ -676,8 +663,10 @@ class ArithmeticCircuit():
             str: Hierarchical Blif code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
+        circuit_prefix = self.__class__(
+            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"))
+            N=self.N, prefix="b"), prefix=circuit_prefix)
         return f"{circuit_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit

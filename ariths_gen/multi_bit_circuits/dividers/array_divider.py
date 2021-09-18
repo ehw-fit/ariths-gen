@@ -92,21 +92,16 @@ class ArrayDivider(ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of array divider. Defaults to "arrdiv".
+        prefix (str, optional): Prefix name of array divider. Defaults to "".
+        name (str, optional): Name of array divider. Defaults to "arrdiv".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "arrdiv"):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "arrdiv", **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for quotient result
-        self.out = Bus(self.prefix+"_out", self.N)
 
         # Performing series of iterative subtractions
         # Gradually shifting the divisor

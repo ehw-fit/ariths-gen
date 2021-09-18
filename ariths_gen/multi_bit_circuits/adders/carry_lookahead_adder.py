@@ -62,21 +62,16 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
         a (Bus): First input bus.
         b (Bus): Second input bus.
         cla_block_size (int, optional): Size of each composite cla adder block size. Defaults to 4.
-        prefix (str, optional): Prefix name of unsigned cla. Defaults to "u_cla".
+        prefix (str, optional): Prefix name of unsigned cla. Defaults to "".
+        name (str, optional): Name of unsigned cla. Defaults to "u_cla".
     """
-    def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "u_cla"):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "", name: str = "u_cla", **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)        
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for N sum bits and additional cout bit
-        self.out = Bus(self.prefix+"_out", self.N+1)
 
         # To signify current number of blocks and number of bits that remain to be added into function blocks
         N_blocks = 0
@@ -185,10 +180,11 @@ class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
         a (Bus): First input bus.
         b (Bus): Second input bus.
         cla_block_size (int, optional): Size of each composite cla adder block size. Defaults to 4.
-        prefix (str, optional): Prefix name of signed cla. Defaults to "s_cla".
+        prefix (str, optional): Prefix name of signed cla. Defaults to "".
+        name (str, optional): Name of signed cla. Defaults to "s_cla".
     """
-    def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "s_cla"):
-        super().__init__(a=a, b=b, cla_block_size=cla_block_size, prefix=prefix)
+    def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "", name: str = "s_cla", **kwargs):
+        super().__init__(a=a, b=b, cla_block_size=cla_block_size, prefix=prefix, name=name, **kwargs)
         self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition

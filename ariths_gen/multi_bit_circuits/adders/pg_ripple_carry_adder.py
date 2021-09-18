@@ -59,21 +59,16 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned P/G rca. Defaults to "u_pg_rca".
+        prefix (str, optional): Prefix name of unsigned P/G rca. Defaults to "".
+        name (str, optional): Name of unsigned P/G rca. Defaults to "u_pg_rca".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "u_pg_rca"):
-        super().__init__()
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_pg_rca", **kwargs):
         self.N = max(a.N, b.N)
-        self.prefix = prefix
-        self.a = Bus(prefix=a.prefix, wires_list=a.bus)
-        self.b = Bus(prefix=b.prefix, wires_list=b.bus)
-
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Output wires for N sum bits and additional cout bit
-        self.out = Bus(self.prefix+"_out", self.N+1)
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):
@@ -131,10 +126,11 @@ class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed P/G rca. Defaults to "s_pg_rca".
+        prefix (str, optional): Prefix name of signed P/G rca. Defaults to "".
+        name (str, optional): Name of signed P/G rca. Defaults to "s_pg_rca".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "s_pg_rca"):
-        super().__init__(a=a, b=b, prefix=prefix)
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_pg_rca", **kwargs):
+        super().__init__(a=a, b=b, prefix=prefix, name=name, **kwargs)
         self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
