@@ -156,7 +156,6 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         file_object.write(self.get_declarations_v_flat())
         file_object.write(self.get_self_init_v_flat())
         file_object.write(f"endmodule")
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     # Subcomponent generation
@@ -292,7 +291,6 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         file_object.write(self.get_declaration_blif())
         file_object.write(self.get_function_blif_flat(top_modul=True))
         file_object.write(f".end\n")
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     # Subcomponent/self circuit generation

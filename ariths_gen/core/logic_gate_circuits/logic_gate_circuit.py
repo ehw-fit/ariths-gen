@@ -149,7 +149,6 @@ class TwoInputLogicGate():
         file_object.write(self.get_includes_c())
         file_object.write(self.get_prototype_c_flat())
         file_object.write("  return "+(self.get_function_c())+";\n}")
-        file_object.close()
 
     # HIERARCHICAL C #
     def get_prototype_c_hier(self):
@@ -260,7 +259,6 @@ class TwoInputLogicGate():
         file_object.write(self.get_prototype_v_flat())
         file_object.write(self.get_output_v_flat())
         file_object.write(f"endmodule")
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     def get_prototype_v_hier(self):
@@ -363,7 +361,6 @@ class TwoInputLogicGate():
         file_object.write(self.get_declaration_blif())
         file_object.write(self.get_function_blif_flat(top_modul=True))
         file_object.write(f".end\n")
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     def get_prototype_blif_hier(self):
@@ -481,7 +478,6 @@ class TwoInputLogicGate():
         """
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_gate_triplet_cgp())
-        file_object.close()
 
 
 class TwoInputInvertedLogicGate(TwoInputLogicGate):

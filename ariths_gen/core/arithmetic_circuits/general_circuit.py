@@ -282,7 +282,6 @@ class GeneralCircuit():
         file_object.write(self.get_init_c_flat()+"\n")
         file_object.write(self.get_function_out_c_flat())
         file_object.write(f"  return {self.out.prefix}"+";\n}")
-        file_object.close()
 
     # HIERARCHICAL C #
     def get_function_blocks_c(self):
@@ -386,7 +385,6 @@ class GeneralCircuit():
         file_object.write(self.get_includes_c())
         file_object.write(self.get_function_blocks_c())
         file_object.write(self.get_circuit_c())
-        file_object.close()
 
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
@@ -435,7 +433,6 @@ class GeneralCircuit():
         file_object.write(self.get_init_v_flat() + "\n")
         file_object.write(self.get_function_out_v_flat())
         file_object.write(f"endmodule")
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     def get_function_blocks_v(self):
@@ -543,7 +540,6 @@ class GeneralCircuit():
         """
         file_object.write(self.get_function_blocks_v())
         file_object.write(self.get_circuit_v())
-        file_object.close()
 
     """ BLIF CODE GENERATION """
     # FLAT BLIF #
@@ -601,7 +597,6 @@ class GeneralCircuit():
         file_object.write(self.get_function_blif_flat())
         file_object.write(self.get_function_out_blif())
         file_object.write(f".end\n")
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     def get_invocations_blif_hier(self):
@@ -678,7 +673,6 @@ class GeneralCircuit():
         """
         file_object.write(self.get_circuit_blif()+"\n")
         file_object.write(self.get_function_blocks_blif())
-        file_object.close()
 
     """ CGP CODE GENERATION """
     # FLAT CGP #
@@ -730,4 +724,3 @@ class GeneralCircuit():
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_triplets_cgp())
         file_object.write(self.get_outputs_cgp())
-        file_object.close()
