@@ -7,6 +7,7 @@ from ariths_gen.wire_components import (
     Bus
 )
 
+from io import StringIO
 
 class GeneralCircuit():
     """Class represents a general arithmetic circuit and ensures their generation to various representations.
@@ -28,6 +29,19 @@ class GeneralCircuit():
         self.circuit_wires = []
         self.circuit_gates = []
         self.c_data_type = "uint64_t"
+        self.pyc = None # Python compiled function
+
+    def __call__(self, *args):
+        if not self.pyc:
+            buf = StringIO()
+            self.get_python_code_flat(buf)
+
+            globs, locs = {}, {}
+            exec(buf.getvalue(), globs, locs)
+            #print(locs)
+            self.pyc = locs[self.prefix]
+
+        return self.pyc(*args)
 
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
@@ -225,6 +239,45 @@ class GeneralCircuit():
                 if wire.name == w[1]:
                     return w[2]
 
+    """ PYTHON CODE GENERATION """
+    # FLAT PYTHON #
+    def get_prototype_python(self):
+        """Generates python code function header to describe corresponding arithmetic circuit's interface in python code.
+
+        Returns:
+            str: Function's name and parameters in C code.
+        """
+        return f"def {self.prefix}(" + ", ".join([f"{x.prefix}" for x in self.inputs]) + ")" + ":" + "\n"
+
+    def get_init_python_flat(self):
+        """Generates flat C code initialization and assignment of corresponding arithmetic circuit's input/output wires.
+
+        Returns:
+            str: Flat C code initialization of arithmetic circuit wires.
+        """
+        return "".join([c.get_assign_python_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_python_flat() for c in self.components])
+
+    def get_function_out_python_flat(self):
+        """Generates flat C code assignment of corresponding arithmetic circuit's output bus wires.
+
+        Returns:
+            str: Flat C code containing output bus wires assignment.
+        """
+        return self.out.return_bus_wires_values_python_flat()
+
+    # Generating flat C code representation of circuit
+    def get_python_code_flat(self, file_object):
+        """Generates flat Python code representation of corresponding arithmetic circuit.
+
+        Args:
+            file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
+        """
+        file_object.write(self.get_prototype_python())
+        #file_object.write(self.out.get_declaration_python())
+        #file_object.write(self.get_declaration_python_flat()+"\n")
+        file_object.write(self.get_init_python_flat()+"\n")
+        file_object.write(self.get_function_out_python_flat())
+        file_object.write(f"  return {self.out.prefix}"+"\n")
 
     """ C CODE GENERATION """
     # FLAT C #
