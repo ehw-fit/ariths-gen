@@ -225,6 +225,7 @@ class GeneralCircuit():
                 if wire.name == w[1]:
                     return w[2]
 
+
     """ C CODE GENERATION """
     # FLAT C #
     @staticmethod
