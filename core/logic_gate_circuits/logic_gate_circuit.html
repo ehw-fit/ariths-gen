@@ -177,7 +177,6 @@ class TwoInputLogicGate():
         file_object.write(self.get_includes_c())
         file_object.write(self.get_prototype_c_flat())
         file_object.write(&#34;  return &#34;+(self.get_function_c())+&#34;;\n}&#34;)
-        file_object.close()
 
     # HIERARCHICAL C #
     def get_prototype_c_hier(self):
@@ -223,6 +222,19 @@ class TwoInputLogicGate():
             return &#34;&#34;
         else:
             return f&#34;  {self.out.name} = {self.gate_type}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()});\n&#34;
+
+    def get_assign_python_flat(self):
+        &#34;&#34;&#34;Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+
+        Returns:
+            str: C code invocation of logical function and assignment to output.
+        &#34;&#34;&#34;
+        # No gate logic is generated if one of the inputs is a wire with constant value.
+        # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate&#39;s logic function.
+        if self.disable_generation:
+            return &#34;&#34;
+        else:
+            return f&#34;  {self.out.prefix} = {self.get_function_c()}\n&#34;
 
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
     # FLAT VERILOG #
@@ -288,7 +300,6 @@ class TwoInputLogicGate():
         file_object.write(self.get_prototype_v_flat())
         file_object.write(self.get_output_v_flat())
         file_object.write(f&#34;endmodule&#34;)
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     def get_prototype_v_hier(self):
@@ -391,7 +402,6 @@ class TwoInputLogicGate():
         file_object.write(self.get_declaration_blif())
         file_object.write(self.get_function_blif_flat(top_modul=True))
         file_object.write(f&#34;.end\n&#34;)
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     def get_prototype_blif_hier(self):
@@ -509,7 +519,6 @@ class TwoInputLogicGate():
         &#34;&#34;&#34;
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_gate_triplet_cgp())
-        file_object.close()
 
 
 class TwoInputInvertedLogicGate(TwoInputLogicGate):
@@ -1517,6 +1526,7 @@ Other wires indexes start counting from 2 and up.</p>
 <li><code><b><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate">TwoInputLogicGate</a></b></code>:
 <ul class="hlist">
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_c_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_c_flat">get_assign_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat">get_assign_python_flat</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat">get_assign_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code">get_blif_code</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code">get_c_code</a></code></li>
@@ -1675,6 +1685,7 @@ Other wires indexes start counting from 2 and up.</p>
 <li><code><b><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate">TwoInputLogicGate</a></b></code>:
 <ul class="hlist">
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_c_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_c_flat">get_assign_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat">get_assign_python_flat</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat">get_assign_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code">get_blif_code</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code">get_c_code</a></code></li>
@@ -1833,7 +1844,6 @@ Other wires indexes start counting from 2 and up.</p>
         file_object.write(self.get_includes_c())
         file_object.write(self.get_prototype_c_flat())
         file_object.write(&#34;  return &#34;+(self.get_function_c())+&#34;;\n}&#34;)
-        file_object.close()
 
     # HIERARCHICAL C #
     def get_prototype_c_hier(self):
@@ -1879,6 +1889,19 @@ Other wires indexes start counting from 2 and up.</p>
             return &#34;&#34;
         else:
             return f&#34;  {self.out.name} = {self.gate_type}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()});\n&#34;
+
+    def get_assign_python_flat(self):
+        &#34;&#34;&#34;Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+
+        Returns:
+            str: C code invocation of logical function and assignment to output.
+        &#34;&#34;&#34;
+        # No gate logic is generated if one of the inputs is a wire with constant value.
+        # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate&#39;s logic function.
+        if self.disable_generation:
+            return &#34;&#34;
+        else:
+            return f&#34;  {self.out.prefix} = {self.get_function_c()}\n&#34;
 
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
     # FLAT VERILOG #
@@ -1944,7 +1967,6 @@ Other wires indexes start counting from 2 and up.</p>
         file_object.write(self.get_prototype_v_flat())
         file_object.write(self.get_output_v_flat())
         file_object.write(f&#34;endmodule&#34;)
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     def get_prototype_v_hier(self):
@@ -2047,7 +2069,6 @@ Other wires indexes start counting from 2 and up.</p>
         file_object.write(self.get_declaration_blif())
         file_object.write(self.get_function_blif_flat(top_modul=True))
         file_object.write(f&#34;.end\n&#34;)
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     def get_prototype_blif_hier(self):
@@ -2164,8 +2185,7 @@ Other wires indexes start counting from 2 and up.</p>
             file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
         &#34;&#34;&#34;
         file_object.write(self.get_parameters_cgp())
-        file_object.write(self.get_gate_triplet_cgp())
-        file_object.close()</code></pre>
+        file_object.write(self.get_gate_triplet_cgp())</code></pre>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
@@ -2293,6 +2313,34 @@ def get_parameters_cgp():
         return f&#34;  {self.out.prefix} = {self.get_function_c()};\n&#34;</code></pre>
 </details>
 </dd>
+<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat"><code class="name flex">
+<span>def <span class="ident">get_assign_python_flat</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Generates C code for invocation of logical functions and subsequently provides assignment to their output.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code invocation of logical function and assignment to output.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_assign_python_flat(self):
+    &#34;&#34;&#34;Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+
+    Returns:
+        str: C code invocation of logical function and assignment to output.
+    &#34;&#34;&#34;
+    # No gate logic is generated if one of the inputs is a wire with constant value.
+    # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate&#39;s logic function.
+    if self.disable_generation:
+        return &#34;&#34;
+    else:
+        return f&#34;  {self.out.prefix} = {self.get_function_c()}\n&#34;</code></pre>
+</details>
+</dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat"><code class="name flex">
 <span>def <span class="ident">get_assign_v_flat</span></span>(<span>self)</span>
 </code></dt>
@@ -2344,8 +2392,7 @@ def get_parameters_cgp():
     file_object.write(self.get_prototype_blif_flat())
     file_object.write(self.get_declaration_blif())
     file_object.write(self.get_function_blif_flat(top_modul=True))
-    file_object.write(f&#34;.end\n&#34;)
-    file_object.close()</code></pre>
+    file_object.write(f&#34;.end\n&#34;)</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code"><code class="name flex">
@@ -2370,8 +2417,7 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     file_object.write(self.get_includes_c())
     file_object.write(self.get_prototype_c_flat())
-    file_object.write(&#34;  return &#34;+(self.get_function_c())+&#34;;\n}&#34;)
-    file_object.close()</code></pre>
+    file_object.write(&#34;  return &#34;+(self.get_function_c())+&#34;;\n}&#34;)</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_cgp_code"><code class="name flex">
@@ -2395,8 +2441,7 @@ def get_parameters_cgp():
         file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
     &#34;&#34;&#34;
     file_object.write(self.get_parameters_cgp())
-    file_object.write(self.get_gate_triplet_cgp())
-    file_object.close()</code></pre>
+    file_object.write(self.get_gate_triplet_cgp())</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_blif"><code class="name flex">
@@ -3069,8 +3114,7 @@ Other wires indexes start counting from 2 and up.</p>
     &#34;&#34;&#34;
     file_object.write(self.get_prototype_v_flat())
     file_object.write(self.get_output_v_flat())
-    file_object.write(f&#34;endmodule&#34;)
-    file_object.close()</code></pre>
+    file_object.write(f&#34;endmodule&#34;)</code></pre>
 </details>
 </dd>
 </dl>
@@ -3123,6 +3167,7 @@ Other wires indexes start counting from 2 and up.</p>
 <h4><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate">TwoInputLogicGate</a></code></h4>
 <ul class="">
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_c_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_c_flat">get_assign_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat">get_assign_python_flat</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat">get_assign_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code">get_blif_code</a></code></li>
 <li><code><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code">get_c_code</a></code></li>

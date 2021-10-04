@@ -54,6 +54,21 @@
         &#34;&#34;&#34;
         return False
 
+    &#34;&#34;&#34; Python CODE GENERATION &#34;&#34;&#34;
+    def return_wire_value_python_flat(self, offset: int = 0):
+        &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+
+        Args:
+            offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
+
+        Returns:
+            str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+        &#34;&#34;&#34;
+        if self.is_const():
+            return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
+        else:
+            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset}\n&#34;
+
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_declaration_c(self):
         &#34;&#34;&#34;Wire declaration in C code.
@@ -424,6 +439,7 @@ def is_const():
 <li><code><a title="ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier" href="#ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier">get_wire_value_v_hier</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat">return_wire_value_c_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier">return_wire_value_c_hier</a></code></li>
+<li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat">return_wire_value_python_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat">return_wire_value_v_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier">return_wire_value_v_hier</a></code></li>
 </ul>
@@ -526,6 +542,7 @@ def is_const():
 <li><code><a title="ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier" href="#ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier">get_wire_value_v_hier</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat">return_wire_value_c_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier">return_wire_value_c_hier</a></code></li>
+<li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat">return_wire_value_python_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat">return_wire_value_v_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier">return_wire_value_v_hier</a></code></li>
 </ul>
@@ -583,6 +600,21 @@ def is_const():
             bool: False, because basic wire doesn&#39;t represent a wire with constant value.
         &#34;&#34;&#34;
         return False
+
+    &#34;&#34;&#34; Python CODE GENERATION &#34;&#34;&#34;
+    def return_wire_value_python_flat(self, offset: int = 0):
+        &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+
+        Args:
+            offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
+
+        Returns:
+            str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+        &#34;&#34;&#34;
+        if self.is_const():
+            return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
+        else:
+            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset}\n&#34;
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_declaration_c(self):
@@ -1199,6 +1231,40 @@ in hierarchical Blif subcomponents generation.</p>
         return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset};\n&#34;</code></pre>
 </details>
 </dd>
+<dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat"><code class="name flex">
+<span>def <span class="ident">return_wire_value_python_flat</span></span>(<span>self, offset: int = 0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def return_wire_value_python_flat(self, offset: int = 0):
+    &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+
+    Args:
+        offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
+
+    Returns:
+        str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+    &#34;&#34;&#34;
+    if self.is_const():
+        return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
+    else:
+        return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset}\n&#34;</code></pre>
+</details>
+</dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat"><code class="name flex">
 <span>def <span class="ident">return_wire_value_v_flat</span></span>(<span>self)</span>
 </code></dt>
@@ -1297,6 +1363,7 @@ in hierarchical Blif subcomponents generation.</p>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.is_const" href="#ariths_gen.wire_components.wires.Wire.is_const">is_const</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat">return_wire_value_c_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier">return_wire_value_c_hier</a></code></li>
+<li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat">return_wire_value_python_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat">return_wire_value_v_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier">return_wire_value_v_hier</a></code></li>
 </ul>

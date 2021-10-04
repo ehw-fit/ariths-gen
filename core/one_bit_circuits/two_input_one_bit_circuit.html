@@ -184,7 +184,6 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         file_object.write(self.get_declarations_v_flat())
         file_object.write(self.get_self_init_v_flat())
         file_object.write(f&#34;endmodule&#34;)
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     # Subcomponent generation
@@ -320,7 +319,6 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         file_object.write(self.get_declaration_blif())
         file_object.write(self.get_function_blif_flat(top_modul=True))
         file_object.write(f&#34;.end\n&#34;)
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     # Subcomponent/self circuit generation
@@ -563,7 +561,6 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         file_object.write(self.get_declarations_v_flat())
         file_object.write(self.get_self_init_v_flat())
         file_object.write(f&#34;endmodule&#34;)
-        file_object.close()
 
     # HIERARCHICAL VERILOG #
     # Subcomponent generation
@@ -699,7 +696,6 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         file_object.write(self.get_declaration_blif())
         file_object.write(self.get_function_blif_flat(top_modul=True))
         file_object.write(f&#34;.end\n&#34;)
-        file_object.close()
 
     # HIERARCHICAL BLIF #
     # Subcomponent/self circuit generation
@@ -764,6 +760,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></li>
+<li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
 </ul>
 <h3>Subclasses</h3>
 <ul class="hlist">
@@ -797,8 +794,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
     file_object.write(self.get_prototype_blif())
     file_object.write(self.get_declaration_blif())
     file_object.write(self.get_function_blif_flat(top_modul=True))
-    file_object.write(f&#34;.end\n&#34;)
-    file_object.close()</code></pre>
+    file_object.write(f&#34;.end\n&#34;)</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declaration_blif"><code class="name flex">
@@ -1460,8 +1456,7 @@ In such cases the inner module prototype is also modified accordingly. It is use
     file_object.write(self.get_prototype_v())
     file_object.write(self.get_declarations_v_flat())
     file_object.write(self.get_self_init_v_flat())
-    file_object.write(f&#34;endmodule&#34;)
-    file_object.close()</code></pre>
+    file_object.write(f&#34;endmodule&#34;)</code></pre>
 </details>
 </dd>
 </dl>
@@ -1469,42 +1464,46 @@ In such cases the inner module prototype is also modified accordingly. It is use
 <ul class="hlist">
 <li><code><b><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></b></code>:
 <ul class="hlist">
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.add_component" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.add_component">add_component</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_flat" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_carry_wire" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_carry_wire">get_carry_wire</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_code_flat" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_wires" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_blif" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_c" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_c">get_circuit_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_gates" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_v" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_v">get_circuit_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_wire_index" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_component_types" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_component_types">get_component_types</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_c_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_blif" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_c" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_v" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_blif" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_flat" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_flat" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_includes_c" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_includes_c">get_includes_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_instance_num" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_instance_num">get_instance_num</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_multi_bit_components" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_one_bit_components" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_outputs_cgp" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_previous_component" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_previous_component">get_previous_component</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_blif" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_c" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_c">get_prototype_c</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_sum_wire" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_sum_wire">get_sum_wire</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_triplets_cgp" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_unique_types" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_unique_types">get_unique_types</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_hier" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.save_wire_id" href="../arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.save_wire_id">save_wire_id</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.add_component" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_blif_code_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_c_code_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_carry_wire" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire">get_carry_wire</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_code_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_cgp_wires" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_blif" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_c" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_gates" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_v" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_circuit_wire_index" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_component_types" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_declarations_c_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_blif" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_c" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_blocks_v" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_blif" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_c_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_python_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_function_out_v_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_includes_c" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_c_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_python_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_init_v_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_instance_num" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_multi_bit_components" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_one_bit_components" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_outputs_cgp" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_previous_component" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_blif" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_c" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_prototype_python" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_python_code_flat" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_sum_wire" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire">get_sum_wire</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_triplets_cgp" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_unique_types" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.get_v_code_hier" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit.save_wire_id" href="../arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
 </ul>
 </li>
 </ul>
