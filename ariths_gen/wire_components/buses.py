@@ -87,6 +87,14 @@ class Bus():
         # Nakonec je potřeba napojit výstup adderu na výstup mac
         [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
 
+    def return_bus_wires_values_python_flat(self):
+        """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.
+
+        Returns:
+            str: C code for assigning wire values into bus represented in C code variable.
+        """
+        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w.return_wire_value_python_flat(offset=self.bus.index(w))}" for w in self.bus])
+
     """ C CODE GENERATION """
     def get_declaration_c(self):
         """Bus declaration in C code.

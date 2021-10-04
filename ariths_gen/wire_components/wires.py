@@ -26,6 +26,21 @@ class Wire():
         """
         return False
 
+    """ Python CODE GENERATION """
+    def return_wire_value_python_flat(self, offset: int = 0):
+        """Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+
+        Args:
+            offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
+
+        Returns:
+            str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+        """
+        if self.is_const():
+            return f"({self.c_const}) << {offset}\n"
+        else:
+            return f"(({self.name} >> 0) & 0x01) << {offset}\n"
+
     """ C CODE GENERATION """
     def get_declaration_c(self):
         """Wire declaration in C code.
