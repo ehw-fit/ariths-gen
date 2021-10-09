@@ -191,7 +191,7 @@ class SignedArrayMultiplier(MultiplierCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_arrmul", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = "int64_t"
 
         # Bus sign extension in case buses have different lengths

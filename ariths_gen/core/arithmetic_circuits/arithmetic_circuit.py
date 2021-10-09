@@ -11,15 +11,14 @@ from ariths_gen.core.arithmetic_circuits.general_circuit import GeneralCircuit
 
 
 class ArithmeticCircuit(GeneralCircuit):
-    """Class represents a general arithmetic circuit and ensures their generation to various representations.
+    """Class represents a general arithmetic circuit and ensures its generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     """
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
-
-        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b])
+    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False):
+        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed)
         if one_bit_circuit is False:
             if prefix == "":
                 self.prefix = name
@@ -40,7 +39,7 @@ class ArithmeticCircuit(GeneralCircuit):
                 self.b = Bus(prefix=f"{b.prefix}", wires_list=b.bus)
 
             # N output wires for given circuit
-            self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
+            self.out = Bus(self.prefix+"_out", out_N, out_bus=True, signed=self.signed)
 
     """ C CODE GENERATION """
     def get_prototype_c(self):

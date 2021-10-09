@@ -106,7 +106,7 @@ class SignedRippleCarryAdder(UnsignedRippleCarryAdder, ArithmeticCircuit):
         name (str, optional): Name of signed rca. Defaults to "s_rca".
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_rca", **kwargs):
-        super().__init__(a=a, b=b, prefix=prefix, name=name, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition

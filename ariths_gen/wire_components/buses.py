@@ -11,8 +11,9 @@ class Bus():
         N (int, optional): Number of wires in the bus. Defaults to 1.
         wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
         out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
+        signed (bool, optional): Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.
     """
-    def __init__(self, prefix: str = "bus", N: int = 1, wires_list: list = None, out_bus: bool = False):
+    def __init__(self, prefix: str = "bus", N: int = 1, wires_list: list = None, out_bus: bool = False, signed: bool = False):
         self.out_bus = out_bus
         if wires_list is None:
             self.prefix = prefix
@@ -23,6 +24,21 @@ class Bus():
             self.prefix = prefix
             self.bus = wires_list
             self.N = len(self.bus)
+        
+        # Determine C code signedness
+        self.signed = signed
+        if self.N > 8:
+            self.c_var_size = 64
+            if signed is True:
+                self.c_type = "int64_t"
+            else:
+                self.c_type = "uint64_t"
+        else:
+            self.c_var_size = 8
+            if signed is True:
+                self.c_type = "int8_t"
+            else:
+                self.c_type = "uint8_t"
 
     def is_output_bus(self):
         """Tells whether this Bus is an output bus.
@@ -79,19 +95,28 @@ class Bus():
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
 
-    # TODO
-    def connect_bus(self, connecting_bus, start_connection_pos: int = 0, end_connection_pos: int = -1):
+    def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1):
+        """Ensures connection of specified bus wires to this bus wires.
+
+        Used for connection of some inner circuit component's output bus (`connecting_bus`) wires
+        to the appropriate input bus (this `self` bus) wires of some other circuit.
+
+        Args:
+            connecting_bus (object): Specifies the connecting bus.
+            start_connection_pos (int, optional): Specifies the position from which to start interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to 0.
+            end_connection_pos (int, optional): Specifies the position from which to end interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to -1.
+        """
         if end_connection_pos == -1:
             end_connection_pos = self.N
-        
-        # Nakonec je potřeba napojit výstup adderu na výstup mac
+
         [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
 
+    """ PYTHON CODE GENERATION """
     def return_bus_wires_values_python_flat(self):
-        """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.
+        """Retrieves values from bus's wires and stores them in bus's corresponding Python variable (object) at proper offset bit position in the bus for flat generation.
 
         Returns:
-            str: C code for assigning wire values into bus represented in C code variable.
+            str: Python code for assigning wire values into bus represented in Python code variable.
         """
         return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w.return_wire_value_python_flat(offset=self.bus.index(w))}" for w in self.bus])
 
@@ -102,10 +127,8 @@ class Bus():
         Returns:
             str: C code for declaration and initialization of bus name.
         """
-        if self.N > 8:
-            return f"  uint64_t {self.prefix} = 0;\n"
-        else:
-            return f"  uint8_t {self.prefix} = 0;\n"
+        return f"  {self.c_type} {self.prefix} = 0;\n"
+        
 
     def return_bus_wires_values_c_flat(self):
         """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.
@@ -122,6 +145,18 @@ class Bus():
             str: C code for assigning wire values into bus represented in C code variable.
         """
         return "".join([f"  {self.prefix} |= {w.return_wire_value_c_hier(offset=self.bus.index(w))}" for w in self.bus])
+
+    def return_bus_wires_sign_extend(self):
+        """Sign extends the bus's corresponding C variable to ensure proper C code variable signedness.
+
+        Returns:
+            str: C code for sign extending the bus variable wire values.
+        """
+        if self.signed is True:
+            last_bus_wire = self.bus[-1]
+            return "".join([f"  {self.prefix} |= {last_bus_wire.return_wire_value_c_flat(offset=i)}" for i in range(len(self.bus), self.c_var_size)])
+        else:
+            return ""
 
     """ VERILOG CODE GENERATION """
     def return_bus_wires_values_v_flat(self):

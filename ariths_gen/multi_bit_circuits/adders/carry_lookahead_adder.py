@@ -184,7 +184,7 @@ class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
         name (str, optional): Name of signed cla. Defaults to "s_cla".
     """
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "", name: str = "s_cla", **kwargs):
-        super().__init__(a=a, b=b, cla_block_size=cla_block_size, prefix=prefix, name=name, **kwargs)
+        super().__init__(a=a, b=b, cla_block_size=cla_block_size, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
