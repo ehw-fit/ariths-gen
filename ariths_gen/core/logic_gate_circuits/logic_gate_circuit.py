@@ -526,7 +526,7 @@ class TwoInputInvertedLogicGate(TwoInputLogicGate):
         Returns:
             str: C code description of negated logic gate's Boolean function (with bitwise shifted inputs).
         """
-        return "~("+(super().get_function_c()) + ") & 0x01ull"
+        return "~("+(super().get_function_c()) + ") & 0x01"
 
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
@@ -586,7 +586,7 @@ class OneInputLogicGate(TwoInputLogicGate):
         Returns:
             str: C code description of logic gate's Boolean function (with bitwise shifted input).
         """
-        return f"{self.operator}({self.a.get_wire_value_c_flat()}) & 0x01ull"
+        return f"{self.operator}({self.a.get_wire_value_c_flat()}) & 0x01"
 
     # HIERARCHICAL C #
     def get_prototype_c_hier(self):

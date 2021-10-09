@@ -66,7 +66,7 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         output_bus_wire_names = []
         [output_bus_wire_names.append(w.prefix) for w in self.out.bus]
         circuit_block = self.__class__()
-        return "".join([f"  {c.out.prefix} = ({circuit_block.prefix}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()}) >> {output_bus_wire_names.index(c.out.prefix)}) & 0x01ull;\n" for c in self.components if c.disable_generation is False and c.out.prefix in output_bus_wire_names])
+        return "".join([f"  {c.out.prefix} = ({circuit_block.prefix}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()}) >> {output_bus_wire_names.index(c.out.prefix)}) & 0x01;\n" for c in self.components if c.disable_generation is False and c.out.prefix in output_bus_wire_names])
 
     # Self circuit hierarchical generation
     def get_declaration_c_hier(self):

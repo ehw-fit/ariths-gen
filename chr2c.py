@@ -126,7 +126,7 @@ def parse_chromosome(chromosome, signed=False, function=None):
     # Export converted outputs into C code function body
     for i in range(0, c_out):
         if outs[i] in trans:
-            lines_end.append("  y |=  (%s & 0x01) << %d; // default output" % (trans[outs[i]], i))
+            lines_end.append("  y |=  (%s & 0x01ull) << %d; // default output" % (trans[outs[i]], i))
         else:
             assert False
 
