@@ -278,6 +278,7 @@ class GeneralCircuit():
         #file_object.write(self.get_declaration_python_flat()+"\n")
         file_object.write(self.get_init_python_flat()+"\n")
         file_object.write(self.get_function_out_python_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_python())
         file_object.write(f"  return {self.out.prefix}"+"\n")
 
     """ C CODE GENERATION """
@@ -336,7 +337,7 @@ class GeneralCircuit():
         file_object.write(self.get_declaration_c_flat()+"\n")
         file_object.write(self.get_init_c_flat()+"\n")
         file_object.write(self.get_function_out_c_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend())
+        file_object.write(self.out.return_bus_wires_sign_extend_c())
         file_object.write(f"  return {self.out.prefix}"+";\n}")
 
     # HIERARCHICAL C #
@@ -360,7 +361,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix)
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
@@ -429,7 +430,7 @@ class GeneralCircuit():
                f"{self.get_declarations_c_hier()}\n" + \
                f"{self.get_init_c_hier()}\n" + \
                f"{self.get_function_out_c_hier()}" + \
-               f"{self.out.return_bus_wires_sign_extend()}" + \
+               f"{self.out.return_bus_wires_sign_extend_c()}" + \
                f"  return {self.out.prefix}"+";\n}"
 
     # Generating hierarchical C code representation of circuit
@@ -512,7 +513,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix)
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
@@ -564,7 +565,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
@@ -615,16 +616,10 @@ class GeneralCircuit():
         Returns:
             str: Flat Blif code containing declaration of circuit's wires.
         """
-        if self.N == 1:
-            return f".inputs {self.a.prefix} {self.b.prefix}\n" + \
-                   f".outputs{self.out.get_wire_declaration_blif()}\n" + \
-                   f".names vdd\n1\n" + \
-                   f".names gnd\n0\n"
-        else:
-            return f".inputs{self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n" + \
-                   f".outputs{self.out.get_wire_declaration_blif()}\n" + \
-                   f".names vdd\n1\n" + \
-                   f".names gnd\n0\n"
+        return f".inputs{''.join([w.get_wire_declaration_blif() for w in self.inputs])}\n" + \
+               f".outputs{self.out.get_wire_declaration_blif()}\n" + \
+               f".names vdd\n1\n" + \
+               f".names gnd\n0\n"
 
     def get_function_blif_flat(self):
         """Generates flat Blif code with invocation of subcomponents logic gates functions via their corresponding truth tables.
@@ -718,7 +713,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), prefix=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix)
         return f"{circuit_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit

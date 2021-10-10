@@ -119,6 +119,18 @@ class Bus():
             str: Python code for assigning wire values into bus represented in Python code variable.
         """
         return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w.return_wire_value_python_flat(offset=self.bus.index(w))}" for w in self.bus])
+    
+    def return_bus_wires_sign_extend_python(self):
+        """Sign extends the bus's corresponding Python variable (object) to ensure proper Python code variable signedness.
+
+        Returns:
+            str: Python code for sign extending the bus variable wire values.
+        """
+        if self.signed is True:
+            last_bus_wire = self.bus[-1]
+            return "".join([f"  {self.prefix} |= {last_bus_wire.return_wire_value_python_flat(offset=i)}" for i in range(len(self.bus), 64)])
+        else:
+            return ""
 
     """ C CODE GENERATION """
     def get_declaration_c(self):
@@ -146,7 +158,7 @@ class Bus():
         """
         return "".join([f"  {self.prefix} |= {w.return_wire_value_c_hier(offset=self.bus.index(w))}" for w in self.bus])
 
-    def return_bus_wires_sign_extend(self):
+    def return_bus_wires_sign_extend_c(self):
         """Sign extends the bus's corresponding C variable to ensure proper C code variable signedness.
 
         Returns:
