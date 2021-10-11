@@ -61,7 +61,7 @@ def test_signed_mul():
         mul = c(a, b)
         r = mul(av, bv)
 
-        r[r >= 2**(2*N-1)] -= 2**(2*N)  # hack!!! two's complement not implemented yet
+        # r[r >= 2**(2*N-1)] -= 2**(2*N)  # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)
 
 
@@ -94,7 +94,7 @@ def test_signed_add():
     for c in [SignedCarryLookaheadAdder, SignedPGRippleCarryAdder, SignedRippleCarryAdder, SignedCarrySkipAdder]:
         mul = c(a, b)
         r = mul(av, bv)
-        r[r >= 2**(N)] -= 2**(N+1)   # hack!!! two's complement not implemented yet
+        # r[r >= 2**(N)] -= 2**(N+1)   # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)
 
 

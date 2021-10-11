@@ -86,7 +86,7 @@ def parse_chromosome(chromosome, signed=False, function=None):
     output.append(f"{dtype} {function}({dtype} a, {dtype} b) {{")
     output.append("  int wa[%d];" % int(c_in/2))
     output.append("  int wb[%d];" % int(c_in/2))
-    output.append("  uint64_t y = 0;")
+    output.append(f"  {dtype} y = 0;")
 
     # Export converted input assignments into C code function body
     trans = {}
@@ -126,9 +126,15 @@ def parse_chromosome(chromosome, signed=False, function=None):
     # Export converted outputs into C code function body
     for i in range(0, c_out):
         if outs[i] in trans:
-            lines_end.append("  y |=  (%s & 0x01) << %d; // default output" % (trans[outs[i]], i))
+            lines_end.append("  y |=  (%s & 0x01ull) << %d; // default output" % (trans[outs[i]], i))
         else:
             assert False
+
+    # Ensure proper sign extension if it is needed
+    if signed is True:
+        last_out_wire = trans[outs[-1]] # used for sign extension
+        for i in range(c_out, 64):
+            lines_end.append("  y |=  (%s & 0x01ull) << %d; // default output" % (last_out_wire, i))
 
     # Print final result return in C code function body and close it
     lines_end.append("  return y;")

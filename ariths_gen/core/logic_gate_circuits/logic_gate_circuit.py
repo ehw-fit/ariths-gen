@@ -195,11 +195,13 @@ class TwoInputLogicGate():
         else:
             return f"  {self.out.name} = {self.gate_type}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()});\n"
 
+    """ PYTHON CODE GENERATION """
+    # FLAT PYTHON #
     def get_assign_python_flat(self):
-        """Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+        """Generates Python code for invocation of logical functions and subsequently provides assignment to their output.
 
         Returns:
-            str: C code invocation of logical function and assignment to output.
+            str: Python code invocation of logical function and assignment to output.
         """
         # No gate logic is generated if one of the inputs is a wire with constant value.
         # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate's logic function.
