@@ -38,13 +38,13 @@ from ariths_gen.wire_components import (
 from io import StringIO
 
 class GeneralCircuit():
-    &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures their generation to various representations.
+    &#34;&#34;&#34;Class represents a general circuit and ensures its generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
 
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[], signed: bool = False):
         if prefix == &#34;&#34;:
             self.prefix = name
         else:
@@ -57,6 +57,7 @@ class GeneralCircuit():
         self.circuit_wires = []
         self.circuit_gates = []
         self.c_data_type = &#34;uint64_t&#34;
+        self.signed = signed
         self.pyc = None # Python compiled function
 
     def __call__(self, *args):
@@ -270,30 +271,30 @@ class GeneralCircuit():
     &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
     # FLAT PYTHON #
     def get_prototype_python(self):
-        &#34;&#34;&#34;Generates python code function header to describe corresponding arithmetic circuit&#39;s interface in python code.
+        &#34;&#34;&#34;Generates Python code function header to describe corresponding arithmetic circuit&#39;s interface in Python code.
 
         Returns:
-            str: Function&#39;s name and parameters in C code.
+            str: Function&#39;s name and parameters in Python code.
         &#34;&#34;&#34;
         return f&#34;def {self.prefix}(&#34; + &#34;, &#34;.join([f&#34;{x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;:&#34; + &#34;\n&#34;
 
     def get_init_python_flat(self):
-        &#34;&#34;&#34;Generates flat C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
+        &#34;&#34;&#34;Generates flat Python code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
 
         Returns:
-            str: Flat C code initialization of arithmetic circuit wires.
+            str: Flat Python code initialization of arithmetic circuit wires.
         &#34;&#34;&#34;
         return &#34;&#34;.join([c.get_assign_python_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_python_flat() for c in self.components])
 
     def get_function_out_python_flat(self):
-        &#34;&#34;&#34;Generates flat C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
+        &#34;&#34;&#34;Generates flat Python code assignment of corresponding arithmetic circuit&#39;s output bus wires.
 
         Returns:
-            str: Flat C code containing output bus wires assignment.
+            str: Flat Python code containing output bus wires assignment.
         &#34;&#34;&#34;
         return self.out.return_bus_wires_values_python_flat()
 
-    # Generating flat C code representation of circuit
+    # Generating flat Python code representation of circuit
     def get_python_code_flat(self, file_object):
         &#34;&#34;&#34;Generates flat Python code representation of corresponding arithmetic circuit.
 
@@ -305,6 +306,7 @@ class GeneralCircuit():
         #file_object.write(self.get_declaration_python_flat()+&#34;\n&#34;)
         file_object.write(self.get_init_python_flat()+&#34;\n&#34;)
         file_object.write(self.get_function_out_python_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_python())
         file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;\n&#34;)
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
@@ -363,6 +365,7 @@ class GeneralCircuit():
         file_object.write(self.get_declaration_c_flat()+&#34;\n&#34;)
         file_object.write(self.get_init_c_flat()+&#34;\n&#34;)
         file_object.write(self.get_function_out_c_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_c())
         file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;)
 
     # HIERARCHICAL C #
@@ -386,7 +389,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
 
     def get_declarations_c_hier(self):
@@ -455,6 +458,7 @@ class GeneralCircuit():
                f&#34;{self.get_declarations_c_hier()}\n&#34; + \
                f&#34;{self.get_init_c_hier()}\n&#34; + \
                f&#34;{self.get_function_out_c_hier()}&#34; + \
+               f&#34;{self.out.return_bus_wires_sign_extend_c()}&#34; + \
                f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;
 
     # Generating hierarchical C code representation of circuit
@@ -537,7 +541,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
 
     def get_declarations_v_hier(self):
@@ -589,7 +593,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
 
@@ -640,16 +644,10 @@ class GeneralCircuit():
         Returns:
             str: Flat Blif code containing declaration of circuit&#39;s wires.
         &#34;&#34;&#34;
-        if self.N == 1:
-            return f&#34;.inputs {self.a.prefix} {self.b.prefix}\n&#34; + \
-                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-                   f&#34;.names vdd\n1\n&#34; + \
-                   f&#34;.names gnd\n0\n&#34;
-        else:
-            return f&#34;.inputs{self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n&#34; + \
-                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-                   f&#34;.names vdd\n1\n&#34; + \
-                   f&#34;.names gnd\n0\n&#34;
+        return f&#34;.inputs{&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
+               f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+               f&#34;.names vdd\n1\n&#34; + \
+               f&#34;.names gnd\n0\n&#34;
 
     def get_function_blif_flat(self):
         &#34;&#34;&#34;Generates flat Blif code with invocation of subcomponents logic gates functions via their corresponding truth tables.
@@ -743,7 +741,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_blif()}&#34;
 
     # Generating hierarchical BLIF code representation of circuit
@@ -819,10 +817,10 @@ class GeneralCircuit():
 <dl>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit"><code class="flex name class">
 <span>class <span class="ident">GeneralCircuit</span></span>
-<span>(</span><span>prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [])</span>
+<span>(</span><span>prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class represents a general arithmetic circuit and ensures their generation to various representations.</p>
+<div class="desc"><p>Class represents a general circuit and ensures its generation to various representations.</p>
 <p>The <strong>init</strong> method fills some mandatory attributes concerning arithmetic circuit
 that are later used for generation into various representations.</p></div>
 <details class="source">
@@ -830,13 +828,13 @@ that are later used for generation into various representations.</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class GeneralCircuit():
-    &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures their generation to various representations.
+    &#34;&#34;&#34;Class represents a general circuit and ensures its generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
 
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[]):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[], signed: bool = False):
         if prefix == &#34;&#34;:
             self.prefix = name
         else:
@@ -849,6 +847,7 @@ that are later used for generation into various representations.</p></div>
         self.circuit_wires = []
         self.circuit_gates = []
         self.c_data_type = &#34;uint64_t&#34;
+        self.signed = signed
         self.pyc = None # Python compiled function
 
     def __call__(self, *args):
@@ -1062,30 +1061,30 @@ that are later used for generation into various representations.</p></div>
     &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
     # FLAT PYTHON #
     def get_prototype_python(self):
-        &#34;&#34;&#34;Generates python code function header to describe corresponding arithmetic circuit&#39;s interface in python code.
+        &#34;&#34;&#34;Generates Python code function header to describe corresponding arithmetic circuit&#39;s interface in Python code.
 
         Returns:
-            str: Function&#39;s name and parameters in C code.
+            str: Function&#39;s name and parameters in Python code.
         &#34;&#34;&#34;
         return f&#34;def {self.prefix}(&#34; + &#34;, &#34;.join([f&#34;{x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;:&#34; + &#34;\n&#34;
 
     def get_init_python_flat(self):
-        &#34;&#34;&#34;Generates flat C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
+        &#34;&#34;&#34;Generates flat Python code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
 
         Returns:
-            str: Flat C code initialization of arithmetic circuit wires.
+            str: Flat Python code initialization of arithmetic circuit wires.
         &#34;&#34;&#34;
         return &#34;&#34;.join([c.get_assign_python_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_python_flat() for c in self.components])
 
     def get_function_out_python_flat(self):
-        &#34;&#34;&#34;Generates flat C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
+        &#34;&#34;&#34;Generates flat Python code assignment of corresponding arithmetic circuit&#39;s output bus wires.
 
         Returns:
-            str: Flat C code containing output bus wires assignment.
+            str: Flat Python code containing output bus wires assignment.
         &#34;&#34;&#34;
         return self.out.return_bus_wires_values_python_flat()
 
-    # Generating flat C code representation of circuit
+    # Generating flat Python code representation of circuit
     def get_python_code_flat(self, file_object):
         &#34;&#34;&#34;Generates flat Python code representation of corresponding arithmetic circuit.
 
@@ -1097,6 +1096,7 @@ that are later used for generation into various representations.</p></div>
         #file_object.write(self.get_declaration_python_flat()+&#34;\n&#34;)
         file_object.write(self.get_init_python_flat()+&#34;\n&#34;)
         file_object.write(self.get_function_out_python_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_python())
         file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;\n&#34;)
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
@@ -1155,6 +1155,7 @@ that are later used for generation into various representations.</p></div>
         file_object.write(self.get_declaration_c_flat()+&#34;\n&#34;)
         file_object.write(self.get_init_c_flat()+&#34;\n&#34;)
         file_object.write(self.get_function_out_c_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_c())
         file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;)
 
     # HIERARCHICAL C #
@@ -1178,7 +1179,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
 
     def get_declarations_c_hier(self):
@@ -1247,6 +1248,7 @@ that are later used for generation into various representations.</p></div>
                f&#34;{self.get_declarations_c_hier()}\n&#34; + \
                f&#34;{self.get_init_c_hier()}\n&#34; + \
                f&#34;{self.get_function_out_c_hier()}&#34; + \
+               f&#34;{self.out.return_bus_wires_sign_extend_c()}&#34; + \
                f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;
 
     # Generating hierarchical C code representation of circuit
@@ -1329,7 +1331,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
 
     def get_declarations_v_hier(self):
@@ -1381,7 +1383,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
 
@@ -1432,16 +1434,10 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Flat Blif code containing declaration of circuit&#39;s wires.
         &#34;&#34;&#34;
-        if self.N == 1:
-            return f&#34;.inputs {self.a.prefix} {self.b.prefix}\n&#34; + \
-                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-                   f&#34;.names vdd\n1\n&#34; + \
-                   f&#34;.names gnd\n0\n&#34;
-        else:
-            return f&#34;.inputs{self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n&#34; + \
-                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-                   f&#34;.names vdd\n1\n&#34; + \
-                   f&#34;.names gnd\n0\n&#34;
+        return f&#34;.inputs{&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
+               f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+               f&#34;.names vdd\n1\n&#34; + \
+               f&#34;.names gnd\n0\n&#34;
 
     def get_function_blif_flat(self):
         &#34;&#34;&#34;Generates flat Blif code with invocation of subcomponents logic gates functions via their corresponding truth tables.
@@ -1535,7 +1531,7 @@ that are later used for generation into various representations.</p></div>
         circuit_prefix = self.__class__(
             a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
         return f&#34;{circuit_block.get_circuit_blif()}&#34;
 
     # Generating hierarchical BLIF code representation of circuit
@@ -1765,6 +1761,7 @@ def get_unique_types(components: list):
     file_object.write(self.get_declaration_c_flat()+&#34;\n&#34;)
     file_object.write(self.get_init_c_flat()+&#34;\n&#34;)
     file_object.write(self.get_function_out_c_flat())
+    file_object.write(self.out.return_bus_wires_sign_extend_c())
     file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;)</code></pre>
 </details>
 </dd>
@@ -1941,6 +1938,7 @@ Other wires indexes start counting from 2 and up.</p></div>
            f&#34;{self.get_declarations_c_hier()}\n&#34; + \
            f&#34;{self.get_init_c_hier()}\n&#34; + \
            f&#34;{self.get_function_out_c_hier()}&#34; + \
+           f&#34;{self.out.return_bus_wires_sign_extend_c()}&#34; + \
            f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;</code></pre>
 </details>
 </dd>
@@ -2090,16 +2088,10 @@ Other wires indexes start counting from 2 and up.</p></div>
     Returns:
         str: Flat Blif code containing declaration of circuit&#39;s wires.
     &#34;&#34;&#34;
-    if self.N == 1:
-        return f&#34;.inputs {self.a.prefix} {self.b.prefix}\n&#34; + \
-               f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-               f&#34;.names vdd\n1\n&#34; + \
-               f&#34;.names gnd\n0\n&#34;
-    else:
-        return f&#34;.inputs{self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n&#34; + \
-               f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-               f&#34;.names vdd\n1\n&#34; + \
-               f&#34;.names gnd\n0\n&#34;</code></pre>
+    return f&#34;.inputs{&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
+           f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+           f&#34;.names vdd\n1\n&#34; + \
+           f&#34;.names gnd\n0\n&#34;</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat"><code class="name flex">
@@ -2301,7 +2293,7 @@ inside the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
     return f&#34;{circuit_block.get_circuit_blif()}&#34;</code></pre>
 </details>
 </dd>
@@ -2329,7 +2321,7 @@ inside the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
     return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;</code></pre>
 </details>
 </dd>
@@ -2357,7 +2349,7 @@ inside the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
     return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;</code></pre>
 </details>
 </dd>
@@ -2510,21 +2502,21 @@ inside the upper component from which function block has been invoked.</p>
 <span>def <span class="ident">get_function_out_python_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat C code assignment of corresponding arithmetic circuit's output bus wires.</p>
+<div class="desc"><p>Generates flat Python code assignment of corresponding arithmetic circuit's output bus wires.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>Flat C code containing output bus wires assignment.</dd>
+<dd>Flat Python code containing output bus wires assignment.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_function_out_python_flat(self):
-    &#34;&#34;&#34;Generates flat C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
+    &#34;&#34;&#34;Generates flat Python code assignment of corresponding arithmetic circuit&#39;s output bus wires.
 
     Returns:
-        str: Flat C code containing output bus wires assignment.
+        str: Flat Python code containing output bus wires assignment.
     &#34;&#34;&#34;
     return self.out.return_bus_wires_values_python_flat()</code></pre>
 </details>
@@ -2625,21 +2617,21 @@ inside the upper component from which function block has been invoked.</p>
 <span>def <span class="ident">get_init_python_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat C code initialization and assignment of corresponding arithmetic circuit's input/output wires.</p>
+<div class="desc"><p>Generates flat Python code initialization and assignment of corresponding arithmetic circuit's input/output wires.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>Flat C code initialization of arithmetic circuit wires.</dd>
+<dd>Flat Python code initialization of arithmetic circuit wires.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_init_python_flat(self):
-    &#34;&#34;&#34;Generates flat C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
+    &#34;&#34;&#34;Generates flat Python code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
 
     Returns:
-        str: Flat C code initialization of arithmetic circuit wires.
+        str: Flat Python code initialization of arithmetic circuit wires.
     &#34;&#34;&#34;
     return &#34;&#34;.join([c.get_assign_python_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_python_flat() for c in self.components])</code></pre>
 </details>
@@ -2937,7 +2929,7 @@ the upper component from which function block has been invoked.</p>
     circuit_prefix = self.__class__(
         a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
     circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), prefix=circuit_prefix)
+        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
     return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
         f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;</code></pre>
 </details>
@@ -3075,21 +3067,21 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <span>def <span class="ident">get_prototype_python</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates python code function header to describe corresponding arithmetic circuit's interface in python code.</p>
+<div class="desc"><p>Generates Python code function header to describe corresponding arithmetic circuit's interface in Python code.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>Function's name and parameters in C code.</dd>
+<dd>Function's name and parameters in Python code.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_prototype_python(self):
-    &#34;&#34;&#34;Generates python code function header to describe corresponding arithmetic circuit&#39;s interface in python code.
+    &#34;&#34;&#34;Generates Python code function header to describe corresponding arithmetic circuit&#39;s interface in Python code.
 
     Returns:
-        str: Function&#39;s name and parameters in C code.
+        str: Function&#39;s name and parameters in Python code.
     &#34;&#34;&#34;
     return f&#34;def {self.prefix}(&#34; + &#34;, &#34;.join([f&#34;{x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;:&#34; + &#34;\n&#34;</code></pre>
 </details>
@@ -3142,6 +3134,7 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
     #file_object.write(self.get_declaration_python_flat()+&#34;\n&#34;)
     file_object.write(self.get_init_python_flat()+&#34;\n&#34;)
     file_object.write(self.get_function_out_python_flat())
+    file_object.write(self.out.return_bus_wires_sign_extend_python())
     file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;\n&#34;)</code></pre>
 </details>
 </dd>

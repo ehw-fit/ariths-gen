@@ -219,7 +219,7 @@ class SignedArrayMultiplier(MultiplierCircuit):
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths
@@ -410,7 +410,7 @@ gradually sum them.</p>
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths

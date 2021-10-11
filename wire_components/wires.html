@@ -54,15 +54,15 @@
         &#34;&#34;&#34;
         return False
 
-    &#34;&#34;&#34; Python CODE GENERATION &#34;&#34;&#34;
+    &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
     def return_wire_value_python_flat(self, offset: int = 0):
-        &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+        &#34;&#34;&#34;Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.
 
         Args:
             offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
 
         Returns:
-            str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+            str: Python code bitwise shift for storing (constant/variable) wire value at desired offset position.
         &#34;&#34;&#34;
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
@@ -120,7 +120,7 @@
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
         else:
-            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset};\n&#34;
+            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;
 
     def return_wire_value_c_hier(self, offset: int = 0):
         &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for hierarchical generation.
@@ -134,7 +134,7 @@
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
         else:
-            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset};\n&#34;
+            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;
 
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
     def get_declaration_v_flat(self):
@@ -601,15 +601,15 @@ def is_const():
         &#34;&#34;&#34;
         return False
 
-    &#34;&#34;&#34; Python CODE GENERATION &#34;&#34;&#34;
+    &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
     def return_wire_value_python_flat(self, offset: int = 0):
-        &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+        &#34;&#34;&#34;Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.
 
         Args:
             offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
 
         Returns:
-            str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+            str: Python code bitwise shift for storing (constant/variable) wire value at desired offset position.
         &#34;&#34;&#34;
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
@@ -667,7 +667,7 @@ def is_const():
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
         else:
-            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset};\n&#34;
+            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;
 
     def return_wire_value_c_hier(self, offset: int = 0):
         &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for hierarchical generation.
@@ -681,7 +681,7 @@ def is_const():
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
         else:
-            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset};\n&#34;
+            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;
 
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
     def get_declaration_v_flat(self):
@@ -1194,7 +1194,7 @@ in hierarchical Blif subcomponents generation.</p>
     if self.is_const():
         return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
     else:
-        return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset};\n&#34;</code></pre>
+        return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier"><code class="name flex">
@@ -1228,14 +1228,14 @@ in hierarchical Blif subcomponents generation.</p>
     if self.is_const():
         return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
     else:
-        return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset};\n&#34;</code></pre>
+        return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat"><code class="name flex">
 <span>def <span class="ident">return_wire_value_python_flat</span></span>(<span>self, offset: int = 0)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
+<div class="desc"><p>Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
@@ -1244,20 +1244,20 @@ in hierarchical Blif subcomponents generation.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>C code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
+<dd>Python code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def return_wire_value_python_flat(self, offset: int = 0):
-    &#34;&#34;&#34;Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.
+    &#34;&#34;&#34;Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.
 
     Args:
         offset (int, optional): Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.
 
     Returns:
-        str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
+        str: Python code bitwise shift for storing (constant/variable) wire value at desired offset position.
     &#34;&#34;&#34;
     if self.is_const():
         return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;

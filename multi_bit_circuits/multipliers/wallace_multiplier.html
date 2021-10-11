@@ -176,7 +176,7 @@ class SignedWallaceMultiplier(MultiplierCircuit):
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths
@@ -331,7 +331,7 @@ additional XOR gate serve the necessary sign extension.</p>
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_wallace_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths

@@ -195,7 +195,7 @@ class SignedCarrySkipAdder(UnsignedCarrySkipAdder, ArithmeticCircuit):
         name (str, optional): Name of signed cska. Defaults to &#34;s_cska&#34;.
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = &#34;&#34;, name: str = &#34;s_cska&#34;, **kwargs):
-        super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix, name=name, **kwargs)
+        super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
@@ -311,7 +311,7 @@ if multiple input AND gate output, which serves as select signal, is 1 or to wai
         name (str, optional): Name of signed cska. Defaults to &#34;s_cska&#34;.
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = &#34;&#34;, name: str = &#34;s_cska&#34;, **kwargs):
-        super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix, name=name, **kwargs)
+        super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition

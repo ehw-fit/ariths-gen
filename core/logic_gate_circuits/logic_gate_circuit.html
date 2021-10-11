@@ -223,11 +223,13 @@ class TwoInputLogicGate():
         else:
             return f&#34;  {self.out.name} = {self.gate_type}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()});\n&#34;
 
+    &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
+    # FLAT PYTHON #
     def get_assign_python_flat(self):
-        &#34;&#34;&#34;Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+        &#34;&#34;&#34;Generates Python code for invocation of logical functions and subsequently provides assignment to their output.
 
         Returns:
-            str: C code invocation of logical function and assignment to output.
+            str: Python code invocation of logical function and assignment to output.
         &#34;&#34;&#34;
         # No gate logic is generated if one of the inputs is a wire with constant value.
         # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate&#39;s logic function.
@@ -1890,11 +1892,13 @@ Other wires indexes start counting from 2 and up.</p>
         else:
             return f&#34;  {self.out.name} = {self.gate_type}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()});\n&#34;
 
+    &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
+    # FLAT PYTHON #
     def get_assign_python_flat(self):
-        &#34;&#34;&#34;Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+        &#34;&#34;&#34;Generates Python code for invocation of logical functions and subsequently provides assignment to their output.
 
         Returns:
-            str: C code invocation of logical function and assignment to output.
+            str: Python code invocation of logical function and assignment to output.
         &#34;&#34;&#34;
         # No gate logic is generated if one of the inputs is a wire with constant value.
         # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate&#39;s logic function.
@@ -2317,21 +2321,21 @@ def get_parameters_cgp():
 <span>def <span class="ident">get_assign_python_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code for invocation of logical functions and subsequently provides assignment to their output.</p>
+<div class="desc"><p>Generates Python code for invocation of logical functions and subsequently provides assignment to their output.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>C code invocation of logical function and assignment to output.</dd>
+<dd>Python code invocation of logical function and assignment to output.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_assign_python_flat(self):
-    &#34;&#34;&#34;Generates C code for invocation of logical functions and subsequently provides assignment to their output.
+    &#34;&#34;&#34;Generates Python code for invocation of logical functions and subsequently provides assignment to their output.
 
     Returns:
-        str: C code invocation of logical function and assignment to output.
+        str: Python code invocation of logical function and assignment to output.
     &#34;&#34;&#34;
     # No gate logic is generated if one of the inputs is a wire with constant value.
     # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate&#39;s logic function.

@@ -39,15 +39,14 @@ from ariths_gen.core.arithmetic_circuits.general_circuit import GeneralCircuit
 
 
 class ArithmeticCircuit(GeneralCircuit):
-    &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures their generation to various representations.
+    &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures its generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
-
-        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b])
+    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False):
+        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed)
         if one_bit_circuit is False:
             if prefix == &#34;&#34;:
                 self.prefix = name
@@ -68,7 +67,7 @@ class ArithmeticCircuit(GeneralCircuit):
                 self.b = Bus(prefix=f&#34;{b.prefix}&#34;, wires_list=b.bus)
 
             # N output wires for given circuit
-            self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True)
+            self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True, signed=self.signed)
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_prototype_c(self):
@@ -79,22 +78,7 @@ class ArithmeticCircuit(GeneralCircuit):
         &#34;&#34;&#34;
         return f&#34;{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.prefix}, {self.c_data_type} {self.b.prefix})&#34; + &#34;{&#34; + &#34;\n&#34;
 
-    def get_function_block_c(self):
-        &#34;&#34;&#34;Generates hierarchical C code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical C code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
-
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
-    # FLAT VERILOG #
-
     def get_prototype_v(self):
         &#34;&#34;&#34;Generates Verilog code module header to describe corresponding arithmetic circuit&#39;s interface in Verilog code.
 
@@ -102,53 +86,24 @@ class ArithmeticCircuit(GeneralCircuit):
             str: Module&#39;s name and parameters in Verilog code.
         &#34;&#34;&#34;
         return f&#34;module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
-    # HIERARCHICAL VERILOG #
-    def get_function_block_v(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
+
+    &#34;&#34;&#34; BLIF CODE GENERATION &#34;&#34;&#34;
+    def get_declaration_blif(self):
+        &#34;&#34;&#34;Generates flat Blif code declaration of input/output circuit wires.
 
         Returns:
-            str: Hierarchical Verilog code of multi-bit arithmetic circuit&#39;s function block description.
+            str: Flat Blif code containing declaration of circuit&#39;s wires.
         &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
-    def get_out_invocation_v(self, circuit_prefix: str):
-        &#34;&#34;&#34;Generates hierarchical Verilog code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-        Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
-        Assigns output values from invocation of the corresponding function block into inner wires present inside
-        the upper component from which function block has been invoked.
-
-        Args:
-            circuit_prefix (str): Prefix name of the upper component from which function block is being invoked.
-
-        Returns:
-            str: Hierarchical Verilog code of subcomponent&#39;s module invocation and output assignment.
-        &#34;&#34;&#34;
-        # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.prefix.replace(circuit_prefix+&#34;_&#34;, &#34;&#34;)
-
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-            f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
-
-    def get_function_block_blif(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;))
-        return f&#34;{circuit_block.get_circuit_blif()}&#34;</code></pre>
+        if self.N == 1:
+            return f&#34;.inputs {self.a.prefix} {self.b.prefix}\n&#34; + \
+                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+                   f&#34;.names vdd\n1\n&#34; + \
+                   f&#34;.names gnd\n0\n&#34;
+        else:
+            return f&#34;.inputs{self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n&#34; + \
+                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+                   f&#34;.names vdd\n1\n&#34; + \
+                   f&#34;.names gnd\n0\n&#34;</code></pre>
 </details>
 </section>
 <section>
@@ -162,10 +117,10 @@ class ArithmeticCircuit(GeneralCircuit):
 <dl>
 <dt id="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit"><code class="flex name class">
 <span>class <span class="ident">ArithmeticCircuit</span></span>
-<span>(</span><span>a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False)</span>
+<span>(</span><span>a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class represents a general arithmetic circuit and ensures their generation to various representations.</p>
+<div class="desc"><p>Class represents a general arithmetic circuit and ensures its generation to various representations.</p>
 <p>The <strong>init</strong> method fills some mandatory attributes concerning arithmetic circuit
 that are later used for generation into various representations.</p></div>
 <details class="source">
@@ -173,15 +128,14 @@ that are later used for generation into various representations.</p></div>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">class ArithmeticCircuit(GeneralCircuit):
-    &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures their generation to various representations.
+    &#34;&#34;&#34;Class represents a general arithmetic circuit and ensures its generation to various representations.
 
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False):
-
-        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b])
+    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False):
+        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed)
         if one_bit_circuit is False:
             if prefix == &#34;&#34;:
                 self.prefix = name
@@ -202,7 +156,7 @@ that are later used for generation into various representations.</p></div>
                 self.b = Bus(prefix=f&#34;{b.prefix}&#34;, wires_list=b.bus)
 
             # N output wires for given circuit
-            self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True)
+            self.out = Bus(self.prefix+&#34;_out&#34;, out_N, out_bus=True, signed=self.signed)
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_prototype_c(self):
@@ -213,22 +167,7 @@ that are later used for generation into various representations.</p></div>
         &#34;&#34;&#34;
         return f&#34;{self.c_data_type} {self.prefix}({self.c_data_type} {self.a.prefix}, {self.c_data_type} {self.b.prefix})&#34; + &#34;{&#34; + &#34;\n&#34;
 
-    def get_function_block_c(self):
-        &#34;&#34;&#34;Generates hierarchical C code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical C code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
-
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
-    # FLAT VERILOG #
-
     def get_prototype_v(self):
         &#34;&#34;&#34;Generates Verilog code module header to describe corresponding arithmetic circuit&#39;s interface in Verilog code.
 
@@ -236,53 +175,24 @@ that are later used for generation into various representations.</p></div>
             str: Module&#39;s name and parameters in Verilog code.
         &#34;&#34;&#34;
         return f&#34;module {self.prefix}(input [{self.N-1}:0] {self.a.prefix}, input [{self.N-1}:0] {self.b.prefix}, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
-    # HIERARCHICAL VERILOG #
-    def get_function_block_v(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
+
+    &#34;&#34;&#34; BLIF CODE GENERATION &#34;&#34;&#34;
+    def get_declaration_blif(self):
+        &#34;&#34;&#34;Generates flat Blif code declaration of input/output circuit wires.
 
         Returns:
-            str: Hierarchical Verilog code of multi-bit arithmetic circuit&#39;s function block description.
+            str: Flat Blif code containing declaration of circuit&#39;s wires.
         &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
-    def get_out_invocation_v(self, circuit_prefix: str):
-        &#34;&#34;&#34;Generates hierarchical Verilog code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-        Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
-        Assigns output values from invocation of the corresponding function block into inner wires present inside
-        the upper component from which function block has been invoked.
-
-        Args:
-            circuit_prefix (str): Prefix name of the upper component from which function block is being invoked.
-
-        Returns:
-            str: Hierarchical Verilog code of subcomponent&#39;s module invocation and output assignment.
-        &#34;&#34;&#34;
-        # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.prefix.replace(circuit_prefix+&#34;_&#34;, &#34;&#34;)
-
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-            f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
-
-    def get_function_block_blif(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;))
-        return f&#34;{circuit_block.get_circuit_blif()}&#34;</code></pre>
+        if self.N == 1:
+            return f&#34;.inputs {self.a.prefix} {self.b.prefix}\n&#34; + \
+                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+                   f&#34;.names vdd\n1\n&#34; + \
+                   f&#34;.names gnd\n0\n&#34;
+        else:
+            return f&#34;.inputs{self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n&#34; + \
+                   f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
+                   f&#34;.names vdd\n1\n&#34; + \
+                   f&#34;.names gnd\n0\n&#34;</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">

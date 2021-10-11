@@ -158,7 +158,7 @@ class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
         name (str, optional): Name of signed P/G rca. Defaults to &#34;s_pg_rca&#34;.
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_pg_rca&#34;, **kwargs):
-        super().__init__(a=a, b=b, prefix=prefix, name=name, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
@@ -263,7 +263,7 @@ Cout  S3      S1         S0         S0
         name (str, optional): Name of signed P/G rca. Defaults to &#34;s_pg_rca&#34;.
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_pg_rca&#34;, **kwargs):
-        super().__init__(a=a, b=b, prefix=prefix, name=name, **kwargs)
+        super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
