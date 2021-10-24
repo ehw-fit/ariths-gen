@@ -127,16 +127,20 @@ class GeneralCircuit():
         return multi_bit_comps
 
     @staticmethod
-    def get_unique_types(components: list):
+    def get_unique_types(components: list, multi_bit: bool = False):
         """Retrieves just the unique representatives of class types present inside the provided components list.
 
         Args:
             components (list): List of components to be filtered.
+            multi_bit (bool): Specifies whether the provided components list is composed of multi bit type circuits. Defaults to False.
 
         Returns:
             list: List of unique composite class types.
         """
-        return list({type(c): c for c in components}.values())
+        if multi_bit is True:
+            return list({(type(c), c.N): c for c in components}.values())
+        else:
+            return list({type(c): c for c in components}.values())
 
     def get_component_types(self):
         """Retrieves a list of all the unique types of subcomponents composing the circuit.
@@ -150,7 +154,7 @@ class GeneralCircuit():
         one_bit_comps = self.get_unique_types(
             components=self.get_one_bit_components())
         multi_bit_comps = self.get_unique_types(
-            components=self.get_multi_bit_components())
+            components=self.get_multi_bit_components(), multi_bit=True)
 
         all_components = gate_comps + one_bit_comps + multi_bit_comps
         return all_components
@@ -407,7 +411,7 @@ class GeneralCircuit():
             str: Hierarchical C code of subcomponent's C function invocation and output assignment.
         """
         # Getting name of circuit type for proper C code generation without affecting actual generated composition
-        circuit_type = self.prefix.replace(circuit_prefix+"_", "")
+        circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         return self.a.return_bus_wires_values_c_hier() + self.b.return_bus_wires_values_c_hier() + \
             f"  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n"
 
@@ -559,13 +563,9 @@ class GeneralCircuit():
             str: Hierarchical Verilog code of subcomponent's module invocation and output assignment.
         """
         # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.prefix.replace(circuit_prefix+"_", "")
-
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_type)
         return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
             f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
@@ -671,7 +671,7 @@ class GeneralCircuit():
             str: Hierarchical Blif code of subcomponent's model invocation and output assignment.
         """
         # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
-        circuit_type = self.prefix.replace(circuit_prefix+"_", "")
+        circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         return f"{self.a.get_wire_assign_blif(output=True)}" + \
                f"{self.b.get_wire_assign_blif(output=True)}" + \
                f".subckt {circuit_type}" + \
