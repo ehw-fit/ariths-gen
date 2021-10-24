@@ -49,12 +49,9 @@ class UnsignedWallaceMultiplier(MultiplierCircuit):
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_wallace_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+        assert a.N == b.N
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
-
-        # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Initialize all columns partial products forming AND gates matrix
         self.columns = self.init_column_heights()
@@ -147,13 +144,10 @@ class SignedWallaceMultiplier(MultiplierCircuit):
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_wallace_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+        assert a.N == b.N
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = "int64_t"
-
-        # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
         self.columns = self.init_column_heights(signed=True)

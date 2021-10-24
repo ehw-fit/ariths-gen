@@ -29,7 +29,7 @@ class MultiplierCircuit(ArithmeticCircuit):
     that are later used for generation into various representations.
     """
 
-    def __init__(self, a, b, prefix, name, out_N, **kwargs):
+    def __init__(self, a, b, prefix: str, name: str, out_N: int, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
     # Array multipliers

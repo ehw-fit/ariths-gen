@@ -54,12 +54,9 @@ class UnsignedRippleCarryAdder(ArithmeticCircuit):
         name (str, optional): Name of unsigned rca. Defaults to "u_rca".
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_rca", **kwargs):
+        assert a.N == b.N
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
-
-        # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):

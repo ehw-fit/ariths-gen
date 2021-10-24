@@ -9,7 +9,7 @@ class Bus():
     Args:
         prefix (str, optional): Prefix name of the bus. Defaults to "bus".
         N (int, optional): Number of wires in the bus. Defaults to 1.
-        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to None.
         out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
         signed (bool, optional): Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.
     """
