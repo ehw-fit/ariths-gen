@@ -57,9 +57,20 @@ class UnsignedRippleCarryAdder(ArithmeticCircuit):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
+        a_old_w = a.N
+        b_old_w = b.N
+
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
+
+        for i in range(a_old_w, self.N):
+            self.a.connect(i, self.a.get_wire(a_old_w - 1))
+        
+        for i in range(b_old_w, self.N):
+            self.b.connect(i, self.b.get_wire(b_old_w - 1))
+        
+
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):
