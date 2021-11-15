@@ -83,9 +83,12 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
         name (str, optional): Name of unsigned array multiplier. Defaults to "u_arrmul".
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_arrmul", **kwargs):
-        assert a.N == b.N
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+
+        # Bus sign extension in case buses have different lengths
+        self.a.bus_extend(N=self.N, prefix=a.prefix)
+        self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):
@@ -187,10 +190,13 @@ class SignedArrayMultiplier(MultiplierCircuit):
         name (str, optional): Name of signed array multiplier. Defaults to "s_arrmul".
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_arrmul", **kwargs):
-        assert a.N == b.N
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = "int64_t"
+        
+        # Bus sign extension in case buses have different lengths
+        self.a.bus_extend(N=self.N, prefix=a.prefix)
+        self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Gradual generation of partial products
         for b_multiplier_index in range(self.N):

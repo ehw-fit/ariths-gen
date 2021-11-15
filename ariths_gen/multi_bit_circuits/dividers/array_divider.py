@@ -96,9 +96,12 @@ class ArrayDivider(ArithmeticCircuit):
         name (str, optional): Name of array divider. Defaults to "arrdiv".
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "arrdiv", **kwargs):
-        assert a.N == b.N
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N, **kwargs)
+
+        # Bus sign extension in case buses have different lengths
+        self.a.bus_extend(N=self.N, prefix=a.prefix)
+        self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Performing series of iterative subtractions
         # Gradually shifting the divisor
