@@ -33,18 +33,20 @@ class MultiplierCircuit(ArithmeticCircuit):
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
     # Array multipliers
-    def get_previous_partial_product(self, a_index: int, b_index: int):
+    def get_previous_partial_product(self, a_index: int, b_index: int, horizontal_break: int = 0, vertical_break: int=0):
         """Used in array multipliers to get previous row's component output wires for further connection to another component's input.
 
         Args:
             a_index (int): First input wire index.
             b_index (int): Second input wire index.
+            horizontal_break (int, optional): Specifies horizontal break used in truncated multiplier circuit creation. Defaults to 0.
+            vertical_break (int, optional): Specifies vertical break used in truncated multiplier circuit creation. Defaults to 0.
 
         Returns:
             Wire: Previous row's component wire of corresponding pp.
         """
         # To get the index of previous row's connecting adder and its generated pp
-        index = ((b_index-2) * (self.N*2)) + ((self.N-1)+2*(a_index+2))
+        index = ((b_index-horizontal_break-2) * ((self.N-vertical_break)*2)) + ((self.N-vertical_break-1)+2*(a_index-vertical_break+2))
 
         # Get carry wire as input for the last adder in current row
         if a_index == self.N-1:
