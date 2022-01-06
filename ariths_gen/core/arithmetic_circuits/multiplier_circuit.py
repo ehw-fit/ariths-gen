@@ -33,20 +33,33 @@ class MultiplierCircuit(ArithmeticCircuit):
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
     # Array multipliers
-    def get_previous_partial_product(self, a_index: int, b_index: int, horizontal_break: int = 0, vertical_break: int=0):
+    def get_previous_partial_product(self, a_index: int, b_index: int, mult_type=""):
         """Used in array multipliers to get previous row's component output wires for further connection to another component's input.
 
         Args:
             a_index (int): First input wire index.
             b_index (int): Second input wire index.
-            horizontal_break (int, optional): Specifies horizontal break used in truncated multiplier circuit creation. Defaults to 0.
-            vertical_break (int, optional): Specifies vertical break used in truncated multiplier circuit creation. Defaults to 0.
+            mult_type (string, optional): Specifies what type of multiplier circuit has called this method. It is used for proper retrieval of index into the components list to allow appropriate interconnection of the multiplier circuit's inner subcomponents. It expects "" for ordinary multipliers, `bam` or `tm` for specific approximate multipliers. Defaults to "".
 
         Returns:
             Wire: Previous row's component wire of corresponding pp.
         """
         # To get the index of previous row's connecting adder and its generated pp
-        index = ((b_index-horizontal_break-2) * ((self.N-vertical_break)*2)) + ((self.N-vertical_break-1)+2*(a_index-vertical_break+2))
+        if mult_type == "bam":
+            ids_sum = 0
+            for level in range(self.horizontal_cut, b_index):
+                # First pp level composed just from gates
+                if level == self.horizontal_cut:
+                    # Minus one because the first component has index 0 instead of 1 
+                    ids_sum += sum([1 for gate_pos in range(self.vertical_cut-level, self.N)])-1
+                else:
+                    ids_sum += sum([2 for gate_adder_pos in range(self.vertical_cut-level, self.N) if gate_adder_pos <= a_index+1])
+            index = ids_sum
+            
+        elif mult_type == "tm":
+            index = ((b_index-self.truncation_cut-2) * ((self.N-self.truncation_cut)*2)) + ((self.N-self.truncation_cut-1)+2*(a_index-self.truncation_cut+2))
+        else:
+            index = ((b_index-2) * ((self.N)*2)) + ((self.N-1)+2*(a_index+2))
 
         # Get carry wire as input for the last adder in current row
         if a_index == self.N-1:

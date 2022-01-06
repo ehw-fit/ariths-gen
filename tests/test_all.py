@@ -31,6 +31,43 @@ from ariths_gen.multi_bit_circuits.multipliers import (
 import numpy as np
 
 
+def test_unsigned_approxmul(values = False):
+    """ Test unsigned approximate multipliers """
+    N = 7
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(2**N)
+    bv = av.reshape(-1, 1)
+    expected = av * bv
+    
+    for c in [UnsignedBrokenArrayMultiplier, UnsignedTruncatedMultiplier]:    
+        if c == UnsignedTruncatedMultiplier:
+            mul = type(multiplier)(a=multiplier.a, b=multiplier.b, truncation_cut=multiplier.truncation_cut)
+        elif c == UnsignedBrokenArrayMultiplier:
+            mul = type(multiplier)(a=multiplier.a, b=multiplier.b, horizontal_cut=multiplier.horizontal_cut, vertical_cut=multiplier.vertical_cut)
+    r = mul(av, bv)
+    
+    # WCE – worst case error; used for approximate multiplier error measurement
+    WCE = np.amax(abs(np.subtract(r, expected)))
+    
+    # WCRE – worst case relative error; used for approximate multiplier error measurement
+    np.seterr(divide='ignore', invalid='ignore')
+    WCRE = np.max(np.nan_to_num(abs(np.subtract(r, expected)) / expected))
+    
+    if isinstance(multiplier, UnsignedTruncatedMultiplier):
+        # WCE_TM(n,k) = (2^k - 1) * (2^(n+1) - 2^k - 1)
+        expected_WCE = (2 ** multiplier.truncation_cut - 1) * (2 ** (multiplier.a.N+1) - 2 ** multiplier.truncation_cut - 1)
+    elif isinstance(multiplier, UnsignedBrokenArrayMultiplier):
+        # WCE_BAM(n,h,v) = (2^n - 1) * {SUM_i0_to_h-1}(2^i) + 2^h * {SUM_i0_to_v-h-1}(2^(v-h) - 2^i)
+        sum_1 = sum([2**i for i in range(0, multiplier.horizontal_cut)])
+        sum_2 = sum([2**(multiplier.vertical_cut-multiplier.horizontal_cut) - 2**i for i in range(0, multiplier.vertical_cut-multiplier.horizontal_cut)])
+        expected_WCE = (2 ** multiplier.N - 1) * sum_1 + 2 ** multiplier.horizontal_cut * sum_2
+
+    # Test expected result
+    assert expected_WCE == WCE
+    if values is True:
+        np.testing.assert_array_equal(expected, r)
+
 
 def test_unsigned_mul():
     """ Test unsigned multipliers """

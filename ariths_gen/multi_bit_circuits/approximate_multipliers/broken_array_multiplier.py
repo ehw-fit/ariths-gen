@@ -28,16 +28,17 @@ from ariths_gen.multi_bit_circuits.multipliers import(
 )
 
 
-class UnsignedTruncatedMultiplier(MultiplierCircuit):
-    """Class representing unsigned truncated multiplier.
+class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
+    """Class representing unsigned broken array multiplier.
 
     It represents an approximative version of unsigned array multiplier with simpler structure.
-    It is created by modifying an ordinary N-bit unsigned array multiplier by ignoring
-    (truncating) some of the partial products.
+    It is created by modifying an ordinary N-bit unsigned array multiplier by omitting partial product
+    stage cells by the specified horizontal and vertical cut levels.
 
     The design promises better area and power parameters in exchange for the loss of computation precision.
-
-    ```TODO
+    The BAM design allows to save more partial product stage adders than truncated multiplier.
+    TODO
+    ```
                                        A3B0     A2B0     A1B0     A0B0
                                        │ │      │ │      │ │      │ │
                                       ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
@@ -83,13 +84,18 @@ class UnsignedTruncatedMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        truncation_cut (int, optional): Specifies truncation cut level used in the truncated multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary array multiplier. Defaults to 0.
-        prefix (str, optional): Prefix name of unsigned truncated multiplier. Defaults to "".
-        name (str, optional): Name of unsigned truncated multiplier. Defaults to "u_tm".
+        horizontal_cut (int, optional): Specifies horizontal cut used in broken array multiplier circuit creation. Defaults to 0.
+        vertical_cut (int, optional): Specifies vertical cut used in broken array multiplier circuit creation. Defaults to 0.
+        prefix (str, optional): Prefix name of unsigned broken array multiplier. Defaults to "".
+        name (str, optional): Name of unsigned broken array multiplier. Defaults to "u_bam".
     """
-    def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = "", name: str = "u_tm", **kwargs):
-        # NOTE: If truncation_cut is specified as 0 the final circuit is a simple array multiplier
-        self.truncation_cut = truncation_cut
+    def __init__(self, a: Bus, b: Bus, horizontal_cut: int = 0, vertical_cut: int = 0, prefix: str = "", name: str = "u_bam", **kwargs):
+        # Vertical cut should be greater or equal to horizontal cut
+        assert vertical_cut >= horizontal_cut
+        
+        # NOTE: If horizontal/vertical cut is specified as 0 the final circuit is a simple array multiplier
+        self.horizontal_cut = horizontal_cut
+        self.vertical_cut = vertical_cut
         
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
@@ -97,26 +103,32 @@ class UnsignedTruncatedMultiplier(MultiplierCircuit):
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
-
+        
         # Gradual generation of partial products
-        for b_multiplier_index in range(self.truncation_cut, self.N):
-            for a_multiplicand_index in range(self.truncation_cut, self.N):
+        for b_multiplier_index in range(self.horizontal_cut, self.N):
+            for a_multiplicand_index in range(self.N):
+                # Skip generating the AND gates that should be ommited                
+                if a_multiplicand_index+b_multiplier_index < (self.vertical_cut):
+                    continue
                 # AND gates generation for calculation of partial products
                 obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_and"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                 self.add_component(obj_and)
 
-                if b_multiplier_index != self.truncation_cut:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index - 2*self.truncation_cut].out if b_multiplier_index == self.truncation_cut + 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type="tm")
+                if b_multiplier_index != self.horizontal_cut:
+                    if b_multiplier_index == self.horizontal_cut + 1:
+                        previous_product = self.components[a_multiplicand_index + b_multiplier_index - self.vertical_cut].out
+                    else:
+                        previous_product = self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type="bam")
 
                     # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == self.truncation_cut:
+                    if a_multiplicand_index == 0 or (self.vertical_cut-b_multiplier_index == a_multiplicand_index):
                         obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+"_ha"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
                         # Product generation
-                        self.out.connect(b_multiplier_index + self.truncation_cut, obj_adder.get_sum_wire())
+                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
 
                     # HA generation, last 1-bit adder in second row
-                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == self.truncation_cut+1:
+                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == self.horizontal_cut+1:
                         obj_adder = HalfAdder(self.get_previous_component().out, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_ha"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
 
@@ -125,37 +137,38 @@ class UnsignedTruncatedMultiplier(MultiplierCircuit):
                         obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_fa"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
 
-               # PRODUCT GENERATION
-                if (a_multiplicand_index == self.truncation_cut and b_multiplier_index == self.truncation_cut) or (self.truncation_cut == self.N-1):
+                # PRODUCT GENERATION
+                if (a_multiplicand_index == 0 and b_multiplier_index == self.horizontal_cut) or (self.horizontal_cut == self.N-1):
                     self.out.connect(a_multiplicand_index + b_multiplier_index, obj_and.out)
                     
                     # 1 bit multiplier case
                     if a_multiplicand_index == self.N-1 and b_multiplier_index == self.N-1:
                         self.out.connect(a_multiplicand_index+b_multiplier_index+1, ConstantWireValue0())
 
-                elif b_multiplier_index == self.N-1 and self.truncation_cut != self.N-1:
+                elif b_multiplier_index == self.N-1 and self.horizontal_cut != self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
 
                     if a_multiplicand_index == self.N-1:
                         self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
 
         # Connecting the output bits generated from ommited cells to ground
-        if self.truncation_cut >= self.N:
+        if self.horizontal_cut >= self.N or self.vertical_cut >= 2*self.N:
             [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
         else:
-            for grounded_out_index in range(0, self.truncation_cut*2):
+            for grounded_out_index in range(0, max(self.horizontal_cut, self.vertical_cut)):
                 self.out.connect(grounded_out_index, ConstantWireValue0())
 
-class SignedTruncatedMultiplier(MultiplierCircuit):
-    """Class representing signed truncated multiplier.
+class SignedBrokenArrayMultiplier(MultiplierCircuit):
+    """Class representing signed broken array multiplier.
 
     It represents an approximative version of signed array multiplier with simpler structure.
-    It is created by modifying an ordinary N-bit signed array multiplier by ignoring
-    (truncating) some of the partial products.
+    It is created by modifying an ordinary N-bit unsigned array multiplier by omitting partial product
+    stage cells by the specified horizontal and vertical cut levels.
 
     The design promises better area and power parameters in exchange for the loss of computation precision.
-
-    ```TODO
+    The BAM design allows to save more partial product stage adders than truncated multiplier.
+    TODO
+    ```
                                          A3B0     A2B0     A1B0     A0B0
                                          │ │      │ │      │ │      │ │
                                         ┌▼─▼─┐   ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
@@ -201,13 +214,16 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        truncation_cut (int, optional): Specifies truncation cut level used in the truncated multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary array multiplier. Defaults to 0.
-        prefix (str, optional): Prefix name of signed truncated multiplier. Defaults to "".
-        name (str, optional): Name of signed truncated multiplier. Defaults to "s_tm".
+        horizontal_cut (int, optional): Specifies horizontal cut used in signed broken array multiplier circuit creation. Defaults to 0.
+        vertical_cut (int, optional): Specifies vertical cut used in signed broken array multiplier circuit creation. Defaults to 0.
+        prefix (str, optional): Prefix name of signed broken array multiplier. Defaults to "".
+        name (str, optional): Name of signed broken array multiplier. Defaults to "s_bam".
     """
-    def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = "", name: str = "s_tm", **kwargs):
-        # NOTE: If truncation_cut is specified as 0 the final circuit is a simple array multiplier
-        self.truncation_cut = truncation_cut
+    def __init__(self, a: Bus, b: Bus, horizontal_cut: int = 0, vertical_cut: int = 0, prefix: str = "", name: str = "s_bam", **kwargs):
+        #TODO
+        # NOTE: If horizontal/vertical break is specified as 0 the final circuit is a simple array multiplier
+        self.horizontal_cut = horizontal_cut
+        self.vertical_cut = vertical_cut
 
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
@@ -217,9 +233,10 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
+        break_offsets = horizontal_cut + vertical_cut
         # Gradual generation of partial products
-        for b_multiplier_index in range(self.truncation_cut, self.N):
-            for a_multiplicand_index in range(self.truncation_cut, self.N):
+        for b_multiplier_index in range(self.horizontal_cut, self.N):
+            for a_multiplicand_index in range(self.vertical_cut, self.N):
                 # AND and NAND gates generation for calculation of partial products and sign extension
                 if (b_multiplier_index == self.N-1 and a_multiplicand_index != self.N-1) or (b_multiplier_index != self.N-1 and a_multiplicand_index == self.N-1):
                     obj_nand = NandGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_nand"+str(a_multiplicand_index)+"_"+str(b_multiplier_index), parent_component=self)
@@ -228,26 +245,30 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
                     obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_and"+str(a_multiplicand_index)+"_"+str(b_multiplier_index), parent_component=self)
                     self.add_component(obj_and)
 
-                if b_multiplier_index != self.truncation_cut:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index - 2*self.truncation_cut].out if b_multiplier_index == self.truncation_cut + 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type="tm")
+                if b_multiplier_index != self.horizontal_cut and self.vertical_cut != self.N-1:
+                    if b_multiplier_index == self.horizontal_cut + 1:
+                        previous_product = self.components[a_multiplicand_index + b_multiplier_index - break_offsets].out
+                    else:
+                        previous_product = self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, horizontal_cut=horizontal_cut, vertical_cut=vertical_cut)
+
                     # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == self.truncation_cut:
+                    if a_multiplicand_index == self.vertical_cut:
                         obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+"_ha"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
                         # Product generation
-                        self.out.connect(b_multiplier_index + self.truncation_cut, obj_adder.get_sum_wire())
+                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
 
                     # FA generation
                     else:
                         # Constant wire with value 1 used at the last FA in second row (as one of its inputs) for signed multiplication (based on Baugh Wooley algorithm)
-                        if a_multiplicand_index == self.N-1 and b_multiplier_index == self.truncation_cut+1:
+                        if a_multiplicand_index == self.N-1 and b_multiplier_index == self.horizontal_cut+1:
                             previous_product = ConstantWireValue1()
 
                         obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_fa"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
 
                 # PRODUCT GENERATION
-                if (a_multiplicand_index == self.truncation_cut and b_multiplier_index == self.truncation_cut) or (self.truncation_cut == self.N-1):
+                if (a_multiplicand_index == self.vertical_cut and b_multiplier_index == self.horizontal_cut) or (self.horizontal_cut == self.N-1 or self.vertical_cut == self.N-1):
                     self.out.connect(a_multiplicand_index + b_multiplier_index, obj_and.out)
 
                     # 1 bit multiplier case
@@ -257,7 +278,7 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
 
                         self.out.connect(a_multiplicand_index+1, obj_nor.out)
 
-                elif b_multiplier_index == self.N-1 and self.truncation_cut != self.N-1:
+                elif b_multiplier_index == self.N-1 and self.horizontal_cut != self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
 
                     if a_multiplicand_index == self.N-1:
@@ -267,8 +288,8 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
                         self.out.connect(self.out.N-1, obj_xor.out)
         
         # Connecting the output bits generated from ommited cells to ground
-        if self.truncation_cut >= self.N:
+        if self.horizontal_cut >= self.N or self.vertical_cut >= self.N:
             [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
         else:
-            for grounded_out_index in range(0, self.truncation_cut*2):
+            for grounded_out_index in range(0, break_offsets):
                 self.out.connect(grounded_out_index, ConstantWireValue0())
