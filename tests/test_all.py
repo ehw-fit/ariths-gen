@@ -28,6 +28,14 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     SignedWallaceMultiplier,
 )
 
+
+from ariths_gen.multi_bit_circuits.approximate_multipliers import (
+    UnsignedTruncatedMultiplier,
+    SignedTruncatedMultiplier,
+    UnsignedBrokenArrayMultiplier,
+    SignedBrokenArrayMultiplier
+)
+
 import numpy as np
 
 
