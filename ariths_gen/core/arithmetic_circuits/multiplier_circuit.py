@@ -46,20 +46,26 @@ class MultiplierCircuit(ArithmeticCircuit):
         """
         # To get the index of previous row's connecting adder and its generated pp
         if mult_type == "bam":
+            #TODO alter to be more compact
             ids_sum = 0
-            for level in range(self.horizontal_cut, b_index):
-                # First pp level composed just from gates
-                if level == self.horizontal_cut:
+            for row in range(self.horizontal_cut + self.ommited_rows, b_index):
+                first_row_elem_id = self.vertical_cut-row if self.vertical_cut-row > 0 else 0
+                # First pp row composed just from gates
+                if row == self.horizontal_cut + self.ommited_rows:
                     # Minus one because the first component has index 0 instead of 1 
-                    ids_sum += sum([1 for gate_pos in range(self.vertical_cut-level, self.N)])-1
+                    ids_sum += sum([1 for gate_pos in range(first_row_elem_id, self.N)])-1
+                elif row == b_index-1:
+                    ids_sum += sum([2 for gate_adder_pos in range(first_row_elem_id, self.N) if gate_adder_pos <= a_index+1])
                 else:
-                    ids_sum += sum([2 for gate_adder_pos in range(self.vertical_cut-level, self.N) if gate_adder_pos <= a_index+1])
-            index = ids_sum
-            
+                    ids_sum += sum([2 for gate_adder_pos in range(first_row_elem_id, self.N)])
+            # Index calculation should be redone, but it works even this way
+            index = ids_sum+2 if a_index == self.N-1 else ids_sum
         elif mult_type == "tm":
             index = ((b_index-self.truncation_cut-2) * ((self.N-self.truncation_cut)*2)) + ((self.N-self.truncation_cut-1)+2*(a_index-self.truncation_cut+2))
         else:
             index = ((b_index-2) * ((self.N)*2)) + ((self.N-1)+2*(a_index+2))
+
+
 
         # Get carry wire as input for the last adder in current row
         if a_index == self.N-1:

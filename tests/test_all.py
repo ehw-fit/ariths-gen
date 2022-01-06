@@ -62,14 +62,14 @@ def test_unsigned_approxmul(values = False):
     np.seterr(divide='ignore', invalid='ignore')
     WCRE = np.max(np.nan_to_num(abs(np.subtract(r, expected)) / expected))
     
-    if isinstance(multiplier, UnsignedTruncatedMultiplier):
+    if isinstance(mul, UnsignedTruncatedMultiplier):
         # WCE_TM(n,k) = (2^k - 1) * (2^(n+1) - 2^k - 1)
-        expected_WCE = (2 ** multiplier.truncation_cut - 1) * (2 ** (multiplier.a.N+1) - 2 ** multiplier.truncation_cut - 1)
-    elif isinstance(multiplier, UnsignedBrokenArrayMultiplier):
+        expected_WCE = (2 ** mul.truncation_cut - 1) * (2 ** (mul.a.N+1) - 2 ** mul.truncation_cut - 1)
+    elif isinstance(mul, UnsignedBrokenArrayMultiplier):
         # WCE_BAM(n,h,v) = (2^n - 1) * {SUM_i0_to_h-1}(2^i) + 2^h * {SUM_i0_to_v-h-1}(2^(v-h) - 2^i)
-        sum_1 = sum([2**i for i in range(0, multiplier.horizontal_cut)])
-        sum_2 = sum([2**(multiplier.vertical_cut-multiplier.horizontal_cut) - 2**i for i in range(0, multiplier.vertical_cut-multiplier.horizontal_cut)])
-        expected_WCE = (2 ** multiplier.N - 1) * sum_1 + 2 ** multiplier.horizontal_cut * sum_2
+        sum_1 = sum([2**i for i in range(0, mul.horizontal_cut)])
+        sum_2 = sum([2**(mul.vertical_cut-mul.horizontal_cut) - 2**i for i in range(0, mul.vertical_cut-mul.horizontal_cut)])
+        expected_WCE = (2 ** mul.N - 1) * sum_1 + 2 ** mul.horizontal_cut * sum_2
 
     # Test expected result
     assert expected_WCE == WCE

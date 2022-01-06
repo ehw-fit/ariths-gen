@@ -27,7 +27,6 @@ from ariths_gen.multi_bit_circuits.multipliers import(
     SignedArrayMultiplier
 )
 
-
 class UnsignedTruncatedMultiplier(MultiplierCircuit):
     """Class representing unsigned truncated multiplier.
 
@@ -35,49 +34,46 @@ class UnsignedTruncatedMultiplier(MultiplierCircuit):
     It is created by modifying an ordinary N-bit unsigned array multiplier by ignoring
     (truncating) some of the partial products.
 
-    The design promises better area and power parameters in exchange for the loss of computation precision.
-
-    ```TODO
-                                       A3B0     A2B0     A1B0     A0B0
-                                       │ │      │ │      │ │      │ │
-                                      ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
-                                      │AND│    │AND│    │AND│    │AND│
-                                      └┬──┘    └┬──┘    └┬──┘    └─┬─┘
-                                 A3B1  │  A2B1  │ A1B1   │  A0B1   │
-                                ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │
-                                │AND│  │ │AND│  │ │AND│  │ │AND│   │
-                                └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │
-                                 │     │  │     │  │     │  │      │
-                             ┌───▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │
-                             │    │   │    │   │    │   │    │     │
-                     ┌───────┤ HA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │
-                     │       │    │   │    │   │    │   │    │     │
-                     │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │
-                     │  A3B2  │  A2B2  │  A1B2  │  A0B2   │        │
-                     │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │
-                     │ │AND│  │ │AND│  │ │AND│  │ │AND│   │        │
-                     │ └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │
-                     │  │     │  │     │  │     │  │      │        │
-                    ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │
-                    │    │   │    │   │    │   │    │     │        │
-            ┌───────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │
-            │       │    │   │    │   │    │   │    │     │        │
-            │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │        │
-            │  A3B3  │  A2B3  │  A1B3  │  A0B3   │        │        │
-            │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │        │
-            │ │AND│  │ │AND│  │ │AND│  │ │AND│   │        │        │
-            │ └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │        │
-            │  │     │  │     │  │     │  │      │        │        │
-           ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │        │
-           │    │   │    │   │    │   │    │     │        │        │
-    ┌──────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │        │
-    │      │    │   │    │   │    │   │    │     │        │        │
-    │      └─┬──┘   └─┬──┘   └─┬──┘   └─┬──┘     │        │        │
-    │        │        │        │        │        │        │        │
-    ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼
-    P7       P6       P5       P4       P3       P2       P1       P0
+    The design promises better area and power parameters in exchange for the loss of computation precision.        
     ```
-
+                                                           CUT=2
+                                           A3B0    A2B0      │   A1B0    A0B0
+                                          ┌───┐   ┌───┐         ┌───┐   ┌───┐
+                                          │AND│   │AND│      │  │AND│   │AND│
+                                          └───┘   └───┘         └───┘   └───┘
+                                                     ┌ ─ ─ ─ ┘
+                                     A3B1       A2B1       A1B1       A0B1
+                                    ┌───┐      ┌───┐ │    ┌───┐      ┌───┐
+                                    │AND│      │AND│      │AND│      │AND│
+                                    └───┘      └───┘ │    └───┘      └───┘
+                                 ┌────┐     ┌────┐     ┌────┐     ┌────┐
+                                 │    │     │    │   │ │    │     │    │
+                                 │ HA │     │ FA │     │ FA │     │ HA │
+                                 │    │     │    │   │ │    │     │    │
+                                 └────┘     └────┘     └────┘     └────┘         
+              ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┬ ─ ─ ─ ─ ┴─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ CUT=2
+                       A3B2         A2B2         A1B2       A0B2
+                      ┌▼─▼┐        ┌▼─▼┐   │    ┌───┐      ┌───┐
+                      │AND│        │AND│        │AND│      │AND│
+                      └┬──┘        └┬──┘   │    └───┘      └───┘
+                       │            │        ┌────┐     ┌────┐
+                       │            │      │ │    │     │    │
+                       │        ┌ ─ ┼─ ─ ─ ┘ │ FA │     │ HA │
+                       │            │        │    │     │    │
+                       │        │   │        └────┘     └────┘
+               A3B3    │  A2B3      │  A1B3      A0B3
+              ┌◄─►┐    │ ┌◄─►┐  │   │ ┌───┐     ┌───┐
+              │AND│    │ │AND│      │ │AND│     │AND│
+              └┬──┘    │ └┬──┘  │   │ └───┘     └───┘
+           ┌───▼┐     ┌▼──▼┐       ┌┼───┐    ┌────┐
+           │    │     │    │    │  ││   │    │    │
+    ┌──────┤ HA │◄────┤ HA │       ││FA │    │ HA │
+    │      │    │     │    │    │  ││   │    │    │
+    │      └──┬─┘     └──┬─┘       └┼───┘    └────┘
+    │         │          │      │   │
+    ▼         ▼          ▼          ▼           ▼          ▼          ▼          ▼
+    P7        P6         P5     │   P4          P3=0       P2=0       P1=0       P0=0
+    ```
     Description of the __init__ method.
 
     Args:
@@ -92,6 +88,9 @@ class UnsignedTruncatedMultiplier(MultiplierCircuit):
         self.truncation_cut = truncation_cut
         
         self.N = max(a.N, b.N)
+        # Cut level should be: 0 <= truncation_cut < N
+        assert truncation_cut < self.N
+
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
@@ -208,8 +207,11 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = "", name: str = "s_tm", **kwargs):
         # NOTE: If truncation_cut is specified as 0 the final circuit is a simple array multiplier
         self.truncation_cut = truncation_cut
-
+        
         self.N = max(a.N, b.N)
+        # Cut level should be: 0 <= truncation_cut < N
+        assert truncation_cut < self.N
+
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = "int64_t"
         
