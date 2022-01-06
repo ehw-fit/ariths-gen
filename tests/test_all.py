@@ -50,9 +50,9 @@ def test_unsigned_approxmul(values = False):
     
     for c in [UnsignedBrokenArrayMultiplier, UnsignedTruncatedMultiplier]:    
         if c == UnsignedTruncatedMultiplier:
-            mul = type(multiplier)(a=multiplier.a, b=multiplier.b, truncation_cut=multiplier.truncation_cut)
+            mul = c(a=a, b=b, truncation_cut=2)
         elif c == UnsignedBrokenArrayMultiplier:
-            mul = type(multiplier)(a=multiplier.a, b=multiplier.b, horizontal_cut=multiplier.horizontal_cut, vertical_cut=multiplier.vertical_cut)
+            mul = c(a=a, b=b, horizontal_cut=1, vertical_cut=2)
     r = mul(av, bv)
     
     # WCE – worst case error; used for approximate multiplier error measurement
