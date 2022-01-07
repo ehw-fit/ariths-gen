@@ -123,7 +123,7 @@ class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
             pp_row_elems = self.N-pp_row_elems_to_skip if self.N-pp_row_elems_to_skip > 0 else 0
             self.ommited_rows += 1 if pp_row_elems == 0 else 0
             
-            for a_multiplicand_index in range((self.N-pp_row_elems), self.N):
+            for a_multiplicand_index in range((self.N-pp_row_elems), self.N): 
                 # AND gates generation for calculation of partial products
                 obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_and"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                 self.add_component(obj_and)
@@ -166,7 +166,7 @@ class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
                         self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
 
         # Connecting the output bits generated from ommited cells to ground
-        if self.horizontal_cut >= self.N or self.vertical_cut >= 2*self.N:
+        if self.vertical_cut == 2*self.N-1:
             [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
         else:
             for grounded_out_index in range(0, max(self.horizontal_cut, self.vertical_cut)):
@@ -314,7 +314,7 @@ class SignedBrokenArrayMultiplier(MultiplierCircuit):
                         self.out.connect(self.out.N-1, obj_xor.out)
         
         # Connecting the output bits generated from ommited cells to ground
-        if self.horizontal_cut >= self.N or self.vertical_cut >= 2*self.N:
+        if self.vertical_cut == 2*self.N-1:
             [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
         else:
             for grounded_out_index in range(0, max(self.horizontal_cut, self.vertical_cut)):

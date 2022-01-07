@@ -139,11 +139,8 @@ class UnsignedTruncatedMultiplier(MultiplierCircuit):
                         self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
 
         # Connecting the output bits generated from ommited cells to ground
-        if self.truncation_cut >= self.N:
-            [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
-        else:
-            for grounded_out_index in range(0, self.truncation_cut*2):
-                self.out.connect(grounded_out_index, ConstantWireValue0())
+        for grounded_out_index in range(0, self.truncation_cut*2):
+            self.out.connect(grounded_out_index, ConstantWireValue0())
 
 class SignedTruncatedMultiplier(MultiplierCircuit):
     """Class representing signed truncated multiplier.
@@ -269,8 +266,5 @@ class SignedTruncatedMultiplier(MultiplierCircuit):
                         self.out.connect(self.out.N-1, obj_xor.out)
         
         # Connecting the output bits generated from ommited cells to ground
-        if self.truncation_cut >= self.N:
-            [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
-        else:
-            for grounded_out_index in range(0, self.truncation_cut*2):
-                self.out.connect(grounded_out_index, ConstantWireValue0())
+        for grounded_out_index in range(0, self.truncation_cut*2):
+            self.out.connect(grounded_out_index, ConstantWireValue0())
