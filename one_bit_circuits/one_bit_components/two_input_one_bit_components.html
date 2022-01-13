@@ -49,6 +49,8 @@ class HalfAdder(TwoInputOneBitCircuit):
         b (Wire, optional): Second input wire. Defaults to Wire(name=&#34;b&#34;).
         prefix (str, optional): Prefix name of half adder. Defaults to &#34;ha&#34;.
     &#34;&#34;&#34;
+    use_verilog_instance = False
+    
     def __init__(self, a: Wire = Wire(name=&#34;a&#34;), b: Wire = Wire(name=&#34;b&#34;), prefix: str = &#34;ha&#34;):
         super().__init__(a, b, prefix)
         # 2 wires for component&#39;s bus output (sum, cout)
@@ -66,6 +68,38 @@ class HalfAdder(TwoInputOneBitCircuit):
         self.add_component(obj_and)
         self.out.connect(1, obj_and.out)
 
+    def get_init_v_flat(self):
+        &#34;&#34;&#34; support of custom PDK &#34;&#34;&#34;
+        if not self.use_verilog_instance:
+            return super().get_init_v_flat()
+
+        return &#34;  &#34; + self.use_verilog_instance.format(
+            **{
+                &#34;unit&#34;: self.prefix,
+                &#34;wirea&#34;: self.a.prefix,
+                &#34;wireb&#34;: self.b.prefix,
+                &#34;wireys&#34;: self.get_sum_wire().prefix,
+                &#34;wireyc&#34;: self.get_carry_wire().prefix,
+            }
+        ) + &#34;;\n&#34;
+
+
+    def get_self_init_v_hier(self):
+        &#34;&#34;&#34; support of custom PDK &#34;&#34;&#34;
+        if not self.use_verilog_instance:
+            return super().get_self_init_v_hier()
+
+        unique_out_wires = []
+        for o in self.out.bus:
+            unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) 
+
+        return &#34;  &#34; + self.use_verilog_instance.format(**{
+                &#34;unit&#34;: self.prefix,
+                &#34;wirea&#34;: self.a.name,
+                &#34;wireb&#34;: self.b.name,
+                &#34;wireys&#34;: unique_out_wires[0],
+                &#34;wireyc&#34;: unique_out_wires[1],
+            }) + &#34;;\n&#34;
 
 class PGLogicBlock(TwoInputOneBitCircuit):
     &#34;&#34;&#34;Class representing two input one bit propagate/generate logic block.
@@ -235,6 +269,8 @@ class HalfSubtractor(TwoInputOneBitCircuit):
         b (Wire, optional): Second input wire. Defaults to Wire(name=&#34;b&#34;).
         prefix (str, optional): Prefix name of half adder. Defaults to &#34;ha&#34;.
     &#34;&#34;&#34;
+    use_verilog_instance = False
+    
     def __init__(self, a: Wire = Wire(name=&#34;a&#34;), b: Wire = Wire(name=&#34;b&#34;), prefix: str = &#34;ha&#34;):
         super().__init__(a, b, prefix)
         # 2 wires for component&#39;s bus output (sum, cout)
@@ -250,7 +286,40 @@ class HalfSubtractor(TwoInputOneBitCircuit):
         # AND gate for calculation of 1-bit cout
         obj_and = AndGate(a, b, prefix=self.prefix+&#34;_and&#34;+str(self.get_instance_num(cls=AndGate)), outid=1, parent_component=self)
         self.add_component(obj_and)
-        self.out.connect(1, obj_and.out)</code></pre>
+        self.out.connect(1, obj_and.out)
+
+    def get_init_v_flat(self):
+        &#34;&#34;&#34; support of custom PDK &#34;&#34;&#34;
+        if not self.use_verilog_instance:
+            return super().get_init_v_flat()
+
+        return &#34;  &#34; + self.use_verilog_instance.format(
+            **{
+                &#34;unit&#34;: self.prefix,
+                &#34;wirea&#34;: self.a.prefix,
+                &#34;wireb&#34;: self.b.prefix,
+                &#34;wireys&#34;: self.get_sum_wire().prefix,
+                &#34;wireyc&#34;: self.get_carry_wire().prefix,
+            }
+        ) + &#34;;\n&#34;
+
+
+    def get_self_init_v_hier(self):
+        &#34;&#34;&#34; support of custom PDK &#34;&#34;&#34;
+        if not self.use_verilog_instance:
+            return super().get_self_init_v_hier()
+
+        unique_out_wires = []
+        for o in self.out.bus:
+            unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) 
+
+        return &#34;  &#34; + self.use_verilog_instance.format(**{
+                &#34;unit&#34;: self.prefix,
+                &#34;wirea&#34;: self.a.name,
+                &#34;wireb&#34;: self.b.name,
+                &#34;wireys&#34;: unique_out_wires[0],
+                &#34;wireyc&#34;: unique_out_wires[1],
+            }) + &#34;;\n&#34;</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -258,6 +327,68 @@ class HalfSubtractor(TwoInputOneBitCircuit):
 <li><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="../../core/arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></li>
 <li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
 </ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.use_verilog_instance"><code class="name">var <span class="ident">use_verilog_instance</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.get_init_v_flat"><code class="name flex">
+<span>def <span class="ident">get_init_v_flat</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>support of custom PDK</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_init_v_flat(self):
+    &#34;&#34;&#34; support of custom PDK &#34;&#34;&#34;
+    if not self.use_verilog_instance:
+        return super().get_init_v_flat()
+
+    return &#34;  &#34; + self.use_verilog_instance.format(
+        **{
+            &#34;unit&#34;: self.prefix,
+            &#34;wirea&#34;: self.a.prefix,
+            &#34;wireb&#34;: self.b.prefix,
+            &#34;wireys&#34;: self.get_sum_wire().prefix,
+            &#34;wireyc&#34;: self.get_carry_wire().prefix,
+        }
+    ) + &#34;;\n&#34;</code></pre>
+</details>
+</dd>
+<dt id="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.get_self_init_v_hier"><code class="name flex">
+<span>def <span class="ident">get_self_init_v_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>support of custom PDK</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_self_init_v_hier(self):
+    &#34;&#34;&#34; support of custom PDK &#34;&#34;&#34;
+    if not self.use_verilog_instance:
+        return super().get_self_init_v_hier()
+
+    unique_out_wires = []
+    for o in self.out.bus:
+        unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) 
+
+    return &#34;  &#34; + self.use_verilog_instance.format(**{
+            &#34;unit&#34;: self.prefix,
+            &#34;wirea&#34;: self.a.name,
+            &#34;wireb&#34;: self.b.name,
+            &#34;wireys&#34;: unique_out_wires[0],
+            &#34;wireyc&#34;: unique_out_wires[1],
+        }) + &#34;;\n&#34;</code></pre>
+</details>
+</dd>
+</dl>
 <h3>Inherited members</h3>
 <ul class="hlist">
 <li><code><b><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit">TwoInputOneBitCircuit</a></b></code>:
@@ -301,7 +432,6 @@ class HalfSubtractor(TwoInputOneBitCircuit):
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_c_flat" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
-<li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_v_flat" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_invocation_blif_hier" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
@@ -320,7 +450,6 @@ class HalfSubtractor(TwoInputOneBitCircuit):
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_prototype_v_hier" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_prototype_v_hier">get_prototype_v_hier</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_self_init_v_flat" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_self_init_v_flat">get_self_init_v_flat</a></code></li>
-<li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_self_init_v_hier" href="../../core/one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_self_init_v_hier">get_self_init_v_hier</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_sum_wire" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire">get_sum_wire</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
 <li><code><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
@@ -770,6 +899,11 @@ class HalfSubtractor(TwoInputOneBitCircuit):
 <ul>
 <li>
 <h4><code><a title="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder" href="#ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder">HalfAdder</a></code></h4>
+<ul class="">
+<li><code><a title="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.get_init_v_flat" href="#ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.get_self_init_v_hier" href="#ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.get_self_init_v_hier">get_self_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.use_verilog_instance" href="#ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfAdder.use_verilog_instance">use_verilog_instance</a></code></li>
+</ul>
 </li>
 <li>
 <h4><code><a title="ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfSubtractor" href="#ariths_gen.one_bit_circuits.one_bit_components.two_input_one_bit_components.HalfSubtractor">HalfSubtractor</a></code></h4>

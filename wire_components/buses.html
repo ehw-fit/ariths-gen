@@ -37,7 +37,7 @@ class Bus():
     Args:
         prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
         N (int, optional): Number of wires in the bus. Defaults to 1.
-        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to None.
         out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
         signed (bool, optional): Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.
     &#34;&#34;&#34;
@@ -76,18 +76,23 @@ class Bus():
         &#34;&#34;&#34;
         return self.out_bus
 
-    def bus_extend(self, N: int, prefix: str = &#34;bus&#34;):
+    def bus_extend(self, N: int, prefix: str = &#34;bus&#34;, last_wire_extend: bool = True):
         &#34;&#34;&#34;Provides bus extension to contain more wires.
 
         Args:
             N (int): Number of wires in the bus. Defaults to 1.
             prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
+            last_wire_extend (bool, optional): Specifies whether the last wire of the bus should be extended (connected) to all the extending wires. Defaults to True.
         &#34;&#34;&#34;
         # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
         if self.N &lt; N:
             # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
             self.bus += [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
+            if last_wire_extend is True:
+                for w_index in range(self.N, N):
+                    self.connect(bus_wire_index=w_index, inner_component_out_wire=self.get_wire(self.N - 1))
             self.N = N
+            
 
     def get_wire(self, wire_index: int = 0):
         &#34;&#34;&#34;Retrieves a wire from the bus by a given index.
@@ -288,7 +293,7 @@ class Bus():
 <dt><strong><code>N</code></strong> :&ensp;<code>int</code>, optional</dt>
 <dd>Number of wires in the bus. Defaults to 1.</dd>
 <dt><strong><code>wires_list</code></strong> :&ensp;<code>list</code>, optional</dt>
-<dd>List of Wire objects used to clone one bus to another. Defaults to 0.</dd>
+<dd>List of Wire objects used to clone one bus to another. Defaults to None.</dd>
 <dt><strong><code>out_bus</code></strong> :&ensp;<code>bool</code>, optional</dt>
 <dd>Specifies whether this Bus is an output bus of some previous component. Defaults to False.</dd>
 <dt><strong><code>signed</code></strong> :&ensp;<code>bool</code>, optional</dt>
@@ -306,7 +311,7 @@ class Bus():
     Args:
         prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
         N (int, optional): Number of wires in the bus. Defaults to 1.
-        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to None.
         out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
         signed (bool, optional): Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.
     &#34;&#34;&#34;
@@ -345,18 +350,23 @@ class Bus():
         &#34;&#34;&#34;
         return self.out_bus
 
-    def bus_extend(self, N: int, prefix: str = &#34;bus&#34;):
+    def bus_extend(self, N: int, prefix: str = &#34;bus&#34;, last_wire_extend: bool = True):
         &#34;&#34;&#34;Provides bus extension to contain more wires.
 
         Args:
             N (int): Number of wires in the bus. Defaults to 1.
             prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
+            last_wire_extend (bool, optional): Specifies whether the last wire of the bus should be extended (connected) to all the extending wires. Defaults to True.
         &#34;&#34;&#34;
         # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
         if self.N &lt; N:
             # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
             self.bus += [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
+            if last_wire_extend is True:
+                for w_index in range(self.N, N):
+                    self.connect(bus_wire_index=w_index, inner_component_out_wire=self.get_wire(self.N - 1))
             self.N = N
+            
 
     def get_wire(self, wire_index: int = 0):
         &#34;&#34;&#34;Retrieves a wire from the bus by a given index.
@@ -536,7 +546,7 @@ class Bus():
 <h3>Methods</h3>
 <dl>
 <dt id="ariths_gen.wire_components.buses.Bus.bus_extend"><code class="name flex">
-<span>def <span class="ident">bus_extend</span></span>(<span>self, N: int, prefix: str = 'bus')</span>
+<span>def <span class="ident">bus_extend</span></span>(<span>self, N: int, prefix: str = 'bus', last_wire_extend: bool = True)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Provides bus extension to contain more wires.</p>
@@ -546,22 +556,28 @@ class Bus():
 <dd>Number of wires in the bus. Defaults to 1.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
 <dd>Prefix name of the bus. Defaults to "bus".</dd>
+<dt><strong><code>last_wire_extend</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether the last wire of the bus should be extended (connected) to all the extending wires. Defaults to True.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def bus_extend(self, N: int, prefix: str = &#34;bus&#34;):
+<pre><code class="python">def bus_extend(self, N: int, prefix: str = &#34;bus&#34;, last_wire_extend: bool = True):
     &#34;&#34;&#34;Provides bus extension to contain more wires.
 
     Args:
         N (int): Number of wires in the bus. Defaults to 1.
         prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
+        last_wire_extend (bool, optional): Specifies whether the last wire of the bus should be extended (connected) to all the extending wires. Defaults to True.
     &#34;&#34;&#34;
     # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
     if self.N &lt; N:
         # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
         self.bus += [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
+        if last_wire_extend is True:
+            for w_index in range(self.N, N):
+                self.connect(bus_wire_index=w_index, inner_component_out_wire=self.get_wire(self.N - 1))
         self.N = N</code></pre>
 </details>
 </dd>

@@ -93,7 +93,7 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_pg_rca&#34;, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
-        
+
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
@@ -433,7 +433,7 @@ Cout  S3      S1         S0         S0
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_pg_rca&#34;, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
-        
+
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
