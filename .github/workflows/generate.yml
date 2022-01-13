@@ -33,7 +33,7 @@ jobs:
     - name: Run generating mac
       run: python generate_mac.py
     - name: Run generating axmults
-      run: python generate_axmults.py
+      run: python generate_axmuls.py
     - name: Upload results
       uses: actions/upload-artifact@v1.0.0
       with:
