@@ -11,5 +11,8 @@ from .one_bit_circuits import (
 from .multi_bit_circuits import (
     adders,
     multipliers,
+    approximate_multipliers,
     dividers
 )
+
+from .pdk import *

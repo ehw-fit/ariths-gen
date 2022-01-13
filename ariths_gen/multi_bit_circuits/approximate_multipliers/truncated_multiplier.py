@@ -22,68 +22,75 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XnorGate,
     NotGate
 )
+from ariths_gen.multi_bit_circuits.multipliers import(
+    UnsignedArrayMultiplier,
+    SignedArrayMultiplier
+)
 
+class UnsignedTruncatedMultiplier(MultiplierCircuit):
+    """Class representing unsigned truncated multiplier.
 
-class UnsignedArrayMultiplier(MultiplierCircuit):
-    """Class representing unsigned array multiplier.
+    It represents an approximative version of unsigned array multiplier with simpler structure.
+    It is created by modifying an ordinary N-bit unsigned array multiplier by ignoring
+    (truncating) some of the partial products.
 
-    Unsigned array multiplier represents N-bit multiplier composed of
-    many AND gates and half/full adders to calculate partial products and
-    gradually sum them.
-
-    Downside is its rather big area because it is composed of many logic gates.
-
+    The design promises better area and power parameters in exchange for the loss of computation precision.        
     ```
-                                       A3B0     A2B0     A1B0     A0B0
-                                       │ │      │ │      │ │      │ │
-                                      ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
-                                      │AND│    │AND│    │AND│    │AND│
-                                      └┬──┘    └┬──┘    └┬──┘    └─┬─┘
-                                 A3B1  │  A2B1  │ A1B1   │  A0B1   │
-                                ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │
-                                │AND│  │ │AND│  │ │AND│  │ │AND│   │
-                                └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │
-                                 │     │  │     │  │     │  │      │
-                             ┌───▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │
-                             │    │   │    │   │    │   │    │     │
-                     ┌───────┤ HA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │
-                     │       │    │   │    │   │    │   │    │     │
-                     │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │
-                     │  A3B2  │  A2B2  │  A1B2  │  A0B2   │        │
-                     │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │
-                     │ │AND│  │ │AND│  │ │AND│  │ │AND│   │        │
-                     │ └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │
-                     │  │     │  │     │  │     │  │      │        │
-                    ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │
-                    │    │   │    │   │    │   │    │     │        │
-            ┌───────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │
-            │       │    │   │    │   │    │   │    │     │        │
-            │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │        │
-            │  A3B3  │  A2B3  │  A1B3  │  A0B3   │        │        │
-            │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │        │
-            │ │AND│  │ │AND│  │ │AND│  │ │AND│   │        │        │
-            │ └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │        │
-            │  │     │  │     │  │     │  │      │        │        │
-           ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │        │
-           │    │   │    │   │    │   │    │     │        │        │
-    ┌──────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │        │
-    │      │    │   │    │   │    │   │    │     │        │        │
-    │      └─┬──┘   └─┬──┘   └─┬──┘   └─┬──┘     │        │        │
-    │        │        │        │        │        │        │        │
-    ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼
-    P7       P6       P5       P4       P3       P2       P1       P0
+                                                           CUT=2
+                                           A3B0    A2B0      │   A1B0    A0B0
+                                          ┌───┐   ┌───┐         ┌───┐   ┌───┐
+                                          │AND│   │AND│      │  │AND│   │AND│
+                                          └───┘   └───┘         └───┘   └───┘
+                                                     ┌ ─ ─ ─ ┘
+                                     A3B1       A2B1       A1B1       A0B1
+                                    ┌───┐      ┌───┐ │    ┌───┐      ┌───┐
+                                    │AND│      │AND│      │AND│      │AND│
+                                    └───┘      └───┘ │    └───┘      └───┘
+                                 ┌────┐     ┌────┐     ┌────┐     ┌────┐
+                                 │    │     │    │   │ │    │     │    │
+                                 │ HA │     │ FA │     │ FA │     │ HA │
+                                 │    │     │    │   │ │    │     │    │
+                                 └────┘     └────┘     └────┘     └────┘         
+              ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┬ ─ ─ ─ ─ ┴─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ CUT=2
+                       A3B2         A2B2         A1B2       A0B2
+                      ┌▼─▼┐        ┌▼─▼┐   │    ┌───┐      ┌───┐
+                      │AND│        │AND│        │AND│      │AND│
+                      └┬──┘        └┬──┘   │    └───┘      └───┘
+                       │            │        ┌────┐     ┌────┐
+                       │            │      │ │    │     │    │
+                       │        ┌ ─ ┼─ ─ ─ ┘ │ FA │     │ HA │
+                       │            │        │    │     │    │
+                       │        │   │        └────┘     └────┘
+               A3B3    │  A2B3      │  A1B3      A0B3
+              ┌◄─►┐    │ ┌◄─►┐  │   │ ┌───┐     ┌───┐
+              │AND│    │ │AND│      │ │AND│     │AND│
+              └┬──┘    │ └┬──┘  │   │ └───┘     └───┘
+           ┌───▼┐     ┌▼──▼┐       ┌┼───┐    ┌────┐
+           │    │     │    │    │  ││   │    │    │
+    ┌──────┤ HA │◄────┤ HA │       ││FA │    │ HA │
+    │      │    │     │    │    │  ││   │    │    │
+    │      └──┬─┘     └──┬─┘       └┼───┘    └────┘
+    │         │          │      │   │
+    ▼         ▼          ▼          ▼           ▼          ▼          ▼          ▼
+    P7        P6         P5     │   P4          P3=0       P2=0       P1=0       P0=0
     ```
-
     Description of the __init__ method.
 
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to "".
-        name (str, optional): Name of unsigned array multiplier. Defaults to "u_arrmul".
+        truncation_cut (int, optional): Specifies truncation cut level used in the truncated multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary array multiplier. Defaults to 0.
+        prefix (str, optional): Prefix name of unsigned truncated multiplier. Defaults to "".
+        name (str, optional): Name of unsigned truncated multiplier. Defaults to "u_tm".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_arrmul", **kwargs):
+    def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = "", name: str = "u_tm", **kwargs):
+        # NOTE: If truncation_cut is specified as 0 the final circuit is a simple array multiplier
+        self.truncation_cut = truncation_cut
+        
         self.N = max(a.N, b.N)
+        # Cut level should be: 0 <= truncation_cut < N
+        assert truncation_cut < self.N
+
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
@@ -91,23 +98,24 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Gradual generation of partial products
-        for b_multiplier_index in range(self.N):
-            for a_multiplicand_index in range(self.N):
+        for b_multiplier_index in range(self.truncation_cut, self.N):
+            for a_multiplicand_index in range(self.truncation_cut, self.N):
                 # AND gates generation for calculation of partial products
                 obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_and"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                 self.add_component(obj_and)
 
-                if b_multiplier_index != 0:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index].out if b_multiplier_index == 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index)
+                if b_multiplier_index != self.truncation_cut:
+                    previous_product = self.components[a_multiplicand_index + b_multiplier_index - 2*self.truncation_cut].out if b_multiplier_index == self.truncation_cut + 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type="tm")
+
                     # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == 0:
+                    if a_multiplicand_index == self.truncation_cut:
                         obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+"_ha"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
                         # Product generation
-                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
+                        self.out.connect(b_multiplier_index + self.truncation_cut, obj_adder.get_sum_wire())
 
                     # HA generation, last 1-bit adder in second row
-                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == 1:
+                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == self.truncation_cut+1:
                         obj_adder = HalfAdder(self.get_previous_component().out, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_ha"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
 
@@ -116,31 +124,34 @@ class UnsignedArrayMultiplier(MultiplierCircuit):
                         obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_fa"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
 
-                # PRODUCT GENERATION
-                if a_multiplicand_index == 0 and b_multiplier_index == 0:
-                    self.out.connect(a_multiplicand_index, obj_and.out)
-
+               # PRODUCT GENERATION
+                if (a_multiplicand_index == self.truncation_cut and b_multiplier_index == self.truncation_cut) or (self.truncation_cut == self.N-1):
+                    self.out.connect(a_multiplicand_index + b_multiplier_index, obj_and.out)
+                    
                     # 1 bit multiplier case
-                    if a_multiplicand_index == self.N-1:
-                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0())
+                    if a_multiplicand_index == self.N-1 and b_multiplier_index == self.N-1:
+                        self.out.connect(a_multiplicand_index+b_multiplier_index+1, ConstantWireValue0())
 
-                elif b_multiplier_index == self.N-1:
+                elif b_multiplier_index == self.N-1 and self.truncation_cut != self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
 
                     if a_multiplicand_index == self.N-1:
                         self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
 
+        # Connecting the output bits generated from ommited cells to ground
+        for grounded_out_index in range(0, self.truncation_cut*2):
+            self.out.connect(grounded_out_index, ConstantWireValue0())
 
-class SignedArrayMultiplier(MultiplierCircuit):
-    """Class representing signed array multiplier.
+class SignedTruncatedMultiplier(MultiplierCircuit):
+    """Class representing signed truncated multiplier.
 
-    Signed array multiplier represents N-bit multiplier composed of
-    many AND/NAND gates and half/full adders to calculate partial products and
-    gradually sum them.
+    It represents an approximative version of signed array multiplier with simpler structure.
+    It is created by modifying an ordinary N-bit signed array multiplier by ignoring
+    (truncating) some of the partial products.
 
-    Downside is its rather big area because it is composed of many logic gates.
+    The design promises better area and power parameters in exchange for the loss of computation precision.
 
-    ```
+    ```TODO
                                          A3B0     A2B0     A1B0     A0B0
                                          │ │      │ │      │ │      │ │
                                         ┌▼─▼─┐   ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
@@ -186,11 +197,18 @@ class SignedArrayMultiplier(MultiplierCircuit):
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed array multiplier. Defaults to "".
-        name (str, optional): Name of signed array multiplier. Defaults to "s_arrmul".
+        truncation_cut (int, optional): Specifies truncation cut level used in the truncated multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary array multiplier. Defaults to 0.
+        prefix (str, optional): Prefix name of signed truncated multiplier. Defaults to "".
+        name (str, optional): Name of signed truncated multiplier. Defaults to "s_tm".
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_arrmul", **kwargs):
+    def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = "", name: str = "s_tm", **kwargs):
+        # NOTE: If truncation_cut is specified as 0 the final circuit is a simple array multiplier
+        self.truncation_cut = truncation_cut
+        
         self.N = max(a.N, b.N)
+        # Cut level should be: 0 <= truncation_cut < N
+        assert truncation_cut < self.N
+
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
         self.c_data_type = "int64_t"
         
@@ -199,8 +217,8 @@ class SignedArrayMultiplier(MultiplierCircuit):
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Gradual generation of partial products
-        for b_multiplier_index in range(self.N):
-            for a_multiplicand_index in range(self.N):
+        for b_multiplier_index in range(self.truncation_cut, self.N):
+            for a_multiplicand_index in range(self.truncation_cut, self.N):
                 # AND and NAND gates generation for calculation of partial products and sign extension
                 if (b_multiplier_index == self.N-1 and a_multiplicand_index != self.N-1) or (b_multiplier_index != self.N-1 and a_multiplicand_index == self.N-1):
                     obj_nand = NandGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_nand"+str(a_multiplicand_index)+"_"+str(b_multiplier_index), parent_component=self)
@@ -209,36 +227,36 @@ class SignedArrayMultiplier(MultiplierCircuit):
                     obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+"_and"+str(a_multiplicand_index)+"_"+str(b_multiplier_index), parent_component=self)
                     self.add_component(obj_and)
 
-                if b_multiplier_index != 0:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index].out if b_multiplier_index == 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index)
+                if b_multiplier_index != self.truncation_cut:
+                    previous_product = self.components[a_multiplicand_index + b_multiplier_index - 2*self.truncation_cut].out if b_multiplier_index == self.truncation_cut + 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type="tm")
                     # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == 0:
+                    if a_multiplicand_index == self.truncation_cut:
                         obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+"_ha"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
                         # Product generation
-                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
+                        self.out.connect(b_multiplier_index + self.truncation_cut, obj_adder.get_sum_wire())
 
                     # FA generation
                     else:
                         # Constant wire with value 1 used at the last FA in second row (as one of its inputs) for signed multiplication (based on Baugh Wooley algorithm)
-                        if a_multiplicand_index == self.N-1 and b_multiplier_index == 1:
+                        if a_multiplicand_index == self.N-1 and b_multiplier_index == self.truncation_cut+1:
                             previous_product = ConstantWireValue1()
 
                         obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+"_fa"+str(a_multiplicand_index)+"_"+str(b_multiplier_index))
                         self.add_component(obj_adder)
 
                 # PRODUCT GENERATION
-                if a_multiplicand_index == 0 and b_multiplier_index == 0:
-                    self.out.connect(a_multiplicand_index, obj_and.out)
+                if (a_multiplicand_index == self.truncation_cut and b_multiplier_index == self.truncation_cut) or (self.truncation_cut == self.N-1):
+                    self.out.connect(a_multiplicand_index + b_multiplier_index, obj_and.out)
 
                     # 1 bit multiplier case
-                    if a_multiplicand_index == self.N-1:
+                    if a_multiplicand_index == self.N-1 and b_multiplier_index == self.N-1:
                         obj_nor = NorGate(ConstantWireValue1(), self.get_previous_component().out, prefix=self.prefix+"_nor_zero_extend", parent_component=self)
                         self.add_component(obj_nor)
 
                         self.out.connect(a_multiplicand_index+1, obj_nor.out)
 
-                elif b_multiplier_index == self.N-1:
+                elif b_multiplier_index == self.N-1 and self.truncation_cut != self.N-1:
                     self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
 
                     if a_multiplicand_index == self.N-1:
@@ -246,3 +264,7 @@ class SignedArrayMultiplier(MultiplierCircuit):
                         self.add_component(obj_xor)
 
                         self.out.connect(self.out.N-1, obj_xor.out)
+        
+        # Connecting the output bits generated from ommited cells to ground
+        for grounded_out_index in range(0, self.truncation_cut*2):
+            self.out.connect(grounded_out_index, ConstantWireValue0())

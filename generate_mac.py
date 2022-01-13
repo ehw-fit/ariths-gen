@@ -17,8 +17,9 @@ class MAC(GeneralCircuit):
         self.out.connect_bus(connecting_bus=self.add.out)
 
 # usage
-os.makedirs("test_circuits/mac", exist_ok=True)
-mymac = MAC(Bus("a", 8), Bus("b", 8), Bus("acc", 16))
-mymac.get_v_code_hier(open("test_circuits/mac/mac_hier.v", "w"))
-mymac.get_c_code_hier(open("test_circuits/mac/mac_hier.c", "w"))
-mymac.get_c_code_flat(open("test_circuits/mac/mac_flat.c", "w"))
+if __name__ == "__main__":
+    os.makedirs("test_circuits/mac", exist_ok=True)
+    mymac = MAC(Bus("a", 8), Bus("b", 8), Bus("acc", 16))
+    mymac.get_v_code_hier(open("test_circuits/mac/mac_hier.v", "w"))
+    mymac.get_c_code_hier(open("test_circuits/mac/mac_hier.c", "w"))
+    mymac.get_c_code_flat(open("test_circuits/mac/mac_flat.c", "w"))

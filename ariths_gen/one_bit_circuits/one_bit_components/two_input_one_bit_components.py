@@ -21,6 +21,8 @@ class HalfAdder(TwoInputOneBitCircuit):
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         prefix (str, optional): Prefix name of half adder. Defaults to "ha".
     """
+    use_verilog_instance = False
+    
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "ha"):
         super().__init__(a, b, prefix)
         # 2 wires for component's bus output (sum, cout)
@@ -38,6 +40,38 @@ class HalfAdder(TwoInputOneBitCircuit):
         self.add_component(obj_and)
         self.out.connect(1, obj_and.out)
 
+    def get_init_v_flat(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_init_v_flat()
+
+        return "  " + self.use_verilog_instance.format(
+            **{
+                "unit": self.prefix,
+                "wirea": self.a.prefix,
+                "wireb": self.b.prefix,
+                "wireys": self.get_sum_wire().prefix,
+                "wireyc": self.get_carry_wire().prefix,
+            }
+        ) + ";\n"
+
+
+    def get_self_init_v_hier(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_self_init_v_hier()
+
+        unique_out_wires = []
+        for o in self.out.bus:
+            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) 
+
+        return "  " + self.use_verilog_instance.format(**{
+                "unit": self.prefix,
+                "wirea": self.a.name,
+                "wireb": self.b.name,
+                "wireys": unique_out_wires[0],
+                "wireyc": unique_out_wires[1],
+            }) + ";\n"
 
 class PGLogicBlock(TwoInputOneBitCircuit):
     """Class representing two input one bit propagate/generate logic block.

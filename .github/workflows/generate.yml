@@ -28,10 +28,12 @@ jobs:
     # You can test your matrix by printing the current Python version
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
-    - name: Run generating
+    - name: Run generating adds and mults
       run: python generate_test.py
-    - name: Run generating
+    - name: Run generating mac
       run: python generate_mac.py
+    - name: Run generating axmults
+      run: python generate_axmuls.py
     - name: Upload results
       uses: actions/upload-artifact@v1.0.0
       with:

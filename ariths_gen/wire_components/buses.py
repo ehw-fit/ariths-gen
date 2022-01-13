@@ -9,7 +9,7 @@ class Bus():
     Args:
         prefix (str, optional): Prefix name of the bus. Defaults to "bus".
         N (int, optional): Number of wires in the bus. Defaults to 1.
-        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to 0.
+        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to None.
         out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
         signed (bool, optional): Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.
     """
@@ -48,18 +48,23 @@ class Bus():
         """
         return self.out_bus
 
-    def bus_extend(self, N: int, prefix: str = "bus"):
+    def bus_extend(self, N: int, prefix: str = "bus", last_wire_extend: bool = True):
         """Provides bus extension to contain more wires.
 
         Args:
             N (int): Number of wires in the bus. Defaults to 1.
             prefix (str, optional): Prefix name of the bus. Defaults to "bus".
+            last_wire_extend (bool, optional): Specifies whether the last wire of the bus should be extended (connected) to all the extending wires. Defaults to True.
         """
         # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
         if self.N < N:
             # Adding wires into current bus's wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
             self.bus += [Wire(name=prefix+f"[{i}]", prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
+            if last_wire_extend is True:
+                for w_index in range(self.N, N):
+                    self.connect(bus_wire_index=w_index, inner_component_out_wire=self.get_wire(self.N - 1))
             self.N = N
+            
 
     def get_wire(self, wire_index: int = 0):
         """Retrieves a wire from the bus by a given index.

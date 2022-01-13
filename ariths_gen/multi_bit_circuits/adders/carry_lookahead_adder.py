@@ -67,7 +67,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "", name: str = "u_cla", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)        
+        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
