@@ -50,10 +50,10 @@ class HalfAdder(TwoInputOneBitCircuit):
                 "unit": self.prefix,
                 "wirea": self.a.prefix,
                 "wireb": self.b.prefix,
-                "wires": self.get_sum_wire().prefix,
-                "wirec": self.get_carry_wire().prefix,
+                "wireys": self.get_sum_wire().prefix,
+                "wireyc": self.get_carry_wire().prefix,
             }
-        ) + "\n"
+        ) + ";\n"
 
 
     def get_self_init_v_hier(self):
@@ -71,7 +71,7 @@ class HalfAdder(TwoInputOneBitCircuit):
                 "wireb": self.b.name,
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
-            }) + "\n"
+            }) + ";\n"
 
 class PGLogicBlock(TwoInputOneBitCircuit):
     """Class representing two input one bit propagate/generate logic block.

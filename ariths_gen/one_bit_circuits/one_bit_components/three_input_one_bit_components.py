@@ -66,7 +66,7 @@ class FullAdder(ThreeInputOneBitCircuit):
                 "wireys": self.get_sum_wire().prefix,
                 "wireyc": self.get_carry_wire().prefix,
             }
-        ) + "\n"
+        ) + ";\n"
 
         
     def get_self_init_v_hier(self):
@@ -85,7 +85,7 @@ class FullAdder(ThreeInputOneBitCircuit):
                 "wirec": self.c.name,
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
-            }) + "\n"
+            }) + ";\n"
 
 class FullAdderPG(ThreeInputOneBitCircuit):
     """Class representing modified three input one bit full adder with propagate/generate logic.
