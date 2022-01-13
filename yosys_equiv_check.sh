@@ -83,6 +83,8 @@ else
     if [[ "$TOP_MODULE" != $(echo $BLIF_FILE | cut -c1-"$((${#BLIF_FILE}-5))") ]]; then
         echo "Input files have different names! Do they describe the same circuit design?"
         echo "For proper equivalence check, both designs should have the same name used for their filenames and also for their top module designs."
+        echo $TOP_MODULE
+        echo $(echo $BLIF_FILE | cut -c1-"$((${#BLIF_FILE}-5))")
         echo
         echo "Type -h | --help for more information."
         exit 2    
