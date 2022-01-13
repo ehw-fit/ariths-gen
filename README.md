@@ -1,6 +1,18 @@
 # ArithsGen – tool for arithmetic circuits generation
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![Documentation](https://img.shields.io/badge/api-reference-blue.svg)](https://ehw-fit.github.io/ariths-gen)
+
+
 ## Description
 ArithsGen presents an open source tool that enables generation of various arithmetic circuits along with the possibility to export them to various representations which all serve their specific purpose. C language for easy simulation, Verilog for logic synthesis, BLIF for formal verification possibilities and CGP to enable further global optimization.
+
+In contrast to standard HDL languages Python supports
+* Multiple output formats (BLIF, Verilog, C, Integer netlis)
+* Advanced langugage construction (better configuration, inheritance, etc.)
+* Support of various PDKs (for using library cells as half-adders and full-adders)
+
+## Prebuild circuits
+To enable the fast work with the circuits, we published pre-build arithmetic circuits in various formats in [generated_circuits](generated_circuits) folder and as a [Release](https://github.com/ehw-fit/ariths-gen/releases).
 
 ### Usage
 ```bash
@@ -11,18 +23,19 @@ ls
 
 ### Example of generation
 ```py
-    #Example generation of Verilog representation of 8-bit unsigned dadda multiplier that uses cla to provide the final product
-	a = Bus(N=8, prefix="a_bus")
-	b = Bus(N=8, prefix="b_bus")
+#Example generation of Verilog representation of 8-bit unsigned dadda multiplier that uses cla to provide the final product
+a = Bus(N=8, prefix="a_bus")
+b = Bus(N=8, prefix="b_bus")
 
-	u_dadda = UnsignedDaddaMultiplier(a=a, b=b, prefix="h_u_dadda_cla8", unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
-	u_dadda.get_v_code_hier(open("h_u_dadda_cla8.v", "w"))
+u_dadda = UnsignedDaddaMultiplier(a=a, b=b, prefix="h_u_dadda_cla8", unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+u_dadda.get_v_code_hier(open("h_u_dadda_cla8.v", "w"))
 ```
 
 ### Simple arithmetic circuits
-See ()[rca.py]
+See [Ripple Carry Adder](ariths_gen/multi_bit_circuits/adders/ripple_carry_adder.py) file for a basic example.
 
 ### Complex circuits
+It is possible to combine some basic circuit to generate more complex circuits (such as MAC). The design can be parametrised (i.e., you can pass `UnsignedArraymultiplier` as an input parameter).
 
 ```py
 from ariths_gen.core.arithmetic_circuits.arithmetic_circuit import ArithmeticCircuit
@@ -52,7 +65,8 @@ if __name__ == "__main__":
 ```
 
 ## Documentation
-https://ehw-fit.github.io/ariths-gen/
+The automatically generated documentation is available at 
+https://ehw-fit.github.io/ariths-gen/ . 
 
 
 ## Supporting various PDK kits
@@ -64,6 +78,49 @@ set_pdk45_library()
 ```
 
 You can add a support of arbitrary PDK (see an [example](ariths_gen/pdk.py) ).
+
+
+## Approximate circuits
+Besides the accurate arithmetic circuits you can generate some approximate circuits. Currently we support _Broken Array Multiplier_ and _Truncated Multiplier_. For more details please follow files in folder [approximate_multipliers](ariths_gen/multi_bit_circuits/approximate_multipliers/). You can simply run 
+```bash
+python3 generate_axmuls.py
+```
+to get the approximate circuits.
+
+The module supports also evaluation of the proposed circuits. You can call the instation as a function (even with numpy-array input) to obtain the results for one multiplication
+
+```py
+from ariths_gen.wire_components.buses import Bus
+from ariths_gen.multi_bit_circuits.approximate_multipliers import UnsignedBrokenArrayMultiplier
+a = Bus(N=8, prefix="a_bus")
+b = Bus(N=8, prefix="b_bus")
+
+# Create BAM 
+bam = UnsignedBrokenArrayMultiplier(a, b, horizontal_cut=4, vertical_cut=4)
+
+print("43 * 84 = ", bam(43, 84), " expected: ", 43 * 84)
+# 43 * 84 =  3440  expected:  3612
+```
+even for all possible combinations
+
+```py
+# Evaluate all using b'casting
+import numpy as np
+import matplotlib.pyplot as plt
+va = np.arange(256).reshape(1, -1)
+vb = va.reshape(-1, 1)
+r = bam(va, vb)
+
+cax = plt.imshow(np.abs(r - (va * vb)))
+plt.colorbar(cax)
+plt.title("Absolute difference")
+plt.xlabel("a")
+plt.ylabel("b")
+
+print("Mean average error", np.abs(r - (va * vb)).mean())
+# Mean average error 956.25
+```
+![bam (v=4,h=4)](bam.png)
 
 ## Formal verification
 The `yosys_equiv_check.sh` script enables to formally check the equivalence of generated Verilog and BLIF representations of the same circuit.
