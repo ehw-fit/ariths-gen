@@ -23,7 +23,7 @@ class GeneralCircuit():
             self.prefix = prefix + "_" + name
         self.inner_component = inner_component
         self.inputs = inputs
-        self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
+        self.out = Bus(self.prefix+"_out", out_N, out_bus=True, signed=signed)
 
         self.components = []
         self.circuit_wires = []
