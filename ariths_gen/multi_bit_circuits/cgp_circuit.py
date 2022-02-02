@@ -46,7 +46,7 @@ class UnsignedCGPCircuit(GeneralCircuit):
 
         assert sum(
             input_widths) == c_in, f"CGP input widht {c_in} doesn't match input_widhts {input_widths}"
-        assert c_rows == 1, f"Only one-row CGP is supported {c_rows}x{c_cols}"
+        #assert c_rows == 1, f"Only one-row CGP is supported {c_rows}x{c_cols}"
 
         inputs = [Bus(N=bw, prefix=f"input_{chr(i)}")
                   for i, bw in enumerate(input_widths, start=0x61)]
@@ -102,7 +102,9 @@ class UnsignedCGPCircuit(GeneralCircuit):
 
         # output connection
         for i, o in enumerate(map(int, cgp_outputs.split(","))):
-            self.out.connect(i, self._get_wire(o))
+            w = self._get_wire(o)
+            #print(i, o, w, w.name)
+            self.out.connect(i, w)
 
     def _get_wire(self, i):
         if i == 0:

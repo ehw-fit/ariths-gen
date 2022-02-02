@@ -88,6 +88,7 @@ def test_unsigned_mul():
 
     for c in [ UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
         mul = c(a, b)
+        assert mul(0, 0) == 0
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
 
@@ -105,6 +106,7 @@ def test_signed_mul():
     for c in [ SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
         mul = c(a, b)
         r = mul(av, bv)
+        assert mul(0, 0) == 0
 
         # r[r >= 2**(2*N-1)] -= 2**(2*N)  # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)

@@ -38,6 +38,14 @@ class Wire():
         """
         if self.is_const():
             return f"({self.c_const}) << {offset}\n"
+       #else:
+        #    return f"(({self.name} >> 0) & 0x01) << {offset}\n"
+
+            
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
+        if self.name.endswith("["+str(self.index)+"]") and self.parent_bus is not None:
+            return f"(({self.prefix} >> {self.index}) & 0x01) << {offset}\n"
         else:
             return f"(({self.name} >> 0) & 0x01) << {offset}\n"
 
