@@ -45,6 +45,8 @@ jobs:
     needs: build
     steps:
     - uses: actions/checkout@v2
+    - name: Install iverilog
+      run: sudo apt install iverilog
     - name: Set up Python 3.x
       uses: actions/setup-python@v2
     - run: python -m pip install numpy
@@ -71,7 +73,11 @@ jobs:
         cd tests
         bash test_mac.sh
         cd ..
-
+    - name: Verilog testing
+      run: |
+        cd tests
+        bash test_circuits_verilog.sh
+        cd ..
 
   test_python:
     runs-on: ubuntu-latest
