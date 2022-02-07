@@ -1,62 +1,62 @@
-.model f_u_pg_rca4
+.model u_pg_rca4
 .inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
-.outputs f_u_pg_rca4_out[0] f_u_pg_rca4_out[1] f_u_pg_rca4_out[2] f_u_pg_rca4_out[3] f_u_pg_rca4_out[4]
+.outputs u_pg_rca4_out[0] u_pg_rca4_out[1] u_pg_rca4_out[2] u_pg_rca4_out[3] u_pg_rca4_out[4]
 .names vdd
 1
 .names gnd
 0
-.names a[0] b[0] f_u_pg_rca4_pg_fa0_xor0
+.names a[0] b[0] u_pg_rca4_pg_fa0_xor0
 01 1
 10 1
-.names a[0] b[0] f_u_pg_rca4_pg_fa0_and0
+.names a[0] b[0] u_pg_rca4_pg_fa0_and0
 11 1
-.names a[1] b[1] f_u_pg_rca4_pg_fa1_xor0
+.names a[1] b[1] u_pg_rca4_pg_fa1_xor0
 01 1
 10 1
-.names a[1] b[1] f_u_pg_rca4_pg_fa1_and0
+.names a[1] b[1] u_pg_rca4_pg_fa1_and0
 11 1
-.names f_u_pg_rca4_pg_fa1_xor0 f_u_pg_rca4_pg_fa0_and0 f_u_pg_rca4_pg_fa1_xor1
+.names u_pg_rca4_pg_fa1_xor0 u_pg_rca4_pg_fa0_and0 u_pg_rca4_pg_fa1_xor1
 01 1
 10 1
-.names f_u_pg_rca4_pg_fa0_and0 f_u_pg_rca4_pg_fa1_xor0 f_u_pg_rca4_and1
+.names u_pg_rca4_pg_fa0_and0 u_pg_rca4_pg_fa1_xor0 u_pg_rca4_and1
 11 1
-.names f_u_pg_rca4_and1 f_u_pg_rca4_pg_fa1_and0 f_u_pg_rca4_or1
+.names u_pg_rca4_and1 u_pg_rca4_pg_fa1_and0 u_pg_rca4_or1
 1- 1
 -1 1
-.names a[2] b[2] f_u_pg_rca4_pg_fa2_xor0
+.names a[2] b[2] u_pg_rca4_pg_fa2_xor0
 01 1
 10 1
-.names a[2] b[2] f_u_pg_rca4_pg_fa2_and0
+.names a[2] b[2] u_pg_rca4_pg_fa2_and0
 11 1
-.names f_u_pg_rca4_pg_fa2_xor0 f_u_pg_rca4_or1 f_u_pg_rca4_pg_fa2_xor1
+.names u_pg_rca4_pg_fa2_xor0 u_pg_rca4_or1 u_pg_rca4_pg_fa2_xor1
 01 1
 10 1
-.names f_u_pg_rca4_or1 f_u_pg_rca4_pg_fa2_xor0 f_u_pg_rca4_and2
+.names u_pg_rca4_or1 u_pg_rca4_pg_fa2_xor0 u_pg_rca4_and2
 11 1
-.names f_u_pg_rca4_and2 f_u_pg_rca4_pg_fa2_and0 f_u_pg_rca4_or2
+.names u_pg_rca4_and2 u_pg_rca4_pg_fa2_and0 u_pg_rca4_or2
 1- 1
 -1 1
-.names a[3] b[3] f_u_pg_rca4_pg_fa3_xor0
+.names a[3] b[3] u_pg_rca4_pg_fa3_xor0
 01 1
 10 1
-.names a[3] b[3] f_u_pg_rca4_pg_fa3_and0
+.names a[3] b[3] u_pg_rca4_pg_fa3_and0
 11 1
-.names f_u_pg_rca4_pg_fa3_xor0 f_u_pg_rca4_or2 f_u_pg_rca4_pg_fa3_xor1
+.names u_pg_rca4_pg_fa3_xor0 u_pg_rca4_or2 u_pg_rca4_pg_fa3_xor1
 01 1
 10 1
-.names f_u_pg_rca4_or2 f_u_pg_rca4_pg_fa3_xor0 f_u_pg_rca4_and3
+.names u_pg_rca4_or2 u_pg_rca4_pg_fa3_xor0 u_pg_rca4_and3
 11 1
-.names f_u_pg_rca4_and3 f_u_pg_rca4_pg_fa3_and0 f_u_pg_rca4_or3
+.names u_pg_rca4_and3 u_pg_rca4_pg_fa3_and0 u_pg_rca4_or3
 1- 1
 -1 1
-.names f_u_pg_rca4_pg_fa0_xor0 f_u_pg_rca4_out[0]
+.names u_pg_rca4_pg_fa0_xor0 u_pg_rca4_out[0]
 1 1
-.names f_u_pg_rca4_pg_fa1_xor1 f_u_pg_rca4_out[1]
+.names u_pg_rca4_pg_fa1_xor1 u_pg_rca4_out[1]
 1 1
-.names f_u_pg_rca4_pg_fa2_xor1 f_u_pg_rca4_out[2]
+.names u_pg_rca4_pg_fa2_xor1 u_pg_rca4_out[2]
 1 1
-.names f_u_pg_rca4_pg_fa3_xor1 f_u_pg_rca4_out[3]
+.names u_pg_rca4_pg_fa3_xor1 u_pg_rca4_out[3]
 1 1
-.names f_u_pg_rca4_or3 f_u_pg_rca4_out[4]
+.names u_pg_rca4_or3 u_pg_rca4_out[4]
 1 1
 .end

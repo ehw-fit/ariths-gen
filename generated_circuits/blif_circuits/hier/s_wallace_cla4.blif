@@ -1,73 +1,73 @@
-.model h_s_wallace_cla4
+.model s_wallace_cla4
 .inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
-.outputs h_s_wallace_cla4_out[0] h_s_wallace_cla4_out[1] h_s_wallace_cla4_out[2] h_s_wallace_cla4_out[3] h_s_wallace_cla4_out[4] h_s_wallace_cla4_out[5] h_s_wallace_cla4_out[6] h_s_wallace_cla4_out[7]
+.outputs s_wallace_cla4_out[0] s_wallace_cla4_out[1] s_wallace_cla4_out[2] s_wallace_cla4_out[3] s_wallace_cla4_out[4] s_wallace_cla4_out[5] s_wallace_cla4_out[6] s_wallace_cla4_out[7]
 .names vdd
 1
 .names gnd
 0
-.subckt and_gate a=a[2] b=b[0] out=h_s_wallace_cla4_and_2_0
-.subckt and_gate a=a[1] b=b[1] out=h_s_wallace_cla4_and_1_1
-.subckt ha a=h_s_wallace_cla4_and_2_0 b=h_s_wallace_cla4_and_1_1 ha_xor0=h_s_wallace_cla4_ha0_xor0 ha_and0=h_s_wallace_cla4_ha0_and0
-.subckt nand_gate a=a[3] b=b[0] out=h_s_wallace_cla4_nand_3_0
-.subckt and_gate a=a[2] b=b[1] out=h_s_wallace_cla4_and_2_1
-.subckt fa a=h_s_wallace_cla4_ha0_and0 b=h_s_wallace_cla4_nand_3_0 cin=h_s_wallace_cla4_and_2_1 fa_xor1=h_s_wallace_cla4_fa0_xor1 fa_or0=h_s_wallace_cla4_fa0_or0
-.subckt nand_gate a=a[3] b=b[1] out=h_s_wallace_cla4_nand_3_1
-.subckt fa a=h_s_wallace_cla4_fa0_or0 b=vdd cin=h_s_wallace_cla4_nand_3_1 fa_xor1=h_s_wallace_cla4_fa1_xor1 fa_or0=h_s_wallace_cla4_fa1_or0
-.subckt and_gate a=a[1] b=b[2] out=h_s_wallace_cla4_and_1_2
-.subckt nand_gate a=a[0] b=b[3] out=h_s_wallace_cla4_nand_0_3
-.subckt ha a=h_s_wallace_cla4_and_1_2 b=h_s_wallace_cla4_nand_0_3 ha_xor0=h_s_wallace_cla4_ha1_xor0 ha_and0=h_s_wallace_cla4_ha1_and0
-.subckt and_gate a=a[2] b=b[2] out=h_s_wallace_cla4_and_2_2
-.subckt nand_gate a=a[1] b=b[3] out=h_s_wallace_cla4_nand_1_3
-.subckt fa a=h_s_wallace_cla4_ha1_and0 b=h_s_wallace_cla4_and_2_2 cin=h_s_wallace_cla4_nand_1_3 fa_xor1=h_s_wallace_cla4_fa2_xor1 fa_or0=h_s_wallace_cla4_fa2_or0
-.subckt nand_gate a=a[3] b=b[2] out=h_s_wallace_cla4_nand_3_2
-.subckt fa a=h_s_wallace_cla4_fa2_or0 b=h_s_wallace_cla4_fa1_or0 cin=h_s_wallace_cla4_nand_3_2 fa_xor1=h_s_wallace_cla4_fa3_xor1 fa_or0=h_s_wallace_cla4_fa3_or0
-.subckt and_gate a=a[0] b=b[0] out=h_s_wallace_cla4_and_0_0
-.subckt and_gate a=a[1] b=b[0] out=h_s_wallace_cla4_and_1_0
-.subckt and_gate a=a[0] b=b[2] out=h_s_wallace_cla4_and_0_2
-.subckt nand_gate a=a[2] b=b[3] out=h_s_wallace_cla4_nand_2_3
-.subckt and_gate a=a[0] b=b[1] out=h_s_wallace_cla4_and_0_1
-.subckt and_gate a=a[3] b=b[3] out=h_s_wallace_cla4_and_3_3
-.names h_s_wallace_cla4_and_1_0 h_s_wallace_cla4_u_cla6_a[0]
+.subckt and_gate a=a[2] b=b[0] out=s_wallace_cla4_and_2_0
+.subckt and_gate a=a[1] b=b[1] out=s_wallace_cla4_and_1_1
+.subckt ha a=s_wallace_cla4_and_2_0 b=s_wallace_cla4_and_1_1 ha_xor0=s_wallace_cla4_ha0_xor0 ha_and0=s_wallace_cla4_ha0_and0
+.subckt nand_gate a=a[3] b=b[0] out=s_wallace_cla4_nand_3_0
+.subckt and_gate a=a[2] b=b[1] out=s_wallace_cla4_and_2_1
+.subckt fa a=s_wallace_cla4_ha0_and0 b=s_wallace_cla4_nand_3_0 cin=s_wallace_cla4_and_2_1 fa_xor1=s_wallace_cla4_fa0_xor1 fa_or0=s_wallace_cla4_fa0_or0
+.subckt nand_gate a=a[3] b=b[1] out=s_wallace_cla4_nand_3_1
+.subckt fa a=s_wallace_cla4_fa0_or0 b=vdd cin=s_wallace_cla4_nand_3_1 fa_xor1=s_wallace_cla4_fa1_xor1 fa_or0=s_wallace_cla4_fa1_or0
+.subckt and_gate a=a[1] b=b[2] out=s_wallace_cla4_and_1_2
+.subckt nand_gate a=a[0] b=b[3] out=s_wallace_cla4_nand_0_3
+.subckt ha a=s_wallace_cla4_and_1_2 b=s_wallace_cla4_nand_0_3 ha_xor0=s_wallace_cla4_ha1_xor0 ha_and0=s_wallace_cla4_ha1_and0
+.subckt and_gate a=a[2] b=b[2] out=s_wallace_cla4_and_2_2
+.subckt nand_gate a=a[1] b=b[3] out=s_wallace_cla4_nand_1_3
+.subckt fa a=s_wallace_cla4_ha1_and0 b=s_wallace_cla4_and_2_2 cin=s_wallace_cla4_nand_1_3 fa_xor1=s_wallace_cla4_fa2_xor1 fa_or0=s_wallace_cla4_fa2_or0
+.subckt nand_gate a=a[3] b=b[2] out=s_wallace_cla4_nand_3_2
+.subckt fa a=s_wallace_cla4_fa2_or0 b=s_wallace_cla4_fa1_or0 cin=s_wallace_cla4_nand_3_2 fa_xor1=s_wallace_cla4_fa3_xor1 fa_or0=s_wallace_cla4_fa3_or0
+.subckt and_gate a=a[0] b=b[0] out=s_wallace_cla4_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=s_wallace_cla4_and_1_0
+.subckt and_gate a=a[0] b=b[2] out=s_wallace_cla4_and_0_2
+.subckt nand_gate a=a[2] b=b[3] out=s_wallace_cla4_nand_2_3
+.subckt and_gate a=a[0] b=b[1] out=s_wallace_cla4_and_0_1
+.subckt and_gate a=a[3] b=b[3] out=s_wallace_cla4_and_3_3
+.names s_wallace_cla4_and_1_0 s_wallace_cla4_u_cla6_a[0]
 1 1
-.names h_s_wallace_cla4_and_0_2 h_s_wallace_cla4_u_cla6_a[1]
+.names s_wallace_cla4_and_0_2 s_wallace_cla4_u_cla6_a[1]
 1 1
-.names h_s_wallace_cla4_fa0_xor1 h_s_wallace_cla4_u_cla6_a[2]
+.names s_wallace_cla4_fa0_xor1 s_wallace_cla4_u_cla6_a[2]
 1 1
-.names h_s_wallace_cla4_fa1_xor1 h_s_wallace_cla4_u_cla6_a[3]
+.names s_wallace_cla4_fa1_xor1 s_wallace_cla4_u_cla6_a[3]
 1 1
-.names h_s_wallace_cla4_nand_2_3 h_s_wallace_cla4_u_cla6_a[4]
+.names s_wallace_cla4_nand_2_3 s_wallace_cla4_u_cla6_a[4]
 1 1
-.names h_s_wallace_cla4_fa3_or0 h_s_wallace_cla4_u_cla6_a[5]
+.names s_wallace_cla4_fa3_or0 s_wallace_cla4_u_cla6_a[5]
 1 1
-.names h_s_wallace_cla4_and_0_1 h_s_wallace_cla4_u_cla6_b[0]
+.names s_wallace_cla4_and_0_1 s_wallace_cla4_u_cla6_b[0]
 1 1
-.names h_s_wallace_cla4_ha0_xor0 h_s_wallace_cla4_u_cla6_b[1]
+.names s_wallace_cla4_ha0_xor0 s_wallace_cla4_u_cla6_b[1]
 1 1
-.names h_s_wallace_cla4_ha1_xor0 h_s_wallace_cla4_u_cla6_b[2]
+.names s_wallace_cla4_ha1_xor0 s_wallace_cla4_u_cla6_b[2]
 1 1
-.names h_s_wallace_cla4_fa2_xor1 h_s_wallace_cla4_u_cla6_b[3]
+.names s_wallace_cla4_fa2_xor1 s_wallace_cla4_u_cla6_b[3]
 1 1
-.names h_s_wallace_cla4_fa3_xor1 h_s_wallace_cla4_u_cla6_b[4]
+.names s_wallace_cla4_fa3_xor1 s_wallace_cla4_u_cla6_b[4]
 1 1
-.names h_s_wallace_cla4_and_3_3 h_s_wallace_cla4_u_cla6_b[5]
+.names s_wallace_cla4_and_3_3 s_wallace_cla4_u_cla6_b[5]
 1 1
-.subckt u_cla6 a[0]=h_s_wallace_cla4_u_cla6_a[0] a[1]=h_s_wallace_cla4_u_cla6_a[1] a[2]=h_s_wallace_cla4_u_cla6_a[2] a[3]=h_s_wallace_cla4_u_cla6_a[3] a[4]=h_s_wallace_cla4_u_cla6_a[4] a[5]=h_s_wallace_cla4_u_cla6_a[5] b[0]=h_s_wallace_cla4_u_cla6_b[0] b[1]=h_s_wallace_cla4_u_cla6_b[1] b[2]=h_s_wallace_cla4_u_cla6_b[2] b[3]=h_s_wallace_cla4_u_cla6_b[3] b[4]=h_s_wallace_cla4_u_cla6_b[4] b[5]=h_s_wallace_cla4_u_cla6_b[5] u_cla6_out[0]=h_s_wallace_cla4_u_cla6_pg_logic0_xor0 u_cla6_out[1]=h_s_wallace_cla4_u_cla6_xor1 u_cla6_out[2]=h_s_wallace_cla4_u_cla6_xor2 u_cla6_out[3]=h_s_wallace_cla4_u_cla6_xor3 u_cla6_out[4]=h_s_wallace_cla4_u_cla6_xor4 u_cla6_out[5]=h_s_wallace_cla4_u_cla6_xor5 u_cla6_out[6]=h_s_wallace_cla4_u_cla6_or8
-.subckt not_gate a=h_s_wallace_cla4_u_cla6_or8 out=h_s_wallace_cla4_xor0
-.names h_s_wallace_cla4_and_0_0 h_s_wallace_cla4_out[0]
+.subckt u_cla6 a[0]=s_wallace_cla4_u_cla6_a[0] a[1]=s_wallace_cla4_u_cla6_a[1] a[2]=s_wallace_cla4_u_cla6_a[2] a[3]=s_wallace_cla4_u_cla6_a[3] a[4]=s_wallace_cla4_u_cla6_a[4] a[5]=s_wallace_cla4_u_cla6_a[5] b[0]=s_wallace_cla4_u_cla6_b[0] b[1]=s_wallace_cla4_u_cla6_b[1] b[2]=s_wallace_cla4_u_cla6_b[2] b[3]=s_wallace_cla4_u_cla6_b[3] b[4]=s_wallace_cla4_u_cla6_b[4] b[5]=s_wallace_cla4_u_cla6_b[5] u_cla6_out[0]=s_wallace_cla4_u_cla6_pg_logic0_xor0 u_cla6_out[1]=s_wallace_cla4_u_cla6_xor1 u_cla6_out[2]=s_wallace_cla4_u_cla6_xor2 u_cla6_out[3]=s_wallace_cla4_u_cla6_xor3 u_cla6_out[4]=s_wallace_cla4_u_cla6_xor4 u_cla6_out[5]=s_wallace_cla4_u_cla6_xor5 u_cla6_out[6]=s_wallace_cla4_u_cla6_or8
+.subckt not_gate a=s_wallace_cla4_u_cla6_or8 out=s_wallace_cla4_xor0
+.names s_wallace_cla4_and_0_0 s_wallace_cla4_out[0]
 1 1
-.names h_s_wallace_cla4_u_cla6_pg_logic0_xor0 h_s_wallace_cla4_out[1]
+.names s_wallace_cla4_u_cla6_pg_logic0_xor0 s_wallace_cla4_out[1]
 1 1
-.names h_s_wallace_cla4_u_cla6_xor1 h_s_wallace_cla4_out[2]
+.names s_wallace_cla4_u_cla6_xor1 s_wallace_cla4_out[2]
 1 1
-.names h_s_wallace_cla4_u_cla6_xor2 h_s_wallace_cla4_out[3]
+.names s_wallace_cla4_u_cla6_xor2 s_wallace_cla4_out[3]
 1 1
-.names h_s_wallace_cla4_u_cla6_xor3 h_s_wallace_cla4_out[4]
+.names s_wallace_cla4_u_cla6_xor3 s_wallace_cla4_out[4]
 1 1
-.names h_s_wallace_cla4_u_cla6_xor4 h_s_wallace_cla4_out[5]
+.names s_wallace_cla4_u_cla6_xor4 s_wallace_cla4_out[5]
 1 1
-.names h_s_wallace_cla4_u_cla6_xor5 h_s_wallace_cla4_out[6]
+.names s_wallace_cla4_u_cla6_xor5 s_wallace_cla4_out[6]
 1 1
-.names h_s_wallace_cla4_xor0 h_s_wallace_cla4_out[7]
+.names s_wallace_cla4_xor0 s_wallace_cla4_out[7]
 1 1
 .end
 

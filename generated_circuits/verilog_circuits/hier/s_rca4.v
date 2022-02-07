@@ -26,28 +26,28 @@ module fa(input [0:0] a, input [0:0] b, input [0:0] cin, output [0:0] fa_xor1, o
   or_gate or_gate_fa_or0(.a(fa_and0[0]), .b(fa_and1[0]), .out(fa_or0));
 endmodule
 
-module h_s_rca4(input [3:0] a, input [3:0] b, output [4:0] h_s_rca4_out);
-  wire [0:0] h_s_rca4_ha_xor0;
-  wire [0:0] h_s_rca4_ha_and0;
-  wire [0:0] h_s_rca4_fa1_xor1;
-  wire [0:0] h_s_rca4_fa1_or0;
-  wire [0:0] h_s_rca4_fa2_xor1;
-  wire [0:0] h_s_rca4_fa2_or0;
-  wire [0:0] h_s_rca4_fa3_xor1;
-  wire [0:0] h_s_rca4_fa3_or0;
-  wire [0:0] h_s_rca4_xor0;
-  wire [0:0] h_s_rca4_xor1;
+module s_rca4(input [3:0] a, input [3:0] b, output [4:0] s_rca4_out);
+  wire [0:0] s_rca4_ha_xor0;
+  wire [0:0] s_rca4_ha_and0;
+  wire [0:0] s_rca4_fa1_xor1;
+  wire [0:0] s_rca4_fa1_or0;
+  wire [0:0] s_rca4_fa2_xor1;
+  wire [0:0] s_rca4_fa2_or0;
+  wire [0:0] s_rca4_fa3_xor1;
+  wire [0:0] s_rca4_fa3_or0;
+  wire [0:0] s_rca4_xor0;
+  wire [0:0] s_rca4_xor1;
 
-  ha ha_h_s_rca4_ha_out(.a(a[0]), .b(b[0]), .ha_xor0(h_s_rca4_ha_xor0), .ha_and0(h_s_rca4_ha_and0));
-  fa fa_h_s_rca4_fa1_out(.a(a[1]), .b(b[1]), .cin(h_s_rca4_ha_and0[0]), .fa_xor1(h_s_rca4_fa1_xor1), .fa_or0(h_s_rca4_fa1_or0));
-  fa fa_h_s_rca4_fa2_out(.a(a[2]), .b(b[2]), .cin(h_s_rca4_fa1_or0[0]), .fa_xor1(h_s_rca4_fa2_xor1), .fa_or0(h_s_rca4_fa2_or0));
-  fa fa_h_s_rca4_fa3_out(.a(a[3]), .b(b[3]), .cin(h_s_rca4_fa2_or0[0]), .fa_xor1(h_s_rca4_fa3_xor1), .fa_or0(h_s_rca4_fa3_or0));
-  xor_gate xor_gate_h_s_rca4_xor0(.a(a[3]), .b(b[3]), .out(h_s_rca4_xor0));
-  xor_gate xor_gate_h_s_rca4_xor1(.a(h_s_rca4_xor0[0]), .b(h_s_rca4_fa3_or0[0]), .out(h_s_rca4_xor1));
+  ha ha_s_rca4_ha_out(.a(a[0]), .b(b[0]), .ha_xor0(s_rca4_ha_xor0), .ha_and0(s_rca4_ha_and0));
+  fa fa_s_rca4_fa1_out(.a(a[1]), .b(b[1]), .cin(s_rca4_ha_and0[0]), .fa_xor1(s_rca4_fa1_xor1), .fa_or0(s_rca4_fa1_or0));
+  fa fa_s_rca4_fa2_out(.a(a[2]), .b(b[2]), .cin(s_rca4_fa1_or0[0]), .fa_xor1(s_rca4_fa2_xor1), .fa_or0(s_rca4_fa2_or0));
+  fa fa_s_rca4_fa3_out(.a(a[3]), .b(b[3]), .cin(s_rca4_fa2_or0[0]), .fa_xor1(s_rca4_fa3_xor1), .fa_or0(s_rca4_fa3_or0));
+  xor_gate xor_gate_s_rca4_xor0(.a(a[3]), .b(b[3]), .out(s_rca4_xor0));
+  xor_gate xor_gate_s_rca4_xor1(.a(s_rca4_xor0[0]), .b(s_rca4_fa3_or0[0]), .out(s_rca4_xor1));
 
-  assign h_s_rca4_out[0] = h_s_rca4_ha_xor0[0];
-  assign h_s_rca4_out[1] = h_s_rca4_fa1_xor1[0];
-  assign h_s_rca4_out[2] = h_s_rca4_fa2_xor1[0];
-  assign h_s_rca4_out[3] = h_s_rca4_fa3_xor1[0];
-  assign h_s_rca4_out[4] = h_s_rca4_xor1[0];
+  assign s_rca4_out[0] = s_rca4_ha_xor0[0];
+  assign s_rca4_out[1] = s_rca4_fa1_xor1[0];
+  assign s_rca4_out[2] = s_rca4_fa2_xor1[0];
+  assign s_rca4_out[3] = s_rca4_fa3_xor1[0];
+  assign s_rca4_out[4] = s_rca4_xor1[0];
 endmodule
