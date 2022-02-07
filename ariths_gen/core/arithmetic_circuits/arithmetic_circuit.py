@@ -17,8 +17,8 @@ class ArithmeticCircuit(GeneralCircuit):
     that are later used for generation into various representations.
     """
 
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False):
-        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed)
+    def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False, **kwargs):
+        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
         if one_bit_circuit is False:
             if prefix == "":
                 self.prefix = name

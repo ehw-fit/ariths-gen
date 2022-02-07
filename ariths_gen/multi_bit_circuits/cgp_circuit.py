@@ -41,8 +41,6 @@ class UnsignedCGPCircuit(GeneralCircuit):
 
         c_in, c_out, c_rows, c_cols, c_ni, c_no, c_lback = map(
             int, cgp_prefix.split(","))
-        print(cgp_core)
-        print(cgp_outputs)
 
         assert sum(
             input_widths) == c_in, f"CGP input widht {c_in} doesn't match input_widhts {input_widths}"
@@ -105,6 +103,17 @@ class UnsignedCGPCircuit(GeneralCircuit):
             w = self._get_wire(o)
             #print(i, o, w, w.name)
             self.out.connect(i, w)
+
+    @staticmethod
+    def get_inputs_outputs(code : str):
+        cgp_prefix, cgp_core, cgp_outputs = re.match(
+            r"{(.*)}(.*)\(([^()]+)\)", code).groups()
+
+        c_in, c_out, c_rows, c_cols, c_ni, c_no, c_lback = map(
+            int, cgp_prefix.split(","))
+
+        return c_in, c_out
+
 
     def _get_wire(self, i):
         if i == 0:

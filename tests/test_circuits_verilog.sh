@@ -11,9 +11,6 @@ test_circuit () {
     for mode in "flat" "hier"; do
         echo -e "===== Testing verilog \e[33m$circuit\e[0m ($mode) ======"
 
-        g++ -std=c++11 -pedantic -g -std=c++11 -pedantic -DCNAME="$circuit" $type.c ../test_circuits/c_circuits/$mode/$circuit.c -o tmp.exe
-
-
         if iverilog -o tmp.verilog -Ddut=$circuit ../test_circuits/verilog_circuits/$mode/$circuit.v tb_$type.v ; then
             tv=`vvp tmp.verilog`
             if [[ $tv ]]; then

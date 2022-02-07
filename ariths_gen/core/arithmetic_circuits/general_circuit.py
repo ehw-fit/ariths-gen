@@ -16,14 +16,16 @@ class GeneralCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[], signed: bool = False):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[], signed: bool = False, outname = None):
         if prefix == "":
             self.prefix = name
         else:
             self.prefix = prefix + "_" + name
         self.inner_component = inner_component
         self.inputs = inputs
-        self.out = Bus(self.prefix+"_out", out_N, out_bus=True, signed=signed)
+        if not outname:
+            outname = self.prefix+"_out"
+        self.out = Bus(outname, out_N, out_bus=True, signed=signed)
 
         self.components = []
         self.circuit_wires = []
