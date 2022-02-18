@@ -156,7 +156,7 @@ class SignedWallaceMultiplier(MultiplierCircuit):
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
-        self.columns = self.init_column_heights(signed=True)
+        self.columns = self.init_column_heights()
 
         # Not used for 1 bit multiplier
         if self.N != 1:

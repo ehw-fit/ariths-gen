@@ -1,4 +1,3 @@
-
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -27,15 +26,13 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XnorGate,
     NotGate
 )
-
 import re
 
 
 class UnsignedCGPCircuit(GeneralCircuit):
-    """ Circuit that loads CGP code and is able to export it to C/verilog/Blif/CGP """
+    """Unsigned circuit variant that loads CGP code and is able to export it to C/verilog/Blif/CGP."""
 
     def __init__(self, code: str, input_widths: list, prefix: str = "", name: str = "cgp", **kwargs):
-
         cgp_prefix, cgp_core, cgp_outputs = re.match(
             r"{(.*)}(.*)\(([^()]+)\)", code).groups()
 
@@ -43,25 +40,21 @@ class UnsignedCGPCircuit(GeneralCircuit):
             int, cgp_prefix.split(","))
 
         assert sum(
-            input_widths) == c_in, f"CGP input widht {c_in} doesn't match input_widhts {input_widths}"
-        #assert c_rows == 1, f"Only one-row CGP is supported {c_rows}x{c_cols}"
+            input_widths) == c_in, f"CGP input width {c_in} doesn't match input_widths {input_widths}"
 
         inputs = [Bus(N=bw, prefix=f"input_{chr(i)}")
                   for i, bw in enumerate(input_widths, start=0x61)]
-        #vals = Bus(N=c_rows * c_cols, prefix=f"{prefix}_data")
 
-        # adding values to the list
+        # Adding values to the list
         self.vals = {}
-        j = 2 # start from two, 0=false, 1 = true
+        j = 2  # Start from two, 0=False, 1=True
         for iid, bw in enumerate(input_widths):
             for i in range(bw):
                 assert j not in self.vals
                 self.vals[j] = inputs[iid].get_wire(i)
                 j += 1
 
-
         super().__init__(prefix=prefix, name=name, out_N=c_out, inputs=inputs, **kwargs)
-
         cgp_core = cgp_core.split(")(")
 
         i = 0
@@ -74,38 +67,37 @@ class UnsignedCGPCircuit(GeneralCircuit):
             comp_set = dict(prefix=f"{self.prefix}_core_{i:03d}", parent_component=self)
 
             a, b = self._get_wire(in_a), self._get_wire(in_b)
-            if fn == 0: # identity
+            if fn == 0:  # IDENTITY
                 o = a
-            elif fn == 1: # not
+            elif fn == 1:  # NOT
                 o = self.add_component(NotGate(a, **comp_set)).out
-            elif fn == 2: # and
+            elif fn == 2:  # AND
                 o = self.add_component(AndGate(a, b, **comp_set)).out
-            elif fn == 3: # or
+            elif fn == 3:  # OR
                 o = self.add_component(OrGate(a, b, **comp_set)).out
-            elif fn == 4: # xor
+            elif fn == 4:  # XOR
                 o = self.add_component(XorGate(a, b, **comp_set)).out
-            elif fn == 5: # nand
+            elif fn == 5:  # NAND
                 o = self.add_component(NandGate(a, b, **comp_set)).out
-            elif fn == 6: # nor
+            elif fn == 6:  # NOR
                 o = self.add_component(NorGate(a, b, **comp_set)).out
-            elif fn == 7: # xnor
+            elif fn == 7:  # XNOR
                 o = self.add_component(XnorGate(a, b, **comp_set)).out
-            elif fn == 8: # true
+            elif fn == 8:  # TRUE
                 o = ConstantWireValue1()
-            elif fn == 9: # false
+            elif fn == 9:  # FALSE
                 o = ConstantWireValue0()
 
             assert i not in self.vals
             self.vals[i] = o
 
-        # output connection
+        # Output connection
         for i, o in enumerate(map(int, cgp_outputs.split(","))):
             w = self._get_wire(o)
-            #print(i, o, w, w.name)
             self.out.connect(i, w)
 
     @staticmethod
-    def get_inputs_outputs(code : str):
+    def get_inputs_outputs(code: str):
         cgp_prefix, cgp_core, cgp_outputs = re.match(
             r"{(.*)}(.*)\(([^()]+)\)", code).groups()
 
@@ -114,7 +106,6 @@ class UnsignedCGPCircuit(GeneralCircuit):
 
         return c_in, c_out
 
-
     def _get_wire(self, i):
         if i == 0:
             return ConstantWireValue0()
@@ -122,11 +113,9 @@ class UnsignedCGPCircuit(GeneralCircuit):
             return ConstantWireValue1()
         return self.vals[i]
 
-        #self.mul = self.add_component(UnsignedArrayMultiplier(a=a, b=b, prefix=self.prefix, name=f"u_arrmul{a.N}", inner_component=True))
-        #self.add = self.add_component(UnsignedRippleCarryAdder(a=r, b=self.mul.out, prefix=self.prefix, name=f"u_rca{r.N}", inner_component=True))
-        # self.out.connect_bus(connecting_bus=self.add.out)
 
 class SignedCGPCircuit(UnsignedCGPCircuit):
+    """Signed circuit variant that loads CGP code and is able to export it to C/verilog/Blif/CGP."""
     def __init__(self, code: str, input_widths: list, prefix: str = "", name: str = "cgp", **kwargs):
         super().__init__(code=code, input_widths=input_widths, prefix=prefix, name=name, signed=True, **kwargs)
         self.c_data_type = "int64_t"

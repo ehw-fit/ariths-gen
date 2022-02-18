@@ -46,13 +46,13 @@ class MultiplierCircuit(ArithmeticCircuit):
         """
         # To get the index of previous row's connecting adder and its generated pp
         if mult_type == "bam":
-            #TODO alter to be more compact
+            # TODO alter to be more compact
             ids_sum = 0
             for row in range(self.horizontal_cut + self.ommited_rows, b_index):
                 first_row_elem_id = self.vertical_cut-row if self.vertical_cut-row > 0 else 0
                 # First pp row composed just from gates
                 if row == self.horizontal_cut + self.ommited_rows:
-                    # Minus one because the first component has index 0 instead of 1 
+                    # Minus one because the first component has index 0 instead of 1
                     ids_sum += sum([1 for gate_pos in range(first_row_elem_id, self.N)])-1
                 elif row == b_index-1:
                     ids_sum += sum([2 for gate_adder_pos in range(first_row_elem_id, self.N) if gate_adder_pos <= a_index+1])
@@ -64,8 +64,6 @@ class MultiplierCircuit(ArithmeticCircuit):
             index = ((b_index-self.truncation_cut-2) * ((self.N-self.truncation_cut)*2)) + ((self.N-self.truncation_cut-1)+2*(a_index-self.truncation_cut+2))
         else:
             index = ((b_index-2) * ((self.N)*2)) + ((self.N-1)+2*(a_index+2))
-
-
 
         # Get carry wire as input for the last adder in current row
         if a_index == self.N-1:
@@ -103,26 +101,71 @@ class MultiplierCircuit(ArithmeticCircuit):
             if d >= initial_value:
                 return stage, max_height
 
-    def init_column_heights(self, signed: bool = False):
-        """Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
+    def init_row_lengths(self):
+        """Creates appropriate number of partial product rows along with filling them with corresponding number of bit pairs.
+
+        Returns:
+            list: List of partial product rows with their bit pairs.
+        """
+        rows = [[] for _ in range(self.N)]
+        rows = [self.add_row_wires(row=row, row_index=rows.index(row)) for row in rows]
+        return rows
+
+    def add_row_wires(self, row: list, row_index: int):
+        """Fills circuit's partial product row with corresponding bit pairs.
 
         Args:
-            signed (bool, optional): Specify whether pp columns bit pairs should perform signed multiplication or not. Defaults to False.
+            row (list): List representing row of partial product bits.
+            row_index (int): Index of partial products row.
+
+        Returns:
+            list: Updated row list containing corresponding number of input bit pairs to form proper pp row.
+        """
+        # Number of partial products present in the row (should be equal to circuit's input bus size)
+        row_pp_count = self.N
+        # Adding neccessary number of lists (based on number of bits in the row – stored in `row_pp_count`)
+        # to row that each represent individual bit pairs for described row (these bit pairs are then combined in AND/NAND gates)
+        [row.append([]) for _ in range(row_pp_count)]
+
+        # Filling row bit pair lists with appropriate bits
+        [row[index].append(self.a.get_wire(index)) for index in range(row_pp_count)]
+        [row[index].append(self.b.get_wire(row_index)) for index in range(row_pp_count)]
+
+        # Converting unsigned rows of pp bit pair lists into AND gates
+        if self.signed is False:
+            row[0:] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+'_and_'+str(row[i][0].index)+'_'+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count)]
+        # Converting signed rows of pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
+        else:
+            # Partial product bit pairs of all rows (expect for the last one) are connected to AND gates, besides the last pp bit pair in each row that is connected to a NAND gate
+            if row_index != self.N-1:
+                row[0:row_pp_count-1] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+'_and_'+str(row[i][0].index)+'_'+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+                row[row_pp_count-1] = self.add_component(NandGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+'_nand_'+str(row[row_pp_count-1][0].index)+'_'+str(row[row_pp_count-1][1].index), parent_component=self)).out
+            # Partial product bit pairs of the last row are connected to NAND gates besides the last pp pair that is connected to an AND gate
+            else:
+                row[0:row_pp_count-1] = [self.add_component(NandGate(a=row[i][0], b=row[i][1], prefix=self.prefix+'_nand_'+str(row[i][0].index)+'_'+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+                row[row_pp_count-1] = self.add_component(AndGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+'_and_'+str(row[row_pp_count-1][0].index)+'_'+str(row[row_pp_count-1][1].index), parent_component=self)).out
+
+        pp_row_wires = Bus(prefix=f"pp_row{row_index}", wires_list=row)
+        return pp_row_wires
+
+    def init_column_heights(self):
+        """Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
 
         Returns:
             list: List of partial product columns with their bit pairs.
         """
         columns = [[num] if num <= self.N else [num - (num - self.N)*2] for num in range(1, self.out.N)]
-        columns = [self.add_column_wires(column=col, column_index=columns.index(col), signed=signed) for col in columns]
+        columns = [self.add_column_wires(column=col, column_index=columns.index(col)) for col in columns]
         return columns
 
-    def add_column_wires(self, column: list, column_index: int, signed: bool):
+    def add_column_wires(self, column: list, column_index: int):
         """Fills circuit's partial product column with corresponding bit pairs.
 
         Args:
             column (list): List representing column of partial product bits.
             column_index (int): Index of partial products column.
-            signed (bool): Specify whether pp columns bit pairs should perform signed multiplication or not.
 
         Returns:
             list: Updated column list containing corresponding number of input bit pairs to form proper pp column.
@@ -139,7 +182,7 @@ class MultiplierCircuit(ArithmeticCircuit):
             [column[index-(self.a.N-1-column[0])].append(self.b.get_wire(index)) for index in range(self.a.N-column[0], self.a.N)]
 
         # Converting unsigned column pp bit pair lists into AND gates
-        if signed is False:
+        if self.signed is False:
             column[1:] = [AndGate(a=column[i][0], b=column[i][1], prefix=self.prefix+'_and_'+str(column[i][0].index)+'_'+str(column[i][1].index), parent_component=self) for i in range(1, len(column))]
         # Converting signed column pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
         else:

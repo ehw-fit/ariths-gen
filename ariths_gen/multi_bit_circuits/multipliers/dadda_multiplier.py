@@ -165,7 +165,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
         # Get starting stage and maximum possible column height
         self.stage, self.d = self.get_maximum_height(initial_value=min(self.a.N, self.b.N))
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
-        self.columns = self.init_column_heights(signed=True)
+        self.columns = self.init_column_heights()
 
         # Not used for 1 bit multiplier
         if self.N != 1:

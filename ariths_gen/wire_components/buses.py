@@ -1,4 +1,4 @@
-from .wires import Wire
+from .wires import Wire, ConstantWireValue0, ConstantWireValue1
 
 
 class Bus():
@@ -24,7 +24,7 @@ class Bus():
             self.prefix = prefix
             self.bus = wires_list
             self.N = len(self.bus)
-        
+
         # Determine C code signedness
         self.signed = signed
         if self.N > 8:
@@ -48,23 +48,23 @@ class Bus():
         """
         return self.out_bus
 
-    def bus_extend(self, N: int, prefix: str = "bus", last_wire_extend: bool = True):
+    def bus_extend(self, N: int, prefix: str = "bus", desired_extension_wire: Wire = ConstantWireValue0()):
         """Provides bus extension to contain more wires.
 
         Args:
             N (int): Number of wires in the bus. Defaults to 1.
             prefix (str, optional): Prefix name of the bus. Defaults to "bus".
-            last_wire_extend (bool, optional): Specifies whether the last wire of the bus should be extended (connected) to all the extending wires. Defaults to True.
+            desired_extension_wire (Wire, optional): Specifies the wire that should be connected to all of the extending bus wires. Defaults to ConstantWireValue0().
         """
         # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
         if self.N < N:
             # Adding wires into current bus's wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
             self.bus += [Wire(name=prefix+f"[{i}]", prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
-            if last_wire_extend is True:
-                for w_index in range(self.N, N):
-                    self.connect(bus_wire_index=w_index, inner_component_out_wire=self.get_wire(self.N - 1))
+
+            for w_index in range(self.N, N):
+                self.connect(bus_wire_index=w_index, inner_component_out_wire=desired_extension_wire)
+
             self.N = N
-            
 
     def get_wire(self, wire_index: int = 0):
         """Retrieves a wire from the bus by a given index.
@@ -100,7 +100,7 @@ class Bus():
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
 
-    def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1):
+    def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0):
         """Ensures connection of specified bus wires to this bus wires.
 
         Used for connection of some inner circuit component's output bus (`connecting_bus`) wires
@@ -110,11 +110,12 @@ class Bus():
             connecting_bus (object): Specifies the connecting bus.
             start_connection_pos (int, optional): Specifies the position from which to start interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to 0.
             end_connection_pos (int, optional): Specifies the position from which to end interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to -1.
+            offset (int, optional): Specifies the offset wire index position in the `self` bus for proper connection (i.e. wire at index position 5 in the `connecting_bus` with offset set to 5 will be connected to `self` bus index position 0). Default to 0.
         """
         if end_connection_pos == -1:
             end_connection_pos = self.N
 
-        [self.connect(o, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
+        [self.connect(o-offset, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
 
     """ PYTHON CODE GENERATION """
     def return_bus_wires_values_python_flat(self):
@@ -123,8 +124,11 @@ class Bus():
         Returns:
             str: Python code for assigning wire values into bus represented in Python code variable.
         """
-        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w.return_wire_value_python_flat(offset=self.bus.index(w))}" for w in self.bus])
-    
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}" for w in mapped_positions])
+
     def return_bus_wires_sign_extend_python(self):
         """Sign extends the bus's corresponding Python variable (object) to ensure proper Python code variable signedness.
 
@@ -145,7 +149,6 @@ class Bus():
             str: C code for declaration and initialization of bus name.
         """
         return f"  {self.c_type} {self.prefix} = 0;\n"
-        
 
     def return_bus_wires_values_c_flat(self):
         """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.
@@ -153,7 +156,10 @@ class Bus():
         Returns:
             str: C code for assigning wire values into bus represented in C code variable.
         """
-        return "".join([f"  {self.prefix} |= {w.return_wire_value_c_flat(offset=self.bus.index(w))}" for w in self.bus])
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([f"  {self.prefix} |= {w[1].return_wire_value_c_flat(offset=w[0])}" for w in mapped_positions])
 
     def return_bus_wires_values_c_hier(self):
         """Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for hierarchical generation.
@@ -161,7 +167,10 @@ class Bus():
         Returns:
             str: C code for assigning wire values into bus represented in C code variable.
         """
-        return "".join([f"  {self.prefix} |= {w.return_wire_value_c_hier(offset=self.bus.index(w))}" for w in self.bus])
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([f"  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}" for w in mapped_positions])
 
     def return_bus_wires_sign_extend_c(self):
         """Sign extends the bus's corresponding C variable to ensure proper C code variable signedness.
@@ -182,7 +191,10 @@ class Bus():
         Returns:
             str: Verilog code for assigning wire values into bus represented in Verilog code bus variable.
         """
-        return "".join([f"  assign {self.prefix}[{self.bus.index(w)}] = {w.return_wire_value_v_flat()}" for w in self.bus])
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([f"  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_flat()}" for w in mapped_positions])
 
     def return_bus_wires_values_v_hier(self):
         """Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.
@@ -190,7 +202,10 @@ class Bus():
         Returns:
             str: Verilog code for assigning wire values into bus represented in Verilog code variable.
         """
-        return "".join([f"  assign {self.prefix}[{self.bus.index(w)}] = {w.return_wire_value_v_hier()}" for w in self.bus])
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([f"  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}" for w in mapped_positions])
 
     def get_unique_assign_out_wires_v(self, circuit_block: object):
         """Returns bus's wires used for hierarchical one bit subcomponent's function block invocation and output wires assignments.
@@ -215,7 +230,10 @@ class Bus():
         Returns:
             str: Blif code for declaration of individual bus wires.
         """
-        return "".join([f" {w.get_declaration_blif(prefix=self.prefix, offset=self.bus.index(w), array=array)}" for w in self.bus])
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([f" {w[1].get_declaration_blif(prefix=self.prefix, offset=w[0], array=array)}" for w in mapped_positions])
 
     def get_wire_assign_blif(self, output: bool = False):
         """Assign all bits from the bus as each individual wires or assign wires into the corresponding output bus position in Blif code representation.
@@ -226,7 +244,10 @@ class Bus():
         Returns:
             str: Blif code for bus wires assignments.
         """
-        return "".join([w.get_assign_blif(prefix=self.prefix+f"[{self.bus.index(w)}]", output=output) for w in self.bus])
+        # Ensures correct binding between the bus wire index and the wire itself
+        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
+        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        return "".join([w[1].get_assign_blif(prefix=self.prefix+f"[{w[0]}]", output=output) for w in mapped_positions])
 
     def get_unique_assign_out_wires_blif(self, function_block_out_bus: object):
         """Assigns unique output wires to their respective outputs of subcomponent's function block modul in hierarchical Blif subcomponent's invocation.

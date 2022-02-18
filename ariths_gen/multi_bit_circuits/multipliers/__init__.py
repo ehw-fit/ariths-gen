@@ -12,3 +12,8 @@ from ariths_gen.multi_bit_circuits.multipliers.dadda_multiplier import (
     UnsignedDaddaMultiplier,
     SignedDaddaMultiplier
 )
+
+from ariths_gen.multi_bit_circuits.multipliers.wallace_csa_multiplier import (
+    UnsignedWallaceCSAMultiplier,
+    SignedWallaceCSAMultiplier
+)
