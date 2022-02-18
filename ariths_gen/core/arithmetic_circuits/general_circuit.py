@@ -31,8 +31,8 @@ class GeneralCircuit():
         self.components = []
         self.circuit_wires = []
         self.circuit_gates = []
-        self.c_data_type = "uint64_t"
         self.signed = signed
+        self.c_data_type = "int64_t" if self.signed is True else "uint64_t"
         self.pyc = None  # Python compiled function
 
     def __call__(self, *args):

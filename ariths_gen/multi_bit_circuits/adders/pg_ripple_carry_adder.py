@@ -131,7 +131,6 @@ class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_pg_rca", **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
-        self.c_data_type = "int64_t"
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
         sign_xor_1 = XorGate(self.a.get_wire(self.N-1), self.b.get_wire(self.N-1), prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)

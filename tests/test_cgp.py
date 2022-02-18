@@ -94,7 +94,6 @@ def test_cgp_signed_add():
         assert add(0, 0) == 0
         assert add2(0, 0) == 0
 
-        # r[r >= 2**(N)] -= 2**(N+1)   # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)
 
 
@@ -107,7 +106,7 @@ def test_unsigned_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [ UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
+    for c in [UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
         mul = c(a, b)
         code = StringIO()
         mul.get_cgp_code_flat(code)
@@ -127,7 +126,7 @@ def test_signed_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [ SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
+    for c in [SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
         mul = c(a, b)
         code = StringIO()
         mul.get_cgp_code_flat(code)

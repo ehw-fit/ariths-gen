@@ -12,7 +12,7 @@ In contrast to standard HDL languages Python supports
 * Support of various PDKs (for using library cells as half-adders and full-adders)
 
 ## Prebuild circuits
-To enable the fast work with the circuits, we published pre-build arithmetic circuits in various formats in [generated_circuits](generated_circuits) folder and as a [Release](https://github.com/ehw-fit/ariths-gen/releases).
+To enable fast work with the circuits, we published pre-build arithmetic circuits in various formats in [generated_circuits](generated_circuits) folder and as a [Release](https://github.com/ehw-fit/ariths-gen/releases).
 
 ### Usage
 ```bash
@@ -35,7 +35,7 @@ u_dadda.get_v_code_hier(open("h_u_dadda_cla8.v", "w"))
 See [Ripple Carry Adder](ariths_gen/multi_bit_circuits/adders/ripple_carry_adder.py) file for a basic example.
 
 ### Complex circuits
-It is possible to combine some basic circuit to generate more complex circuits (such as MAC). The design can be parametrised (i.e., you can pass `UnsignedArraymultiplier` as an input parameter).
+It is possible to combine some basic circuits to generate more complex circuits (such as MAC). The design can be parametrised (i.e., you can pass `UnsignedArraymultiplier` as an input parameter).
 
 ```py
 from ariths_gen.core.arithmetic_circuits.arithmetic_circuit import ArithmeticCircuit
@@ -87,7 +87,7 @@ python3 generate_axmuls.py
 ```
 to get the approximate circuits.
 
-The module supports also evaluation of the proposed circuits. You can call the instation as a function (even with numpy-array input) to obtain the results for one multiplication
+The module also supports evaluation of the proposed circuits. You can call the instation as a function (even with numpy-array input) to obtain the results of multiplication operation
 
 ```py
 from ariths_gen.wire_components.buses import Bus
@@ -101,7 +101,7 @@ bam = UnsignedBrokenArrayMultiplier(a, b, horizontal_cut=4, vertical_cut=4)
 print("43 * 84 = ", bam(43, 84), " expected: ", 43 * 84)
 # 43 * 84 =  3440  expected:  3612
 ```
-even for all possible combinations
+for all of the possible combinations.
 
 ```py
 # Evaluate all using b'casting

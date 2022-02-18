@@ -1,4 +1,3 @@
-
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -28,14 +27,12 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     SignedWallaceMultiplier,
 )
 
-
 from ariths_gen.multi_bit_circuits.approximate_multipliers import (
     UnsignedTruncatedMultiplier,
     SignedTruncatedMultiplier,
     UnsignedBrokenArrayMultiplier,
     SignedBrokenArrayMultiplier
 )
-
 import numpy as np
 
 
@@ -76,7 +73,6 @@ def test_unsigned_approxmul(values = False):
     if values is True:
         np.testing.assert_array_equal(expected, r)
 
-
 def test_unsigned_mul():
     """ Test unsigned multipliers """
     N = 7
@@ -86,13 +82,11 @@ def test_unsigned_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [ UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
+    for c in [UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
         mul = c(a, b)
         assert mul(0, 0) == 0
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
-
-
 
 def test_signed_mul():
     """ Test signed multipliers """
@@ -103,15 +97,11 @@ def test_signed_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [ SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
+    for c in [SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
         mul = c(a, b)
         r = mul(av, bv)
         assert mul(0, 0) == 0
-
-        # r[r >= 2**(2*N-1)] -= 2**(2*N)  # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)
-
-
 
 def test_unsigned_add():
     """ Test unsigned adders """
@@ -127,8 +117,6 @@ def test_unsigned_add():
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
 
-
-
 def test_signed_add():
     """ Test signed adders """
     N = 7
@@ -141,9 +129,7 @@ def test_signed_add():
     for c in [SignedCarryLookaheadAdder, SignedPGRippleCarryAdder, SignedRippleCarryAdder, SignedCarrySkipAdder]:
         mul = c(a, b)
         r = mul(av, bv)
-        # r[r >= 2**(N)] -= 2**(N+1)   # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)
-
 
 def test_mac():
     class MAC(GeneralCircuit):
