@@ -17,7 +17,7 @@ When you use this tool in your work/research, please cite the following article:
 
 ```bibtex
 @INPROCEEDINGS{klhufek:DDECS22,
-   author = "Jan Klh\r{u}fek and Vojt\v{e}ch Mr\'{a}zek",
+   author = "Jan Klhufek and Vojtech Mrazek",
    title = "ArithsGen: Arithmetics Circuit Generator for HW Accelerators",
    pages = 4,
    booktitle = "2022 25th International Symposium on Design and Diagnostics of Electronic Circuits and Systems (DDECS '22)",
