@@ -1,7 +1,7 @@
 # ArithsGen – tool for arithmetic circuits generation
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Documentation](https://img.shields.io/badge/api-reference-blue.svg)](https://ehw-fit.github.io/ariths-gen)
-[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://arxiv.org/abs/2203.04649)
+[![arXiv](https://img.shields.io/badge/arXiv-2203.04649-b31b1b.svg)](https://arxiv.org/abs/2203.04649)
 
 
 ## Description
