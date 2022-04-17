@@ -13,7 +13,7 @@ from ariths_gen.multi_bit_circuits.multipliers.dadda_multiplier import (
     SignedDaddaMultiplier
 )
 
-from ariths_gen.multi_bit_circuits.multipliers.wallace_csa_multiplier import (
-    UnsignedWallaceCSAMultiplier,
-    SignedWallaceCSAMultiplier
+from ariths_gen.multi_bit_circuits.multipliers.carry_save_multiplier import (
+    UnsignedCarrySaveMultiplier,
+    SignedCarrySaveMultiplier
 )

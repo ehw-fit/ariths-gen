@@ -287,7 +287,7 @@ class GeneralCircuit():
         #file_object.write(self.get_declaration_python_flat()+"\n")
         file_object.write(self.get_init_python_flat()+"\n")
         file_object.write(self.get_function_out_python_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_python())
+        file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
         file_object.write(f"  return {self.out.prefix}"+"\n")
 
     """ C CODE GENERATION """
@@ -346,7 +346,7 @@ class GeneralCircuit():
         file_object.write(self.get_declaration_c_flat()+"\n")
         file_object.write(self.get_init_c_flat()+"\n")
         file_object.write(self.get_function_out_c_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_c())
+        file_object.write(self.out.return_bus_wires_sign_extend_c_flat())
         file_object.write(f"  return {self.out.prefix}"+";\n}")
 
     # HIERARCHICAL C #
@@ -436,7 +436,7 @@ class GeneralCircuit():
                f"{self.get_declarations_c_hier()}\n" + \
                f"{self.get_init_c_hier()}\n" + \
                f"{self.get_function_out_c_hier()}" + \
-               f"{self.out.return_bus_wires_sign_extend_c()}" + \
+               f"{self.out.return_bus_wires_sign_extend_c_hier()}" + \
                f"  return {self.out.prefix}"+";\n}"
 
     # Generating hierarchical C code representation of circuit

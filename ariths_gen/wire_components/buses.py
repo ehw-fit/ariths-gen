@@ -129,8 +129,8 @@ class Bus():
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
         return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}" for w in mapped_positions])
 
-    def return_bus_wires_sign_extend_python(self):
-        """Sign extends the bus's corresponding Python variable (object) to ensure proper Python code variable signedness.
+    def return_bus_wires_sign_extend_python_flat(self):
+        """Sign extends the bus's corresponding Python variable (object) to ensure proper flat Python code variable signedness.
 
         Returns:
             str: Python code for sign extending the bus variable wire values.
@@ -172,8 +172,8 @@ class Bus():
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
         return "".join([f"  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}" for w in mapped_positions])
 
-    def return_bus_wires_sign_extend_c(self):
-        """Sign extends the bus's corresponding C variable to ensure proper C code variable signedness.
+    def return_bus_wires_sign_extend_c_flat(self):
+        """Sign extends the bus's corresponding C variable to ensure proper flat C code variable signedness.
 
         Returns:
             str: C code for sign extending the bus variable wire values.
@@ -181,6 +181,18 @@ class Bus():
         if self.signed is True:
             last_bus_wire = self.bus[-1]
             return "".join([f"  {self.prefix} |= {last_bus_wire.return_wire_value_c_flat(offset=i)}" for i in range(len(self.bus), self.c_var_size)])
+        else:
+            return ""
+
+    def return_bus_wires_sign_extend_c_hier(self):
+        """Sign extends the bus's corresponding C variable to ensure proper hier C code variable signedness.
+
+        Returns:
+            str: C code for sign extending the bus variable wire values.
+        """
+        if self.signed is True:
+            last_bus_wire = self.bus[-1]
+            return "".join([f"  {self.prefix} |= {last_bus_wire.return_wire_value_c_hier(offset=i)}" for i in range(len(self.bus), self.c_var_size)])
         else:
             return ""
 

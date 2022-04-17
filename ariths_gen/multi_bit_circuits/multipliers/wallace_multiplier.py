@@ -23,6 +23,10 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XnorGate,
     NotGate
 )
+from ariths_gen.multi_bit_circuits.adders import (
+    CarrySaveAdderComponent,
+    UnsignedCarryLookaheadAdder
+)
 
 
 class UnsignedWallaceMultiplier(MultiplierCircuit):
@@ -31,14 +35,46 @@ class UnsignedWallaceMultiplier(MultiplierCircuit):
     Unsigned wallace multiplier represents fast N-bit multiplier which utilizes
     the functionality of wallace tree reduction algorithm proposed by Chris Wallace.
 
-    First partial products are calculated for each bit pair that form the partial product multiplication columns.
-    At last the reduced pairs are inserted into chosen multi bit unsigned adder to execute their summation and obtain the final output bits.
+    First partial products are calculated for each bit pair that form the partial product multiplication rows/columns.
+    At last the reduced pairs are inserted into the chosen multi bit unsigned adder to execute their summation and obtain the final output bits.
+
+    The multiplier can be build from carry save adders or fully connected half/full adders (greater delay).
+
+    The csa implementation uses carry save adder components to efficiently implement reduction of partial products utilizing the parallelism of the carry save adders. At last the reduced pairs are inserted into chosen multi bit unsigned adder to execute their summation and obtain the final output bits. It presents a faster version of multiplier opposed to the conventional architectures that are composed of interconnected half/full adders.
 
     Wallace tree algorithm is described more in detail here:
     https://en.wikipedia.org/wiki/Wallace_tree
 
-    It presents smaller circuit in area opposed to array multiplier but is slightly bigger then dadda because of less reduction stages.
+    It presents a smaller circuit in area opposed to an array multiplier but is slightly bigger then dadda because of less reduction stages.
+    ```
+    CSA IMPLEMENTATION:
 
+           PP7 PP6 PP5 PP4 PP3 PP2 PP1 PP0
+            │   │    │  │  │     │  │  │
+            │   │   ┌▼──▼──▼┐   ┌▼──▼──▼┐
+            │   │   │  CSA  │   │  CSA  │
+            │   │   └─┬───┬─┘   └─┬───┬─┘
+            │   │     │c1 │s1     │c0 │s0
+            └┐  │  ┌──┘   └────┐  │  ┌┘
+            ┌▼──▼──▼┐         ┌▼──▼──▼┐
+            │  CSA  │         │  CSA  │
+            └─┬───┬─┘         └─┬───┬─┘
+              │c4 │s4   ┌───────┘c3 │s3
+              │   └──┐  │  ┌────────┘
+              │     ┌▼──▼──▼┐
+              │     │  CSA  │
+              │     └─┬───┬─┘
+              │  ┌────┘c5 │s5
+              │  │  ┌─────┘
+             ┌▼──▼──▼┐
+             │  CSA  │
+             └─┬───┬─┘
+               │c6 │s6
+             ┌─▼───▼─┐
+             │  CPA  │
+             └───┬───┘
+                 o
+    ```
     Description of the __init__ method.
 
     Args:
@@ -46,9 +82,10 @@ class UnsignedWallaceMultiplier(MultiplierCircuit):
         b (Bus): Second input bus.
         prefix (str, optional): Prefix name of unsigned wallace multiplier. Defaults to "".
         name (str, optional): Name of unsigned wallace multiplier. Defaults to "u_wallace_cla".
+        use_csa (bool, optional): Choose whether to use carry save adder architecture (True) or fully interconnected half/full adders (False). Defaults to True.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_wallace_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_wallace_cla", use_csa: bool = True, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
@@ -56,69 +93,134 @@ class UnsignedWallaceMultiplier(MultiplierCircuit):
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
-        # Initialize all columns partial products forming AND gates matrix
-        self.columns = self.init_column_heights()
+        # CSA IMPLEMENTATION
+        if use_csa is True:
+            # Initialize all rows partial products forming AND gates matrix
+            self.rows = self.init_row_lengths()
 
-        # Perform reduction until all columns have 2 or less bits in them
-        while not all(height <= 2 for (height, *_) in self.columns):
-            col = 0
-            while col < len(self.columns):
-                # If column has exactly 3 bits in height and all previous columns has maximum of 2 bits in height, combine them in a half adder
-                if self.get_column_height(col) == 3 and all(height <= 2 for (height, *_) in self.columns[0:col-1]):
-                    # Add half adder and also AND gates if neccesarry (via add_column_wire invocation) into list of circuit components
-                    obj_adder = HalfAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
-                    self.add_component(obj_adder)
+            # Zero extension of partial product rows
+            for i in range(0, len(self.rows)):
+                self.rows[i] = Bus(prefix=self.rows[i].prefix, wires_list=[ConstantWireValue0() for _ in range(0, i)] + self.rows[i].bus)
 
-                    # Update the number of current and next column wires
-                    self.update_column_heights(curr_column=col, curr_height_change=-1, next_column=col+1, next_height_change=1)
+            while len(self.rows) > 2:
+                # Gradual creation of unsigned csa adder components to reduce the pp rows to the total count of 2
+                pp_index = 0
+                while pp_index < len(self.rows) and (pp_index+2) < len(self.rows):
+                    csa_reduction = CarrySaveAdderComponent(a=self.rows[pp_index], b=self.rows[pp_index+1], c=self.rows[pp_index+2], prefix=self.prefix+"_csa"+str(self.get_instance_num(cls=CarrySaveAdderComponent)), inner_component=True)
+                    self.add_component(csa_reduction)
 
-                    # Update current and next column wires arrangement
-                    #   add ha's generated sum to the bottom of current column
-                    #   add ha's generated cout to the top of next column
-                    self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
+                    # 3 pp rows have been reduced to 2
+                    [self.rows.pop(pp_index) for i in range(3)]
 
-                # If column has more than 3 bits in height, combine them in a full adder
-                elif self.get_column_height(col) > 3:
-                    # Add full adder and also AND gates if neccesarry (via add_column_wire invocation) into list of circuit components
-                    obj_adder = FullAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), self.add_column_wire(column=col, bit=2), prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
-                    self.add_component(obj_adder)
+                    # Append rows of sum and carry results from csa calculation
+                    csa_sums_N = self.out.N if csa_reduction.sum_bits.N > self.out.N-1 else csa_reduction.sum_bits.N
+                    csa_sums = Bus(prefix=self.prefix+"_csa_s"+str(self.get_instance_num(cls=CarrySaveAdderComponent)), N=csa_sums_N)
+                    csa_sums.connect_bus(connecting_bus=csa_reduction.out, end_connection_pos=csa_sums_N)
 
-                    # Update the number of current and next column wires
-                    self.update_column_heights(curr_column=col, curr_height_change=-2, next_column=col+1, next_height_change=1)
+                    csa_carries_N = self.out.N if csa_reduction.carry_bits.N > self.out.N-1 else csa_reduction.carry_bits.N
+                    csa_carries = Bus(prefix=self.prefix+"_csa_c"+str(self.get_instance_num(cls=CarrySaveAdderComponent)), N=csa_carries_N)
+                    csa_carries.connect_bus(connecting_bus=csa_reduction.out, start_connection_pos=int(csa_reduction.out.N/2), end_connection_pos=int(csa_reduction.out.N/2)+csa_carries.N, offset=int(csa_reduction.out.N/2))
 
-                    # Update current and next column wires arrangement
-                    #   add fa's generated sum to the bottom of current column
-                    #   add fa's generated cout to the top of next column
-                    self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
-                col += 1
+                    self.rows.insert(pp_index, csa_carries)
+                    self.rows.insert(pp_index, csa_sums)
 
-        # Output generation
-        # First output bit from single first pp AND gate
-        self.out.connect(0, self.add_column_wire(column=0, bit=0))
-        # Final addition of remaining bits
-        # 1 bit multiplier case
-        if self.N == 1:
-            self.out.connect(1, ConstantWireValue0())
-        # 2 bit multiplier case
-        elif self.N == 2:
-            obj_ha = HalfAdder(self.add_column_wire(column=1, bit=0), self.add_column_wire(column=1, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
-            self.add_component(obj_ha)
-            self.out.connect(1, obj_ha.get_sum_wire())
+                    # Update of the number of pp rows
+                    pp_index += 2
 
-            obj_ha = HalfAdder(self.get_previous_component().get_carry_wire(), self.add_column_wire(column=2, bit=0), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
-            self.add_component(obj_ha)
-            self.out.connect(2, obj_ha.get_sum_wire())
-            self.out.connect(3, obj_ha.get_carry_wire())
-        # Final addition of remaining bits using chosen unsigned multi bit adder
+            # Output generation
+            # 1 bit multiplier case
+            if self.N == 1:
+                self.out.connect(0, self.get_previous_component().out)
+                self.out.connect(1, ConstantWireValue0())
+            # 2 bit multiplier case
+            elif self.N == 2:
+                self.out.connect(0, self.components[0].out)
+                obj_ha = HalfAdder(a=self.components[1].out, b=self.components[2].out, prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                self.add_component(obj_ha)
+                self.out.connect(1, obj_ha.get_sum_wire())
+
+                obj_ha = HalfAdder(a=self.get_previous_component().get_carry_wire(), b=self.components[3].out, prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                self.add_component(obj_ha)
+                self.out.connect(2, obj_ha.get_sum_wire())
+                self.out.connect(3, obj_ha.get_carry_wire())
+
+            # Final addition of remaining bits using chosen unsigned multi bit adder
+            else:
+                # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+                adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(self.rows[0].N)
+                adder_a = Bus(prefix="a", N=self.rows[0].N)
+                adder_b = Bus(prefix="b", N=self.rows[1].N)
+                [adder_a.connect(w, self.rows[0].get_wire(w)) for w in range(0, self.rows[0].N)]
+                [adder_b.connect(w, self.rows[1].get_wire(w)) for w in range(0, self.rows[1].N)]
+                final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+                self.add_component(final_adder)
+                [self.out.connect(o, final_adder.out.get_wire(o), inserted_wire_desired_index=o) for o in range(0, final_adder.out.N-1)]
+
+        # FULLY INTERCONNECTED HAs/FAs IMPLEMENTATION
         else:
-            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
-            adder_a = Bus(prefix=f"a", wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
-            adder_b = Bus(prefix=f"b", wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
-            self.add_component(final_adder)
+            # Initialize all columns partial products forming AND gates matrix
+            self.columns = self.init_column_heights()
 
-            [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
+            # Perform reduction until all columns have 2 or less bits in them
+            while not all(height <= 2 for (height, *_) in self.columns):
+                col = 0
+                while col < len(self.columns):
+                    # If column has exactly 3 bits in height and all previous columns has maximum of 2 bits in height, combine them in a half adder
+                    if self.get_column_height(col) == 3 and all(height <= 2 for (height, *_) in self.columns[0:col-1]):
+                        # Add half adder and also AND gates if neccesarry (via add_column_wire invocation) into list of circuit components
+                        obj_adder = HalfAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                        self.add_component(obj_adder)
+
+                        # Update the number of current and next column wires
+                        self.update_column_heights(curr_column=col, curr_height_change=-1, next_column=col+1, next_height_change=1)
+
+                        # Update current and next column wires arrangement
+                        #   add ha's generated sum to the bottom of current column
+                        #   add ha's generated cout to the top of next column
+                        self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
+
+                    # If column has more than 3 bits in height, combine them in a full adder
+                    elif self.get_column_height(col) > 3:
+                        # Add full adder and also AND gates if neccesarry (via add_column_wire invocation) into list of circuit components
+                        obj_adder = FullAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), self.add_column_wire(column=col, bit=2), prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
+                        self.add_component(obj_adder)
+
+                        # Update the number of current and next column wires
+                        self.update_column_heights(curr_column=col, curr_height_change=-2, next_column=col+1, next_height_change=1)
+
+                        # Update current and next column wires arrangement
+                        #   add fa's generated sum to the bottom of current column
+                        #   add fa's generated cout to the top of next column
+                        self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
+                    col += 1
+
+            # Output generation
+            # First output bit from single first pp AND gate
+            self.out.connect(0, self.add_column_wire(column=0, bit=0))
+            # Final addition of remaining bits
+            # 1 bit multiplier case
+            if self.N == 1:
+                self.out.connect(1, ConstantWireValue0())
+            # 2 bit multiplier case
+            elif self.N == 2:
+                obj_ha = HalfAdder(self.add_column_wire(column=1, bit=0), self.add_column_wire(column=1, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                self.add_component(obj_ha)
+                self.out.connect(1, obj_ha.get_sum_wire())
+
+                obj_ha = HalfAdder(self.get_previous_component().get_carry_wire(), self.add_column_wire(column=2, bit=0), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                self.add_component(obj_ha)
+                self.out.connect(2, obj_ha.get_sum_wire())
+                self.out.connect(3, obj_ha.get_carry_wire())
+            # Final addition of remaining bits using chosen unsigned multi bit adder
+            else:
+                # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+                adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
+                adder_a = Bus(prefix=f"a", wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
+                adder_b = Bus(prefix=f"b", wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+                final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+                self.add_component(final_adder)
+
+                [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
 
 
 class SignedWallaceMultiplier(MultiplierCircuit):
@@ -128,14 +230,13 @@ class SignedWallaceMultiplier(MultiplierCircuit):
     the functionality of wallace tree reduction algorithm proposed by Chris Wallace and uses Baugh-Wooley algorithm
     to perform signed multiplication.
 
-    First partial products are calculated for each bit pair that form the partial product multiplication columns.
-    At last the reduced pairs are inserted into chosen multi bit unsigned adder to execute their summation and obtain the final output bits,
-    additional XOR gate serve the necessary sign extension.
+    First partial products are calculated for each bit pair that form the partial product multiplication rows/columns.
+    The csa implementation uses carry save adder components to efficiently implement reduction of partial products utilizing the parallelism of the carry save adders. At last the reduced pairs are inserted into chosen multi bit unsigned adder to execute their summation and obtain the final output bits, additional XOR gate serves the necessary sign extension. It presents a faster version of multiplier opposed to the conventional architectures that are composed of interconnected half/full adders.
 
     Wallace tree algorithm is described more in detail here:
     https://en.wikipedia.org/wiki/Wallace_tree
 
-    It presents smaller circuit in area opposed to array multiplier but is slightly bigger then dadda because of less reduction stages.
+    It presents a smaller circuit in area opposed to an array multiplier but is slightly bigger then dadda because of less reduction stages.
 
     Description of the __init__ method.
 
@@ -144,9 +245,10 @@ class SignedWallaceMultiplier(MultiplierCircuit):
         b (Bus): Second input bus.
         prefix (str, optional): Prefix name of signed wallace multiplier. Defaults to "".
         name (str, optional): Name of signed wallace multiplier. Defaults to "s_wallace_cla".
+        use_csa (bool, optional): Choose whether to use carry save adder architecture (True) or fully interconnected half/full adders (False). Defaults to True.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_wallace_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_wallace_cla", use_csa: bool = True, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
 
@@ -154,80 +256,151 @@ class SignedWallaceMultiplier(MultiplierCircuit):
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
-        # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
-        self.columns = self.init_column_heights()
+        # CSA IMPLEMENTATION
+        if use_csa is True:
+            # Initialize all rows partial products forming AND gates matrix
+            self.rows = self.init_row_lengths()
 
-        # Not used for 1 bit multiplier
-        if self.N != 1:
-            # Adding constant wire with value 1 to achieve signedness based on Baugh-Wooley multiplication algorithm
-            # (adding constant value bit to last column (with one bit) to combine them in XOR gate to get the correct final multplication output bit at the end)
-            self.columns[self.N].insert(1, ConstantWireValue1())
-            self.update_column_heights(curr_column=self.N, curr_height_change=1)
+            # Zero extension of partial product rows
+            for i in range(0, len(self.rows)):
+                self.rows[i] = Bus(prefix=self.rows[i].prefix, wires_list=[ConstantWireValue0() for _ in range(0, i)] + self.rows[i].bus)
 
-        # Perform reduction until all columns have 2 or less bits in them
-        while not all(height <= 2 for (height, *_) in self.columns):
-            col = 0
-            while col < len(self.columns):
-                # If column has exactly 3 bits in height and all previous columns has maximum of 2 bits in height, combine them in a half adder
-                if self.get_column_height(col) == 3 and all(height <= 2 for (height, *_) in self.columns[0:col-1]):
-                    # Add half adder and also AND/NAND gates if neccesarry (via add_column_wire invocation) into list of circuit components
-                    obj_adder = HalfAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
-                    self.add_component(obj_adder)
+            while len(self.rows) > 2:
+                # Gradual creation of signed csa adder components to reduce the pp rows to the total count of 2
+                pp_index = 0
+                while pp_index < len(self.rows) and (pp_index+2) < len(self.rows):
+                    csa_reduction = CarrySaveAdderComponent(a=self.rows[pp_index], b=self.rows[pp_index+1], c=self.rows[pp_index+2], prefix=self.prefix+"_csa"+str(self.get_instance_num(cls=CarrySaveAdderComponent)), inner_component=True, signed=True)
+                    self.add_component(csa_reduction)
 
-                    # Update the number of current and next column wires
-                    self.update_column_heights(curr_column=col, curr_height_change=-1, next_column=col+1, next_height_change=1)
+                    # 3 pp rows have been reduced to 2
+                    [self.rows.pop(pp_index) for i in range(3)]
 
-                    # Update current and next column wires arrangement
-                    #   add ha's generated sum to the bottom of current column
-                    #   add ha's generated cout to the top of next column
-                    self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
+                    # Append rows of sum and carry results from csa calculation
+                    csa_sums_N = self.out.N if csa_reduction.sum_bits.N > self.out.N-1 else csa_reduction.sum_bits.N
+                    csa_sums = Bus(prefix=self.prefix+"_csa_s"+str(self.get_instance_num(cls=CarrySaveAdderComponent)), N=csa_sums_N)
+                    csa_sums.connect_bus(connecting_bus=csa_reduction.out, end_connection_pos=csa_sums_N)
 
-                # If column has more than 3 bits in height, combine them in a full adder
-                elif self.get_column_height(col) > 3:
-                    # Add full adder and also AND/NAND gates if neccesarry (via add_column_wire invocation) into list of circuit components
-                    obj_adder = FullAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), self.add_column_wire(column=col, bit=2), prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
-                    self.add_component(obj_adder)
+                    csa_carries_N = self.out.N if csa_reduction.carry_bits.N > self.out.N-1 else csa_reduction.carry_bits.N
+                    csa_carries = Bus(prefix=self.prefix+"_csa_c"+str(self.get_instance_num(cls=CarrySaveAdderComponent)), N=csa_carries_N)
+                    csa_carries.connect_bus(connecting_bus=csa_reduction.out, start_connection_pos=int(csa_reduction.out.N/2), end_connection_pos=int(csa_reduction.out.N/2)+csa_carries.N, offset=int(csa_reduction.out.N/2))
 
-                    # Update the number of current and next column wires
-                    self.update_column_heights(curr_column=col, curr_height_change=-2, next_column=col+1, next_height_change=1)
+                    self.rows.insert(pp_index, csa_carries)
+                    self.rows.insert(pp_index, csa_sums)
 
-                    # Update current and next column wires arrangement
-                    #   add fa's generated sum to the bottom of current column
-                    #   add fa's generated cout to the top of next column
-                    self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
-                col += 1
+                    # Update of the number of pp rows
+                    pp_index += 2
 
-        # Output generation
-        # First output bit from single first pp AND gate
-        self.out.connect(0, self.add_column_wire(column=0, bit=0))
-        # Final addition of remaining bits
-        # 1 bit multiplier case
-        if self.N == 1:
-            self.out.connect(1, ConstantWireValue0())
-            return
-        # 2 bit multiplier case
-        elif self.N == 2:
-            obj_ha = HalfAdder(self.add_column_wire(column=1, bit=0), self.add_column_wire(column=1, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
-            self.add_component(obj_ha)
-            self.out.connect(1, obj_ha.get_sum_wire())
+            # Output generation
+            # 1 bit multiplier case
+            if self.N == 1:
+                self.out.connect(0, self.get_previous_component().out)
+                self.out.connect(1, ConstantWireValue0())
+                return
+            # 2 bit multiplier case
+            elif self.N == 2:
+                self.out.connect(0, self.components[0].out)
+                obj_ha = HalfAdder(a=self.components[1].out, b=self.components[2].out, prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                self.add_component(obj_ha)
+                self.out.connect(1, obj_ha.get_sum_wire())
 
-            obj_fa = FullAdder(self.get_previous_component().get_carry_wire(), self.add_column_wire(column=2, bit=0), self.add_column_wire(column=2, bit=1), prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
-            self.add_component(obj_fa)
-            self.out.connect(2, obj_fa.get_sum_wire())
-            self.out.connect(3, obj_fa.get_carry_wire())
+                obj_fa = FullAdder(a=self.get_previous_component().get_carry_wire(), b=ConstantWireValue1(), c=self.components[3].out, prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
+                self.add_component(obj_fa)
+                self.out.connect(2, obj_fa.get_sum_wire())
+                self.out.connect(3, obj_fa.get_carry_wire())
 
-        # Final addition of remaining bits using chosen unsigned multi bit adder
+            # Final addition of remaining bits using chosen unsigned multi bit adder
+            else:
+                # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+                adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(self.rows[0].N)
+                adder_a = Bus(prefix="a", N=self.rows[0].N)
+                adder_b = Bus(prefix="b", N=self.rows[1].N)
+                [adder_a.connect(w, self.rows[0].get_wire(w)) for w in range(0, self.rows[0].N)]
+                [adder_b.connect(w, self.rows[1].get_wire(w)) for w in range(0, self.rows[1].N)]
+                final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+                self.add_component(final_adder)
+                [self.out.connect(o, final_adder.out.get_wire(o), inserted_wire_desired_index=o) for o in range(0, final_adder.out.N-1)]
+
+            # Final XOR to ensure proper sign extension
+            obj_xor = XorGate(ConstantWireValue1(), self.out.get_wire(self.out.N-1), prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
+            self.add_component(obj_xor)
+            self.out.connect(self.out.N-1, obj_xor.out)
+
+        # FULLY INTERCONNECTED HAs/FAs IMPLEMENTATION
         else:
-            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
-            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
-            adder_a = Bus(prefix=f"a", wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
-            adder_b = Bus(prefix=f"b", wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
-            self.add_component(final_adder)
+            # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
+            self.columns = self.init_column_heights()
 
-            [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
+            # Not used for 1 bit multiplier
+            if self.N != 1:
+                # Adding constant wire with value 1 to achieve signedness based on Baugh-Wooley multiplication algorithm
+                # (adding constant value bit to last column (with one bit) to combine them in XOR gate to get the correct final multplication output bit at the end)
+                self.columns[self.N].insert(1, ConstantWireValue1())
+                self.update_column_heights(curr_column=self.N, curr_height_change=1)
 
-        # Final XOR to ensure proper sign extension
-        obj_xor = XorGate(ConstantWireValue1(), self.out.get_wire(self.out.N-1), prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
-        self.add_component(obj_xor)
-        self.out.connect(self.out.N-1, obj_xor.out)
+            # Perform reduction until all columns have 2 or less bits in them
+            while not all(height <= 2 for (height, *_) in self.columns):
+                col = 0
+                while col < len(self.columns):
+                    # If column has exactly 3 bits in height and all previous columns has maximum of 2 bits in height, combine them in a half adder
+                    if self.get_column_height(col) == 3 and all(height <= 2 for (height, *_) in self.columns[0:col-1]):
+                        # Add half adder and also AND/NAND gates if neccesarry (via add_column_wire invocation) into list of circuit components
+                        obj_adder = HalfAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                        self.add_component(obj_adder)
+
+                        # Update the number of current and next column wires
+                        self.update_column_heights(curr_column=col, curr_height_change=-1, next_column=col+1, next_height_change=1)
+
+                        # Update current and next column wires arrangement
+                        #   add ha's generated sum to the bottom of current column
+                        #   add ha's generated cout to the top of next column
+                        self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
+
+                    # If column has more than 3 bits in height, combine them in a full adder
+                    elif self.get_column_height(col) > 3:
+                        # Add full adder and also AND/NAND gates if neccesarry (via add_column_wire invocation) into list of circuit components
+                        obj_adder = FullAdder(self.add_column_wire(column=col, bit=0), self.add_column_wire(column=col, bit=1), self.add_column_wire(column=col, bit=2), prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
+                        self.add_component(obj_adder)
+
+                        # Update the number of current and next column wires
+                        self.update_column_heights(curr_column=col, curr_height_change=-2, next_column=col+1, next_height_change=1)
+
+                        # Update current and next column wires arrangement
+                        #   add fa's generated sum to the bottom of current column
+                        #   add fa's generated cout to the top of next column
+                        self.update_column_wires(curr_column=col, next_column=col+1, adder=self.get_previous_component(1))
+                    col += 1
+
+            # Output generation
+            # First output bit from single first pp AND gate
+            self.out.connect(0, self.add_column_wire(column=0, bit=0))
+            # Final addition of remaining bits
+            # 1 bit multiplier case
+            if self.N == 1:
+                self.out.connect(1, ConstantWireValue0())
+                return
+            # 2 bit multiplier case
+            elif self.N == 2:
+                obj_ha = HalfAdder(self.add_column_wire(column=1, bit=0), self.add_column_wire(column=1, bit=1), prefix=self.prefix+"_ha"+str(self.get_instance_num(cls=HalfAdder)))
+                self.add_component(obj_ha)
+                self.out.connect(1, obj_ha.get_sum_wire())
+
+                obj_fa = FullAdder(self.get_previous_component().get_carry_wire(), self.add_column_wire(column=2, bit=0), self.add_column_wire(column=2, bit=1), prefix=self.prefix+"_fa"+str(self.get_instance_num(cls=FullAdder)))
+                self.add_component(obj_fa)
+                self.out.connect(2, obj_fa.get_sum_wire())
+                self.out.connect(3, obj_fa.get_carry_wire())
+
+            # Final addition of remaining bits using chosen unsigned multi bit adder
+            else:
+                # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+                adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
+                adder_a = Bus(prefix=f"a", wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
+                adder_b = Bus(prefix=f"b", wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
+                final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+                self.add_component(final_adder)
+
+                [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
+
+            # Final XOR to ensure proper sign extension
+            obj_xor = XorGate(ConstantWireValue1(), self.out.get_wire(self.out.N-1), prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
+            self.add_component(obj_xor)
+            self.out.connect(self.out.N-1, obj_xor.out)

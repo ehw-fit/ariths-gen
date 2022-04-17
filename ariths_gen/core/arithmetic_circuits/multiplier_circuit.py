@@ -32,9 +32,9 @@ class MultiplierCircuit(ArithmeticCircuit):
     def __init__(self, a, b, prefix: str, name: str, out_N: int, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
-    # Array multipliers
+    # Array/approximate multipliers
     def get_previous_partial_product(self, a_index: int, b_index: int, mult_type=""):
-        """Used in array multipliers to get previous row's component output wires for further connection to another component's input.
+        """Used in array and approximate multipliers to get previous row's component output wires for further connection to another component's input.
 
         Args:
             a_index (int): First input wire index.
