@@ -1,0 +1,779 @@
+.model u_csamul_pg_rca16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs u_csamul_pg_rca16_out[0] u_csamul_pg_rca16_out[1] u_csamul_pg_rca16_out[2] u_csamul_pg_rca16_out[3] u_csamul_pg_rca16_out[4] u_csamul_pg_rca16_out[5] u_csamul_pg_rca16_out[6] u_csamul_pg_rca16_out[7] u_csamul_pg_rca16_out[8] u_csamul_pg_rca16_out[9] u_csamul_pg_rca16_out[10] u_csamul_pg_rca16_out[11] u_csamul_pg_rca16_out[12] u_csamul_pg_rca16_out[13] u_csamul_pg_rca16_out[14] u_csamul_pg_rca16_out[15] u_csamul_pg_rca16_out[16] u_csamul_pg_rca16_out[17] u_csamul_pg_rca16_out[18] u_csamul_pg_rca16_out[19] u_csamul_pg_rca16_out[20] u_csamul_pg_rca16_out[21] u_csamul_pg_rca16_out[22] u_csamul_pg_rca16_out[23] u_csamul_pg_rca16_out[24] u_csamul_pg_rca16_out[25] u_csamul_pg_rca16_out[26] u_csamul_pg_rca16_out[27] u_csamul_pg_rca16_out[28] u_csamul_pg_rca16_out[29] u_csamul_pg_rca16_out[30] u_csamul_pg_rca16_out[31]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[0] b=b[0] out=u_csamul_pg_rca16_and0_0
+.subckt and_gate a=a[1] b=b[0] out=u_csamul_pg_rca16_and1_0
+.subckt and_gate a=a[2] b=b[0] out=u_csamul_pg_rca16_and2_0
+.subckt and_gate a=a[3] b=b[0] out=u_csamul_pg_rca16_and3_0
+.subckt and_gate a=a[4] b=b[0] out=u_csamul_pg_rca16_and4_0
+.subckt and_gate a=a[5] b=b[0] out=u_csamul_pg_rca16_and5_0
+.subckt and_gate a=a[6] b=b[0] out=u_csamul_pg_rca16_and6_0
+.subckt and_gate a=a[7] b=b[0] out=u_csamul_pg_rca16_and7_0
+.subckt and_gate a=a[8] b=b[0] out=u_csamul_pg_rca16_and8_0
+.subckt and_gate a=a[9] b=b[0] out=u_csamul_pg_rca16_and9_0
+.subckt and_gate a=a[10] b=b[0] out=u_csamul_pg_rca16_and10_0
+.subckt and_gate a=a[11] b=b[0] out=u_csamul_pg_rca16_and11_0
+.subckt and_gate a=a[12] b=b[0] out=u_csamul_pg_rca16_and12_0
+.subckt and_gate a=a[13] b=b[0] out=u_csamul_pg_rca16_and13_0
+.subckt and_gate a=a[14] b=b[0] out=u_csamul_pg_rca16_and14_0
+.subckt and_gate a=a[15] b=b[0] out=u_csamul_pg_rca16_and15_0
+.subckt and_gate a=a[0] b=b[1] out=u_csamul_pg_rca16_and0_1
+.subckt ha a=u_csamul_pg_rca16_and0_1 b=u_csamul_pg_rca16_and1_0 ha_xor0=u_csamul_pg_rca16_ha0_1_xor0 ha_and0=u_csamul_pg_rca16_ha0_1_and0
+.subckt and_gate a=a[1] b=b[1] out=u_csamul_pg_rca16_and1_1
+.subckt ha a=u_csamul_pg_rca16_and1_1 b=u_csamul_pg_rca16_and2_0 ha_xor0=u_csamul_pg_rca16_ha1_1_xor0 ha_and0=u_csamul_pg_rca16_ha1_1_and0
+.subckt and_gate a=a[2] b=b[1] out=u_csamul_pg_rca16_and2_1
+.subckt ha a=u_csamul_pg_rca16_and2_1 b=u_csamul_pg_rca16_and3_0 ha_xor0=u_csamul_pg_rca16_ha2_1_xor0 ha_and0=u_csamul_pg_rca16_ha2_1_and0
+.subckt and_gate a=a[3] b=b[1] out=u_csamul_pg_rca16_and3_1
+.subckt ha a=u_csamul_pg_rca16_and3_1 b=u_csamul_pg_rca16_and4_0 ha_xor0=u_csamul_pg_rca16_ha3_1_xor0 ha_and0=u_csamul_pg_rca16_ha3_1_and0
+.subckt and_gate a=a[4] b=b[1] out=u_csamul_pg_rca16_and4_1
+.subckt ha a=u_csamul_pg_rca16_and4_1 b=u_csamul_pg_rca16_and5_0 ha_xor0=u_csamul_pg_rca16_ha4_1_xor0 ha_and0=u_csamul_pg_rca16_ha4_1_and0
+.subckt and_gate a=a[5] b=b[1] out=u_csamul_pg_rca16_and5_1
+.subckt ha a=u_csamul_pg_rca16_and5_1 b=u_csamul_pg_rca16_and6_0 ha_xor0=u_csamul_pg_rca16_ha5_1_xor0 ha_and0=u_csamul_pg_rca16_ha5_1_and0
+.subckt and_gate a=a[6] b=b[1] out=u_csamul_pg_rca16_and6_1
+.subckt ha a=u_csamul_pg_rca16_and6_1 b=u_csamul_pg_rca16_and7_0 ha_xor0=u_csamul_pg_rca16_ha6_1_xor0 ha_and0=u_csamul_pg_rca16_ha6_1_and0
+.subckt and_gate a=a[7] b=b[1] out=u_csamul_pg_rca16_and7_1
+.subckt ha a=u_csamul_pg_rca16_and7_1 b=u_csamul_pg_rca16_and8_0 ha_xor0=u_csamul_pg_rca16_ha7_1_xor0 ha_and0=u_csamul_pg_rca16_ha7_1_and0
+.subckt and_gate a=a[8] b=b[1] out=u_csamul_pg_rca16_and8_1
+.subckt ha a=u_csamul_pg_rca16_and8_1 b=u_csamul_pg_rca16_and9_0 ha_xor0=u_csamul_pg_rca16_ha8_1_xor0 ha_and0=u_csamul_pg_rca16_ha8_1_and0
+.subckt and_gate a=a[9] b=b[1] out=u_csamul_pg_rca16_and9_1
+.subckt ha a=u_csamul_pg_rca16_and9_1 b=u_csamul_pg_rca16_and10_0 ha_xor0=u_csamul_pg_rca16_ha9_1_xor0 ha_and0=u_csamul_pg_rca16_ha9_1_and0
+.subckt and_gate a=a[10] b=b[1] out=u_csamul_pg_rca16_and10_1
+.subckt ha a=u_csamul_pg_rca16_and10_1 b=u_csamul_pg_rca16_and11_0 ha_xor0=u_csamul_pg_rca16_ha10_1_xor0 ha_and0=u_csamul_pg_rca16_ha10_1_and0
+.subckt and_gate a=a[11] b=b[1] out=u_csamul_pg_rca16_and11_1
+.subckt ha a=u_csamul_pg_rca16_and11_1 b=u_csamul_pg_rca16_and12_0 ha_xor0=u_csamul_pg_rca16_ha11_1_xor0 ha_and0=u_csamul_pg_rca16_ha11_1_and0
+.subckt and_gate a=a[12] b=b[1] out=u_csamul_pg_rca16_and12_1
+.subckt ha a=u_csamul_pg_rca16_and12_1 b=u_csamul_pg_rca16_and13_0 ha_xor0=u_csamul_pg_rca16_ha12_1_xor0 ha_and0=u_csamul_pg_rca16_ha12_1_and0
+.subckt and_gate a=a[13] b=b[1] out=u_csamul_pg_rca16_and13_1
+.subckt ha a=u_csamul_pg_rca16_and13_1 b=u_csamul_pg_rca16_and14_0 ha_xor0=u_csamul_pg_rca16_ha13_1_xor0 ha_and0=u_csamul_pg_rca16_ha13_1_and0
+.subckt and_gate a=a[14] b=b[1] out=u_csamul_pg_rca16_and14_1
+.subckt ha a=u_csamul_pg_rca16_and14_1 b=u_csamul_pg_rca16_and15_0 ha_xor0=u_csamul_pg_rca16_ha14_1_xor0 ha_and0=u_csamul_pg_rca16_ha14_1_and0
+.subckt and_gate a=a[15] b=b[1] out=u_csamul_pg_rca16_and15_1
+.subckt and_gate a=a[0] b=b[2] out=u_csamul_pg_rca16_and0_2
+.subckt fa a=u_csamul_pg_rca16_and0_2 b=u_csamul_pg_rca16_ha1_1_xor0 cin=u_csamul_pg_rca16_ha0_1_and0 fa_xor1=u_csamul_pg_rca16_fa0_2_xor1 fa_or0=u_csamul_pg_rca16_fa0_2_or0
+.subckt and_gate a=a[1] b=b[2] out=u_csamul_pg_rca16_and1_2
+.subckt fa a=u_csamul_pg_rca16_and1_2 b=u_csamul_pg_rca16_ha2_1_xor0 cin=u_csamul_pg_rca16_ha1_1_and0 fa_xor1=u_csamul_pg_rca16_fa1_2_xor1 fa_or0=u_csamul_pg_rca16_fa1_2_or0
+.subckt and_gate a=a[2] b=b[2] out=u_csamul_pg_rca16_and2_2
+.subckt fa a=u_csamul_pg_rca16_and2_2 b=u_csamul_pg_rca16_ha3_1_xor0 cin=u_csamul_pg_rca16_ha2_1_and0 fa_xor1=u_csamul_pg_rca16_fa2_2_xor1 fa_or0=u_csamul_pg_rca16_fa2_2_or0
+.subckt and_gate a=a[3] b=b[2] out=u_csamul_pg_rca16_and3_2
+.subckt fa a=u_csamul_pg_rca16_and3_2 b=u_csamul_pg_rca16_ha4_1_xor0 cin=u_csamul_pg_rca16_ha3_1_and0 fa_xor1=u_csamul_pg_rca16_fa3_2_xor1 fa_or0=u_csamul_pg_rca16_fa3_2_or0
+.subckt and_gate a=a[4] b=b[2] out=u_csamul_pg_rca16_and4_2
+.subckt fa a=u_csamul_pg_rca16_and4_2 b=u_csamul_pg_rca16_ha5_1_xor0 cin=u_csamul_pg_rca16_ha4_1_and0 fa_xor1=u_csamul_pg_rca16_fa4_2_xor1 fa_or0=u_csamul_pg_rca16_fa4_2_or0
+.subckt and_gate a=a[5] b=b[2] out=u_csamul_pg_rca16_and5_2
+.subckt fa a=u_csamul_pg_rca16_and5_2 b=u_csamul_pg_rca16_ha6_1_xor0 cin=u_csamul_pg_rca16_ha5_1_and0 fa_xor1=u_csamul_pg_rca16_fa5_2_xor1 fa_or0=u_csamul_pg_rca16_fa5_2_or0
+.subckt and_gate a=a[6] b=b[2] out=u_csamul_pg_rca16_and6_2
+.subckt fa a=u_csamul_pg_rca16_and6_2 b=u_csamul_pg_rca16_ha7_1_xor0 cin=u_csamul_pg_rca16_ha6_1_and0 fa_xor1=u_csamul_pg_rca16_fa6_2_xor1 fa_or0=u_csamul_pg_rca16_fa6_2_or0
+.subckt and_gate a=a[7] b=b[2] out=u_csamul_pg_rca16_and7_2
+.subckt fa a=u_csamul_pg_rca16_and7_2 b=u_csamul_pg_rca16_ha8_1_xor0 cin=u_csamul_pg_rca16_ha7_1_and0 fa_xor1=u_csamul_pg_rca16_fa7_2_xor1 fa_or0=u_csamul_pg_rca16_fa7_2_or0
+.subckt and_gate a=a[8] b=b[2] out=u_csamul_pg_rca16_and8_2
+.subckt fa a=u_csamul_pg_rca16_and8_2 b=u_csamul_pg_rca16_ha9_1_xor0 cin=u_csamul_pg_rca16_ha8_1_and0 fa_xor1=u_csamul_pg_rca16_fa8_2_xor1 fa_or0=u_csamul_pg_rca16_fa8_2_or0
+.subckt and_gate a=a[9] b=b[2] out=u_csamul_pg_rca16_and9_2
+.subckt fa a=u_csamul_pg_rca16_and9_2 b=u_csamul_pg_rca16_ha10_1_xor0 cin=u_csamul_pg_rca16_ha9_1_and0 fa_xor1=u_csamul_pg_rca16_fa9_2_xor1 fa_or0=u_csamul_pg_rca16_fa9_2_or0
+.subckt and_gate a=a[10] b=b[2] out=u_csamul_pg_rca16_and10_2
+.subckt fa a=u_csamul_pg_rca16_and10_2 b=u_csamul_pg_rca16_ha11_1_xor0 cin=u_csamul_pg_rca16_ha10_1_and0 fa_xor1=u_csamul_pg_rca16_fa10_2_xor1 fa_or0=u_csamul_pg_rca16_fa10_2_or0
+.subckt and_gate a=a[11] b=b[2] out=u_csamul_pg_rca16_and11_2
+.subckt fa a=u_csamul_pg_rca16_and11_2 b=u_csamul_pg_rca16_ha12_1_xor0 cin=u_csamul_pg_rca16_ha11_1_and0 fa_xor1=u_csamul_pg_rca16_fa11_2_xor1 fa_or0=u_csamul_pg_rca16_fa11_2_or0
+.subckt and_gate a=a[12] b=b[2] out=u_csamul_pg_rca16_and12_2
+.subckt fa a=u_csamul_pg_rca16_and12_2 b=u_csamul_pg_rca16_ha13_1_xor0 cin=u_csamul_pg_rca16_ha12_1_and0 fa_xor1=u_csamul_pg_rca16_fa12_2_xor1 fa_or0=u_csamul_pg_rca16_fa12_2_or0
+.subckt and_gate a=a[13] b=b[2] out=u_csamul_pg_rca16_and13_2
+.subckt fa a=u_csamul_pg_rca16_and13_2 b=u_csamul_pg_rca16_ha14_1_xor0 cin=u_csamul_pg_rca16_ha13_1_and0 fa_xor1=u_csamul_pg_rca16_fa13_2_xor1 fa_or0=u_csamul_pg_rca16_fa13_2_or0
+.subckt and_gate a=a[14] b=b[2] out=u_csamul_pg_rca16_and14_2
+.subckt fa a=u_csamul_pg_rca16_and14_2 b=u_csamul_pg_rca16_and15_1 cin=u_csamul_pg_rca16_ha14_1_and0 fa_xor1=u_csamul_pg_rca16_fa14_2_xor1 fa_or0=u_csamul_pg_rca16_fa14_2_or0
+.subckt and_gate a=a[15] b=b[2] out=u_csamul_pg_rca16_and15_2
+.subckt and_gate a=a[0] b=b[3] out=u_csamul_pg_rca16_and0_3
+.subckt fa a=u_csamul_pg_rca16_and0_3 b=u_csamul_pg_rca16_fa1_2_xor1 cin=u_csamul_pg_rca16_fa0_2_or0 fa_xor1=u_csamul_pg_rca16_fa0_3_xor1 fa_or0=u_csamul_pg_rca16_fa0_3_or0
+.subckt and_gate a=a[1] b=b[3] out=u_csamul_pg_rca16_and1_3
+.subckt fa a=u_csamul_pg_rca16_and1_3 b=u_csamul_pg_rca16_fa2_2_xor1 cin=u_csamul_pg_rca16_fa1_2_or0 fa_xor1=u_csamul_pg_rca16_fa1_3_xor1 fa_or0=u_csamul_pg_rca16_fa1_3_or0
+.subckt and_gate a=a[2] b=b[3] out=u_csamul_pg_rca16_and2_3
+.subckt fa a=u_csamul_pg_rca16_and2_3 b=u_csamul_pg_rca16_fa3_2_xor1 cin=u_csamul_pg_rca16_fa2_2_or0 fa_xor1=u_csamul_pg_rca16_fa2_3_xor1 fa_or0=u_csamul_pg_rca16_fa2_3_or0
+.subckt and_gate a=a[3] b=b[3] out=u_csamul_pg_rca16_and3_3
+.subckt fa a=u_csamul_pg_rca16_and3_3 b=u_csamul_pg_rca16_fa4_2_xor1 cin=u_csamul_pg_rca16_fa3_2_or0 fa_xor1=u_csamul_pg_rca16_fa3_3_xor1 fa_or0=u_csamul_pg_rca16_fa3_3_or0
+.subckt and_gate a=a[4] b=b[3] out=u_csamul_pg_rca16_and4_3
+.subckt fa a=u_csamul_pg_rca16_and4_3 b=u_csamul_pg_rca16_fa5_2_xor1 cin=u_csamul_pg_rca16_fa4_2_or0 fa_xor1=u_csamul_pg_rca16_fa4_3_xor1 fa_or0=u_csamul_pg_rca16_fa4_3_or0
+.subckt and_gate a=a[5] b=b[3] out=u_csamul_pg_rca16_and5_3
+.subckt fa a=u_csamul_pg_rca16_and5_3 b=u_csamul_pg_rca16_fa6_2_xor1 cin=u_csamul_pg_rca16_fa5_2_or0 fa_xor1=u_csamul_pg_rca16_fa5_3_xor1 fa_or0=u_csamul_pg_rca16_fa5_3_or0
+.subckt and_gate a=a[6] b=b[3] out=u_csamul_pg_rca16_and6_3
+.subckt fa a=u_csamul_pg_rca16_and6_3 b=u_csamul_pg_rca16_fa7_2_xor1 cin=u_csamul_pg_rca16_fa6_2_or0 fa_xor1=u_csamul_pg_rca16_fa6_3_xor1 fa_or0=u_csamul_pg_rca16_fa6_3_or0
+.subckt and_gate a=a[7] b=b[3] out=u_csamul_pg_rca16_and7_3
+.subckt fa a=u_csamul_pg_rca16_and7_3 b=u_csamul_pg_rca16_fa8_2_xor1 cin=u_csamul_pg_rca16_fa7_2_or0 fa_xor1=u_csamul_pg_rca16_fa7_3_xor1 fa_or0=u_csamul_pg_rca16_fa7_3_or0
+.subckt and_gate a=a[8] b=b[3] out=u_csamul_pg_rca16_and8_3
+.subckt fa a=u_csamul_pg_rca16_and8_3 b=u_csamul_pg_rca16_fa9_2_xor1 cin=u_csamul_pg_rca16_fa8_2_or0 fa_xor1=u_csamul_pg_rca16_fa8_3_xor1 fa_or0=u_csamul_pg_rca16_fa8_3_or0
+.subckt and_gate a=a[9] b=b[3] out=u_csamul_pg_rca16_and9_3
+.subckt fa a=u_csamul_pg_rca16_and9_3 b=u_csamul_pg_rca16_fa10_2_xor1 cin=u_csamul_pg_rca16_fa9_2_or0 fa_xor1=u_csamul_pg_rca16_fa9_3_xor1 fa_or0=u_csamul_pg_rca16_fa9_3_or0
+.subckt and_gate a=a[10] b=b[3] out=u_csamul_pg_rca16_and10_3
+.subckt fa a=u_csamul_pg_rca16_and10_3 b=u_csamul_pg_rca16_fa11_2_xor1 cin=u_csamul_pg_rca16_fa10_2_or0 fa_xor1=u_csamul_pg_rca16_fa10_3_xor1 fa_or0=u_csamul_pg_rca16_fa10_3_or0
+.subckt and_gate a=a[11] b=b[3] out=u_csamul_pg_rca16_and11_3
+.subckt fa a=u_csamul_pg_rca16_and11_3 b=u_csamul_pg_rca16_fa12_2_xor1 cin=u_csamul_pg_rca16_fa11_2_or0 fa_xor1=u_csamul_pg_rca16_fa11_3_xor1 fa_or0=u_csamul_pg_rca16_fa11_3_or0
+.subckt and_gate a=a[12] b=b[3] out=u_csamul_pg_rca16_and12_3
+.subckt fa a=u_csamul_pg_rca16_and12_3 b=u_csamul_pg_rca16_fa13_2_xor1 cin=u_csamul_pg_rca16_fa12_2_or0 fa_xor1=u_csamul_pg_rca16_fa12_3_xor1 fa_or0=u_csamul_pg_rca16_fa12_3_or0
+.subckt and_gate a=a[13] b=b[3] out=u_csamul_pg_rca16_and13_3
+.subckt fa a=u_csamul_pg_rca16_and13_3 b=u_csamul_pg_rca16_fa14_2_xor1 cin=u_csamul_pg_rca16_fa13_2_or0 fa_xor1=u_csamul_pg_rca16_fa13_3_xor1 fa_or0=u_csamul_pg_rca16_fa13_3_or0
+.subckt and_gate a=a[14] b=b[3] out=u_csamul_pg_rca16_and14_3
+.subckt fa a=u_csamul_pg_rca16_and14_3 b=u_csamul_pg_rca16_and15_2 cin=u_csamul_pg_rca16_fa14_2_or0 fa_xor1=u_csamul_pg_rca16_fa14_3_xor1 fa_or0=u_csamul_pg_rca16_fa14_3_or0
+.subckt and_gate a=a[15] b=b[3] out=u_csamul_pg_rca16_and15_3
+.subckt and_gate a=a[0] b=b[4] out=u_csamul_pg_rca16_and0_4
+.subckt fa a=u_csamul_pg_rca16_and0_4 b=u_csamul_pg_rca16_fa1_3_xor1 cin=u_csamul_pg_rca16_fa0_3_or0 fa_xor1=u_csamul_pg_rca16_fa0_4_xor1 fa_or0=u_csamul_pg_rca16_fa0_4_or0
+.subckt and_gate a=a[1] b=b[4] out=u_csamul_pg_rca16_and1_4
+.subckt fa a=u_csamul_pg_rca16_and1_4 b=u_csamul_pg_rca16_fa2_3_xor1 cin=u_csamul_pg_rca16_fa1_3_or0 fa_xor1=u_csamul_pg_rca16_fa1_4_xor1 fa_or0=u_csamul_pg_rca16_fa1_4_or0
+.subckt and_gate a=a[2] b=b[4] out=u_csamul_pg_rca16_and2_4
+.subckt fa a=u_csamul_pg_rca16_and2_4 b=u_csamul_pg_rca16_fa3_3_xor1 cin=u_csamul_pg_rca16_fa2_3_or0 fa_xor1=u_csamul_pg_rca16_fa2_4_xor1 fa_or0=u_csamul_pg_rca16_fa2_4_or0
+.subckt and_gate a=a[3] b=b[4] out=u_csamul_pg_rca16_and3_4
+.subckt fa a=u_csamul_pg_rca16_and3_4 b=u_csamul_pg_rca16_fa4_3_xor1 cin=u_csamul_pg_rca16_fa3_3_or0 fa_xor1=u_csamul_pg_rca16_fa3_4_xor1 fa_or0=u_csamul_pg_rca16_fa3_4_or0
+.subckt and_gate a=a[4] b=b[4] out=u_csamul_pg_rca16_and4_4
+.subckt fa a=u_csamul_pg_rca16_and4_4 b=u_csamul_pg_rca16_fa5_3_xor1 cin=u_csamul_pg_rca16_fa4_3_or0 fa_xor1=u_csamul_pg_rca16_fa4_4_xor1 fa_or0=u_csamul_pg_rca16_fa4_4_or0
+.subckt and_gate a=a[5] b=b[4] out=u_csamul_pg_rca16_and5_4
+.subckt fa a=u_csamul_pg_rca16_and5_4 b=u_csamul_pg_rca16_fa6_3_xor1 cin=u_csamul_pg_rca16_fa5_3_or0 fa_xor1=u_csamul_pg_rca16_fa5_4_xor1 fa_or0=u_csamul_pg_rca16_fa5_4_or0
+.subckt and_gate a=a[6] b=b[4] out=u_csamul_pg_rca16_and6_4
+.subckt fa a=u_csamul_pg_rca16_and6_4 b=u_csamul_pg_rca16_fa7_3_xor1 cin=u_csamul_pg_rca16_fa6_3_or0 fa_xor1=u_csamul_pg_rca16_fa6_4_xor1 fa_or0=u_csamul_pg_rca16_fa6_4_or0
+.subckt and_gate a=a[7] b=b[4] out=u_csamul_pg_rca16_and7_4
+.subckt fa a=u_csamul_pg_rca16_and7_4 b=u_csamul_pg_rca16_fa8_3_xor1 cin=u_csamul_pg_rca16_fa7_3_or0 fa_xor1=u_csamul_pg_rca16_fa7_4_xor1 fa_or0=u_csamul_pg_rca16_fa7_4_or0
+.subckt and_gate a=a[8] b=b[4] out=u_csamul_pg_rca16_and8_4
+.subckt fa a=u_csamul_pg_rca16_and8_4 b=u_csamul_pg_rca16_fa9_3_xor1 cin=u_csamul_pg_rca16_fa8_3_or0 fa_xor1=u_csamul_pg_rca16_fa8_4_xor1 fa_or0=u_csamul_pg_rca16_fa8_4_or0
+.subckt and_gate a=a[9] b=b[4] out=u_csamul_pg_rca16_and9_4
+.subckt fa a=u_csamul_pg_rca16_and9_4 b=u_csamul_pg_rca16_fa10_3_xor1 cin=u_csamul_pg_rca16_fa9_3_or0 fa_xor1=u_csamul_pg_rca16_fa9_4_xor1 fa_or0=u_csamul_pg_rca16_fa9_4_or0
+.subckt and_gate a=a[10] b=b[4] out=u_csamul_pg_rca16_and10_4
+.subckt fa a=u_csamul_pg_rca16_and10_4 b=u_csamul_pg_rca16_fa11_3_xor1 cin=u_csamul_pg_rca16_fa10_3_or0 fa_xor1=u_csamul_pg_rca16_fa10_4_xor1 fa_or0=u_csamul_pg_rca16_fa10_4_or0
+.subckt and_gate a=a[11] b=b[4] out=u_csamul_pg_rca16_and11_4
+.subckt fa a=u_csamul_pg_rca16_and11_4 b=u_csamul_pg_rca16_fa12_3_xor1 cin=u_csamul_pg_rca16_fa11_3_or0 fa_xor1=u_csamul_pg_rca16_fa11_4_xor1 fa_or0=u_csamul_pg_rca16_fa11_4_or0
+.subckt and_gate a=a[12] b=b[4] out=u_csamul_pg_rca16_and12_4
+.subckt fa a=u_csamul_pg_rca16_and12_4 b=u_csamul_pg_rca16_fa13_3_xor1 cin=u_csamul_pg_rca16_fa12_3_or0 fa_xor1=u_csamul_pg_rca16_fa12_4_xor1 fa_or0=u_csamul_pg_rca16_fa12_4_or0
+.subckt and_gate a=a[13] b=b[4] out=u_csamul_pg_rca16_and13_4
+.subckt fa a=u_csamul_pg_rca16_and13_4 b=u_csamul_pg_rca16_fa14_3_xor1 cin=u_csamul_pg_rca16_fa13_3_or0 fa_xor1=u_csamul_pg_rca16_fa13_4_xor1 fa_or0=u_csamul_pg_rca16_fa13_4_or0
+.subckt and_gate a=a[14] b=b[4] out=u_csamul_pg_rca16_and14_4
+.subckt fa a=u_csamul_pg_rca16_and14_4 b=u_csamul_pg_rca16_and15_3 cin=u_csamul_pg_rca16_fa14_3_or0 fa_xor1=u_csamul_pg_rca16_fa14_4_xor1 fa_or0=u_csamul_pg_rca16_fa14_4_or0
+.subckt and_gate a=a[15] b=b[4] out=u_csamul_pg_rca16_and15_4
+.subckt and_gate a=a[0] b=b[5] out=u_csamul_pg_rca16_and0_5
+.subckt fa a=u_csamul_pg_rca16_and0_5 b=u_csamul_pg_rca16_fa1_4_xor1 cin=u_csamul_pg_rca16_fa0_4_or0 fa_xor1=u_csamul_pg_rca16_fa0_5_xor1 fa_or0=u_csamul_pg_rca16_fa0_5_or0
+.subckt and_gate a=a[1] b=b[5] out=u_csamul_pg_rca16_and1_5
+.subckt fa a=u_csamul_pg_rca16_and1_5 b=u_csamul_pg_rca16_fa2_4_xor1 cin=u_csamul_pg_rca16_fa1_4_or0 fa_xor1=u_csamul_pg_rca16_fa1_5_xor1 fa_or0=u_csamul_pg_rca16_fa1_5_or0
+.subckt and_gate a=a[2] b=b[5] out=u_csamul_pg_rca16_and2_5
+.subckt fa a=u_csamul_pg_rca16_and2_5 b=u_csamul_pg_rca16_fa3_4_xor1 cin=u_csamul_pg_rca16_fa2_4_or0 fa_xor1=u_csamul_pg_rca16_fa2_5_xor1 fa_or0=u_csamul_pg_rca16_fa2_5_or0
+.subckt and_gate a=a[3] b=b[5] out=u_csamul_pg_rca16_and3_5
+.subckt fa a=u_csamul_pg_rca16_and3_5 b=u_csamul_pg_rca16_fa4_4_xor1 cin=u_csamul_pg_rca16_fa3_4_or0 fa_xor1=u_csamul_pg_rca16_fa3_5_xor1 fa_or0=u_csamul_pg_rca16_fa3_5_or0
+.subckt and_gate a=a[4] b=b[5] out=u_csamul_pg_rca16_and4_5
+.subckt fa a=u_csamul_pg_rca16_and4_5 b=u_csamul_pg_rca16_fa5_4_xor1 cin=u_csamul_pg_rca16_fa4_4_or0 fa_xor1=u_csamul_pg_rca16_fa4_5_xor1 fa_or0=u_csamul_pg_rca16_fa4_5_or0
+.subckt and_gate a=a[5] b=b[5] out=u_csamul_pg_rca16_and5_5
+.subckt fa a=u_csamul_pg_rca16_and5_5 b=u_csamul_pg_rca16_fa6_4_xor1 cin=u_csamul_pg_rca16_fa5_4_or0 fa_xor1=u_csamul_pg_rca16_fa5_5_xor1 fa_or0=u_csamul_pg_rca16_fa5_5_or0
+.subckt and_gate a=a[6] b=b[5] out=u_csamul_pg_rca16_and6_5
+.subckt fa a=u_csamul_pg_rca16_and6_5 b=u_csamul_pg_rca16_fa7_4_xor1 cin=u_csamul_pg_rca16_fa6_4_or0 fa_xor1=u_csamul_pg_rca16_fa6_5_xor1 fa_or0=u_csamul_pg_rca16_fa6_5_or0
+.subckt and_gate a=a[7] b=b[5] out=u_csamul_pg_rca16_and7_5
+.subckt fa a=u_csamul_pg_rca16_and7_5 b=u_csamul_pg_rca16_fa8_4_xor1 cin=u_csamul_pg_rca16_fa7_4_or0 fa_xor1=u_csamul_pg_rca16_fa7_5_xor1 fa_or0=u_csamul_pg_rca16_fa7_5_or0
+.subckt and_gate a=a[8] b=b[5] out=u_csamul_pg_rca16_and8_5
+.subckt fa a=u_csamul_pg_rca16_and8_5 b=u_csamul_pg_rca16_fa9_4_xor1 cin=u_csamul_pg_rca16_fa8_4_or0 fa_xor1=u_csamul_pg_rca16_fa8_5_xor1 fa_or0=u_csamul_pg_rca16_fa8_5_or0
+.subckt and_gate a=a[9] b=b[5] out=u_csamul_pg_rca16_and9_5
+.subckt fa a=u_csamul_pg_rca16_and9_5 b=u_csamul_pg_rca16_fa10_4_xor1 cin=u_csamul_pg_rca16_fa9_4_or0 fa_xor1=u_csamul_pg_rca16_fa9_5_xor1 fa_or0=u_csamul_pg_rca16_fa9_5_or0
+.subckt and_gate a=a[10] b=b[5] out=u_csamul_pg_rca16_and10_5
+.subckt fa a=u_csamul_pg_rca16_and10_5 b=u_csamul_pg_rca16_fa11_4_xor1 cin=u_csamul_pg_rca16_fa10_4_or0 fa_xor1=u_csamul_pg_rca16_fa10_5_xor1 fa_or0=u_csamul_pg_rca16_fa10_5_or0
+.subckt and_gate a=a[11] b=b[5] out=u_csamul_pg_rca16_and11_5
+.subckt fa a=u_csamul_pg_rca16_and11_5 b=u_csamul_pg_rca16_fa12_4_xor1 cin=u_csamul_pg_rca16_fa11_4_or0 fa_xor1=u_csamul_pg_rca16_fa11_5_xor1 fa_or0=u_csamul_pg_rca16_fa11_5_or0
+.subckt and_gate a=a[12] b=b[5] out=u_csamul_pg_rca16_and12_5
+.subckt fa a=u_csamul_pg_rca16_and12_5 b=u_csamul_pg_rca16_fa13_4_xor1 cin=u_csamul_pg_rca16_fa12_4_or0 fa_xor1=u_csamul_pg_rca16_fa12_5_xor1 fa_or0=u_csamul_pg_rca16_fa12_5_or0
+.subckt and_gate a=a[13] b=b[5] out=u_csamul_pg_rca16_and13_5
+.subckt fa a=u_csamul_pg_rca16_and13_5 b=u_csamul_pg_rca16_fa14_4_xor1 cin=u_csamul_pg_rca16_fa13_4_or0 fa_xor1=u_csamul_pg_rca16_fa13_5_xor1 fa_or0=u_csamul_pg_rca16_fa13_5_or0
+.subckt and_gate a=a[14] b=b[5] out=u_csamul_pg_rca16_and14_5
+.subckt fa a=u_csamul_pg_rca16_and14_5 b=u_csamul_pg_rca16_and15_4 cin=u_csamul_pg_rca16_fa14_4_or0 fa_xor1=u_csamul_pg_rca16_fa14_5_xor1 fa_or0=u_csamul_pg_rca16_fa14_5_or0
+.subckt and_gate a=a[15] b=b[5] out=u_csamul_pg_rca16_and15_5
+.subckt and_gate a=a[0] b=b[6] out=u_csamul_pg_rca16_and0_6
+.subckt fa a=u_csamul_pg_rca16_and0_6 b=u_csamul_pg_rca16_fa1_5_xor1 cin=u_csamul_pg_rca16_fa0_5_or0 fa_xor1=u_csamul_pg_rca16_fa0_6_xor1 fa_or0=u_csamul_pg_rca16_fa0_6_or0
+.subckt and_gate a=a[1] b=b[6] out=u_csamul_pg_rca16_and1_6
+.subckt fa a=u_csamul_pg_rca16_and1_6 b=u_csamul_pg_rca16_fa2_5_xor1 cin=u_csamul_pg_rca16_fa1_5_or0 fa_xor1=u_csamul_pg_rca16_fa1_6_xor1 fa_or0=u_csamul_pg_rca16_fa1_6_or0
+.subckt and_gate a=a[2] b=b[6] out=u_csamul_pg_rca16_and2_6
+.subckt fa a=u_csamul_pg_rca16_and2_6 b=u_csamul_pg_rca16_fa3_5_xor1 cin=u_csamul_pg_rca16_fa2_5_or0 fa_xor1=u_csamul_pg_rca16_fa2_6_xor1 fa_or0=u_csamul_pg_rca16_fa2_6_or0
+.subckt and_gate a=a[3] b=b[6] out=u_csamul_pg_rca16_and3_6
+.subckt fa a=u_csamul_pg_rca16_and3_6 b=u_csamul_pg_rca16_fa4_5_xor1 cin=u_csamul_pg_rca16_fa3_5_or0 fa_xor1=u_csamul_pg_rca16_fa3_6_xor1 fa_or0=u_csamul_pg_rca16_fa3_6_or0
+.subckt and_gate a=a[4] b=b[6] out=u_csamul_pg_rca16_and4_6
+.subckt fa a=u_csamul_pg_rca16_and4_6 b=u_csamul_pg_rca16_fa5_5_xor1 cin=u_csamul_pg_rca16_fa4_5_or0 fa_xor1=u_csamul_pg_rca16_fa4_6_xor1 fa_or0=u_csamul_pg_rca16_fa4_6_or0
+.subckt and_gate a=a[5] b=b[6] out=u_csamul_pg_rca16_and5_6
+.subckt fa a=u_csamul_pg_rca16_and5_6 b=u_csamul_pg_rca16_fa6_5_xor1 cin=u_csamul_pg_rca16_fa5_5_or0 fa_xor1=u_csamul_pg_rca16_fa5_6_xor1 fa_or0=u_csamul_pg_rca16_fa5_6_or0
+.subckt and_gate a=a[6] b=b[6] out=u_csamul_pg_rca16_and6_6
+.subckt fa a=u_csamul_pg_rca16_and6_6 b=u_csamul_pg_rca16_fa7_5_xor1 cin=u_csamul_pg_rca16_fa6_5_or0 fa_xor1=u_csamul_pg_rca16_fa6_6_xor1 fa_or0=u_csamul_pg_rca16_fa6_6_or0
+.subckt and_gate a=a[7] b=b[6] out=u_csamul_pg_rca16_and7_6
+.subckt fa a=u_csamul_pg_rca16_and7_6 b=u_csamul_pg_rca16_fa8_5_xor1 cin=u_csamul_pg_rca16_fa7_5_or0 fa_xor1=u_csamul_pg_rca16_fa7_6_xor1 fa_or0=u_csamul_pg_rca16_fa7_6_or0
+.subckt and_gate a=a[8] b=b[6] out=u_csamul_pg_rca16_and8_6
+.subckt fa a=u_csamul_pg_rca16_and8_6 b=u_csamul_pg_rca16_fa9_5_xor1 cin=u_csamul_pg_rca16_fa8_5_or0 fa_xor1=u_csamul_pg_rca16_fa8_6_xor1 fa_or0=u_csamul_pg_rca16_fa8_6_or0
+.subckt and_gate a=a[9] b=b[6] out=u_csamul_pg_rca16_and9_6
+.subckt fa a=u_csamul_pg_rca16_and9_6 b=u_csamul_pg_rca16_fa10_5_xor1 cin=u_csamul_pg_rca16_fa9_5_or0 fa_xor1=u_csamul_pg_rca16_fa9_6_xor1 fa_or0=u_csamul_pg_rca16_fa9_6_or0
+.subckt and_gate a=a[10] b=b[6] out=u_csamul_pg_rca16_and10_6
+.subckt fa a=u_csamul_pg_rca16_and10_6 b=u_csamul_pg_rca16_fa11_5_xor1 cin=u_csamul_pg_rca16_fa10_5_or0 fa_xor1=u_csamul_pg_rca16_fa10_6_xor1 fa_or0=u_csamul_pg_rca16_fa10_6_or0
+.subckt and_gate a=a[11] b=b[6] out=u_csamul_pg_rca16_and11_6
+.subckt fa a=u_csamul_pg_rca16_and11_6 b=u_csamul_pg_rca16_fa12_5_xor1 cin=u_csamul_pg_rca16_fa11_5_or0 fa_xor1=u_csamul_pg_rca16_fa11_6_xor1 fa_or0=u_csamul_pg_rca16_fa11_6_or0
+.subckt and_gate a=a[12] b=b[6] out=u_csamul_pg_rca16_and12_6
+.subckt fa a=u_csamul_pg_rca16_and12_6 b=u_csamul_pg_rca16_fa13_5_xor1 cin=u_csamul_pg_rca16_fa12_5_or0 fa_xor1=u_csamul_pg_rca16_fa12_6_xor1 fa_or0=u_csamul_pg_rca16_fa12_6_or0
+.subckt and_gate a=a[13] b=b[6] out=u_csamul_pg_rca16_and13_6
+.subckt fa a=u_csamul_pg_rca16_and13_6 b=u_csamul_pg_rca16_fa14_5_xor1 cin=u_csamul_pg_rca16_fa13_5_or0 fa_xor1=u_csamul_pg_rca16_fa13_6_xor1 fa_or0=u_csamul_pg_rca16_fa13_6_or0
+.subckt and_gate a=a[14] b=b[6] out=u_csamul_pg_rca16_and14_6
+.subckt fa a=u_csamul_pg_rca16_and14_6 b=u_csamul_pg_rca16_and15_5 cin=u_csamul_pg_rca16_fa14_5_or0 fa_xor1=u_csamul_pg_rca16_fa14_6_xor1 fa_or0=u_csamul_pg_rca16_fa14_6_or0
+.subckt and_gate a=a[15] b=b[6] out=u_csamul_pg_rca16_and15_6
+.subckt and_gate a=a[0] b=b[7] out=u_csamul_pg_rca16_and0_7
+.subckt fa a=u_csamul_pg_rca16_and0_7 b=u_csamul_pg_rca16_fa1_6_xor1 cin=u_csamul_pg_rca16_fa0_6_or0 fa_xor1=u_csamul_pg_rca16_fa0_7_xor1 fa_or0=u_csamul_pg_rca16_fa0_7_or0
+.subckt and_gate a=a[1] b=b[7] out=u_csamul_pg_rca16_and1_7
+.subckt fa a=u_csamul_pg_rca16_and1_7 b=u_csamul_pg_rca16_fa2_6_xor1 cin=u_csamul_pg_rca16_fa1_6_or0 fa_xor1=u_csamul_pg_rca16_fa1_7_xor1 fa_or0=u_csamul_pg_rca16_fa1_7_or0
+.subckt and_gate a=a[2] b=b[7] out=u_csamul_pg_rca16_and2_7
+.subckt fa a=u_csamul_pg_rca16_and2_7 b=u_csamul_pg_rca16_fa3_6_xor1 cin=u_csamul_pg_rca16_fa2_6_or0 fa_xor1=u_csamul_pg_rca16_fa2_7_xor1 fa_or0=u_csamul_pg_rca16_fa2_7_or0
+.subckt and_gate a=a[3] b=b[7] out=u_csamul_pg_rca16_and3_7
+.subckt fa a=u_csamul_pg_rca16_and3_7 b=u_csamul_pg_rca16_fa4_6_xor1 cin=u_csamul_pg_rca16_fa3_6_or0 fa_xor1=u_csamul_pg_rca16_fa3_7_xor1 fa_or0=u_csamul_pg_rca16_fa3_7_or0
+.subckt and_gate a=a[4] b=b[7] out=u_csamul_pg_rca16_and4_7
+.subckt fa a=u_csamul_pg_rca16_and4_7 b=u_csamul_pg_rca16_fa5_6_xor1 cin=u_csamul_pg_rca16_fa4_6_or0 fa_xor1=u_csamul_pg_rca16_fa4_7_xor1 fa_or0=u_csamul_pg_rca16_fa4_7_or0
+.subckt and_gate a=a[5] b=b[7] out=u_csamul_pg_rca16_and5_7
+.subckt fa a=u_csamul_pg_rca16_and5_7 b=u_csamul_pg_rca16_fa6_6_xor1 cin=u_csamul_pg_rca16_fa5_6_or0 fa_xor1=u_csamul_pg_rca16_fa5_7_xor1 fa_or0=u_csamul_pg_rca16_fa5_7_or0
+.subckt and_gate a=a[6] b=b[7] out=u_csamul_pg_rca16_and6_7
+.subckt fa a=u_csamul_pg_rca16_and6_7 b=u_csamul_pg_rca16_fa7_6_xor1 cin=u_csamul_pg_rca16_fa6_6_or0 fa_xor1=u_csamul_pg_rca16_fa6_7_xor1 fa_or0=u_csamul_pg_rca16_fa6_7_or0
+.subckt and_gate a=a[7] b=b[7] out=u_csamul_pg_rca16_and7_7
+.subckt fa a=u_csamul_pg_rca16_and7_7 b=u_csamul_pg_rca16_fa8_6_xor1 cin=u_csamul_pg_rca16_fa7_6_or0 fa_xor1=u_csamul_pg_rca16_fa7_7_xor1 fa_or0=u_csamul_pg_rca16_fa7_7_or0
+.subckt and_gate a=a[8] b=b[7] out=u_csamul_pg_rca16_and8_7
+.subckt fa a=u_csamul_pg_rca16_and8_7 b=u_csamul_pg_rca16_fa9_6_xor1 cin=u_csamul_pg_rca16_fa8_6_or0 fa_xor1=u_csamul_pg_rca16_fa8_7_xor1 fa_or0=u_csamul_pg_rca16_fa8_7_or0
+.subckt and_gate a=a[9] b=b[7] out=u_csamul_pg_rca16_and9_7
+.subckt fa a=u_csamul_pg_rca16_and9_7 b=u_csamul_pg_rca16_fa10_6_xor1 cin=u_csamul_pg_rca16_fa9_6_or0 fa_xor1=u_csamul_pg_rca16_fa9_7_xor1 fa_or0=u_csamul_pg_rca16_fa9_7_or0
+.subckt and_gate a=a[10] b=b[7] out=u_csamul_pg_rca16_and10_7
+.subckt fa a=u_csamul_pg_rca16_and10_7 b=u_csamul_pg_rca16_fa11_6_xor1 cin=u_csamul_pg_rca16_fa10_6_or0 fa_xor1=u_csamul_pg_rca16_fa10_7_xor1 fa_or0=u_csamul_pg_rca16_fa10_7_or0
+.subckt and_gate a=a[11] b=b[7] out=u_csamul_pg_rca16_and11_7
+.subckt fa a=u_csamul_pg_rca16_and11_7 b=u_csamul_pg_rca16_fa12_6_xor1 cin=u_csamul_pg_rca16_fa11_6_or0 fa_xor1=u_csamul_pg_rca16_fa11_7_xor1 fa_or0=u_csamul_pg_rca16_fa11_7_or0
+.subckt and_gate a=a[12] b=b[7] out=u_csamul_pg_rca16_and12_7
+.subckt fa a=u_csamul_pg_rca16_and12_7 b=u_csamul_pg_rca16_fa13_6_xor1 cin=u_csamul_pg_rca16_fa12_6_or0 fa_xor1=u_csamul_pg_rca16_fa12_7_xor1 fa_or0=u_csamul_pg_rca16_fa12_7_or0
+.subckt and_gate a=a[13] b=b[7] out=u_csamul_pg_rca16_and13_7
+.subckt fa a=u_csamul_pg_rca16_and13_7 b=u_csamul_pg_rca16_fa14_6_xor1 cin=u_csamul_pg_rca16_fa13_6_or0 fa_xor1=u_csamul_pg_rca16_fa13_7_xor1 fa_or0=u_csamul_pg_rca16_fa13_7_or0
+.subckt and_gate a=a[14] b=b[7] out=u_csamul_pg_rca16_and14_7
+.subckt fa a=u_csamul_pg_rca16_and14_7 b=u_csamul_pg_rca16_and15_6 cin=u_csamul_pg_rca16_fa14_6_or0 fa_xor1=u_csamul_pg_rca16_fa14_7_xor1 fa_or0=u_csamul_pg_rca16_fa14_7_or0
+.subckt and_gate a=a[15] b=b[7] out=u_csamul_pg_rca16_and15_7
+.subckt and_gate a=a[0] b=b[8] out=u_csamul_pg_rca16_and0_8
+.subckt fa a=u_csamul_pg_rca16_and0_8 b=u_csamul_pg_rca16_fa1_7_xor1 cin=u_csamul_pg_rca16_fa0_7_or0 fa_xor1=u_csamul_pg_rca16_fa0_8_xor1 fa_or0=u_csamul_pg_rca16_fa0_8_or0
+.subckt and_gate a=a[1] b=b[8] out=u_csamul_pg_rca16_and1_8
+.subckt fa a=u_csamul_pg_rca16_and1_8 b=u_csamul_pg_rca16_fa2_7_xor1 cin=u_csamul_pg_rca16_fa1_7_or0 fa_xor1=u_csamul_pg_rca16_fa1_8_xor1 fa_or0=u_csamul_pg_rca16_fa1_8_or0
+.subckt and_gate a=a[2] b=b[8] out=u_csamul_pg_rca16_and2_8
+.subckt fa a=u_csamul_pg_rca16_and2_8 b=u_csamul_pg_rca16_fa3_7_xor1 cin=u_csamul_pg_rca16_fa2_7_or0 fa_xor1=u_csamul_pg_rca16_fa2_8_xor1 fa_or0=u_csamul_pg_rca16_fa2_8_or0
+.subckt and_gate a=a[3] b=b[8] out=u_csamul_pg_rca16_and3_8
+.subckt fa a=u_csamul_pg_rca16_and3_8 b=u_csamul_pg_rca16_fa4_7_xor1 cin=u_csamul_pg_rca16_fa3_7_or0 fa_xor1=u_csamul_pg_rca16_fa3_8_xor1 fa_or0=u_csamul_pg_rca16_fa3_8_or0
+.subckt and_gate a=a[4] b=b[8] out=u_csamul_pg_rca16_and4_8
+.subckt fa a=u_csamul_pg_rca16_and4_8 b=u_csamul_pg_rca16_fa5_7_xor1 cin=u_csamul_pg_rca16_fa4_7_or0 fa_xor1=u_csamul_pg_rca16_fa4_8_xor1 fa_or0=u_csamul_pg_rca16_fa4_8_or0
+.subckt and_gate a=a[5] b=b[8] out=u_csamul_pg_rca16_and5_8
+.subckt fa a=u_csamul_pg_rca16_and5_8 b=u_csamul_pg_rca16_fa6_7_xor1 cin=u_csamul_pg_rca16_fa5_7_or0 fa_xor1=u_csamul_pg_rca16_fa5_8_xor1 fa_or0=u_csamul_pg_rca16_fa5_8_or0
+.subckt and_gate a=a[6] b=b[8] out=u_csamul_pg_rca16_and6_8
+.subckt fa a=u_csamul_pg_rca16_and6_8 b=u_csamul_pg_rca16_fa7_7_xor1 cin=u_csamul_pg_rca16_fa6_7_or0 fa_xor1=u_csamul_pg_rca16_fa6_8_xor1 fa_or0=u_csamul_pg_rca16_fa6_8_or0
+.subckt and_gate a=a[7] b=b[8] out=u_csamul_pg_rca16_and7_8
+.subckt fa a=u_csamul_pg_rca16_and7_8 b=u_csamul_pg_rca16_fa8_7_xor1 cin=u_csamul_pg_rca16_fa7_7_or0 fa_xor1=u_csamul_pg_rca16_fa7_8_xor1 fa_or0=u_csamul_pg_rca16_fa7_8_or0
+.subckt and_gate a=a[8] b=b[8] out=u_csamul_pg_rca16_and8_8
+.subckt fa a=u_csamul_pg_rca16_and8_8 b=u_csamul_pg_rca16_fa9_7_xor1 cin=u_csamul_pg_rca16_fa8_7_or0 fa_xor1=u_csamul_pg_rca16_fa8_8_xor1 fa_or0=u_csamul_pg_rca16_fa8_8_or0
+.subckt and_gate a=a[9] b=b[8] out=u_csamul_pg_rca16_and9_8
+.subckt fa a=u_csamul_pg_rca16_and9_8 b=u_csamul_pg_rca16_fa10_7_xor1 cin=u_csamul_pg_rca16_fa9_7_or0 fa_xor1=u_csamul_pg_rca16_fa9_8_xor1 fa_or0=u_csamul_pg_rca16_fa9_8_or0
+.subckt and_gate a=a[10] b=b[8] out=u_csamul_pg_rca16_and10_8
+.subckt fa a=u_csamul_pg_rca16_and10_8 b=u_csamul_pg_rca16_fa11_7_xor1 cin=u_csamul_pg_rca16_fa10_7_or0 fa_xor1=u_csamul_pg_rca16_fa10_8_xor1 fa_or0=u_csamul_pg_rca16_fa10_8_or0
+.subckt and_gate a=a[11] b=b[8] out=u_csamul_pg_rca16_and11_8
+.subckt fa a=u_csamul_pg_rca16_and11_8 b=u_csamul_pg_rca16_fa12_7_xor1 cin=u_csamul_pg_rca16_fa11_7_or0 fa_xor1=u_csamul_pg_rca16_fa11_8_xor1 fa_or0=u_csamul_pg_rca16_fa11_8_or0
+.subckt and_gate a=a[12] b=b[8] out=u_csamul_pg_rca16_and12_8
+.subckt fa a=u_csamul_pg_rca16_and12_8 b=u_csamul_pg_rca16_fa13_7_xor1 cin=u_csamul_pg_rca16_fa12_7_or0 fa_xor1=u_csamul_pg_rca16_fa12_8_xor1 fa_or0=u_csamul_pg_rca16_fa12_8_or0
+.subckt and_gate a=a[13] b=b[8] out=u_csamul_pg_rca16_and13_8
+.subckt fa a=u_csamul_pg_rca16_and13_8 b=u_csamul_pg_rca16_fa14_7_xor1 cin=u_csamul_pg_rca16_fa13_7_or0 fa_xor1=u_csamul_pg_rca16_fa13_8_xor1 fa_or0=u_csamul_pg_rca16_fa13_8_or0
+.subckt and_gate a=a[14] b=b[8] out=u_csamul_pg_rca16_and14_8
+.subckt fa a=u_csamul_pg_rca16_and14_8 b=u_csamul_pg_rca16_and15_7 cin=u_csamul_pg_rca16_fa14_7_or0 fa_xor1=u_csamul_pg_rca16_fa14_8_xor1 fa_or0=u_csamul_pg_rca16_fa14_8_or0
+.subckt and_gate a=a[15] b=b[8] out=u_csamul_pg_rca16_and15_8
+.subckt and_gate a=a[0] b=b[9] out=u_csamul_pg_rca16_and0_9
+.subckt fa a=u_csamul_pg_rca16_and0_9 b=u_csamul_pg_rca16_fa1_8_xor1 cin=u_csamul_pg_rca16_fa0_8_or0 fa_xor1=u_csamul_pg_rca16_fa0_9_xor1 fa_or0=u_csamul_pg_rca16_fa0_9_or0
+.subckt and_gate a=a[1] b=b[9] out=u_csamul_pg_rca16_and1_9
+.subckt fa a=u_csamul_pg_rca16_and1_9 b=u_csamul_pg_rca16_fa2_8_xor1 cin=u_csamul_pg_rca16_fa1_8_or0 fa_xor1=u_csamul_pg_rca16_fa1_9_xor1 fa_or0=u_csamul_pg_rca16_fa1_9_or0
+.subckt and_gate a=a[2] b=b[9] out=u_csamul_pg_rca16_and2_9
+.subckt fa a=u_csamul_pg_rca16_and2_9 b=u_csamul_pg_rca16_fa3_8_xor1 cin=u_csamul_pg_rca16_fa2_8_or0 fa_xor1=u_csamul_pg_rca16_fa2_9_xor1 fa_or0=u_csamul_pg_rca16_fa2_9_or0
+.subckt and_gate a=a[3] b=b[9] out=u_csamul_pg_rca16_and3_9
+.subckt fa a=u_csamul_pg_rca16_and3_9 b=u_csamul_pg_rca16_fa4_8_xor1 cin=u_csamul_pg_rca16_fa3_8_or0 fa_xor1=u_csamul_pg_rca16_fa3_9_xor1 fa_or0=u_csamul_pg_rca16_fa3_9_or0
+.subckt and_gate a=a[4] b=b[9] out=u_csamul_pg_rca16_and4_9
+.subckt fa a=u_csamul_pg_rca16_and4_9 b=u_csamul_pg_rca16_fa5_8_xor1 cin=u_csamul_pg_rca16_fa4_8_or0 fa_xor1=u_csamul_pg_rca16_fa4_9_xor1 fa_or0=u_csamul_pg_rca16_fa4_9_or0
+.subckt and_gate a=a[5] b=b[9] out=u_csamul_pg_rca16_and5_9
+.subckt fa a=u_csamul_pg_rca16_and5_9 b=u_csamul_pg_rca16_fa6_8_xor1 cin=u_csamul_pg_rca16_fa5_8_or0 fa_xor1=u_csamul_pg_rca16_fa5_9_xor1 fa_or0=u_csamul_pg_rca16_fa5_9_or0
+.subckt and_gate a=a[6] b=b[9] out=u_csamul_pg_rca16_and6_9
+.subckt fa a=u_csamul_pg_rca16_and6_9 b=u_csamul_pg_rca16_fa7_8_xor1 cin=u_csamul_pg_rca16_fa6_8_or0 fa_xor1=u_csamul_pg_rca16_fa6_9_xor1 fa_or0=u_csamul_pg_rca16_fa6_9_or0
+.subckt and_gate a=a[7] b=b[9] out=u_csamul_pg_rca16_and7_9
+.subckt fa a=u_csamul_pg_rca16_and7_9 b=u_csamul_pg_rca16_fa8_8_xor1 cin=u_csamul_pg_rca16_fa7_8_or0 fa_xor1=u_csamul_pg_rca16_fa7_9_xor1 fa_or0=u_csamul_pg_rca16_fa7_9_or0
+.subckt and_gate a=a[8] b=b[9] out=u_csamul_pg_rca16_and8_9
+.subckt fa a=u_csamul_pg_rca16_and8_9 b=u_csamul_pg_rca16_fa9_8_xor1 cin=u_csamul_pg_rca16_fa8_8_or0 fa_xor1=u_csamul_pg_rca16_fa8_9_xor1 fa_or0=u_csamul_pg_rca16_fa8_9_or0
+.subckt and_gate a=a[9] b=b[9] out=u_csamul_pg_rca16_and9_9
+.subckt fa a=u_csamul_pg_rca16_and9_9 b=u_csamul_pg_rca16_fa10_8_xor1 cin=u_csamul_pg_rca16_fa9_8_or0 fa_xor1=u_csamul_pg_rca16_fa9_9_xor1 fa_or0=u_csamul_pg_rca16_fa9_9_or0
+.subckt and_gate a=a[10] b=b[9] out=u_csamul_pg_rca16_and10_9
+.subckt fa a=u_csamul_pg_rca16_and10_9 b=u_csamul_pg_rca16_fa11_8_xor1 cin=u_csamul_pg_rca16_fa10_8_or0 fa_xor1=u_csamul_pg_rca16_fa10_9_xor1 fa_or0=u_csamul_pg_rca16_fa10_9_or0
+.subckt and_gate a=a[11] b=b[9] out=u_csamul_pg_rca16_and11_9
+.subckt fa a=u_csamul_pg_rca16_and11_9 b=u_csamul_pg_rca16_fa12_8_xor1 cin=u_csamul_pg_rca16_fa11_8_or0 fa_xor1=u_csamul_pg_rca16_fa11_9_xor1 fa_or0=u_csamul_pg_rca16_fa11_9_or0
+.subckt and_gate a=a[12] b=b[9] out=u_csamul_pg_rca16_and12_9
+.subckt fa a=u_csamul_pg_rca16_and12_9 b=u_csamul_pg_rca16_fa13_8_xor1 cin=u_csamul_pg_rca16_fa12_8_or0 fa_xor1=u_csamul_pg_rca16_fa12_9_xor1 fa_or0=u_csamul_pg_rca16_fa12_9_or0
+.subckt and_gate a=a[13] b=b[9] out=u_csamul_pg_rca16_and13_9
+.subckt fa a=u_csamul_pg_rca16_and13_9 b=u_csamul_pg_rca16_fa14_8_xor1 cin=u_csamul_pg_rca16_fa13_8_or0 fa_xor1=u_csamul_pg_rca16_fa13_9_xor1 fa_or0=u_csamul_pg_rca16_fa13_9_or0
+.subckt and_gate a=a[14] b=b[9] out=u_csamul_pg_rca16_and14_9
+.subckt fa a=u_csamul_pg_rca16_and14_9 b=u_csamul_pg_rca16_and15_8 cin=u_csamul_pg_rca16_fa14_8_or0 fa_xor1=u_csamul_pg_rca16_fa14_9_xor1 fa_or0=u_csamul_pg_rca16_fa14_9_or0
+.subckt and_gate a=a[15] b=b[9] out=u_csamul_pg_rca16_and15_9
+.subckt and_gate a=a[0] b=b[10] out=u_csamul_pg_rca16_and0_10
+.subckt fa a=u_csamul_pg_rca16_and0_10 b=u_csamul_pg_rca16_fa1_9_xor1 cin=u_csamul_pg_rca16_fa0_9_or0 fa_xor1=u_csamul_pg_rca16_fa0_10_xor1 fa_or0=u_csamul_pg_rca16_fa0_10_or0
+.subckt and_gate a=a[1] b=b[10] out=u_csamul_pg_rca16_and1_10
+.subckt fa a=u_csamul_pg_rca16_and1_10 b=u_csamul_pg_rca16_fa2_9_xor1 cin=u_csamul_pg_rca16_fa1_9_or0 fa_xor1=u_csamul_pg_rca16_fa1_10_xor1 fa_or0=u_csamul_pg_rca16_fa1_10_or0
+.subckt and_gate a=a[2] b=b[10] out=u_csamul_pg_rca16_and2_10
+.subckt fa a=u_csamul_pg_rca16_and2_10 b=u_csamul_pg_rca16_fa3_9_xor1 cin=u_csamul_pg_rca16_fa2_9_or0 fa_xor1=u_csamul_pg_rca16_fa2_10_xor1 fa_or0=u_csamul_pg_rca16_fa2_10_or0
+.subckt and_gate a=a[3] b=b[10] out=u_csamul_pg_rca16_and3_10
+.subckt fa a=u_csamul_pg_rca16_and3_10 b=u_csamul_pg_rca16_fa4_9_xor1 cin=u_csamul_pg_rca16_fa3_9_or0 fa_xor1=u_csamul_pg_rca16_fa3_10_xor1 fa_or0=u_csamul_pg_rca16_fa3_10_or0
+.subckt and_gate a=a[4] b=b[10] out=u_csamul_pg_rca16_and4_10
+.subckt fa a=u_csamul_pg_rca16_and4_10 b=u_csamul_pg_rca16_fa5_9_xor1 cin=u_csamul_pg_rca16_fa4_9_or0 fa_xor1=u_csamul_pg_rca16_fa4_10_xor1 fa_or0=u_csamul_pg_rca16_fa4_10_or0
+.subckt and_gate a=a[5] b=b[10] out=u_csamul_pg_rca16_and5_10
+.subckt fa a=u_csamul_pg_rca16_and5_10 b=u_csamul_pg_rca16_fa6_9_xor1 cin=u_csamul_pg_rca16_fa5_9_or0 fa_xor1=u_csamul_pg_rca16_fa5_10_xor1 fa_or0=u_csamul_pg_rca16_fa5_10_or0
+.subckt and_gate a=a[6] b=b[10] out=u_csamul_pg_rca16_and6_10
+.subckt fa a=u_csamul_pg_rca16_and6_10 b=u_csamul_pg_rca16_fa7_9_xor1 cin=u_csamul_pg_rca16_fa6_9_or0 fa_xor1=u_csamul_pg_rca16_fa6_10_xor1 fa_or0=u_csamul_pg_rca16_fa6_10_or0
+.subckt and_gate a=a[7] b=b[10] out=u_csamul_pg_rca16_and7_10
+.subckt fa a=u_csamul_pg_rca16_and7_10 b=u_csamul_pg_rca16_fa8_9_xor1 cin=u_csamul_pg_rca16_fa7_9_or0 fa_xor1=u_csamul_pg_rca16_fa7_10_xor1 fa_or0=u_csamul_pg_rca16_fa7_10_or0
+.subckt and_gate a=a[8] b=b[10] out=u_csamul_pg_rca16_and8_10
+.subckt fa a=u_csamul_pg_rca16_and8_10 b=u_csamul_pg_rca16_fa9_9_xor1 cin=u_csamul_pg_rca16_fa8_9_or0 fa_xor1=u_csamul_pg_rca16_fa8_10_xor1 fa_or0=u_csamul_pg_rca16_fa8_10_or0
+.subckt and_gate a=a[9] b=b[10] out=u_csamul_pg_rca16_and9_10
+.subckt fa a=u_csamul_pg_rca16_and9_10 b=u_csamul_pg_rca16_fa10_9_xor1 cin=u_csamul_pg_rca16_fa9_9_or0 fa_xor1=u_csamul_pg_rca16_fa9_10_xor1 fa_or0=u_csamul_pg_rca16_fa9_10_or0
+.subckt and_gate a=a[10] b=b[10] out=u_csamul_pg_rca16_and10_10
+.subckt fa a=u_csamul_pg_rca16_and10_10 b=u_csamul_pg_rca16_fa11_9_xor1 cin=u_csamul_pg_rca16_fa10_9_or0 fa_xor1=u_csamul_pg_rca16_fa10_10_xor1 fa_or0=u_csamul_pg_rca16_fa10_10_or0
+.subckt and_gate a=a[11] b=b[10] out=u_csamul_pg_rca16_and11_10
+.subckt fa a=u_csamul_pg_rca16_and11_10 b=u_csamul_pg_rca16_fa12_9_xor1 cin=u_csamul_pg_rca16_fa11_9_or0 fa_xor1=u_csamul_pg_rca16_fa11_10_xor1 fa_or0=u_csamul_pg_rca16_fa11_10_or0
+.subckt and_gate a=a[12] b=b[10] out=u_csamul_pg_rca16_and12_10
+.subckt fa a=u_csamul_pg_rca16_and12_10 b=u_csamul_pg_rca16_fa13_9_xor1 cin=u_csamul_pg_rca16_fa12_9_or0 fa_xor1=u_csamul_pg_rca16_fa12_10_xor1 fa_or0=u_csamul_pg_rca16_fa12_10_or0
+.subckt and_gate a=a[13] b=b[10] out=u_csamul_pg_rca16_and13_10
+.subckt fa a=u_csamul_pg_rca16_and13_10 b=u_csamul_pg_rca16_fa14_9_xor1 cin=u_csamul_pg_rca16_fa13_9_or0 fa_xor1=u_csamul_pg_rca16_fa13_10_xor1 fa_or0=u_csamul_pg_rca16_fa13_10_or0
+.subckt and_gate a=a[14] b=b[10] out=u_csamul_pg_rca16_and14_10
+.subckt fa a=u_csamul_pg_rca16_and14_10 b=u_csamul_pg_rca16_and15_9 cin=u_csamul_pg_rca16_fa14_9_or0 fa_xor1=u_csamul_pg_rca16_fa14_10_xor1 fa_or0=u_csamul_pg_rca16_fa14_10_or0
+.subckt and_gate a=a[15] b=b[10] out=u_csamul_pg_rca16_and15_10
+.subckt and_gate a=a[0] b=b[11] out=u_csamul_pg_rca16_and0_11
+.subckt fa a=u_csamul_pg_rca16_and0_11 b=u_csamul_pg_rca16_fa1_10_xor1 cin=u_csamul_pg_rca16_fa0_10_or0 fa_xor1=u_csamul_pg_rca16_fa0_11_xor1 fa_or0=u_csamul_pg_rca16_fa0_11_or0
+.subckt and_gate a=a[1] b=b[11] out=u_csamul_pg_rca16_and1_11
+.subckt fa a=u_csamul_pg_rca16_and1_11 b=u_csamul_pg_rca16_fa2_10_xor1 cin=u_csamul_pg_rca16_fa1_10_or0 fa_xor1=u_csamul_pg_rca16_fa1_11_xor1 fa_or0=u_csamul_pg_rca16_fa1_11_or0
+.subckt and_gate a=a[2] b=b[11] out=u_csamul_pg_rca16_and2_11
+.subckt fa a=u_csamul_pg_rca16_and2_11 b=u_csamul_pg_rca16_fa3_10_xor1 cin=u_csamul_pg_rca16_fa2_10_or0 fa_xor1=u_csamul_pg_rca16_fa2_11_xor1 fa_or0=u_csamul_pg_rca16_fa2_11_or0
+.subckt and_gate a=a[3] b=b[11] out=u_csamul_pg_rca16_and3_11
+.subckt fa a=u_csamul_pg_rca16_and3_11 b=u_csamul_pg_rca16_fa4_10_xor1 cin=u_csamul_pg_rca16_fa3_10_or0 fa_xor1=u_csamul_pg_rca16_fa3_11_xor1 fa_or0=u_csamul_pg_rca16_fa3_11_or0
+.subckt and_gate a=a[4] b=b[11] out=u_csamul_pg_rca16_and4_11
+.subckt fa a=u_csamul_pg_rca16_and4_11 b=u_csamul_pg_rca16_fa5_10_xor1 cin=u_csamul_pg_rca16_fa4_10_or0 fa_xor1=u_csamul_pg_rca16_fa4_11_xor1 fa_or0=u_csamul_pg_rca16_fa4_11_or0
+.subckt and_gate a=a[5] b=b[11] out=u_csamul_pg_rca16_and5_11
+.subckt fa a=u_csamul_pg_rca16_and5_11 b=u_csamul_pg_rca16_fa6_10_xor1 cin=u_csamul_pg_rca16_fa5_10_or0 fa_xor1=u_csamul_pg_rca16_fa5_11_xor1 fa_or0=u_csamul_pg_rca16_fa5_11_or0
+.subckt and_gate a=a[6] b=b[11] out=u_csamul_pg_rca16_and6_11
+.subckt fa a=u_csamul_pg_rca16_and6_11 b=u_csamul_pg_rca16_fa7_10_xor1 cin=u_csamul_pg_rca16_fa6_10_or0 fa_xor1=u_csamul_pg_rca16_fa6_11_xor1 fa_or0=u_csamul_pg_rca16_fa6_11_or0
+.subckt and_gate a=a[7] b=b[11] out=u_csamul_pg_rca16_and7_11
+.subckt fa a=u_csamul_pg_rca16_and7_11 b=u_csamul_pg_rca16_fa8_10_xor1 cin=u_csamul_pg_rca16_fa7_10_or0 fa_xor1=u_csamul_pg_rca16_fa7_11_xor1 fa_or0=u_csamul_pg_rca16_fa7_11_or0
+.subckt and_gate a=a[8] b=b[11] out=u_csamul_pg_rca16_and8_11
+.subckt fa a=u_csamul_pg_rca16_and8_11 b=u_csamul_pg_rca16_fa9_10_xor1 cin=u_csamul_pg_rca16_fa8_10_or0 fa_xor1=u_csamul_pg_rca16_fa8_11_xor1 fa_or0=u_csamul_pg_rca16_fa8_11_or0
+.subckt and_gate a=a[9] b=b[11] out=u_csamul_pg_rca16_and9_11
+.subckt fa a=u_csamul_pg_rca16_and9_11 b=u_csamul_pg_rca16_fa10_10_xor1 cin=u_csamul_pg_rca16_fa9_10_or0 fa_xor1=u_csamul_pg_rca16_fa9_11_xor1 fa_or0=u_csamul_pg_rca16_fa9_11_or0
+.subckt and_gate a=a[10] b=b[11] out=u_csamul_pg_rca16_and10_11
+.subckt fa a=u_csamul_pg_rca16_and10_11 b=u_csamul_pg_rca16_fa11_10_xor1 cin=u_csamul_pg_rca16_fa10_10_or0 fa_xor1=u_csamul_pg_rca16_fa10_11_xor1 fa_or0=u_csamul_pg_rca16_fa10_11_or0
+.subckt and_gate a=a[11] b=b[11] out=u_csamul_pg_rca16_and11_11
+.subckt fa a=u_csamul_pg_rca16_and11_11 b=u_csamul_pg_rca16_fa12_10_xor1 cin=u_csamul_pg_rca16_fa11_10_or0 fa_xor1=u_csamul_pg_rca16_fa11_11_xor1 fa_or0=u_csamul_pg_rca16_fa11_11_or0
+.subckt and_gate a=a[12] b=b[11] out=u_csamul_pg_rca16_and12_11
+.subckt fa a=u_csamul_pg_rca16_and12_11 b=u_csamul_pg_rca16_fa13_10_xor1 cin=u_csamul_pg_rca16_fa12_10_or0 fa_xor1=u_csamul_pg_rca16_fa12_11_xor1 fa_or0=u_csamul_pg_rca16_fa12_11_or0
+.subckt and_gate a=a[13] b=b[11] out=u_csamul_pg_rca16_and13_11
+.subckt fa a=u_csamul_pg_rca16_and13_11 b=u_csamul_pg_rca16_fa14_10_xor1 cin=u_csamul_pg_rca16_fa13_10_or0 fa_xor1=u_csamul_pg_rca16_fa13_11_xor1 fa_or0=u_csamul_pg_rca16_fa13_11_or0
+.subckt and_gate a=a[14] b=b[11] out=u_csamul_pg_rca16_and14_11
+.subckt fa a=u_csamul_pg_rca16_and14_11 b=u_csamul_pg_rca16_and15_10 cin=u_csamul_pg_rca16_fa14_10_or0 fa_xor1=u_csamul_pg_rca16_fa14_11_xor1 fa_or0=u_csamul_pg_rca16_fa14_11_or0
+.subckt and_gate a=a[15] b=b[11] out=u_csamul_pg_rca16_and15_11
+.subckt and_gate a=a[0] b=b[12] out=u_csamul_pg_rca16_and0_12
+.subckt fa a=u_csamul_pg_rca16_and0_12 b=u_csamul_pg_rca16_fa1_11_xor1 cin=u_csamul_pg_rca16_fa0_11_or0 fa_xor1=u_csamul_pg_rca16_fa0_12_xor1 fa_or0=u_csamul_pg_rca16_fa0_12_or0
+.subckt and_gate a=a[1] b=b[12] out=u_csamul_pg_rca16_and1_12
+.subckt fa a=u_csamul_pg_rca16_and1_12 b=u_csamul_pg_rca16_fa2_11_xor1 cin=u_csamul_pg_rca16_fa1_11_or0 fa_xor1=u_csamul_pg_rca16_fa1_12_xor1 fa_or0=u_csamul_pg_rca16_fa1_12_or0
+.subckt and_gate a=a[2] b=b[12] out=u_csamul_pg_rca16_and2_12
+.subckt fa a=u_csamul_pg_rca16_and2_12 b=u_csamul_pg_rca16_fa3_11_xor1 cin=u_csamul_pg_rca16_fa2_11_or0 fa_xor1=u_csamul_pg_rca16_fa2_12_xor1 fa_or0=u_csamul_pg_rca16_fa2_12_or0
+.subckt and_gate a=a[3] b=b[12] out=u_csamul_pg_rca16_and3_12
+.subckt fa a=u_csamul_pg_rca16_and3_12 b=u_csamul_pg_rca16_fa4_11_xor1 cin=u_csamul_pg_rca16_fa3_11_or0 fa_xor1=u_csamul_pg_rca16_fa3_12_xor1 fa_or0=u_csamul_pg_rca16_fa3_12_or0
+.subckt and_gate a=a[4] b=b[12] out=u_csamul_pg_rca16_and4_12
+.subckt fa a=u_csamul_pg_rca16_and4_12 b=u_csamul_pg_rca16_fa5_11_xor1 cin=u_csamul_pg_rca16_fa4_11_or0 fa_xor1=u_csamul_pg_rca16_fa4_12_xor1 fa_or0=u_csamul_pg_rca16_fa4_12_or0
+.subckt and_gate a=a[5] b=b[12] out=u_csamul_pg_rca16_and5_12
+.subckt fa a=u_csamul_pg_rca16_and5_12 b=u_csamul_pg_rca16_fa6_11_xor1 cin=u_csamul_pg_rca16_fa5_11_or0 fa_xor1=u_csamul_pg_rca16_fa5_12_xor1 fa_or0=u_csamul_pg_rca16_fa5_12_or0
+.subckt and_gate a=a[6] b=b[12] out=u_csamul_pg_rca16_and6_12
+.subckt fa a=u_csamul_pg_rca16_and6_12 b=u_csamul_pg_rca16_fa7_11_xor1 cin=u_csamul_pg_rca16_fa6_11_or0 fa_xor1=u_csamul_pg_rca16_fa6_12_xor1 fa_or0=u_csamul_pg_rca16_fa6_12_or0
+.subckt and_gate a=a[7] b=b[12] out=u_csamul_pg_rca16_and7_12
+.subckt fa a=u_csamul_pg_rca16_and7_12 b=u_csamul_pg_rca16_fa8_11_xor1 cin=u_csamul_pg_rca16_fa7_11_or0 fa_xor1=u_csamul_pg_rca16_fa7_12_xor1 fa_or0=u_csamul_pg_rca16_fa7_12_or0
+.subckt and_gate a=a[8] b=b[12] out=u_csamul_pg_rca16_and8_12
+.subckt fa a=u_csamul_pg_rca16_and8_12 b=u_csamul_pg_rca16_fa9_11_xor1 cin=u_csamul_pg_rca16_fa8_11_or0 fa_xor1=u_csamul_pg_rca16_fa8_12_xor1 fa_or0=u_csamul_pg_rca16_fa8_12_or0
+.subckt and_gate a=a[9] b=b[12] out=u_csamul_pg_rca16_and9_12
+.subckt fa a=u_csamul_pg_rca16_and9_12 b=u_csamul_pg_rca16_fa10_11_xor1 cin=u_csamul_pg_rca16_fa9_11_or0 fa_xor1=u_csamul_pg_rca16_fa9_12_xor1 fa_or0=u_csamul_pg_rca16_fa9_12_or0
+.subckt and_gate a=a[10] b=b[12] out=u_csamul_pg_rca16_and10_12
+.subckt fa a=u_csamul_pg_rca16_and10_12 b=u_csamul_pg_rca16_fa11_11_xor1 cin=u_csamul_pg_rca16_fa10_11_or0 fa_xor1=u_csamul_pg_rca16_fa10_12_xor1 fa_or0=u_csamul_pg_rca16_fa10_12_or0
+.subckt and_gate a=a[11] b=b[12] out=u_csamul_pg_rca16_and11_12
+.subckt fa a=u_csamul_pg_rca16_and11_12 b=u_csamul_pg_rca16_fa12_11_xor1 cin=u_csamul_pg_rca16_fa11_11_or0 fa_xor1=u_csamul_pg_rca16_fa11_12_xor1 fa_or0=u_csamul_pg_rca16_fa11_12_or0
+.subckt and_gate a=a[12] b=b[12] out=u_csamul_pg_rca16_and12_12
+.subckt fa a=u_csamul_pg_rca16_and12_12 b=u_csamul_pg_rca16_fa13_11_xor1 cin=u_csamul_pg_rca16_fa12_11_or0 fa_xor1=u_csamul_pg_rca16_fa12_12_xor1 fa_or0=u_csamul_pg_rca16_fa12_12_or0
+.subckt and_gate a=a[13] b=b[12] out=u_csamul_pg_rca16_and13_12
+.subckt fa a=u_csamul_pg_rca16_and13_12 b=u_csamul_pg_rca16_fa14_11_xor1 cin=u_csamul_pg_rca16_fa13_11_or0 fa_xor1=u_csamul_pg_rca16_fa13_12_xor1 fa_or0=u_csamul_pg_rca16_fa13_12_or0
+.subckt and_gate a=a[14] b=b[12] out=u_csamul_pg_rca16_and14_12
+.subckt fa a=u_csamul_pg_rca16_and14_12 b=u_csamul_pg_rca16_and15_11 cin=u_csamul_pg_rca16_fa14_11_or0 fa_xor1=u_csamul_pg_rca16_fa14_12_xor1 fa_or0=u_csamul_pg_rca16_fa14_12_or0
+.subckt and_gate a=a[15] b=b[12] out=u_csamul_pg_rca16_and15_12
+.subckt and_gate a=a[0] b=b[13] out=u_csamul_pg_rca16_and0_13
+.subckt fa a=u_csamul_pg_rca16_and0_13 b=u_csamul_pg_rca16_fa1_12_xor1 cin=u_csamul_pg_rca16_fa0_12_or0 fa_xor1=u_csamul_pg_rca16_fa0_13_xor1 fa_or0=u_csamul_pg_rca16_fa0_13_or0
+.subckt and_gate a=a[1] b=b[13] out=u_csamul_pg_rca16_and1_13
+.subckt fa a=u_csamul_pg_rca16_and1_13 b=u_csamul_pg_rca16_fa2_12_xor1 cin=u_csamul_pg_rca16_fa1_12_or0 fa_xor1=u_csamul_pg_rca16_fa1_13_xor1 fa_or0=u_csamul_pg_rca16_fa1_13_or0
+.subckt and_gate a=a[2] b=b[13] out=u_csamul_pg_rca16_and2_13
+.subckt fa a=u_csamul_pg_rca16_and2_13 b=u_csamul_pg_rca16_fa3_12_xor1 cin=u_csamul_pg_rca16_fa2_12_or0 fa_xor1=u_csamul_pg_rca16_fa2_13_xor1 fa_or0=u_csamul_pg_rca16_fa2_13_or0
+.subckt and_gate a=a[3] b=b[13] out=u_csamul_pg_rca16_and3_13
+.subckt fa a=u_csamul_pg_rca16_and3_13 b=u_csamul_pg_rca16_fa4_12_xor1 cin=u_csamul_pg_rca16_fa3_12_or0 fa_xor1=u_csamul_pg_rca16_fa3_13_xor1 fa_or0=u_csamul_pg_rca16_fa3_13_or0
+.subckt and_gate a=a[4] b=b[13] out=u_csamul_pg_rca16_and4_13
+.subckt fa a=u_csamul_pg_rca16_and4_13 b=u_csamul_pg_rca16_fa5_12_xor1 cin=u_csamul_pg_rca16_fa4_12_or0 fa_xor1=u_csamul_pg_rca16_fa4_13_xor1 fa_or0=u_csamul_pg_rca16_fa4_13_or0
+.subckt and_gate a=a[5] b=b[13] out=u_csamul_pg_rca16_and5_13
+.subckt fa a=u_csamul_pg_rca16_and5_13 b=u_csamul_pg_rca16_fa6_12_xor1 cin=u_csamul_pg_rca16_fa5_12_or0 fa_xor1=u_csamul_pg_rca16_fa5_13_xor1 fa_or0=u_csamul_pg_rca16_fa5_13_or0
+.subckt and_gate a=a[6] b=b[13] out=u_csamul_pg_rca16_and6_13
+.subckt fa a=u_csamul_pg_rca16_and6_13 b=u_csamul_pg_rca16_fa7_12_xor1 cin=u_csamul_pg_rca16_fa6_12_or0 fa_xor1=u_csamul_pg_rca16_fa6_13_xor1 fa_or0=u_csamul_pg_rca16_fa6_13_or0
+.subckt and_gate a=a[7] b=b[13] out=u_csamul_pg_rca16_and7_13
+.subckt fa a=u_csamul_pg_rca16_and7_13 b=u_csamul_pg_rca16_fa8_12_xor1 cin=u_csamul_pg_rca16_fa7_12_or0 fa_xor1=u_csamul_pg_rca16_fa7_13_xor1 fa_or0=u_csamul_pg_rca16_fa7_13_or0
+.subckt and_gate a=a[8] b=b[13] out=u_csamul_pg_rca16_and8_13
+.subckt fa a=u_csamul_pg_rca16_and8_13 b=u_csamul_pg_rca16_fa9_12_xor1 cin=u_csamul_pg_rca16_fa8_12_or0 fa_xor1=u_csamul_pg_rca16_fa8_13_xor1 fa_or0=u_csamul_pg_rca16_fa8_13_or0
+.subckt and_gate a=a[9] b=b[13] out=u_csamul_pg_rca16_and9_13
+.subckt fa a=u_csamul_pg_rca16_and9_13 b=u_csamul_pg_rca16_fa10_12_xor1 cin=u_csamul_pg_rca16_fa9_12_or0 fa_xor1=u_csamul_pg_rca16_fa9_13_xor1 fa_or0=u_csamul_pg_rca16_fa9_13_or0
+.subckt and_gate a=a[10] b=b[13] out=u_csamul_pg_rca16_and10_13
+.subckt fa a=u_csamul_pg_rca16_and10_13 b=u_csamul_pg_rca16_fa11_12_xor1 cin=u_csamul_pg_rca16_fa10_12_or0 fa_xor1=u_csamul_pg_rca16_fa10_13_xor1 fa_or0=u_csamul_pg_rca16_fa10_13_or0
+.subckt and_gate a=a[11] b=b[13] out=u_csamul_pg_rca16_and11_13
+.subckt fa a=u_csamul_pg_rca16_and11_13 b=u_csamul_pg_rca16_fa12_12_xor1 cin=u_csamul_pg_rca16_fa11_12_or0 fa_xor1=u_csamul_pg_rca16_fa11_13_xor1 fa_or0=u_csamul_pg_rca16_fa11_13_or0
+.subckt and_gate a=a[12] b=b[13] out=u_csamul_pg_rca16_and12_13
+.subckt fa a=u_csamul_pg_rca16_and12_13 b=u_csamul_pg_rca16_fa13_12_xor1 cin=u_csamul_pg_rca16_fa12_12_or0 fa_xor1=u_csamul_pg_rca16_fa12_13_xor1 fa_or0=u_csamul_pg_rca16_fa12_13_or0
+.subckt and_gate a=a[13] b=b[13] out=u_csamul_pg_rca16_and13_13
+.subckt fa a=u_csamul_pg_rca16_and13_13 b=u_csamul_pg_rca16_fa14_12_xor1 cin=u_csamul_pg_rca16_fa13_12_or0 fa_xor1=u_csamul_pg_rca16_fa13_13_xor1 fa_or0=u_csamul_pg_rca16_fa13_13_or0
+.subckt and_gate a=a[14] b=b[13] out=u_csamul_pg_rca16_and14_13
+.subckt fa a=u_csamul_pg_rca16_and14_13 b=u_csamul_pg_rca16_and15_12 cin=u_csamul_pg_rca16_fa14_12_or0 fa_xor1=u_csamul_pg_rca16_fa14_13_xor1 fa_or0=u_csamul_pg_rca16_fa14_13_or0
+.subckt and_gate a=a[15] b=b[13] out=u_csamul_pg_rca16_and15_13
+.subckt and_gate a=a[0] b=b[14] out=u_csamul_pg_rca16_and0_14
+.subckt fa a=u_csamul_pg_rca16_and0_14 b=u_csamul_pg_rca16_fa1_13_xor1 cin=u_csamul_pg_rca16_fa0_13_or0 fa_xor1=u_csamul_pg_rca16_fa0_14_xor1 fa_or0=u_csamul_pg_rca16_fa0_14_or0
+.subckt and_gate a=a[1] b=b[14] out=u_csamul_pg_rca16_and1_14
+.subckt fa a=u_csamul_pg_rca16_and1_14 b=u_csamul_pg_rca16_fa2_13_xor1 cin=u_csamul_pg_rca16_fa1_13_or0 fa_xor1=u_csamul_pg_rca16_fa1_14_xor1 fa_or0=u_csamul_pg_rca16_fa1_14_or0
+.subckt and_gate a=a[2] b=b[14] out=u_csamul_pg_rca16_and2_14
+.subckt fa a=u_csamul_pg_rca16_and2_14 b=u_csamul_pg_rca16_fa3_13_xor1 cin=u_csamul_pg_rca16_fa2_13_or0 fa_xor1=u_csamul_pg_rca16_fa2_14_xor1 fa_or0=u_csamul_pg_rca16_fa2_14_or0
+.subckt and_gate a=a[3] b=b[14] out=u_csamul_pg_rca16_and3_14
+.subckt fa a=u_csamul_pg_rca16_and3_14 b=u_csamul_pg_rca16_fa4_13_xor1 cin=u_csamul_pg_rca16_fa3_13_or0 fa_xor1=u_csamul_pg_rca16_fa3_14_xor1 fa_or0=u_csamul_pg_rca16_fa3_14_or0
+.subckt and_gate a=a[4] b=b[14] out=u_csamul_pg_rca16_and4_14
+.subckt fa a=u_csamul_pg_rca16_and4_14 b=u_csamul_pg_rca16_fa5_13_xor1 cin=u_csamul_pg_rca16_fa4_13_or0 fa_xor1=u_csamul_pg_rca16_fa4_14_xor1 fa_or0=u_csamul_pg_rca16_fa4_14_or0
+.subckt and_gate a=a[5] b=b[14] out=u_csamul_pg_rca16_and5_14
+.subckt fa a=u_csamul_pg_rca16_and5_14 b=u_csamul_pg_rca16_fa6_13_xor1 cin=u_csamul_pg_rca16_fa5_13_or0 fa_xor1=u_csamul_pg_rca16_fa5_14_xor1 fa_or0=u_csamul_pg_rca16_fa5_14_or0
+.subckt and_gate a=a[6] b=b[14] out=u_csamul_pg_rca16_and6_14
+.subckt fa a=u_csamul_pg_rca16_and6_14 b=u_csamul_pg_rca16_fa7_13_xor1 cin=u_csamul_pg_rca16_fa6_13_or0 fa_xor1=u_csamul_pg_rca16_fa6_14_xor1 fa_or0=u_csamul_pg_rca16_fa6_14_or0
+.subckt and_gate a=a[7] b=b[14] out=u_csamul_pg_rca16_and7_14
+.subckt fa a=u_csamul_pg_rca16_and7_14 b=u_csamul_pg_rca16_fa8_13_xor1 cin=u_csamul_pg_rca16_fa7_13_or0 fa_xor1=u_csamul_pg_rca16_fa7_14_xor1 fa_or0=u_csamul_pg_rca16_fa7_14_or0
+.subckt and_gate a=a[8] b=b[14] out=u_csamul_pg_rca16_and8_14
+.subckt fa a=u_csamul_pg_rca16_and8_14 b=u_csamul_pg_rca16_fa9_13_xor1 cin=u_csamul_pg_rca16_fa8_13_or0 fa_xor1=u_csamul_pg_rca16_fa8_14_xor1 fa_or0=u_csamul_pg_rca16_fa8_14_or0
+.subckt and_gate a=a[9] b=b[14] out=u_csamul_pg_rca16_and9_14
+.subckt fa a=u_csamul_pg_rca16_and9_14 b=u_csamul_pg_rca16_fa10_13_xor1 cin=u_csamul_pg_rca16_fa9_13_or0 fa_xor1=u_csamul_pg_rca16_fa9_14_xor1 fa_or0=u_csamul_pg_rca16_fa9_14_or0
+.subckt and_gate a=a[10] b=b[14] out=u_csamul_pg_rca16_and10_14
+.subckt fa a=u_csamul_pg_rca16_and10_14 b=u_csamul_pg_rca16_fa11_13_xor1 cin=u_csamul_pg_rca16_fa10_13_or0 fa_xor1=u_csamul_pg_rca16_fa10_14_xor1 fa_or0=u_csamul_pg_rca16_fa10_14_or0
+.subckt and_gate a=a[11] b=b[14] out=u_csamul_pg_rca16_and11_14
+.subckt fa a=u_csamul_pg_rca16_and11_14 b=u_csamul_pg_rca16_fa12_13_xor1 cin=u_csamul_pg_rca16_fa11_13_or0 fa_xor1=u_csamul_pg_rca16_fa11_14_xor1 fa_or0=u_csamul_pg_rca16_fa11_14_or0
+.subckt and_gate a=a[12] b=b[14] out=u_csamul_pg_rca16_and12_14
+.subckt fa a=u_csamul_pg_rca16_and12_14 b=u_csamul_pg_rca16_fa13_13_xor1 cin=u_csamul_pg_rca16_fa12_13_or0 fa_xor1=u_csamul_pg_rca16_fa12_14_xor1 fa_or0=u_csamul_pg_rca16_fa12_14_or0
+.subckt and_gate a=a[13] b=b[14] out=u_csamul_pg_rca16_and13_14
+.subckt fa a=u_csamul_pg_rca16_and13_14 b=u_csamul_pg_rca16_fa14_13_xor1 cin=u_csamul_pg_rca16_fa13_13_or0 fa_xor1=u_csamul_pg_rca16_fa13_14_xor1 fa_or0=u_csamul_pg_rca16_fa13_14_or0
+.subckt and_gate a=a[14] b=b[14] out=u_csamul_pg_rca16_and14_14
+.subckt fa a=u_csamul_pg_rca16_and14_14 b=u_csamul_pg_rca16_and15_13 cin=u_csamul_pg_rca16_fa14_13_or0 fa_xor1=u_csamul_pg_rca16_fa14_14_xor1 fa_or0=u_csamul_pg_rca16_fa14_14_or0
+.subckt and_gate a=a[15] b=b[14] out=u_csamul_pg_rca16_and15_14
+.subckt and_gate a=a[0] b=b[15] out=u_csamul_pg_rca16_and0_15
+.subckt fa a=u_csamul_pg_rca16_and0_15 b=u_csamul_pg_rca16_fa1_14_xor1 cin=u_csamul_pg_rca16_fa0_14_or0 fa_xor1=u_csamul_pg_rca16_fa0_15_xor1 fa_or0=u_csamul_pg_rca16_fa0_15_or0
+.subckt and_gate a=a[1] b=b[15] out=u_csamul_pg_rca16_and1_15
+.subckt fa a=u_csamul_pg_rca16_and1_15 b=u_csamul_pg_rca16_fa2_14_xor1 cin=u_csamul_pg_rca16_fa1_14_or0 fa_xor1=u_csamul_pg_rca16_fa1_15_xor1 fa_or0=u_csamul_pg_rca16_fa1_15_or0
+.subckt and_gate a=a[2] b=b[15] out=u_csamul_pg_rca16_and2_15
+.subckt fa a=u_csamul_pg_rca16_and2_15 b=u_csamul_pg_rca16_fa3_14_xor1 cin=u_csamul_pg_rca16_fa2_14_or0 fa_xor1=u_csamul_pg_rca16_fa2_15_xor1 fa_or0=u_csamul_pg_rca16_fa2_15_or0
+.subckt and_gate a=a[3] b=b[15] out=u_csamul_pg_rca16_and3_15
+.subckt fa a=u_csamul_pg_rca16_and3_15 b=u_csamul_pg_rca16_fa4_14_xor1 cin=u_csamul_pg_rca16_fa3_14_or0 fa_xor1=u_csamul_pg_rca16_fa3_15_xor1 fa_or0=u_csamul_pg_rca16_fa3_15_or0
+.subckt and_gate a=a[4] b=b[15] out=u_csamul_pg_rca16_and4_15
+.subckt fa a=u_csamul_pg_rca16_and4_15 b=u_csamul_pg_rca16_fa5_14_xor1 cin=u_csamul_pg_rca16_fa4_14_or0 fa_xor1=u_csamul_pg_rca16_fa4_15_xor1 fa_or0=u_csamul_pg_rca16_fa4_15_or0
+.subckt and_gate a=a[5] b=b[15] out=u_csamul_pg_rca16_and5_15
+.subckt fa a=u_csamul_pg_rca16_and5_15 b=u_csamul_pg_rca16_fa6_14_xor1 cin=u_csamul_pg_rca16_fa5_14_or0 fa_xor1=u_csamul_pg_rca16_fa5_15_xor1 fa_or0=u_csamul_pg_rca16_fa5_15_or0
+.subckt and_gate a=a[6] b=b[15] out=u_csamul_pg_rca16_and6_15
+.subckt fa a=u_csamul_pg_rca16_and6_15 b=u_csamul_pg_rca16_fa7_14_xor1 cin=u_csamul_pg_rca16_fa6_14_or0 fa_xor1=u_csamul_pg_rca16_fa6_15_xor1 fa_or0=u_csamul_pg_rca16_fa6_15_or0
+.subckt and_gate a=a[7] b=b[15] out=u_csamul_pg_rca16_and7_15
+.subckt fa a=u_csamul_pg_rca16_and7_15 b=u_csamul_pg_rca16_fa8_14_xor1 cin=u_csamul_pg_rca16_fa7_14_or0 fa_xor1=u_csamul_pg_rca16_fa7_15_xor1 fa_or0=u_csamul_pg_rca16_fa7_15_or0
+.subckt and_gate a=a[8] b=b[15] out=u_csamul_pg_rca16_and8_15
+.subckt fa a=u_csamul_pg_rca16_and8_15 b=u_csamul_pg_rca16_fa9_14_xor1 cin=u_csamul_pg_rca16_fa8_14_or0 fa_xor1=u_csamul_pg_rca16_fa8_15_xor1 fa_or0=u_csamul_pg_rca16_fa8_15_or0
+.subckt and_gate a=a[9] b=b[15] out=u_csamul_pg_rca16_and9_15
+.subckt fa a=u_csamul_pg_rca16_and9_15 b=u_csamul_pg_rca16_fa10_14_xor1 cin=u_csamul_pg_rca16_fa9_14_or0 fa_xor1=u_csamul_pg_rca16_fa9_15_xor1 fa_or0=u_csamul_pg_rca16_fa9_15_or0
+.subckt and_gate a=a[10] b=b[15] out=u_csamul_pg_rca16_and10_15
+.subckt fa a=u_csamul_pg_rca16_and10_15 b=u_csamul_pg_rca16_fa11_14_xor1 cin=u_csamul_pg_rca16_fa10_14_or0 fa_xor1=u_csamul_pg_rca16_fa10_15_xor1 fa_or0=u_csamul_pg_rca16_fa10_15_or0
+.subckt and_gate a=a[11] b=b[15] out=u_csamul_pg_rca16_and11_15
+.subckt fa a=u_csamul_pg_rca16_and11_15 b=u_csamul_pg_rca16_fa12_14_xor1 cin=u_csamul_pg_rca16_fa11_14_or0 fa_xor1=u_csamul_pg_rca16_fa11_15_xor1 fa_or0=u_csamul_pg_rca16_fa11_15_or0
+.subckt and_gate a=a[12] b=b[15] out=u_csamul_pg_rca16_and12_15
+.subckt fa a=u_csamul_pg_rca16_and12_15 b=u_csamul_pg_rca16_fa13_14_xor1 cin=u_csamul_pg_rca16_fa12_14_or0 fa_xor1=u_csamul_pg_rca16_fa12_15_xor1 fa_or0=u_csamul_pg_rca16_fa12_15_or0
+.subckt and_gate a=a[13] b=b[15] out=u_csamul_pg_rca16_and13_15
+.subckt fa a=u_csamul_pg_rca16_and13_15 b=u_csamul_pg_rca16_fa14_14_xor1 cin=u_csamul_pg_rca16_fa13_14_or0 fa_xor1=u_csamul_pg_rca16_fa13_15_xor1 fa_or0=u_csamul_pg_rca16_fa13_15_or0
+.subckt and_gate a=a[14] b=b[15] out=u_csamul_pg_rca16_and14_15
+.subckt fa a=u_csamul_pg_rca16_and14_15 b=u_csamul_pg_rca16_and15_14 cin=u_csamul_pg_rca16_fa14_14_or0 fa_xor1=u_csamul_pg_rca16_fa14_15_xor1 fa_or0=u_csamul_pg_rca16_fa14_15_or0
+.subckt and_gate a=a[15] b=b[15] out=u_csamul_pg_rca16_and15_15
+.names u_csamul_pg_rca16_fa1_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[0]
+1 1
+.names u_csamul_pg_rca16_fa2_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[1]
+1 1
+.names u_csamul_pg_rca16_fa3_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[2]
+1 1
+.names u_csamul_pg_rca16_fa4_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[3]
+1 1
+.names u_csamul_pg_rca16_fa5_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[4]
+1 1
+.names u_csamul_pg_rca16_fa6_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[5]
+1 1
+.names u_csamul_pg_rca16_fa7_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[6]
+1 1
+.names u_csamul_pg_rca16_fa8_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[7]
+1 1
+.names u_csamul_pg_rca16_fa9_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[8]
+1 1
+.names u_csamul_pg_rca16_fa10_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[9]
+1 1
+.names u_csamul_pg_rca16_fa11_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[10]
+1 1
+.names u_csamul_pg_rca16_fa12_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[11]
+1 1
+.names u_csamul_pg_rca16_fa13_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[12]
+1 1
+.names u_csamul_pg_rca16_fa14_15_xor1 u_csamul_pg_rca16_u_pg_rca16_a[13]
+1 1
+.names u_csamul_pg_rca16_and15_15 u_csamul_pg_rca16_u_pg_rca16_a[14]
+1 1
+.names gnd u_csamul_pg_rca16_u_pg_rca16_a[15]
+1 1
+.names u_csamul_pg_rca16_fa0_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[0]
+1 1
+.names u_csamul_pg_rca16_fa1_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[1]
+1 1
+.names u_csamul_pg_rca16_fa2_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[2]
+1 1
+.names u_csamul_pg_rca16_fa3_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[3]
+1 1
+.names u_csamul_pg_rca16_fa4_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[4]
+1 1
+.names u_csamul_pg_rca16_fa5_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[5]
+1 1
+.names u_csamul_pg_rca16_fa6_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[6]
+1 1
+.names u_csamul_pg_rca16_fa7_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[7]
+1 1
+.names u_csamul_pg_rca16_fa8_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[8]
+1 1
+.names u_csamul_pg_rca16_fa9_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[9]
+1 1
+.names u_csamul_pg_rca16_fa10_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[10]
+1 1
+.names u_csamul_pg_rca16_fa11_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[11]
+1 1
+.names u_csamul_pg_rca16_fa12_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[12]
+1 1
+.names u_csamul_pg_rca16_fa13_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[13]
+1 1
+.names u_csamul_pg_rca16_fa14_15_or0 u_csamul_pg_rca16_u_pg_rca16_b[14]
+1 1
+.names gnd u_csamul_pg_rca16_u_pg_rca16_b[15]
+1 1
+.subckt u_pg_rca16 a[0]=u_csamul_pg_rca16_u_pg_rca16_a[0] a[1]=u_csamul_pg_rca16_u_pg_rca16_a[1] a[2]=u_csamul_pg_rca16_u_pg_rca16_a[2] a[3]=u_csamul_pg_rca16_u_pg_rca16_a[3] a[4]=u_csamul_pg_rca16_u_pg_rca16_a[4] a[5]=u_csamul_pg_rca16_u_pg_rca16_a[5] a[6]=u_csamul_pg_rca16_u_pg_rca16_a[6] a[7]=u_csamul_pg_rca16_u_pg_rca16_a[7] a[8]=u_csamul_pg_rca16_u_pg_rca16_a[8] a[9]=u_csamul_pg_rca16_u_pg_rca16_a[9] a[10]=u_csamul_pg_rca16_u_pg_rca16_a[10] a[11]=u_csamul_pg_rca16_u_pg_rca16_a[11] a[12]=u_csamul_pg_rca16_u_pg_rca16_a[12] a[13]=u_csamul_pg_rca16_u_pg_rca16_a[13] a[14]=u_csamul_pg_rca16_u_pg_rca16_a[14] a[15]=u_csamul_pg_rca16_u_pg_rca16_a[15] b[0]=u_csamul_pg_rca16_u_pg_rca16_b[0] b[1]=u_csamul_pg_rca16_u_pg_rca16_b[1] b[2]=u_csamul_pg_rca16_u_pg_rca16_b[2] b[3]=u_csamul_pg_rca16_u_pg_rca16_b[3] b[4]=u_csamul_pg_rca16_u_pg_rca16_b[4] b[5]=u_csamul_pg_rca16_u_pg_rca16_b[5] b[6]=u_csamul_pg_rca16_u_pg_rca16_b[6] b[7]=u_csamul_pg_rca16_u_pg_rca16_b[7] b[8]=u_csamul_pg_rca16_u_pg_rca16_b[8] b[9]=u_csamul_pg_rca16_u_pg_rca16_b[9] b[10]=u_csamul_pg_rca16_u_pg_rca16_b[10] b[11]=u_csamul_pg_rca16_u_pg_rca16_b[11] b[12]=u_csamul_pg_rca16_u_pg_rca16_b[12] b[13]=u_csamul_pg_rca16_u_pg_rca16_b[13] b[14]=u_csamul_pg_rca16_u_pg_rca16_b[14] b[15]=u_csamul_pg_rca16_u_pg_rca16_b[15] u_pg_rca16_out[0]=u_csamul_pg_rca16_u_pg_rca16_pg_fa0_xor0 u_pg_rca16_out[1]=u_csamul_pg_rca16_u_pg_rca16_pg_fa1_xor1 u_pg_rca16_out[2]=u_csamul_pg_rca16_u_pg_rca16_pg_fa2_xor1 u_pg_rca16_out[3]=u_csamul_pg_rca16_u_pg_rca16_pg_fa3_xor1 u_pg_rca16_out[4]=u_csamul_pg_rca16_u_pg_rca16_pg_fa4_xor1 u_pg_rca16_out[5]=u_csamul_pg_rca16_u_pg_rca16_pg_fa5_xor1 u_pg_rca16_out[6]=u_csamul_pg_rca16_u_pg_rca16_pg_fa6_xor1 u_pg_rca16_out[7]=u_csamul_pg_rca16_u_pg_rca16_pg_fa7_xor1 u_pg_rca16_out[8]=u_csamul_pg_rca16_u_pg_rca16_pg_fa8_xor1 u_pg_rca16_out[9]=u_csamul_pg_rca16_u_pg_rca16_pg_fa9_xor1 u_pg_rca16_out[10]=u_csamul_pg_rca16_u_pg_rca16_pg_fa10_xor1 u_pg_rca16_out[11]=u_csamul_pg_rca16_u_pg_rca16_pg_fa11_xor1 u_pg_rca16_out[12]=u_csamul_pg_rca16_u_pg_rca16_pg_fa12_xor1 u_pg_rca16_out[13]=u_csamul_pg_rca16_u_pg_rca16_pg_fa13_xor1 u_pg_rca16_out[14]=u_csamul_pg_rca16_u_pg_rca16_pg_fa14_xor1 u_pg_rca16_out[15]=u_csamul_pg_rca16_u_pg_rca16_or14 u_pg_rca16_out[16]=constant_value_0
+.names u_csamul_pg_rca16_and0_0 u_csamul_pg_rca16_out[0]
+1 1
+.names u_csamul_pg_rca16_ha0_1_xor0 u_csamul_pg_rca16_out[1]
+1 1
+.names u_csamul_pg_rca16_fa0_2_xor1 u_csamul_pg_rca16_out[2]
+1 1
+.names u_csamul_pg_rca16_fa0_3_xor1 u_csamul_pg_rca16_out[3]
+1 1
+.names u_csamul_pg_rca16_fa0_4_xor1 u_csamul_pg_rca16_out[4]
+1 1
+.names u_csamul_pg_rca16_fa0_5_xor1 u_csamul_pg_rca16_out[5]
+1 1
+.names u_csamul_pg_rca16_fa0_6_xor1 u_csamul_pg_rca16_out[6]
+1 1
+.names u_csamul_pg_rca16_fa0_7_xor1 u_csamul_pg_rca16_out[7]
+1 1
+.names u_csamul_pg_rca16_fa0_8_xor1 u_csamul_pg_rca16_out[8]
+1 1
+.names u_csamul_pg_rca16_fa0_9_xor1 u_csamul_pg_rca16_out[9]
+1 1
+.names u_csamul_pg_rca16_fa0_10_xor1 u_csamul_pg_rca16_out[10]
+1 1
+.names u_csamul_pg_rca16_fa0_11_xor1 u_csamul_pg_rca16_out[11]
+1 1
+.names u_csamul_pg_rca16_fa0_12_xor1 u_csamul_pg_rca16_out[12]
+1 1
+.names u_csamul_pg_rca16_fa0_13_xor1 u_csamul_pg_rca16_out[13]
+1 1
+.names u_csamul_pg_rca16_fa0_14_xor1 u_csamul_pg_rca16_out[14]
+1 1
+.names u_csamul_pg_rca16_fa0_15_xor1 u_csamul_pg_rca16_out[15]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa0_xor0 u_csamul_pg_rca16_out[16]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa1_xor1 u_csamul_pg_rca16_out[17]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa2_xor1 u_csamul_pg_rca16_out[18]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa3_xor1 u_csamul_pg_rca16_out[19]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa4_xor1 u_csamul_pg_rca16_out[20]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa5_xor1 u_csamul_pg_rca16_out[21]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa6_xor1 u_csamul_pg_rca16_out[22]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa7_xor1 u_csamul_pg_rca16_out[23]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa8_xor1 u_csamul_pg_rca16_out[24]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa9_xor1 u_csamul_pg_rca16_out[25]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa10_xor1 u_csamul_pg_rca16_out[26]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa11_xor1 u_csamul_pg_rca16_out[27]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa12_xor1 u_csamul_pg_rca16_out[28]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa13_xor1 u_csamul_pg_rca16_out[29]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_pg_fa14_xor1 u_csamul_pg_rca16_out[30]
+1 1
+.names u_csamul_pg_rca16_u_pg_rca16_or14 u_csamul_pg_rca16_out[31]
+1 1
+.end
+
+.model u_pg_rca16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs u_pg_rca16_out[0] u_pg_rca16_out[1] u_pg_rca16_out[2] u_pg_rca16_out[3] u_pg_rca16_out[4] u_pg_rca16_out[5] u_pg_rca16_out[6] u_pg_rca16_out[7] u_pg_rca16_out[8] u_pg_rca16_out[9] u_pg_rca16_out[10] u_pg_rca16_out[11] u_pg_rca16_out[12] u_pg_rca16_out[13] u_pg_rca16_out[14] u_pg_rca16_out[15] u_pg_rca16_out[16]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_fa a=a[0] b=b[0] cin=gnd pg_fa_xor0=u_pg_rca16_pg_fa0_xor0 pg_fa_and0=u_pg_rca16_pg_fa0_and0
+.subckt pg_fa a=a[1] b=b[1] cin=u_pg_rca16_pg_fa0_and0 pg_fa_xor0=u_pg_rca16_pg_fa1_xor0 pg_fa_and0=u_pg_rca16_pg_fa1_and0 pg_fa_xor1=u_pg_rca16_pg_fa1_xor1
+.subckt and_gate a=u_pg_rca16_pg_fa0_and0 b=u_pg_rca16_pg_fa1_xor0 out=u_pg_rca16_and1
+.subckt or_gate a=u_pg_rca16_and1 b=u_pg_rca16_pg_fa1_and0 out=u_pg_rca16_or1
+.subckt pg_fa a=a[2] b=b[2] cin=u_pg_rca16_or1 pg_fa_xor0=u_pg_rca16_pg_fa2_xor0 pg_fa_and0=u_pg_rca16_pg_fa2_and0 pg_fa_xor1=u_pg_rca16_pg_fa2_xor1
+.subckt and_gate a=u_pg_rca16_or1 b=u_pg_rca16_pg_fa2_xor0 out=u_pg_rca16_and2
+.subckt or_gate a=u_pg_rca16_and2 b=u_pg_rca16_pg_fa2_and0 out=u_pg_rca16_or2
+.subckt pg_fa a=a[3] b=b[3] cin=u_pg_rca16_or2 pg_fa_xor0=u_pg_rca16_pg_fa3_xor0 pg_fa_and0=u_pg_rca16_pg_fa3_and0 pg_fa_xor1=u_pg_rca16_pg_fa3_xor1
+.subckt and_gate a=u_pg_rca16_or2 b=u_pg_rca16_pg_fa3_xor0 out=u_pg_rca16_and3
+.subckt or_gate a=u_pg_rca16_and3 b=u_pg_rca16_pg_fa3_and0 out=u_pg_rca16_or3
+.subckt pg_fa a=a[4] b=b[4] cin=u_pg_rca16_or3 pg_fa_xor0=u_pg_rca16_pg_fa4_xor0 pg_fa_and0=u_pg_rca16_pg_fa4_and0 pg_fa_xor1=u_pg_rca16_pg_fa4_xor1
+.subckt and_gate a=u_pg_rca16_or3 b=u_pg_rca16_pg_fa4_xor0 out=u_pg_rca16_and4
+.subckt or_gate a=u_pg_rca16_and4 b=u_pg_rca16_pg_fa4_and0 out=u_pg_rca16_or4
+.subckt pg_fa a=a[5] b=b[5] cin=u_pg_rca16_or4 pg_fa_xor0=u_pg_rca16_pg_fa5_xor0 pg_fa_and0=u_pg_rca16_pg_fa5_and0 pg_fa_xor1=u_pg_rca16_pg_fa5_xor1
+.subckt and_gate a=u_pg_rca16_or4 b=u_pg_rca16_pg_fa5_xor0 out=u_pg_rca16_and5
+.subckt or_gate a=u_pg_rca16_and5 b=u_pg_rca16_pg_fa5_and0 out=u_pg_rca16_or5
+.subckt pg_fa a=a[6] b=b[6] cin=u_pg_rca16_or5 pg_fa_xor0=u_pg_rca16_pg_fa6_xor0 pg_fa_and0=u_pg_rca16_pg_fa6_and0 pg_fa_xor1=u_pg_rca16_pg_fa6_xor1
+.subckt and_gate a=u_pg_rca16_or5 b=u_pg_rca16_pg_fa6_xor0 out=u_pg_rca16_and6
+.subckt or_gate a=u_pg_rca16_and6 b=u_pg_rca16_pg_fa6_and0 out=u_pg_rca16_or6
+.subckt pg_fa a=a[7] b=b[7] cin=u_pg_rca16_or6 pg_fa_xor0=u_pg_rca16_pg_fa7_xor0 pg_fa_and0=u_pg_rca16_pg_fa7_and0 pg_fa_xor1=u_pg_rca16_pg_fa7_xor1
+.subckt and_gate a=u_pg_rca16_or6 b=u_pg_rca16_pg_fa7_xor0 out=u_pg_rca16_and7
+.subckt or_gate a=u_pg_rca16_and7 b=u_pg_rca16_pg_fa7_and0 out=u_pg_rca16_or7
+.subckt pg_fa a=a[8] b=b[8] cin=u_pg_rca16_or7 pg_fa_xor0=u_pg_rca16_pg_fa8_xor0 pg_fa_and0=u_pg_rca16_pg_fa8_and0 pg_fa_xor1=u_pg_rca16_pg_fa8_xor1
+.subckt and_gate a=u_pg_rca16_or7 b=u_pg_rca16_pg_fa8_xor0 out=u_pg_rca16_and8
+.subckt or_gate a=u_pg_rca16_and8 b=u_pg_rca16_pg_fa8_and0 out=u_pg_rca16_or8
+.subckt pg_fa a=a[9] b=b[9] cin=u_pg_rca16_or8 pg_fa_xor0=u_pg_rca16_pg_fa9_xor0 pg_fa_and0=u_pg_rca16_pg_fa9_and0 pg_fa_xor1=u_pg_rca16_pg_fa9_xor1
+.subckt and_gate a=u_pg_rca16_or8 b=u_pg_rca16_pg_fa9_xor0 out=u_pg_rca16_and9
+.subckt or_gate a=u_pg_rca16_and9 b=u_pg_rca16_pg_fa9_and0 out=u_pg_rca16_or9
+.subckt pg_fa a=a[10] b=b[10] cin=u_pg_rca16_or9 pg_fa_xor0=u_pg_rca16_pg_fa10_xor0 pg_fa_and0=u_pg_rca16_pg_fa10_and0 pg_fa_xor1=u_pg_rca16_pg_fa10_xor1
+.subckt and_gate a=u_pg_rca16_or9 b=u_pg_rca16_pg_fa10_xor0 out=u_pg_rca16_and10
+.subckt or_gate a=u_pg_rca16_and10 b=u_pg_rca16_pg_fa10_and0 out=u_pg_rca16_or10
+.subckt pg_fa a=a[11] b=b[11] cin=u_pg_rca16_or10 pg_fa_xor0=u_pg_rca16_pg_fa11_xor0 pg_fa_and0=u_pg_rca16_pg_fa11_and0 pg_fa_xor1=u_pg_rca16_pg_fa11_xor1
+.subckt and_gate a=u_pg_rca16_or10 b=u_pg_rca16_pg_fa11_xor0 out=u_pg_rca16_and11
+.subckt or_gate a=u_pg_rca16_and11 b=u_pg_rca16_pg_fa11_and0 out=u_pg_rca16_or11
+.subckt pg_fa a=a[12] b=b[12] cin=u_pg_rca16_or11 pg_fa_xor0=u_pg_rca16_pg_fa12_xor0 pg_fa_and0=u_pg_rca16_pg_fa12_and0 pg_fa_xor1=u_pg_rca16_pg_fa12_xor1
+.subckt and_gate a=u_pg_rca16_or11 b=u_pg_rca16_pg_fa12_xor0 out=u_pg_rca16_and12
+.subckt or_gate a=u_pg_rca16_and12 b=u_pg_rca16_pg_fa12_and0 out=u_pg_rca16_or12
+.subckt pg_fa a=a[13] b=b[13] cin=u_pg_rca16_or12 pg_fa_xor0=u_pg_rca16_pg_fa13_xor0 pg_fa_and0=u_pg_rca16_pg_fa13_and0 pg_fa_xor1=u_pg_rca16_pg_fa13_xor1
+.subckt and_gate a=u_pg_rca16_or12 b=u_pg_rca16_pg_fa13_xor0 out=u_pg_rca16_and13
+.subckt or_gate a=u_pg_rca16_and13 b=u_pg_rca16_pg_fa13_and0 out=u_pg_rca16_or13
+.subckt pg_fa a=a[14] b=b[14] cin=u_pg_rca16_or13 pg_fa_xor0=u_pg_rca16_pg_fa14_xor0 pg_fa_and0=u_pg_rca16_pg_fa14_and0 pg_fa_xor1=u_pg_rca16_pg_fa14_xor1
+.subckt and_gate a=u_pg_rca16_or13 b=u_pg_rca16_pg_fa14_xor0 out=u_pg_rca16_and14
+.subckt or_gate a=u_pg_rca16_and14 b=u_pg_rca16_pg_fa14_and0 out=u_pg_rca16_or14
+.subckt pg_fa a=a[15] b=b[15] cin=u_pg_rca16_or14 pg_fa_xor0=u_pg_rca16_pg_fa15_xor0 pg_fa_and0=u_pg_rca16_pg_fa15_and0 pg_fa_xor1=u_pg_rca16_pg_fa15_xor1
+.subckt and_gate a=u_pg_rca16_or14 b=u_pg_rca16_pg_fa15_xor0 out=u_pg_rca16_and15
+.subckt or_gate a=u_pg_rca16_and15 b=u_pg_rca16_pg_fa15_and0 out=u_pg_rca16_or15
+.names u_pg_rca16_pg_fa0_xor0 u_pg_rca16_out[0]
+1 1
+.names u_pg_rca16_pg_fa1_xor1 u_pg_rca16_out[1]
+1 1
+.names u_pg_rca16_pg_fa2_xor1 u_pg_rca16_out[2]
+1 1
+.names u_pg_rca16_pg_fa3_xor1 u_pg_rca16_out[3]
+1 1
+.names u_pg_rca16_pg_fa4_xor1 u_pg_rca16_out[4]
+1 1
+.names u_pg_rca16_pg_fa5_xor1 u_pg_rca16_out[5]
+1 1
+.names u_pg_rca16_pg_fa6_xor1 u_pg_rca16_out[6]
+1 1
+.names u_pg_rca16_pg_fa7_xor1 u_pg_rca16_out[7]
+1 1
+.names u_pg_rca16_pg_fa8_xor1 u_pg_rca16_out[8]
+1 1
+.names u_pg_rca16_pg_fa9_xor1 u_pg_rca16_out[9]
+1 1
+.names u_pg_rca16_pg_fa10_xor1 u_pg_rca16_out[10]
+1 1
+.names u_pg_rca16_pg_fa11_xor1 u_pg_rca16_out[11]
+1 1
+.names u_pg_rca16_pg_fa12_xor1 u_pg_rca16_out[12]
+1 1
+.names u_pg_rca16_pg_fa13_xor1 u_pg_rca16_out[13]
+1 1
+.names u_pg_rca16_pg_fa14_xor1 u_pg_rca16_out[14]
+1 1
+.names u_pg_rca16_pg_fa15_xor1 u_pg_rca16_out[15]
+1 1
+.names u_pg_rca16_or15 u_pg_rca16_out[16]
+1 1
+.end
+
+.model pg_fa
+.inputs a b cin
+.outputs pg_fa_xor0 pg_fa_and0 pg_fa_xor1
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=pg_fa_xor0
+.subckt and_gate a=a b=b out=pg_fa_and0
+.subckt xor_gate a=pg_fa_xor0 b=cin out=pg_fa_xor1
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end

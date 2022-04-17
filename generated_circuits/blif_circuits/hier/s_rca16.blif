@@ -1,0 +1,120 @@
+.model s_rca16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs s_rca16_out[0] s_rca16_out[1] s_rca16_out[2] s_rca16_out[3] s_rca16_out[4] s_rca16_out[5] s_rca16_out[6] s_rca16_out[7] s_rca16_out[8] s_rca16_out[9] s_rca16_out[10] s_rca16_out[11] s_rca16_out[12] s_rca16_out[13] s_rca16_out[14] s_rca16_out[15] s_rca16_out[16]
+.names vdd
+1
+.names gnd
+0
+.subckt ha a=a[0] b=b[0] ha_xor0=s_rca16_ha_xor0 ha_and0=s_rca16_ha_and0
+.subckt fa a=a[1] b=b[1] cin=s_rca16_ha_and0 fa_xor1=s_rca16_fa1_xor1 fa_or0=s_rca16_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=s_rca16_fa1_or0 fa_xor1=s_rca16_fa2_xor1 fa_or0=s_rca16_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=s_rca16_fa2_or0 fa_xor1=s_rca16_fa3_xor1 fa_or0=s_rca16_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=s_rca16_fa3_or0 fa_xor1=s_rca16_fa4_xor1 fa_or0=s_rca16_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=s_rca16_fa4_or0 fa_xor1=s_rca16_fa5_xor1 fa_or0=s_rca16_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=s_rca16_fa5_or0 fa_xor1=s_rca16_fa6_xor1 fa_or0=s_rca16_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=s_rca16_fa6_or0 fa_xor1=s_rca16_fa7_xor1 fa_or0=s_rca16_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=s_rca16_fa7_or0 fa_xor1=s_rca16_fa8_xor1 fa_or0=s_rca16_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=s_rca16_fa8_or0 fa_xor1=s_rca16_fa9_xor1 fa_or0=s_rca16_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=s_rca16_fa9_or0 fa_xor1=s_rca16_fa10_xor1 fa_or0=s_rca16_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=s_rca16_fa10_or0 fa_xor1=s_rca16_fa11_xor1 fa_or0=s_rca16_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=s_rca16_fa11_or0 fa_xor1=s_rca16_fa12_xor1 fa_or0=s_rca16_fa12_or0
+.subckt fa a=a[13] b=b[13] cin=s_rca16_fa12_or0 fa_xor1=s_rca16_fa13_xor1 fa_or0=s_rca16_fa13_or0
+.subckt fa a=a[14] b=b[14] cin=s_rca16_fa13_or0 fa_xor1=s_rca16_fa14_xor1 fa_or0=s_rca16_fa14_or0
+.subckt fa a=a[15] b=b[15] cin=s_rca16_fa14_or0 fa_xor1=s_rca16_fa15_xor1 fa_or0=s_rca16_fa15_or0
+.subckt xor_gate a=a[15] b=b[15] out=s_rca16_xor0
+.subckt xor_gate a=s_rca16_xor0 b=s_rca16_fa15_or0 out=s_rca16_xor1
+.names s_rca16_ha_xor0 s_rca16_out[0]
+1 1
+.names s_rca16_fa1_xor1 s_rca16_out[1]
+1 1
+.names s_rca16_fa2_xor1 s_rca16_out[2]
+1 1
+.names s_rca16_fa3_xor1 s_rca16_out[3]
+1 1
+.names s_rca16_fa4_xor1 s_rca16_out[4]
+1 1
+.names s_rca16_fa5_xor1 s_rca16_out[5]
+1 1
+.names s_rca16_fa6_xor1 s_rca16_out[6]
+1 1
+.names s_rca16_fa7_xor1 s_rca16_out[7]
+1 1
+.names s_rca16_fa8_xor1 s_rca16_out[8]
+1 1
+.names s_rca16_fa9_xor1 s_rca16_out[9]
+1 1
+.names s_rca16_fa10_xor1 s_rca16_out[10]
+1 1
+.names s_rca16_fa11_xor1 s_rca16_out[11]
+1 1
+.names s_rca16_fa12_xor1 s_rca16_out[12]
+1 1
+.names s_rca16_fa13_xor1 s_rca16_out[13]
+1 1
+.names s_rca16_fa14_xor1 s_rca16_out[14]
+1 1
+.names s_rca16_fa15_xor1 s_rca16_out[15]
+1 1
+.names s_rca16_xor1 s_rca16_out[16]
+1 1
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end

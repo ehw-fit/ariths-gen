@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdint.h>
+
+int64_t s_cla4(int64_t a, int64_t b){
+  int8_t s_cla4_out = 0;
+  uint8_t s_cla4_pg_logic0_or0 = 0;
+  uint8_t s_cla4_pg_logic0_and0 = 0;
+  uint8_t s_cla4_pg_logic0_xor0 = 0;
+  uint8_t s_cla4_pg_logic1_or0 = 0;
+  uint8_t s_cla4_pg_logic1_and0 = 0;
+  uint8_t s_cla4_pg_logic1_xor0 = 0;
+  uint8_t s_cla4_xor1 = 0;
+  uint8_t s_cla4_and0 = 0;
+  uint8_t s_cla4_or0 = 0;
+  uint8_t s_cla4_pg_logic2_or0 = 0;
+  uint8_t s_cla4_pg_logic2_and0 = 0;
+  uint8_t s_cla4_pg_logic2_xor0 = 0;
+  uint8_t s_cla4_xor2 = 0;
+  uint8_t s_cla4_and1 = 0;
+  uint8_t s_cla4_and2 = 0;
+  uint8_t s_cla4_and3 = 0;
+  uint8_t s_cla4_and4 = 0;
+  uint8_t s_cla4_or1 = 0;
+  uint8_t s_cla4_or2 = 0;
+  uint8_t s_cla4_pg_logic3_or0 = 0;
+  uint8_t s_cla4_pg_logic3_and0 = 0;
+  uint8_t s_cla4_pg_logic3_xor0 = 0;
+  uint8_t s_cla4_xor3 = 0;
+  uint8_t s_cla4_and5 = 0;
+  uint8_t s_cla4_and6 = 0;
+  uint8_t s_cla4_and7 = 0;
+  uint8_t s_cla4_and8 = 0;
+  uint8_t s_cla4_and9 = 0;
+  uint8_t s_cla4_and10 = 0;
+  uint8_t s_cla4_and11 = 0;
+  uint8_t s_cla4_or3 = 0;
+  uint8_t s_cla4_or4 = 0;
+  uint8_t s_cla4_or5 = 0;
+  uint8_t s_cla4_xor4 = 0;
+  uint8_t s_cla4_xor5 = 0;
+
+  s_cla4_pg_logic0_or0 = ((a >> 0) & 0x01) | ((b >> 0) & 0x01);
+  s_cla4_pg_logic0_and0 = ((a >> 0) & 0x01) & ((b >> 0) & 0x01);
+  s_cla4_pg_logic0_xor0 = ((a >> 0) & 0x01) ^ ((b >> 0) & 0x01);
+  s_cla4_pg_logic1_or0 = ((a >> 1) & 0x01) | ((b >> 1) & 0x01);
+  s_cla4_pg_logic1_and0 = ((a >> 1) & 0x01) & ((b >> 1) & 0x01);
+  s_cla4_pg_logic1_xor0 = ((a >> 1) & 0x01) ^ ((b >> 1) & 0x01);
+  s_cla4_xor1 = ((s_cla4_pg_logic1_xor0 >> 0) & 0x01) ^ ((s_cla4_pg_logic0_and0 >> 0) & 0x01);
+  s_cla4_and0 = ((s_cla4_pg_logic0_and0 >> 0) & 0x01) & ((s_cla4_pg_logic1_or0 >> 0) & 0x01);
+  s_cla4_or0 = ((s_cla4_pg_logic1_and0 >> 0) & 0x01) | ((s_cla4_and0 >> 0) & 0x01);
+  s_cla4_pg_logic2_or0 = ((a >> 2) & 0x01) | ((b >> 2) & 0x01);
+  s_cla4_pg_logic2_and0 = ((a >> 2) & 0x01) & ((b >> 2) & 0x01);
+  s_cla4_pg_logic2_xor0 = ((a >> 2) & 0x01) ^ ((b >> 2) & 0x01);
+  s_cla4_xor2 = ((s_cla4_pg_logic2_xor0 >> 0) & 0x01) ^ ((s_cla4_or0 >> 0) & 0x01);
+  s_cla4_and1 = ((s_cla4_pg_logic2_or0 >> 0) & 0x01) & ((s_cla4_pg_logic0_or0 >> 0) & 0x01);
+  s_cla4_and2 = ((s_cla4_pg_logic0_and0 >> 0) & 0x01) & ((s_cla4_pg_logic2_or0 >> 0) & 0x01);
+  s_cla4_and3 = ((s_cla4_and2 >> 0) & 0x01) & ((s_cla4_pg_logic1_or0 >> 0) & 0x01);
+  s_cla4_and4 = ((s_cla4_pg_logic1_and0 >> 0) & 0x01) & ((s_cla4_pg_logic2_or0 >> 0) & 0x01);
+  s_cla4_or1 = ((s_cla4_and3 >> 0) & 0x01) | ((s_cla4_and4 >> 0) & 0x01);
+  s_cla4_or2 = ((s_cla4_pg_logic2_and0 >> 0) & 0x01) | ((s_cla4_or1 >> 0) & 0x01);
+  s_cla4_pg_logic3_or0 = ((a >> 3) & 0x01) | ((b >> 3) & 0x01);
+  s_cla4_pg_logic3_and0 = ((a >> 3) & 0x01) & ((b >> 3) & 0x01);
+  s_cla4_pg_logic3_xor0 = ((a >> 3) & 0x01) ^ ((b >> 3) & 0x01);
+  s_cla4_xor3 = ((s_cla4_pg_logic3_xor0 >> 0) & 0x01) ^ ((s_cla4_or2 >> 0) & 0x01);
+  s_cla4_and5 = ((s_cla4_pg_logic3_or0 >> 0) & 0x01) & ((s_cla4_pg_logic1_or0 >> 0) & 0x01);
+  s_cla4_and6 = ((s_cla4_pg_logic0_and0 >> 0) & 0x01) & ((s_cla4_pg_logic2_or0 >> 0) & 0x01);
+  s_cla4_and7 = ((s_cla4_pg_logic3_or0 >> 0) & 0x01) & ((s_cla4_pg_logic1_or0 >> 0) & 0x01);
+  s_cla4_and8 = ((s_cla4_and6 >> 0) & 0x01) & ((s_cla4_and7 >> 0) & 0x01);
+  s_cla4_and9 = ((s_cla4_pg_logic1_and0 >> 0) & 0x01) & ((s_cla4_pg_logic3_or0 >> 0) & 0x01);
+  s_cla4_and10 = ((s_cla4_and9 >> 0) & 0x01) & ((s_cla4_pg_logic2_or0 >> 0) & 0x01);
+  s_cla4_and11 = ((s_cla4_pg_logic2_and0 >> 0) & 0x01) & ((s_cla4_pg_logic3_or0 >> 0) & 0x01);
+  s_cla4_or3 = ((s_cla4_and8 >> 0) & 0x01) | ((s_cla4_and11 >> 0) & 0x01);
+  s_cla4_or4 = ((s_cla4_and10 >> 0) & 0x01) | ((s_cla4_or3 >> 0) & 0x01);
+  s_cla4_or5 = ((s_cla4_pg_logic3_and0 >> 0) & 0x01) | ((s_cla4_or4 >> 0) & 0x01);
+  s_cla4_xor4 = ((a >> 3) & 0x01) ^ ((b >> 3) & 0x01);
+  s_cla4_xor5 = ((s_cla4_xor4 >> 0) & 0x01) ^ ((s_cla4_or5 >> 0) & 0x01);
+
+  s_cla4_out |= ((s_cla4_pg_logic0_xor0 >> 0) & 0x01ull) << 0;
+  s_cla4_out |= ((s_cla4_xor1 >> 0) & 0x01ull) << 1;
+  s_cla4_out |= ((s_cla4_xor2 >> 0) & 0x01ull) << 2;
+  s_cla4_out |= ((s_cla4_xor3 >> 0) & 0x01ull) << 3;
+  s_cla4_out |= ((s_cla4_xor5 >> 0) & 0x01ull) << 4;
+  s_cla4_out |= ((s_cla4_xor5 >> 0) & 0x01ull) << 5;
+  s_cla4_out |= ((s_cla4_xor5 >> 0) & 0x01ull) << 6;
+  s_cla4_out |= ((s_cla4_xor5 >> 0) & 0x01ull) << 7;
+  return s_cla4_out;
+}

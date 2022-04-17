@@ -1,0 +1,122 @@
+.model u_pg_rca8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs u_pg_rca8_out[0] u_pg_rca8_out[1] u_pg_rca8_out[2] u_pg_rca8_out[3] u_pg_rca8_out[4] u_pg_rca8_out[5] u_pg_rca8_out[6] u_pg_rca8_out[7] u_pg_rca8_out[8]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] u_pg_rca8_pg_fa0_xor0
+01 1
+10 1
+.names a[0] b[0] u_pg_rca8_pg_fa0_and0
+11 1
+.names a[1] b[1] u_pg_rca8_pg_fa1_xor0
+01 1
+10 1
+.names a[1] b[1] u_pg_rca8_pg_fa1_and0
+11 1
+.names u_pg_rca8_pg_fa1_xor0 u_pg_rca8_pg_fa0_and0 u_pg_rca8_pg_fa1_xor1
+01 1
+10 1
+.names u_pg_rca8_pg_fa0_and0 u_pg_rca8_pg_fa1_xor0 u_pg_rca8_and1
+11 1
+.names u_pg_rca8_and1 u_pg_rca8_pg_fa1_and0 u_pg_rca8_or1
+1- 1
+-1 1
+.names a[2] b[2] u_pg_rca8_pg_fa2_xor0
+01 1
+10 1
+.names a[2] b[2] u_pg_rca8_pg_fa2_and0
+11 1
+.names u_pg_rca8_pg_fa2_xor0 u_pg_rca8_or1 u_pg_rca8_pg_fa2_xor1
+01 1
+10 1
+.names u_pg_rca8_or1 u_pg_rca8_pg_fa2_xor0 u_pg_rca8_and2
+11 1
+.names u_pg_rca8_and2 u_pg_rca8_pg_fa2_and0 u_pg_rca8_or2
+1- 1
+-1 1
+.names a[3] b[3] u_pg_rca8_pg_fa3_xor0
+01 1
+10 1
+.names a[3] b[3] u_pg_rca8_pg_fa3_and0
+11 1
+.names u_pg_rca8_pg_fa3_xor0 u_pg_rca8_or2 u_pg_rca8_pg_fa3_xor1
+01 1
+10 1
+.names u_pg_rca8_or2 u_pg_rca8_pg_fa3_xor0 u_pg_rca8_and3
+11 1
+.names u_pg_rca8_and3 u_pg_rca8_pg_fa3_and0 u_pg_rca8_or3
+1- 1
+-1 1
+.names a[4] b[4] u_pg_rca8_pg_fa4_xor0
+01 1
+10 1
+.names a[4] b[4] u_pg_rca8_pg_fa4_and0
+11 1
+.names u_pg_rca8_pg_fa4_xor0 u_pg_rca8_or3 u_pg_rca8_pg_fa4_xor1
+01 1
+10 1
+.names u_pg_rca8_or3 u_pg_rca8_pg_fa4_xor0 u_pg_rca8_and4
+11 1
+.names u_pg_rca8_and4 u_pg_rca8_pg_fa4_and0 u_pg_rca8_or4
+1- 1
+-1 1
+.names a[5] b[5] u_pg_rca8_pg_fa5_xor0
+01 1
+10 1
+.names a[5] b[5] u_pg_rca8_pg_fa5_and0
+11 1
+.names u_pg_rca8_pg_fa5_xor0 u_pg_rca8_or4 u_pg_rca8_pg_fa5_xor1
+01 1
+10 1
+.names u_pg_rca8_or4 u_pg_rca8_pg_fa5_xor0 u_pg_rca8_and5
+11 1
+.names u_pg_rca8_and5 u_pg_rca8_pg_fa5_and0 u_pg_rca8_or5
+1- 1
+-1 1
+.names a[6] b[6] u_pg_rca8_pg_fa6_xor0
+01 1
+10 1
+.names a[6] b[6] u_pg_rca8_pg_fa6_and0
+11 1
+.names u_pg_rca8_pg_fa6_xor0 u_pg_rca8_or5 u_pg_rca8_pg_fa6_xor1
+01 1
+10 1
+.names u_pg_rca8_or5 u_pg_rca8_pg_fa6_xor0 u_pg_rca8_and6
+11 1
+.names u_pg_rca8_and6 u_pg_rca8_pg_fa6_and0 u_pg_rca8_or6
+1- 1
+-1 1
+.names a[7] b[7] u_pg_rca8_pg_fa7_xor0
+01 1
+10 1
+.names a[7] b[7] u_pg_rca8_pg_fa7_and0
+11 1
+.names u_pg_rca8_pg_fa7_xor0 u_pg_rca8_or6 u_pg_rca8_pg_fa7_xor1
+01 1
+10 1
+.names u_pg_rca8_or6 u_pg_rca8_pg_fa7_xor0 u_pg_rca8_and7
+11 1
+.names u_pg_rca8_and7 u_pg_rca8_pg_fa7_and0 u_pg_rca8_or7
+1- 1
+-1 1
+.names u_pg_rca8_pg_fa0_xor0 u_pg_rca8_out[0]
+1 1
+.names u_pg_rca8_pg_fa1_xor1 u_pg_rca8_out[1]
+1 1
+.names u_pg_rca8_pg_fa2_xor1 u_pg_rca8_out[2]
+1 1
+.names u_pg_rca8_pg_fa3_xor1 u_pg_rca8_out[3]
+1 1
+.names u_pg_rca8_pg_fa4_xor1 u_pg_rca8_out[4]
+1 1
+.names u_pg_rca8_pg_fa5_xor1 u_pg_rca8_out[5]
+1 1
+.names u_pg_rca8_pg_fa6_xor1 u_pg_rca8_out[6]
+1 1
+.names u_pg_rca8_pg_fa7_xor1 u_pg_rca8_out[7]
+1 1
+.names u_pg_rca8_or7 u_pg_rca8_out[8]
+1 1
+.end

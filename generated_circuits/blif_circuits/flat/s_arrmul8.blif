@@ -1,0 +1,853 @@
+.model s_arrmul8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs s_arrmul8_out[0] s_arrmul8_out[1] s_arrmul8_out[2] s_arrmul8_out[3] s_arrmul8_out[4] s_arrmul8_out[5] s_arrmul8_out[6] s_arrmul8_out[7] s_arrmul8_out[8] s_arrmul8_out[9] s_arrmul8_out[10] s_arrmul8_out[11] s_arrmul8_out[12] s_arrmul8_out[13] s_arrmul8_out[14] s_arrmul8_out[15]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] s_arrmul8_and0_0
+11 1
+.names a[1] b[0] s_arrmul8_and1_0
+11 1
+.names a[2] b[0] s_arrmul8_and2_0
+11 1
+.names a[3] b[0] s_arrmul8_and3_0
+11 1
+.names a[4] b[0] s_arrmul8_and4_0
+11 1
+.names a[5] b[0] s_arrmul8_and5_0
+11 1
+.names a[6] b[0] s_arrmul8_and6_0
+11 1
+.names a[7] b[0] s_arrmul8_nand7_0
+0- 1
+-0 1
+.names a[0] b[1] s_arrmul8_and0_1
+11 1
+.names s_arrmul8_and0_1 s_arrmul8_and1_0 s_arrmul8_ha0_1_xor0
+01 1
+10 1
+.names s_arrmul8_and0_1 s_arrmul8_and1_0 s_arrmul8_ha0_1_and0
+11 1
+.names a[1] b[1] s_arrmul8_and1_1
+11 1
+.names s_arrmul8_and1_1 s_arrmul8_and2_0 s_arrmul8_fa1_1_xor0
+01 1
+10 1
+.names s_arrmul8_and1_1 s_arrmul8_and2_0 s_arrmul8_fa1_1_and0
+11 1
+.names s_arrmul8_fa1_1_xor0 s_arrmul8_ha0_1_and0 s_arrmul8_fa1_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_1_xor0 s_arrmul8_ha0_1_and0 s_arrmul8_fa1_1_and1
+11 1
+.names s_arrmul8_fa1_1_and0 s_arrmul8_fa1_1_and1 s_arrmul8_fa1_1_or0
+1- 1
+-1 1
+.names a[2] b[1] s_arrmul8_and2_1
+11 1
+.names s_arrmul8_and2_1 s_arrmul8_and3_0 s_arrmul8_fa2_1_xor0
+01 1
+10 1
+.names s_arrmul8_and2_1 s_arrmul8_and3_0 s_arrmul8_fa2_1_and0
+11 1
+.names s_arrmul8_fa2_1_xor0 s_arrmul8_fa1_1_or0 s_arrmul8_fa2_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_1_xor0 s_arrmul8_fa1_1_or0 s_arrmul8_fa2_1_and1
+11 1
+.names s_arrmul8_fa2_1_and0 s_arrmul8_fa2_1_and1 s_arrmul8_fa2_1_or0
+1- 1
+-1 1
+.names a[3] b[1] s_arrmul8_and3_1
+11 1
+.names s_arrmul8_and3_1 s_arrmul8_and4_0 s_arrmul8_fa3_1_xor0
+01 1
+10 1
+.names s_arrmul8_and3_1 s_arrmul8_and4_0 s_arrmul8_fa3_1_and0
+11 1
+.names s_arrmul8_fa3_1_xor0 s_arrmul8_fa2_1_or0 s_arrmul8_fa3_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_1_xor0 s_arrmul8_fa2_1_or0 s_arrmul8_fa3_1_and1
+11 1
+.names s_arrmul8_fa3_1_and0 s_arrmul8_fa3_1_and1 s_arrmul8_fa3_1_or0
+1- 1
+-1 1
+.names a[4] b[1] s_arrmul8_and4_1
+11 1
+.names s_arrmul8_and4_1 s_arrmul8_and5_0 s_arrmul8_fa4_1_xor0
+01 1
+10 1
+.names s_arrmul8_and4_1 s_arrmul8_and5_0 s_arrmul8_fa4_1_and0
+11 1
+.names s_arrmul8_fa4_1_xor0 s_arrmul8_fa3_1_or0 s_arrmul8_fa4_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_1_xor0 s_arrmul8_fa3_1_or0 s_arrmul8_fa4_1_and1
+11 1
+.names s_arrmul8_fa4_1_and0 s_arrmul8_fa4_1_and1 s_arrmul8_fa4_1_or0
+1- 1
+-1 1
+.names a[5] b[1] s_arrmul8_and5_1
+11 1
+.names s_arrmul8_and5_1 s_arrmul8_and6_0 s_arrmul8_fa5_1_xor0
+01 1
+10 1
+.names s_arrmul8_and5_1 s_arrmul8_and6_0 s_arrmul8_fa5_1_and0
+11 1
+.names s_arrmul8_fa5_1_xor0 s_arrmul8_fa4_1_or0 s_arrmul8_fa5_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_1_xor0 s_arrmul8_fa4_1_or0 s_arrmul8_fa5_1_and1
+11 1
+.names s_arrmul8_fa5_1_and0 s_arrmul8_fa5_1_and1 s_arrmul8_fa5_1_or0
+1- 1
+-1 1
+.names a[6] b[1] s_arrmul8_and6_1
+11 1
+.names s_arrmul8_and6_1 s_arrmul8_nand7_0 s_arrmul8_fa6_1_xor0
+01 1
+10 1
+.names s_arrmul8_and6_1 s_arrmul8_nand7_0 s_arrmul8_fa6_1_and0
+11 1
+.names s_arrmul8_fa6_1_xor0 s_arrmul8_fa5_1_or0 s_arrmul8_fa6_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_1_xor0 s_arrmul8_fa5_1_or0 s_arrmul8_fa6_1_and1
+11 1
+.names s_arrmul8_fa6_1_and0 s_arrmul8_fa6_1_and1 s_arrmul8_fa6_1_or0
+1- 1
+-1 1
+.names a[7] b[1] s_arrmul8_nand7_1
+0- 1
+-0 1
+.names s_arrmul8_nand7_1 s_arrmul8_fa7_1_xor0
+0 1
+.names s_arrmul8_fa7_1_xor0 s_arrmul8_fa6_1_or0 s_arrmul8_fa7_1_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_1_xor0 s_arrmul8_fa6_1_or0 s_arrmul8_fa7_1_and1
+11 1
+.names s_arrmul8_nand7_1 s_arrmul8_fa7_1_and1 s_arrmul8_fa7_1_or0
+1- 1
+-1 1
+.names a[0] b[2] s_arrmul8_and0_2
+11 1
+.names s_arrmul8_and0_2 s_arrmul8_fa1_1_xor1 s_arrmul8_ha0_2_xor0
+01 1
+10 1
+.names s_arrmul8_and0_2 s_arrmul8_fa1_1_xor1 s_arrmul8_ha0_2_and0
+11 1
+.names a[1] b[2] s_arrmul8_and1_2
+11 1
+.names s_arrmul8_and1_2 s_arrmul8_fa2_1_xor1 s_arrmul8_fa1_2_xor0
+01 1
+10 1
+.names s_arrmul8_and1_2 s_arrmul8_fa2_1_xor1 s_arrmul8_fa1_2_and0
+11 1
+.names s_arrmul8_fa1_2_xor0 s_arrmul8_ha0_2_and0 s_arrmul8_fa1_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_2_xor0 s_arrmul8_ha0_2_and0 s_arrmul8_fa1_2_and1
+11 1
+.names s_arrmul8_fa1_2_and0 s_arrmul8_fa1_2_and1 s_arrmul8_fa1_2_or0
+1- 1
+-1 1
+.names a[2] b[2] s_arrmul8_and2_2
+11 1
+.names s_arrmul8_and2_2 s_arrmul8_fa3_1_xor1 s_arrmul8_fa2_2_xor0
+01 1
+10 1
+.names s_arrmul8_and2_2 s_arrmul8_fa3_1_xor1 s_arrmul8_fa2_2_and0
+11 1
+.names s_arrmul8_fa2_2_xor0 s_arrmul8_fa1_2_or0 s_arrmul8_fa2_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_2_xor0 s_arrmul8_fa1_2_or0 s_arrmul8_fa2_2_and1
+11 1
+.names s_arrmul8_fa2_2_and0 s_arrmul8_fa2_2_and1 s_arrmul8_fa2_2_or0
+1- 1
+-1 1
+.names a[3] b[2] s_arrmul8_and3_2
+11 1
+.names s_arrmul8_and3_2 s_arrmul8_fa4_1_xor1 s_arrmul8_fa3_2_xor0
+01 1
+10 1
+.names s_arrmul8_and3_2 s_arrmul8_fa4_1_xor1 s_arrmul8_fa3_2_and0
+11 1
+.names s_arrmul8_fa3_2_xor0 s_arrmul8_fa2_2_or0 s_arrmul8_fa3_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_2_xor0 s_arrmul8_fa2_2_or0 s_arrmul8_fa3_2_and1
+11 1
+.names s_arrmul8_fa3_2_and0 s_arrmul8_fa3_2_and1 s_arrmul8_fa3_2_or0
+1- 1
+-1 1
+.names a[4] b[2] s_arrmul8_and4_2
+11 1
+.names s_arrmul8_and4_2 s_arrmul8_fa5_1_xor1 s_arrmul8_fa4_2_xor0
+01 1
+10 1
+.names s_arrmul8_and4_2 s_arrmul8_fa5_1_xor1 s_arrmul8_fa4_2_and0
+11 1
+.names s_arrmul8_fa4_2_xor0 s_arrmul8_fa3_2_or0 s_arrmul8_fa4_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_2_xor0 s_arrmul8_fa3_2_or0 s_arrmul8_fa4_2_and1
+11 1
+.names s_arrmul8_fa4_2_and0 s_arrmul8_fa4_2_and1 s_arrmul8_fa4_2_or0
+1- 1
+-1 1
+.names a[5] b[2] s_arrmul8_and5_2
+11 1
+.names s_arrmul8_and5_2 s_arrmul8_fa6_1_xor1 s_arrmul8_fa5_2_xor0
+01 1
+10 1
+.names s_arrmul8_and5_2 s_arrmul8_fa6_1_xor1 s_arrmul8_fa5_2_and0
+11 1
+.names s_arrmul8_fa5_2_xor0 s_arrmul8_fa4_2_or0 s_arrmul8_fa5_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_2_xor0 s_arrmul8_fa4_2_or0 s_arrmul8_fa5_2_and1
+11 1
+.names s_arrmul8_fa5_2_and0 s_arrmul8_fa5_2_and1 s_arrmul8_fa5_2_or0
+1- 1
+-1 1
+.names a[6] b[2] s_arrmul8_and6_2
+11 1
+.names s_arrmul8_and6_2 s_arrmul8_fa7_1_xor1 s_arrmul8_fa6_2_xor0
+01 1
+10 1
+.names s_arrmul8_and6_2 s_arrmul8_fa7_1_xor1 s_arrmul8_fa6_2_and0
+11 1
+.names s_arrmul8_fa6_2_xor0 s_arrmul8_fa5_2_or0 s_arrmul8_fa6_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_2_xor0 s_arrmul8_fa5_2_or0 s_arrmul8_fa6_2_and1
+11 1
+.names s_arrmul8_fa6_2_and0 s_arrmul8_fa6_2_and1 s_arrmul8_fa6_2_or0
+1- 1
+-1 1
+.names a[7] b[2] s_arrmul8_nand7_2
+0- 1
+-0 1
+.names s_arrmul8_nand7_2 s_arrmul8_fa7_1_or0 s_arrmul8_fa7_2_xor0
+01 1
+10 1
+.names s_arrmul8_nand7_2 s_arrmul8_fa7_1_or0 s_arrmul8_fa7_2_and0
+11 1
+.names s_arrmul8_fa7_2_xor0 s_arrmul8_fa6_2_or0 s_arrmul8_fa7_2_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_2_xor0 s_arrmul8_fa6_2_or0 s_arrmul8_fa7_2_and1
+11 1
+.names s_arrmul8_fa7_2_and0 s_arrmul8_fa7_2_and1 s_arrmul8_fa7_2_or0
+1- 1
+-1 1
+.names a[0] b[3] s_arrmul8_and0_3
+11 1
+.names s_arrmul8_and0_3 s_arrmul8_fa1_2_xor1 s_arrmul8_ha0_3_xor0
+01 1
+10 1
+.names s_arrmul8_and0_3 s_arrmul8_fa1_2_xor1 s_arrmul8_ha0_3_and0
+11 1
+.names a[1] b[3] s_arrmul8_and1_3
+11 1
+.names s_arrmul8_and1_3 s_arrmul8_fa2_2_xor1 s_arrmul8_fa1_3_xor0
+01 1
+10 1
+.names s_arrmul8_and1_3 s_arrmul8_fa2_2_xor1 s_arrmul8_fa1_3_and0
+11 1
+.names s_arrmul8_fa1_3_xor0 s_arrmul8_ha0_3_and0 s_arrmul8_fa1_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_3_xor0 s_arrmul8_ha0_3_and0 s_arrmul8_fa1_3_and1
+11 1
+.names s_arrmul8_fa1_3_and0 s_arrmul8_fa1_3_and1 s_arrmul8_fa1_3_or0
+1- 1
+-1 1
+.names a[2] b[3] s_arrmul8_and2_3
+11 1
+.names s_arrmul8_and2_3 s_arrmul8_fa3_2_xor1 s_arrmul8_fa2_3_xor0
+01 1
+10 1
+.names s_arrmul8_and2_3 s_arrmul8_fa3_2_xor1 s_arrmul8_fa2_3_and0
+11 1
+.names s_arrmul8_fa2_3_xor0 s_arrmul8_fa1_3_or0 s_arrmul8_fa2_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_3_xor0 s_arrmul8_fa1_3_or0 s_arrmul8_fa2_3_and1
+11 1
+.names s_arrmul8_fa2_3_and0 s_arrmul8_fa2_3_and1 s_arrmul8_fa2_3_or0
+1- 1
+-1 1
+.names a[3] b[3] s_arrmul8_and3_3
+11 1
+.names s_arrmul8_and3_3 s_arrmul8_fa4_2_xor1 s_arrmul8_fa3_3_xor0
+01 1
+10 1
+.names s_arrmul8_and3_3 s_arrmul8_fa4_2_xor1 s_arrmul8_fa3_3_and0
+11 1
+.names s_arrmul8_fa3_3_xor0 s_arrmul8_fa2_3_or0 s_arrmul8_fa3_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_3_xor0 s_arrmul8_fa2_3_or0 s_arrmul8_fa3_3_and1
+11 1
+.names s_arrmul8_fa3_3_and0 s_arrmul8_fa3_3_and1 s_arrmul8_fa3_3_or0
+1- 1
+-1 1
+.names a[4] b[3] s_arrmul8_and4_3
+11 1
+.names s_arrmul8_and4_3 s_arrmul8_fa5_2_xor1 s_arrmul8_fa4_3_xor0
+01 1
+10 1
+.names s_arrmul8_and4_3 s_arrmul8_fa5_2_xor1 s_arrmul8_fa4_3_and0
+11 1
+.names s_arrmul8_fa4_3_xor0 s_arrmul8_fa3_3_or0 s_arrmul8_fa4_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_3_xor0 s_arrmul8_fa3_3_or0 s_arrmul8_fa4_3_and1
+11 1
+.names s_arrmul8_fa4_3_and0 s_arrmul8_fa4_3_and1 s_arrmul8_fa4_3_or0
+1- 1
+-1 1
+.names a[5] b[3] s_arrmul8_and5_3
+11 1
+.names s_arrmul8_and5_3 s_arrmul8_fa6_2_xor1 s_arrmul8_fa5_3_xor0
+01 1
+10 1
+.names s_arrmul8_and5_3 s_arrmul8_fa6_2_xor1 s_arrmul8_fa5_3_and0
+11 1
+.names s_arrmul8_fa5_3_xor0 s_arrmul8_fa4_3_or0 s_arrmul8_fa5_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_3_xor0 s_arrmul8_fa4_3_or0 s_arrmul8_fa5_3_and1
+11 1
+.names s_arrmul8_fa5_3_and0 s_arrmul8_fa5_3_and1 s_arrmul8_fa5_3_or0
+1- 1
+-1 1
+.names a[6] b[3] s_arrmul8_and6_3
+11 1
+.names s_arrmul8_and6_3 s_arrmul8_fa7_2_xor1 s_arrmul8_fa6_3_xor0
+01 1
+10 1
+.names s_arrmul8_and6_3 s_arrmul8_fa7_2_xor1 s_arrmul8_fa6_3_and0
+11 1
+.names s_arrmul8_fa6_3_xor0 s_arrmul8_fa5_3_or0 s_arrmul8_fa6_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_3_xor0 s_arrmul8_fa5_3_or0 s_arrmul8_fa6_3_and1
+11 1
+.names s_arrmul8_fa6_3_and0 s_arrmul8_fa6_3_and1 s_arrmul8_fa6_3_or0
+1- 1
+-1 1
+.names a[7] b[3] s_arrmul8_nand7_3
+0- 1
+-0 1
+.names s_arrmul8_nand7_3 s_arrmul8_fa7_2_or0 s_arrmul8_fa7_3_xor0
+01 1
+10 1
+.names s_arrmul8_nand7_3 s_arrmul8_fa7_2_or0 s_arrmul8_fa7_3_and0
+11 1
+.names s_arrmul8_fa7_3_xor0 s_arrmul8_fa6_3_or0 s_arrmul8_fa7_3_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_3_xor0 s_arrmul8_fa6_3_or0 s_arrmul8_fa7_3_and1
+11 1
+.names s_arrmul8_fa7_3_and0 s_arrmul8_fa7_3_and1 s_arrmul8_fa7_3_or0
+1- 1
+-1 1
+.names a[0] b[4] s_arrmul8_and0_4
+11 1
+.names s_arrmul8_and0_4 s_arrmul8_fa1_3_xor1 s_arrmul8_ha0_4_xor0
+01 1
+10 1
+.names s_arrmul8_and0_4 s_arrmul8_fa1_3_xor1 s_arrmul8_ha0_4_and0
+11 1
+.names a[1] b[4] s_arrmul8_and1_4
+11 1
+.names s_arrmul8_and1_4 s_arrmul8_fa2_3_xor1 s_arrmul8_fa1_4_xor0
+01 1
+10 1
+.names s_arrmul8_and1_4 s_arrmul8_fa2_3_xor1 s_arrmul8_fa1_4_and0
+11 1
+.names s_arrmul8_fa1_4_xor0 s_arrmul8_ha0_4_and0 s_arrmul8_fa1_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_4_xor0 s_arrmul8_ha0_4_and0 s_arrmul8_fa1_4_and1
+11 1
+.names s_arrmul8_fa1_4_and0 s_arrmul8_fa1_4_and1 s_arrmul8_fa1_4_or0
+1- 1
+-1 1
+.names a[2] b[4] s_arrmul8_and2_4
+11 1
+.names s_arrmul8_and2_4 s_arrmul8_fa3_3_xor1 s_arrmul8_fa2_4_xor0
+01 1
+10 1
+.names s_arrmul8_and2_4 s_arrmul8_fa3_3_xor1 s_arrmul8_fa2_4_and0
+11 1
+.names s_arrmul8_fa2_4_xor0 s_arrmul8_fa1_4_or0 s_arrmul8_fa2_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_4_xor0 s_arrmul8_fa1_4_or0 s_arrmul8_fa2_4_and1
+11 1
+.names s_arrmul8_fa2_4_and0 s_arrmul8_fa2_4_and1 s_arrmul8_fa2_4_or0
+1- 1
+-1 1
+.names a[3] b[4] s_arrmul8_and3_4
+11 1
+.names s_arrmul8_and3_4 s_arrmul8_fa4_3_xor1 s_arrmul8_fa3_4_xor0
+01 1
+10 1
+.names s_arrmul8_and3_4 s_arrmul8_fa4_3_xor1 s_arrmul8_fa3_4_and0
+11 1
+.names s_arrmul8_fa3_4_xor0 s_arrmul8_fa2_4_or0 s_arrmul8_fa3_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_4_xor0 s_arrmul8_fa2_4_or0 s_arrmul8_fa3_4_and1
+11 1
+.names s_arrmul8_fa3_4_and0 s_arrmul8_fa3_4_and1 s_arrmul8_fa3_4_or0
+1- 1
+-1 1
+.names a[4] b[4] s_arrmul8_and4_4
+11 1
+.names s_arrmul8_and4_4 s_arrmul8_fa5_3_xor1 s_arrmul8_fa4_4_xor0
+01 1
+10 1
+.names s_arrmul8_and4_4 s_arrmul8_fa5_3_xor1 s_arrmul8_fa4_4_and0
+11 1
+.names s_arrmul8_fa4_4_xor0 s_arrmul8_fa3_4_or0 s_arrmul8_fa4_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_4_xor0 s_arrmul8_fa3_4_or0 s_arrmul8_fa4_4_and1
+11 1
+.names s_arrmul8_fa4_4_and0 s_arrmul8_fa4_4_and1 s_arrmul8_fa4_4_or0
+1- 1
+-1 1
+.names a[5] b[4] s_arrmul8_and5_4
+11 1
+.names s_arrmul8_and5_4 s_arrmul8_fa6_3_xor1 s_arrmul8_fa5_4_xor0
+01 1
+10 1
+.names s_arrmul8_and5_4 s_arrmul8_fa6_3_xor1 s_arrmul8_fa5_4_and0
+11 1
+.names s_arrmul8_fa5_4_xor0 s_arrmul8_fa4_4_or0 s_arrmul8_fa5_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_4_xor0 s_arrmul8_fa4_4_or0 s_arrmul8_fa5_4_and1
+11 1
+.names s_arrmul8_fa5_4_and0 s_arrmul8_fa5_4_and1 s_arrmul8_fa5_4_or0
+1- 1
+-1 1
+.names a[6] b[4] s_arrmul8_and6_4
+11 1
+.names s_arrmul8_and6_4 s_arrmul8_fa7_3_xor1 s_arrmul8_fa6_4_xor0
+01 1
+10 1
+.names s_arrmul8_and6_4 s_arrmul8_fa7_3_xor1 s_arrmul8_fa6_4_and0
+11 1
+.names s_arrmul8_fa6_4_xor0 s_arrmul8_fa5_4_or0 s_arrmul8_fa6_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_4_xor0 s_arrmul8_fa5_4_or0 s_arrmul8_fa6_4_and1
+11 1
+.names s_arrmul8_fa6_4_and0 s_arrmul8_fa6_4_and1 s_arrmul8_fa6_4_or0
+1- 1
+-1 1
+.names a[7] b[4] s_arrmul8_nand7_4
+0- 1
+-0 1
+.names s_arrmul8_nand7_4 s_arrmul8_fa7_3_or0 s_arrmul8_fa7_4_xor0
+01 1
+10 1
+.names s_arrmul8_nand7_4 s_arrmul8_fa7_3_or0 s_arrmul8_fa7_4_and0
+11 1
+.names s_arrmul8_fa7_4_xor0 s_arrmul8_fa6_4_or0 s_arrmul8_fa7_4_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_4_xor0 s_arrmul8_fa6_4_or0 s_arrmul8_fa7_4_and1
+11 1
+.names s_arrmul8_fa7_4_and0 s_arrmul8_fa7_4_and1 s_arrmul8_fa7_4_or0
+1- 1
+-1 1
+.names a[0] b[5] s_arrmul8_and0_5
+11 1
+.names s_arrmul8_and0_5 s_arrmul8_fa1_4_xor1 s_arrmul8_ha0_5_xor0
+01 1
+10 1
+.names s_arrmul8_and0_5 s_arrmul8_fa1_4_xor1 s_arrmul8_ha0_5_and0
+11 1
+.names a[1] b[5] s_arrmul8_and1_5
+11 1
+.names s_arrmul8_and1_5 s_arrmul8_fa2_4_xor1 s_arrmul8_fa1_5_xor0
+01 1
+10 1
+.names s_arrmul8_and1_5 s_arrmul8_fa2_4_xor1 s_arrmul8_fa1_5_and0
+11 1
+.names s_arrmul8_fa1_5_xor0 s_arrmul8_ha0_5_and0 s_arrmul8_fa1_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_5_xor0 s_arrmul8_ha0_5_and0 s_arrmul8_fa1_5_and1
+11 1
+.names s_arrmul8_fa1_5_and0 s_arrmul8_fa1_5_and1 s_arrmul8_fa1_5_or0
+1- 1
+-1 1
+.names a[2] b[5] s_arrmul8_and2_5
+11 1
+.names s_arrmul8_and2_5 s_arrmul8_fa3_4_xor1 s_arrmul8_fa2_5_xor0
+01 1
+10 1
+.names s_arrmul8_and2_5 s_arrmul8_fa3_4_xor1 s_arrmul8_fa2_5_and0
+11 1
+.names s_arrmul8_fa2_5_xor0 s_arrmul8_fa1_5_or0 s_arrmul8_fa2_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_5_xor0 s_arrmul8_fa1_5_or0 s_arrmul8_fa2_5_and1
+11 1
+.names s_arrmul8_fa2_5_and0 s_arrmul8_fa2_5_and1 s_arrmul8_fa2_5_or0
+1- 1
+-1 1
+.names a[3] b[5] s_arrmul8_and3_5
+11 1
+.names s_arrmul8_and3_5 s_arrmul8_fa4_4_xor1 s_arrmul8_fa3_5_xor0
+01 1
+10 1
+.names s_arrmul8_and3_5 s_arrmul8_fa4_4_xor1 s_arrmul8_fa3_5_and0
+11 1
+.names s_arrmul8_fa3_5_xor0 s_arrmul8_fa2_5_or0 s_arrmul8_fa3_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_5_xor0 s_arrmul8_fa2_5_or0 s_arrmul8_fa3_5_and1
+11 1
+.names s_arrmul8_fa3_5_and0 s_arrmul8_fa3_5_and1 s_arrmul8_fa3_5_or0
+1- 1
+-1 1
+.names a[4] b[5] s_arrmul8_and4_5
+11 1
+.names s_arrmul8_and4_5 s_arrmul8_fa5_4_xor1 s_arrmul8_fa4_5_xor0
+01 1
+10 1
+.names s_arrmul8_and4_5 s_arrmul8_fa5_4_xor1 s_arrmul8_fa4_5_and0
+11 1
+.names s_arrmul8_fa4_5_xor0 s_arrmul8_fa3_5_or0 s_arrmul8_fa4_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_5_xor0 s_arrmul8_fa3_5_or0 s_arrmul8_fa4_5_and1
+11 1
+.names s_arrmul8_fa4_5_and0 s_arrmul8_fa4_5_and1 s_arrmul8_fa4_5_or0
+1- 1
+-1 1
+.names a[5] b[5] s_arrmul8_and5_5
+11 1
+.names s_arrmul8_and5_5 s_arrmul8_fa6_4_xor1 s_arrmul8_fa5_5_xor0
+01 1
+10 1
+.names s_arrmul8_and5_5 s_arrmul8_fa6_4_xor1 s_arrmul8_fa5_5_and0
+11 1
+.names s_arrmul8_fa5_5_xor0 s_arrmul8_fa4_5_or0 s_arrmul8_fa5_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_5_xor0 s_arrmul8_fa4_5_or0 s_arrmul8_fa5_5_and1
+11 1
+.names s_arrmul8_fa5_5_and0 s_arrmul8_fa5_5_and1 s_arrmul8_fa5_5_or0
+1- 1
+-1 1
+.names a[6] b[5] s_arrmul8_and6_5
+11 1
+.names s_arrmul8_and6_5 s_arrmul8_fa7_4_xor1 s_arrmul8_fa6_5_xor0
+01 1
+10 1
+.names s_arrmul8_and6_5 s_arrmul8_fa7_4_xor1 s_arrmul8_fa6_5_and0
+11 1
+.names s_arrmul8_fa6_5_xor0 s_arrmul8_fa5_5_or0 s_arrmul8_fa6_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_5_xor0 s_arrmul8_fa5_5_or0 s_arrmul8_fa6_5_and1
+11 1
+.names s_arrmul8_fa6_5_and0 s_arrmul8_fa6_5_and1 s_arrmul8_fa6_5_or0
+1- 1
+-1 1
+.names a[7] b[5] s_arrmul8_nand7_5
+0- 1
+-0 1
+.names s_arrmul8_nand7_5 s_arrmul8_fa7_4_or0 s_arrmul8_fa7_5_xor0
+01 1
+10 1
+.names s_arrmul8_nand7_5 s_arrmul8_fa7_4_or0 s_arrmul8_fa7_5_and0
+11 1
+.names s_arrmul8_fa7_5_xor0 s_arrmul8_fa6_5_or0 s_arrmul8_fa7_5_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_5_xor0 s_arrmul8_fa6_5_or0 s_arrmul8_fa7_5_and1
+11 1
+.names s_arrmul8_fa7_5_and0 s_arrmul8_fa7_5_and1 s_arrmul8_fa7_5_or0
+1- 1
+-1 1
+.names a[0] b[6] s_arrmul8_and0_6
+11 1
+.names s_arrmul8_and0_6 s_arrmul8_fa1_5_xor1 s_arrmul8_ha0_6_xor0
+01 1
+10 1
+.names s_arrmul8_and0_6 s_arrmul8_fa1_5_xor1 s_arrmul8_ha0_6_and0
+11 1
+.names a[1] b[6] s_arrmul8_and1_6
+11 1
+.names s_arrmul8_and1_6 s_arrmul8_fa2_5_xor1 s_arrmul8_fa1_6_xor0
+01 1
+10 1
+.names s_arrmul8_and1_6 s_arrmul8_fa2_5_xor1 s_arrmul8_fa1_6_and0
+11 1
+.names s_arrmul8_fa1_6_xor0 s_arrmul8_ha0_6_and0 s_arrmul8_fa1_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_6_xor0 s_arrmul8_ha0_6_and0 s_arrmul8_fa1_6_and1
+11 1
+.names s_arrmul8_fa1_6_and0 s_arrmul8_fa1_6_and1 s_arrmul8_fa1_6_or0
+1- 1
+-1 1
+.names a[2] b[6] s_arrmul8_and2_6
+11 1
+.names s_arrmul8_and2_6 s_arrmul8_fa3_5_xor1 s_arrmul8_fa2_6_xor0
+01 1
+10 1
+.names s_arrmul8_and2_6 s_arrmul8_fa3_5_xor1 s_arrmul8_fa2_6_and0
+11 1
+.names s_arrmul8_fa2_6_xor0 s_arrmul8_fa1_6_or0 s_arrmul8_fa2_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_6_xor0 s_arrmul8_fa1_6_or0 s_arrmul8_fa2_6_and1
+11 1
+.names s_arrmul8_fa2_6_and0 s_arrmul8_fa2_6_and1 s_arrmul8_fa2_6_or0
+1- 1
+-1 1
+.names a[3] b[6] s_arrmul8_and3_6
+11 1
+.names s_arrmul8_and3_6 s_arrmul8_fa4_5_xor1 s_arrmul8_fa3_6_xor0
+01 1
+10 1
+.names s_arrmul8_and3_6 s_arrmul8_fa4_5_xor1 s_arrmul8_fa3_6_and0
+11 1
+.names s_arrmul8_fa3_6_xor0 s_arrmul8_fa2_6_or0 s_arrmul8_fa3_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_6_xor0 s_arrmul8_fa2_6_or0 s_arrmul8_fa3_6_and1
+11 1
+.names s_arrmul8_fa3_6_and0 s_arrmul8_fa3_6_and1 s_arrmul8_fa3_6_or0
+1- 1
+-1 1
+.names a[4] b[6] s_arrmul8_and4_6
+11 1
+.names s_arrmul8_and4_6 s_arrmul8_fa5_5_xor1 s_arrmul8_fa4_6_xor0
+01 1
+10 1
+.names s_arrmul8_and4_6 s_arrmul8_fa5_5_xor1 s_arrmul8_fa4_6_and0
+11 1
+.names s_arrmul8_fa4_6_xor0 s_arrmul8_fa3_6_or0 s_arrmul8_fa4_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_6_xor0 s_arrmul8_fa3_6_or0 s_arrmul8_fa4_6_and1
+11 1
+.names s_arrmul8_fa4_6_and0 s_arrmul8_fa4_6_and1 s_arrmul8_fa4_6_or0
+1- 1
+-1 1
+.names a[5] b[6] s_arrmul8_and5_6
+11 1
+.names s_arrmul8_and5_6 s_arrmul8_fa6_5_xor1 s_arrmul8_fa5_6_xor0
+01 1
+10 1
+.names s_arrmul8_and5_6 s_arrmul8_fa6_5_xor1 s_arrmul8_fa5_6_and0
+11 1
+.names s_arrmul8_fa5_6_xor0 s_arrmul8_fa4_6_or0 s_arrmul8_fa5_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_6_xor0 s_arrmul8_fa4_6_or0 s_arrmul8_fa5_6_and1
+11 1
+.names s_arrmul8_fa5_6_and0 s_arrmul8_fa5_6_and1 s_arrmul8_fa5_6_or0
+1- 1
+-1 1
+.names a[6] b[6] s_arrmul8_and6_6
+11 1
+.names s_arrmul8_and6_6 s_arrmul8_fa7_5_xor1 s_arrmul8_fa6_6_xor0
+01 1
+10 1
+.names s_arrmul8_and6_6 s_arrmul8_fa7_5_xor1 s_arrmul8_fa6_6_and0
+11 1
+.names s_arrmul8_fa6_6_xor0 s_arrmul8_fa5_6_or0 s_arrmul8_fa6_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_6_xor0 s_arrmul8_fa5_6_or0 s_arrmul8_fa6_6_and1
+11 1
+.names s_arrmul8_fa6_6_and0 s_arrmul8_fa6_6_and1 s_arrmul8_fa6_6_or0
+1- 1
+-1 1
+.names a[7] b[6] s_arrmul8_nand7_6
+0- 1
+-0 1
+.names s_arrmul8_nand7_6 s_arrmul8_fa7_5_or0 s_arrmul8_fa7_6_xor0
+01 1
+10 1
+.names s_arrmul8_nand7_6 s_arrmul8_fa7_5_or0 s_arrmul8_fa7_6_and0
+11 1
+.names s_arrmul8_fa7_6_xor0 s_arrmul8_fa6_6_or0 s_arrmul8_fa7_6_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_6_xor0 s_arrmul8_fa6_6_or0 s_arrmul8_fa7_6_and1
+11 1
+.names s_arrmul8_fa7_6_and0 s_arrmul8_fa7_6_and1 s_arrmul8_fa7_6_or0
+1- 1
+-1 1
+.names a[0] b[7] s_arrmul8_nand0_7
+0- 1
+-0 1
+.names s_arrmul8_nand0_7 s_arrmul8_fa1_6_xor1 s_arrmul8_ha0_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand0_7 s_arrmul8_fa1_6_xor1 s_arrmul8_ha0_7_and0
+11 1
+.names a[1] b[7] s_arrmul8_nand1_7
+0- 1
+-0 1
+.names s_arrmul8_nand1_7 s_arrmul8_fa2_6_xor1 s_arrmul8_fa1_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand1_7 s_arrmul8_fa2_6_xor1 s_arrmul8_fa1_7_and0
+11 1
+.names s_arrmul8_fa1_7_xor0 s_arrmul8_ha0_7_and0 s_arrmul8_fa1_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa1_7_xor0 s_arrmul8_ha0_7_and0 s_arrmul8_fa1_7_and1
+11 1
+.names s_arrmul8_fa1_7_and0 s_arrmul8_fa1_7_and1 s_arrmul8_fa1_7_or0
+1- 1
+-1 1
+.names a[2] b[7] s_arrmul8_nand2_7
+0- 1
+-0 1
+.names s_arrmul8_nand2_7 s_arrmul8_fa3_6_xor1 s_arrmul8_fa2_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand2_7 s_arrmul8_fa3_6_xor1 s_arrmul8_fa2_7_and0
+11 1
+.names s_arrmul8_fa2_7_xor0 s_arrmul8_fa1_7_or0 s_arrmul8_fa2_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa2_7_xor0 s_arrmul8_fa1_7_or0 s_arrmul8_fa2_7_and1
+11 1
+.names s_arrmul8_fa2_7_and0 s_arrmul8_fa2_7_and1 s_arrmul8_fa2_7_or0
+1- 1
+-1 1
+.names a[3] b[7] s_arrmul8_nand3_7
+0- 1
+-0 1
+.names s_arrmul8_nand3_7 s_arrmul8_fa4_6_xor1 s_arrmul8_fa3_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand3_7 s_arrmul8_fa4_6_xor1 s_arrmul8_fa3_7_and0
+11 1
+.names s_arrmul8_fa3_7_xor0 s_arrmul8_fa2_7_or0 s_arrmul8_fa3_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa3_7_xor0 s_arrmul8_fa2_7_or0 s_arrmul8_fa3_7_and1
+11 1
+.names s_arrmul8_fa3_7_and0 s_arrmul8_fa3_7_and1 s_arrmul8_fa3_7_or0
+1- 1
+-1 1
+.names a[4] b[7] s_arrmul8_nand4_7
+0- 1
+-0 1
+.names s_arrmul8_nand4_7 s_arrmul8_fa5_6_xor1 s_arrmul8_fa4_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand4_7 s_arrmul8_fa5_6_xor1 s_arrmul8_fa4_7_and0
+11 1
+.names s_arrmul8_fa4_7_xor0 s_arrmul8_fa3_7_or0 s_arrmul8_fa4_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa4_7_xor0 s_arrmul8_fa3_7_or0 s_arrmul8_fa4_7_and1
+11 1
+.names s_arrmul8_fa4_7_and0 s_arrmul8_fa4_7_and1 s_arrmul8_fa4_7_or0
+1- 1
+-1 1
+.names a[5] b[7] s_arrmul8_nand5_7
+0- 1
+-0 1
+.names s_arrmul8_nand5_7 s_arrmul8_fa6_6_xor1 s_arrmul8_fa5_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand5_7 s_arrmul8_fa6_6_xor1 s_arrmul8_fa5_7_and0
+11 1
+.names s_arrmul8_fa5_7_xor0 s_arrmul8_fa4_7_or0 s_arrmul8_fa5_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa5_7_xor0 s_arrmul8_fa4_7_or0 s_arrmul8_fa5_7_and1
+11 1
+.names s_arrmul8_fa5_7_and0 s_arrmul8_fa5_7_and1 s_arrmul8_fa5_7_or0
+1- 1
+-1 1
+.names a[6] b[7] s_arrmul8_nand6_7
+0- 1
+-0 1
+.names s_arrmul8_nand6_7 s_arrmul8_fa7_6_xor1 s_arrmul8_fa6_7_xor0
+01 1
+10 1
+.names s_arrmul8_nand6_7 s_arrmul8_fa7_6_xor1 s_arrmul8_fa6_7_and0
+11 1
+.names s_arrmul8_fa6_7_xor0 s_arrmul8_fa5_7_or0 s_arrmul8_fa6_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa6_7_xor0 s_arrmul8_fa5_7_or0 s_arrmul8_fa6_7_and1
+11 1
+.names s_arrmul8_fa6_7_and0 s_arrmul8_fa6_7_and1 s_arrmul8_fa6_7_or0
+1- 1
+-1 1
+.names a[7] b[7] s_arrmul8_and7_7
+11 1
+.names s_arrmul8_and7_7 s_arrmul8_fa7_6_or0 s_arrmul8_fa7_7_xor0
+01 1
+10 1
+.names s_arrmul8_and7_7 s_arrmul8_fa7_6_or0 s_arrmul8_fa7_7_and0
+11 1
+.names s_arrmul8_fa7_7_xor0 s_arrmul8_fa6_7_or0 s_arrmul8_fa7_7_xor1
+01 1
+10 1
+.names s_arrmul8_fa7_7_xor0 s_arrmul8_fa6_7_or0 s_arrmul8_fa7_7_and1
+11 1
+.names s_arrmul8_fa7_7_and0 s_arrmul8_fa7_7_and1 s_arrmul8_fa7_7_or0
+1- 1
+-1 1
+.names s_arrmul8_fa7_7_or0 s_arrmul8_xor8_7
+0 1
+.names s_arrmul8_and0_0 s_arrmul8_out[0]
+1 1
+.names s_arrmul8_ha0_1_xor0 s_arrmul8_out[1]
+1 1
+.names s_arrmul8_ha0_2_xor0 s_arrmul8_out[2]
+1 1
+.names s_arrmul8_ha0_3_xor0 s_arrmul8_out[3]
+1 1
+.names s_arrmul8_ha0_4_xor0 s_arrmul8_out[4]
+1 1
+.names s_arrmul8_ha0_5_xor0 s_arrmul8_out[5]
+1 1
+.names s_arrmul8_ha0_6_xor0 s_arrmul8_out[6]
+1 1
+.names s_arrmul8_ha0_7_xor0 s_arrmul8_out[7]
+1 1
+.names s_arrmul8_fa1_7_xor1 s_arrmul8_out[8]
+1 1
+.names s_arrmul8_fa2_7_xor1 s_arrmul8_out[9]
+1 1
+.names s_arrmul8_fa3_7_xor1 s_arrmul8_out[10]
+1 1
+.names s_arrmul8_fa4_7_xor1 s_arrmul8_out[11]
+1 1
+.names s_arrmul8_fa5_7_xor1 s_arrmul8_out[12]
+1 1
+.names s_arrmul8_fa6_7_xor1 s_arrmul8_out[13]
+1 1
+.names s_arrmul8_fa7_7_xor1 s_arrmul8_out[14]
+1 1
+.names s_arrmul8_xor8_7 s_arrmul8_out[15]
+1 1
+.end

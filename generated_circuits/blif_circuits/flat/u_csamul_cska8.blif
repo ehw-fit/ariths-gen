@@ -1,0 +1,865 @@
+.model u_csamul_cska8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs u_csamul_cska8_out[0] u_csamul_cska8_out[1] u_csamul_cska8_out[2] u_csamul_cska8_out[3] u_csamul_cska8_out[4] u_csamul_cska8_out[5] u_csamul_cska8_out[6] u_csamul_cska8_out[7] u_csamul_cska8_out[8] u_csamul_cska8_out[9] u_csamul_cska8_out[10] u_csamul_cska8_out[11] u_csamul_cska8_out[12] u_csamul_cska8_out[13] u_csamul_cska8_out[14] u_csamul_cska8_out[15]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] u_csamul_cska8_and0_0
+11 1
+.names a[1] b[0] u_csamul_cska8_and1_0
+11 1
+.names a[2] b[0] u_csamul_cska8_and2_0
+11 1
+.names a[3] b[0] u_csamul_cska8_and3_0
+11 1
+.names a[4] b[0] u_csamul_cska8_and4_0
+11 1
+.names a[5] b[0] u_csamul_cska8_and5_0
+11 1
+.names a[6] b[0] u_csamul_cska8_and6_0
+11 1
+.names a[7] b[0] u_csamul_cska8_and7_0
+11 1
+.names a[0] b[1] u_csamul_cska8_and0_1
+11 1
+.names u_csamul_cska8_and0_1 u_csamul_cska8_and1_0 u_csamul_cska8_ha0_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_1 u_csamul_cska8_and1_0 u_csamul_cska8_ha0_1_and0
+11 1
+.names a[1] b[1] u_csamul_cska8_and1_1
+11 1
+.names u_csamul_cska8_and1_1 u_csamul_cska8_and2_0 u_csamul_cska8_ha1_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_1 u_csamul_cska8_and2_0 u_csamul_cska8_ha1_1_and0
+11 1
+.names a[2] b[1] u_csamul_cska8_and2_1
+11 1
+.names u_csamul_cska8_and2_1 u_csamul_cska8_and3_0 u_csamul_cska8_ha2_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_1 u_csamul_cska8_and3_0 u_csamul_cska8_ha2_1_and0
+11 1
+.names a[3] b[1] u_csamul_cska8_and3_1
+11 1
+.names u_csamul_cska8_and3_1 u_csamul_cska8_and4_0 u_csamul_cska8_ha3_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_1 u_csamul_cska8_and4_0 u_csamul_cska8_ha3_1_and0
+11 1
+.names a[4] b[1] u_csamul_cska8_and4_1
+11 1
+.names u_csamul_cska8_and4_1 u_csamul_cska8_and5_0 u_csamul_cska8_ha4_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_1 u_csamul_cska8_and5_0 u_csamul_cska8_ha4_1_and0
+11 1
+.names a[5] b[1] u_csamul_cska8_and5_1
+11 1
+.names u_csamul_cska8_and5_1 u_csamul_cska8_and6_0 u_csamul_cska8_ha5_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_1 u_csamul_cska8_and6_0 u_csamul_cska8_ha5_1_and0
+11 1
+.names a[6] b[1] u_csamul_cska8_and6_1
+11 1
+.names u_csamul_cska8_and6_1 u_csamul_cska8_and7_0 u_csamul_cska8_ha6_1_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_1 u_csamul_cska8_and7_0 u_csamul_cska8_ha6_1_and0
+11 1
+.names a[7] b[1] u_csamul_cska8_and7_1
+11 1
+.names a[0] b[2] u_csamul_cska8_and0_2
+11 1
+.names u_csamul_cska8_and0_2 u_csamul_cska8_ha1_1_xor0 u_csamul_cska8_fa0_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_2 u_csamul_cska8_ha1_1_xor0 u_csamul_cska8_fa0_2_and0
+11 1
+.names u_csamul_cska8_fa0_2_xor0 u_csamul_cska8_ha0_1_and0 u_csamul_cska8_fa0_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa0_2_xor0 u_csamul_cska8_ha0_1_and0 u_csamul_cska8_fa0_2_and1
+11 1
+.names u_csamul_cska8_fa0_2_and0 u_csamul_cska8_fa0_2_and1 u_csamul_cska8_fa0_2_or0
+1- 1
+-1 1
+.names a[1] b[2] u_csamul_cska8_and1_2
+11 1
+.names u_csamul_cska8_and1_2 u_csamul_cska8_ha2_1_xor0 u_csamul_cska8_fa1_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_2 u_csamul_cska8_ha2_1_xor0 u_csamul_cska8_fa1_2_and0
+11 1
+.names u_csamul_cska8_fa1_2_xor0 u_csamul_cska8_ha1_1_and0 u_csamul_cska8_fa1_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa1_2_xor0 u_csamul_cska8_ha1_1_and0 u_csamul_cska8_fa1_2_and1
+11 1
+.names u_csamul_cska8_fa1_2_and0 u_csamul_cska8_fa1_2_and1 u_csamul_cska8_fa1_2_or0
+1- 1
+-1 1
+.names a[2] b[2] u_csamul_cska8_and2_2
+11 1
+.names u_csamul_cska8_and2_2 u_csamul_cska8_ha3_1_xor0 u_csamul_cska8_fa2_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_2 u_csamul_cska8_ha3_1_xor0 u_csamul_cska8_fa2_2_and0
+11 1
+.names u_csamul_cska8_fa2_2_xor0 u_csamul_cska8_ha2_1_and0 u_csamul_cska8_fa2_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_2_xor0 u_csamul_cska8_ha2_1_and0 u_csamul_cska8_fa2_2_and1
+11 1
+.names u_csamul_cska8_fa2_2_and0 u_csamul_cska8_fa2_2_and1 u_csamul_cska8_fa2_2_or0
+1- 1
+-1 1
+.names a[3] b[2] u_csamul_cska8_and3_2
+11 1
+.names u_csamul_cska8_and3_2 u_csamul_cska8_ha4_1_xor0 u_csamul_cska8_fa3_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_2 u_csamul_cska8_ha4_1_xor0 u_csamul_cska8_fa3_2_and0
+11 1
+.names u_csamul_cska8_fa3_2_xor0 u_csamul_cska8_ha3_1_and0 u_csamul_cska8_fa3_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa3_2_xor0 u_csamul_cska8_ha3_1_and0 u_csamul_cska8_fa3_2_and1
+11 1
+.names u_csamul_cska8_fa3_2_and0 u_csamul_cska8_fa3_2_and1 u_csamul_cska8_fa3_2_or0
+1- 1
+-1 1
+.names a[4] b[2] u_csamul_cska8_and4_2
+11 1
+.names u_csamul_cska8_and4_2 u_csamul_cska8_ha5_1_xor0 u_csamul_cska8_fa4_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_2 u_csamul_cska8_ha5_1_xor0 u_csamul_cska8_fa4_2_and0
+11 1
+.names u_csamul_cska8_fa4_2_xor0 u_csamul_cska8_ha4_1_and0 u_csamul_cska8_fa4_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa4_2_xor0 u_csamul_cska8_ha4_1_and0 u_csamul_cska8_fa4_2_and1
+11 1
+.names u_csamul_cska8_fa4_2_and0 u_csamul_cska8_fa4_2_and1 u_csamul_cska8_fa4_2_or0
+1- 1
+-1 1
+.names a[5] b[2] u_csamul_cska8_and5_2
+11 1
+.names u_csamul_cska8_and5_2 u_csamul_cska8_ha6_1_xor0 u_csamul_cska8_fa5_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_2 u_csamul_cska8_ha6_1_xor0 u_csamul_cska8_fa5_2_and0
+11 1
+.names u_csamul_cska8_fa5_2_xor0 u_csamul_cska8_ha5_1_and0 u_csamul_cska8_fa5_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa5_2_xor0 u_csamul_cska8_ha5_1_and0 u_csamul_cska8_fa5_2_and1
+11 1
+.names u_csamul_cska8_fa5_2_and0 u_csamul_cska8_fa5_2_and1 u_csamul_cska8_fa5_2_or0
+1- 1
+-1 1
+.names a[6] b[2] u_csamul_cska8_and6_2
+11 1
+.names u_csamul_cska8_and6_2 u_csamul_cska8_and7_1 u_csamul_cska8_fa6_2_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_2 u_csamul_cska8_and7_1 u_csamul_cska8_fa6_2_and0
+11 1
+.names u_csamul_cska8_fa6_2_xor0 u_csamul_cska8_ha6_1_and0 u_csamul_cska8_fa6_2_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa6_2_xor0 u_csamul_cska8_ha6_1_and0 u_csamul_cska8_fa6_2_and1
+11 1
+.names u_csamul_cska8_fa6_2_and0 u_csamul_cska8_fa6_2_and1 u_csamul_cska8_fa6_2_or0
+1- 1
+-1 1
+.names a[7] b[2] u_csamul_cska8_and7_2
+11 1
+.names a[0] b[3] u_csamul_cska8_and0_3
+11 1
+.names u_csamul_cska8_and0_3 u_csamul_cska8_fa1_2_xor1 u_csamul_cska8_fa0_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_3 u_csamul_cska8_fa1_2_xor1 u_csamul_cska8_fa0_3_and0
+11 1
+.names u_csamul_cska8_fa0_3_xor0 u_csamul_cska8_fa0_2_or0 u_csamul_cska8_fa0_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa0_3_xor0 u_csamul_cska8_fa0_2_or0 u_csamul_cska8_fa0_3_and1
+11 1
+.names u_csamul_cska8_fa0_3_and0 u_csamul_cska8_fa0_3_and1 u_csamul_cska8_fa0_3_or0
+1- 1
+-1 1
+.names a[1] b[3] u_csamul_cska8_and1_3
+11 1
+.names u_csamul_cska8_and1_3 u_csamul_cska8_fa2_2_xor1 u_csamul_cska8_fa1_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_3 u_csamul_cska8_fa2_2_xor1 u_csamul_cska8_fa1_3_and0
+11 1
+.names u_csamul_cska8_fa1_3_xor0 u_csamul_cska8_fa1_2_or0 u_csamul_cska8_fa1_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa1_3_xor0 u_csamul_cska8_fa1_2_or0 u_csamul_cska8_fa1_3_and1
+11 1
+.names u_csamul_cska8_fa1_3_and0 u_csamul_cska8_fa1_3_and1 u_csamul_cska8_fa1_3_or0
+1- 1
+-1 1
+.names a[2] b[3] u_csamul_cska8_and2_3
+11 1
+.names u_csamul_cska8_and2_3 u_csamul_cska8_fa3_2_xor1 u_csamul_cska8_fa2_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_3 u_csamul_cska8_fa3_2_xor1 u_csamul_cska8_fa2_3_and0
+11 1
+.names u_csamul_cska8_fa2_3_xor0 u_csamul_cska8_fa2_2_or0 u_csamul_cska8_fa2_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_3_xor0 u_csamul_cska8_fa2_2_or0 u_csamul_cska8_fa2_3_and1
+11 1
+.names u_csamul_cska8_fa2_3_and0 u_csamul_cska8_fa2_3_and1 u_csamul_cska8_fa2_3_or0
+1- 1
+-1 1
+.names a[3] b[3] u_csamul_cska8_and3_3
+11 1
+.names u_csamul_cska8_and3_3 u_csamul_cska8_fa4_2_xor1 u_csamul_cska8_fa3_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_3 u_csamul_cska8_fa4_2_xor1 u_csamul_cska8_fa3_3_and0
+11 1
+.names u_csamul_cska8_fa3_3_xor0 u_csamul_cska8_fa3_2_or0 u_csamul_cska8_fa3_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa3_3_xor0 u_csamul_cska8_fa3_2_or0 u_csamul_cska8_fa3_3_and1
+11 1
+.names u_csamul_cska8_fa3_3_and0 u_csamul_cska8_fa3_3_and1 u_csamul_cska8_fa3_3_or0
+1- 1
+-1 1
+.names a[4] b[3] u_csamul_cska8_and4_3
+11 1
+.names u_csamul_cska8_and4_3 u_csamul_cska8_fa5_2_xor1 u_csamul_cska8_fa4_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_3 u_csamul_cska8_fa5_2_xor1 u_csamul_cska8_fa4_3_and0
+11 1
+.names u_csamul_cska8_fa4_3_xor0 u_csamul_cska8_fa4_2_or0 u_csamul_cska8_fa4_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa4_3_xor0 u_csamul_cska8_fa4_2_or0 u_csamul_cska8_fa4_3_and1
+11 1
+.names u_csamul_cska8_fa4_3_and0 u_csamul_cska8_fa4_3_and1 u_csamul_cska8_fa4_3_or0
+1- 1
+-1 1
+.names a[5] b[3] u_csamul_cska8_and5_3
+11 1
+.names u_csamul_cska8_and5_3 u_csamul_cska8_fa6_2_xor1 u_csamul_cska8_fa5_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_3 u_csamul_cska8_fa6_2_xor1 u_csamul_cska8_fa5_3_and0
+11 1
+.names u_csamul_cska8_fa5_3_xor0 u_csamul_cska8_fa5_2_or0 u_csamul_cska8_fa5_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa5_3_xor0 u_csamul_cska8_fa5_2_or0 u_csamul_cska8_fa5_3_and1
+11 1
+.names u_csamul_cska8_fa5_3_and0 u_csamul_cska8_fa5_3_and1 u_csamul_cska8_fa5_3_or0
+1- 1
+-1 1
+.names a[6] b[3] u_csamul_cska8_and6_3
+11 1
+.names u_csamul_cska8_and6_3 u_csamul_cska8_and7_2 u_csamul_cska8_fa6_3_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_3 u_csamul_cska8_and7_2 u_csamul_cska8_fa6_3_and0
+11 1
+.names u_csamul_cska8_fa6_3_xor0 u_csamul_cska8_fa6_2_or0 u_csamul_cska8_fa6_3_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa6_3_xor0 u_csamul_cska8_fa6_2_or0 u_csamul_cska8_fa6_3_and1
+11 1
+.names u_csamul_cska8_fa6_3_and0 u_csamul_cska8_fa6_3_and1 u_csamul_cska8_fa6_3_or0
+1- 1
+-1 1
+.names a[7] b[3] u_csamul_cska8_and7_3
+11 1
+.names a[0] b[4] u_csamul_cska8_and0_4
+11 1
+.names u_csamul_cska8_and0_4 u_csamul_cska8_fa1_3_xor1 u_csamul_cska8_fa0_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_4 u_csamul_cska8_fa1_3_xor1 u_csamul_cska8_fa0_4_and0
+11 1
+.names u_csamul_cska8_fa0_4_xor0 u_csamul_cska8_fa0_3_or0 u_csamul_cska8_fa0_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa0_4_xor0 u_csamul_cska8_fa0_3_or0 u_csamul_cska8_fa0_4_and1
+11 1
+.names u_csamul_cska8_fa0_4_and0 u_csamul_cska8_fa0_4_and1 u_csamul_cska8_fa0_4_or0
+1- 1
+-1 1
+.names a[1] b[4] u_csamul_cska8_and1_4
+11 1
+.names u_csamul_cska8_and1_4 u_csamul_cska8_fa2_3_xor1 u_csamul_cska8_fa1_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_4 u_csamul_cska8_fa2_3_xor1 u_csamul_cska8_fa1_4_and0
+11 1
+.names u_csamul_cska8_fa1_4_xor0 u_csamul_cska8_fa1_3_or0 u_csamul_cska8_fa1_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa1_4_xor0 u_csamul_cska8_fa1_3_or0 u_csamul_cska8_fa1_4_and1
+11 1
+.names u_csamul_cska8_fa1_4_and0 u_csamul_cska8_fa1_4_and1 u_csamul_cska8_fa1_4_or0
+1- 1
+-1 1
+.names a[2] b[4] u_csamul_cska8_and2_4
+11 1
+.names u_csamul_cska8_and2_4 u_csamul_cska8_fa3_3_xor1 u_csamul_cska8_fa2_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_4 u_csamul_cska8_fa3_3_xor1 u_csamul_cska8_fa2_4_and0
+11 1
+.names u_csamul_cska8_fa2_4_xor0 u_csamul_cska8_fa2_3_or0 u_csamul_cska8_fa2_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_4_xor0 u_csamul_cska8_fa2_3_or0 u_csamul_cska8_fa2_4_and1
+11 1
+.names u_csamul_cska8_fa2_4_and0 u_csamul_cska8_fa2_4_and1 u_csamul_cska8_fa2_4_or0
+1- 1
+-1 1
+.names a[3] b[4] u_csamul_cska8_and3_4
+11 1
+.names u_csamul_cska8_and3_4 u_csamul_cska8_fa4_3_xor1 u_csamul_cska8_fa3_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_4 u_csamul_cska8_fa4_3_xor1 u_csamul_cska8_fa3_4_and0
+11 1
+.names u_csamul_cska8_fa3_4_xor0 u_csamul_cska8_fa3_3_or0 u_csamul_cska8_fa3_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa3_4_xor0 u_csamul_cska8_fa3_3_or0 u_csamul_cska8_fa3_4_and1
+11 1
+.names u_csamul_cska8_fa3_4_and0 u_csamul_cska8_fa3_4_and1 u_csamul_cska8_fa3_4_or0
+1- 1
+-1 1
+.names a[4] b[4] u_csamul_cska8_and4_4
+11 1
+.names u_csamul_cska8_and4_4 u_csamul_cska8_fa5_3_xor1 u_csamul_cska8_fa4_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_4 u_csamul_cska8_fa5_3_xor1 u_csamul_cska8_fa4_4_and0
+11 1
+.names u_csamul_cska8_fa4_4_xor0 u_csamul_cska8_fa4_3_or0 u_csamul_cska8_fa4_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa4_4_xor0 u_csamul_cska8_fa4_3_or0 u_csamul_cska8_fa4_4_and1
+11 1
+.names u_csamul_cska8_fa4_4_and0 u_csamul_cska8_fa4_4_and1 u_csamul_cska8_fa4_4_or0
+1- 1
+-1 1
+.names a[5] b[4] u_csamul_cska8_and5_4
+11 1
+.names u_csamul_cska8_and5_4 u_csamul_cska8_fa6_3_xor1 u_csamul_cska8_fa5_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_4 u_csamul_cska8_fa6_3_xor1 u_csamul_cska8_fa5_4_and0
+11 1
+.names u_csamul_cska8_fa5_4_xor0 u_csamul_cska8_fa5_3_or0 u_csamul_cska8_fa5_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa5_4_xor0 u_csamul_cska8_fa5_3_or0 u_csamul_cska8_fa5_4_and1
+11 1
+.names u_csamul_cska8_fa5_4_and0 u_csamul_cska8_fa5_4_and1 u_csamul_cska8_fa5_4_or0
+1- 1
+-1 1
+.names a[6] b[4] u_csamul_cska8_and6_4
+11 1
+.names u_csamul_cska8_and6_4 u_csamul_cska8_and7_3 u_csamul_cska8_fa6_4_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_4 u_csamul_cska8_and7_3 u_csamul_cska8_fa6_4_and0
+11 1
+.names u_csamul_cska8_fa6_4_xor0 u_csamul_cska8_fa6_3_or0 u_csamul_cska8_fa6_4_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa6_4_xor0 u_csamul_cska8_fa6_3_or0 u_csamul_cska8_fa6_4_and1
+11 1
+.names u_csamul_cska8_fa6_4_and0 u_csamul_cska8_fa6_4_and1 u_csamul_cska8_fa6_4_or0
+1- 1
+-1 1
+.names a[7] b[4] u_csamul_cska8_and7_4
+11 1
+.names a[0] b[5] u_csamul_cska8_and0_5
+11 1
+.names u_csamul_cska8_and0_5 u_csamul_cska8_fa1_4_xor1 u_csamul_cska8_fa0_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_5 u_csamul_cska8_fa1_4_xor1 u_csamul_cska8_fa0_5_and0
+11 1
+.names u_csamul_cska8_fa0_5_xor0 u_csamul_cska8_fa0_4_or0 u_csamul_cska8_fa0_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa0_5_xor0 u_csamul_cska8_fa0_4_or0 u_csamul_cska8_fa0_5_and1
+11 1
+.names u_csamul_cska8_fa0_5_and0 u_csamul_cska8_fa0_5_and1 u_csamul_cska8_fa0_5_or0
+1- 1
+-1 1
+.names a[1] b[5] u_csamul_cska8_and1_5
+11 1
+.names u_csamul_cska8_and1_5 u_csamul_cska8_fa2_4_xor1 u_csamul_cska8_fa1_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_5 u_csamul_cska8_fa2_4_xor1 u_csamul_cska8_fa1_5_and0
+11 1
+.names u_csamul_cska8_fa1_5_xor0 u_csamul_cska8_fa1_4_or0 u_csamul_cska8_fa1_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa1_5_xor0 u_csamul_cska8_fa1_4_or0 u_csamul_cska8_fa1_5_and1
+11 1
+.names u_csamul_cska8_fa1_5_and0 u_csamul_cska8_fa1_5_and1 u_csamul_cska8_fa1_5_or0
+1- 1
+-1 1
+.names a[2] b[5] u_csamul_cska8_and2_5
+11 1
+.names u_csamul_cska8_and2_5 u_csamul_cska8_fa3_4_xor1 u_csamul_cska8_fa2_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_5 u_csamul_cska8_fa3_4_xor1 u_csamul_cska8_fa2_5_and0
+11 1
+.names u_csamul_cska8_fa2_5_xor0 u_csamul_cska8_fa2_4_or0 u_csamul_cska8_fa2_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_5_xor0 u_csamul_cska8_fa2_4_or0 u_csamul_cska8_fa2_5_and1
+11 1
+.names u_csamul_cska8_fa2_5_and0 u_csamul_cska8_fa2_5_and1 u_csamul_cska8_fa2_5_or0
+1- 1
+-1 1
+.names a[3] b[5] u_csamul_cska8_and3_5
+11 1
+.names u_csamul_cska8_and3_5 u_csamul_cska8_fa4_4_xor1 u_csamul_cska8_fa3_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_5 u_csamul_cska8_fa4_4_xor1 u_csamul_cska8_fa3_5_and0
+11 1
+.names u_csamul_cska8_fa3_5_xor0 u_csamul_cska8_fa3_4_or0 u_csamul_cska8_fa3_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa3_5_xor0 u_csamul_cska8_fa3_4_or0 u_csamul_cska8_fa3_5_and1
+11 1
+.names u_csamul_cska8_fa3_5_and0 u_csamul_cska8_fa3_5_and1 u_csamul_cska8_fa3_5_or0
+1- 1
+-1 1
+.names a[4] b[5] u_csamul_cska8_and4_5
+11 1
+.names u_csamul_cska8_and4_5 u_csamul_cska8_fa5_4_xor1 u_csamul_cska8_fa4_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_5 u_csamul_cska8_fa5_4_xor1 u_csamul_cska8_fa4_5_and0
+11 1
+.names u_csamul_cska8_fa4_5_xor0 u_csamul_cska8_fa4_4_or0 u_csamul_cska8_fa4_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa4_5_xor0 u_csamul_cska8_fa4_4_or0 u_csamul_cska8_fa4_5_and1
+11 1
+.names u_csamul_cska8_fa4_5_and0 u_csamul_cska8_fa4_5_and1 u_csamul_cska8_fa4_5_or0
+1- 1
+-1 1
+.names a[5] b[5] u_csamul_cska8_and5_5
+11 1
+.names u_csamul_cska8_and5_5 u_csamul_cska8_fa6_4_xor1 u_csamul_cska8_fa5_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_5 u_csamul_cska8_fa6_4_xor1 u_csamul_cska8_fa5_5_and0
+11 1
+.names u_csamul_cska8_fa5_5_xor0 u_csamul_cska8_fa5_4_or0 u_csamul_cska8_fa5_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa5_5_xor0 u_csamul_cska8_fa5_4_or0 u_csamul_cska8_fa5_5_and1
+11 1
+.names u_csamul_cska8_fa5_5_and0 u_csamul_cska8_fa5_5_and1 u_csamul_cska8_fa5_5_or0
+1- 1
+-1 1
+.names a[6] b[5] u_csamul_cska8_and6_5
+11 1
+.names u_csamul_cska8_and6_5 u_csamul_cska8_and7_4 u_csamul_cska8_fa6_5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_5 u_csamul_cska8_and7_4 u_csamul_cska8_fa6_5_and0
+11 1
+.names u_csamul_cska8_fa6_5_xor0 u_csamul_cska8_fa6_4_or0 u_csamul_cska8_fa6_5_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa6_5_xor0 u_csamul_cska8_fa6_4_or0 u_csamul_cska8_fa6_5_and1
+11 1
+.names u_csamul_cska8_fa6_5_and0 u_csamul_cska8_fa6_5_and1 u_csamul_cska8_fa6_5_or0
+1- 1
+-1 1
+.names a[7] b[5] u_csamul_cska8_and7_5
+11 1
+.names a[0] b[6] u_csamul_cska8_and0_6
+11 1
+.names u_csamul_cska8_and0_6 u_csamul_cska8_fa1_5_xor1 u_csamul_cska8_fa0_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_6 u_csamul_cska8_fa1_5_xor1 u_csamul_cska8_fa0_6_and0
+11 1
+.names u_csamul_cska8_fa0_6_xor0 u_csamul_cska8_fa0_5_or0 u_csamul_cska8_fa0_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa0_6_xor0 u_csamul_cska8_fa0_5_or0 u_csamul_cska8_fa0_6_and1
+11 1
+.names u_csamul_cska8_fa0_6_and0 u_csamul_cska8_fa0_6_and1 u_csamul_cska8_fa0_6_or0
+1- 1
+-1 1
+.names a[1] b[6] u_csamul_cska8_and1_6
+11 1
+.names u_csamul_cska8_and1_6 u_csamul_cska8_fa2_5_xor1 u_csamul_cska8_fa1_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_6 u_csamul_cska8_fa2_5_xor1 u_csamul_cska8_fa1_6_and0
+11 1
+.names u_csamul_cska8_fa1_6_xor0 u_csamul_cska8_fa1_5_or0 u_csamul_cska8_fa1_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa1_6_xor0 u_csamul_cska8_fa1_5_or0 u_csamul_cska8_fa1_6_and1
+11 1
+.names u_csamul_cska8_fa1_6_and0 u_csamul_cska8_fa1_6_and1 u_csamul_cska8_fa1_6_or0
+1- 1
+-1 1
+.names a[2] b[6] u_csamul_cska8_and2_6
+11 1
+.names u_csamul_cska8_and2_6 u_csamul_cska8_fa3_5_xor1 u_csamul_cska8_fa2_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_6 u_csamul_cska8_fa3_5_xor1 u_csamul_cska8_fa2_6_and0
+11 1
+.names u_csamul_cska8_fa2_6_xor0 u_csamul_cska8_fa2_5_or0 u_csamul_cska8_fa2_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_6_xor0 u_csamul_cska8_fa2_5_or0 u_csamul_cska8_fa2_6_and1
+11 1
+.names u_csamul_cska8_fa2_6_and0 u_csamul_cska8_fa2_6_and1 u_csamul_cska8_fa2_6_or0
+1- 1
+-1 1
+.names a[3] b[6] u_csamul_cska8_and3_6
+11 1
+.names u_csamul_cska8_and3_6 u_csamul_cska8_fa4_5_xor1 u_csamul_cska8_fa3_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_6 u_csamul_cska8_fa4_5_xor1 u_csamul_cska8_fa3_6_and0
+11 1
+.names u_csamul_cska8_fa3_6_xor0 u_csamul_cska8_fa3_5_or0 u_csamul_cska8_fa3_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa3_6_xor0 u_csamul_cska8_fa3_5_or0 u_csamul_cska8_fa3_6_and1
+11 1
+.names u_csamul_cska8_fa3_6_and0 u_csamul_cska8_fa3_6_and1 u_csamul_cska8_fa3_6_or0
+1- 1
+-1 1
+.names a[4] b[6] u_csamul_cska8_and4_6
+11 1
+.names u_csamul_cska8_and4_6 u_csamul_cska8_fa5_5_xor1 u_csamul_cska8_fa4_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_6 u_csamul_cska8_fa5_5_xor1 u_csamul_cska8_fa4_6_and0
+11 1
+.names u_csamul_cska8_fa4_6_xor0 u_csamul_cska8_fa4_5_or0 u_csamul_cska8_fa4_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa4_6_xor0 u_csamul_cska8_fa4_5_or0 u_csamul_cska8_fa4_6_and1
+11 1
+.names u_csamul_cska8_fa4_6_and0 u_csamul_cska8_fa4_6_and1 u_csamul_cska8_fa4_6_or0
+1- 1
+-1 1
+.names a[5] b[6] u_csamul_cska8_and5_6
+11 1
+.names u_csamul_cska8_and5_6 u_csamul_cska8_fa6_5_xor1 u_csamul_cska8_fa5_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_6 u_csamul_cska8_fa6_5_xor1 u_csamul_cska8_fa5_6_and0
+11 1
+.names u_csamul_cska8_fa5_6_xor0 u_csamul_cska8_fa5_5_or0 u_csamul_cska8_fa5_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa5_6_xor0 u_csamul_cska8_fa5_5_or0 u_csamul_cska8_fa5_6_and1
+11 1
+.names u_csamul_cska8_fa5_6_and0 u_csamul_cska8_fa5_6_and1 u_csamul_cska8_fa5_6_or0
+1- 1
+-1 1
+.names a[6] b[6] u_csamul_cska8_and6_6
+11 1
+.names u_csamul_cska8_and6_6 u_csamul_cska8_and7_5 u_csamul_cska8_fa6_6_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_6 u_csamul_cska8_and7_5 u_csamul_cska8_fa6_6_and0
+11 1
+.names u_csamul_cska8_fa6_6_xor0 u_csamul_cska8_fa6_5_or0 u_csamul_cska8_fa6_6_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa6_6_xor0 u_csamul_cska8_fa6_5_or0 u_csamul_cska8_fa6_6_and1
+11 1
+.names u_csamul_cska8_fa6_6_and0 u_csamul_cska8_fa6_6_and1 u_csamul_cska8_fa6_6_or0
+1- 1
+-1 1
+.names a[7] b[6] u_csamul_cska8_and7_6
+11 1
+.names a[0] b[7] u_csamul_cska8_and0_7
+11 1
+.names u_csamul_cska8_and0_7 u_csamul_cska8_fa1_6_xor1 u_csamul_cska8_fa0_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and0_7 u_csamul_cska8_fa1_6_xor1 u_csamul_cska8_fa0_7_and0
+11 1
+.names u_csamul_cska8_fa0_7_xor0 u_csamul_cska8_fa0_6_or0 u_csamul_cska8_fa0_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa0_7_xor0 u_csamul_cska8_fa0_6_or0 u_csamul_cska8_fa0_7_and1
+11 1
+.names u_csamul_cska8_fa0_7_and0 u_csamul_cska8_fa0_7_and1 u_csamul_cska8_fa0_7_or0
+1- 1
+-1 1
+.names a[1] b[7] u_csamul_cska8_and1_7
+11 1
+.names u_csamul_cska8_and1_7 u_csamul_cska8_fa2_6_xor1 u_csamul_cska8_fa1_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and1_7 u_csamul_cska8_fa2_6_xor1 u_csamul_cska8_fa1_7_and0
+11 1
+.names u_csamul_cska8_fa1_7_xor0 u_csamul_cska8_fa1_6_or0 u_csamul_cska8_fa1_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa1_7_xor0 u_csamul_cska8_fa1_6_or0 u_csamul_cska8_fa1_7_and1
+11 1
+.names u_csamul_cska8_fa1_7_and0 u_csamul_cska8_fa1_7_and1 u_csamul_cska8_fa1_7_or0
+1- 1
+-1 1
+.names a[2] b[7] u_csamul_cska8_and2_7
+11 1
+.names u_csamul_cska8_and2_7 u_csamul_cska8_fa3_6_xor1 u_csamul_cska8_fa2_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and2_7 u_csamul_cska8_fa3_6_xor1 u_csamul_cska8_fa2_7_and0
+11 1
+.names u_csamul_cska8_fa2_7_xor0 u_csamul_cska8_fa2_6_or0 u_csamul_cska8_fa2_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_7_xor0 u_csamul_cska8_fa2_6_or0 u_csamul_cska8_fa2_7_and1
+11 1
+.names u_csamul_cska8_fa2_7_and0 u_csamul_cska8_fa2_7_and1 u_csamul_cska8_fa2_7_or0
+1- 1
+-1 1
+.names a[3] b[7] u_csamul_cska8_and3_7
+11 1
+.names u_csamul_cska8_and3_7 u_csamul_cska8_fa4_6_xor1 u_csamul_cska8_fa3_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and3_7 u_csamul_cska8_fa4_6_xor1 u_csamul_cska8_fa3_7_and0
+11 1
+.names u_csamul_cska8_fa3_7_xor0 u_csamul_cska8_fa3_6_or0 u_csamul_cska8_fa3_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa3_7_xor0 u_csamul_cska8_fa3_6_or0 u_csamul_cska8_fa3_7_and1
+11 1
+.names u_csamul_cska8_fa3_7_and0 u_csamul_cska8_fa3_7_and1 u_csamul_cska8_fa3_7_or0
+1- 1
+-1 1
+.names a[4] b[7] u_csamul_cska8_and4_7
+11 1
+.names u_csamul_cska8_and4_7 u_csamul_cska8_fa5_6_xor1 u_csamul_cska8_fa4_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and4_7 u_csamul_cska8_fa5_6_xor1 u_csamul_cska8_fa4_7_and0
+11 1
+.names u_csamul_cska8_fa4_7_xor0 u_csamul_cska8_fa4_6_or0 u_csamul_cska8_fa4_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa4_7_xor0 u_csamul_cska8_fa4_6_or0 u_csamul_cska8_fa4_7_and1
+11 1
+.names u_csamul_cska8_fa4_7_and0 u_csamul_cska8_fa4_7_and1 u_csamul_cska8_fa4_7_or0
+1- 1
+-1 1
+.names a[5] b[7] u_csamul_cska8_and5_7
+11 1
+.names u_csamul_cska8_and5_7 u_csamul_cska8_fa6_6_xor1 u_csamul_cska8_fa5_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and5_7 u_csamul_cska8_fa6_6_xor1 u_csamul_cska8_fa5_7_and0
+11 1
+.names u_csamul_cska8_fa5_7_xor0 u_csamul_cska8_fa5_6_or0 u_csamul_cska8_fa5_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa5_7_xor0 u_csamul_cska8_fa5_6_or0 u_csamul_cska8_fa5_7_and1
+11 1
+.names u_csamul_cska8_fa5_7_and0 u_csamul_cska8_fa5_7_and1 u_csamul_cska8_fa5_7_or0
+1- 1
+-1 1
+.names a[6] b[7] u_csamul_cska8_and6_7
+11 1
+.names u_csamul_cska8_and6_7 u_csamul_cska8_and7_6 u_csamul_cska8_fa6_7_xor0
+01 1
+10 1
+.names u_csamul_cska8_and6_7 u_csamul_cska8_and7_6 u_csamul_cska8_fa6_7_and0
+11 1
+.names u_csamul_cska8_fa6_7_xor0 u_csamul_cska8_fa6_6_or0 u_csamul_cska8_fa6_7_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa6_7_xor0 u_csamul_cska8_fa6_6_or0 u_csamul_cska8_fa6_7_and1
+11 1
+.names u_csamul_cska8_fa6_7_and0 u_csamul_cska8_fa6_7_and1 u_csamul_cska8_fa6_7_or0
+1- 1
+-1 1
+.names a[7] b[7] u_csamul_cska8_and7_7
+11 1
+.names u_csamul_cska8_fa1_7_xor1 u_csamul_cska8_fa0_7_or0 u_csamul_cska8_u_cska8_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa1_7_xor1 u_csamul_cska8_fa0_7_or0 u_csamul_cska8_u_cska8_ha0_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa1_7_xor1 u_csamul_cska8_fa0_7_or0 u_csamul_cska8_u_cska8_ha0_and0
+11 1
+.names u_csamul_cska8_fa2_7_xor1 u_csamul_cska8_fa1_7_or0 u_csamul_cska8_u_cska8_xor1
+01 1
+10 1
+.names u_csamul_cska8_fa2_7_xor1 u_csamul_cska8_fa1_7_or0 u_csamul_cska8_u_cska8_fa0_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa2_7_xor1 u_csamul_cska8_fa1_7_or0 u_csamul_cska8_u_cska8_fa0_and0
+11 1
+.names u_csamul_cska8_u_cska8_fa0_xor0 u_csamul_cska8_u_cska8_ha0_and0 u_csamul_cska8_u_cska8_fa0_xor1
+01 1
+10 1
+.names u_csamul_cska8_u_cska8_fa0_xor0 u_csamul_cska8_u_cska8_ha0_and0 u_csamul_cska8_u_cska8_fa0_and1
+11 1
+.names u_csamul_cska8_u_cska8_fa0_and0 u_csamul_cska8_u_cska8_fa0_and1 u_csamul_cska8_u_cska8_fa0_or0
+1- 1
+-1 1
+.names u_csamul_cska8_fa3_7_xor1 u_csamul_cska8_fa2_7_or0 u_csamul_cska8_u_cska8_xor2
+01 1
+10 1
+.names u_csamul_cska8_fa3_7_xor1 u_csamul_cska8_fa2_7_or0 u_csamul_cska8_u_cska8_fa1_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa3_7_xor1 u_csamul_cska8_fa2_7_or0 u_csamul_cska8_u_cska8_fa1_and0
+11 1
+.names u_csamul_cska8_u_cska8_fa1_xor0 u_csamul_cska8_u_cska8_fa0_or0 u_csamul_cska8_u_cska8_fa1_xor1
+01 1
+10 1
+.names u_csamul_cska8_u_cska8_fa1_xor0 u_csamul_cska8_u_cska8_fa0_or0 u_csamul_cska8_u_cska8_fa1_and1
+11 1
+.names u_csamul_cska8_u_cska8_fa1_and0 u_csamul_cska8_u_cska8_fa1_and1 u_csamul_cska8_u_cska8_fa1_or0
+1- 1
+-1 1
+.names u_csamul_cska8_fa4_7_xor1 u_csamul_cska8_fa3_7_or0 u_csamul_cska8_u_cska8_xor3
+01 1
+10 1
+.names u_csamul_cska8_fa4_7_xor1 u_csamul_cska8_fa3_7_or0 u_csamul_cska8_u_cska8_fa2_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa4_7_xor1 u_csamul_cska8_fa3_7_or0 u_csamul_cska8_u_cska8_fa2_and0
+11 1
+.names u_csamul_cska8_u_cska8_fa2_xor0 u_csamul_cska8_u_cska8_fa1_or0 u_csamul_cska8_u_cska8_fa2_xor1
+01 1
+10 1
+.names u_csamul_cska8_u_cska8_fa2_xor0 u_csamul_cska8_u_cska8_fa1_or0 u_csamul_cska8_u_cska8_fa2_and1
+11 1
+.names u_csamul_cska8_u_cska8_fa2_and0 u_csamul_cska8_u_cska8_fa2_and1 u_csamul_cska8_u_cska8_fa2_or0
+1- 1
+-1 1
+.names u_csamul_cska8_u_cska8_xor0 u_csamul_cska8_u_cska8_xor2 u_csamul_cska8_u_cska8_and_propagate00
+11 1
+.names u_csamul_cska8_u_cska8_xor1 u_csamul_cska8_u_cska8_xor3 u_csamul_cska8_u_cska8_and_propagate01
+11 1
+.names u_csamul_cska8_u_cska8_and_propagate00 u_csamul_cska8_u_cska8_and_propagate01 u_csamul_cska8_u_cska8_and_propagate02
+11 1
+.names u_csamul_cska8_u_cska8_and_propagate02 u_csamul_cska8_u_cska8_mux2to10_not0
+0 1
+.names u_csamul_cska8_u_cska8_fa2_or0 u_csamul_cska8_u_cska8_mux2to10_not0 u_csamul_cska8_u_cska8_mux2to10_and1
+11 1
+.names u_csamul_cska8_fa5_7_xor1 u_csamul_cska8_fa4_7_or0 u_csamul_cska8_u_cska8_xor4
+01 1
+10 1
+.names u_csamul_cska8_fa5_7_xor1 u_csamul_cska8_fa4_7_or0 u_csamul_cska8_u_cska8_fa3_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa5_7_xor1 u_csamul_cska8_fa4_7_or0 u_csamul_cska8_u_cska8_fa3_and0
+11 1
+.names u_csamul_cska8_u_cska8_fa3_xor0 u_csamul_cska8_u_cska8_mux2to10_and1 u_csamul_cska8_u_cska8_fa3_xor1
+01 1
+10 1
+.names u_csamul_cska8_u_cska8_fa3_xor0 u_csamul_cska8_u_cska8_mux2to10_and1 u_csamul_cska8_u_cska8_fa3_and1
+11 1
+.names u_csamul_cska8_u_cska8_fa3_and0 u_csamul_cska8_u_cska8_fa3_and1 u_csamul_cska8_u_cska8_fa3_or0
+1- 1
+-1 1
+.names u_csamul_cska8_fa6_7_xor1 u_csamul_cska8_fa5_7_or0 u_csamul_cska8_u_cska8_xor5
+01 1
+10 1
+.names u_csamul_cska8_fa6_7_xor1 u_csamul_cska8_fa5_7_or0 u_csamul_cska8_u_cska8_fa4_xor0
+01 1
+10 1
+.names u_csamul_cska8_fa6_7_xor1 u_csamul_cska8_fa5_7_or0 u_csamul_cska8_u_cska8_fa4_and0
+11 1
+.names u_csamul_cska8_u_cska8_fa4_xor0 u_csamul_cska8_u_cska8_fa3_or0 u_csamul_cska8_u_cska8_fa4_xor1
+01 1
+10 1
+.names u_csamul_cska8_u_cska8_fa4_xor0 u_csamul_cska8_u_cska8_fa3_or0 u_csamul_cska8_u_cska8_fa4_and1
+11 1
+.names u_csamul_cska8_u_cska8_fa4_and0 u_csamul_cska8_u_cska8_fa4_and1 u_csamul_cska8_u_cska8_fa4_or0
+1- 1
+-1 1
+.names u_csamul_cska8_and7_7 u_csamul_cska8_fa6_7_or0 u_csamul_cska8_u_cska8_xor6
+01 1
+10 1
+.names u_csamul_cska8_and7_7 u_csamul_cska8_fa6_7_or0 u_csamul_cska8_u_cska8_fa5_xor0
+01 1
+10 1
+.names u_csamul_cska8_and7_7 u_csamul_cska8_fa6_7_or0 u_csamul_cska8_u_cska8_fa5_and0
+11 1
+.names u_csamul_cska8_u_cska8_fa5_xor0 u_csamul_cska8_u_cska8_fa4_or0 u_csamul_cska8_u_cska8_fa5_xor1
+01 1
+10 1
+.names u_csamul_cska8_u_cska8_fa5_xor0 u_csamul_cska8_u_cska8_fa4_or0 u_csamul_cska8_u_cska8_fa5_and1
+11 1
+.names u_csamul_cska8_u_cska8_fa5_and0 u_csamul_cska8_u_cska8_fa5_and1 u_csamul_cska8_u_cska8_fa5_or0
+1- 1
+-1 1
+.names u_csamul_cska8_u_cska8_xor4 u_csamul_cska8_u_cska8_xor6 u_csamul_cska8_u_cska8_and_propagate13
+11 1
+.names u_csamul_cska8_and0_0 u_csamul_cska8_out[0]
+1 1
+.names u_csamul_cska8_ha0_1_xor0 u_csamul_cska8_out[1]
+1 1
+.names u_csamul_cska8_fa0_2_xor1 u_csamul_cska8_out[2]
+1 1
+.names u_csamul_cska8_fa0_3_xor1 u_csamul_cska8_out[3]
+1 1
+.names u_csamul_cska8_fa0_4_xor1 u_csamul_cska8_out[4]
+1 1
+.names u_csamul_cska8_fa0_5_xor1 u_csamul_cska8_out[5]
+1 1
+.names u_csamul_cska8_fa0_6_xor1 u_csamul_cska8_out[6]
+1 1
+.names u_csamul_cska8_fa0_7_xor1 u_csamul_cska8_out[7]
+1 1
+.names u_csamul_cska8_u_cska8_ha0_xor0 u_csamul_cska8_out[8]
+1 1
+.names u_csamul_cska8_u_cska8_fa0_xor1 u_csamul_cska8_out[9]
+1 1
+.names u_csamul_cska8_u_cska8_fa1_xor1 u_csamul_cska8_out[10]
+1 1
+.names u_csamul_cska8_u_cska8_fa2_xor1 u_csamul_cska8_out[11]
+1 1
+.names u_csamul_cska8_u_cska8_fa3_xor1 u_csamul_cska8_out[12]
+1 1
+.names u_csamul_cska8_u_cska8_fa4_xor1 u_csamul_cska8_out[13]
+1 1
+.names u_csamul_cska8_u_cska8_fa5_xor1 u_csamul_cska8_out[14]
+1 1
+.names u_csamul_cska8_u_cska8_fa5_or0 u_csamul_cska8_out[15]
+1 1
+.end

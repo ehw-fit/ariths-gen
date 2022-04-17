@@ -1,0 +1,135 @@
+.model u_pg_rca16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs u_pg_rca16_out[0] u_pg_rca16_out[1] u_pg_rca16_out[2] u_pg_rca16_out[3] u_pg_rca16_out[4] u_pg_rca16_out[5] u_pg_rca16_out[6] u_pg_rca16_out[7] u_pg_rca16_out[8] u_pg_rca16_out[9] u_pg_rca16_out[10] u_pg_rca16_out[11] u_pg_rca16_out[12] u_pg_rca16_out[13] u_pg_rca16_out[14] u_pg_rca16_out[15] u_pg_rca16_out[16]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_fa a=a[0] b=b[0] cin=gnd pg_fa_xor0=u_pg_rca16_pg_fa0_xor0 pg_fa_and0=u_pg_rca16_pg_fa0_and0
+.subckt pg_fa a=a[1] b=b[1] cin=u_pg_rca16_pg_fa0_and0 pg_fa_xor0=u_pg_rca16_pg_fa1_xor0 pg_fa_and0=u_pg_rca16_pg_fa1_and0 pg_fa_xor1=u_pg_rca16_pg_fa1_xor1
+.subckt and_gate a=u_pg_rca16_pg_fa0_and0 b=u_pg_rca16_pg_fa1_xor0 out=u_pg_rca16_and1
+.subckt or_gate a=u_pg_rca16_and1 b=u_pg_rca16_pg_fa1_and0 out=u_pg_rca16_or1
+.subckt pg_fa a=a[2] b=b[2] cin=u_pg_rca16_or1 pg_fa_xor0=u_pg_rca16_pg_fa2_xor0 pg_fa_and0=u_pg_rca16_pg_fa2_and0 pg_fa_xor1=u_pg_rca16_pg_fa2_xor1
+.subckt and_gate a=u_pg_rca16_or1 b=u_pg_rca16_pg_fa2_xor0 out=u_pg_rca16_and2
+.subckt or_gate a=u_pg_rca16_and2 b=u_pg_rca16_pg_fa2_and0 out=u_pg_rca16_or2
+.subckt pg_fa a=a[3] b=b[3] cin=u_pg_rca16_or2 pg_fa_xor0=u_pg_rca16_pg_fa3_xor0 pg_fa_and0=u_pg_rca16_pg_fa3_and0 pg_fa_xor1=u_pg_rca16_pg_fa3_xor1
+.subckt and_gate a=u_pg_rca16_or2 b=u_pg_rca16_pg_fa3_xor0 out=u_pg_rca16_and3
+.subckt or_gate a=u_pg_rca16_and3 b=u_pg_rca16_pg_fa3_and0 out=u_pg_rca16_or3
+.subckt pg_fa a=a[4] b=b[4] cin=u_pg_rca16_or3 pg_fa_xor0=u_pg_rca16_pg_fa4_xor0 pg_fa_and0=u_pg_rca16_pg_fa4_and0 pg_fa_xor1=u_pg_rca16_pg_fa4_xor1
+.subckt and_gate a=u_pg_rca16_or3 b=u_pg_rca16_pg_fa4_xor0 out=u_pg_rca16_and4
+.subckt or_gate a=u_pg_rca16_and4 b=u_pg_rca16_pg_fa4_and0 out=u_pg_rca16_or4
+.subckt pg_fa a=a[5] b=b[5] cin=u_pg_rca16_or4 pg_fa_xor0=u_pg_rca16_pg_fa5_xor0 pg_fa_and0=u_pg_rca16_pg_fa5_and0 pg_fa_xor1=u_pg_rca16_pg_fa5_xor1
+.subckt and_gate a=u_pg_rca16_or4 b=u_pg_rca16_pg_fa5_xor0 out=u_pg_rca16_and5
+.subckt or_gate a=u_pg_rca16_and5 b=u_pg_rca16_pg_fa5_and0 out=u_pg_rca16_or5
+.subckt pg_fa a=a[6] b=b[6] cin=u_pg_rca16_or5 pg_fa_xor0=u_pg_rca16_pg_fa6_xor0 pg_fa_and0=u_pg_rca16_pg_fa6_and0 pg_fa_xor1=u_pg_rca16_pg_fa6_xor1
+.subckt and_gate a=u_pg_rca16_or5 b=u_pg_rca16_pg_fa6_xor0 out=u_pg_rca16_and6
+.subckt or_gate a=u_pg_rca16_and6 b=u_pg_rca16_pg_fa6_and0 out=u_pg_rca16_or6
+.subckt pg_fa a=a[7] b=b[7] cin=u_pg_rca16_or6 pg_fa_xor0=u_pg_rca16_pg_fa7_xor0 pg_fa_and0=u_pg_rca16_pg_fa7_and0 pg_fa_xor1=u_pg_rca16_pg_fa7_xor1
+.subckt and_gate a=u_pg_rca16_or6 b=u_pg_rca16_pg_fa7_xor0 out=u_pg_rca16_and7
+.subckt or_gate a=u_pg_rca16_and7 b=u_pg_rca16_pg_fa7_and0 out=u_pg_rca16_or7
+.subckt pg_fa a=a[8] b=b[8] cin=u_pg_rca16_or7 pg_fa_xor0=u_pg_rca16_pg_fa8_xor0 pg_fa_and0=u_pg_rca16_pg_fa8_and0 pg_fa_xor1=u_pg_rca16_pg_fa8_xor1
+.subckt and_gate a=u_pg_rca16_or7 b=u_pg_rca16_pg_fa8_xor0 out=u_pg_rca16_and8
+.subckt or_gate a=u_pg_rca16_and8 b=u_pg_rca16_pg_fa8_and0 out=u_pg_rca16_or8
+.subckt pg_fa a=a[9] b=b[9] cin=u_pg_rca16_or8 pg_fa_xor0=u_pg_rca16_pg_fa9_xor0 pg_fa_and0=u_pg_rca16_pg_fa9_and0 pg_fa_xor1=u_pg_rca16_pg_fa9_xor1
+.subckt and_gate a=u_pg_rca16_or8 b=u_pg_rca16_pg_fa9_xor0 out=u_pg_rca16_and9
+.subckt or_gate a=u_pg_rca16_and9 b=u_pg_rca16_pg_fa9_and0 out=u_pg_rca16_or9
+.subckt pg_fa a=a[10] b=b[10] cin=u_pg_rca16_or9 pg_fa_xor0=u_pg_rca16_pg_fa10_xor0 pg_fa_and0=u_pg_rca16_pg_fa10_and0 pg_fa_xor1=u_pg_rca16_pg_fa10_xor1
+.subckt and_gate a=u_pg_rca16_or9 b=u_pg_rca16_pg_fa10_xor0 out=u_pg_rca16_and10
+.subckt or_gate a=u_pg_rca16_and10 b=u_pg_rca16_pg_fa10_and0 out=u_pg_rca16_or10
+.subckt pg_fa a=a[11] b=b[11] cin=u_pg_rca16_or10 pg_fa_xor0=u_pg_rca16_pg_fa11_xor0 pg_fa_and0=u_pg_rca16_pg_fa11_and0 pg_fa_xor1=u_pg_rca16_pg_fa11_xor1
+.subckt and_gate a=u_pg_rca16_or10 b=u_pg_rca16_pg_fa11_xor0 out=u_pg_rca16_and11
+.subckt or_gate a=u_pg_rca16_and11 b=u_pg_rca16_pg_fa11_and0 out=u_pg_rca16_or11
+.subckt pg_fa a=a[12] b=b[12] cin=u_pg_rca16_or11 pg_fa_xor0=u_pg_rca16_pg_fa12_xor0 pg_fa_and0=u_pg_rca16_pg_fa12_and0 pg_fa_xor1=u_pg_rca16_pg_fa12_xor1
+.subckt and_gate a=u_pg_rca16_or11 b=u_pg_rca16_pg_fa12_xor0 out=u_pg_rca16_and12
+.subckt or_gate a=u_pg_rca16_and12 b=u_pg_rca16_pg_fa12_and0 out=u_pg_rca16_or12
+.subckt pg_fa a=a[13] b=b[13] cin=u_pg_rca16_or12 pg_fa_xor0=u_pg_rca16_pg_fa13_xor0 pg_fa_and0=u_pg_rca16_pg_fa13_and0 pg_fa_xor1=u_pg_rca16_pg_fa13_xor1
+.subckt and_gate a=u_pg_rca16_or12 b=u_pg_rca16_pg_fa13_xor0 out=u_pg_rca16_and13
+.subckt or_gate a=u_pg_rca16_and13 b=u_pg_rca16_pg_fa13_and0 out=u_pg_rca16_or13
+.subckt pg_fa a=a[14] b=b[14] cin=u_pg_rca16_or13 pg_fa_xor0=u_pg_rca16_pg_fa14_xor0 pg_fa_and0=u_pg_rca16_pg_fa14_and0 pg_fa_xor1=u_pg_rca16_pg_fa14_xor1
+.subckt and_gate a=u_pg_rca16_or13 b=u_pg_rca16_pg_fa14_xor0 out=u_pg_rca16_and14
+.subckt or_gate a=u_pg_rca16_and14 b=u_pg_rca16_pg_fa14_and0 out=u_pg_rca16_or14
+.subckt pg_fa a=a[15] b=b[15] cin=u_pg_rca16_or14 pg_fa_xor0=u_pg_rca16_pg_fa15_xor0 pg_fa_and0=u_pg_rca16_pg_fa15_and0 pg_fa_xor1=u_pg_rca16_pg_fa15_xor1
+.subckt and_gate a=u_pg_rca16_or14 b=u_pg_rca16_pg_fa15_xor0 out=u_pg_rca16_and15
+.subckt or_gate a=u_pg_rca16_and15 b=u_pg_rca16_pg_fa15_and0 out=u_pg_rca16_or15
+.names u_pg_rca16_pg_fa0_xor0 u_pg_rca16_out[0]
+1 1
+.names u_pg_rca16_pg_fa1_xor1 u_pg_rca16_out[1]
+1 1
+.names u_pg_rca16_pg_fa2_xor1 u_pg_rca16_out[2]
+1 1
+.names u_pg_rca16_pg_fa3_xor1 u_pg_rca16_out[3]
+1 1
+.names u_pg_rca16_pg_fa4_xor1 u_pg_rca16_out[4]
+1 1
+.names u_pg_rca16_pg_fa5_xor1 u_pg_rca16_out[5]
+1 1
+.names u_pg_rca16_pg_fa6_xor1 u_pg_rca16_out[6]
+1 1
+.names u_pg_rca16_pg_fa7_xor1 u_pg_rca16_out[7]
+1 1
+.names u_pg_rca16_pg_fa8_xor1 u_pg_rca16_out[8]
+1 1
+.names u_pg_rca16_pg_fa9_xor1 u_pg_rca16_out[9]
+1 1
+.names u_pg_rca16_pg_fa10_xor1 u_pg_rca16_out[10]
+1 1
+.names u_pg_rca16_pg_fa11_xor1 u_pg_rca16_out[11]
+1 1
+.names u_pg_rca16_pg_fa12_xor1 u_pg_rca16_out[12]
+1 1
+.names u_pg_rca16_pg_fa13_xor1 u_pg_rca16_out[13]
+1 1
+.names u_pg_rca16_pg_fa14_xor1 u_pg_rca16_out[14]
+1 1
+.names u_pg_rca16_pg_fa15_xor1 u_pg_rca16_out[15]
+1 1
+.names u_pg_rca16_or15 u_pg_rca16_out[16]
+1 1
+.end
+
+.model pg_fa
+.inputs a b cin
+.outputs pg_fa_xor0 pg_fa_and0 pg_fa_xor1
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=pg_fa_xor0
+.subckt and_gate a=a b=b out=pg_fa_and0
+.subckt xor_gate a=pg_fa_xor0 b=cin out=pg_fa_xor1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
