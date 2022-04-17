@@ -184,7 +184,6 @@ class SignedDaddaMultiplier(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_dadda_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
-        self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -193,7 +192,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
         # Get starting stage and maximum possible column height
         self.stage, self.d = self.get_maximum_height(initial_value=min(self.a.N, self.b.N))
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
-        self.columns = self.init_column_heights(signed=True)
+        self.columns = self.init_column_heights()
 
         # Not used for 1 bit multiplier
         if self.N != 1:
@@ -344,7 +343,6 @@ to e.g. wallace and array multipliers.</p>
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_dadda_cla&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
-        self.c_data_type = &#34;int64_t&#34;
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -353,7 +351,7 @@ to e.g. wallace and array multipliers.</p>
         # Get starting stage and maximum possible column height
         self.stage, self.d = self.get_maximum_height(initial_value=min(self.a.N, self.b.N))
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
-        self.columns = self.init_column_heights(signed=True)
+        self.columns = self.init_column_heights()
 
         # Not used for 1 bit multiplier
         if self.N != 1:
@@ -444,6 +442,7 @@ to e.g. wallace and array multipliers.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wire" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wire">add_column_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires">add_column_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires">add_row_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
@@ -508,6 +507,7 @@ to e.g. wallace and array multipliers.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights">init_column_heights</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths">init_row_lengths</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights">update_column_heights</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_wires" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_wires">update_column_wires</a></code></li>
@@ -661,6 +661,7 @@ to e.g. wallace and array multipliers.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wire" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wire">add_column_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires">add_column_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires">add_row_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
@@ -725,6 +726,7 @@ to e.g. wallace and array multipliers.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights">init_column_heights</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths">init_row_lengths</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights">update_column_heights</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_wires" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_wires">update_column_wires</a></code></li>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 <meta name="generator" content="pdoc 0.10.0" />
-<title>ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier API documentation</title>
+<title>ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier API documentation</title>
 <meta name="description" content="" />
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
 <link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
@@ -19,7 +19,7 @@
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier</code></h1>
+<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier</code></h1>
 </header>
 <section id="section-intro">
 <details class="source">
@@ -50,91 +50,85 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XnorGate,
     NotGate
 )
-from ariths_gen.multi_bit_circuits.multipliers import (
-    UnsignedArrayMultiplier,
-    SignedArrayMultiplier
+from ariths_gen.multi_bit_circuits.adders import (
+    UnsignedCarryLookaheadAdder
 )
 
 
-class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
-    &#34;&#34;&#34;Class representing unsigned broken array multiplier.
+class UnsignedTruncatedCarrySaveMultiplier(MultiplierCircuit):
+    &#34;&#34;&#34;Class representing unsigned truncated carry save (Braun) multiplier.
 
-    It represents an approximative version of unsigned array multiplier with simpler structure.
-    It is created by modifying an ordinary N-bit unsigned array multiplier by omitting partial product
-    stage cells by the specified horizontal and vertical cut levels.
+    It represents an approximative version of unsigned carry save multiplier with simpler structure.
+    It is created by modifying an ordinary N-bit unsigned carry save multiplier by ignoring
+    (truncating) some of the partial products.
 
     The design promises better area and power parameters in exchange for the loss of computation precision.
-    The BAM design allows to save more partial product stage adders than truncated multiplier architectures.
     ```
-                            VERTICAL CUT=4
-
-                                │
-                                            A3B0       A2B0       A1B0       A0B0
-                                │          ┌───┐      ┌───┐      ┌───┐      ┌───┐
-                                           │AND│      │AND│      │AND│      │AND│
-                                │          └───┘      └───┘      └───┘      └───┘
-
-                                │
-                                      A3B1       A2B1       A1B1       A0B1
-                                │    ┌───┐      ┌───┐      ┌───┐      ┌───┐
-                                     │AND│      │AND│      │AND│      │AND│
-                                │    └───┘      └───┘      └───┘      └───┘
-
-                                │ ┌────┐     ┌────┐     ┌────┐     ┌────┐
-                                  │    │     │    │     │    │     │    │
-                                │ │ HA │     │ FA │     │ FA │     │ HA │
-                                  │    │     │    │     │    │     │    │
-                                │ └────┘     └────┘     └────┘     └────┘
-
-              ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ HORIZONTAL CUT=2
-                       A3B2           A2B2       A1B2       A0B2
-                      ┌▼─▼┐     │    ┌───┐      ┌───┐      ┌───┐
-                      │AND│          │AND│      │AND│      │AND│
-                      └┬──┘     │    └───┘      └───┘      └───┘
-                       │
-                       │        │ ┌────┐     ┌────┐     ┌────┐
-                       │          │    │     │    │     │    │
-                       │        │ │ FA │     │ FA │     │ HA │
-                       │          │    │     │    │     │    │
-                       │        │ └────┘     └────┘     └────┘
-            A3B3       │  A2B3       A1B3      A0B3
-           ┌▼─▼┐       │ ┌▼─▼┐  │   ┌───┐     ┌───┐
-           │AND│       │ │AND│      │AND│     │AND│
-           └┬──┘       │ └┬──┘  │   └───┘     └───┘
-            │          │  │
-           ┌▼───┐     ┌▼──▼┐    │ ┌────┐    ┌────┐
-           │    │     │    │      │    │    │    │
-    ┌──────┤ HA │◄────┤ HA │    │ │ FA │    │ HA │
-    │      │    │     │    │      │    │    │    │
-    │      └──┬─┘     └──┬─┘    │ └────┘    └────┘
-    │         │          │
-    │         │          │      │
-    ▼         ▼          ▼          ▼           ▼          ▼          ▼          ▼
-    P7        P6         P5     │   P4=0        P3=0       P2=0       P1=0       P0=0
+                                                                   CUT=1
+                                        A3B0       A2B0      A1B0    │    A0B0
+                                       ┌───┐      ┌───┐      ┌───┐      ┌───┐
+                                       │AND│      │AND│      │AND│   │  │AND│
+                                       └───┘      └───┘      └───┘      └───┘
+               ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┬─ ─ ┴ ─ ─ ─ ─ ─ ─ CUT=1
+                                     A3B1       A2B1       A1B1       A0B1
+                                    ┌▼─▼┐      ┌▼─▼┐      ┌▼─▼┐ │    ┌───┐
+                                    │AND│      │AND│      │AND│      │AND│
+                                    └┬──┘      └┬──┘      └┬──┘ │    └───┘
+                                     │          │          │      ┌────┐
+                                 ┌───┘          │          │    │ │    │
+                                 │            ┌─┘          │      │ HA │
+                                 │            │            │    │ │    │
+                                 │            │            │      └────┘
+                                 │            │       ┌ ─ ─│─ ─ ┘
+                       A3B2      │  A2B2      │  A1B2      │ A0B2
+                      ┌▼─▼┐      │ ┌▼─▼┐      │ ┌───┐ │    │┌───┐
+                      │AND│      │ │AND│      │ │AND│      ││AND│
+                      └┬──┘      │ └┬──┘      │ └┬──┘ │    │└───┘
+                       │        ┌▼──▼┐       ┌▼──▼┐     ┌──┼─┐
+                       │        │    │       │    │   │ │  │ │
+                       │      ┌─┤ HA │     ┌─┤ HA │     │FA│ │
+                       │      │ │    │     │ │    │   │ │  │ │
+                       │      │ └───┬┘     │ └───┬┘     └──┼─┘
+                       │      │     │      │     │    │    │
+                       │      │     │      │    ┌│─ ─ ┘    │
+              A3B3     │  A2B3│     │  A1B3│     │ A0B3    │
+             ┌▼─▼┐     │ ┌▼─▼┐│     │ ┌▼─▼┐│    ││┌───┐    │
+             │AND│     │ │AND││     │ │AND││     ││AND│    │
+             └┬──┘     │ └┬──┘│     │ └┬──┘│ ┌─ ┘│└───┘    │
+              │       ┌▼──▼┐  │    ┌▼──▼┐  │ │ ┌─┼──┐      │
+              │       │    │  │    │    │  │   │ │  │      │
+              │    ┌──┤ FA │◄─┘  ┌─┤ FA │◄─┘ │ │ │FA│      │
+              │    │  │    │     │ │    │      │ │  │      │
+              │    │  └──┬─┘     │ └──┬─┘    │ └─┼──┘      │
+              │    │     │       │    │      │   │         │
+              │    │     │       │    │          │         │
+              │    │     │       │    │          │         │
+      0   0   │    │     │       │    │      │   │         │
+      │   │   │S1  │C1   │S0     │C0  │          │         │
+    ┌─▼───▼───▼────▼─────▼───────▼─┐  │      │   │         │
+    │         Carry-propagate      │  │          │         │
+    │              adder           │  │      │   │         │
+    └─────┬────────┬─────────┬─────┘  │          │         │
+          ▼        ▼         ▼        ▼      │   ▼         ▼         ▼      ▼
+          P7       P6        P5       P4         P3        P2       P1=0   P0=0
     ```
     Description of the __init__ method.
 
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        horizontal_cut (int, optional): Specifies horizontal cut used in broken array multiplier circuit creation. Defaults to 0.
-        vertical_cut (int, optional): Specifies vertical cut used in broken array multiplier circuit creation. Defaults to 0.
-        prefix (str, optional): Prefix name of unsigned broken array multiplier. Defaults to &#34;&#34;.
-        name (str, optional): Name of unsigned broken array multiplier. Defaults to &#34;u_bam&#34;.
+        truncation_cut (int, optional): Specifies truncation cut level used in the truncated carry save multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary carry save multiplier. Defaults to 0.
+        prefix (str, optional): Prefix name of unsigned truncated carry save multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned truncated carry save multiplier. Defaults to &#34;u_tm&#34;.
+        unsigned_adder_class_name (str, optional): Unsigned multi bit adder used for final vector merging of sums and carries. Defaults to UnsignedCarryLookaheadAdder.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, horizontal_cut: int = 0, vertical_cut: int = 0, prefix: str = &#34;&#34;, name: str = &#34;u_bam&#34;, **kwargs):
-        # NOTE: If horizontal/vertical cut is specified as 0 the final circuit is a simple array multiplier
-        self.horizontal_cut = horizontal_cut
-        self.vertical_cut = vertical_cut
+    def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = &#34;&#34;, name: str = &#34;u_tmcsa&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+        # NOTE: If truncation_cut is specified as 0 the final circuit is a simple carry save multiplier
+        self.truncation_cut = truncation_cut
 
         self.N = max(a.N, b.N)
-        # Horizontal cut level should be: 0 &lt;= horizontal_cut &lt; N
-        # Vertical cut level should be: horizontal_cut &lt;= vertical_cut &lt; 2*N
-        assert horizontal_cut &lt; self.N
-        assert vertical_cut &lt; 2*self.N
-
-        # Vertical cut should be greater or equal to horizontal cut
-        assert vertical_cut &gt;= horizontal_cut
+        # Cut level should be: 0 &lt;= truncation_cut &lt; N
+        assert truncation_cut &lt; self.N
 
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
@@ -142,63 +136,67 @@ class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
-        self.ommited_rows = 0
         # Gradual generation of partial products
-        for b_multiplier_index in range(self.horizontal_cut, self.N):
-            # Number of elements that should be ommited in the current level based on vertical cut
-            pp_row_elems_to_skip = self.vertical_cut - b_multiplier_index if self.vertical_cut - b_multiplier_index &gt; 0 else 0
-            # Number of pp pairs present in the current row
-            pp_row_elems = self.N-pp_row_elems_to_skip if self.N-pp_row_elems_to_skip &gt; 0 else 0
-            self.ommited_rows += 1 if pp_row_elems == 0 else 0
-
-            for a_multiplicand_index in range((self.N-pp_row_elems), self.N):
+        for b_multiplier_index in range(self.truncation_cut, self.N):
+            row_pp_ord = 0
+            for a_multiplicand_index in range(self.truncation_cut, self.N):
+                row_pp_ord += 1
                 # AND gates generation for calculation of partial products
                 obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+&#34;_and&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
                 self.add_component(obj_and)
 
-                if b_multiplier_index != self.horizontal_cut + self.ommited_rows:
-                    if b_multiplier_index == self.horizontal_cut + self.ommited_rows + 1:
-                        previous_product = self.components[a_multiplicand_index + b_multiplier_index - self.vertical_cut].out
-                    else:
-                        previous_product = self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type=&#34;bam&#34;)
+                if a_multiplicand_index == self.truncation_cut:
+                    self.out.connect(b_multiplier_index+self.truncation_cut, obj_and.out)
 
-                    # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == 0 or self.vertical_cut-b_multiplier_index == a_multiplicand_index:
-                        obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-                        # Product generation
-                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
+                # HAs generation for first row of adders (the second row in total, first contains just pp generation)
+                if b_multiplier_index == self.truncation_cut+1 and a_multiplicand_index != self.N-1:
+                    previous_product = self.get_previous_component((self.N-a_multiplicand_index-1)+(row_pp_ord*2-1)).out
 
-                    # HA generation, last 1-bit adder in second row
-                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == self.horizontal_cut+self.ommited_rows+1:
-                        obj_adder = HalfAdder(self.get_previous_component().out, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
+                    obj_adder = HalfAdder(a=obj_and.out, b=previous_product, prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
+                    self.add_component(obj_adder)
 
-                    # FA generation
-                    else:
-                        obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_fa&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
+                    if (a_multiplicand_index == self.truncation_cut):
+                        self.out.connect(b_multiplier_index+self.truncation_cut, obj_adder.get_sum_wire())
+
+                # FAs generation for the remaining rows
+                elif b_multiplier_index &gt; self.truncation_cut+1 and a_multiplicand_index != self.N-1:
+                    previous_sum = self.get_previous_component((self.N-(truncation_cut+1))*2-1).get_sum_wire() if a_multiplicand_index != self.N-2 else self.get_previous_component((self.N-(truncation_cut+1))*2).out
+                    previous_carry = self.get_previous_component((self.N-truncation_cut)*2-1).get_carry_wire()
+
+                    obj_adder = FullAdder(a=obj_and.out, b=previous_sum, c=previous_carry, prefix=self.prefix+&#34;_fa&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
+                    self.add_component(obj_adder)
+
+                    if (a_multiplicand_index == self.truncation_cut):
+                        self.out.connect(b_multiplier_index+self.truncation_cut, obj_adder.get_sum_wire())
 
                 # PRODUCT GENERATION
-                if (a_multiplicand_index == 0 and b_multiplier_index == self.horizontal_cut) or (self.horizontal_cut + self.ommited_rows == self.N-1):
+                # 1 bit multiplier case
+                if (a_multiplicand_index == self.truncation_cut and b_multiplier_index == self.truncation_cut) or (self.truncation_cut == self.N-1):
                     self.out.connect(a_multiplicand_index + b_multiplier_index, obj_and.out)
 
                     # 1 bit multiplier case
                     if a_multiplicand_index == self.N-1 and b_multiplier_index == self.N-1:
                         self.out.connect(a_multiplicand_index+b_multiplier_index+1, ConstantWireValue0())
 
-                elif b_multiplier_index == self.N-1 and self.horizontal_cut != self.N-1:
-                    self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
-
-                    if a_multiplicand_index == self.N-1:
-                        self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
-
         # Connecting the output bits generated from ommited cells to ground
-        if self.vertical_cut == 2*self.N-1:
-            [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
-        else:
-            for grounded_out_index in range(0, max(self.horizontal_cut, self.vertical_cut)):
-                self.out.connect(grounded_out_index, ConstantWireValue0())</code></pre>
+        for grounded_out_index in range(0, self.truncation_cut*2):
+            self.out.connect(grounded_out_index, ConstantWireValue0())
+
+        # Final addition of remaining bits using chosen unsigned multi bit adder
+        if self.truncation_cut != self.N-1:
+            final_cpa_N = self.N - self.truncation_cut
+
+            previous_sums = [self.get_previous_component((final_cpa_N-2-wire_id)*2).get_sum_wire() if wire_id &lt; final_cpa_N-2 else self.get_previous_component().out if wire_id == final_cpa_N-2 else ConstantWireValue0() for wire_id in range(final_cpa_N)]
+            previous_carries = [self.get_previous_component((final_cpa_N-2-wire_id)*2+2).get_carry_wire() if wire_id != final_cpa_N-1 else ConstantWireValue0() for wire_id in range(final_cpa_N)]
+
+            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(final_cpa_N)
+            adder_a = Bus(prefix=f&#34;a&#34;, wires_list=previous_sums)
+            adder_b = Bus(prefix=f&#34;b&#34;, wires_list=previous_carries)
+
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+            self.add_component(final_adder)
+            [self.out.connect(o, final_adder.out.get_wire(o-(self.N+self.truncation_cut)), inserted_wire_desired_index=o-(self.N+self.truncation_cut)) for o in range(self.N+self.truncation_cut, self.out.N)]</code></pre>
 </details>
 </section>
 <section>
@@ -210,62 +208,63 @@ class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.UnsignedBrokenArrayMultiplier"><code class="flex name class">
-<span>class <span class="ident">UnsignedBrokenArrayMultiplier</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, horizontal_cut: int = 0, vertical_cut: int = 0, prefix: str = '', name: str = 'u_bam', **kwargs)</span>
+<dt id="ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier.UnsignedTruncatedCarrySaveMultiplier"><code class="flex name class">
+<span>class <span class="ident">UnsignedTruncatedCarrySaveMultiplier</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, truncation_cut: int = 0, prefix: str = '', name: str = 'u_tmcsa', unsigned_adder_class_name: str = ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing unsigned broken array multiplier.</p>
-<p>It represents an approximative version of unsigned array multiplier with simpler structure.
-It is created by modifying an ordinary N-bit unsigned array multiplier by omitting partial product
-stage cells by the specified horizontal and vertical cut levels.</p>
-<p>The design promises better area and power parameters in exchange for the loss of computation precision.
-The BAM design allows to save more partial product stage adders than truncated multiplier architectures.</p>
-<pre><code>                        VERTICAL CUT=4
-
-                            │
-                                        A3B0       A2B0       A1B0       A0B0
-                            │          ┌───┐      ┌───┐      ┌───┐      ┌───┐
-                                       │AND│      │AND│      │AND│      │AND│
-                            │          └───┘      └───┘      └───┘      └───┘
-
-                            │
-                                  A3B1       A2B1       A1B1       A0B1
-                            │    ┌───┐      ┌───┐      ┌───┐      ┌───┐
-                                 │AND│      │AND│      │AND│      │AND│
-                            │    └───┘      └───┘      └───┘      └───┘
-
-                            │ ┌────┐     ┌────┐     ┌────┐     ┌────┐
-                              │    │     │    │     │    │     │    │
-                            │ │ HA │     │ FA │     │ FA │     │ HA │
-                              │    │     │    │     │    │     │    │
-                            │ └────┘     └────┘     └────┘     └────┘
-
-          ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ HORIZONTAL CUT=2
-                   A3B2           A2B2       A1B2       A0B2
-                  ┌▼─▼┐     │    ┌───┐      ┌───┐      ┌───┐
-                  │AND│          │AND│      │AND│      │AND│
-                  └┬──┘     │    └───┘      └───┘      └───┘
-                   │
-                   │        │ ┌────┐     ┌────┐     ┌────┐
-                   │          │    │     │    │     │    │
-                   │        │ │ FA │     │ FA │     │ HA │
-                   │          │    │     │    │     │    │
-                   │        │ └────┘     └────┘     └────┘
-        A3B3       │  A2B3       A1B3      A0B3
-       ┌▼─▼┐       │ ┌▼─▼┐  │   ┌───┐     ┌───┐
-       │AND│       │ │AND│      │AND│     │AND│
-       └┬──┘       │ └┬──┘  │   └───┘     └───┘
-        │          │  │
-       ┌▼───┐     ┌▼──▼┐    │ ┌────┐    ┌────┐
-       │    │     │    │      │    │    │    │
-┌──────┤ HA │◄────┤ HA │    │ │ FA │    │ HA │
-│      │    │     │    │      │    │    │    │
-│      └──┬─┘     └──┬─┘    │ └────┘    └────┘
-│         │          │
-│         │          │      │
-▼         ▼          ▼          ▼           ▼          ▼          ▼          ▼
-P7        P6         P5     │   P4=0        P3=0       P2=0       P1=0       P0=0
+<div class="desc"><p>Class representing unsigned truncated carry save (Braun) multiplier.</p>
+<p>It represents an approximative version of unsigned carry save multiplier with simpler structure.
+It is created by modifying an ordinary N-bit unsigned carry save multiplier by ignoring
+(truncating) some of the partial products.</p>
+<p>The design promises better area and power parameters in exchange for the loss of computation precision.</p>
+<pre><code>                                                               CUT=1
+                                    A3B0       A2B0      A1B0    │    A0B0
+                                   ┌───┐      ┌───┐      ┌───┐      ┌───┐
+                                   │AND│      │AND│      │AND│   │  │AND│
+                                   └───┘      └───┘      └───┘      └───┘
+           ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┬─ ─ ┴ ─ ─ ─ ─ ─ ─ CUT=1
+                                 A3B1       A2B1       A1B1       A0B1
+                                ┌▼─▼┐      ┌▼─▼┐      ┌▼─▼┐ │    ┌───┐
+                                │AND│      │AND│      │AND│      │AND│
+                                └┬──┘      └┬──┘      └┬──┘ │    └───┘
+                                 │          │          │      ┌────┐
+                             ┌───┘          │          │    │ │    │
+                             │            ┌─┘          │      │ HA │
+                             │            │            │    │ │    │
+                             │            │            │      └────┘
+                             │            │       ┌ ─ ─│─ ─ ┘
+                   A3B2      │  A2B2      │  A1B2      │ A0B2
+                  ┌▼─▼┐      │ ┌▼─▼┐      │ ┌───┐ │    │┌───┐
+                  │AND│      │ │AND│      │ │AND│      ││AND│
+                  └┬──┘      │ └┬──┘      │ └┬──┘ │    │└───┘
+                   │        ┌▼──▼┐       ┌▼──▼┐     ┌──┼─┐
+                   │        │    │       │    │   │ │  │ │
+                   │      ┌─┤ HA │     ┌─┤ HA │     │FA│ │
+                   │      │ │    │     │ │    │   │ │  │ │
+                   │      │ └───┬┘     │ └───┬┘     └──┼─┘
+                   │      │     │      │     │    │    │
+                   │      │     │      │    ┌│─ ─ ┘    │
+          A3B3     │  A2B3│     │  A1B3│     │ A0B3    │
+         ┌▼─▼┐     │ ┌▼─▼┐│     │ ┌▼─▼┐│    ││┌───┐    │
+         │AND│     │ │AND││     │ │AND││     ││AND│    │
+         └┬──┘     │ └┬──┘│     │ └┬──┘│ ┌─ ┘│└───┘    │
+          │       ┌▼──▼┐  │    ┌▼──▼┐  │ │ ┌─┼──┐      │
+          │       │    │  │    │    │  │   │ │  │      │
+          │    ┌──┤ FA │◄─┘  ┌─┤ FA │◄─┘ │ │ │FA│      │
+          │    │  │    │     │ │    │      │ │  │      │
+          │    │  └──┬─┘     │ └──┬─┘    │ └─┼──┘      │
+          │    │     │       │    │      │   │         │
+          │    │     │       │    │          │         │
+          │    │     │       │    │          │         │
+  0   0   │    │     │       │    │      │   │         │
+  │   │   │S1  │C1   │S0     │C0  │          │         │
+┌─▼───▼───▼────▼─────▼───────▼─┐  │      │   │         │
+│         Carry-propagate      │  │          │         │
+│              adder           │  │      │   │         │
+└─────┬────────┬─────────┬─────┘  │          │         │
+      ▼        ▼         ▼        ▼      │   ▼         ▼         ▼      ▼
+      P7       P6        P5       P4         P3        P2       P1=0   P0=0
 </code></pre>
 <p>Description of the <strong>init</strong> method.</p>
 <h2 id="args">Args</h2>
@@ -274,98 +273,93 @@ P7        P6         P5     │   P4=0        P3=0       P2=0       P1=0       P
 <dd>First input bus.</dd>
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
-<dt><strong><code>horizontal_cut</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Specifies horizontal cut used in broken array multiplier circuit creation. Defaults to 0.</dd>
-<dt><strong><code>vertical_cut</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Specifies vertical cut used in broken array multiplier circuit creation. Defaults to 0.</dd>
+<dt><strong><code>truncation_cut</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Specifies truncation cut level used in the truncated carry save multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary carry save multiplier. Defaults to 0.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned broken array multiplier. Defaults to "".</dd>
+<dd>Prefix name of unsigned truncated carry save multiplier. Defaults to "".</dd>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of unsigned broken array multiplier. Defaults to "u_bam".</dd>
+<dd>Name of unsigned truncated carry save multiplier. Defaults to "u_tm".</dd>
+<dt><strong><code>unsigned_adder_class_name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Unsigned multi bit adder used for final vector merging of sums and carries. Defaults to UnsignedCarryLookaheadAdder.</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
-    &#34;&#34;&#34;Class representing unsigned broken array multiplier.
+<pre><code class="python">class UnsignedTruncatedCarrySaveMultiplier(MultiplierCircuit):
+    &#34;&#34;&#34;Class representing unsigned truncated carry save (Braun) multiplier.
 
-    It represents an approximative version of unsigned array multiplier with simpler structure.
-    It is created by modifying an ordinary N-bit unsigned array multiplier by omitting partial product
-    stage cells by the specified horizontal and vertical cut levels.
+    It represents an approximative version of unsigned carry save multiplier with simpler structure.
+    It is created by modifying an ordinary N-bit unsigned carry save multiplier by ignoring
+    (truncating) some of the partial products.
 
     The design promises better area and power parameters in exchange for the loss of computation precision.
-    The BAM design allows to save more partial product stage adders than truncated multiplier architectures.
     ```
-                            VERTICAL CUT=4
-
-                                │
-                                            A3B0       A2B0       A1B0       A0B0
-                                │          ┌───┐      ┌───┐      ┌───┐      ┌───┐
-                                           │AND│      │AND│      │AND│      │AND│
-                                │          └───┘      └───┘      └───┘      └───┘
-
-                                │
-                                      A3B1       A2B1       A1B1       A0B1
-                                │    ┌───┐      ┌───┐      ┌───┐      ┌───┐
-                                     │AND│      │AND│      │AND│      │AND│
-                                │    └───┘      └───┘      └───┘      └───┘
-
-                                │ ┌────┐     ┌────┐     ┌────┐     ┌────┐
-                                  │    │     │    │     │    │     │    │
-                                │ │ HA │     │ FA │     │ FA │     │ HA │
-                                  │    │     │    │     │    │     │    │
-                                │ └────┘     └────┘     └────┘     └────┘
-
-              ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ HORIZONTAL CUT=2
-                       A3B2           A2B2       A1B2       A0B2
-                      ┌▼─▼┐     │    ┌───┐      ┌───┐      ┌───┐
-                      │AND│          │AND│      │AND│      │AND│
-                      └┬──┘     │    └───┘      └───┘      └───┘
-                       │
-                       │        │ ┌────┐     ┌────┐     ┌────┐
-                       │          │    │     │    │     │    │
-                       │        │ │ FA │     │ FA │     │ HA │
-                       │          │    │     │    │     │    │
-                       │        │ └────┘     └────┘     └────┘
-            A3B3       │  A2B3       A1B3      A0B3
-           ┌▼─▼┐       │ ┌▼─▼┐  │   ┌───┐     ┌───┐
-           │AND│       │ │AND│      │AND│     │AND│
-           └┬──┘       │ └┬──┘  │   └───┘     └───┘
-            │          │  │
-           ┌▼───┐     ┌▼──▼┐    │ ┌────┐    ┌────┐
-           │    │     │    │      │    │    │    │
-    ┌──────┤ HA │◄────┤ HA │    │ │ FA │    │ HA │
-    │      │    │     │    │      │    │    │    │
-    │      └──┬─┘     └──┬─┘    │ └────┘    └────┘
-    │         │          │
-    │         │          │      │
-    ▼         ▼          ▼          ▼           ▼          ▼          ▼          ▼
-    P7        P6         P5     │   P4=0        P3=0       P2=0       P1=0       P0=0
+                                                                   CUT=1
+                                        A3B0       A2B0      A1B0    │    A0B0
+                                       ┌───┐      ┌───┐      ┌───┐      ┌───┐
+                                       │AND│      │AND│      │AND│   │  │AND│
+                                       └───┘      └───┘      └───┘      └───┘
+               ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┬─ ─ ┴ ─ ─ ─ ─ ─ ─ CUT=1
+                                     A3B1       A2B1       A1B1       A0B1
+                                    ┌▼─▼┐      ┌▼─▼┐      ┌▼─▼┐ │    ┌───┐
+                                    │AND│      │AND│      │AND│      │AND│
+                                    └┬──┘      └┬──┘      └┬──┘ │    └───┘
+                                     │          │          │      ┌────┐
+                                 ┌───┘          │          │    │ │    │
+                                 │            ┌─┘          │      │ HA │
+                                 │            │            │    │ │    │
+                                 │            │            │      └────┘
+                                 │            │       ┌ ─ ─│─ ─ ┘
+                       A3B2      │  A2B2      │  A1B2      │ A0B2
+                      ┌▼─▼┐      │ ┌▼─▼┐      │ ┌───┐ │    │┌───┐
+                      │AND│      │ │AND│      │ │AND│      ││AND│
+                      └┬──┘      │ └┬──┘      │ └┬──┘ │    │└───┘
+                       │        ┌▼──▼┐       ┌▼──▼┐     ┌──┼─┐
+                       │        │    │       │    │   │ │  │ │
+                       │      ┌─┤ HA │     ┌─┤ HA │     │FA│ │
+                       │      │ │    │     │ │    │   │ │  │ │
+                       │      │ └───┬┘     │ └───┬┘     └──┼─┘
+                       │      │     │      │     │    │    │
+                       │      │     │      │    ┌│─ ─ ┘    │
+              A3B3     │  A2B3│     │  A1B3│     │ A0B3    │
+             ┌▼─▼┐     │ ┌▼─▼┐│     │ ┌▼─▼┐│    ││┌───┐    │
+             │AND│     │ │AND││     │ │AND││     ││AND│    │
+             └┬──┘     │ └┬──┘│     │ └┬──┘│ ┌─ ┘│└───┘    │
+              │       ┌▼──▼┐  │    ┌▼──▼┐  │ │ ┌─┼──┐      │
+              │       │    │  │    │    │  │   │ │  │      │
+              │    ┌──┤ FA │◄─┘  ┌─┤ FA │◄─┘ │ │ │FA│      │
+              │    │  │    │     │ │    │      │ │  │      │
+              │    │  └──┬─┘     │ └──┬─┘    │ └─┼──┘      │
+              │    │     │       │    │      │   │         │
+              │    │     │       │    │          │         │
+              │    │     │       │    │          │         │
+      0   0   │    │     │       │    │      │   │         │
+      │   │   │S1  │C1   │S0     │C0  │          │         │
+    ┌─▼───▼───▼────▼─────▼───────▼─┐  │      │   │         │
+    │         Carry-propagate      │  │          │         │
+    │              adder           │  │      │   │         │
+    └─────┬────────┬─────────┬─────┘  │          │         │
+          ▼        ▼         ▼        ▼      │   ▼         ▼         ▼      ▼
+          P7       P6        P5       P4         P3        P2       P1=0   P0=0
     ```
     Description of the __init__ method.
 
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        horizontal_cut (int, optional): Specifies horizontal cut used in broken array multiplier circuit creation. Defaults to 0.
-        vertical_cut (int, optional): Specifies vertical cut used in broken array multiplier circuit creation. Defaults to 0.
-        prefix (str, optional): Prefix name of unsigned broken array multiplier. Defaults to &#34;&#34;.
-        name (str, optional): Name of unsigned broken array multiplier. Defaults to &#34;u_bam&#34;.
+        truncation_cut (int, optional): Specifies truncation cut level used in the truncated carry save multiplier circuit creation. Note: If equal to 0, the final circuit behaves as an ordinary carry save multiplier. Defaults to 0.
+        prefix (str, optional): Prefix name of unsigned truncated carry save multiplier. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned truncated carry save multiplier. Defaults to &#34;u_tm&#34;.
+        unsigned_adder_class_name (str, optional): Unsigned multi bit adder used for final vector merging of sums and carries. Defaults to UnsignedCarryLookaheadAdder.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, horizontal_cut: int = 0, vertical_cut: int = 0, prefix: str = &#34;&#34;, name: str = &#34;u_bam&#34;, **kwargs):
-        # NOTE: If horizontal/vertical cut is specified as 0 the final circuit is a simple array multiplier
-        self.horizontal_cut = horizontal_cut
-        self.vertical_cut = vertical_cut
+    def __init__(self, a: Bus, b: Bus, truncation_cut: int = 0, prefix: str = &#34;&#34;, name: str = &#34;u_tmcsa&#34;, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+        # NOTE: If truncation_cut is specified as 0 the final circuit is a simple carry save multiplier
+        self.truncation_cut = truncation_cut
 
         self.N = max(a.N, b.N)
-        # Horizontal cut level should be: 0 &lt;= horizontal_cut &lt; N
-        # Vertical cut level should be: horizontal_cut &lt;= vertical_cut &lt; 2*N
-        assert horizontal_cut &lt; self.N
-        assert vertical_cut &lt; 2*self.N
-
-        # Vertical cut should be greater or equal to horizontal cut
-        assert vertical_cut &gt;= horizontal_cut
+        # Cut level should be: 0 &lt;= truncation_cut &lt; N
+        assert truncation_cut &lt; self.N
 
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
@@ -373,63 +367,67 @@ P7        P6         P5     │   P4=0        P3=0       P2=0       P1=0       P
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
-        self.ommited_rows = 0
         # Gradual generation of partial products
-        for b_multiplier_index in range(self.horizontal_cut, self.N):
-            # Number of elements that should be ommited in the current level based on vertical cut
-            pp_row_elems_to_skip = self.vertical_cut - b_multiplier_index if self.vertical_cut - b_multiplier_index &gt; 0 else 0
-            # Number of pp pairs present in the current row
-            pp_row_elems = self.N-pp_row_elems_to_skip if self.N-pp_row_elems_to_skip &gt; 0 else 0
-            self.ommited_rows += 1 if pp_row_elems == 0 else 0
-
-            for a_multiplicand_index in range((self.N-pp_row_elems), self.N):
+        for b_multiplier_index in range(self.truncation_cut, self.N):
+            row_pp_ord = 0
+            for a_multiplicand_index in range(self.truncation_cut, self.N):
+                row_pp_ord += 1
                 # AND gates generation for calculation of partial products
                 obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+&#34;_and&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
                 self.add_component(obj_and)
 
-                if b_multiplier_index != self.horizontal_cut + self.ommited_rows:
-                    if b_multiplier_index == self.horizontal_cut + self.ommited_rows + 1:
-                        previous_product = self.components[a_multiplicand_index + b_multiplier_index - self.vertical_cut].out
-                    else:
-                        previous_product = self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index, mult_type=&#34;bam&#34;)
+                if a_multiplicand_index == self.truncation_cut:
+                    self.out.connect(b_multiplier_index+self.truncation_cut, obj_and.out)
 
-                    # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == 0 or self.vertical_cut-b_multiplier_index == a_multiplicand_index:
-                        obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-                        # Product generation
-                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
+                # HAs generation for first row of adders (the second row in total, first contains just pp generation)
+                if b_multiplier_index == self.truncation_cut+1 and a_multiplicand_index != self.N-1:
+                    previous_product = self.get_previous_component((self.N-a_multiplicand_index-1)+(row_pp_ord*2-1)).out
 
-                    # HA generation, last 1-bit adder in second row
-                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == self.horizontal_cut+self.ommited_rows+1:
-                        obj_adder = HalfAdder(self.get_previous_component().out, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
+                    obj_adder = HalfAdder(a=obj_and.out, b=previous_product, prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
+                    self.add_component(obj_adder)
 
-                    # FA generation
-                    else:
-                        obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_fa&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
+                    if (a_multiplicand_index == self.truncation_cut):
+                        self.out.connect(b_multiplier_index+self.truncation_cut, obj_adder.get_sum_wire())
+
+                # FAs generation for the remaining rows
+                elif b_multiplier_index &gt; self.truncation_cut+1 and a_multiplicand_index != self.N-1:
+                    previous_sum = self.get_previous_component((self.N-(truncation_cut+1))*2-1).get_sum_wire() if a_multiplicand_index != self.N-2 else self.get_previous_component((self.N-(truncation_cut+1))*2).out
+                    previous_carry = self.get_previous_component((self.N-truncation_cut)*2-1).get_carry_wire()
+
+                    obj_adder = FullAdder(a=obj_and.out, b=previous_sum, c=previous_carry, prefix=self.prefix+&#34;_fa&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
+                    self.add_component(obj_adder)
+
+                    if (a_multiplicand_index == self.truncation_cut):
+                        self.out.connect(b_multiplier_index+self.truncation_cut, obj_adder.get_sum_wire())
 
                 # PRODUCT GENERATION
-                if (a_multiplicand_index == 0 and b_multiplier_index == self.horizontal_cut) or (self.horizontal_cut + self.ommited_rows == self.N-1):
+                # 1 bit multiplier case
+                if (a_multiplicand_index == self.truncation_cut and b_multiplier_index == self.truncation_cut) or (self.truncation_cut == self.N-1):
                     self.out.connect(a_multiplicand_index + b_multiplier_index, obj_and.out)
 
                     # 1 bit multiplier case
                     if a_multiplicand_index == self.N-1 and b_multiplier_index == self.N-1:
                         self.out.connect(a_multiplicand_index+b_multiplier_index+1, ConstantWireValue0())
 
-                elif b_multiplier_index == self.N-1 and self.horizontal_cut != self.N-1:
-                    self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
-
-                    if a_multiplicand_index == self.N-1:
-                        self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
-
         # Connecting the output bits generated from ommited cells to ground
-        if self.vertical_cut == 2*self.N-1:
-            [self.out.connect(out_id, ConstantWireValue0()) for out_id in range(self.out.N)]
-        else:
-            for grounded_out_index in range(0, max(self.horizontal_cut, self.vertical_cut)):
-                self.out.connect(grounded_out_index, ConstantWireValue0())</code></pre>
+        for grounded_out_index in range(0, self.truncation_cut*2):
+            self.out.connect(grounded_out_index, ConstantWireValue0())
+
+        # Final addition of remaining bits using chosen unsigned multi bit adder
+        if self.truncation_cut != self.N-1:
+            final_cpa_N = self.N - self.truncation_cut
+
+            previous_sums = [self.get_previous_component((final_cpa_N-2-wire_id)*2).get_sum_wire() if wire_id &lt; final_cpa_N-2 else self.get_previous_component().out if wire_id == final_cpa_N-2 else ConstantWireValue0() for wire_id in range(final_cpa_N)]
+            previous_carries = [self.get_previous_component((final_cpa_N-2-wire_id)*2+2).get_carry_wire() if wire_id != final_cpa_N-1 else ConstantWireValue0() for wire_id in range(final_cpa_N)]
+
+            # Obtain proper adder name with its bit width (columns bit pairs minus the first alone bit)
+            adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(final_cpa_N)
+            adder_a = Bus(prefix=f&#34;a&#34;, wires_list=previous_sums)
+            adder_b = Bus(prefix=f&#34;b&#34;, wires_list=previous_carries)
+
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+            self.add_component(final_adder)
+            [self.out.connect(o, final_adder.out.get_wire(o-(self.N+self.truncation_cut)), inserted_wire_desired_index=o-(self.N+self.truncation_cut)) for o in range(self.N+self.truncation_cut, self.out.N)]</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -534,7 +532,7 @@ P7        P6         P5     │   P4=0        P3=0       P2=0       P1=0       P
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.UnsignedBrokenArrayMultiplier" href="#ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.UnsignedBrokenArrayMultiplier">UnsignedBrokenArrayMultiplier</a></code></h4>
+<h4><code><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier.UnsignedTruncatedCarrySaveMultiplier" href="#ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier.UnsignedTruncatedCarrySaveMultiplier">UnsignedTruncatedCarrySaveMultiplier</a></code></h4>
 </li>
 </ul>
 </li>

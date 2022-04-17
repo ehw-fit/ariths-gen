@@ -213,7 +213,6 @@ class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = &#34;&#34;, name: str = &#34;s_cla&#34;, **kwargs):
         super().__init__(a=a, b=b, cla_block_size=cla_block_size, prefix=prefix, name=name, signed=True, **kwargs)
-        self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
         sign_xor_1 = XorGate(self.a.get_wire(self.N-1), self.b.get_wire(self.N-1), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
@@ -318,7 +317,6 @@ Cout  S3      S1         S0         S0
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = &#34;&#34;, name: str = &#34;s_cla&#34;, **kwargs):
         super().__init__(a=a, b=b, cla_block_size=cla_block_size, prefix=prefix, name=name, signed=True, **kwargs)
-        self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
         sign_xor_1 = XorGate(self.a.get_wire(self.N-1), self.b.get_wire(self.N-1), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)

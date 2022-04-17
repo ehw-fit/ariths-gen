@@ -54,6 +54,9 @@
         &#34;&#34;&#34;
         return False
 
+    def is_buswire(self):
+        return self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None
+
     &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
     def return_wire_value_python_flat(self, offset: int = 0):
         &#34;&#34;&#34;Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.
@@ -66,6 +69,10 @@
         &#34;&#34;&#34;
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
+        elif self.is_buswire():
+            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset}\n&#34;
         else:
             return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset}\n&#34;
 
@@ -89,13 +96,12 @@
         &#34;&#34;&#34;
         if self.is_const():
             return f&#34;({self.c_const})&#34;
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
+        elif self.is_buswire():
+            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;
         else:
-            # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
-            if self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None:
-                return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;
-            else:
-                return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;
+            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;
 
     def get_wire_value_c_hier(self):
         &#34;&#34;&#34;Accesses desired bit value from wire represented in C code variable used for hierarchical generation.
@@ -131,6 +137,8 @@
         Returns:
             str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
         &#34;&#34;&#34;
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
         else:
@@ -601,6 +609,9 @@ def is_const():
         &#34;&#34;&#34;
         return False
 
+    def is_buswire(self):
+        return self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None
+
     &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
     def return_wire_value_python_flat(self, offset: int = 0):
         &#34;&#34;&#34;Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.
@@ -613,6 +624,10 @@ def is_const():
         &#34;&#34;&#34;
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
+        elif self.is_buswire():
+            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset}\n&#34;
         else:
             return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset}\n&#34;
 
@@ -636,13 +651,12 @@ def is_const():
         &#34;&#34;&#34;
         if self.is_const():
             return f&#34;({self.c_const})&#34;
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
+        elif self.is_buswire():
+            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;
         else:
-            # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
-            if self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None:
-                return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;
-            else:
-                return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;
+            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;
 
     def get_wire_value_c_hier(self):
         &#34;&#34;&#34;Accesses desired bit value from wire represented in C code variable used for hierarchical generation.
@@ -678,6 +692,8 @@ def is_const():
         Returns:
             str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
         &#34;&#34;&#34;
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
         if self.is_const():
             return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
         else:
@@ -1076,13 +1092,12 @@ in hierarchical Blif subcomponents generation.</p>
     &#34;&#34;&#34;
     if self.is_const():
         return f&#34;({self.c_const})&#34;
+    # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+    # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
+    elif self.is_buswire():
+        return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;
     else:
-        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-        # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
-        if self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None:
-            return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;
-        else:
-            return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;</code></pre>
+        return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_c_hier"><code class="name flex">
@@ -1163,6 +1178,19 @@ in hierarchical Blif subcomponents generation.</p>
         return f&#34;{self.prefix}[{self.index}]&#34;</code></pre>
 </details>
 </dd>
+<dt id="ariths_gen.wire_components.wires.Wire.is_buswire"><code class="name flex">
+<span>def <span class="ident">is_buswire</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def is_buswire(self):
+    return self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None</code></pre>
+</details>
+</dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat"><code class="name flex">
 <span>def <span class="ident">return_wire_value_c_flat</span></span>(<span>self, offset: int = 0)</span>
 </code></dt>
@@ -1225,6 +1253,8 @@ in hierarchical Blif subcomponents generation.</p>
     Returns:
         str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
     &#34;&#34;&#34;
+    # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+    # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
     if self.is_const():
         return f&#34;({self.c_const}) &lt;&lt; {offset};\n&#34;
     else:
@@ -1261,6 +1291,10 @@ in hierarchical Blif subcomponents generation.</p>
     &#34;&#34;&#34;
     if self.is_const():
         return f&#34;({self.c_const}) &lt;&lt; {offset}\n&#34;
+    # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+    # then the wire value is obtained from bitwise shifting the required wire from the parent bus (&#39;parent_bus.prefix&#39; is the same value as &#39;self.prefix&#39;)
+    elif self.is_buswire():
+        return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01) &lt;&lt; {offset}\n&#34;
     else:
         return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset}\n&#34;</code></pre>
 </details>
@@ -1360,6 +1394,7 @@ in hierarchical Blif subcomponents generation.</p>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.get_wire_value_c_hier" href="#ariths_gen.wire_components.wires.Wire.get_wire_value_c_hier">get_wire_value_c_hier</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.get_wire_value_v_flat" href="#ariths_gen.wire_components.wires.Wire.get_wire_value_v_flat">get_wire_value_v_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier" href="#ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier">get_wire_value_v_hier</a></code></li>
+<li><code><a title="ariths_gen.wire_components.wires.Wire.is_buswire" href="#ariths_gen.wire_components.wires.Wire.is_buswire">is_buswire</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.is_const" href="#ariths_gen.wire_components.wires.Wire.is_const">is_const</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat">return_wire_value_c_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier" href="#ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier">return_wire_value_c_hier</a></code></li>

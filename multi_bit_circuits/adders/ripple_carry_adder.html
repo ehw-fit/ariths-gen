@@ -135,7 +135,6 @@ class SignedRippleCarryAdder(UnsignedRippleCarryAdder, ArithmeticCircuit):
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_rca&#34;, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
-        self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
         sign_xor_1 = XorGate(self.get_previous_component(1).a, self.get_previous_component(1).b, prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
@@ -221,7 +220,6 @@ At last XOR gates are used to ensure proper sign extension.</p>
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_rca&#34;, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
-        self.c_data_type = &#34;int64_t&#34;
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
         sign_xor_1 = XorGate(self.get_previous_component(1).a, self.get_previous_component(1).b, prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)

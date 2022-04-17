@@ -60,9 +60,9 @@ class MultiplierCircuit(ArithmeticCircuit):
     def __init__(self, a, b, prefix: str, name: str, out_N: int, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
-    # Array multipliers
+    # Array/approximate multipliers
     def get_previous_partial_product(self, a_index: int, b_index: int, mult_type=&#34;&#34;):
-        &#34;&#34;&#34;Used in array multipliers to get previous row&#39;s component output wires for further connection to another component&#39;s input.
+        &#34;&#34;&#34;Used in array and approximate multipliers to get previous row&#39;s component output wires for further connection to another component&#39;s input.
 
         Args:
             a_index (int): First input wire index.
@@ -74,13 +74,13 @@ class MultiplierCircuit(ArithmeticCircuit):
         &#34;&#34;&#34;
         # To get the index of previous row&#39;s connecting adder and its generated pp
         if mult_type == &#34;bam&#34;:
-            #TODO alter to be more compact
+            # TODO alter to be more compact
             ids_sum = 0
             for row in range(self.horizontal_cut + self.ommited_rows, b_index):
                 first_row_elem_id = self.vertical_cut-row if self.vertical_cut-row &gt; 0 else 0
                 # First pp row composed just from gates
                 if row == self.horizontal_cut + self.ommited_rows:
-                    # Minus one because the first component has index 0 instead of 1 
+                    # Minus one because the first component has index 0 instead of 1
                     ids_sum += sum([1 for gate_pos in range(first_row_elem_id, self.N)])-1
                 elif row == b_index-1:
                     ids_sum += sum([2 for gate_adder_pos in range(first_row_elem_id, self.N) if gate_adder_pos &lt;= a_index+1])
@@ -92,8 +92,6 @@ class MultiplierCircuit(ArithmeticCircuit):
             index = ((b_index-self.truncation_cut-2) * ((self.N-self.truncation_cut)*2)) + ((self.N-self.truncation_cut-1)+2*(a_index-self.truncation_cut+2))
         else:
             index = ((b_index-2) * ((self.N)*2)) + ((self.N-1)+2*(a_index+2))
-
-
 
         # Get carry wire as input for the last adder in current row
         if a_index == self.N-1:
@@ -131,26 +129,71 @@ class MultiplierCircuit(ArithmeticCircuit):
             if d &gt;= initial_value:
                 return stage, max_height
 
-    def init_column_heights(self, signed: bool = False):
-        &#34;&#34;&#34;Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
+    def init_row_lengths(self):
+        &#34;&#34;&#34;Creates appropriate number of partial product rows along with filling them with corresponding number of bit pairs.
+
+        Returns:
+            list: List of partial product rows with their bit pairs.
+        &#34;&#34;&#34;
+        rows = [[] for _ in range(self.N)]
+        rows = [self.add_row_wires(row=row, row_index=rows.index(row)) for row in rows]
+        return rows
+
+    def add_row_wires(self, row: list, row_index: int):
+        &#34;&#34;&#34;Fills circuit&#39;s partial product row with corresponding bit pairs.
 
         Args:
-            signed (bool, optional): Specify whether pp columns bit pairs should perform signed multiplication or not. Defaults to False.
+            row (list): List representing row of partial product bits.
+            row_index (int): Index of partial products row.
+
+        Returns:
+            list: Updated row list containing corresponding number of input bit pairs to form proper pp row.
+        &#34;&#34;&#34;
+        # Number of partial products present in the row (should be equal to circuit&#39;s input bus size)
+        row_pp_count = self.N
+        # Adding neccessary number of lists (based on number of bits in the row – stored in `row_pp_count`)
+        # to row that each represent individual bit pairs for described row (these bit pairs are then combined in AND/NAND gates)
+        [row.append([]) for _ in range(row_pp_count)]
+
+        # Filling row bit pair lists with appropriate bits
+        [row[index].append(self.a.get_wire(index)) for index in range(row_pp_count)]
+        [row[index].append(self.b.get_wire(row_index)) for index in range(row_pp_count)]
+
+        # Converting unsigned rows of pp bit pair lists into AND gates
+        if self.signed is False:
+            row[0:] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_and_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count)]
+        # Converting signed rows of pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
+        else:
+            # Partial product bit pairs of all rows (expect for the last one) are connected to AND gates, besides the last pp bit pair in each row that is connected to a NAND gate
+            if row_index != self.N-1:
+                row[0:row_pp_count-1] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_and_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+                row[row_pp_count-1] = self.add_component(NandGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+&#39;_nand_&#39;+str(row[row_pp_count-1][0].index)+&#39;_&#39;+str(row[row_pp_count-1][1].index), parent_component=self)).out
+            # Partial product bit pairs of the last row are connected to NAND gates besides the last pp pair that is connected to an AND gate
+            else:
+                row[0:row_pp_count-1] = [self.add_component(NandGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_nand_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+                row[row_pp_count-1] = self.add_component(AndGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+&#39;_and_&#39;+str(row[row_pp_count-1][0].index)+&#39;_&#39;+str(row[row_pp_count-1][1].index), parent_component=self)).out
+
+        pp_row_wires = Bus(prefix=f&#34;pp_row{row_index}&#34;, wires_list=row)
+        return pp_row_wires
+
+    def init_column_heights(self):
+        &#34;&#34;&#34;Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
 
         Returns:
             list: List of partial product columns with their bit pairs.
         &#34;&#34;&#34;
         columns = [[num] if num &lt;= self.N else [num - (num - self.N)*2] for num in range(1, self.out.N)]
-        columns = [self.add_column_wires(column=col, column_index=columns.index(col), signed=signed) for col in columns]
+        columns = [self.add_column_wires(column=col, column_index=columns.index(col)) for col in columns]
         return columns
 
-    def add_column_wires(self, column: list, column_index: int, signed: bool):
+    def add_column_wires(self, column: list, column_index: int):
         &#34;&#34;&#34;Fills circuit&#39;s partial product column with corresponding bit pairs.
 
         Args:
             column (list): List representing column of partial product bits.
             column_index (int): Index of partial products column.
-            signed (bool): Specify whether pp columns bit pairs should perform signed multiplication or not.
 
         Returns:
             list: Updated column list containing corresponding number of input bit pairs to form proper pp column.
@@ -167,7 +210,7 @@ class MultiplierCircuit(ArithmeticCircuit):
             [column[index-(self.a.N-1-column[0])].append(self.b.get_wire(index)) for index in range(self.a.N-column[0], self.a.N)]
 
         # Converting unsigned column pp bit pair lists into AND gates
-        if signed is False:
+        if self.signed is False:
             column[1:] = [AndGate(a=column[i][0], b=column[i][1], prefix=self.prefix+&#39;_and_&#39;+str(column[i][0].index)+&#39;_&#39;+str(column[i][1].index), parent_component=self) for i in range(1, len(column))]
         # Converting signed column pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
         else:
@@ -307,9 +350,9 @@ that are later used for generation into various representations.</p></div>
     def __init__(self, a, b, prefix: str, name: str, out_N: int, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
 
-    # Array multipliers
+    # Array/approximate multipliers
     def get_previous_partial_product(self, a_index: int, b_index: int, mult_type=&#34;&#34;):
-        &#34;&#34;&#34;Used in array multipliers to get previous row&#39;s component output wires for further connection to another component&#39;s input.
+        &#34;&#34;&#34;Used in array and approximate multipliers to get previous row&#39;s component output wires for further connection to another component&#39;s input.
 
         Args:
             a_index (int): First input wire index.
@@ -321,13 +364,13 @@ that are later used for generation into various representations.</p></div>
         &#34;&#34;&#34;
         # To get the index of previous row&#39;s connecting adder and its generated pp
         if mult_type == &#34;bam&#34;:
-            #TODO alter to be more compact
+            # TODO alter to be more compact
             ids_sum = 0
             for row in range(self.horizontal_cut + self.ommited_rows, b_index):
                 first_row_elem_id = self.vertical_cut-row if self.vertical_cut-row &gt; 0 else 0
                 # First pp row composed just from gates
                 if row == self.horizontal_cut + self.ommited_rows:
-                    # Minus one because the first component has index 0 instead of 1 
+                    # Minus one because the first component has index 0 instead of 1
                     ids_sum += sum([1 for gate_pos in range(first_row_elem_id, self.N)])-1
                 elif row == b_index-1:
                     ids_sum += sum([2 for gate_adder_pos in range(first_row_elem_id, self.N) if gate_adder_pos &lt;= a_index+1])
@@ -339,8 +382,6 @@ that are later used for generation into various representations.</p></div>
             index = ((b_index-self.truncation_cut-2) * ((self.N-self.truncation_cut)*2)) + ((self.N-self.truncation_cut-1)+2*(a_index-self.truncation_cut+2))
         else:
             index = ((b_index-2) * ((self.N)*2)) + ((self.N-1)+2*(a_index+2))
-
-
 
         # Get carry wire as input for the last adder in current row
         if a_index == self.N-1:
@@ -378,26 +419,71 @@ that are later used for generation into various representations.</p></div>
             if d &gt;= initial_value:
                 return stage, max_height
 
-    def init_column_heights(self, signed: bool = False):
-        &#34;&#34;&#34;Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
+    def init_row_lengths(self):
+        &#34;&#34;&#34;Creates appropriate number of partial product rows along with filling them with corresponding number of bit pairs.
+
+        Returns:
+            list: List of partial product rows with their bit pairs.
+        &#34;&#34;&#34;
+        rows = [[] for _ in range(self.N)]
+        rows = [self.add_row_wires(row=row, row_index=rows.index(row)) for row in rows]
+        return rows
+
+    def add_row_wires(self, row: list, row_index: int):
+        &#34;&#34;&#34;Fills circuit&#39;s partial product row with corresponding bit pairs.
 
         Args:
-            signed (bool, optional): Specify whether pp columns bit pairs should perform signed multiplication or not. Defaults to False.
+            row (list): List representing row of partial product bits.
+            row_index (int): Index of partial products row.
+
+        Returns:
+            list: Updated row list containing corresponding number of input bit pairs to form proper pp row.
+        &#34;&#34;&#34;
+        # Number of partial products present in the row (should be equal to circuit&#39;s input bus size)
+        row_pp_count = self.N
+        # Adding neccessary number of lists (based on number of bits in the row – stored in `row_pp_count`)
+        # to row that each represent individual bit pairs for described row (these bit pairs are then combined in AND/NAND gates)
+        [row.append([]) for _ in range(row_pp_count)]
+
+        # Filling row bit pair lists with appropriate bits
+        [row[index].append(self.a.get_wire(index)) for index in range(row_pp_count)]
+        [row[index].append(self.b.get_wire(row_index)) for index in range(row_pp_count)]
+
+        # Converting unsigned rows of pp bit pair lists into AND gates
+        if self.signed is False:
+            row[0:] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_and_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count)]
+        # Converting signed rows of pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
+        else:
+            # Partial product bit pairs of all rows (expect for the last one) are connected to AND gates, besides the last pp bit pair in each row that is connected to a NAND gate
+            if row_index != self.N-1:
+                row[0:row_pp_count-1] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_and_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+                row[row_pp_count-1] = self.add_component(NandGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+&#39;_nand_&#39;+str(row[row_pp_count-1][0].index)+&#39;_&#39;+str(row[row_pp_count-1][1].index), parent_component=self)).out
+            # Partial product bit pairs of the last row are connected to NAND gates besides the last pp pair that is connected to an AND gate
+            else:
+                row[0:row_pp_count-1] = [self.add_component(NandGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_nand_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+                row[row_pp_count-1] = self.add_component(AndGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+&#39;_and_&#39;+str(row[row_pp_count-1][0].index)+&#39;_&#39;+str(row[row_pp_count-1][1].index), parent_component=self)).out
+
+        pp_row_wires = Bus(prefix=f&#34;pp_row{row_index}&#34;, wires_list=row)
+        return pp_row_wires
+
+    def init_column_heights(self):
+        &#34;&#34;&#34;Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
 
         Returns:
             list: List of partial product columns with their bit pairs.
         &#34;&#34;&#34;
         columns = [[num] if num &lt;= self.N else [num - (num - self.N)*2] for num in range(1, self.out.N)]
-        columns = [self.add_column_wires(column=col, column_index=columns.index(col), signed=signed) for col in columns]
+        columns = [self.add_column_wires(column=col, column_index=columns.index(col)) for col in columns]
         return columns
 
-    def add_column_wires(self, column: list, column_index: int, signed: bool):
+    def add_column_wires(self, column: list, column_index: int):
         &#34;&#34;&#34;Fills circuit&#39;s partial product column with corresponding bit pairs.
 
         Args:
             column (list): List representing column of partial product bits.
             column_index (int): Index of partial products column.
-            signed (bool): Specify whether pp columns bit pairs should perform signed multiplication or not.
 
         Returns:
             list: Updated column list containing corresponding number of input bit pairs to form proper pp column.
@@ -414,7 +500,7 @@ that are later used for generation into various representations.</p></div>
             [column[index-(self.a.N-1-column[0])].append(self.b.get_wire(index)) for index in range(self.a.N-column[0], self.a.N)]
 
         # Converting unsigned column pp bit pair lists into AND gates
-        if signed is False:
+        if self.signed is False:
             column[1:] = [AndGate(a=column[i][0], b=column[i][1], prefix=self.prefix+&#39;_and_&#39;+str(column[i][0].index)+&#39;_&#39;+str(column[i][1].index), parent_component=self) for i in range(1, len(column))]
         # Converting signed column pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
         else:
@@ -529,12 +615,14 @@ that are later used for generation into various representations.</p></div>
 </ul>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.SignedBrokenArrayMultiplier" href="../../multi_bit_circuits/approximate_multipliers/broken_array_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.SignedBrokenArrayMultiplier">SignedBrokenArrayMultiplier</a></li>
 <li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.UnsignedBrokenArrayMultiplier" href="../../multi_bit_circuits/approximate_multipliers/broken_array_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.broken_array_multiplier.UnsignedBrokenArrayMultiplier">UnsignedBrokenArrayMultiplier</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_multiplier.SignedTruncatedMultiplier" href="../../multi_bit_circuits/approximate_multipliers/truncated_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_multiplier.SignedTruncatedMultiplier">SignedTruncatedMultiplier</a></li>
-<li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_multiplier.UnsignedTruncatedMultiplier" href="../../multi_bit_circuits/approximate_multipliers/truncated_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_multiplier.UnsignedTruncatedMultiplier">UnsignedTruncatedMultiplier</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.broken_carry_save_multiplier.UnsignedBrokenCarrySaveMultiplier" href="../../multi_bit_circuits/approximate_multipliers/broken_carry_save_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.broken_carry_save_multiplier.UnsignedBrokenCarrySaveMultiplier">UnsignedBrokenCarrySaveMultiplier</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_array_multiplier.UnsignedTruncatedArrayMultiplier" href="../../multi_bit_circuits/approximate_multipliers/truncated_array_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_array_multiplier.UnsignedTruncatedArrayMultiplier">UnsignedTruncatedArrayMultiplier</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier.UnsignedTruncatedCarrySaveMultiplier" href="../../multi_bit_circuits/approximate_multipliers/truncated_carry_save_multiplier.html#ariths_gen.multi_bit_circuits.approximate_multipliers.truncated_carry_save_multiplier.UnsignedTruncatedCarrySaveMultiplier">UnsignedTruncatedCarrySaveMultiplier</a></li>
 <li><a title="ariths_gen.multi_bit_circuits.multipliers.array_multiplier.SignedArrayMultiplier" href="../../multi_bit_circuits/multipliers/array_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.array_multiplier.SignedArrayMultiplier">SignedArrayMultiplier</a></li>
 <li><a title="ariths_gen.multi_bit_circuits.multipliers.array_multiplier.UnsignedArrayMultiplier" href="../../multi_bit_circuits/multipliers/array_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.array_multiplier.UnsignedArrayMultiplier">UnsignedArrayMultiplier</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.multipliers.carry_save_multiplier.SignedCarrySaveMultiplier" href="../../multi_bit_circuits/multipliers/carry_save_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.carry_save_multiplier.SignedCarrySaveMultiplier">SignedCarrySaveMultiplier</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.multipliers.carry_save_multiplier.UnsignedCarrySaveMultiplier" href="../../multi_bit_circuits/multipliers/carry_save_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.carry_save_multiplier.UnsignedCarrySaveMultiplier">UnsignedCarrySaveMultiplier</a></li>
 <li><a title="ariths_gen.multi_bit_circuits.multipliers.dadda_multiplier.SignedDaddaMultiplier" href="../../multi_bit_circuits/multipliers/dadda_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.dadda_multiplier.SignedDaddaMultiplier">SignedDaddaMultiplier</a></li>
 <li><a title="ariths_gen.multi_bit_circuits.multipliers.dadda_multiplier.UnsignedDaddaMultiplier" href="../../multi_bit_circuits/multipliers/dadda_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.dadda_multiplier.UnsignedDaddaMultiplier">UnsignedDaddaMultiplier</a></li>
 <li><a title="ariths_gen.multi_bit_circuits.multipliers.wallace_multiplier.SignedWallaceMultiplier" href="../../multi_bit_circuits/multipliers/wallace_multiplier.html#ariths_gen.multi_bit_circuits.multipliers.wallace_multiplier.SignedWallaceMultiplier">SignedWallaceMultiplier</a></li>
@@ -642,7 +730,7 @@ Either former logic gate's output wire or present wire is returned.</p>
 </details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires"><code class="name flex">
-<span>def <span class="ident">add_column_wires</span></span>(<span>self, column: list, column_index: int, signed: bool)</span>
+<span>def <span class="ident">add_column_wires</span></span>(<span>self, column: list, column_index: int)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Fills circuit's partial product column with corresponding bit pairs.</p>
@@ -652,8 +740,6 @@ Either former logic gate's output wire or present wire is returned.</p>
 <dd>List representing column of partial product bits.</dd>
 <dt><strong><code>column_index</code></strong> :&ensp;<code>int</code></dt>
 <dd>Index of partial products column.</dd>
-<dt><strong><code>signed</code></strong> :&ensp;<code>bool</code></dt>
-<dd>Specify whether pp columns bit pairs should perform signed multiplication or not.</dd>
 </dl>
 <h2 id="returns">Returns</h2>
 <dl>
@@ -664,13 +750,12 @@ Either former logic gate's output wire or present wire is returned.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def add_column_wires(self, column: list, column_index: int, signed: bool):
+<pre><code class="python">def add_column_wires(self, column: list, column_index: int):
     &#34;&#34;&#34;Fills circuit&#39;s partial product column with corresponding bit pairs.
 
     Args:
         column (list): List representing column of partial product bits.
         column_index (int): Index of partial products column.
-        signed (bool): Specify whether pp columns bit pairs should perform signed multiplication or not.
 
     Returns:
         list: Updated column list containing corresponding number of input bit pairs to form proper pp column.
@@ -687,7 +772,7 @@ Either former logic gate's output wire or present wire is returned.</p>
         [column[index-(self.a.N-1-column[0])].append(self.b.get_wire(index)) for index in range(self.a.N-column[0], self.a.N)]
 
     # Converting unsigned column pp bit pair lists into AND gates
-    if signed is False:
+    if self.signed is False:
         column[1:] = [AndGate(a=column[i][0], b=column[i][1], prefix=self.prefix+&#39;_and_&#39;+str(column[i][0].index)+&#39;_&#39;+str(column[i][1].index), parent_component=self) for i in range(1, len(column))]
     # Converting signed column pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
     else:
@@ -702,6 +787,67 @@ Either former logic gate's output wire or present wire is returned.</p>
                 column[2:-1] = [AndGate(a=column[i][0], b=column[i][1], prefix=self.prefix+&#39;_and_&#39;+str(column[i][0].index)+&#39;_&#39;+str(column[i][1].index), parent_component=self) for i in range(2, len(column)-1)]
 
     return column</code></pre>
+</details>
+</dd>
+<dt id="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires"><code class="name flex">
+<span>def <span class="ident">add_row_wires</span></span>(<span>self, row: list, row_index: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Fills circuit's partial product row with corresponding bit pairs.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>row</code></strong> :&ensp;<code>list</code></dt>
+<dd>List representing row of partial product bits.</dd>
+<dt><strong><code>row_index</code></strong> :&ensp;<code>int</code></dt>
+<dd>Index of partial products row.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>Updated row list containing corresponding number of input bit pairs to form proper pp row.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_row_wires(self, row: list, row_index: int):
+    &#34;&#34;&#34;Fills circuit&#39;s partial product row with corresponding bit pairs.
+
+    Args:
+        row (list): List representing row of partial product bits.
+        row_index (int): Index of partial products row.
+
+    Returns:
+        list: Updated row list containing corresponding number of input bit pairs to form proper pp row.
+    &#34;&#34;&#34;
+    # Number of partial products present in the row (should be equal to circuit&#39;s input bus size)
+    row_pp_count = self.N
+    # Adding neccessary number of lists (based on number of bits in the row – stored in `row_pp_count`)
+    # to row that each represent individual bit pairs for described row (these bit pairs are then combined in AND/NAND gates)
+    [row.append([]) for _ in range(row_pp_count)]
+
+    # Filling row bit pair lists with appropriate bits
+    [row[index].append(self.a.get_wire(index)) for index in range(row_pp_count)]
+    [row[index].append(self.b.get_wire(row_index)) for index in range(row_pp_count)]
+
+    # Converting unsigned rows of pp bit pair lists into AND gates
+    if self.signed is False:
+        row[0:] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_and_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count)]
+    # Converting signed rows of pp bit pair lists into AND/NAND gates (based on Baugh-Wooley multiplication algorithm)
+    else:
+        # Partial product bit pairs of all rows (expect for the last one) are connected to AND gates, besides the last pp bit pair in each row that is connected to a NAND gate
+        if row_index != self.N-1:
+            row[0:row_pp_count-1] = [self.add_component(AndGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_and_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+            row[row_pp_count-1] = self.add_component(NandGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+&#39;_nand_&#39;+str(row[row_pp_count-1][0].index)+&#39;_&#39;+str(row[row_pp_count-1][1].index), parent_component=self)).out
+        # Partial product bit pairs of the last row are connected to NAND gates besides the last pp pair that is connected to an AND gate
+        else:
+            row[0:row_pp_count-1] = [self.add_component(NandGate(a=row[i][0], b=row[i][1], prefix=self.prefix+&#39;_nand_&#39;+str(row[i][0].index)+&#39;_&#39;+str(row[i][1].index), parent_component=self)).out for i in range(row_pp_count-1)]
+
+            row[row_pp_count-1] = self.add_component(AndGate(a=row[row_pp_count-1][0], b=row[row_pp_count-1][1], prefix=self.prefix+&#39;_and_&#39;+str(row[row_pp_count-1][0].index)+&#39;_&#39;+str(row[row_pp_count-1][1].index), parent_component=self)).out
+
+    pp_row_wires = Bus(prefix=f&#34;pp_row{row_index}&#34;, wires_list=row)
+    return pp_row_wires</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height"><code class="name flex">
@@ -782,7 +928,7 @@ if not the wire present at the desired position is returned.</p>
 <span>def <span class="ident">get_previous_partial_product</span></span>(<span>self, a_index: int, b_index: int, mult_type='')</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Used in array multipliers to get previous row's component output wires for further connection to another component's input.</p>
+<div class="desc"><p>Used in array and approximate multipliers to get previous row's component output wires for further connection to another component's input.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>a_index</code></strong> :&ensp;<code>int</code></dt>
@@ -802,7 +948,7 @@ if not the wire present at the desired position is returned.</p>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def get_previous_partial_product(self, a_index: int, b_index: int, mult_type=&#34;&#34;):
-    &#34;&#34;&#34;Used in array multipliers to get previous row&#39;s component output wires for further connection to another component&#39;s input.
+    &#34;&#34;&#34;Used in array and approximate multipliers to get previous row&#39;s component output wires for further connection to another component&#39;s input.
 
     Args:
         a_index (int): First input wire index.
@@ -814,13 +960,13 @@ if not the wire present at the desired position is returned.</p>
     &#34;&#34;&#34;
     # To get the index of previous row&#39;s connecting adder and its generated pp
     if mult_type == &#34;bam&#34;:
-        #TODO alter to be more compact
+        # TODO alter to be more compact
         ids_sum = 0
         for row in range(self.horizontal_cut + self.ommited_rows, b_index):
             first_row_elem_id = self.vertical_cut-row if self.vertical_cut-row &gt; 0 else 0
             # First pp row composed just from gates
             if row == self.horizontal_cut + self.ommited_rows:
-                # Minus one because the first component has index 0 instead of 1 
+                # Minus one because the first component has index 0 instead of 1
                 ids_sum += sum([1 for gate_pos in range(first_row_elem_id, self.N)])-1
             elif row == b_index-1:
                 ids_sum += sum([2 for gate_adder_pos in range(first_row_elem_id, self.N) if gate_adder_pos &lt;= a_index+1])
@@ -833,8 +979,6 @@ if not the wire present at the desired position is returned.</p>
     else:
         index = ((b_index-2) * ((self.N)*2)) + ((self.N-1)+2*(a_index+2))
 
-
-
     # Get carry wire as input for the last adder in current row
     if a_index == self.N-1:
         index = index-2
@@ -845,15 +989,10 @@ if not the wire present at the desired position is returned.</p>
 </details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights"><code class="name flex">
-<span>def <span class="ident">init_column_heights</span></span>(<span>self, signed: bool = False)</span>
+<span>def <span class="ident">init_column_heights</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>signed</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specify whether pp columns bit pairs should perform signed multiplication or not. Defaults to False.</dd>
-</dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>list</code></dt>
@@ -863,18 +1002,40 @@ if not the wire present at the desired position is returned.</p>
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">def init_column_heights(self, signed: bool = False):
+<pre><code class="python">def init_column_heights(self):
     &#34;&#34;&#34;Creates appropriate number of partial product columns along with filling them with corresponding number of bit pairs.
-
-    Args:
-        signed (bool, optional): Specify whether pp columns bit pairs should perform signed multiplication or not. Defaults to False.
 
     Returns:
         list: List of partial product columns with their bit pairs.
     &#34;&#34;&#34;
     columns = [[num] if num &lt;= self.N else [num - (num - self.N)*2] for num in range(1, self.out.N)]
-    columns = [self.add_column_wires(column=col, column_index=columns.index(col), signed=signed) for col in columns]
+    columns = [self.add_column_wires(column=col, column_index=columns.index(col)) for col in columns]
     return columns</code></pre>
+</details>
+</dd>
+<dt id="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths"><code class="name flex">
+<span>def <span class="ident">init_row_lengths</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates appropriate number of partial product rows along with filling them with corresponding number of bit pairs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>list</code></dt>
+<dd>List of partial product rows with their bit pairs.</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def init_row_lengths(self):
+    &#34;&#34;&#34;Creates appropriate number of partial product rows along with filling them with corresponding number of bit pairs.
+
+    Returns:
+        list: List of partial product rows with their bit pairs.
+    &#34;&#34;&#34;
+    rows = [[] for _ in range(self.N)]
+    rows = [self.add_row_wires(row=row, row_index=rows.index(row)) for row in rows]
+    return rows</code></pre>
 </details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights"><code class="name flex">
@@ -1054,11 +1215,13 @@ Generated sum is stored to the bottom of the column and generated carry bit is s
 <ul class="">
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wire" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wire">add_column_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_column_wires">add_column_wires</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.add_row_wires">add_row_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height">get_column_height</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_wire" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_wire">get_column_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_maximum_height" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_maximum_height">get_maximum_height</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_previous_partial_product" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_previous_partial_product">get_previous_partial_product</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_column_heights">init_column_heights</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.init_row_lengths">init_row_lengths</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_heights">update_column_heights</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_wires" href="#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.update_column_wires">update_column_wires</a></code></li>
 </ul>
