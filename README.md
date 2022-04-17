@@ -4,11 +4,11 @@
 
 
 ## Description
-ArithsGen presents an open source tool that enables generation of various arithmetic circuits along with the possibility to export them to various representations which all serve their specific purpose. C language for easy simulation, Verilog for logic synthesis, BLIF for formal verification possibilities and CGP to enable further global optimization.
+ArithsGen presents an open source tool that enables generation of various arithmetic circuits along with the possibility to export them to various formats which all serve their specific purpose. C language for easy simulation, Verilog for logic synthesis, BLIF for formal verification possibilities and CGP to enable further global optimization.
 
 In contrast to standard HDL languages Python supports
-* Multiple output formats (BLIF, Verilog, C, Integer netlis)
-* Advanced langugage construction (better configuration, inheritance, etc.)
+* Multiple output formats (BLIF, Verilog, C, Integer netlist)
+* Advanced language construction (better configuration, inheritance, etc.)
 * Support of various PDKs (for using library cells as half-adders and full-adders)
 
 ## Prebuild circuits
@@ -81,13 +81,13 @@ You can add a support of arbitrary PDK (see an [example](ariths_gen/pdk.py) ).
 
 
 ## Approximate circuits
-Besides the accurate arithmetic circuits you can generate some approximate circuits. Currently we support _Broken Array Multiplier_ and _Truncated Multiplier_. For more details please follow files in folder [approximate_multipliers](ariths_gen/multi_bit_circuits/approximate_multipliers/). You can simply run 
+Besides the accurate arithmetic circuits you can generate some approximate circuits. Currently we support _Broken Array Multiplier_ and _Truncated Multiplier_ both with fully connected architectures composed from half/full adders as well as faster implementations using carry save multiplier. For more details please follow files in folder [approximate_multipliers](ariths_gen/multi_bit_circuits/approximate_multipliers/). You can simply run 
 ```bash
 python3 generate_axmuls.py
 ```
 to get the approximate circuits.
 
-The module also supports evaluation of the proposed circuits. You can call the instation as a function (even with numpy-array input) to obtain the results of multiplication operation
+The module also supports evaluation of the proposed circuits. You can call the instation as a function (even with numpy-array input) to obtain the results of multiplication operation.
 
 ```py
 from ariths_gen.wire_components.buses import Bus
@@ -124,7 +124,7 @@ print("Mean average error", np.abs(r - (va * vb)).mean())
 
 ## Formal verification
 The `yosys_equiv_check.sh` script enables to formally check the equivalence of generated Verilog and BLIF representations of the same circuit.
-It uses the Yosys Open SYnthesis Suite tool by Clifford Wolf. For further information, please visit: http://www.clifford.at/yosys/documentation.html.
+It uses the Yosys Open SYnthesis Suite tool by Claire Xenia Wolf. For further information, please visit: http://bygone.clairexen.net/yosys/documentation.html.
 
 ## Execute permission
 ```bash
@@ -133,7 +133,7 @@ chmod +x yosys_equiv_check.sh
 
 ### Usage
 ```bash
-./yosys_equiv_check.sh -v "verilog_file" -b "blif_file" [-H]
+./yosys_equiv_check.sh -v "verilog_file" -b "blif_file" -m "method" [-H]
 ```
 
 For more detailed description of script's usage, use help.

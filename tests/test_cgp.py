@@ -22,20 +22,22 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
     UnsignedWallaceMultiplier,
+    UnsignedCarrySaveMultiplier,
     SignedArrayMultiplier,
     SignedDaddaMultiplier,
     SignedWallaceMultiplier,
+    SignedCarrySaveMultiplier
 )
 
 
 from ariths_gen.multi_bit_circuits.approximate_multipliers import (
-    UnsignedTruncatedMultiplier,
-    SignedTruncatedMultiplier,
+    UnsignedTruncatedArrayMultiplier,
+    UnsignedTruncatedCarrySaveMultiplier,
     UnsignedBrokenArrayMultiplier,
-    SignedBrokenArrayMultiplier
+    UnsignedBrokenCarrySaveMultiplier
 )
 
-from ariths_gen.multi_bit_circuits.cgp_circuit import UnsignedCGPCircuit, SignedCGPCircuit
+from ariths_gen.core.cgp_circuit import UnsignedCGPCircuit, SignedCGPCircuit
 
 import numpy as np
 from io import StringIO
@@ -106,7 +108,7 @@ def test_unsigned_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
+    for c in [UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedCarrySaveMultiplier, UnsignedWallaceMultiplier]:
         mul = c(a, b)
         code = StringIO()
         mul.get_cgp_code_flat(code)
@@ -126,7 +128,7 @@ def test_signed_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
+    for c in [SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier, SignedCarrySaveMultiplier]:
         mul = c(a, b)
         code = StringIO()
         mul.get_cgp_code_flat(code)
