@@ -1,0 +1,156 @@
+.model s_cska12
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11]
+.outputs s_cska12_out[0] s_cska12_out[1] s_cska12_out[2] s_cska12_out[3] s_cska12_out[4] s_cska12_out[5] s_cska12_out[6] s_cska12_out[7] s_cska12_out[8] s_cska12_out[9] s_cska12_out[10] s_cska12_out[11] s_cska12_out[12]
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a[0] b=b[0] out=s_cska12_xor0
+.subckt ha a=a[0] b=b[0] ha_xor0=s_cska12_ha0_xor0 ha_and0=s_cska12_ha0_and0
+.subckt xor_gate a=a[1] b=b[1] out=s_cska12_xor1
+.subckt fa a=a[1] b=b[1] cin=s_cska12_ha0_and0 fa_xor1=s_cska12_fa0_xor1 fa_or0=s_cska12_fa0_or0
+.subckt xor_gate a=a[2] b=b[2] out=s_cska12_xor2
+.subckt fa a=a[2] b=b[2] cin=s_cska12_fa0_or0 fa_xor1=s_cska12_fa1_xor1 fa_or0=s_cska12_fa1_or0
+.subckt xor_gate a=a[3] b=b[3] out=s_cska12_xor3
+.subckt fa a=a[3] b=b[3] cin=s_cska12_fa1_or0 fa_xor1=s_cska12_fa2_xor1 fa_or0=s_cska12_fa2_or0
+.subckt and_gate a=s_cska12_xor0 b=s_cska12_xor2 out=s_cska12_and_propagate00
+.subckt and_gate a=s_cska12_xor1 b=s_cska12_xor3 out=s_cska12_and_propagate01
+.subckt and_gate a=s_cska12_and_propagate00 b=s_cska12_and_propagate01 out=s_cska12_and_propagate02
+.subckt mux2to1 d0=s_cska12_fa2_or0 d1=gnd sel=s_cska12_and_propagate02 mux2to1_xor0=s_cska12_mux2to10_and1
+.subckt xor_gate a=a[4] b=b[4] out=s_cska12_xor4
+.subckt fa a=a[4] b=b[4] cin=s_cska12_mux2to10_and1 fa_xor1=s_cska12_fa3_xor1 fa_or0=s_cska12_fa3_or0
+.subckt xor_gate a=a[5] b=b[5] out=s_cska12_xor5
+.subckt fa a=a[5] b=b[5] cin=s_cska12_fa3_or0 fa_xor1=s_cska12_fa4_xor1 fa_or0=s_cska12_fa4_or0
+.subckt xor_gate a=a[6] b=b[6] out=s_cska12_xor6
+.subckt fa a=a[6] b=b[6] cin=s_cska12_fa4_or0 fa_xor1=s_cska12_fa5_xor1 fa_or0=s_cska12_fa5_or0
+.subckt xor_gate a=a[7] b=b[7] out=s_cska12_xor7
+.subckt fa a=a[7] b=b[7] cin=s_cska12_fa5_or0 fa_xor1=s_cska12_fa6_xor1 fa_or0=s_cska12_fa6_or0
+.subckt and_gate a=s_cska12_xor4 b=s_cska12_xor6 out=s_cska12_and_propagate13
+.subckt and_gate a=s_cska12_xor5 b=s_cska12_xor7 out=s_cska12_and_propagate14
+.subckt and_gate a=s_cska12_and_propagate13 b=s_cska12_and_propagate14 out=s_cska12_and_propagate15
+.subckt mux2to1 d0=s_cska12_fa6_or0 d1=s_cska12_mux2to10_and1 sel=s_cska12_and_propagate15 mux2to1_xor0=s_cska12_mux2to11_xor0
+.subckt xor_gate a=a[8] b=b[8] out=s_cska12_xor8
+.subckt fa a=a[8] b=b[8] cin=s_cska12_mux2to11_xor0 fa_xor1=s_cska12_fa7_xor1 fa_or0=s_cska12_fa7_or0
+.subckt xor_gate a=a[9] b=b[9] out=s_cska12_xor9
+.subckt fa a=a[9] b=b[9] cin=s_cska12_fa7_or0 fa_xor1=s_cska12_fa8_xor1 fa_or0=s_cska12_fa8_or0
+.subckt xor_gate a=a[10] b=b[10] out=s_cska12_xor10
+.subckt fa a=a[10] b=b[10] cin=s_cska12_fa8_or0 fa_xor1=s_cska12_fa9_xor1 fa_or0=s_cska12_fa9_or0
+.subckt xor_gate a=a[11] b=b[11] out=s_cska12_xor11
+.subckt fa a=a[11] b=b[11] cin=s_cska12_fa9_or0 fa_xor1=s_cska12_fa10_xor1 fa_or0=s_cska12_fa10_or0
+.subckt and_gate a=s_cska12_xor8 b=s_cska12_xor10 out=s_cska12_and_propagate26
+.subckt and_gate a=s_cska12_xor9 b=s_cska12_xor11 out=s_cska12_and_propagate27
+.subckt and_gate a=s_cska12_and_propagate26 b=s_cska12_and_propagate27 out=s_cska12_and_propagate28
+.subckt mux2to1 d0=s_cska12_fa10_or0 d1=s_cska12_mux2to11_xor0 sel=s_cska12_and_propagate28 mux2to1_xor0=s_cska12_mux2to12_xor0
+.subckt xor_gate a=a[11] b=b[11] out=s_cska12_xor12
+.subckt xor_gate a=s_cska12_xor12 b=s_cska12_mux2to12_xor0 out=s_cska12_xor13
+.names s_cska12_ha0_xor0 s_cska12_out[0]
+1 1
+.names s_cska12_fa0_xor1 s_cska12_out[1]
+1 1
+.names s_cska12_fa1_xor1 s_cska12_out[2]
+1 1
+.names s_cska12_fa2_xor1 s_cska12_out[3]
+1 1
+.names s_cska12_fa3_xor1 s_cska12_out[4]
+1 1
+.names s_cska12_fa4_xor1 s_cska12_out[5]
+1 1
+.names s_cska12_fa5_xor1 s_cska12_out[6]
+1 1
+.names s_cska12_fa6_xor1 s_cska12_out[7]
+1 1
+.names s_cska12_fa7_xor1 s_cska12_out[8]
+1 1
+.names s_cska12_fa8_xor1 s_cska12_out[9]
+1 1
+.names s_cska12_fa9_xor1 s_cska12_out[10]
+1 1
+.names s_cska12_fa10_xor1 s_cska12_out[11]
+1 1
+.names s_cska12_xor13 s_cska12_out[12]
+1 1
+.end
+
+.model mux2to1
+.inputs d0 d1 sel
+.outputs mux2to1_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=d1 b=sel out=mux2to1_and0
+.subckt not_gate a=sel out=mux2to1_not0
+.subckt and_gate a=d0 b=mux2to1_not0 out=mux2to1_and1
+.subckt xor_gate a=mux2to1_and0 b=mux2to1_and1 out=mux2to1_xor0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model not_gate
+.inputs a
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a out
+0 1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end

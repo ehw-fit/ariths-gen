@@ -1,0 +1,3902 @@
+.model s_csamul_cla16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs s_csamul_cla16_out[0] s_csamul_cla16_out[1] s_csamul_cla16_out[2] s_csamul_cla16_out[3] s_csamul_cla16_out[4] s_csamul_cla16_out[5] s_csamul_cla16_out[6] s_csamul_cla16_out[7] s_csamul_cla16_out[8] s_csamul_cla16_out[9] s_csamul_cla16_out[10] s_csamul_cla16_out[11] s_csamul_cla16_out[12] s_csamul_cla16_out[13] s_csamul_cla16_out[14] s_csamul_cla16_out[15] s_csamul_cla16_out[16] s_csamul_cla16_out[17] s_csamul_cla16_out[18] s_csamul_cla16_out[19] s_csamul_cla16_out[20] s_csamul_cla16_out[21] s_csamul_cla16_out[22] s_csamul_cla16_out[23] s_csamul_cla16_out[24] s_csamul_cla16_out[25] s_csamul_cla16_out[26] s_csamul_cla16_out[27] s_csamul_cla16_out[28] s_csamul_cla16_out[29] s_csamul_cla16_out[30] s_csamul_cla16_out[31]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] s_csamul_cla16_and0_0
+11 1
+.names a[1] b[0] s_csamul_cla16_and1_0
+11 1
+.names a[2] b[0] s_csamul_cla16_and2_0
+11 1
+.names a[3] b[0] s_csamul_cla16_and3_0
+11 1
+.names a[4] b[0] s_csamul_cla16_and4_0
+11 1
+.names a[5] b[0] s_csamul_cla16_and5_0
+11 1
+.names a[6] b[0] s_csamul_cla16_and6_0
+11 1
+.names a[7] b[0] s_csamul_cla16_and7_0
+11 1
+.names a[8] b[0] s_csamul_cla16_and8_0
+11 1
+.names a[9] b[0] s_csamul_cla16_and9_0
+11 1
+.names a[10] b[0] s_csamul_cla16_and10_0
+11 1
+.names a[11] b[0] s_csamul_cla16_and11_0
+11 1
+.names a[12] b[0] s_csamul_cla16_and12_0
+11 1
+.names a[13] b[0] s_csamul_cla16_and13_0
+11 1
+.names a[14] b[0] s_csamul_cla16_and14_0
+11 1
+.names a[15] b[0] s_csamul_cla16_nand15_0
+0- 1
+-0 1
+.names a[0] b[1] s_csamul_cla16_and0_1
+11 1
+.names s_csamul_cla16_and0_1 s_csamul_cla16_and1_0 s_csamul_cla16_ha0_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_1 s_csamul_cla16_and1_0 s_csamul_cla16_ha0_1_and0
+11 1
+.names a[1] b[1] s_csamul_cla16_and1_1
+11 1
+.names s_csamul_cla16_and1_1 s_csamul_cla16_and2_0 s_csamul_cla16_ha1_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_1 s_csamul_cla16_and2_0 s_csamul_cla16_ha1_1_and0
+11 1
+.names a[2] b[1] s_csamul_cla16_and2_1
+11 1
+.names s_csamul_cla16_and2_1 s_csamul_cla16_and3_0 s_csamul_cla16_ha2_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_1 s_csamul_cla16_and3_0 s_csamul_cla16_ha2_1_and0
+11 1
+.names a[3] b[1] s_csamul_cla16_and3_1
+11 1
+.names s_csamul_cla16_and3_1 s_csamul_cla16_and4_0 s_csamul_cla16_ha3_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_1 s_csamul_cla16_and4_0 s_csamul_cla16_ha3_1_and0
+11 1
+.names a[4] b[1] s_csamul_cla16_and4_1
+11 1
+.names s_csamul_cla16_and4_1 s_csamul_cla16_and5_0 s_csamul_cla16_ha4_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_1 s_csamul_cla16_and5_0 s_csamul_cla16_ha4_1_and0
+11 1
+.names a[5] b[1] s_csamul_cla16_and5_1
+11 1
+.names s_csamul_cla16_and5_1 s_csamul_cla16_and6_0 s_csamul_cla16_ha5_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_1 s_csamul_cla16_and6_0 s_csamul_cla16_ha5_1_and0
+11 1
+.names a[6] b[1] s_csamul_cla16_and6_1
+11 1
+.names s_csamul_cla16_and6_1 s_csamul_cla16_and7_0 s_csamul_cla16_ha6_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_1 s_csamul_cla16_and7_0 s_csamul_cla16_ha6_1_and0
+11 1
+.names a[7] b[1] s_csamul_cla16_and7_1
+11 1
+.names s_csamul_cla16_and7_1 s_csamul_cla16_and8_0 s_csamul_cla16_ha7_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_1 s_csamul_cla16_and8_0 s_csamul_cla16_ha7_1_and0
+11 1
+.names a[8] b[1] s_csamul_cla16_and8_1
+11 1
+.names s_csamul_cla16_and8_1 s_csamul_cla16_and9_0 s_csamul_cla16_ha8_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_1 s_csamul_cla16_and9_0 s_csamul_cla16_ha8_1_and0
+11 1
+.names a[9] b[1] s_csamul_cla16_and9_1
+11 1
+.names s_csamul_cla16_and9_1 s_csamul_cla16_and10_0 s_csamul_cla16_ha9_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_1 s_csamul_cla16_and10_0 s_csamul_cla16_ha9_1_and0
+11 1
+.names a[10] b[1] s_csamul_cla16_and10_1
+11 1
+.names s_csamul_cla16_and10_1 s_csamul_cla16_and11_0 s_csamul_cla16_ha10_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_1 s_csamul_cla16_and11_0 s_csamul_cla16_ha10_1_and0
+11 1
+.names a[11] b[1] s_csamul_cla16_and11_1
+11 1
+.names s_csamul_cla16_and11_1 s_csamul_cla16_and12_0 s_csamul_cla16_ha11_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_1 s_csamul_cla16_and12_0 s_csamul_cla16_ha11_1_and0
+11 1
+.names a[12] b[1] s_csamul_cla16_and12_1
+11 1
+.names s_csamul_cla16_and12_1 s_csamul_cla16_and13_0 s_csamul_cla16_ha12_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_1 s_csamul_cla16_and13_0 s_csamul_cla16_ha12_1_and0
+11 1
+.names a[13] b[1] s_csamul_cla16_and13_1
+11 1
+.names s_csamul_cla16_and13_1 s_csamul_cla16_and14_0 s_csamul_cla16_ha13_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_1 s_csamul_cla16_and14_0 s_csamul_cla16_ha13_1_and0
+11 1
+.names a[14] b[1] s_csamul_cla16_and14_1
+11 1
+.names s_csamul_cla16_and14_1 s_csamul_cla16_nand15_0 s_csamul_cla16_ha14_1_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_1 s_csamul_cla16_nand15_0 s_csamul_cla16_ha14_1_and0
+11 1
+.names a[15] b[1] s_csamul_cla16_nand15_1
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_1 s_csamul_cla16_ha15_1_xor0
+0 1
+.names a[0] b[2] s_csamul_cla16_and0_2
+11 1
+.names s_csamul_cla16_and0_2 s_csamul_cla16_ha1_1_xor0 s_csamul_cla16_fa0_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_2 s_csamul_cla16_ha1_1_xor0 s_csamul_cla16_fa0_2_and0
+11 1
+.names s_csamul_cla16_fa0_2_xor0 s_csamul_cla16_ha0_1_and0 s_csamul_cla16_fa0_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_2_xor0 s_csamul_cla16_ha0_1_and0 s_csamul_cla16_fa0_2_and1
+11 1
+.names s_csamul_cla16_fa0_2_and0 s_csamul_cla16_fa0_2_and1 s_csamul_cla16_fa0_2_or0
+1- 1
+-1 1
+.names a[1] b[2] s_csamul_cla16_and1_2
+11 1
+.names s_csamul_cla16_and1_2 s_csamul_cla16_ha2_1_xor0 s_csamul_cla16_fa1_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_2 s_csamul_cla16_ha2_1_xor0 s_csamul_cla16_fa1_2_and0
+11 1
+.names s_csamul_cla16_fa1_2_xor0 s_csamul_cla16_ha1_1_and0 s_csamul_cla16_fa1_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_2_xor0 s_csamul_cla16_ha1_1_and0 s_csamul_cla16_fa1_2_and1
+11 1
+.names s_csamul_cla16_fa1_2_and0 s_csamul_cla16_fa1_2_and1 s_csamul_cla16_fa1_2_or0
+1- 1
+-1 1
+.names a[2] b[2] s_csamul_cla16_and2_2
+11 1
+.names s_csamul_cla16_and2_2 s_csamul_cla16_ha3_1_xor0 s_csamul_cla16_fa2_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_2 s_csamul_cla16_ha3_1_xor0 s_csamul_cla16_fa2_2_and0
+11 1
+.names s_csamul_cla16_fa2_2_xor0 s_csamul_cla16_ha2_1_and0 s_csamul_cla16_fa2_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_2_xor0 s_csamul_cla16_ha2_1_and0 s_csamul_cla16_fa2_2_and1
+11 1
+.names s_csamul_cla16_fa2_2_and0 s_csamul_cla16_fa2_2_and1 s_csamul_cla16_fa2_2_or0
+1- 1
+-1 1
+.names a[3] b[2] s_csamul_cla16_and3_2
+11 1
+.names s_csamul_cla16_and3_2 s_csamul_cla16_ha4_1_xor0 s_csamul_cla16_fa3_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_2 s_csamul_cla16_ha4_1_xor0 s_csamul_cla16_fa3_2_and0
+11 1
+.names s_csamul_cla16_fa3_2_xor0 s_csamul_cla16_ha3_1_and0 s_csamul_cla16_fa3_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_2_xor0 s_csamul_cla16_ha3_1_and0 s_csamul_cla16_fa3_2_and1
+11 1
+.names s_csamul_cla16_fa3_2_and0 s_csamul_cla16_fa3_2_and1 s_csamul_cla16_fa3_2_or0
+1- 1
+-1 1
+.names a[4] b[2] s_csamul_cla16_and4_2
+11 1
+.names s_csamul_cla16_and4_2 s_csamul_cla16_ha5_1_xor0 s_csamul_cla16_fa4_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_2 s_csamul_cla16_ha5_1_xor0 s_csamul_cla16_fa4_2_and0
+11 1
+.names s_csamul_cla16_fa4_2_xor0 s_csamul_cla16_ha4_1_and0 s_csamul_cla16_fa4_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_2_xor0 s_csamul_cla16_ha4_1_and0 s_csamul_cla16_fa4_2_and1
+11 1
+.names s_csamul_cla16_fa4_2_and0 s_csamul_cla16_fa4_2_and1 s_csamul_cla16_fa4_2_or0
+1- 1
+-1 1
+.names a[5] b[2] s_csamul_cla16_and5_2
+11 1
+.names s_csamul_cla16_and5_2 s_csamul_cla16_ha6_1_xor0 s_csamul_cla16_fa5_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_2 s_csamul_cla16_ha6_1_xor0 s_csamul_cla16_fa5_2_and0
+11 1
+.names s_csamul_cla16_fa5_2_xor0 s_csamul_cla16_ha5_1_and0 s_csamul_cla16_fa5_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_2_xor0 s_csamul_cla16_ha5_1_and0 s_csamul_cla16_fa5_2_and1
+11 1
+.names s_csamul_cla16_fa5_2_and0 s_csamul_cla16_fa5_2_and1 s_csamul_cla16_fa5_2_or0
+1- 1
+-1 1
+.names a[6] b[2] s_csamul_cla16_and6_2
+11 1
+.names s_csamul_cla16_and6_2 s_csamul_cla16_ha7_1_xor0 s_csamul_cla16_fa6_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_2 s_csamul_cla16_ha7_1_xor0 s_csamul_cla16_fa6_2_and0
+11 1
+.names s_csamul_cla16_fa6_2_xor0 s_csamul_cla16_ha6_1_and0 s_csamul_cla16_fa6_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_2_xor0 s_csamul_cla16_ha6_1_and0 s_csamul_cla16_fa6_2_and1
+11 1
+.names s_csamul_cla16_fa6_2_and0 s_csamul_cla16_fa6_2_and1 s_csamul_cla16_fa6_2_or0
+1- 1
+-1 1
+.names a[7] b[2] s_csamul_cla16_and7_2
+11 1
+.names s_csamul_cla16_and7_2 s_csamul_cla16_ha8_1_xor0 s_csamul_cla16_fa7_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_2 s_csamul_cla16_ha8_1_xor0 s_csamul_cla16_fa7_2_and0
+11 1
+.names s_csamul_cla16_fa7_2_xor0 s_csamul_cla16_ha7_1_and0 s_csamul_cla16_fa7_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_2_xor0 s_csamul_cla16_ha7_1_and0 s_csamul_cla16_fa7_2_and1
+11 1
+.names s_csamul_cla16_fa7_2_and0 s_csamul_cla16_fa7_2_and1 s_csamul_cla16_fa7_2_or0
+1- 1
+-1 1
+.names a[8] b[2] s_csamul_cla16_and8_2
+11 1
+.names s_csamul_cla16_and8_2 s_csamul_cla16_ha9_1_xor0 s_csamul_cla16_fa8_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_2 s_csamul_cla16_ha9_1_xor0 s_csamul_cla16_fa8_2_and0
+11 1
+.names s_csamul_cla16_fa8_2_xor0 s_csamul_cla16_ha8_1_and0 s_csamul_cla16_fa8_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_2_xor0 s_csamul_cla16_ha8_1_and0 s_csamul_cla16_fa8_2_and1
+11 1
+.names s_csamul_cla16_fa8_2_and0 s_csamul_cla16_fa8_2_and1 s_csamul_cla16_fa8_2_or0
+1- 1
+-1 1
+.names a[9] b[2] s_csamul_cla16_and9_2
+11 1
+.names s_csamul_cla16_and9_2 s_csamul_cla16_ha10_1_xor0 s_csamul_cla16_fa9_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_2 s_csamul_cla16_ha10_1_xor0 s_csamul_cla16_fa9_2_and0
+11 1
+.names s_csamul_cla16_fa9_2_xor0 s_csamul_cla16_ha9_1_and0 s_csamul_cla16_fa9_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_2_xor0 s_csamul_cla16_ha9_1_and0 s_csamul_cla16_fa9_2_and1
+11 1
+.names s_csamul_cla16_fa9_2_and0 s_csamul_cla16_fa9_2_and1 s_csamul_cla16_fa9_2_or0
+1- 1
+-1 1
+.names a[10] b[2] s_csamul_cla16_and10_2
+11 1
+.names s_csamul_cla16_and10_2 s_csamul_cla16_ha11_1_xor0 s_csamul_cla16_fa10_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_2 s_csamul_cla16_ha11_1_xor0 s_csamul_cla16_fa10_2_and0
+11 1
+.names s_csamul_cla16_fa10_2_xor0 s_csamul_cla16_ha10_1_and0 s_csamul_cla16_fa10_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_2_xor0 s_csamul_cla16_ha10_1_and0 s_csamul_cla16_fa10_2_and1
+11 1
+.names s_csamul_cla16_fa10_2_and0 s_csamul_cla16_fa10_2_and1 s_csamul_cla16_fa10_2_or0
+1- 1
+-1 1
+.names a[11] b[2] s_csamul_cla16_and11_2
+11 1
+.names s_csamul_cla16_and11_2 s_csamul_cla16_ha12_1_xor0 s_csamul_cla16_fa11_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_2 s_csamul_cla16_ha12_1_xor0 s_csamul_cla16_fa11_2_and0
+11 1
+.names s_csamul_cla16_fa11_2_xor0 s_csamul_cla16_ha11_1_and0 s_csamul_cla16_fa11_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_2_xor0 s_csamul_cla16_ha11_1_and0 s_csamul_cla16_fa11_2_and1
+11 1
+.names s_csamul_cla16_fa11_2_and0 s_csamul_cla16_fa11_2_and1 s_csamul_cla16_fa11_2_or0
+1- 1
+-1 1
+.names a[12] b[2] s_csamul_cla16_and12_2
+11 1
+.names s_csamul_cla16_and12_2 s_csamul_cla16_ha13_1_xor0 s_csamul_cla16_fa12_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_2 s_csamul_cla16_ha13_1_xor0 s_csamul_cla16_fa12_2_and0
+11 1
+.names s_csamul_cla16_fa12_2_xor0 s_csamul_cla16_ha12_1_and0 s_csamul_cla16_fa12_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_2_xor0 s_csamul_cla16_ha12_1_and0 s_csamul_cla16_fa12_2_and1
+11 1
+.names s_csamul_cla16_fa12_2_and0 s_csamul_cla16_fa12_2_and1 s_csamul_cla16_fa12_2_or0
+1- 1
+-1 1
+.names a[13] b[2] s_csamul_cla16_and13_2
+11 1
+.names s_csamul_cla16_and13_2 s_csamul_cla16_ha14_1_xor0 s_csamul_cla16_fa13_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_2 s_csamul_cla16_ha14_1_xor0 s_csamul_cla16_fa13_2_and0
+11 1
+.names s_csamul_cla16_fa13_2_xor0 s_csamul_cla16_ha13_1_and0 s_csamul_cla16_fa13_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_2_xor0 s_csamul_cla16_ha13_1_and0 s_csamul_cla16_fa13_2_and1
+11 1
+.names s_csamul_cla16_fa13_2_and0 s_csamul_cla16_fa13_2_and1 s_csamul_cla16_fa13_2_or0
+1- 1
+-1 1
+.names a[14] b[2] s_csamul_cla16_and14_2
+11 1
+.names s_csamul_cla16_and14_2 s_csamul_cla16_ha15_1_xor0 s_csamul_cla16_fa14_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_2 s_csamul_cla16_ha15_1_xor0 s_csamul_cla16_fa14_2_and0
+11 1
+.names s_csamul_cla16_fa14_2_xor0 s_csamul_cla16_ha14_1_and0 s_csamul_cla16_fa14_2_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_2_xor0 s_csamul_cla16_ha14_1_and0 s_csamul_cla16_fa14_2_and1
+11 1
+.names s_csamul_cla16_fa14_2_and0 s_csamul_cla16_fa14_2_and1 s_csamul_cla16_fa14_2_or0
+1- 1
+-1 1
+.names a[15] b[2] s_csamul_cla16_nand15_2
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_2 s_csamul_cla16_nand15_1 s_csamul_cla16_ha15_2_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_2 s_csamul_cla16_nand15_1 s_csamul_cla16_ha15_2_and0
+11 1
+.names a[0] b[3] s_csamul_cla16_and0_3
+11 1
+.names s_csamul_cla16_and0_3 s_csamul_cla16_fa1_2_xor1 s_csamul_cla16_fa0_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_3 s_csamul_cla16_fa1_2_xor1 s_csamul_cla16_fa0_3_and0
+11 1
+.names s_csamul_cla16_fa0_3_xor0 s_csamul_cla16_fa0_2_or0 s_csamul_cla16_fa0_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_3_xor0 s_csamul_cla16_fa0_2_or0 s_csamul_cla16_fa0_3_and1
+11 1
+.names s_csamul_cla16_fa0_3_and0 s_csamul_cla16_fa0_3_and1 s_csamul_cla16_fa0_3_or0
+1- 1
+-1 1
+.names a[1] b[3] s_csamul_cla16_and1_3
+11 1
+.names s_csamul_cla16_and1_3 s_csamul_cla16_fa2_2_xor1 s_csamul_cla16_fa1_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_3 s_csamul_cla16_fa2_2_xor1 s_csamul_cla16_fa1_3_and0
+11 1
+.names s_csamul_cla16_fa1_3_xor0 s_csamul_cla16_fa1_2_or0 s_csamul_cla16_fa1_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_3_xor0 s_csamul_cla16_fa1_2_or0 s_csamul_cla16_fa1_3_and1
+11 1
+.names s_csamul_cla16_fa1_3_and0 s_csamul_cla16_fa1_3_and1 s_csamul_cla16_fa1_3_or0
+1- 1
+-1 1
+.names a[2] b[3] s_csamul_cla16_and2_3
+11 1
+.names s_csamul_cla16_and2_3 s_csamul_cla16_fa3_2_xor1 s_csamul_cla16_fa2_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_3 s_csamul_cla16_fa3_2_xor1 s_csamul_cla16_fa2_3_and0
+11 1
+.names s_csamul_cla16_fa2_3_xor0 s_csamul_cla16_fa2_2_or0 s_csamul_cla16_fa2_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_3_xor0 s_csamul_cla16_fa2_2_or0 s_csamul_cla16_fa2_3_and1
+11 1
+.names s_csamul_cla16_fa2_3_and0 s_csamul_cla16_fa2_3_and1 s_csamul_cla16_fa2_3_or0
+1- 1
+-1 1
+.names a[3] b[3] s_csamul_cla16_and3_3
+11 1
+.names s_csamul_cla16_and3_3 s_csamul_cla16_fa4_2_xor1 s_csamul_cla16_fa3_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_3 s_csamul_cla16_fa4_2_xor1 s_csamul_cla16_fa3_3_and0
+11 1
+.names s_csamul_cla16_fa3_3_xor0 s_csamul_cla16_fa3_2_or0 s_csamul_cla16_fa3_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_3_xor0 s_csamul_cla16_fa3_2_or0 s_csamul_cla16_fa3_3_and1
+11 1
+.names s_csamul_cla16_fa3_3_and0 s_csamul_cla16_fa3_3_and1 s_csamul_cla16_fa3_3_or0
+1- 1
+-1 1
+.names a[4] b[3] s_csamul_cla16_and4_3
+11 1
+.names s_csamul_cla16_and4_3 s_csamul_cla16_fa5_2_xor1 s_csamul_cla16_fa4_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_3 s_csamul_cla16_fa5_2_xor1 s_csamul_cla16_fa4_3_and0
+11 1
+.names s_csamul_cla16_fa4_3_xor0 s_csamul_cla16_fa4_2_or0 s_csamul_cla16_fa4_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_3_xor0 s_csamul_cla16_fa4_2_or0 s_csamul_cla16_fa4_3_and1
+11 1
+.names s_csamul_cla16_fa4_3_and0 s_csamul_cla16_fa4_3_and1 s_csamul_cla16_fa4_3_or0
+1- 1
+-1 1
+.names a[5] b[3] s_csamul_cla16_and5_3
+11 1
+.names s_csamul_cla16_and5_3 s_csamul_cla16_fa6_2_xor1 s_csamul_cla16_fa5_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_3 s_csamul_cla16_fa6_2_xor1 s_csamul_cla16_fa5_3_and0
+11 1
+.names s_csamul_cla16_fa5_3_xor0 s_csamul_cla16_fa5_2_or0 s_csamul_cla16_fa5_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_3_xor0 s_csamul_cla16_fa5_2_or0 s_csamul_cla16_fa5_3_and1
+11 1
+.names s_csamul_cla16_fa5_3_and0 s_csamul_cla16_fa5_3_and1 s_csamul_cla16_fa5_3_or0
+1- 1
+-1 1
+.names a[6] b[3] s_csamul_cla16_and6_3
+11 1
+.names s_csamul_cla16_and6_3 s_csamul_cla16_fa7_2_xor1 s_csamul_cla16_fa6_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_3 s_csamul_cla16_fa7_2_xor1 s_csamul_cla16_fa6_3_and0
+11 1
+.names s_csamul_cla16_fa6_3_xor0 s_csamul_cla16_fa6_2_or0 s_csamul_cla16_fa6_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_3_xor0 s_csamul_cla16_fa6_2_or0 s_csamul_cla16_fa6_3_and1
+11 1
+.names s_csamul_cla16_fa6_3_and0 s_csamul_cla16_fa6_3_and1 s_csamul_cla16_fa6_3_or0
+1- 1
+-1 1
+.names a[7] b[3] s_csamul_cla16_and7_3
+11 1
+.names s_csamul_cla16_and7_3 s_csamul_cla16_fa8_2_xor1 s_csamul_cla16_fa7_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_3 s_csamul_cla16_fa8_2_xor1 s_csamul_cla16_fa7_3_and0
+11 1
+.names s_csamul_cla16_fa7_3_xor0 s_csamul_cla16_fa7_2_or0 s_csamul_cla16_fa7_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_3_xor0 s_csamul_cla16_fa7_2_or0 s_csamul_cla16_fa7_3_and1
+11 1
+.names s_csamul_cla16_fa7_3_and0 s_csamul_cla16_fa7_3_and1 s_csamul_cla16_fa7_3_or0
+1- 1
+-1 1
+.names a[8] b[3] s_csamul_cla16_and8_3
+11 1
+.names s_csamul_cla16_and8_3 s_csamul_cla16_fa9_2_xor1 s_csamul_cla16_fa8_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_3 s_csamul_cla16_fa9_2_xor1 s_csamul_cla16_fa8_3_and0
+11 1
+.names s_csamul_cla16_fa8_3_xor0 s_csamul_cla16_fa8_2_or0 s_csamul_cla16_fa8_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_3_xor0 s_csamul_cla16_fa8_2_or0 s_csamul_cla16_fa8_3_and1
+11 1
+.names s_csamul_cla16_fa8_3_and0 s_csamul_cla16_fa8_3_and1 s_csamul_cla16_fa8_3_or0
+1- 1
+-1 1
+.names a[9] b[3] s_csamul_cla16_and9_3
+11 1
+.names s_csamul_cla16_and9_3 s_csamul_cla16_fa10_2_xor1 s_csamul_cla16_fa9_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_3 s_csamul_cla16_fa10_2_xor1 s_csamul_cla16_fa9_3_and0
+11 1
+.names s_csamul_cla16_fa9_3_xor0 s_csamul_cla16_fa9_2_or0 s_csamul_cla16_fa9_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_3_xor0 s_csamul_cla16_fa9_2_or0 s_csamul_cla16_fa9_3_and1
+11 1
+.names s_csamul_cla16_fa9_3_and0 s_csamul_cla16_fa9_3_and1 s_csamul_cla16_fa9_3_or0
+1- 1
+-1 1
+.names a[10] b[3] s_csamul_cla16_and10_3
+11 1
+.names s_csamul_cla16_and10_3 s_csamul_cla16_fa11_2_xor1 s_csamul_cla16_fa10_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_3 s_csamul_cla16_fa11_2_xor1 s_csamul_cla16_fa10_3_and0
+11 1
+.names s_csamul_cla16_fa10_3_xor0 s_csamul_cla16_fa10_2_or0 s_csamul_cla16_fa10_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_3_xor0 s_csamul_cla16_fa10_2_or0 s_csamul_cla16_fa10_3_and1
+11 1
+.names s_csamul_cla16_fa10_3_and0 s_csamul_cla16_fa10_3_and1 s_csamul_cla16_fa10_3_or0
+1- 1
+-1 1
+.names a[11] b[3] s_csamul_cla16_and11_3
+11 1
+.names s_csamul_cla16_and11_3 s_csamul_cla16_fa12_2_xor1 s_csamul_cla16_fa11_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_3 s_csamul_cla16_fa12_2_xor1 s_csamul_cla16_fa11_3_and0
+11 1
+.names s_csamul_cla16_fa11_3_xor0 s_csamul_cla16_fa11_2_or0 s_csamul_cla16_fa11_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_3_xor0 s_csamul_cla16_fa11_2_or0 s_csamul_cla16_fa11_3_and1
+11 1
+.names s_csamul_cla16_fa11_3_and0 s_csamul_cla16_fa11_3_and1 s_csamul_cla16_fa11_3_or0
+1- 1
+-1 1
+.names a[12] b[3] s_csamul_cla16_and12_3
+11 1
+.names s_csamul_cla16_and12_3 s_csamul_cla16_fa13_2_xor1 s_csamul_cla16_fa12_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_3 s_csamul_cla16_fa13_2_xor1 s_csamul_cla16_fa12_3_and0
+11 1
+.names s_csamul_cla16_fa12_3_xor0 s_csamul_cla16_fa12_2_or0 s_csamul_cla16_fa12_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_3_xor0 s_csamul_cla16_fa12_2_or0 s_csamul_cla16_fa12_3_and1
+11 1
+.names s_csamul_cla16_fa12_3_and0 s_csamul_cla16_fa12_3_and1 s_csamul_cla16_fa12_3_or0
+1- 1
+-1 1
+.names a[13] b[3] s_csamul_cla16_and13_3
+11 1
+.names s_csamul_cla16_and13_3 s_csamul_cla16_fa14_2_xor1 s_csamul_cla16_fa13_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_3 s_csamul_cla16_fa14_2_xor1 s_csamul_cla16_fa13_3_and0
+11 1
+.names s_csamul_cla16_fa13_3_xor0 s_csamul_cla16_fa13_2_or0 s_csamul_cla16_fa13_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_3_xor0 s_csamul_cla16_fa13_2_or0 s_csamul_cla16_fa13_3_and1
+11 1
+.names s_csamul_cla16_fa13_3_and0 s_csamul_cla16_fa13_3_and1 s_csamul_cla16_fa13_3_or0
+1- 1
+-1 1
+.names a[14] b[3] s_csamul_cla16_and14_3
+11 1
+.names s_csamul_cla16_and14_3 s_csamul_cla16_ha15_2_xor0 s_csamul_cla16_fa14_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_3 s_csamul_cla16_ha15_2_xor0 s_csamul_cla16_fa14_3_and0
+11 1
+.names s_csamul_cla16_fa14_3_xor0 s_csamul_cla16_fa14_2_or0 s_csamul_cla16_fa14_3_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_3_xor0 s_csamul_cla16_fa14_2_or0 s_csamul_cla16_fa14_3_and1
+11 1
+.names s_csamul_cla16_fa14_3_and0 s_csamul_cla16_fa14_3_and1 s_csamul_cla16_fa14_3_or0
+1- 1
+-1 1
+.names a[15] b[3] s_csamul_cla16_nand15_3
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_3 s_csamul_cla16_ha15_2_and0 s_csamul_cla16_ha15_3_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_3 s_csamul_cla16_ha15_2_and0 s_csamul_cla16_ha15_3_and0
+11 1
+.names a[0] b[4] s_csamul_cla16_and0_4
+11 1
+.names s_csamul_cla16_and0_4 s_csamul_cla16_fa1_3_xor1 s_csamul_cla16_fa0_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_4 s_csamul_cla16_fa1_3_xor1 s_csamul_cla16_fa0_4_and0
+11 1
+.names s_csamul_cla16_fa0_4_xor0 s_csamul_cla16_fa0_3_or0 s_csamul_cla16_fa0_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_4_xor0 s_csamul_cla16_fa0_3_or0 s_csamul_cla16_fa0_4_and1
+11 1
+.names s_csamul_cla16_fa0_4_and0 s_csamul_cla16_fa0_4_and1 s_csamul_cla16_fa0_4_or0
+1- 1
+-1 1
+.names a[1] b[4] s_csamul_cla16_and1_4
+11 1
+.names s_csamul_cla16_and1_4 s_csamul_cla16_fa2_3_xor1 s_csamul_cla16_fa1_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_4 s_csamul_cla16_fa2_3_xor1 s_csamul_cla16_fa1_4_and0
+11 1
+.names s_csamul_cla16_fa1_4_xor0 s_csamul_cla16_fa1_3_or0 s_csamul_cla16_fa1_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_4_xor0 s_csamul_cla16_fa1_3_or0 s_csamul_cla16_fa1_4_and1
+11 1
+.names s_csamul_cla16_fa1_4_and0 s_csamul_cla16_fa1_4_and1 s_csamul_cla16_fa1_4_or0
+1- 1
+-1 1
+.names a[2] b[4] s_csamul_cla16_and2_4
+11 1
+.names s_csamul_cla16_and2_4 s_csamul_cla16_fa3_3_xor1 s_csamul_cla16_fa2_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_4 s_csamul_cla16_fa3_3_xor1 s_csamul_cla16_fa2_4_and0
+11 1
+.names s_csamul_cla16_fa2_4_xor0 s_csamul_cla16_fa2_3_or0 s_csamul_cla16_fa2_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_4_xor0 s_csamul_cla16_fa2_3_or0 s_csamul_cla16_fa2_4_and1
+11 1
+.names s_csamul_cla16_fa2_4_and0 s_csamul_cla16_fa2_4_and1 s_csamul_cla16_fa2_4_or0
+1- 1
+-1 1
+.names a[3] b[4] s_csamul_cla16_and3_4
+11 1
+.names s_csamul_cla16_and3_4 s_csamul_cla16_fa4_3_xor1 s_csamul_cla16_fa3_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_4 s_csamul_cla16_fa4_3_xor1 s_csamul_cla16_fa3_4_and0
+11 1
+.names s_csamul_cla16_fa3_4_xor0 s_csamul_cla16_fa3_3_or0 s_csamul_cla16_fa3_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_4_xor0 s_csamul_cla16_fa3_3_or0 s_csamul_cla16_fa3_4_and1
+11 1
+.names s_csamul_cla16_fa3_4_and0 s_csamul_cla16_fa3_4_and1 s_csamul_cla16_fa3_4_or0
+1- 1
+-1 1
+.names a[4] b[4] s_csamul_cla16_and4_4
+11 1
+.names s_csamul_cla16_and4_4 s_csamul_cla16_fa5_3_xor1 s_csamul_cla16_fa4_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_4 s_csamul_cla16_fa5_3_xor1 s_csamul_cla16_fa4_4_and0
+11 1
+.names s_csamul_cla16_fa4_4_xor0 s_csamul_cla16_fa4_3_or0 s_csamul_cla16_fa4_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_4_xor0 s_csamul_cla16_fa4_3_or0 s_csamul_cla16_fa4_4_and1
+11 1
+.names s_csamul_cla16_fa4_4_and0 s_csamul_cla16_fa4_4_and1 s_csamul_cla16_fa4_4_or0
+1- 1
+-1 1
+.names a[5] b[4] s_csamul_cla16_and5_4
+11 1
+.names s_csamul_cla16_and5_4 s_csamul_cla16_fa6_3_xor1 s_csamul_cla16_fa5_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_4 s_csamul_cla16_fa6_3_xor1 s_csamul_cla16_fa5_4_and0
+11 1
+.names s_csamul_cla16_fa5_4_xor0 s_csamul_cla16_fa5_3_or0 s_csamul_cla16_fa5_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_4_xor0 s_csamul_cla16_fa5_3_or0 s_csamul_cla16_fa5_4_and1
+11 1
+.names s_csamul_cla16_fa5_4_and0 s_csamul_cla16_fa5_4_and1 s_csamul_cla16_fa5_4_or0
+1- 1
+-1 1
+.names a[6] b[4] s_csamul_cla16_and6_4
+11 1
+.names s_csamul_cla16_and6_4 s_csamul_cla16_fa7_3_xor1 s_csamul_cla16_fa6_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_4 s_csamul_cla16_fa7_3_xor1 s_csamul_cla16_fa6_4_and0
+11 1
+.names s_csamul_cla16_fa6_4_xor0 s_csamul_cla16_fa6_3_or0 s_csamul_cla16_fa6_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_4_xor0 s_csamul_cla16_fa6_3_or0 s_csamul_cla16_fa6_4_and1
+11 1
+.names s_csamul_cla16_fa6_4_and0 s_csamul_cla16_fa6_4_and1 s_csamul_cla16_fa6_4_or0
+1- 1
+-1 1
+.names a[7] b[4] s_csamul_cla16_and7_4
+11 1
+.names s_csamul_cla16_and7_4 s_csamul_cla16_fa8_3_xor1 s_csamul_cla16_fa7_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_4 s_csamul_cla16_fa8_3_xor1 s_csamul_cla16_fa7_4_and0
+11 1
+.names s_csamul_cla16_fa7_4_xor0 s_csamul_cla16_fa7_3_or0 s_csamul_cla16_fa7_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_4_xor0 s_csamul_cla16_fa7_3_or0 s_csamul_cla16_fa7_4_and1
+11 1
+.names s_csamul_cla16_fa7_4_and0 s_csamul_cla16_fa7_4_and1 s_csamul_cla16_fa7_4_or0
+1- 1
+-1 1
+.names a[8] b[4] s_csamul_cla16_and8_4
+11 1
+.names s_csamul_cla16_and8_4 s_csamul_cla16_fa9_3_xor1 s_csamul_cla16_fa8_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_4 s_csamul_cla16_fa9_3_xor1 s_csamul_cla16_fa8_4_and0
+11 1
+.names s_csamul_cla16_fa8_4_xor0 s_csamul_cla16_fa8_3_or0 s_csamul_cla16_fa8_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_4_xor0 s_csamul_cla16_fa8_3_or0 s_csamul_cla16_fa8_4_and1
+11 1
+.names s_csamul_cla16_fa8_4_and0 s_csamul_cla16_fa8_4_and1 s_csamul_cla16_fa8_4_or0
+1- 1
+-1 1
+.names a[9] b[4] s_csamul_cla16_and9_4
+11 1
+.names s_csamul_cla16_and9_4 s_csamul_cla16_fa10_3_xor1 s_csamul_cla16_fa9_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_4 s_csamul_cla16_fa10_3_xor1 s_csamul_cla16_fa9_4_and0
+11 1
+.names s_csamul_cla16_fa9_4_xor0 s_csamul_cla16_fa9_3_or0 s_csamul_cla16_fa9_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_4_xor0 s_csamul_cla16_fa9_3_or0 s_csamul_cla16_fa9_4_and1
+11 1
+.names s_csamul_cla16_fa9_4_and0 s_csamul_cla16_fa9_4_and1 s_csamul_cla16_fa9_4_or0
+1- 1
+-1 1
+.names a[10] b[4] s_csamul_cla16_and10_4
+11 1
+.names s_csamul_cla16_and10_4 s_csamul_cla16_fa11_3_xor1 s_csamul_cla16_fa10_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_4 s_csamul_cla16_fa11_3_xor1 s_csamul_cla16_fa10_4_and0
+11 1
+.names s_csamul_cla16_fa10_4_xor0 s_csamul_cla16_fa10_3_or0 s_csamul_cla16_fa10_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_4_xor0 s_csamul_cla16_fa10_3_or0 s_csamul_cla16_fa10_4_and1
+11 1
+.names s_csamul_cla16_fa10_4_and0 s_csamul_cla16_fa10_4_and1 s_csamul_cla16_fa10_4_or0
+1- 1
+-1 1
+.names a[11] b[4] s_csamul_cla16_and11_4
+11 1
+.names s_csamul_cla16_and11_4 s_csamul_cla16_fa12_3_xor1 s_csamul_cla16_fa11_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_4 s_csamul_cla16_fa12_3_xor1 s_csamul_cla16_fa11_4_and0
+11 1
+.names s_csamul_cla16_fa11_4_xor0 s_csamul_cla16_fa11_3_or0 s_csamul_cla16_fa11_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_4_xor0 s_csamul_cla16_fa11_3_or0 s_csamul_cla16_fa11_4_and1
+11 1
+.names s_csamul_cla16_fa11_4_and0 s_csamul_cla16_fa11_4_and1 s_csamul_cla16_fa11_4_or0
+1- 1
+-1 1
+.names a[12] b[4] s_csamul_cla16_and12_4
+11 1
+.names s_csamul_cla16_and12_4 s_csamul_cla16_fa13_3_xor1 s_csamul_cla16_fa12_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_4 s_csamul_cla16_fa13_3_xor1 s_csamul_cla16_fa12_4_and0
+11 1
+.names s_csamul_cla16_fa12_4_xor0 s_csamul_cla16_fa12_3_or0 s_csamul_cla16_fa12_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_4_xor0 s_csamul_cla16_fa12_3_or0 s_csamul_cla16_fa12_4_and1
+11 1
+.names s_csamul_cla16_fa12_4_and0 s_csamul_cla16_fa12_4_and1 s_csamul_cla16_fa12_4_or0
+1- 1
+-1 1
+.names a[13] b[4] s_csamul_cla16_and13_4
+11 1
+.names s_csamul_cla16_and13_4 s_csamul_cla16_fa14_3_xor1 s_csamul_cla16_fa13_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_4 s_csamul_cla16_fa14_3_xor1 s_csamul_cla16_fa13_4_and0
+11 1
+.names s_csamul_cla16_fa13_4_xor0 s_csamul_cla16_fa13_3_or0 s_csamul_cla16_fa13_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_4_xor0 s_csamul_cla16_fa13_3_or0 s_csamul_cla16_fa13_4_and1
+11 1
+.names s_csamul_cla16_fa13_4_and0 s_csamul_cla16_fa13_4_and1 s_csamul_cla16_fa13_4_or0
+1- 1
+-1 1
+.names a[14] b[4] s_csamul_cla16_and14_4
+11 1
+.names s_csamul_cla16_and14_4 s_csamul_cla16_ha15_3_xor0 s_csamul_cla16_fa14_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_4 s_csamul_cla16_ha15_3_xor0 s_csamul_cla16_fa14_4_and0
+11 1
+.names s_csamul_cla16_fa14_4_xor0 s_csamul_cla16_fa14_3_or0 s_csamul_cla16_fa14_4_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_4_xor0 s_csamul_cla16_fa14_3_or0 s_csamul_cla16_fa14_4_and1
+11 1
+.names s_csamul_cla16_fa14_4_and0 s_csamul_cla16_fa14_4_and1 s_csamul_cla16_fa14_4_or0
+1- 1
+-1 1
+.names a[15] b[4] s_csamul_cla16_nand15_4
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_4 s_csamul_cla16_ha15_3_and0 s_csamul_cla16_ha15_4_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_4 s_csamul_cla16_ha15_3_and0 s_csamul_cla16_ha15_4_and0
+11 1
+.names a[0] b[5] s_csamul_cla16_and0_5
+11 1
+.names s_csamul_cla16_and0_5 s_csamul_cla16_fa1_4_xor1 s_csamul_cla16_fa0_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_5 s_csamul_cla16_fa1_4_xor1 s_csamul_cla16_fa0_5_and0
+11 1
+.names s_csamul_cla16_fa0_5_xor0 s_csamul_cla16_fa0_4_or0 s_csamul_cla16_fa0_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_5_xor0 s_csamul_cla16_fa0_4_or0 s_csamul_cla16_fa0_5_and1
+11 1
+.names s_csamul_cla16_fa0_5_and0 s_csamul_cla16_fa0_5_and1 s_csamul_cla16_fa0_5_or0
+1- 1
+-1 1
+.names a[1] b[5] s_csamul_cla16_and1_5
+11 1
+.names s_csamul_cla16_and1_5 s_csamul_cla16_fa2_4_xor1 s_csamul_cla16_fa1_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_5 s_csamul_cla16_fa2_4_xor1 s_csamul_cla16_fa1_5_and0
+11 1
+.names s_csamul_cla16_fa1_5_xor0 s_csamul_cla16_fa1_4_or0 s_csamul_cla16_fa1_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_5_xor0 s_csamul_cla16_fa1_4_or0 s_csamul_cla16_fa1_5_and1
+11 1
+.names s_csamul_cla16_fa1_5_and0 s_csamul_cla16_fa1_5_and1 s_csamul_cla16_fa1_5_or0
+1- 1
+-1 1
+.names a[2] b[5] s_csamul_cla16_and2_5
+11 1
+.names s_csamul_cla16_and2_5 s_csamul_cla16_fa3_4_xor1 s_csamul_cla16_fa2_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_5 s_csamul_cla16_fa3_4_xor1 s_csamul_cla16_fa2_5_and0
+11 1
+.names s_csamul_cla16_fa2_5_xor0 s_csamul_cla16_fa2_4_or0 s_csamul_cla16_fa2_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_5_xor0 s_csamul_cla16_fa2_4_or0 s_csamul_cla16_fa2_5_and1
+11 1
+.names s_csamul_cla16_fa2_5_and0 s_csamul_cla16_fa2_5_and1 s_csamul_cla16_fa2_5_or0
+1- 1
+-1 1
+.names a[3] b[5] s_csamul_cla16_and3_5
+11 1
+.names s_csamul_cla16_and3_5 s_csamul_cla16_fa4_4_xor1 s_csamul_cla16_fa3_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_5 s_csamul_cla16_fa4_4_xor1 s_csamul_cla16_fa3_5_and0
+11 1
+.names s_csamul_cla16_fa3_5_xor0 s_csamul_cla16_fa3_4_or0 s_csamul_cla16_fa3_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_5_xor0 s_csamul_cla16_fa3_4_or0 s_csamul_cla16_fa3_5_and1
+11 1
+.names s_csamul_cla16_fa3_5_and0 s_csamul_cla16_fa3_5_and1 s_csamul_cla16_fa3_5_or0
+1- 1
+-1 1
+.names a[4] b[5] s_csamul_cla16_and4_5
+11 1
+.names s_csamul_cla16_and4_5 s_csamul_cla16_fa5_4_xor1 s_csamul_cla16_fa4_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_5 s_csamul_cla16_fa5_4_xor1 s_csamul_cla16_fa4_5_and0
+11 1
+.names s_csamul_cla16_fa4_5_xor0 s_csamul_cla16_fa4_4_or0 s_csamul_cla16_fa4_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_5_xor0 s_csamul_cla16_fa4_4_or0 s_csamul_cla16_fa4_5_and1
+11 1
+.names s_csamul_cla16_fa4_5_and0 s_csamul_cla16_fa4_5_and1 s_csamul_cla16_fa4_5_or0
+1- 1
+-1 1
+.names a[5] b[5] s_csamul_cla16_and5_5
+11 1
+.names s_csamul_cla16_and5_5 s_csamul_cla16_fa6_4_xor1 s_csamul_cla16_fa5_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_5 s_csamul_cla16_fa6_4_xor1 s_csamul_cla16_fa5_5_and0
+11 1
+.names s_csamul_cla16_fa5_5_xor0 s_csamul_cla16_fa5_4_or0 s_csamul_cla16_fa5_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_5_xor0 s_csamul_cla16_fa5_4_or0 s_csamul_cla16_fa5_5_and1
+11 1
+.names s_csamul_cla16_fa5_5_and0 s_csamul_cla16_fa5_5_and1 s_csamul_cla16_fa5_5_or0
+1- 1
+-1 1
+.names a[6] b[5] s_csamul_cla16_and6_5
+11 1
+.names s_csamul_cla16_and6_5 s_csamul_cla16_fa7_4_xor1 s_csamul_cla16_fa6_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_5 s_csamul_cla16_fa7_4_xor1 s_csamul_cla16_fa6_5_and0
+11 1
+.names s_csamul_cla16_fa6_5_xor0 s_csamul_cla16_fa6_4_or0 s_csamul_cla16_fa6_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_5_xor0 s_csamul_cla16_fa6_4_or0 s_csamul_cla16_fa6_5_and1
+11 1
+.names s_csamul_cla16_fa6_5_and0 s_csamul_cla16_fa6_5_and1 s_csamul_cla16_fa6_5_or0
+1- 1
+-1 1
+.names a[7] b[5] s_csamul_cla16_and7_5
+11 1
+.names s_csamul_cla16_and7_5 s_csamul_cla16_fa8_4_xor1 s_csamul_cla16_fa7_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_5 s_csamul_cla16_fa8_4_xor1 s_csamul_cla16_fa7_5_and0
+11 1
+.names s_csamul_cla16_fa7_5_xor0 s_csamul_cla16_fa7_4_or0 s_csamul_cla16_fa7_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_5_xor0 s_csamul_cla16_fa7_4_or0 s_csamul_cla16_fa7_5_and1
+11 1
+.names s_csamul_cla16_fa7_5_and0 s_csamul_cla16_fa7_5_and1 s_csamul_cla16_fa7_5_or0
+1- 1
+-1 1
+.names a[8] b[5] s_csamul_cla16_and8_5
+11 1
+.names s_csamul_cla16_and8_5 s_csamul_cla16_fa9_4_xor1 s_csamul_cla16_fa8_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_5 s_csamul_cla16_fa9_4_xor1 s_csamul_cla16_fa8_5_and0
+11 1
+.names s_csamul_cla16_fa8_5_xor0 s_csamul_cla16_fa8_4_or0 s_csamul_cla16_fa8_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_5_xor0 s_csamul_cla16_fa8_4_or0 s_csamul_cla16_fa8_5_and1
+11 1
+.names s_csamul_cla16_fa8_5_and0 s_csamul_cla16_fa8_5_and1 s_csamul_cla16_fa8_5_or0
+1- 1
+-1 1
+.names a[9] b[5] s_csamul_cla16_and9_5
+11 1
+.names s_csamul_cla16_and9_5 s_csamul_cla16_fa10_4_xor1 s_csamul_cla16_fa9_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_5 s_csamul_cla16_fa10_4_xor1 s_csamul_cla16_fa9_5_and0
+11 1
+.names s_csamul_cla16_fa9_5_xor0 s_csamul_cla16_fa9_4_or0 s_csamul_cla16_fa9_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_5_xor0 s_csamul_cla16_fa9_4_or0 s_csamul_cla16_fa9_5_and1
+11 1
+.names s_csamul_cla16_fa9_5_and0 s_csamul_cla16_fa9_5_and1 s_csamul_cla16_fa9_5_or0
+1- 1
+-1 1
+.names a[10] b[5] s_csamul_cla16_and10_5
+11 1
+.names s_csamul_cla16_and10_5 s_csamul_cla16_fa11_4_xor1 s_csamul_cla16_fa10_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_5 s_csamul_cla16_fa11_4_xor1 s_csamul_cla16_fa10_5_and0
+11 1
+.names s_csamul_cla16_fa10_5_xor0 s_csamul_cla16_fa10_4_or0 s_csamul_cla16_fa10_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_5_xor0 s_csamul_cla16_fa10_4_or0 s_csamul_cla16_fa10_5_and1
+11 1
+.names s_csamul_cla16_fa10_5_and0 s_csamul_cla16_fa10_5_and1 s_csamul_cla16_fa10_5_or0
+1- 1
+-1 1
+.names a[11] b[5] s_csamul_cla16_and11_5
+11 1
+.names s_csamul_cla16_and11_5 s_csamul_cla16_fa12_4_xor1 s_csamul_cla16_fa11_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_5 s_csamul_cla16_fa12_4_xor1 s_csamul_cla16_fa11_5_and0
+11 1
+.names s_csamul_cla16_fa11_5_xor0 s_csamul_cla16_fa11_4_or0 s_csamul_cla16_fa11_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_5_xor0 s_csamul_cla16_fa11_4_or0 s_csamul_cla16_fa11_5_and1
+11 1
+.names s_csamul_cla16_fa11_5_and0 s_csamul_cla16_fa11_5_and1 s_csamul_cla16_fa11_5_or0
+1- 1
+-1 1
+.names a[12] b[5] s_csamul_cla16_and12_5
+11 1
+.names s_csamul_cla16_and12_5 s_csamul_cla16_fa13_4_xor1 s_csamul_cla16_fa12_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_5 s_csamul_cla16_fa13_4_xor1 s_csamul_cla16_fa12_5_and0
+11 1
+.names s_csamul_cla16_fa12_5_xor0 s_csamul_cla16_fa12_4_or0 s_csamul_cla16_fa12_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_5_xor0 s_csamul_cla16_fa12_4_or0 s_csamul_cla16_fa12_5_and1
+11 1
+.names s_csamul_cla16_fa12_5_and0 s_csamul_cla16_fa12_5_and1 s_csamul_cla16_fa12_5_or0
+1- 1
+-1 1
+.names a[13] b[5] s_csamul_cla16_and13_5
+11 1
+.names s_csamul_cla16_and13_5 s_csamul_cla16_fa14_4_xor1 s_csamul_cla16_fa13_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_5 s_csamul_cla16_fa14_4_xor1 s_csamul_cla16_fa13_5_and0
+11 1
+.names s_csamul_cla16_fa13_5_xor0 s_csamul_cla16_fa13_4_or0 s_csamul_cla16_fa13_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_5_xor0 s_csamul_cla16_fa13_4_or0 s_csamul_cla16_fa13_5_and1
+11 1
+.names s_csamul_cla16_fa13_5_and0 s_csamul_cla16_fa13_5_and1 s_csamul_cla16_fa13_5_or0
+1- 1
+-1 1
+.names a[14] b[5] s_csamul_cla16_and14_5
+11 1
+.names s_csamul_cla16_and14_5 s_csamul_cla16_ha15_4_xor0 s_csamul_cla16_fa14_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_5 s_csamul_cla16_ha15_4_xor0 s_csamul_cla16_fa14_5_and0
+11 1
+.names s_csamul_cla16_fa14_5_xor0 s_csamul_cla16_fa14_4_or0 s_csamul_cla16_fa14_5_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_5_xor0 s_csamul_cla16_fa14_4_or0 s_csamul_cla16_fa14_5_and1
+11 1
+.names s_csamul_cla16_fa14_5_and0 s_csamul_cla16_fa14_5_and1 s_csamul_cla16_fa14_5_or0
+1- 1
+-1 1
+.names a[15] b[5] s_csamul_cla16_nand15_5
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_5 s_csamul_cla16_ha15_4_and0 s_csamul_cla16_ha15_5_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_5 s_csamul_cla16_ha15_4_and0 s_csamul_cla16_ha15_5_and0
+11 1
+.names a[0] b[6] s_csamul_cla16_and0_6
+11 1
+.names s_csamul_cla16_and0_6 s_csamul_cla16_fa1_5_xor1 s_csamul_cla16_fa0_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_6 s_csamul_cla16_fa1_5_xor1 s_csamul_cla16_fa0_6_and0
+11 1
+.names s_csamul_cla16_fa0_6_xor0 s_csamul_cla16_fa0_5_or0 s_csamul_cla16_fa0_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_6_xor0 s_csamul_cla16_fa0_5_or0 s_csamul_cla16_fa0_6_and1
+11 1
+.names s_csamul_cla16_fa0_6_and0 s_csamul_cla16_fa0_6_and1 s_csamul_cla16_fa0_6_or0
+1- 1
+-1 1
+.names a[1] b[6] s_csamul_cla16_and1_6
+11 1
+.names s_csamul_cla16_and1_6 s_csamul_cla16_fa2_5_xor1 s_csamul_cla16_fa1_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_6 s_csamul_cla16_fa2_5_xor1 s_csamul_cla16_fa1_6_and0
+11 1
+.names s_csamul_cla16_fa1_6_xor0 s_csamul_cla16_fa1_5_or0 s_csamul_cla16_fa1_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_6_xor0 s_csamul_cla16_fa1_5_or0 s_csamul_cla16_fa1_6_and1
+11 1
+.names s_csamul_cla16_fa1_6_and0 s_csamul_cla16_fa1_6_and1 s_csamul_cla16_fa1_6_or0
+1- 1
+-1 1
+.names a[2] b[6] s_csamul_cla16_and2_6
+11 1
+.names s_csamul_cla16_and2_6 s_csamul_cla16_fa3_5_xor1 s_csamul_cla16_fa2_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_6 s_csamul_cla16_fa3_5_xor1 s_csamul_cla16_fa2_6_and0
+11 1
+.names s_csamul_cla16_fa2_6_xor0 s_csamul_cla16_fa2_5_or0 s_csamul_cla16_fa2_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_6_xor0 s_csamul_cla16_fa2_5_or0 s_csamul_cla16_fa2_6_and1
+11 1
+.names s_csamul_cla16_fa2_6_and0 s_csamul_cla16_fa2_6_and1 s_csamul_cla16_fa2_6_or0
+1- 1
+-1 1
+.names a[3] b[6] s_csamul_cla16_and3_6
+11 1
+.names s_csamul_cla16_and3_6 s_csamul_cla16_fa4_5_xor1 s_csamul_cla16_fa3_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_6 s_csamul_cla16_fa4_5_xor1 s_csamul_cla16_fa3_6_and0
+11 1
+.names s_csamul_cla16_fa3_6_xor0 s_csamul_cla16_fa3_5_or0 s_csamul_cla16_fa3_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_6_xor0 s_csamul_cla16_fa3_5_or0 s_csamul_cla16_fa3_6_and1
+11 1
+.names s_csamul_cla16_fa3_6_and0 s_csamul_cla16_fa3_6_and1 s_csamul_cla16_fa3_6_or0
+1- 1
+-1 1
+.names a[4] b[6] s_csamul_cla16_and4_6
+11 1
+.names s_csamul_cla16_and4_6 s_csamul_cla16_fa5_5_xor1 s_csamul_cla16_fa4_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_6 s_csamul_cla16_fa5_5_xor1 s_csamul_cla16_fa4_6_and0
+11 1
+.names s_csamul_cla16_fa4_6_xor0 s_csamul_cla16_fa4_5_or0 s_csamul_cla16_fa4_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_6_xor0 s_csamul_cla16_fa4_5_or0 s_csamul_cla16_fa4_6_and1
+11 1
+.names s_csamul_cla16_fa4_6_and0 s_csamul_cla16_fa4_6_and1 s_csamul_cla16_fa4_6_or0
+1- 1
+-1 1
+.names a[5] b[6] s_csamul_cla16_and5_6
+11 1
+.names s_csamul_cla16_and5_6 s_csamul_cla16_fa6_5_xor1 s_csamul_cla16_fa5_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_6 s_csamul_cla16_fa6_5_xor1 s_csamul_cla16_fa5_6_and0
+11 1
+.names s_csamul_cla16_fa5_6_xor0 s_csamul_cla16_fa5_5_or0 s_csamul_cla16_fa5_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_6_xor0 s_csamul_cla16_fa5_5_or0 s_csamul_cla16_fa5_6_and1
+11 1
+.names s_csamul_cla16_fa5_6_and0 s_csamul_cla16_fa5_6_and1 s_csamul_cla16_fa5_6_or0
+1- 1
+-1 1
+.names a[6] b[6] s_csamul_cla16_and6_6
+11 1
+.names s_csamul_cla16_and6_6 s_csamul_cla16_fa7_5_xor1 s_csamul_cla16_fa6_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_6 s_csamul_cla16_fa7_5_xor1 s_csamul_cla16_fa6_6_and0
+11 1
+.names s_csamul_cla16_fa6_6_xor0 s_csamul_cla16_fa6_5_or0 s_csamul_cla16_fa6_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_6_xor0 s_csamul_cla16_fa6_5_or0 s_csamul_cla16_fa6_6_and1
+11 1
+.names s_csamul_cla16_fa6_6_and0 s_csamul_cla16_fa6_6_and1 s_csamul_cla16_fa6_6_or0
+1- 1
+-1 1
+.names a[7] b[6] s_csamul_cla16_and7_6
+11 1
+.names s_csamul_cla16_and7_6 s_csamul_cla16_fa8_5_xor1 s_csamul_cla16_fa7_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_6 s_csamul_cla16_fa8_5_xor1 s_csamul_cla16_fa7_6_and0
+11 1
+.names s_csamul_cla16_fa7_6_xor0 s_csamul_cla16_fa7_5_or0 s_csamul_cla16_fa7_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_6_xor0 s_csamul_cla16_fa7_5_or0 s_csamul_cla16_fa7_6_and1
+11 1
+.names s_csamul_cla16_fa7_6_and0 s_csamul_cla16_fa7_6_and1 s_csamul_cla16_fa7_6_or0
+1- 1
+-1 1
+.names a[8] b[6] s_csamul_cla16_and8_6
+11 1
+.names s_csamul_cla16_and8_6 s_csamul_cla16_fa9_5_xor1 s_csamul_cla16_fa8_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_6 s_csamul_cla16_fa9_5_xor1 s_csamul_cla16_fa8_6_and0
+11 1
+.names s_csamul_cla16_fa8_6_xor0 s_csamul_cla16_fa8_5_or0 s_csamul_cla16_fa8_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_6_xor0 s_csamul_cla16_fa8_5_or0 s_csamul_cla16_fa8_6_and1
+11 1
+.names s_csamul_cla16_fa8_6_and0 s_csamul_cla16_fa8_6_and1 s_csamul_cla16_fa8_6_or0
+1- 1
+-1 1
+.names a[9] b[6] s_csamul_cla16_and9_6
+11 1
+.names s_csamul_cla16_and9_6 s_csamul_cla16_fa10_5_xor1 s_csamul_cla16_fa9_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_6 s_csamul_cla16_fa10_5_xor1 s_csamul_cla16_fa9_6_and0
+11 1
+.names s_csamul_cla16_fa9_6_xor0 s_csamul_cla16_fa9_5_or0 s_csamul_cla16_fa9_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_6_xor0 s_csamul_cla16_fa9_5_or0 s_csamul_cla16_fa9_6_and1
+11 1
+.names s_csamul_cla16_fa9_6_and0 s_csamul_cla16_fa9_6_and1 s_csamul_cla16_fa9_6_or0
+1- 1
+-1 1
+.names a[10] b[6] s_csamul_cla16_and10_6
+11 1
+.names s_csamul_cla16_and10_6 s_csamul_cla16_fa11_5_xor1 s_csamul_cla16_fa10_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_6 s_csamul_cla16_fa11_5_xor1 s_csamul_cla16_fa10_6_and0
+11 1
+.names s_csamul_cla16_fa10_6_xor0 s_csamul_cla16_fa10_5_or0 s_csamul_cla16_fa10_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_6_xor0 s_csamul_cla16_fa10_5_or0 s_csamul_cla16_fa10_6_and1
+11 1
+.names s_csamul_cla16_fa10_6_and0 s_csamul_cla16_fa10_6_and1 s_csamul_cla16_fa10_6_or0
+1- 1
+-1 1
+.names a[11] b[6] s_csamul_cla16_and11_6
+11 1
+.names s_csamul_cla16_and11_6 s_csamul_cla16_fa12_5_xor1 s_csamul_cla16_fa11_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_6 s_csamul_cla16_fa12_5_xor1 s_csamul_cla16_fa11_6_and0
+11 1
+.names s_csamul_cla16_fa11_6_xor0 s_csamul_cla16_fa11_5_or0 s_csamul_cla16_fa11_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_6_xor0 s_csamul_cla16_fa11_5_or0 s_csamul_cla16_fa11_6_and1
+11 1
+.names s_csamul_cla16_fa11_6_and0 s_csamul_cla16_fa11_6_and1 s_csamul_cla16_fa11_6_or0
+1- 1
+-1 1
+.names a[12] b[6] s_csamul_cla16_and12_6
+11 1
+.names s_csamul_cla16_and12_6 s_csamul_cla16_fa13_5_xor1 s_csamul_cla16_fa12_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_6 s_csamul_cla16_fa13_5_xor1 s_csamul_cla16_fa12_6_and0
+11 1
+.names s_csamul_cla16_fa12_6_xor0 s_csamul_cla16_fa12_5_or0 s_csamul_cla16_fa12_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_6_xor0 s_csamul_cla16_fa12_5_or0 s_csamul_cla16_fa12_6_and1
+11 1
+.names s_csamul_cla16_fa12_6_and0 s_csamul_cla16_fa12_6_and1 s_csamul_cla16_fa12_6_or0
+1- 1
+-1 1
+.names a[13] b[6] s_csamul_cla16_and13_6
+11 1
+.names s_csamul_cla16_and13_6 s_csamul_cla16_fa14_5_xor1 s_csamul_cla16_fa13_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_6 s_csamul_cla16_fa14_5_xor1 s_csamul_cla16_fa13_6_and0
+11 1
+.names s_csamul_cla16_fa13_6_xor0 s_csamul_cla16_fa13_5_or0 s_csamul_cla16_fa13_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_6_xor0 s_csamul_cla16_fa13_5_or0 s_csamul_cla16_fa13_6_and1
+11 1
+.names s_csamul_cla16_fa13_6_and0 s_csamul_cla16_fa13_6_and1 s_csamul_cla16_fa13_6_or0
+1- 1
+-1 1
+.names a[14] b[6] s_csamul_cla16_and14_6
+11 1
+.names s_csamul_cla16_and14_6 s_csamul_cla16_ha15_5_xor0 s_csamul_cla16_fa14_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_6 s_csamul_cla16_ha15_5_xor0 s_csamul_cla16_fa14_6_and0
+11 1
+.names s_csamul_cla16_fa14_6_xor0 s_csamul_cla16_fa14_5_or0 s_csamul_cla16_fa14_6_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_6_xor0 s_csamul_cla16_fa14_5_or0 s_csamul_cla16_fa14_6_and1
+11 1
+.names s_csamul_cla16_fa14_6_and0 s_csamul_cla16_fa14_6_and1 s_csamul_cla16_fa14_6_or0
+1- 1
+-1 1
+.names a[15] b[6] s_csamul_cla16_nand15_6
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_6 s_csamul_cla16_ha15_5_and0 s_csamul_cla16_ha15_6_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_6 s_csamul_cla16_ha15_5_and0 s_csamul_cla16_ha15_6_and0
+11 1
+.names a[0] b[7] s_csamul_cla16_and0_7
+11 1
+.names s_csamul_cla16_and0_7 s_csamul_cla16_fa1_6_xor1 s_csamul_cla16_fa0_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_7 s_csamul_cla16_fa1_6_xor1 s_csamul_cla16_fa0_7_and0
+11 1
+.names s_csamul_cla16_fa0_7_xor0 s_csamul_cla16_fa0_6_or0 s_csamul_cla16_fa0_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_7_xor0 s_csamul_cla16_fa0_6_or0 s_csamul_cla16_fa0_7_and1
+11 1
+.names s_csamul_cla16_fa0_7_and0 s_csamul_cla16_fa0_7_and1 s_csamul_cla16_fa0_7_or0
+1- 1
+-1 1
+.names a[1] b[7] s_csamul_cla16_and1_7
+11 1
+.names s_csamul_cla16_and1_7 s_csamul_cla16_fa2_6_xor1 s_csamul_cla16_fa1_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_7 s_csamul_cla16_fa2_6_xor1 s_csamul_cla16_fa1_7_and0
+11 1
+.names s_csamul_cla16_fa1_7_xor0 s_csamul_cla16_fa1_6_or0 s_csamul_cla16_fa1_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_7_xor0 s_csamul_cla16_fa1_6_or0 s_csamul_cla16_fa1_7_and1
+11 1
+.names s_csamul_cla16_fa1_7_and0 s_csamul_cla16_fa1_7_and1 s_csamul_cla16_fa1_7_or0
+1- 1
+-1 1
+.names a[2] b[7] s_csamul_cla16_and2_7
+11 1
+.names s_csamul_cla16_and2_7 s_csamul_cla16_fa3_6_xor1 s_csamul_cla16_fa2_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_7 s_csamul_cla16_fa3_6_xor1 s_csamul_cla16_fa2_7_and0
+11 1
+.names s_csamul_cla16_fa2_7_xor0 s_csamul_cla16_fa2_6_or0 s_csamul_cla16_fa2_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_7_xor0 s_csamul_cla16_fa2_6_or0 s_csamul_cla16_fa2_7_and1
+11 1
+.names s_csamul_cla16_fa2_7_and0 s_csamul_cla16_fa2_7_and1 s_csamul_cla16_fa2_7_or0
+1- 1
+-1 1
+.names a[3] b[7] s_csamul_cla16_and3_7
+11 1
+.names s_csamul_cla16_and3_7 s_csamul_cla16_fa4_6_xor1 s_csamul_cla16_fa3_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_7 s_csamul_cla16_fa4_6_xor1 s_csamul_cla16_fa3_7_and0
+11 1
+.names s_csamul_cla16_fa3_7_xor0 s_csamul_cla16_fa3_6_or0 s_csamul_cla16_fa3_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_7_xor0 s_csamul_cla16_fa3_6_or0 s_csamul_cla16_fa3_7_and1
+11 1
+.names s_csamul_cla16_fa3_7_and0 s_csamul_cla16_fa3_7_and1 s_csamul_cla16_fa3_7_or0
+1- 1
+-1 1
+.names a[4] b[7] s_csamul_cla16_and4_7
+11 1
+.names s_csamul_cla16_and4_7 s_csamul_cla16_fa5_6_xor1 s_csamul_cla16_fa4_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_7 s_csamul_cla16_fa5_6_xor1 s_csamul_cla16_fa4_7_and0
+11 1
+.names s_csamul_cla16_fa4_7_xor0 s_csamul_cla16_fa4_6_or0 s_csamul_cla16_fa4_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_7_xor0 s_csamul_cla16_fa4_6_or0 s_csamul_cla16_fa4_7_and1
+11 1
+.names s_csamul_cla16_fa4_7_and0 s_csamul_cla16_fa4_7_and1 s_csamul_cla16_fa4_7_or0
+1- 1
+-1 1
+.names a[5] b[7] s_csamul_cla16_and5_7
+11 1
+.names s_csamul_cla16_and5_7 s_csamul_cla16_fa6_6_xor1 s_csamul_cla16_fa5_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_7 s_csamul_cla16_fa6_6_xor1 s_csamul_cla16_fa5_7_and0
+11 1
+.names s_csamul_cla16_fa5_7_xor0 s_csamul_cla16_fa5_6_or0 s_csamul_cla16_fa5_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_7_xor0 s_csamul_cla16_fa5_6_or0 s_csamul_cla16_fa5_7_and1
+11 1
+.names s_csamul_cla16_fa5_7_and0 s_csamul_cla16_fa5_7_and1 s_csamul_cla16_fa5_7_or0
+1- 1
+-1 1
+.names a[6] b[7] s_csamul_cla16_and6_7
+11 1
+.names s_csamul_cla16_and6_7 s_csamul_cla16_fa7_6_xor1 s_csamul_cla16_fa6_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_7 s_csamul_cla16_fa7_6_xor1 s_csamul_cla16_fa6_7_and0
+11 1
+.names s_csamul_cla16_fa6_7_xor0 s_csamul_cla16_fa6_6_or0 s_csamul_cla16_fa6_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_7_xor0 s_csamul_cla16_fa6_6_or0 s_csamul_cla16_fa6_7_and1
+11 1
+.names s_csamul_cla16_fa6_7_and0 s_csamul_cla16_fa6_7_and1 s_csamul_cla16_fa6_7_or0
+1- 1
+-1 1
+.names a[7] b[7] s_csamul_cla16_and7_7
+11 1
+.names s_csamul_cla16_and7_7 s_csamul_cla16_fa8_6_xor1 s_csamul_cla16_fa7_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_7 s_csamul_cla16_fa8_6_xor1 s_csamul_cla16_fa7_7_and0
+11 1
+.names s_csamul_cla16_fa7_7_xor0 s_csamul_cla16_fa7_6_or0 s_csamul_cla16_fa7_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_7_xor0 s_csamul_cla16_fa7_6_or0 s_csamul_cla16_fa7_7_and1
+11 1
+.names s_csamul_cla16_fa7_7_and0 s_csamul_cla16_fa7_7_and1 s_csamul_cla16_fa7_7_or0
+1- 1
+-1 1
+.names a[8] b[7] s_csamul_cla16_and8_7
+11 1
+.names s_csamul_cla16_and8_7 s_csamul_cla16_fa9_6_xor1 s_csamul_cla16_fa8_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_7 s_csamul_cla16_fa9_6_xor1 s_csamul_cla16_fa8_7_and0
+11 1
+.names s_csamul_cla16_fa8_7_xor0 s_csamul_cla16_fa8_6_or0 s_csamul_cla16_fa8_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_7_xor0 s_csamul_cla16_fa8_6_or0 s_csamul_cla16_fa8_7_and1
+11 1
+.names s_csamul_cla16_fa8_7_and0 s_csamul_cla16_fa8_7_and1 s_csamul_cla16_fa8_7_or0
+1- 1
+-1 1
+.names a[9] b[7] s_csamul_cla16_and9_7
+11 1
+.names s_csamul_cla16_and9_7 s_csamul_cla16_fa10_6_xor1 s_csamul_cla16_fa9_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_7 s_csamul_cla16_fa10_6_xor1 s_csamul_cla16_fa9_7_and0
+11 1
+.names s_csamul_cla16_fa9_7_xor0 s_csamul_cla16_fa9_6_or0 s_csamul_cla16_fa9_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_7_xor0 s_csamul_cla16_fa9_6_or0 s_csamul_cla16_fa9_7_and1
+11 1
+.names s_csamul_cla16_fa9_7_and0 s_csamul_cla16_fa9_7_and1 s_csamul_cla16_fa9_7_or0
+1- 1
+-1 1
+.names a[10] b[7] s_csamul_cla16_and10_7
+11 1
+.names s_csamul_cla16_and10_7 s_csamul_cla16_fa11_6_xor1 s_csamul_cla16_fa10_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_7 s_csamul_cla16_fa11_6_xor1 s_csamul_cla16_fa10_7_and0
+11 1
+.names s_csamul_cla16_fa10_7_xor0 s_csamul_cla16_fa10_6_or0 s_csamul_cla16_fa10_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_7_xor0 s_csamul_cla16_fa10_6_or0 s_csamul_cla16_fa10_7_and1
+11 1
+.names s_csamul_cla16_fa10_7_and0 s_csamul_cla16_fa10_7_and1 s_csamul_cla16_fa10_7_or0
+1- 1
+-1 1
+.names a[11] b[7] s_csamul_cla16_and11_7
+11 1
+.names s_csamul_cla16_and11_7 s_csamul_cla16_fa12_6_xor1 s_csamul_cla16_fa11_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_7 s_csamul_cla16_fa12_6_xor1 s_csamul_cla16_fa11_7_and0
+11 1
+.names s_csamul_cla16_fa11_7_xor0 s_csamul_cla16_fa11_6_or0 s_csamul_cla16_fa11_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_7_xor0 s_csamul_cla16_fa11_6_or0 s_csamul_cla16_fa11_7_and1
+11 1
+.names s_csamul_cla16_fa11_7_and0 s_csamul_cla16_fa11_7_and1 s_csamul_cla16_fa11_7_or0
+1- 1
+-1 1
+.names a[12] b[7] s_csamul_cla16_and12_7
+11 1
+.names s_csamul_cla16_and12_7 s_csamul_cla16_fa13_6_xor1 s_csamul_cla16_fa12_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_7 s_csamul_cla16_fa13_6_xor1 s_csamul_cla16_fa12_7_and0
+11 1
+.names s_csamul_cla16_fa12_7_xor0 s_csamul_cla16_fa12_6_or0 s_csamul_cla16_fa12_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_7_xor0 s_csamul_cla16_fa12_6_or0 s_csamul_cla16_fa12_7_and1
+11 1
+.names s_csamul_cla16_fa12_7_and0 s_csamul_cla16_fa12_7_and1 s_csamul_cla16_fa12_7_or0
+1- 1
+-1 1
+.names a[13] b[7] s_csamul_cla16_and13_7
+11 1
+.names s_csamul_cla16_and13_7 s_csamul_cla16_fa14_6_xor1 s_csamul_cla16_fa13_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_7 s_csamul_cla16_fa14_6_xor1 s_csamul_cla16_fa13_7_and0
+11 1
+.names s_csamul_cla16_fa13_7_xor0 s_csamul_cla16_fa13_6_or0 s_csamul_cla16_fa13_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_7_xor0 s_csamul_cla16_fa13_6_or0 s_csamul_cla16_fa13_7_and1
+11 1
+.names s_csamul_cla16_fa13_7_and0 s_csamul_cla16_fa13_7_and1 s_csamul_cla16_fa13_7_or0
+1- 1
+-1 1
+.names a[14] b[7] s_csamul_cla16_and14_7
+11 1
+.names s_csamul_cla16_and14_7 s_csamul_cla16_ha15_6_xor0 s_csamul_cla16_fa14_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_7 s_csamul_cla16_ha15_6_xor0 s_csamul_cla16_fa14_7_and0
+11 1
+.names s_csamul_cla16_fa14_7_xor0 s_csamul_cla16_fa14_6_or0 s_csamul_cla16_fa14_7_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_7_xor0 s_csamul_cla16_fa14_6_or0 s_csamul_cla16_fa14_7_and1
+11 1
+.names s_csamul_cla16_fa14_7_and0 s_csamul_cla16_fa14_7_and1 s_csamul_cla16_fa14_7_or0
+1- 1
+-1 1
+.names a[15] b[7] s_csamul_cla16_nand15_7
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_7 s_csamul_cla16_ha15_6_and0 s_csamul_cla16_ha15_7_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_7 s_csamul_cla16_ha15_6_and0 s_csamul_cla16_ha15_7_and0
+11 1
+.names a[0] b[8] s_csamul_cla16_and0_8
+11 1
+.names s_csamul_cla16_and0_8 s_csamul_cla16_fa1_7_xor1 s_csamul_cla16_fa0_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_8 s_csamul_cla16_fa1_7_xor1 s_csamul_cla16_fa0_8_and0
+11 1
+.names s_csamul_cla16_fa0_8_xor0 s_csamul_cla16_fa0_7_or0 s_csamul_cla16_fa0_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_8_xor0 s_csamul_cla16_fa0_7_or0 s_csamul_cla16_fa0_8_and1
+11 1
+.names s_csamul_cla16_fa0_8_and0 s_csamul_cla16_fa0_8_and1 s_csamul_cla16_fa0_8_or0
+1- 1
+-1 1
+.names a[1] b[8] s_csamul_cla16_and1_8
+11 1
+.names s_csamul_cla16_and1_8 s_csamul_cla16_fa2_7_xor1 s_csamul_cla16_fa1_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_8 s_csamul_cla16_fa2_7_xor1 s_csamul_cla16_fa1_8_and0
+11 1
+.names s_csamul_cla16_fa1_8_xor0 s_csamul_cla16_fa1_7_or0 s_csamul_cla16_fa1_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_8_xor0 s_csamul_cla16_fa1_7_or0 s_csamul_cla16_fa1_8_and1
+11 1
+.names s_csamul_cla16_fa1_8_and0 s_csamul_cla16_fa1_8_and1 s_csamul_cla16_fa1_8_or0
+1- 1
+-1 1
+.names a[2] b[8] s_csamul_cla16_and2_8
+11 1
+.names s_csamul_cla16_and2_8 s_csamul_cla16_fa3_7_xor1 s_csamul_cla16_fa2_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_8 s_csamul_cla16_fa3_7_xor1 s_csamul_cla16_fa2_8_and0
+11 1
+.names s_csamul_cla16_fa2_8_xor0 s_csamul_cla16_fa2_7_or0 s_csamul_cla16_fa2_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_8_xor0 s_csamul_cla16_fa2_7_or0 s_csamul_cla16_fa2_8_and1
+11 1
+.names s_csamul_cla16_fa2_8_and0 s_csamul_cla16_fa2_8_and1 s_csamul_cla16_fa2_8_or0
+1- 1
+-1 1
+.names a[3] b[8] s_csamul_cla16_and3_8
+11 1
+.names s_csamul_cla16_and3_8 s_csamul_cla16_fa4_7_xor1 s_csamul_cla16_fa3_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_8 s_csamul_cla16_fa4_7_xor1 s_csamul_cla16_fa3_8_and0
+11 1
+.names s_csamul_cla16_fa3_8_xor0 s_csamul_cla16_fa3_7_or0 s_csamul_cla16_fa3_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_8_xor0 s_csamul_cla16_fa3_7_or0 s_csamul_cla16_fa3_8_and1
+11 1
+.names s_csamul_cla16_fa3_8_and0 s_csamul_cla16_fa3_8_and1 s_csamul_cla16_fa3_8_or0
+1- 1
+-1 1
+.names a[4] b[8] s_csamul_cla16_and4_8
+11 1
+.names s_csamul_cla16_and4_8 s_csamul_cla16_fa5_7_xor1 s_csamul_cla16_fa4_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_8 s_csamul_cla16_fa5_7_xor1 s_csamul_cla16_fa4_8_and0
+11 1
+.names s_csamul_cla16_fa4_8_xor0 s_csamul_cla16_fa4_7_or0 s_csamul_cla16_fa4_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_8_xor0 s_csamul_cla16_fa4_7_or0 s_csamul_cla16_fa4_8_and1
+11 1
+.names s_csamul_cla16_fa4_8_and0 s_csamul_cla16_fa4_8_and1 s_csamul_cla16_fa4_8_or0
+1- 1
+-1 1
+.names a[5] b[8] s_csamul_cla16_and5_8
+11 1
+.names s_csamul_cla16_and5_8 s_csamul_cla16_fa6_7_xor1 s_csamul_cla16_fa5_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_8 s_csamul_cla16_fa6_7_xor1 s_csamul_cla16_fa5_8_and0
+11 1
+.names s_csamul_cla16_fa5_8_xor0 s_csamul_cla16_fa5_7_or0 s_csamul_cla16_fa5_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_8_xor0 s_csamul_cla16_fa5_7_or0 s_csamul_cla16_fa5_8_and1
+11 1
+.names s_csamul_cla16_fa5_8_and0 s_csamul_cla16_fa5_8_and1 s_csamul_cla16_fa5_8_or0
+1- 1
+-1 1
+.names a[6] b[8] s_csamul_cla16_and6_8
+11 1
+.names s_csamul_cla16_and6_8 s_csamul_cla16_fa7_7_xor1 s_csamul_cla16_fa6_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_8 s_csamul_cla16_fa7_7_xor1 s_csamul_cla16_fa6_8_and0
+11 1
+.names s_csamul_cla16_fa6_8_xor0 s_csamul_cla16_fa6_7_or0 s_csamul_cla16_fa6_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_8_xor0 s_csamul_cla16_fa6_7_or0 s_csamul_cla16_fa6_8_and1
+11 1
+.names s_csamul_cla16_fa6_8_and0 s_csamul_cla16_fa6_8_and1 s_csamul_cla16_fa6_8_or0
+1- 1
+-1 1
+.names a[7] b[8] s_csamul_cla16_and7_8
+11 1
+.names s_csamul_cla16_and7_8 s_csamul_cla16_fa8_7_xor1 s_csamul_cla16_fa7_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_8 s_csamul_cla16_fa8_7_xor1 s_csamul_cla16_fa7_8_and0
+11 1
+.names s_csamul_cla16_fa7_8_xor0 s_csamul_cla16_fa7_7_or0 s_csamul_cla16_fa7_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_8_xor0 s_csamul_cla16_fa7_7_or0 s_csamul_cla16_fa7_8_and1
+11 1
+.names s_csamul_cla16_fa7_8_and0 s_csamul_cla16_fa7_8_and1 s_csamul_cla16_fa7_8_or0
+1- 1
+-1 1
+.names a[8] b[8] s_csamul_cla16_and8_8
+11 1
+.names s_csamul_cla16_and8_8 s_csamul_cla16_fa9_7_xor1 s_csamul_cla16_fa8_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_8 s_csamul_cla16_fa9_7_xor1 s_csamul_cla16_fa8_8_and0
+11 1
+.names s_csamul_cla16_fa8_8_xor0 s_csamul_cla16_fa8_7_or0 s_csamul_cla16_fa8_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_8_xor0 s_csamul_cla16_fa8_7_or0 s_csamul_cla16_fa8_8_and1
+11 1
+.names s_csamul_cla16_fa8_8_and0 s_csamul_cla16_fa8_8_and1 s_csamul_cla16_fa8_8_or0
+1- 1
+-1 1
+.names a[9] b[8] s_csamul_cla16_and9_8
+11 1
+.names s_csamul_cla16_and9_8 s_csamul_cla16_fa10_7_xor1 s_csamul_cla16_fa9_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_8 s_csamul_cla16_fa10_7_xor1 s_csamul_cla16_fa9_8_and0
+11 1
+.names s_csamul_cla16_fa9_8_xor0 s_csamul_cla16_fa9_7_or0 s_csamul_cla16_fa9_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_8_xor0 s_csamul_cla16_fa9_7_or0 s_csamul_cla16_fa9_8_and1
+11 1
+.names s_csamul_cla16_fa9_8_and0 s_csamul_cla16_fa9_8_and1 s_csamul_cla16_fa9_8_or0
+1- 1
+-1 1
+.names a[10] b[8] s_csamul_cla16_and10_8
+11 1
+.names s_csamul_cla16_and10_8 s_csamul_cla16_fa11_7_xor1 s_csamul_cla16_fa10_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_8 s_csamul_cla16_fa11_7_xor1 s_csamul_cla16_fa10_8_and0
+11 1
+.names s_csamul_cla16_fa10_8_xor0 s_csamul_cla16_fa10_7_or0 s_csamul_cla16_fa10_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_8_xor0 s_csamul_cla16_fa10_7_or0 s_csamul_cla16_fa10_8_and1
+11 1
+.names s_csamul_cla16_fa10_8_and0 s_csamul_cla16_fa10_8_and1 s_csamul_cla16_fa10_8_or0
+1- 1
+-1 1
+.names a[11] b[8] s_csamul_cla16_and11_8
+11 1
+.names s_csamul_cla16_and11_8 s_csamul_cla16_fa12_7_xor1 s_csamul_cla16_fa11_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_8 s_csamul_cla16_fa12_7_xor1 s_csamul_cla16_fa11_8_and0
+11 1
+.names s_csamul_cla16_fa11_8_xor0 s_csamul_cla16_fa11_7_or0 s_csamul_cla16_fa11_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_8_xor0 s_csamul_cla16_fa11_7_or0 s_csamul_cla16_fa11_8_and1
+11 1
+.names s_csamul_cla16_fa11_8_and0 s_csamul_cla16_fa11_8_and1 s_csamul_cla16_fa11_8_or0
+1- 1
+-1 1
+.names a[12] b[8] s_csamul_cla16_and12_8
+11 1
+.names s_csamul_cla16_and12_8 s_csamul_cla16_fa13_7_xor1 s_csamul_cla16_fa12_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_8 s_csamul_cla16_fa13_7_xor1 s_csamul_cla16_fa12_8_and0
+11 1
+.names s_csamul_cla16_fa12_8_xor0 s_csamul_cla16_fa12_7_or0 s_csamul_cla16_fa12_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_8_xor0 s_csamul_cla16_fa12_7_or0 s_csamul_cla16_fa12_8_and1
+11 1
+.names s_csamul_cla16_fa12_8_and0 s_csamul_cla16_fa12_8_and1 s_csamul_cla16_fa12_8_or0
+1- 1
+-1 1
+.names a[13] b[8] s_csamul_cla16_and13_8
+11 1
+.names s_csamul_cla16_and13_8 s_csamul_cla16_fa14_7_xor1 s_csamul_cla16_fa13_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_8 s_csamul_cla16_fa14_7_xor1 s_csamul_cla16_fa13_8_and0
+11 1
+.names s_csamul_cla16_fa13_8_xor0 s_csamul_cla16_fa13_7_or0 s_csamul_cla16_fa13_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_8_xor0 s_csamul_cla16_fa13_7_or0 s_csamul_cla16_fa13_8_and1
+11 1
+.names s_csamul_cla16_fa13_8_and0 s_csamul_cla16_fa13_8_and1 s_csamul_cla16_fa13_8_or0
+1- 1
+-1 1
+.names a[14] b[8] s_csamul_cla16_and14_8
+11 1
+.names s_csamul_cla16_and14_8 s_csamul_cla16_ha15_7_xor0 s_csamul_cla16_fa14_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_8 s_csamul_cla16_ha15_7_xor0 s_csamul_cla16_fa14_8_and0
+11 1
+.names s_csamul_cla16_fa14_8_xor0 s_csamul_cla16_fa14_7_or0 s_csamul_cla16_fa14_8_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_8_xor0 s_csamul_cla16_fa14_7_or0 s_csamul_cla16_fa14_8_and1
+11 1
+.names s_csamul_cla16_fa14_8_and0 s_csamul_cla16_fa14_8_and1 s_csamul_cla16_fa14_8_or0
+1- 1
+-1 1
+.names a[15] b[8] s_csamul_cla16_nand15_8
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_8 s_csamul_cla16_ha15_7_and0 s_csamul_cla16_ha15_8_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_8 s_csamul_cla16_ha15_7_and0 s_csamul_cla16_ha15_8_and0
+11 1
+.names a[0] b[9] s_csamul_cla16_and0_9
+11 1
+.names s_csamul_cla16_and0_9 s_csamul_cla16_fa1_8_xor1 s_csamul_cla16_fa0_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_9 s_csamul_cla16_fa1_8_xor1 s_csamul_cla16_fa0_9_and0
+11 1
+.names s_csamul_cla16_fa0_9_xor0 s_csamul_cla16_fa0_8_or0 s_csamul_cla16_fa0_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_9_xor0 s_csamul_cla16_fa0_8_or0 s_csamul_cla16_fa0_9_and1
+11 1
+.names s_csamul_cla16_fa0_9_and0 s_csamul_cla16_fa0_9_and1 s_csamul_cla16_fa0_9_or0
+1- 1
+-1 1
+.names a[1] b[9] s_csamul_cla16_and1_9
+11 1
+.names s_csamul_cla16_and1_9 s_csamul_cla16_fa2_8_xor1 s_csamul_cla16_fa1_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_9 s_csamul_cla16_fa2_8_xor1 s_csamul_cla16_fa1_9_and0
+11 1
+.names s_csamul_cla16_fa1_9_xor0 s_csamul_cla16_fa1_8_or0 s_csamul_cla16_fa1_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_9_xor0 s_csamul_cla16_fa1_8_or0 s_csamul_cla16_fa1_9_and1
+11 1
+.names s_csamul_cla16_fa1_9_and0 s_csamul_cla16_fa1_9_and1 s_csamul_cla16_fa1_9_or0
+1- 1
+-1 1
+.names a[2] b[9] s_csamul_cla16_and2_9
+11 1
+.names s_csamul_cla16_and2_9 s_csamul_cla16_fa3_8_xor1 s_csamul_cla16_fa2_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_9 s_csamul_cla16_fa3_8_xor1 s_csamul_cla16_fa2_9_and0
+11 1
+.names s_csamul_cla16_fa2_9_xor0 s_csamul_cla16_fa2_8_or0 s_csamul_cla16_fa2_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_9_xor0 s_csamul_cla16_fa2_8_or0 s_csamul_cla16_fa2_9_and1
+11 1
+.names s_csamul_cla16_fa2_9_and0 s_csamul_cla16_fa2_9_and1 s_csamul_cla16_fa2_9_or0
+1- 1
+-1 1
+.names a[3] b[9] s_csamul_cla16_and3_9
+11 1
+.names s_csamul_cla16_and3_9 s_csamul_cla16_fa4_8_xor1 s_csamul_cla16_fa3_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_9 s_csamul_cla16_fa4_8_xor1 s_csamul_cla16_fa3_9_and0
+11 1
+.names s_csamul_cla16_fa3_9_xor0 s_csamul_cla16_fa3_8_or0 s_csamul_cla16_fa3_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_9_xor0 s_csamul_cla16_fa3_8_or0 s_csamul_cla16_fa3_9_and1
+11 1
+.names s_csamul_cla16_fa3_9_and0 s_csamul_cla16_fa3_9_and1 s_csamul_cla16_fa3_9_or0
+1- 1
+-1 1
+.names a[4] b[9] s_csamul_cla16_and4_9
+11 1
+.names s_csamul_cla16_and4_9 s_csamul_cla16_fa5_8_xor1 s_csamul_cla16_fa4_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_9 s_csamul_cla16_fa5_8_xor1 s_csamul_cla16_fa4_9_and0
+11 1
+.names s_csamul_cla16_fa4_9_xor0 s_csamul_cla16_fa4_8_or0 s_csamul_cla16_fa4_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_9_xor0 s_csamul_cla16_fa4_8_or0 s_csamul_cla16_fa4_9_and1
+11 1
+.names s_csamul_cla16_fa4_9_and0 s_csamul_cla16_fa4_9_and1 s_csamul_cla16_fa4_9_or0
+1- 1
+-1 1
+.names a[5] b[9] s_csamul_cla16_and5_9
+11 1
+.names s_csamul_cla16_and5_9 s_csamul_cla16_fa6_8_xor1 s_csamul_cla16_fa5_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_9 s_csamul_cla16_fa6_8_xor1 s_csamul_cla16_fa5_9_and0
+11 1
+.names s_csamul_cla16_fa5_9_xor0 s_csamul_cla16_fa5_8_or0 s_csamul_cla16_fa5_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_9_xor0 s_csamul_cla16_fa5_8_or0 s_csamul_cla16_fa5_9_and1
+11 1
+.names s_csamul_cla16_fa5_9_and0 s_csamul_cla16_fa5_9_and1 s_csamul_cla16_fa5_9_or0
+1- 1
+-1 1
+.names a[6] b[9] s_csamul_cla16_and6_9
+11 1
+.names s_csamul_cla16_and6_9 s_csamul_cla16_fa7_8_xor1 s_csamul_cla16_fa6_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_9 s_csamul_cla16_fa7_8_xor1 s_csamul_cla16_fa6_9_and0
+11 1
+.names s_csamul_cla16_fa6_9_xor0 s_csamul_cla16_fa6_8_or0 s_csamul_cla16_fa6_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_9_xor0 s_csamul_cla16_fa6_8_or0 s_csamul_cla16_fa6_9_and1
+11 1
+.names s_csamul_cla16_fa6_9_and0 s_csamul_cla16_fa6_9_and1 s_csamul_cla16_fa6_9_or0
+1- 1
+-1 1
+.names a[7] b[9] s_csamul_cla16_and7_9
+11 1
+.names s_csamul_cla16_and7_9 s_csamul_cla16_fa8_8_xor1 s_csamul_cla16_fa7_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_9 s_csamul_cla16_fa8_8_xor1 s_csamul_cla16_fa7_9_and0
+11 1
+.names s_csamul_cla16_fa7_9_xor0 s_csamul_cla16_fa7_8_or0 s_csamul_cla16_fa7_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_9_xor0 s_csamul_cla16_fa7_8_or0 s_csamul_cla16_fa7_9_and1
+11 1
+.names s_csamul_cla16_fa7_9_and0 s_csamul_cla16_fa7_9_and1 s_csamul_cla16_fa7_9_or0
+1- 1
+-1 1
+.names a[8] b[9] s_csamul_cla16_and8_9
+11 1
+.names s_csamul_cla16_and8_9 s_csamul_cla16_fa9_8_xor1 s_csamul_cla16_fa8_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_9 s_csamul_cla16_fa9_8_xor1 s_csamul_cla16_fa8_9_and0
+11 1
+.names s_csamul_cla16_fa8_9_xor0 s_csamul_cla16_fa8_8_or0 s_csamul_cla16_fa8_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_9_xor0 s_csamul_cla16_fa8_8_or0 s_csamul_cla16_fa8_9_and1
+11 1
+.names s_csamul_cla16_fa8_9_and0 s_csamul_cla16_fa8_9_and1 s_csamul_cla16_fa8_9_or0
+1- 1
+-1 1
+.names a[9] b[9] s_csamul_cla16_and9_9
+11 1
+.names s_csamul_cla16_and9_9 s_csamul_cla16_fa10_8_xor1 s_csamul_cla16_fa9_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_9 s_csamul_cla16_fa10_8_xor1 s_csamul_cla16_fa9_9_and0
+11 1
+.names s_csamul_cla16_fa9_9_xor0 s_csamul_cla16_fa9_8_or0 s_csamul_cla16_fa9_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_9_xor0 s_csamul_cla16_fa9_8_or0 s_csamul_cla16_fa9_9_and1
+11 1
+.names s_csamul_cla16_fa9_9_and0 s_csamul_cla16_fa9_9_and1 s_csamul_cla16_fa9_9_or0
+1- 1
+-1 1
+.names a[10] b[9] s_csamul_cla16_and10_9
+11 1
+.names s_csamul_cla16_and10_9 s_csamul_cla16_fa11_8_xor1 s_csamul_cla16_fa10_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_9 s_csamul_cla16_fa11_8_xor1 s_csamul_cla16_fa10_9_and0
+11 1
+.names s_csamul_cla16_fa10_9_xor0 s_csamul_cla16_fa10_8_or0 s_csamul_cla16_fa10_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_9_xor0 s_csamul_cla16_fa10_8_or0 s_csamul_cla16_fa10_9_and1
+11 1
+.names s_csamul_cla16_fa10_9_and0 s_csamul_cla16_fa10_9_and1 s_csamul_cla16_fa10_9_or0
+1- 1
+-1 1
+.names a[11] b[9] s_csamul_cla16_and11_9
+11 1
+.names s_csamul_cla16_and11_9 s_csamul_cla16_fa12_8_xor1 s_csamul_cla16_fa11_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_9 s_csamul_cla16_fa12_8_xor1 s_csamul_cla16_fa11_9_and0
+11 1
+.names s_csamul_cla16_fa11_9_xor0 s_csamul_cla16_fa11_8_or0 s_csamul_cla16_fa11_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_9_xor0 s_csamul_cla16_fa11_8_or0 s_csamul_cla16_fa11_9_and1
+11 1
+.names s_csamul_cla16_fa11_9_and0 s_csamul_cla16_fa11_9_and1 s_csamul_cla16_fa11_9_or0
+1- 1
+-1 1
+.names a[12] b[9] s_csamul_cla16_and12_9
+11 1
+.names s_csamul_cla16_and12_9 s_csamul_cla16_fa13_8_xor1 s_csamul_cla16_fa12_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_9 s_csamul_cla16_fa13_8_xor1 s_csamul_cla16_fa12_9_and0
+11 1
+.names s_csamul_cla16_fa12_9_xor0 s_csamul_cla16_fa12_8_or0 s_csamul_cla16_fa12_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_9_xor0 s_csamul_cla16_fa12_8_or0 s_csamul_cla16_fa12_9_and1
+11 1
+.names s_csamul_cla16_fa12_9_and0 s_csamul_cla16_fa12_9_and1 s_csamul_cla16_fa12_9_or0
+1- 1
+-1 1
+.names a[13] b[9] s_csamul_cla16_and13_9
+11 1
+.names s_csamul_cla16_and13_9 s_csamul_cla16_fa14_8_xor1 s_csamul_cla16_fa13_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_9 s_csamul_cla16_fa14_8_xor1 s_csamul_cla16_fa13_9_and0
+11 1
+.names s_csamul_cla16_fa13_9_xor0 s_csamul_cla16_fa13_8_or0 s_csamul_cla16_fa13_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_9_xor0 s_csamul_cla16_fa13_8_or0 s_csamul_cla16_fa13_9_and1
+11 1
+.names s_csamul_cla16_fa13_9_and0 s_csamul_cla16_fa13_9_and1 s_csamul_cla16_fa13_9_or0
+1- 1
+-1 1
+.names a[14] b[9] s_csamul_cla16_and14_9
+11 1
+.names s_csamul_cla16_and14_9 s_csamul_cla16_ha15_8_xor0 s_csamul_cla16_fa14_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_9 s_csamul_cla16_ha15_8_xor0 s_csamul_cla16_fa14_9_and0
+11 1
+.names s_csamul_cla16_fa14_9_xor0 s_csamul_cla16_fa14_8_or0 s_csamul_cla16_fa14_9_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_9_xor0 s_csamul_cla16_fa14_8_or0 s_csamul_cla16_fa14_9_and1
+11 1
+.names s_csamul_cla16_fa14_9_and0 s_csamul_cla16_fa14_9_and1 s_csamul_cla16_fa14_9_or0
+1- 1
+-1 1
+.names a[15] b[9] s_csamul_cla16_nand15_9
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_9 s_csamul_cla16_ha15_8_and0 s_csamul_cla16_ha15_9_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_9 s_csamul_cla16_ha15_8_and0 s_csamul_cla16_ha15_9_and0
+11 1
+.names a[0] b[10] s_csamul_cla16_and0_10
+11 1
+.names s_csamul_cla16_and0_10 s_csamul_cla16_fa1_9_xor1 s_csamul_cla16_fa0_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_10 s_csamul_cla16_fa1_9_xor1 s_csamul_cla16_fa0_10_and0
+11 1
+.names s_csamul_cla16_fa0_10_xor0 s_csamul_cla16_fa0_9_or0 s_csamul_cla16_fa0_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_10_xor0 s_csamul_cla16_fa0_9_or0 s_csamul_cla16_fa0_10_and1
+11 1
+.names s_csamul_cla16_fa0_10_and0 s_csamul_cla16_fa0_10_and1 s_csamul_cla16_fa0_10_or0
+1- 1
+-1 1
+.names a[1] b[10] s_csamul_cla16_and1_10
+11 1
+.names s_csamul_cla16_and1_10 s_csamul_cla16_fa2_9_xor1 s_csamul_cla16_fa1_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_10 s_csamul_cla16_fa2_9_xor1 s_csamul_cla16_fa1_10_and0
+11 1
+.names s_csamul_cla16_fa1_10_xor0 s_csamul_cla16_fa1_9_or0 s_csamul_cla16_fa1_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_10_xor0 s_csamul_cla16_fa1_9_or0 s_csamul_cla16_fa1_10_and1
+11 1
+.names s_csamul_cla16_fa1_10_and0 s_csamul_cla16_fa1_10_and1 s_csamul_cla16_fa1_10_or0
+1- 1
+-1 1
+.names a[2] b[10] s_csamul_cla16_and2_10
+11 1
+.names s_csamul_cla16_and2_10 s_csamul_cla16_fa3_9_xor1 s_csamul_cla16_fa2_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_10 s_csamul_cla16_fa3_9_xor1 s_csamul_cla16_fa2_10_and0
+11 1
+.names s_csamul_cla16_fa2_10_xor0 s_csamul_cla16_fa2_9_or0 s_csamul_cla16_fa2_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_10_xor0 s_csamul_cla16_fa2_9_or0 s_csamul_cla16_fa2_10_and1
+11 1
+.names s_csamul_cla16_fa2_10_and0 s_csamul_cla16_fa2_10_and1 s_csamul_cla16_fa2_10_or0
+1- 1
+-1 1
+.names a[3] b[10] s_csamul_cla16_and3_10
+11 1
+.names s_csamul_cla16_and3_10 s_csamul_cla16_fa4_9_xor1 s_csamul_cla16_fa3_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_10 s_csamul_cla16_fa4_9_xor1 s_csamul_cla16_fa3_10_and0
+11 1
+.names s_csamul_cla16_fa3_10_xor0 s_csamul_cla16_fa3_9_or0 s_csamul_cla16_fa3_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_10_xor0 s_csamul_cla16_fa3_9_or0 s_csamul_cla16_fa3_10_and1
+11 1
+.names s_csamul_cla16_fa3_10_and0 s_csamul_cla16_fa3_10_and1 s_csamul_cla16_fa3_10_or0
+1- 1
+-1 1
+.names a[4] b[10] s_csamul_cla16_and4_10
+11 1
+.names s_csamul_cla16_and4_10 s_csamul_cla16_fa5_9_xor1 s_csamul_cla16_fa4_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_10 s_csamul_cla16_fa5_9_xor1 s_csamul_cla16_fa4_10_and0
+11 1
+.names s_csamul_cla16_fa4_10_xor0 s_csamul_cla16_fa4_9_or0 s_csamul_cla16_fa4_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_10_xor0 s_csamul_cla16_fa4_9_or0 s_csamul_cla16_fa4_10_and1
+11 1
+.names s_csamul_cla16_fa4_10_and0 s_csamul_cla16_fa4_10_and1 s_csamul_cla16_fa4_10_or0
+1- 1
+-1 1
+.names a[5] b[10] s_csamul_cla16_and5_10
+11 1
+.names s_csamul_cla16_and5_10 s_csamul_cla16_fa6_9_xor1 s_csamul_cla16_fa5_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_10 s_csamul_cla16_fa6_9_xor1 s_csamul_cla16_fa5_10_and0
+11 1
+.names s_csamul_cla16_fa5_10_xor0 s_csamul_cla16_fa5_9_or0 s_csamul_cla16_fa5_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_10_xor0 s_csamul_cla16_fa5_9_or0 s_csamul_cla16_fa5_10_and1
+11 1
+.names s_csamul_cla16_fa5_10_and0 s_csamul_cla16_fa5_10_and1 s_csamul_cla16_fa5_10_or0
+1- 1
+-1 1
+.names a[6] b[10] s_csamul_cla16_and6_10
+11 1
+.names s_csamul_cla16_and6_10 s_csamul_cla16_fa7_9_xor1 s_csamul_cla16_fa6_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_10 s_csamul_cla16_fa7_9_xor1 s_csamul_cla16_fa6_10_and0
+11 1
+.names s_csamul_cla16_fa6_10_xor0 s_csamul_cla16_fa6_9_or0 s_csamul_cla16_fa6_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_10_xor0 s_csamul_cla16_fa6_9_or0 s_csamul_cla16_fa6_10_and1
+11 1
+.names s_csamul_cla16_fa6_10_and0 s_csamul_cla16_fa6_10_and1 s_csamul_cla16_fa6_10_or0
+1- 1
+-1 1
+.names a[7] b[10] s_csamul_cla16_and7_10
+11 1
+.names s_csamul_cla16_and7_10 s_csamul_cla16_fa8_9_xor1 s_csamul_cla16_fa7_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_10 s_csamul_cla16_fa8_9_xor1 s_csamul_cla16_fa7_10_and0
+11 1
+.names s_csamul_cla16_fa7_10_xor0 s_csamul_cla16_fa7_9_or0 s_csamul_cla16_fa7_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_10_xor0 s_csamul_cla16_fa7_9_or0 s_csamul_cla16_fa7_10_and1
+11 1
+.names s_csamul_cla16_fa7_10_and0 s_csamul_cla16_fa7_10_and1 s_csamul_cla16_fa7_10_or0
+1- 1
+-1 1
+.names a[8] b[10] s_csamul_cla16_and8_10
+11 1
+.names s_csamul_cla16_and8_10 s_csamul_cla16_fa9_9_xor1 s_csamul_cla16_fa8_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_10 s_csamul_cla16_fa9_9_xor1 s_csamul_cla16_fa8_10_and0
+11 1
+.names s_csamul_cla16_fa8_10_xor0 s_csamul_cla16_fa8_9_or0 s_csamul_cla16_fa8_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_10_xor0 s_csamul_cla16_fa8_9_or0 s_csamul_cla16_fa8_10_and1
+11 1
+.names s_csamul_cla16_fa8_10_and0 s_csamul_cla16_fa8_10_and1 s_csamul_cla16_fa8_10_or0
+1- 1
+-1 1
+.names a[9] b[10] s_csamul_cla16_and9_10
+11 1
+.names s_csamul_cla16_and9_10 s_csamul_cla16_fa10_9_xor1 s_csamul_cla16_fa9_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_10 s_csamul_cla16_fa10_9_xor1 s_csamul_cla16_fa9_10_and0
+11 1
+.names s_csamul_cla16_fa9_10_xor0 s_csamul_cla16_fa9_9_or0 s_csamul_cla16_fa9_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_10_xor0 s_csamul_cla16_fa9_9_or0 s_csamul_cla16_fa9_10_and1
+11 1
+.names s_csamul_cla16_fa9_10_and0 s_csamul_cla16_fa9_10_and1 s_csamul_cla16_fa9_10_or0
+1- 1
+-1 1
+.names a[10] b[10] s_csamul_cla16_and10_10
+11 1
+.names s_csamul_cla16_and10_10 s_csamul_cla16_fa11_9_xor1 s_csamul_cla16_fa10_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_10 s_csamul_cla16_fa11_9_xor1 s_csamul_cla16_fa10_10_and0
+11 1
+.names s_csamul_cla16_fa10_10_xor0 s_csamul_cla16_fa10_9_or0 s_csamul_cla16_fa10_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_10_xor0 s_csamul_cla16_fa10_9_or0 s_csamul_cla16_fa10_10_and1
+11 1
+.names s_csamul_cla16_fa10_10_and0 s_csamul_cla16_fa10_10_and1 s_csamul_cla16_fa10_10_or0
+1- 1
+-1 1
+.names a[11] b[10] s_csamul_cla16_and11_10
+11 1
+.names s_csamul_cla16_and11_10 s_csamul_cla16_fa12_9_xor1 s_csamul_cla16_fa11_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_10 s_csamul_cla16_fa12_9_xor1 s_csamul_cla16_fa11_10_and0
+11 1
+.names s_csamul_cla16_fa11_10_xor0 s_csamul_cla16_fa11_9_or0 s_csamul_cla16_fa11_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_10_xor0 s_csamul_cla16_fa11_9_or0 s_csamul_cla16_fa11_10_and1
+11 1
+.names s_csamul_cla16_fa11_10_and0 s_csamul_cla16_fa11_10_and1 s_csamul_cla16_fa11_10_or0
+1- 1
+-1 1
+.names a[12] b[10] s_csamul_cla16_and12_10
+11 1
+.names s_csamul_cla16_and12_10 s_csamul_cla16_fa13_9_xor1 s_csamul_cla16_fa12_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_10 s_csamul_cla16_fa13_9_xor1 s_csamul_cla16_fa12_10_and0
+11 1
+.names s_csamul_cla16_fa12_10_xor0 s_csamul_cla16_fa12_9_or0 s_csamul_cla16_fa12_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_10_xor0 s_csamul_cla16_fa12_9_or0 s_csamul_cla16_fa12_10_and1
+11 1
+.names s_csamul_cla16_fa12_10_and0 s_csamul_cla16_fa12_10_and1 s_csamul_cla16_fa12_10_or0
+1- 1
+-1 1
+.names a[13] b[10] s_csamul_cla16_and13_10
+11 1
+.names s_csamul_cla16_and13_10 s_csamul_cla16_fa14_9_xor1 s_csamul_cla16_fa13_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_10 s_csamul_cla16_fa14_9_xor1 s_csamul_cla16_fa13_10_and0
+11 1
+.names s_csamul_cla16_fa13_10_xor0 s_csamul_cla16_fa13_9_or0 s_csamul_cla16_fa13_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_10_xor0 s_csamul_cla16_fa13_9_or0 s_csamul_cla16_fa13_10_and1
+11 1
+.names s_csamul_cla16_fa13_10_and0 s_csamul_cla16_fa13_10_and1 s_csamul_cla16_fa13_10_or0
+1- 1
+-1 1
+.names a[14] b[10] s_csamul_cla16_and14_10
+11 1
+.names s_csamul_cla16_and14_10 s_csamul_cla16_ha15_9_xor0 s_csamul_cla16_fa14_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_10 s_csamul_cla16_ha15_9_xor0 s_csamul_cla16_fa14_10_and0
+11 1
+.names s_csamul_cla16_fa14_10_xor0 s_csamul_cla16_fa14_9_or0 s_csamul_cla16_fa14_10_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_10_xor0 s_csamul_cla16_fa14_9_or0 s_csamul_cla16_fa14_10_and1
+11 1
+.names s_csamul_cla16_fa14_10_and0 s_csamul_cla16_fa14_10_and1 s_csamul_cla16_fa14_10_or0
+1- 1
+-1 1
+.names a[15] b[10] s_csamul_cla16_nand15_10
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_10 s_csamul_cla16_ha15_9_and0 s_csamul_cla16_ha15_10_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_10 s_csamul_cla16_ha15_9_and0 s_csamul_cla16_ha15_10_and0
+11 1
+.names a[0] b[11] s_csamul_cla16_and0_11
+11 1
+.names s_csamul_cla16_and0_11 s_csamul_cla16_fa1_10_xor1 s_csamul_cla16_fa0_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_11 s_csamul_cla16_fa1_10_xor1 s_csamul_cla16_fa0_11_and0
+11 1
+.names s_csamul_cla16_fa0_11_xor0 s_csamul_cla16_fa0_10_or0 s_csamul_cla16_fa0_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_11_xor0 s_csamul_cla16_fa0_10_or0 s_csamul_cla16_fa0_11_and1
+11 1
+.names s_csamul_cla16_fa0_11_and0 s_csamul_cla16_fa0_11_and1 s_csamul_cla16_fa0_11_or0
+1- 1
+-1 1
+.names a[1] b[11] s_csamul_cla16_and1_11
+11 1
+.names s_csamul_cla16_and1_11 s_csamul_cla16_fa2_10_xor1 s_csamul_cla16_fa1_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_11 s_csamul_cla16_fa2_10_xor1 s_csamul_cla16_fa1_11_and0
+11 1
+.names s_csamul_cla16_fa1_11_xor0 s_csamul_cla16_fa1_10_or0 s_csamul_cla16_fa1_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_11_xor0 s_csamul_cla16_fa1_10_or0 s_csamul_cla16_fa1_11_and1
+11 1
+.names s_csamul_cla16_fa1_11_and0 s_csamul_cla16_fa1_11_and1 s_csamul_cla16_fa1_11_or0
+1- 1
+-1 1
+.names a[2] b[11] s_csamul_cla16_and2_11
+11 1
+.names s_csamul_cla16_and2_11 s_csamul_cla16_fa3_10_xor1 s_csamul_cla16_fa2_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_11 s_csamul_cla16_fa3_10_xor1 s_csamul_cla16_fa2_11_and0
+11 1
+.names s_csamul_cla16_fa2_11_xor0 s_csamul_cla16_fa2_10_or0 s_csamul_cla16_fa2_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_11_xor0 s_csamul_cla16_fa2_10_or0 s_csamul_cla16_fa2_11_and1
+11 1
+.names s_csamul_cla16_fa2_11_and0 s_csamul_cla16_fa2_11_and1 s_csamul_cla16_fa2_11_or0
+1- 1
+-1 1
+.names a[3] b[11] s_csamul_cla16_and3_11
+11 1
+.names s_csamul_cla16_and3_11 s_csamul_cla16_fa4_10_xor1 s_csamul_cla16_fa3_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_11 s_csamul_cla16_fa4_10_xor1 s_csamul_cla16_fa3_11_and0
+11 1
+.names s_csamul_cla16_fa3_11_xor0 s_csamul_cla16_fa3_10_or0 s_csamul_cla16_fa3_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_11_xor0 s_csamul_cla16_fa3_10_or0 s_csamul_cla16_fa3_11_and1
+11 1
+.names s_csamul_cla16_fa3_11_and0 s_csamul_cla16_fa3_11_and1 s_csamul_cla16_fa3_11_or0
+1- 1
+-1 1
+.names a[4] b[11] s_csamul_cla16_and4_11
+11 1
+.names s_csamul_cla16_and4_11 s_csamul_cla16_fa5_10_xor1 s_csamul_cla16_fa4_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_11 s_csamul_cla16_fa5_10_xor1 s_csamul_cla16_fa4_11_and0
+11 1
+.names s_csamul_cla16_fa4_11_xor0 s_csamul_cla16_fa4_10_or0 s_csamul_cla16_fa4_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_11_xor0 s_csamul_cla16_fa4_10_or0 s_csamul_cla16_fa4_11_and1
+11 1
+.names s_csamul_cla16_fa4_11_and0 s_csamul_cla16_fa4_11_and1 s_csamul_cla16_fa4_11_or0
+1- 1
+-1 1
+.names a[5] b[11] s_csamul_cla16_and5_11
+11 1
+.names s_csamul_cla16_and5_11 s_csamul_cla16_fa6_10_xor1 s_csamul_cla16_fa5_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_11 s_csamul_cla16_fa6_10_xor1 s_csamul_cla16_fa5_11_and0
+11 1
+.names s_csamul_cla16_fa5_11_xor0 s_csamul_cla16_fa5_10_or0 s_csamul_cla16_fa5_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_11_xor0 s_csamul_cla16_fa5_10_or0 s_csamul_cla16_fa5_11_and1
+11 1
+.names s_csamul_cla16_fa5_11_and0 s_csamul_cla16_fa5_11_and1 s_csamul_cla16_fa5_11_or0
+1- 1
+-1 1
+.names a[6] b[11] s_csamul_cla16_and6_11
+11 1
+.names s_csamul_cla16_and6_11 s_csamul_cla16_fa7_10_xor1 s_csamul_cla16_fa6_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_11 s_csamul_cla16_fa7_10_xor1 s_csamul_cla16_fa6_11_and0
+11 1
+.names s_csamul_cla16_fa6_11_xor0 s_csamul_cla16_fa6_10_or0 s_csamul_cla16_fa6_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_11_xor0 s_csamul_cla16_fa6_10_or0 s_csamul_cla16_fa6_11_and1
+11 1
+.names s_csamul_cla16_fa6_11_and0 s_csamul_cla16_fa6_11_and1 s_csamul_cla16_fa6_11_or0
+1- 1
+-1 1
+.names a[7] b[11] s_csamul_cla16_and7_11
+11 1
+.names s_csamul_cla16_and7_11 s_csamul_cla16_fa8_10_xor1 s_csamul_cla16_fa7_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_11 s_csamul_cla16_fa8_10_xor1 s_csamul_cla16_fa7_11_and0
+11 1
+.names s_csamul_cla16_fa7_11_xor0 s_csamul_cla16_fa7_10_or0 s_csamul_cla16_fa7_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_11_xor0 s_csamul_cla16_fa7_10_or0 s_csamul_cla16_fa7_11_and1
+11 1
+.names s_csamul_cla16_fa7_11_and0 s_csamul_cla16_fa7_11_and1 s_csamul_cla16_fa7_11_or0
+1- 1
+-1 1
+.names a[8] b[11] s_csamul_cla16_and8_11
+11 1
+.names s_csamul_cla16_and8_11 s_csamul_cla16_fa9_10_xor1 s_csamul_cla16_fa8_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_11 s_csamul_cla16_fa9_10_xor1 s_csamul_cla16_fa8_11_and0
+11 1
+.names s_csamul_cla16_fa8_11_xor0 s_csamul_cla16_fa8_10_or0 s_csamul_cla16_fa8_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_11_xor0 s_csamul_cla16_fa8_10_or0 s_csamul_cla16_fa8_11_and1
+11 1
+.names s_csamul_cla16_fa8_11_and0 s_csamul_cla16_fa8_11_and1 s_csamul_cla16_fa8_11_or0
+1- 1
+-1 1
+.names a[9] b[11] s_csamul_cla16_and9_11
+11 1
+.names s_csamul_cla16_and9_11 s_csamul_cla16_fa10_10_xor1 s_csamul_cla16_fa9_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_11 s_csamul_cla16_fa10_10_xor1 s_csamul_cla16_fa9_11_and0
+11 1
+.names s_csamul_cla16_fa9_11_xor0 s_csamul_cla16_fa9_10_or0 s_csamul_cla16_fa9_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_11_xor0 s_csamul_cla16_fa9_10_or0 s_csamul_cla16_fa9_11_and1
+11 1
+.names s_csamul_cla16_fa9_11_and0 s_csamul_cla16_fa9_11_and1 s_csamul_cla16_fa9_11_or0
+1- 1
+-1 1
+.names a[10] b[11] s_csamul_cla16_and10_11
+11 1
+.names s_csamul_cla16_and10_11 s_csamul_cla16_fa11_10_xor1 s_csamul_cla16_fa10_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_11 s_csamul_cla16_fa11_10_xor1 s_csamul_cla16_fa10_11_and0
+11 1
+.names s_csamul_cla16_fa10_11_xor0 s_csamul_cla16_fa10_10_or0 s_csamul_cla16_fa10_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_11_xor0 s_csamul_cla16_fa10_10_or0 s_csamul_cla16_fa10_11_and1
+11 1
+.names s_csamul_cla16_fa10_11_and0 s_csamul_cla16_fa10_11_and1 s_csamul_cla16_fa10_11_or0
+1- 1
+-1 1
+.names a[11] b[11] s_csamul_cla16_and11_11
+11 1
+.names s_csamul_cla16_and11_11 s_csamul_cla16_fa12_10_xor1 s_csamul_cla16_fa11_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_11 s_csamul_cla16_fa12_10_xor1 s_csamul_cla16_fa11_11_and0
+11 1
+.names s_csamul_cla16_fa11_11_xor0 s_csamul_cla16_fa11_10_or0 s_csamul_cla16_fa11_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_11_xor0 s_csamul_cla16_fa11_10_or0 s_csamul_cla16_fa11_11_and1
+11 1
+.names s_csamul_cla16_fa11_11_and0 s_csamul_cla16_fa11_11_and1 s_csamul_cla16_fa11_11_or0
+1- 1
+-1 1
+.names a[12] b[11] s_csamul_cla16_and12_11
+11 1
+.names s_csamul_cla16_and12_11 s_csamul_cla16_fa13_10_xor1 s_csamul_cla16_fa12_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_11 s_csamul_cla16_fa13_10_xor1 s_csamul_cla16_fa12_11_and0
+11 1
+.names s_csamul_cla16_fa12_11_xor0 s_csamul_cla16_fa12_10_or0 s_csamul_cla16_fa12_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_11_xor0 s_csamul_cla16_fa12_10_or0 s_csamul_cla16_fa12_11_and1
+11 1
+.names s_csamul_cla16_fa12_11_and0 s_csamul_cla16_fa12_11_and1 s_csamul_cla16_fa12_11_or0
+1- 1
+-1 1
+.names a[13] b[11] s_csamul_cla16_and13_11
+11 1
+.names s_csamul_cla16_and13_11 s_csamul_cla16_fa14_10_xor1 s_csamul_cla16_fa13_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_11 s_csamul_cla16_fa14_10_xor1 s_csamul_cla16_fa13_11_and0
+11 1
+.names s_csamul_cla16_fa13_11_xor0 s_csamul_cla16_fa13_10_or0 s_csamul_cla16_fa13_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_11_xor0 s_csamul_cla16_fa13_10_or0 s_csamul_cla16_fa13_11_and1
+11 1
+.names s_csamul_cla16_fa13_11_and0 s_csamul_cla16_fa13_11_and1 s_csamul_cla16_fa13_11_or0
+1- 1
+-1 1
+.names a[14] b[11] s_csamul_cla16_and14_11
+11 1
+.names s_csamul_cla16_and14_11 s_csamul_cla16_ha15_10_xor0 s_csamul_cla16_fa14_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_11 s_csamul_cla16_ha15_10_xor0 s_csamul_cla16_fa14_11_and0
+11 1
+.names s_csamul_cla16_fa14_11_xor0 s_csamul_cla16_fa14_10_or0 s_csamul_cla16_fa14_11_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_11_xor0 s_csamul_cla16_fa14_10_or0 s_csamul_cla16_fa14_11_and1
+11 1
+.names s_csamul_cla16_fa14_11_and0 s_csamul_cla16_fa14_11_and1 s_csamul_cla16_fa14_11_or0
+1- 1
+-1 1
+.names a[15] b[11] s_csamul_cla16_nand15_11
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_11 s_csamul_cla16_ha15_10_and0 s_csamul_cla16_ha15_11_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_11 s_csamul_cla16_ha15_10_and0 s_csamul_cla16_ha15_11_and0
+11 1
+.names a[0] b[12] s_csamul_cla16_and0_12
+11 1
+.names s_csamul_cla16_and0_12 s_csamul_cla16_fa1_11_xor1 s_csamul_cla16_fa0_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_12 s_csamul_cla16_fa1_11_xor1 s_csamul_cla16_fa0_12_and0
+11 1
+.names s_csamul_cla16_fa0_12_xor0 s_csamul_cla16_fa0_11_or0 s_csamul_cla16_fa0_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_12_xor0 s_csamul_cla16_fa0_11_or0 s_csamul_cla16_fa0_12_and1
+11 1
+.names s_csamul_cla16_fa0_12_and0 s_csamul_cla16_fa0_12_and1 s_csamul_cla16_fa0_12_or0
+1- 1
+-1 1
+.names a[1] b[12] s_csamul_cla16_and1_12
+11 1
+.names s_csamul_cla16_and1_12 s_csamul_cla16_fa2_11_xor1 s_csamul_cla16_fa1_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_12 s_csamul_cla16_fa2_11_xor1 s_csamul_cla16_fa1_12_and0
+11 1
+.names s_csamul_cla16_fa1_12_xor0 s_csamul_cla16_fa1_11_or0 s_csamul_cla16_fa1_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_12_xor0 s_csamul_cla16_fa1_11_or0 s_csamul_cla16_fa1_12_and1
+11 1
+.names s_csamul_cla16_fa1_12_and0 s_csamul_cla16_fa1_12_and1 s_csamul_cla16_fa1_12_or0
+1- 1
+-1 1
+.names a[2] b[12] s_csamul_cla16_and2_12
+11 1
+.names s_csamul_cla16_and2_12 s_csamul_cla16_fa3_11_xor1 s_csamul_cla16_fa2_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_12 s_csamul_cla16_fa3_11_xor1 s_csamul_cla16_fa2_12_and0
+11 1
+.names s_csamul_cla16_fa2_12_xor0 s_csamul_cla16_fa2_11_or0 s_csamul_cla16_fa2_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_12_xor0 s_csamul_cla16_fa2_11_or0 s_csamul_cla16_fa2_12_and1
+11 1
+.names s_csamul_cla16_fa2_12_and0 s_csamul_cla16_fa2_12_and1 s_csamul_cla16_fa2_12_or0
+1- 1
+-1 1
+.names a[3] b[12] s_csamul_cla16_and3_12
+11 1
+.names s_csamul_cla16_and3_12 s_csamul_cla16_fa4_11_xor1 s_csamul_cla16_fa3_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_12 s_csamul_cla16_fa4_11_xor1 s_csamul_cla16_fa3_12_and0
+11 1
+.names s_csamul_cla16_fa3_12_xor0 s_csamul_cla16_fa3_11_or0 s_csamul_cla16_fa3_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_12_xor0 s_csamul_cla16_fa3_11_or0 s_csamul_cla16_fa3_12_and1
+11 1
+.names s_csamul_cla16_fa3_12_and0 s_csamul_cla16_fa3_12_and1 s_csamul_cla16_fa3_12_or0
+1- 1
+-1 1
+.names a[4] b[12] s_csamul_cla16_and4_12
+11 1
+.names s_csamul_cla16_and4_12 s_csamul_cla16_fa5_11_xor1 s_csamul_cla16_fa4_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_12 s_csamul_cla16_fa5_11_xor1 s_csamul_cla16_fa4_12_and0
+11 1
+.names s_csamul_cla16_fa4_12_xor0 s_csamul_cla16_fa4_11_or0 s_csamul_cla16_fa4_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_12_xor0 s_csamul_cla16_fa4_11_or0 s_csamul_cla16_fa4_12_and1
+11 1
+.names s_csamul_cla16_fa4_12_and0 s_csamul_cla16_fa4_12_and1 s_csamul_cla16_fa4_12_or0
+1- 1
+-1 1
+.names a[5] b[12] s_csamul_cla16_and5_12
+11 1
+.names s_csamul_cla16_and5_12 s_csamul_cla16_fa6_11_xor1 s_csamul_cla16_fa5_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_12 s_csamul_cla16_fa6_11_xor1 s_csamul_cla16_fa5_12_and0
+11 1
+.names s_csamul_cla16_fa5_12_xor0 s_csamul_cla16_fa5_11_or0 s_csamul_cla16_fa5_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_12_xor0 s_csamul_cla16_fa5_11_or0 s_csamul_cla16_fa5_12_and1
+11 1
+.names s_csamul_cla16_fa5_12_and0 s_csamul_cla16_fa5_12_and1 s_csamul_cla16_fa5_12_or0
+1- 1
+-1 1
+.names a[6] b[12] s_csamul_cla16_and6_12
+11 1
+.names s_csamul_cla16_and6_12 s_csamul_cla16_fa7_11_xor1 s_csamul_cla16_fa6_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_12 s_csamul_cla16_fa7_11_xor1 s_csamul_cla16_fa6_12_and0
+11 1
+.names s_csamul_cla16_fa6_12_xor0 s_csamul_cla16_fa6_11_or0 s_csamul_cla16_fa6_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_12_xor0 s_csamul_cla16_fa6_11_or0 s_csamul_cla16_fa6_12_and1
+11 1
+.names s_csamul_cla16_fa6_12_and0 s_csamul_cla16_fa6_12_and1 s_csamul_cla16_fa6_12_or0
+1- 1
+-1 1
+.names a[7] b[12] s_csamul_cla16_and7_12
+11 1
+.names s_csamul_cla16_and7_12 s_csamul_cla16_fa8_11_xor1 s_csamul_cla16_fa7_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_12 s_csamul_cla16_fa8_11_xor1 s_csamul_cla16_fa7_12_and0
+11 1
+.names s_csamul_cla16_fa7_12_xor0 s_csamul_cla16_fa7_11_or0 s_csamul_cla16_fa7_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_12_xor0 s_csamul_cla16_fa7_11_or0 s_csamul_cla16_fa7_12_and1
+11 1
+.names s_csamul_cla16_fa7_12_and0 s_csamul_cla16_fa7_12_and1 s_csamul_cla16_fa7_12_or0
+1- 1
+-1 1
+.names a[8] b[12] s_csamul_cla16_and8_12
+11 1
+.names s_csamul_cla16_and8_12 s_csamul_cla16_fa9_11_xor1 s_csamul_cla16_fa8_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_12 s_csamul_cla16_fa9_11_xor1 s_csamul_cla16_fa8_12_and0
+11 1
+.names s_csamul_cla16_fa8_12_xor0 s_csamul_cla16_fa8_11_or0 s_csamul_cla16_fa8_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_12_xor0 s_csamul_cla16_fa8_11_or0 s_csamul_cla16_fa8_12_and1
+11 1
+.names s_csamul_cla16_fa8_12_and0 s_csamul_cla16_fa8_12_and1 s_csamul_cla16_fa8_12_or0
+1- 1
+-1 1
+.names a[9] b[12] s_csamul_cla16_and9_12
+11 1
+.names s_csamul_cla16_and9_12 s_csamul_cla16_fa10_11_xor1 s_csamul_cla16_fa9_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_12 s_csamul_cla16_fa10_11_xor1 s_csamul_cla16_fa9_12_and0
+11 1
+.names s_csamul_cla16_fa9_12_xor0 s_csamul_cla16_fa9_11_or0 s_csamul_cla16_fa9_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_12_xor0 s_csamul_cla16_fa9_11_or0 s_csamul_cla16_fa9_12_and1
+11 1
+.names s_csamul_cla16_fa9_12_and0 s_csamul_cla16_fa9_12_and1 s_csamul_cla16_fa9_12_or0
+1- 1
+-1 1
+.names a[10] b[12] s_csamul_cla16_and10_12
+11 1
+.names s_csamul_cla16_and10_12 s_csamul_cla16_fa11_11_xor1 s_csamul_cla16_fa10_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_12 s_csamul_cla16_fa11_11_xor1 s_csamul_cla16_fa10_12_and0
+11 1
+.names s_csamul_cla16_fa10_12_xor0 s_csamul_cla16_fa10_11_or0 s_csamul_cla16_fa10_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_12_xor0 s_csamul_cla16_fa10_11_or0 s_csamul_cla16_fa10_12_and1
+11 1
+.names s_csamul_cla16_fa10_12_and0 s_csamul_cla16_fa10_12_and1 s_csamul_cla16_fa10_12_or0
+1- 1
+-1 1
+.names a[11] b[12] s_csamul_cla16_and11_12
+11 1
+.names s_csamul_cla16_and11_12 s_csamul_cla16_fa12_11_xor1 s_csamul_cla16_fa11_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_12 s_csamul_cla16_fa12_11_xor1 s_csamul_cla16_fa11_12_and0
+11 1
+.names s_csamul_cla16_fa11_12_xor0 s_csamul_cla16_fa11_11_or0 s_csamul_cla16_fa11_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_12_xor0 s_csamul_cla16_fa11_11_or0 s_csamul_cla16_fa11_12_and1
+11 1
+.names s_csamul_cla16_fa11_12_and0 s_csamul_cla16_fa11_12_and1 s_csamul_cla16_fa11_12_or0
+1- 1
+-1 1
+.names a[12] b[12] s_csamul_cla16_and12_12
+11 1
+.names s_csamul_cla16_and12_12 s_csamul_cla16_fa13_11_xor1 s_csamul_cla16_fa12_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_12 s_csamul_cla16_fa13_11_xor1 s_csamul_cla16_fa12_12_and0
+11 1
+.names s_csamul_cla16_fa12_12_xor0 s_csamul_cla16_fa12_11_or0 s_csamul_cla16_fa12_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_12_xor0 s_csamul_cla16_fa12_11_or0 s_csamul_cla16_fa12_12_and1
+11 1
+.names s_csamul_cla16_fa12_12_and0 s_csamul_cla16_fa12_12_and1 s_csamul_cla16_fa12_12_or0
+1- 1
+-1 1
+.names a[13] b[12] s_csamul_cla16_and13_12
+11 1
+.names s_csamul_cla16_and13_12 s_csamul_cla16_fa14_11_xor1 s_csamul_cla16_fa13_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_12 s_csamul_cla16_fa14_11_xor1 s_csamul_cla16_fa13_12_and0
+11 1
+.names s_csamul_cla16_fa13_12_xor0 s_csamul_cla16_fa13_11_or0 s_csamul_cla16_fa13_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_12_xor0 s_csamul_cla16_fa13_11_or0 s_csamul_cla16_fa13_12_and1
+11 1
+.names s_csamul_cla16_fa13_12_and0 s_csamul_cla16_fa13_12_and1 s_csamul_cla16_fa13_12_or0
+1- 1
+-1 1
+.names a[14] b[12] s_csamul_cla16_and14_12
+11 1
+.names s_csamul_cla16_and14_12 s_csamul_cla16_ha15_11_xor0 s_csamul_cla16_fa14_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_12 s_csamul_cla16_ha15_11_xor0 s_csamul_cla16_fa14_12_and0
+11 1
+.names s_csamul_cla16_fa14_12_xor0 s_csamul_cla16_fa14_11_or0 s_csamul_cla16_fa14_12_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_12_xor0 s_csamul_cla16_fa14_11_or0 s_csamul_cla16_fa14_12_and1
+11 1
+.names s_csamul_cla16_fa14_12_and0 s_csamul_cla16_fa14_12_and1 s_csamul_cla16_fa14_12_or0
+1- 1
+-1 1
+.names a[15] b[12] s_csamul_cla16_nand15_12
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_12 s_csamul_cla16_ha15_11_and0 s_csamul_cla16_ha15_12_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_12 s_csamul_cla16_ha15_11_and0 s_csamul_cla16_ha15_12_and0
+11 1
+.names a[0] b[13] s_csamul_cla16_and0_13
+11 1
+.names s_csamul_cla16_and0_13 s_csamul_cla16_fa1_12_xor1 s_csamul_cla16_fa0_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_13 s_csamul_cla16_fa1_12_xor1 s_csamul_cla16_fa0_13_and0
+11 1
+.names s_csamul_cla16_fa0_13_xor0 s_csamul_cla16_fa0_12_or0 s_csamul_cla16_fa0_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_13_xor0 s_csamul_cla16_fa0_12_or0 s_csamul_cla16_fa0_13_and1
+11 1
+.names s_csamul_cla16_fa0_13_and0 s_csamul_cla16_fa0_13_and1 s_csamul_cla16_fa0_13_or0
+1- 1
+-1 1
+.names a[1] b[13] s_csamul_cla16_and1_13
+11 1
+.names s_csamul_cla16_and1_13 s_csamul_cla16_fa2_12_xor1 s_csamul_cla16_fa1_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_13 s_csamul_cla16_fa2_12_xor1 s_csamul_cla16_fa1_13_and0
+11 1
+.names s_csamul_cla16_fa1_13_xor0 s_csamul_cla16_fa1_12_or0 s_csamul_cla16_fa1_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_13_xor0 s_csamul_cla16_fa1_12_or0 s_csamul_cla16_fa1_13_and1
+11 1
+.names s_csamul_cla16_fa1_13_and0 s_csamul_cla16_fa1_13_and1 s_csamul_cla16_fa1_13_or0
+1- 1
+-1 1
+.names a[2] b[13] s_csamul_cla16_and2_13
+11 1
+.names s_csamul_cla16_and2_13 s_csamul_cla16_fa3_12_xor1 s_csamul_cla16_fa2_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_13 s_csamul_cla16_fa3_12_xor1 s_csamul_cla16_fa2_13_and0
+11 1
+.names s_csamul_cla16_fa2_13_xor0 s_csamul_cla16_fa2_12_or0 s_csamul_cla16_fa2_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_13_xor0 s_csamul_cla16_fa2_12_or0 s_csamul_cla16_fa2_13_and1
+11 1
+.names s_csamul_cla16_fa2_13_and0 s_csamul_cla16_fa2_13_and1 s_csamul_cla16_fa2_13_or0
+1- 1
+-1 1
+.names a[3] b[13] s_csamul_cla16_and3_13
+11 1
+.names s_csamul_cla16_and3_13 s_csamul_cla16_fa4_12_xor1 s_csamul_cla16_fa3_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_13 s_csamul_cla16_fa4_12_xor1 s_csamul_cla16_fa3_13_and0
+11 1
+.names s_csamul_cla16_fa3_13_xor0 s_csamul_cla16_fa3_12_or0 s_csamul_cla16_fa3_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_13_xor0 s_csamul_cla16_fa3_12_or0 s_csamul_cla16_fa3_13_and1
+11 1
+.names s_csamul_cla16_fa3_13_and0 s_csamul_cla16_fa3_13_and1 s_csamul_cla16_fa3_13_or0
+1- 1
+-1 1
+.names a[4] b[13] s_csamul_cla16_and4_13
+11 1
+.names s_csamul_cla16_and4_13 s_csamul_cla16_fa5_12_xor1 s_csamul_cla16_fa4_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_13 s_csamul_cla16_fa5_12_xor1 s_csamul_cla16_fa4_13_and0
+11 1
+.names s_csamul_cla16_fa4_13_xor0 s_csamul_cla16_fa4_12_or0 s_csamul_cla16_fa4_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_13_xor0 s_csamul_cla16_fa4_12_or0 s_csamul_cla16_fa4_13_and1
+11 1
+.names s_csamul_cla16_fa4_13_and0 s_csamul_cla16_fa4_13_and1 s_csamul_cla16_fa4_13_or0
+1- 1
+-1 1
+.names a[5] b[13] s_csamul_cla16_and5_13
+11 1
+.names s_csamul_cla16_and5_13 s_csamul_cla16_fa6_12_xor1 s_csamul_cla16_fa5_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_13 s_csamul_cla16_fa6_12_xor1 s_csamul_cla16_fa5_13_and0
+11 1
+.names s_csamul_cla16_fa5_13_xor0 s_csamul_cla16_fa5_12_or0 s_csamul_cla16_fa5_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_13_xor0 s_csamul_cla16_fa5_12_or0 s_csamul_cla16_fa5_13_and1
+11 1
+.names s_csamul_cla16_fa5_13_and0 s_csamul_cla16_fa5_13_and1 s_csamul_cla16_fa5_13_or0
+1- 1
+-1 1
+.names a[6] b[13] s_csamul_cla16_and6_13
+11 1
+.names s_csamul_cla16_and6_13 s_csamul_cla16_fa7_12_xor1 s_csamul_cla16_fa6_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_13 s_csamul_cla16_fa7_12_xor1 s_csamul_cla16_fa6_13_and0
+11 1
+.names s_csamul_cla16_fa6_13_xor0 s_csamul_cla16_fa6_12_or0 s_csamul_cla16_fa6_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_13_xor0 s_csamul_cla16_fa6_12_or0 s_csamul_cla16_fa6_13_and1
+11 1
+.names s_csamul_cla16_fa6_13_and0 s_csamul_cla16_fa6_13_and1 s_csamul_cla16_fa6_13_or0
+1- 1
+-1 1
+.names a[7] b[13] s_csamul_cla16_and7_13
+11 1
+.names s_csamul_cla16_and7_13 s_csamul_cla16_fa8_12_xor1 s_csamul_cla16_fa7_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_13 s_csamul_cla16_fa8_12_xor1 s_csamul_cla16_fa7_13_and0
+11 1
+.names s_csamul_cla16_fa7_13_xor0 s_csamul_cla16_fa7_12_or0 s_csamul_cla16_fa7_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_13_xor0 s_csamul_cla16_fa7_12_or0 s_csamul_cla16_fa7_13_and1
+11 1
+.names s_csamul_cla16_fa7_13_and0 s_csamul_cla16_fa7_13_and1 s_csamul_cla16_fa7_13_or0
+1- 1
+-1 1
+.names a[8] b[13] s_csamul_cla16_and8_13
+11 1
+.names s_csamul_cla16_and8_13 s_csamul_cla16_fa9_12_xor1 s_csamul_cla16_fa8_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_13 s_csamul_cla16_fa9_12_xor1 s_csamul_cla16_fa8_13_and0
+11 1
+.names s_csamul_cla16_fa8_13_xor0 s_csamul_cla16_fa8_12_or0 s_csamul_cla16_fa8_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_13_xor0 s_csamul_cla16_fa8_12_or0 s_csamul_cla16_fa8_13_and1
+11 1
+.names s_csamul_cla16_fa8_13_and0 s_csamul_cla16_fa8_13_and1 s_csamul_cla16_fa8_13_or0
+1- 1
+-1 1
+.names a[9] b[13] s_csamul_cla16_and9_13
+11 1
+.names s_csamul_cla16_and9_13 s_csamul_cla16_fa10_12_xor1 s_csamul_cla16_fa9_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_13 s_csamul_cla16_fa10_12_xor1 s_csamul_cla16_fa9_13_and0
+11 1
+.names s_csamul_cla16_fa9_13_xor0 s_csamul_cla16_fa9_12_or0 s_csamul_cla16_fa9_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_13_xor0 s_csamul_cla16_fa9_12_or0 s_csamul_cla16_fa9_13_and1
+11 1
+.names s_csamul_cla16_fa9_13_and0 s_csamul_cla16_fa9_13_and1 s_csamul_cla16_fa9_13_or0
+1- 1
+-1 1
+.names a[10] b[13] s_csamul_cla16_and10_13
+11 1
+.names s_csamul_cla16_and10_13 s_csamul_cla16_fa11_12_xor1 s_csamul_cla16_fa10_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_13 s_csamul_cla16_fa11_12_xor1 s_csamul_cla16_fa10_13_and0
+11 1
+.names s_csamul_cla16_fa10_13_xor0 s_csamul_cla16_fa10_12_or0 s_csamul_cla16_fa10_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_13_xor0 s_csamul_cla16_fa10_12_or0 s_csamul_cla16_fa10_13_and1
+11 1
+.names s_csamul_cla16_fa10_13_and0 s_csamul_cla16_fa10_13_and1 s_csamul_cla16_fa10_13_or0
+1- 1
+-1 1
+.names a[11] b[13] s_csamul_cla16_and11_13
+11 1
+.names s_csamul_cla16_and11_13 s_csamul_cla16_fa12_12_xor1 s_csamul_cla16_fa11_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_13 s_csamul_cla16_fa12_12_xor1 s_csamul_cla16_fa11_13_and0
+11 1
+.names s_csamul_cla16_fa11_13_xor0 s_csamul_cla16_fa11_12_or0 s_csamul_cla16_fa11_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_13_xor0 s_csamul_cla16_fa11_12_or0 s_csamul_cla16_fa11_13_and1
+11 1
+.names s_csamul_cla16_fa11_13_and0 s_csamul_cla16_fa11_13_and1 s_csamul_cla16_fa11_13_or0
+1- 1
+-1 1
+.names a[12] b[13] s_csamul_cla16_and12_13
+11 1
+.names s_csamul_cla16_and12_13 s_csamul_cla16_fa13_12_xor1 s_csamul_cla16_fa12_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_13 s_csamul_cla16_fa13_12_xor1 s_csamul_cla16_fa12_13_and0
+11 1
+.names s_csamul_cla16_fa12_13_xor0 s_csamul_cla16_fa12_12_or0 s_csamul_cla16_fa12_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_13_xor0 s_csamul_cla16_fa12_12_or0 s_csamul_cla16_fa12_13_and1
+11 1
+.names s_csamul_cla16_fa12_13_and0 s_csamul_cla16_fa12_13_and1 s_csamul_cla16_fa12_13_or0
+1- 1
+-1 1
+.names a[13] b[13] s_csamul_cla16_and13_13
+11 1
+.names s_csamul_cla16_and13_13 s_csamul_cla16_fa14_12_xor1 s_csamul_cla16_fa13_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_13 s_csamul_cla16_fa14_12_xor1 s_csamul_cla16_fa13_13_and0
+11 1
+.names s_csamul_cla16_fa13_13_xor0 s_csamul_cla16_fa13_12_or0 s_csamul_cla16_fa13_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_13_xor0 s_csamul_cla16_fa13_12_or0 s_csamul_cla16_fa13_13_and1
+11 1
+.names s_csamul_cla16_fa13_13_and0 s_csamul_cla16_fa13_13_and1 s_csamul_cla16_fa13_13_or0
+1- 1
+-1 1
+.names a[14] b[13] s_csamul_cla16_and14_13
+11 1
+.names s_csamul_cla16_and14_13 s_csamul_cla16_ha15_12_xor0 s_csamul_cla16_fa14_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_13 s_csamul_cla16_ha15_12_xor0 s_csamul_cla16_fa14_13_and0
+11 1
+.names s_csamul_cla16_fa14_13_xor0 s_csamul_cla16_fa14_12_or0 s_csamul_cla16_fa14_13_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_13_xor0 s_csamul_cla16_fa14_12_or0 s_csamul_cla16_fa14_13_and1
+11 1
+.names s_csamul_cla16_fa14_13_and0 s_csamul_cla16_fa14_13_and1 s_csamul_cla16_fa14_13_or0
+1- 1
+-1 1
+.names a[15] b[13] s_csamul_cla16_nand15_13
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_13 s_csamul_cla16_ha15_12_and0 s_csamul_cla16_ha15_13_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_13 s_csamul_cla16_ha15_12_and0 s_csamul_cla16_ha15_13_and0
+11 1
+.names a[0] b[14] s_csamul_cla16_and0_14
+11 1
+.names s_csamul_cla16_and0_14 s_csamul_cla16_fa1_13_xor1 s_csamul_cla16_fa0_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and0_14 s_csamul_cla16_fa1_13_xor1 s_csamul_cla16_fa0_14_and0
+11 1
+.names s_csamul_cla16_fa0_14_xor0 s_csamul_cla16_fa0_13_or0 s_csamul_cla16_fa0_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_14_xor0 s_csamul_cla16_fa0_13_or0 s_csamul_cla16_fa0_14_and1
+11 1
+.names s_csamul_cla16_fa0_14_and0 s_csamul_cla16_fa0_14_and1 s_csamul_cla16_fa0_14_or0
+1- 1
+-1 1
+.names a[1] b[14] s_csamul_cla16_and1_14
+11 1
+.names s_csamul_cla16_and1_14 s_csamul_cla16_fa2_13_xor1 s_csamul_cla16_fa1_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and1_14 s_csamul_cla16_fa2_13_xor1 s_csamul_cla16_fa1_14_and0
+11 1
+.names s_csamul_cla16_fa1_14_xor0 s_csamul_cla16_fa1_13_or0 s_csamul_cla16_fa1_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_14_xor0 s_csamul_cla16_fa1_13_or0 s_csamul_cla16_fa1_14_and1
+11 1
+.names s_csamul_cla16_fa1_14_and0 s_csamul_cla16_fa1_14_and1 s_csamul_cla16_fa1_14_or0
+1- 1
+-1 1
+.names a[2] b[14] s_csamul_cla16_and2_14
+11 1
+.names s_csamul_cla16_and2_14 s_csamul_cla16_fa3_13_xor1 s_csamul_cla16_fa2_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and2_14 s_csamul_cla16_fa3_13_xor1 s_csamul_cla16_fa2_14_and0
+11 1
+.names s_csamul_cla16_fa2_14_xor0 s_csamul_cla16_fa2_13_or0 s_csamul_cla16_fa2_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_14_xor0 s_csamul_cla16_fa2_13_or0 s_csamul_cla16_fa2_14_and1
+11 1
+.names s_csamul_cla16_fa2_14_and0 s_csamul_cla16_fa2_14_and1 s_csamul_cla16_fa2_14_or0
+1- 1
+-1 1
+.names a[3] b[14] s_csamul_cla16_and3_14
+11 1
+.names s_csamul_cla16_and3_14 s_csamul_cla16_fa4_13_xor1 s_csamul_cla16_fa3_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and3_14 s_csamul_cla16_fa4_13_xor1 s_csamul_cla16_fa3_14_and0
+11 1
+.names s_csamul_cla16_fa3_14_xor0 s_csamul_cla16_fa3_13_or0 s_csamul_cla16_fa3_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_14_xor0 s_csamul_cla16_fa3_13_or0 s_csamul_cla16_fa3_14_and1
+11 1
+.names s_csamul_cla16_fa3_14_and0 s_csamul_cla16_fa3_14_and1 s_csamul_cla16_fa3_14_or0
+1- 1
+-1 1
+.names a[4] b[14] s_csamul_cla16_and4_14
+11 1
+.names s_csamul_cla16_and4_14 s_csamul_cla16_fa5_13_xor1 s_csamul_cla16_fa4_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and4_14 s_csamul_cla16_fa5_13_xor1 s_csamul_cla16_fa4_14_and0
+11 1
+.names s_csamul_cla16_fa4_14_xor0 s_csamul_cla16_fa4_13_or0 s_csamul_cla16_fa4_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_14_xor0 s_csamul_cla16_fa4_13_or0 s_csamul_cla16_fa4_14_and1
+11 1
+.names s_csamul_cla16_fa4_14_and0 s_csamul_cla16_fa4_14_and1 s_csamul_cla16_fa4_14_or0
+1- 1
+-1 1
+.names a[5] b[14] s_csamul_cla16_and5_14
+11 1
+.names s_csamul_cla16_and5_14 s_csamul_cla16_fa6_13_xor1 s_csamul_cla16_fa5_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and5_14 s_csamul_cla16_fa6_13_xor1 s_csamul_cla16_fa5_14_and0
+11 1
+.names s_csamul_cla16_fa5_14_xor0 s_csamul_cla16_fa5_13_or0 s_csamul_cla16_fa5_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_14_xor0 s_csamul_cla16_fa5_13_or0 s_csamul_cla16_fa5_14_and1
+11 1
+.names s_csamul_cla16_fa5_14_and0 s_csamul_cla16_fa5_14_and1 s_csamul_cla16_fa5_14_or0
+1- 1
+-1 1
+.names a[6] b[14] s_csamul_cla16_and6_14
+11 1
+.names s_csamul_cla16_and6_14 s_csamul_cla16_fa7_13_xor1 s_csamul_cla16_fa6_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and6_14 s_csamul_cla16_fa7_13_xor1 s_csamul_cla16_fa6_14_and0
+11 1
+.names s_csamul_cla16_fa6_14_xor0 s_csamul_cla16_fa6_13_or0 s_csamul_cla16_fa6_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_14_xor0 s_csamul_cla16_fa6_13_or0 s_csamul_cla16_fa6_14_and1
+11 1
+.names s_csamul_cla16_fa6_14_and0 s_csamul_cla16_fa6_14_and1 s_csamul_cla16_fa6_14_or0
+1- 1
+-1 1
+.names a[7] b[14] s_csamul_cla16_and7_14
+11 1
+.names s_csamul_cla16_and7_14 s_csamul_cla16_fa8_13_xor1 s_csamul_cla16_fa7_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and7_14 s_csamul_cla16_fa8_13_xor1 s_csamul_cla16_fa7_14_and0
+11 1
+.names s_csamul_cla16_fa7_14_xor0 s_csamul_cla16_fa7_13_or0 s_csamul_cla16_fa7_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_14_xor0 s_csamul_cla16_fa7_13_or0 s_csamul_cla16_fa7_14_and1
+11 1
+.names s_csamul_cla16_fa7_14_and0 s_csamul_cla16_fa7_14_and1 s_csamul_cla16_fa7_14_or0
+1- 1
+-1 1
+.names a[8] b[14] s_csamul_cla16_and8_14
+11 1
+.names s_csamul_cla16_and8_14 s_csamul_cla16_fa9_13_xor1 s_csamul_cla16_fa8_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and8_14 s_csamul_cla16_fa9_13_xor1 s_csamul_cla16_fa8_14_and0
+11 1
+.names s_csamul_cla16_fa8_14_xor0 s_csamul_cla16_fa8_13_or0 s_csamul_cla16_fa8_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_14_xor0 s_csamul_cla16_fa8_13_or0 s_csamul_cla16_fa8_14_and1
+11 1
+.names s_csamul_cla16_fa8_14_and0 s_csamul_cla16_fa8_14_and1 s_csamul_cla16_fa8_14_or0
+1- 1
+-1 1
+.names a[9] b[14] s_csamul_cla16_and9_14
+11 1
+.names s_csamul_cla16_and9_14 s_csamul_cla16_fa10_13_xor1 s_csamul_cla16_fa9_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and9_14 s_csamul_cla16_fa10_13_xor1 s_csamul_cla16_fa9_14_and0
+11 1
+.names s_csamul_cla16_fa9_14_xor0 s_csamul_cla16_fa9_13_or0 s_csamul_cla16_fa9_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_14_xor0 s_csamul_cla16_fa9_13_or0 s_csamul_cla16_fa9_14_and1
+11 1
+.names s_csamul_cla16_fa9_14_and0 s_csamul_cla16_fa9_14_and1 s_csamul_cla16_fa9_14_or0
+1- 1
+-1 1
+.names a[10] b[14] s_csamul_cla16_and10_14
+11 1
+.names s_csamul_cla16_and10_14 s_csamul_cla16_fa11_13_xor1 s_csamul_cla16_fa10_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and10_14 s_csamul_cla16_fa11_13_xor1 s_csamul_cla16_fa10_14_and0
+11 1
+.names s_csamul_cla16_fa10_14_xor0 s_csamul_cla16_fa10_13_or0 s_csamul_cla16_fa10_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_14_xor0 s_csamul_cla16_fa10_13_or0 s_csamul_cla16_fa10_14_and1
+11 1
+.names s_csamul_cla16_fa10_14_and0 s_csamul_cla16_fa10_14_and1 s_csamul_cla16_fa10_14_or0
+1- 1
+-1 1
+.names a[11] b[14] s_csamul_cla16_and11_14
+11 1
+.names s_csamul_cla16_and11_14 s_csamul_cla16_fa12_13_xor1 s_csamul_cla16_fa11_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and11_14 s_csamul_cla16_fa12_13_xor1 s_csamul_cla16_fa11_14_and0
+11 1
+.names s_csamul_cla16_fa11_14_xor0 s_csamul_cla16_fa11_13_or0 s_csamul_cla16_fa11_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_14_xor0 s_csamul_cla16_fa11_13_or0 s_csamul_cla16_fa11_14_and1
+11 1
+.names s_csamul_cla16_fa11_14_and0 s_csamul_cla16_fa11_14_and1 s_csamul_cla16_fa11_14_or0
+1- 1
+-1 1
+.names a[12] b[14] s_csamul_cla16_and12_14
+11 1
+.names s_csamul_cla16_and12_14 s_csamul_cla16_fa13_13_xor1 s_csamul_cla16_fa12_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and12_14 s_csamul_cla16_fa13_13_xor1 s_csamul_cla16_fa12_14_and0
+11 1
+.names s_csamul_cla16_fa12_14_xor0 s_csamul_cla16_fa12_13_or0 s_csamul_cla16_fa12_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_14_xor0 s_csamul_cla16_fa12_13_or0 s_csamul_cla16_fa12_14_and1
+11 1
+.names s_csamul_cla16_fa12_14_and0 s_csamul_cla16_fa12_14_and1 s_csamul_cla16_fa12_14_or0
+1- 1
+-1 1
+.names a[13] b[14] s_csamul_cla16_and13_14
+11 1
+.names s_csamul_cla16_and13_14 s_csamul_cla16_fa14_13_xor1 s_csamul_cla16_fa13_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and13_14 s_csamul_cla16_fa14_13_xor1 s_csamul_cla16_fa13_14_and0
+11 1
+.names s_csamul_cla16_fa13_14_xor0 s_csamul_cla16_fa13_13_or0 s_csamul_cla16_fa13_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_14_xor0 s_csamul_cla16_fa13_13_or0 s_csamul_cla16_fa13_14_and1
+11 1
+.names s_csamul_cla16_fa13_14_and0 s_csamul_cla16_fa13_14_and1 s_csamul_cla16_fa13_14_or0
+1- 1
+-1 1
+.names a[14] b[14] s_csamul_cla16_and14_14
+11 1
+.names s_csamul_cla16_and14_14 s_csamul_cla16_ha15_13_xor0 s_csamul_cla16_fa14_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_and14_14 s_csamul_cla16_ha15_13_xor0 s_csamul_cla16_fa14_14_and0
+11 1
+.names s_csamul_cla16_fa14_14_xor0 s_csamul_cla16_fa14_13_or0 s_csamul_cla16_fa14_14_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_14_xor0 s_csamul_cla16_fa14_13_or0 s_csamul_cla16_fa14_14_and1
+11 1
+.names s_csamul_cla16_fa14_14_and0 s_csamul_cla16_fa14_14_and1 s_csamul_cla16_fa14_14_or0
+1- 1
+-1 1
+.names a[15] b[14] s_csamul_cla16_nand15_14
+0- 1
+-0 1
+.names s_csamul_cla16_nand15_14 s_csamul_cla16_ha15_13_and0 s_csamul_cla16_ha15_14_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand15_14 s_csamul_cla16_ha15_13_and0 s_csamul_cla16_ha15_14_and0
+11 1
+.names a[0] b[15] s_csamul_cla16_nand0_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand0_15 s_csamul_cla16_fa1_14_xor1 s_csamul_cla16_fa0_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand0_15 s_csamul_cla16_fa1_14_xor1 s_csamul_cla16_fa0_15_and0
+11 1
+.names s_csamul_cla16_fa0_15_xor0 s_csamul_cla16_fa0_14_or0 s_csamul_cla16_fa0_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa0_15_xor0 s_csamul_cla16_fa0_14_or0 s_csamul_cla16_fa0_15_and1
+11 1
+.names s_csamul_cla16_fa0_15_and0 s_csamul_cla16_fa0_15_and1 s_csamul_cla16_fa0_15_or0
+1- 1
+-1 1
+.names a[1] b[15] s_csamul_cla16_nand1_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand1_15 s_csamul_cla16_fa2_14_xor1 s_csamul_cla16_fa1_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand1_15 s_csamul_cla16_fa2_14_xor1 s_csamul_cla16_fa1_15_and0
+11 1
+.names s_csamul_cla16_fa1_15_xor0 s_csamul_cla16_fa1_14_or0 s_csamul_cla16_fa1_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa1_15_xor0 s_csamul_cla16_fa1_14_or0 s_csamul_cla16_fa1_15_and1
+11 1
+.names s_csamul_cla16_fa1_15_and0 s_csamul_cla16_fa1_15_and1 s_csamul_cla16_fa1_15_or0
+1- 1
+-1 1
+.names a[2] b[15] s_csamul_cla16_nand2_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand2_15 s_csamul_cla16_fa3_14_xor1 s_csamul_cla16_fa2_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand2_15 s_csamul_cla16_fa3_14_xor1 s_csamul_cla16_fa2_15_and0
+11 1
+.names s_csamul_cla16_fa2_15_xor0 s_csamul_cla16_fa2_14_or0 s_csamul_cla16_fa2_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa2_15_xor0 s_csamul_cla16_fa2_14_or0 s_csamul_cla16_fa2_15_and1
+11 1
+.names s_csamul_cla16_fa2_15_and0 s_csamul_cla16_fa2_15_and1 s_csamul_cla16_fa2_15_or0
+1- 1
+-1 1
+.names a[3] b[15] s_csamul_cla16_nand3_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand3_15 s_csamul_cla16_fa4_14_xor1 s_csamul_cla16_fa3_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand3_15 s_csamul_cla16_fa4_14_xor1 s_csamul_cla16_fa3_15_and0
+11 1
+.names s_csamul_cla16_fa3_15_xor0 s_csamul_cla16_fa3_14_or0 s_csamul_cla16_fa3_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa3_15_xor0 s_csamul_cla16_fa3_14_or0 s_csamul_cla16_fa3_15_and1
+11 1
+.names s_csamul_cla16_fa3_15_and0 s_csamul_cla16_fa3_15_and1 s_csamul_cla16_fa3_15_or0
+1- 1
+-1 1
+.names a[4] b[15] s_csamul_cla16_nand4_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand4_15 s_csamul_cla16_fa5_14_xor1 s_csamul_cla16_fa4_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand4_15 s_csamul_cla16_fa5_14_xor1 s_csamul_cla16_fa4_15_and0
+11 1
+.names s_csamul_cla16_fa4_15_xor0 s_csamul_cla16_fa4_14_or0 s_csamul_cla16_fa4_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa4_15_xor0 s_csamul_cla16_fa4_14_or0 s_csamul_cla16_fa4_15_and1
+11 1
+.names s_csamul_cla16_fa4_15_and0 s_csamul_cla16_fa4_15_and1 s_csamul_cla16_fa4_15_or0
+1- 1
+-1 1
+.names a[5] b[15] s_csamul_cla16_nand5_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand5_15 s_csamul_cla16_fa6_14_xor1 s_csamul_cla16_fa5_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand5_15 s_csamul_cla16_fa6_14_xor1 s_csamul_cla16_fa5_15_and0
+11 1
+.names s_csamul_cla16_fa5_15_xor0 s_csamul_cla16_fa5_14_or0 s_csamul_cla16_fa5_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa5_15_xor0 s_csamul_cla16_fa5_14_or0 s_csamul_cla16_fa5_15_and1
+11 1
+.names s_csamul_cla16_fa5_15_and0 s_csamul_cla16_fa5_15_and1 s_csamul_cla16_fa5_15_or0
+1- 1
+-1 1
+.names a[6] b[15] s_csamul_cla16_nand6_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand6_15 s_csamul_cla16_fa7_14_xor1 s_csamul_cla16_fa6_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand6_15 s_csamul_cla16_fa7_14_xor1 s_csamul_cla16_fa6_15_and0
+11 1
+.names s_csamul_cla16_fa6_15_xor0 s_csamul_cla16_fa6_14_or0 s_csamul_cla16_fa6_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa6_15_xor0 s_csamul_cla16_fa6_14_or0 s_csamul_cla16_fa6_15_and1
+11 1
+.names s_csamul_cla16_fa6_15_and0 s_csamul_cla16_fa6_15_and1 s_csamul_cla16_fa6_15_or0
+1- 1
+-1 1
+.names a[7] b[15] s_csamul_cla16_nand7_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand7_15 s_csamul_cla16_fa8_14_xor1 s_csamul_cla16_fa7_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand7_15 s_csamul_cla16_fa8_14_xor1 s_csamul_cla16_fa7_15_and0
+11 1
+.names s_csamul_cla16_fa7_15_xor0 s_csamul_cla16_fa7_14_or0 s_csamul_cla16_fa7_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa7_15_xor0 s_csamul_cla16_fa7_14_or0 s_csamul_cla16_fa7_15_and1
+11 1
+.names s_csamul_cla16_fa7_15_and0 s_csamul_cla16_fa7_15_and1 s_csamul_cla16_fa7_15_or0
+1- 1
+-1 1
+.names a[8] b[15] s_csamul_cla16_nand8_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand8_15 s_csamul_cla16_fa9_14_xor1 s_csamul_cla16_fa8_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand8_15 s_csamul_cla16_fa9_14_xor1 s_csamul_cla16_fa8_15_and0
+11 1
+.names s_csamul_cla16_fa8_15_xor0 s_csamul_cla16_fa8_14_or0 s_csamul_cla16_fa8_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa8_15_xor0 s_csamul_cla16_fa8_14_or0 s_csamul_cla16_fa8_15_and1
+11 1
+.names s_csamul_cla16_fa8_15_and0 s_csamul_cla16_fa8_15_and1 s_csamul_cla16_fa8_15_or0
+1- 1
+-1 1
+.names a[9] b[15] s_csamul_cla16_nand9_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand9_15 s_csamul_cla16_fa10_14_xor1 s_csamul_cla16_fa9_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand9_15 s_csamul_cla16_fa10_14_xor1 s_csamul_cla16_fa9_15_and0
+11 1
+.names s_csamul_cla16_fa9_15_xor0 s_csamul_cla16_fa9_14_or0 s_csamul_cla16_fa9_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa9_15_xor0 s_csamul_cla16_fa9_14_or0 s_csamul_cla16_fa9_15_and1
+11 1
+.names s_csamul_cla16_fa9_15_and0 s_csamul_cla16_fa9_15_and1 s_csamul_cla16_fa9_15_or0
+1- 1
+-1 1
+.names a[10] b[15] s_csamul_cla16_nand10_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand10_15 s_csamul_cla16_fa11_14_xor1 s_csamul_cla16_fa10_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand10_15 s_csamul_cla16_fa11_14_xor1 s_csamul_cla16_fa10_15_and0
+11 1
+.names s_csamul_cla16_fa10_15_xor0 s_csamul_cla16_fa10_14_or0 s_csamul_cla16_fa10_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa10_15_xor0 s_csamul_cla16_fa10_14_or0 s_csamul_cla16_fa10_15_and1
+11 1
+.names s_csamul_cla16_fa10_15_and0 s_csamul_cla16_fa10_15_and1 s_csamul_cla16_fa10_15_or0
+1- 1
+-1 1
+.names a[11] b[15] s_csamul_cla16_nand11_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand11_15 s_csamul_cla16_fa12_14_xor1 s_csamul_cla16_fa11_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand11_15 s_csamul_cla16_fa12_14_xor1 s_csamul_cla16_fa11_15_and0
+11 1
+.names s_csamul_cla16_fa11_15_xor0 s_csamul_cla16_fa11_14_or0 s_csamul_cla16_fa11_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa11_15_xor0 s_csamul_cla16_fa11_14_or0 s_csamul_cla16_fa11_15_and1
+11 1
+.names s_csamul_cla16_fa11_15_and0 s_csamul_cla16_fa11_15_and1 s_csamul_cla16_fa11_15_or0
+1- 1
+-1 1
+.names a[12] b[15] s_csamul_cla16_nand12_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand12_15 s_csamul_cla16_fa13_14_xor1 s_csamul_cla16_fa12_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand12_15 s_csamul_cla16_fa13_14_xor1 s_csamul_cla16_fa12_15_and0
+11 1
+.names s_csamul_cla16_fa12_15_xor0 s_csamul_cla16_fa12_14_or0 s_csamul_cla16_fa12_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa12_15_xor0 s_csamul_cla16_fa12_14_or0 s_csamul_cla16_fa12_15_and1
+11 1
+.names s_csamul_cla16_fa12_15_and0 s_csamul_cla16_fa12_15_and1 s_csamul_cla16_fa12_15_or0
+1- 1
+-1 1
+.names a[13] b[15] s_csamul_cla16_nand13_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand13_15 s_csamul_cla16_fa14_14_xor1 s_csamul_cla16_fa13_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand13_15 s_csamul_cla16_fa14_14_xor1 s_csamul_cla16_fa13_15_and0
+11 1
+.names s_csamul_cla16_fa13_15_xor0 s_csamul_cla16_fa13_14_or0 s_csamul_cla16_fa13_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa13_15_xor0 s_csamul_cla16_fa13_14_or0 s_csamul_cla16_fa13_15_and1
+11 1
+.names s_csamul_cla16_fa13_15_and0 s_csamul_cla16_fa13_15_and1 s_csamul_cla16_fa13_15_or0
+1- 1
+-1 1
+.names a[14] b[15] s_csamul_cla16_nand14_15
+0- 1
+-0 1
+.names s_csamul_cla16_nand14_15 s_csamul_cla16_ha15_14_xor0 s_csamul_cla16_fa14_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_nand14_15 s_csamul_cla16_ha15_14_xor0 s_csamul_cla16_fa14_15_and0
+11 1
+.names s_csamul_cla16_fa14_15_xor0 s_csamul_cla16_fa14_14_or0 s_csamul_cla16_fa14_15_xor1
+01 1
+10 1
+.names s_csamul_cla16_fa14_15_xor0 s_csamul_cla16_fa14_14_or0 s_csamul_cla16_fa14_15_and1
+11 1
+.names s_csamul_cla16_fa14_15_and0 s_csamul_cla16_fa14_15_and1 s_csamul_cla16_fa14_15_or0
+1- 1
+-1 1
+.names a[15] b[15] s_csamul_cla16_and15_15
+11 1
+.names s_csamul_cla16_and15_15 s_csamul_cla16_ha15_14_and0 s_csamul_cla16_ha15_15_xor0
+01 1
+10 1
+.names s_csamul_cla16_and15_15 s_csamul_cla16_ha15_14_and0 s_csamul_cla16_ha15_15_and0
+11 1
+.names s_csamul_cla16_fa1_15_xor1 s_csamul_cla16_fa0_15_or0 s_csamul_cla16_u_cla16_pg_logic0_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa1_15_xor1 s_csamul_cla16_fa0_15_or0 s_csamul_cla16_u_cla16_pg_logic0_and0
+11 1
+.names s_csamul_cla16_fa1_15_xor1 s_csamul_cla16_fa0_15_or0 s_csamul_cla16_u_cla16_pg_logic0_xor0
+01 1
+10 1
+.names s_csamul_cla16_fa2_15_xor1 s_csamul_cla16_fa1_15_or0 s_csamul_cla16_u_cla16_pg_logic1_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa2_15_xor1 s_csamul_cla16_fa1_15_or0 s_csamul_cla16_u_cla16_pg_logic1_and0
+11 1
+.names s_csamul_cla16_fa2_15_xor1 s_csamul_cla16_fa1_15_or0 s_csamul_cla16_u_cla16_pg_logic1_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic1_xor0 s_csamul_cla16_u_cla16_pg_logic0_and0 s_csamul_cla16_u_cla16_xor1
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic0_and0 s_csamul_cla16_u_cla16_pg_logic1_or0 s_csamul_cla16_u_cla16_and0
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic1_and0 s_csamul_cla16_u_cla16_and0 s_csamul_cla16_u_cla16_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa3_15_xor1 s_csamul_cla16_fa2_15_or0 s_csamul_cla16_u_cla16_pg_logic2_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa3_15_xor1 s_csamul_cla16_fa2_15_or0 s_csamul_cla16_u_cla16_pg_logic2_and0
+11 1
+.names s_csamul_cla16_fa3_15_xor1 s_csamul_cla16_fa2_15_or0 s_csamul_cla16_u_cla16_pg_logic2_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic2_xor0 s_csamul_cla16_u_cla16_or0 s_csamul_cla16_u_cla16_xor2
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic2_or0 s_csamul_cla16_u_cla16_pg_logic0_or0 s_csamul_cla16_u_cla16_and1
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic0_and0 s_csamul_cla16_u_cla16_pg_logic2_or0 s_csamul_cla16_u_cla16_and2
+11 1
+.names s_csamul_cla16_u_cla16_and2 s_csamul_cla16_u_cla16_pg_logic1_or0 s_csamul_cla16_u_cla16_and3
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic1_and0 s_csamul_cla16_u_cla16_pg_logic2_or0 s_csamul_cla16_u_cla16_and4
+11 1
+.names s_csamul_cla16_u_cla16_and3 s_csamul_cla16_u_cla16_and4 s_csamul_cla16_u_cla16_or1
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic2_and0 s_csamul_cla16_u_cla16_or1 s_csamul_cla16_u_cla16_or2
+1- 1
+-1 1
+.names s_csamul_cla16_fa4_15_xor1 s_csamul_cla16_fa3_15_or0 s_csamul_cla16_u_cla16_pg_logic3_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa4_15_xor1 s_csamul_cla16_fa3_15_or0 s_csamul_cla16_u_cla16_pg_logic3_and0
+11 1
+.names s_csamul_cla16_fa4_15_xor1 s_csamul_cla16_fa3_15_or0 s_csamul_cla16_u_cla16_pg_logic3_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic3_xor0 s_csamul_cla16_u_cla16_or2 s_csamul_cla16_u_cla16_xor3
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic3_or0 s_csamul_cla16_u_cla16_pg_logic1_or0 s_csamul_cla16_u_cla16_and5
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic0_and0 s_csamul_cla16_u_cla16_pg_logic2_or0 s_csamul_cla16_u_cla16_and6
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic3_or0 s_csamul_cla16_u_cla16_pg_logic1_or0 s_csamul_cla16_u_cla16_and7
+11 1
+.names s_csamul_cla16_u_cla16_and6 s_csamul_cla16_u_cla16_and7 s_csamul_cla16_u_cla16_and8
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic1_and0 s_csamul_cla16_u_cla16_pg_logic3_or0 s_csamul_cla16_u_cla16_and9
+11 1
+.names s_csamul_cla16_u_cla16_and9 s_csamul_cla16_u_cla16_pg_logic2_or0 s_csamul_cla16_u_cla16_and10
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic2_and0 s_csamul_cla16_u_cla16_pg_logic3_or0 s_csamul_cla16_u_cla16_and11
+11 1
+.names s_csamul_cla16_u_cla16_and8 s_csamul_cla16_u_cla16_and11 s_csamul_cla16_u_cla16_or3
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_and10 s_csamul_cla16_u_cla16_or3 s_csamul_cla16_u_cla16_or4
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic3_and0 s_csamul_cla16_u_cla16_or4 s_csamul_cla16_u_cla16_or5
+1- 1
+-1 1
+.names s_csamul_cla16_fa5_15_xor1 s_csamul_cla16_fa4_15_or0 s_csamul_cla16_u_cla16_pg_logic4_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa5_15_xor1 s_csamul_cla16_fa4_15_or0 s_csamul_cla16_u_cla16_pg_logic4_and0
+11 1
+.names s_csamul_cla16_fa5_15_xor1 s_csamul_cla16_fa4_15_or0 s_csamul_cla16_u_cla16_pg_logic4_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic4_xor0 s_csamul_cla16_u_cla16_or5 s_csamul_cla16_u_cla16_xor4
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or5 s_csamul_cla16_u_cla16_pg_logic4_or0 s_csamul_cla16_u_cla16_and12
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic4_and0 s_csamul_cla16_u_cla16_and12 s_csamul_cla16_u_cla16_or6
+1- 1
+-1 1
+.names s_csamul_cla16_fa6_15_xor1 s_csamul_cla16_fa5_15_or0 s_csamul_cla16_u_cla16_pg_logic5_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa6_15_xor1 s_csamul_cla16_fa5_15_or0 s_csamul_cla16_u_cla16_pg_logic5_and0
+11 1
+.names s_csamul_cla16_fa6_15_xor1 s_csamul_cla16_fa5_15_or0 s_csamul_cla16_u_cla16_pg_logic5_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic5_xor0 s_csamul_cla16_u_cla16_or6 s_csamul_cla16_u_cla16_xor5
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or5 s_csamul_cla16_u_cla16_pg_logic5_or0 s_csamul_cla16_u_cla16_and13
+11 1
+.names s_csamul_cla16_u_cla16_and13 s_csamul_cla16_u_cla16_pg_logic4_or0 s_csamul_cla16_u_cla16_and14
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic4_and0 s_csamul_cla16_u_cla16_pg_logic5_or0 s_csamul_cla16_u_cla16_and15
+11 1
+.names s_csamul_cla16_u_cla16_and14 s_csamul_cla16_u_cla16_and15 s_csamul_cla16_u_cla16_or7
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic5_and0 s_csamul_cla16_u_cla16_or7 s_csamul_cla16_u_cla16_or8
+1- 1
+-1 1
+.names s_csamul_cla16_fa7_15_xor1 s_csamul_cla16_fa6_15_or0 s_csamul_cla16_u_cla16_pg_logic6_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa7_15_xor1 s_csamul_cla16_fa6_15_or0 s_csamul_cla16_u_cla16_pg_logic6_and0
+11 1
+.names s_csamul_cla16_fa7_15_xor1 s_csamul_cla16_fa6_15_or0 s_csamul_cla16_u_cla16_pg_logic6_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic6_xor0 s_csamul_cla16_u_cla16_or8 s_csamul_cla16_u_cla16_xor6
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or5 s_csamul_cla16_u_cla16_pg_logic5_or0 s_csamul_cla16_u_cla16_and16
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic6_or0 s_csamul_cla16_u_cla16_pg_logic4_or0 s_csamul_cla16_u_cla16_and17
+11 1
+.names s_csamul_cla16_u_cla16_and16 s_csamul_cla16_u_cla16_and17 s_csamul_cla16_u_cla16_and18
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic4_and0 s_csamul_cla16_u_cla16_pg_logic6_or0 s_csamul_cla16_u_cla16_and19
+11 1
+.names s_csamul_cla16_u_cla16_and19 s_csamul_cla16_u_cla16_pg_logic5_or0 s_csamul_cla16_u_cla16_and20
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic5_and0 s_csamul_cla16_u_cla16_pg_logic6_or0 s_csamul_cla16_u_cla16_and21
+11 1
+.names s_csamul_cla16_u_cla16_and18 s_csamul_cla16_u_cla16_and20 s_csamul_cla16_u_cla16_or9
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_or9 s_csamul_cla16_u_cla16_and21 s_csamul_cla16_u_cla16_or10
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic6_and0 s_csamul_cla16_u_cla16_or10 s_csamul_cla16_u_cla16_or11
+1- 1
+-1 1
+.names s_csamul_cla16_fa8_15_xor1 s_csamul_cla16_fa7_15_or0 s_csamul_cla16_u_cla16_pg_logic7_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa8_15_xor1 s_csamul_cla16_fa7_15_or0 s_csamul_cla16_u_cla16_pg_logic7_and0
+11 1
+.names s_csamul_cla16_fa8_15_xor1 s_csamul_cla16_fa7_15_or0 s_csamul_cla16_u_cla16_pg_logic7_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic7_xor0 s_csamul_cla16_u_cla16_or11 s_csamul_cla16_u_cla16_xor7
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or5 s_csamul_cla16_u_cla16_pg_logic6_or0 s_csamul_cla16_u_cla16_and22
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic7_or0 s_csamul_cla16_u_cla16_pg_logic5_or0 s_csamul_cla16_u_cla16_and23
+11 1
+.names s_csamul_cla16_u_cla16_and22 s_csamul_cla16_u_cla16_and23 s_csamul_cla16_u_cla16_and24
+11 1
+.names s_csamul_cla16_u_cla16_and24 s_csamul_cla16_u_cla16_pg_logic4_or0 s_csamul_cla16_u_cla16_and25
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic4_and0 s_csamul_cla16_u_cla16_pg_logic6_or0 s_csamul_cla16_u_cla16_and26
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic7_or0 s_csamul_cla16_u_cla16_pg_logic5_or0 s_csamul_cla16_u_cla16_and27
+11 1
+.names s_csamul_cla16_u_cla16_and26 s_csamul_cla16_u_cla16_and27 s_csamul_cla16_u_cla16_and28
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic5_and0 s_csamul_cla16_u_cla16_pg_logic7_or0 s_csamul_cla16_u_cla16_and29
+11 1
+.names s_csamul_cla16_u_cla16_and29 s_csamul_cla16_u_cla16_pg_logic6_or0 s_csamul_cla16_u_cla16_and30
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic6_and0 s_csamul_cla16_u_cla16_pg_logic7_or0 s_csamul_cla16_u_cla16_and31
+11 1
+.names s_csamul_cla16_u_cla16_and25 s_csamul_cla16_u_cla16_and30 s_csamul_cla16_u_cla16_or12
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_and28 s_csamul_cla16_u_cla16_and31 s_csamul_cla16_u_cla16_or13
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_or12 s_csamul_cla16_u_cla16_or13 s_csamul_cla16_u_cla16_or14
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic7_and0 s_csamul_cla16_u_cla16_or14 s_csamul_cla16_u_cla16_or15
+1- 1
+-1 1
+.names s_csamul_cla16_fa9_15_xor1 s_csamul_cla16_fa8_15_or0 s_csamul_cla16_u_cla16_pg_logic8_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa9_15_xor1 s_csamul_cla16_fa8_15_or0 s_csamul_cla16_u_cla16_pg_logic8_and0
+11 1
+.names s_csamul_cla16_fa9_15_xor1 s_csamul_cla16_fa8_15_or0 s_csamul_cla16_u_cla16_pg_logic8_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic8_xor0 s_csamul_cla16_u_cla16_or15 s_csamul_cla16_u_cla16_xor8
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or15 s_csamul_cla16_u_cla16_pg_logic8_or0 s_csamul_cla16_u_cla16_and32
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic8_and0 s_csamul_cla16_u_cla16_and32 s_csamul_cla16_u_cla16_or16
+1- 1
+-1 1
+.names s_csamul_cla16_fa10_15_xor1 s_csamul_cla16_fa9_15_or0 s_csamul_cla16_u_cla16_pg_logic9_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa10_15_xor1 s_csamul_cla16_fa9_15_or0 s_csamul_cla16_u_cla16_pg_logic9_and0
+11 1
+.names s_csamul_cla16_fa10_15_xor1 s_csamul_cla16_fa9_15_or0 s_csamul_cla16_u_cla16_pg_logic9_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic9_xor0 s_csamul_cla16_u_cla16_or16 s_csamul_cla16_u_cla16_xor9
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or15 s_csamul_cla16_u_cla16_pg_logic9_or0 s_csamul_cla16_u_cla16_and33
+11 1
+.names s_csamul_cla16_u_cla16_and33 s_csamul_cla16_u_cla16_pg_logic8_or0 s_csamul_cla16_u_cla16_and34
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic8_and0 s_csamul_cla16_u_cla16_pg_logic9_or0 s_csamul_cla16_u_cla16_and35
+11 1
+.names s_csamul_cla16_u_cla16_and34 s_csamul_cla16_u_cla16_and35 s_csamul_cla16_u_cla16_or17
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic9_and0 s_csamul_cla16_u_cla16_or17 s_csamul_cla16_u_cla16_or18
+1- 1
+-1 1
+.names s_csamul_cla16_fa11_15_xor1 s_csamul_cla16_fa10_15_or0 s_csamul_cla16_u_cla16_pg_logic10_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa11_15_xor1 s_csamul_cla16_fa10_15_or0 s_csamul_cla16_u_cla16_pg_logic10_and0
+11 1
+.names s_csamul_cla16_fa11_15_xor1 s_csamul_cla16_fa10_15_or0 s_csamul_cla16_u_cla16_pg_logic10_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic10_xor0 s_csamul_cla16_u_cla16_or18 s_csamul_cla16_u_cla16_xor10
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or15 s_csamul_cla16_u_cla16_pg_logic9_or0 s_csamul_cla16_u_cla16_and36
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic10_or0 s_csamul_cla16_u_cla16_pg_logic8_or0 s_csamul_cla16_u_cla16_and37
+11 1
+.names s_csamul_cla16_u_cla16_and36 s_csamul_cla16_u_cla16_and37 s_csamul_cla16_u_cla16_and38
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic8_and0 s_csamul_cla16_u_cla16_pg_logic10_or0 s_csamul_cla16_u_cla16_and39
+11 1
+.names s_csamul_cla16_u_cla16_and39 s_csamul_cla16_u_cla16_pg_logic9_or0 s_csamul_cla16_u_cla16_and40
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic9_and0 s_csamul_cla16_u_cla16_pg_logic10_or0 s_csamul_cla16_u_cla16_and41
+11 1
+.names s_csamul_cla16_u_cla16_and38 s_csamul_cla16_u_cla16_and40 s_csamul_cla16_u_cla16_or19
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_or19 s_csamul_cla16_u_cla16_and41 s_csamul_cla16_u_cla16_or20
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic10_and0 s_csamul_cla16_u_cla16_or20 s_csamul_cla16_u_cla16_or21
+1- 1
+-1 1
+.names s_csamul_cla16_fa12_15_xor1 s_csamul_cla16_fa11_15_or0 s_csamul_cla16_u_cla16_pg_logic11_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa12_15_xor1 s_csamul_cla16_fa11_15_or0 s_csamul_cla16_u_cla16_pg_logic11_and0
+11 1
+.names s_csamul_cla16_fa12_15_xor1 s_csamul_cla16_fa11_15_or0 s_csamul_cla16_u_cla16_pg_logic11_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic11_xor0 s_csamul_cla16_u_cla16_or21 s_csamul_cla16_u_cla16_xor11
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or15 s_csamul_cla16_u_cla16_pg_logic10_or0 s_csamul_cla16_u_cla16_and42
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic11_or0 s_csamul_cla16_u_cla16_pg_logic9_or0 s_csamul_cla16_u_cla16_and43
+11 1
+.names s_csamul_cla16_u_cla16_and42 s_csamul_cla16_u_cla16_and43 s_csamul_cla16_u_cla16_and44
+11 1
+.names s_csamul_cla16_u_cla16_and44 s_csamul_cla16_u_cla16_pg_logic8_or0 s_csamul_cla16_u_cla16_and45
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic8_and0 s_csamul_cla16_u_cla16_pg_logic10_or0 s_csamul_cla16_u_cla16_and46
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic11_or0 s_csamul_cla16_u_cla16_pg_logic9_or0 s_csamul_cla16_u_cla16_and47
+11 1
+.names s_csamul_cla16_u_cla16_and46 s_csamul_cla16_u_cla16_and47 s_csamul_cla16_u_cla16_and48
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic9_and0 s_csamul_cla16_u_cla16_pg_logic11_or0 s_csamul_cla16_u_cla16_and49
+11 1
+.names s_csamul_cla16_u_cla16_and49 s_csamul_cla16_u_cla16_pg_logic10_or0 s_csamul_cla16_u_cla16_and50
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic10_and0 s_csamul_cla16_u_cla16_pg_logic11_or0 s_csamul_cla16_u_cla16_and51
+11 1
+.names s_csamul_cla16_u_cla16_and45 s_csamul_cla16_u_cla16_and50 s_csamul_cla16_u_cla16_or22
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_and48 s_csamul_cla16_u_cla16_and51 s_csamul_cla16_u_cla16_or23
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_or22 s_csamul_cla16_u_cla16_or23 s_csamul_cla16_u_cla16_or24
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic11_and0 s_csamul_cla16_u_cla16_or24 s_csamul_cla16_u_cla16_or25
+1- 1
+-1 1
+.names s_csamul_cla16_fa13_15_xor1 s_csamul_cla16_fa12_15_or0 s_csamul_cla16_u_cla16_pg_logic12_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa13_15_xor1 s_csamul_cla16_fa12_15_or0 s_csamul_cla16_u_cla16_pg_logic12_and0
+11 1
+.names s_csamul_cla16_fa13_15_xor1 s_csamul_cla16_fa12_15_or0 s_csamul_cla16_u_cla16_pg_logic12_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic12_xor0 s_csamul_cla16_u_cla16_or25 s_csamul_cla16_u_cla16_xor12
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or25 s_csamul_cla16_u_cla16_pg_logic12_or0 s_csamul_cla16_u_cla16_and52
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic12_and0 s_csamul_cla16_u_cla16_and52 s_csamul_cla16_u_cla16_or26
+1- 1
+-1 1
+.names s_csamul_cla16_fa14_15_xor1 s_csamul_cla16_fa13_15_or0 s_csamul_cla16_u_cla16_pg_logic13_or0
+1- 1
+-1 1
+.names s_csamul_cla16_fa14_15_xor1 s_csamul_cla16_fa13_15_or0 s_csamul_cla16_u_cla16_pg_logic13_and0
+11 1
+.names s_csamul_cla16_fa14_15_xor1 s_csamul_cla16_fa13_15_or0 s_csamul_cla16_u_cla16_pg_logic13_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic13_xor0 s_csamul_cla16_u_cla16_or26 s_csamul_cla16_u_cla16_xor13
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or25 s_csamul_cla16_u_cla16_pg_logic13_or0 s_csamul_cla16_u_cla16_and53
+11 1
+.names s_csamul_cla16_u_cla16_and53 s_csamul_cla16_u_cla16_pg_logic12_or0 s_csamul_cla16_u_cla16_and54
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic12_and0 s_csamul_cla16_u_cla16_pg_logic13_or0 s_csamul_cla16_u_cla16_and55
+11 1
+.names s_csamul_cla16_u_cla16_and54 s_csamul_cla16_u_cla16_and55 s_csamul_cla16_u_cla16_or27
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic13_and0 s_csamul_cla16_u_cla16_or27 s_csamul_cla16_u_cla16_or28
+1- 1
+-1 1
+.names s_csamul_cla16_ha15_15_xor0 s_csamul_cla16_fa14_15_or0 s_csamul_cla16_u_cla16_pg_logic14_or0
+1- 1
+-1 1
+.names s_csamul_cla16_ha15_15_xor0 s_csamul_cla16_fa14_15_or0 s_csamul_cla16_u_cla16_pg_logic14_and0
+11 1
+.names s_csamul_cla16_ha15_15_xor0 s_csamul_cla16_fa14_15_or0 s_csamul_cla16_u_cla16_pg_logic14_xor0
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_pg_logic14_xor0 s_csamul_cla16_u_cla16_or28 s_csamul_cla16_u_cla16_xor14
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or25 s_csamul_cla16_u_cla16_pg_logic13_or0 s_csamul_cla16_u_cla16_and56
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic14_or0 s_csamul_cla16_u_cla16_pg_logic12_or0 s_csamul_cla16_u_cla16_and57
+11 1
+.names s_csamul_cla16_u_cla16_and56 s_csamul_cla16_u_cla16_and57 s_csamul_cla16_u_cla16_and58
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic12_and0 s_csamul_cla16_u_cla16_pg_logic14_or0 s_csamul_cla16_u_cla16_and59
+11 1
+.names s_csamul_cla16_u_cla16_and59 s_csamul_cla16_u_cla16_pg_logic13_or0 s_csamul_cla16_u_cla16_and60
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic13_and0 s_csamul_cla16_u_cla16_pg_logic14_or0 s_csamul_cla16_u_cla16_and61
+11 1
+.names s_csamul_cla16_u_cla16_and58 s_csamul_cla16_u_cla16_and60 s_csamul_cla16_u_cla16_or29
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_or29 s_csamul_cla16_u_cla16_and61 s_csamul_cla16_u_cla16_or30
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_pg_logic14_and0 s_csamul_cla16_u_cla16_or30 s_csamul_cla16_u_cla16_or31
+1- 1
+-1 1
+.names s_csamul_cla16_ha15_15_and0 s_csamul_cla16_u_cla16_pg_logic15_xor0
+0 1
+.names s_csamul_cla16_u_cla16_pg_logic15_xor0 s_csamul_cla16_u_cla16_or31 s_csamul_cla16_u_cla16_xor15
+01 1
+10 1
+.names s_csamul_cla16_u_cla16_or25 s_csamul_cla16_u_cla16_pg_logic14_or0 s_csamul_cla16_u_cla16_and62
+11 1
+.names s_csamul_cla16_u_cla16_and62 s_csamul_cla16_u_cla16_pg_logic13_or0 s_csamul_cla16_u_cla16_and63
+11 1
+.names s_csamul_cla16_u_cla16_and63 s_csamul_cla16_u_cla16_pg_logic12_or0 s_csamul_cla16_u_cla16_and64
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic12_and0 s_csamul_cla16_u_cla16_pg_logic14_or0 s_csamul_cla16_u_cla16_and65
+11 1
+.names s_csamul_cla16_u_cla16_and65 s_csamul_cla16_u_cla16_pg_logic13_or0 s_csamul_cla16_u_cla16_and66
+11 1
+.names s_csamul_cla16_u_cla16_pg_logic13_and0 s_csamul_cla16_u_cla16_pg_logic14_or0 s_csamul_cla16_u_cla16_and67
+11 1
+.names s_csamul_cla16_u_cla16_and64 s_csamul_cla16_u_cla16_and67 s_csamul_cla16_u_cla16_or32
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_and66 s_csamul_cla16_u_cla16_pg_logic14_and0 s_csamul_cla16_u_cla16_or33
+1- 1
+-1 1
+.names s_csamul_cla16_u_cla16_or32 s_csamul_cla16_u_cla16_or33 s_csamul_cla16_u_cla16_or34
+1- 1
+-1 1
+.names s_csamul_cla16_ha15_15_and0 s_csamul_cla16_u_cla16_or34 s_csamul_cla16_u_cla16_or35
+1- 1
+-1 1
+.names s_csamul_cla16_and0_0 s_csamul_cla16_out[0]
+1 1
+.names s_csamul_cla16_ha0_1_xor0 s_csamul_cla16_out[1]
+1 1
+.names s_csamul_cla16_fa0_2_xor1 s_csamul_cla16_out[2]
+1 1
+.names s_csamul_cla16_fa0_3_xor1 s_csamul_cla16_out[3]
+1 1
+.names s_csamul_cla16_fa0_4_xor1 s_csamul_cla16_out[4]
+1 1
+.names s_csamul_cla16_fa0_5_xor1 s_csamul_cla16_out[5]
+1 1
+.names s_csamul_cla16_fa0_6_xor1 s_csamul_cla16_out[6]
+1 1
+.names s_csamul_cla16_fa0_7_xor1 s_csamul_cla16_out[7]
+1 1
+.names s_csamul_cla16_fa0_8_xor1 s_csamul_cla16_out[8]
+1 1
+.names s_csamul_cla16_fa0_9_xor1 s_csamul_cla16_out[9]
+1 1
+.names s_csamul_cla16_fa0_10_xor1 s_csamul_cla16_out[10]
+1 1
+.names s_csamul_cla16_fa0_11_xor1 s_csamul_cla16_out[11]
+1 1
+.names s_csamul_cla16_fa0_12_xor1 s_csamul_cla16_out[12]
+1 1
+.names s_csamul_cla16_fa0_13_xor1 s_csamul_cla16_out[13]
+1 1
+.names s_csamul_cla16_fa0_14_xor1 s_csamul_cla16_out[14]
+1 1
+.names s_csamul_cla16_fa0_15_xor1 s_csamul_cla16_out[15]
+1 1
+.names s_csamul_cla16_u_cla16_pg_logic0_xor0 s_csamul_cla16_out[16]
+1 1
+.names s_csamul_cla16_u_cla16_xor1 s_csamul_cla16_out[17]
+1 1
+.names s_csamul_cla16_u_cla16_xor2 s_csamul_cla16_out[18]
+1 1
+.names s_csamul_cla16_u_cla16_xor3 s_csamul_cla16_out[19]
+1 1
+.names s_csamul_cla16_u_cla16_xor4 s_csamul_cla16_out[20]
+1 1
+.names s_csamul_cla16_u_cla16_xor5 s_csamul_cla16_out[21]
+1 1
+.names s_csamul_cla16_u_cla16_xor6 s_csamul_cla16_out[22]
+1 1
+.names s_csamul_cla16_u_cla16_xor7 s_csamul_cla16_out[23]
+1 1
+.names s_csamul_cla16_u_cla16_xor8 s_csamul_cla16_out[24]
+1 1
+.names s_csamul_cla16_u_cla16_xor9 s_csamul_cla16_out[25]
+1 1
+.names s_csamul_cla16_u_cla16_xor10 s_csamul_cla16_out[26]
+1 1
+.names s_csamul_cla16_u_cla16_xor11 s_csamul_cla16_out[27]
+1 1
+.names s_csamul_cla16_u_cla16_xor12 s_csamul_cla16_out[28]
+1 1
+.names s_csamul_cla16_u_cla16_xor13 s_csamul_cla16_out[29]
+1 1
+.names s_csamul_cla16_u_cla16_xor14 s_csamul_cla16_out[30]
+1 1
+.names s_csamul_cla16_u_cla16_xor15 s_csamul_cla16_out[31]
+1 1
+.end

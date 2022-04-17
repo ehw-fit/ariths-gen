@@ -156,7 +156,6 @@ class SignedDaddaMultiplier(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_dadda_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
-        self.c_data_type = "int64_t"
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -165,7 +164,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
         # Get starting stage and maximum possible column height
         self.stage, self.d = self.get_maximum_height(initial_value=min(self.a.N, self.b.N))
         # Initialize all columns partial products forming AND/NAND gates matrix based on Baugh-Wooley multiplication
-        self.columns = self.init_column_heights(signed=True)
+        self.columns = self.init_column_heights()
 
         # Not used for 1 bit multiplier
         if self.N != 1:

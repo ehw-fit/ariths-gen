@@ -1,0 +1,351 @@
+.model s_cla12
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11]
+.outputs s_cla12_out[0] s_cla12_out[1] s_cla12_out[2] s_cla12_out[3] s_cla12_out[4] s_cla12_out[5] s_cla12_out[6] s_cla12_out[7] s_cla12_out[8] s_cla12_out[9] s_cla12_out[10] s_cla12_out[11] s_cla12_out[12]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] s_cla12_pg_logic0_or0
+1- 1
+-1 1
+.names a[0] b[0] s_cla12_pg_logic0_and0
+11 1
+.names a[0] b[0] s_cla12_pg_logic0_xor0
+01 1
+10 1
+.names a[1] b[1] s_cla12_pg_logic1_or0
+1- 1
+-1 1
+.names a[1] b[1] s_cla12_pg_logic1_and0
+11 1
+.names a[1] b[1] s_cla12_pg_logic1_xor0
+01 1
+10 1
+.names s_cla12_pg_logic1_xor0 s_cla12_pg_logic0_and0 s_cla12_xor1
+01 1
+10 1
+.names s_cla12_pg_logic0_and0 s_cla12_pg_logic1_or0 s_cla12_and0
+11 1
+.names s_cla12_pg_logic1_and0 s_cla12_and0 s_cla12_or0
+1- 1
+-1 1
+.names a[2] b[2] s_cla12_pg_logic2_or0
+1- 1
+-1 1
+.names a[2] b[2] s_cla12_pg_logic2_and0
+11 1
+.names a[2] b[2] s_cla12_pg_logic2_xor0
+01 1
+10 1
+.names s_cla12_pg_logic2_xor0 s_cla12_or0 s_cla12_xor2
+01 1
+10 1
+.names s_cla12_pg_logic2_or0 s_cla12_pg_logic0_or0 s_cla12_and1
+11 1
+.names s_cla12_pg_logic0_and0 s_cla12_pg_logic2_or0 s_cla12_and2
+11 1
+.names s_cla12_and2 s_cla12_pg_logic1_or0 s_cla12_and3
+11 1
+.names s_cla12_pg_logic1_and0 s_cla12_pg_logic2_or0 s_cla12_and4
+11 1
+.names s_cla12_and3 s_cla12_and4 s_cla12_or1
+1- 1
+-1 1
+.names s_cla12_pg_logic2_and0 s_cla12_or1 s_cla12_or2
+1- 1
+-1 1
+.names a[3] b[3] s_cla12_pg_logic3_or0
+1- 1
+-1 1
+.names a[3] b[3] s_cla12_pg_logic3_and0
+11 1
+.names a[3] b[3] s_cla12_pg_logic3_xor0
+01 1
+10 1
+.names s_cla12_pg_logic3_xor0 s_cla12_or2 s_cla12_xor3
+01 1
+10 1
+.names s_cla12_pg_logic3_or0 s_cla12_pg_logic1_or0 s_cla12_and5
+11 1
+.names s_cla12_pg_logic0_and0 s_cla12_pg_logic2_or0 s_cla12_and6
+11 1
+.names s_cla12_pg_logic3_or0 s_cla12_pg_logic1_or0 s_cla12_and7
+11 1
+.names s_cla12_and6 s_cla12_and7 s_cla12_and8
+11 1
+.names s_cla12_pg_logic1_and0 s_cla12_pg_logic3_or0 s_cla12_and9
+11 1
+.names s_cla12_and9 s_cla12_pg_logic2_or0 s_cla12_and10
+11 1
+.names s_cla12_pg_logic2_and0 s_cla12_pg_logic3_or0 s_cla12_and11
+11 1
+.names s_cla12_and8 s_cla12_and11 s_cla12_or3
+1- 1
+-1 1
+.names s_cla12_and10 s_cla12_or3 s_cla12_or4
+1- 1
+-1 1
+.names s_cla12_pg_logic3_and0 s_cla12_or4 s_cla12_or5
+1- 1
+-1 1
+.names a[4] b[4] s_cla12_pg_logic4_or0
+1- 1
+-1 1
+.names a[4] b[4] s_cla12_pg_logic4_and0
+11 1
+.names a[4] b[4] s_cla12_pg_logic4_xor0
+01 1
+10 1
+.names s_cla12_pg_logic4_xor0 s_cla12_or5 s_cla12_xor4
+01 1
+10 1
+.names s_cla12_or5 s_cla12_pg_logic4_or0 s_cla12_and12
+11 1
+.names s_cla12_pg_logic4_and0 s_cla12_and12 s_cla12_or6
+1- 1
+-1 1
+.names a[5] b[5] s_cla12_pg_logic5_or0
+1- 1
+-1 1
+.names a[5] b[5] s_cla12_pg_logic5_and0
+11 1
+.names a[5] b[5] s_cla12_pg_logic5_xor0
+01 1
+10 1
+.names s_cla12_pg_logic5_xor0 s_cla12_or6 s_cla12_xor5
+01 1
+10 1
+.names s_cla12_or5 s_cla12_pg_logic5_or0 s_cla12_and13
+11 1
+.names s_cla12_and13 s_cla12_pg_logic4_or0 s_cla12_and14
+11 1
+.names s_cla12_pg_logic4_and0 s_cla12_pg_logic5_or0 s_cla12_and15
+11 1
+.names s_cla12_and14 s_cla12_and15 s_cla12_or7
+1- 1
+-1 1
+.names s_cla12_pg_logic5_and0 s_cla12_or7 s_cla12_or8
+1- 1
+-1 1
+.names a[6] b[6] s_cla12_pg_logic6_or0
+1- 1
+-1 1
+.names a[6] b[6] s_cla12_pg_logic6_and0
+11 1
+.names a[6] b[6] s_cla12_pg_logic6_xor0
+01 1
+10 1
+.names s_cla12_pg_logic6_xor0 s_cla12_or8 s_cla12_xor6
+01 1
+10 1
+.names s_cla12_or5 s_cla12_pg_logic5_or0 s_cla12_and16
+11 1
+.names s_cla12_pg_logic6_or0 s_cla12_pg_logic4_or0 s_cla12_and17
+11 1
+.names s_cla12_and16 s_cla12_and17 s_cla12_and18
+11 1
+.names s_cla12_pg_logic4_and0 s_cla12_pg_logic6_or0 s_cla12_and19
+11 1
+.names s_cla12_and19 s_cla12_pg_logic5_or0 s_cla12_and20
+11 1
+.names s_cla12_pg_logic5_and0 s_cla12_pg_logic6_or0 s_cla12_and21
+11 1
+.names s_cla12_and18 s_cla12_and20 s_cla12_or9
+1- 1
+-1 1
+.names s_cla12_or9 s_cla12_and21 s_cla12_or10
+1- 1
+-1 1
+.names s_cla12_pg_logic6_and0 s_cla12_or10 s_cla12_or11
+1- 1
+-1 1
+.names a[7] b[7] s_cla12_pg_logic7_or0
+1- 1
+-1 1
+.names a[7] b[7] s_cla12_pg_logic7_and0
+11 1
+.names a[7] b[7] s_cla12_pg_logic7_xor0
+01 1
+10 1
+.names s_cla12_pg_logic7_xor0 s_cla12_or11 s_cla12_xor7
+01 1
+10 1
+.names s_cla12_or5 s_cla12_pg_logic6_or0 s_cla12_and22
+11 1
+.names s_cla12_pg_logic7_or0 s_cla12_pg_logic5_or0 s_cla12_and23
+11 1
+.names s_cla12_and22 s_cla12_and23 s_cla12_and24
+11 1
+.names s_cla12_and24 s_cla12_pg_logic4_or0 s_cla12_and25
+11 1
+.names s_cla12_pg_logic4_and0 s_cla12_pg_logic6_or0 s_cla12_and26
+11 1
+.names s_cla12_pg_logic7_or0 s_cla12_pg_logic5_or0 s_cla12_and27
+11 1
+.names s_cla12_and26 s_cla12_and27 s_cla12_and28
+11 1
+.names s_cla12_pg_logic5_and0 s_cla12_pg_logic7_or0 s_cla12_and29
+11 1
+.names s_cla12_and29 s_cla12_pg_logic6_or0 s_cla12_and30
+11 1
+.names s_cla12_pg_logic6_and0 s_cla12_pg_logic7_or0 s_cla12_and31
+11 1
+.names s_cla12_and25 s_cla12_and30 s_cla12_or12
+1- 1
+-1 1
+.names s_cla12_and28 s_cla12_and31 s_cla12_or13
+1- 1
+-1 1
+.names s_cla12_or12 s_cla12_or13 s_cla12_or14
+1- 1
+-1 1
+.names s_cla12_pg_logic7_and0 s_cla12_or14 s_cla12_or15
+1- 1
+-1 1
+.names a[8] b[8] s_cla12_pg_logic8_or0
+1- 1
+-1 1
+.names a[8] b[8] s_cla12_pg_logic8_and0
+11 1
+.names a[8] b[8] s_cla12_pg_logic8_xor0
+01 1
+10 1
+.names s_cla12_pg_logic8_xor0 s_cla12_or15 s_cla12_xor8
+01 1
+10 1
+.names s_cla12_or15 s_cla12_pg_logic8_or0 s_cla12_and32
+11 1
+.names s_cla12_pg_logic8_and0 s_cla12_and32 s_cla12_or16
+1- 1
+-1 1
+.names a[9] b[9] s_cla12_pg_logic9_or0
+1- 1
+-1 1
+.names a[9] b[9] s_cla12_pg_logic9_and0
+11 1
+.names a[9] b[9] s_cla12_pg_logic9_xor0
+01 1
+10 1
+.names s_cla12_pg_logic9_xor0 s_cla12_or16 s_cla12_xor9
+01 1
+10 1
+.names s_cla12_or15 s_cla12_pg_logic9_or0 s_cla12_and33
+11 1
+.names s_cla12_and33 s_cla12_pg_logic8_or0 s_cla12_and34
+11 1
+.names s_cla12_pg_logic8_and0 s_cla12_pg_logic9_or0 s_cla12_and35
+11 1
+.names s_cla12_and34 s_cla12_and35 s_cla12_or17
+1- 1
+-1 1
+.names s_cla12_pg_logic9_and0 s_cla12_or17 s_cla12_or18
+1- 1
+-1 1
+.names a[10] b[10] s_cla12_pg_logic10_or0
+1- 1
+-1 1
+.names a[10] b[10] s_cla12_pg_logic10_and0
+11 1
+.names a[10] b[10] s_cla12_pg_logic10_xor0
+01 1
+10 1
+.names s_cla12_pg_logic10_xor0 s_cla12_or18 s_cla12_xor10
+01 1
+10 1
+.names s_cla12_or15 s_cla12_pg_logic9_or0 s_cla12_and36
+11 1
+.names s_cla12_pg_logic10_or0 s_cla12_pg_logic8_or0 s_cla12_and37
+11 1
+.names s_cla12_and36 s_cla12_and37 s_cla12_and38
+11 1
+.names s_cla12_pg_logic8_and0 s_cla12_pg_logic10_or0 s_cla12_and39
+11 1
+.names s_cla12_and39 s_cla12_pg_logic9_or0 s_cla12_and40
+11 1
+.names s_cla12_pg_logic9_and0 s_cla12_pg_logic10_or0 s_cla12_and41
+11 1
+.names s_cla12_and38 s_cla12_and40 s_cla12_or19
+1- 1
+-1 1
+.names s_cla12_or19 s_cla12_and41 s_cla12_or20
+1- 1
+-1 1
+.names s_cla12_pg_logic10_and0 s_cla12_or20 s_cla12_or21
+1- 1
+-1 1
+.names a[11] b[11] s_cla12_pg_logic11_or0
+1- 1
+-1 1
+.names a[11] b[11] s_cla12_pg_logic11_and0
+11 1
+.names a[11] b[11] s_cla12_pg_logic11_xor0
+01 1
+10 1
+.names s_cla12_pg_logic11_xor0 s_cla12_or21 s_cla12_xor11
+01 1
+10 1
+.names s_cla12_or15 s_cla12_pg_logic10_or0 s_cla12_and42
+11 1
+.names s_cla12_pg_logic11_or0 s_cla12_pg_logic9_or0 s_cla12_and43
+11 1
+.names s_cla12_and42 s_cla12_and43 s_cla12_and44
+11 1
+.names s_cla12_and44 s_cla12_pg_logic8_or0 s_cla12_and45
+11 1
+.names s_cla12_pg_logic8_and0 s_cla12_pg_logic10_or0 s_cla12_and46
+11 1
+.names s_cla12_pg_logic11_or0 s_cla12_pg_logic9_or0 s_cla12_and47
+11 1
+.names s_cla12_and46 s_cla12_and47 s_cla12_and48
+11 1
+.names s_cla12_pg_logic9_and0 s_cla12_pg_logic11_or0 s_cla12_and49
+11 1
+.names s_cla12_and49 s_cla12_pg_logic10_or0 s_cla12_and50
+11 1
+.names s_cla12_pg_logic10_and0 s_cla12_pg_logic11_or0 s_cla12_and51
+11 1
+.names s_cla12_and45 s_cla12_and50 s_cla12_or22
+1- 1
+-1 1
+.names s_cla12_and48 s_cla12_and51 s_cla12_or23
+1- 1
+-1 1
+.names s_cla12_or22 s_cla12_or23 s_cla12_or24
+1- 1
+-1 1
+.names s_cla12_pg_logic11_and0 s_cla12_or24 s_cla12_or25
+1- 1
+-1 1
+.names a[11] b[11] s_cla12_xor12
+01 1
+10 1
+.names s_cla12_xor12 s_cla12_or25 s_cla12_xor13
+01 1
+10 1
+.names s_cla12_pg_logic0_xor0 s_cla12_out[0]
+1 1
+.names s_cla12_xor1 s_cla12_out[1]
+1 1
+.names s_cla12_xor2 s_cla12_out[2]
+1 1
+.names s_cla12_xor3 s_cla12_out[3]
+1 1
+.names s_cla12_xor4 s_cla12_out[4]
+1 1
+.names s_cla12_xor5 s_cla12_out[5]
+1 1
+.names s_cla12_xor6 s_cla12_out[6]
+1 1
+.names s_cla12_xor7 s_cla12_out[7]
+1 1
+.names s_cla12_xor8 s_cla12_out[8]
+1 1
+.names s_cla12_xor9 s_cla12_out[9]
+1 1
+.names s_cla12_xor10 s_cla12_out[10]
+1 1
+.names s_cla12_xor11 s_cla12_out[11]
+1 1
+.names s_cla12_xor13 s_cla12_out[12]
+1 1
+.end

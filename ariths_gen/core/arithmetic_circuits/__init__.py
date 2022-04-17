@@ -1,5 +1,6 @@
 from .arithmetic_circuit import (
-    ArithmeticCircuit
+    ArithmeticCircuit,
+    ThreeInputArithmeticCircuit
 )
 
 from .general_circuit import (GeneralCircuit )

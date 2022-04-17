@@ -1,0 +1,75 @@
+.model u_pg_rca4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs u_pg_rca4_out[0] u_pg_rca4_out[1] u_pg_rca4_out[2] u_pg_rca4_out[3] u_pg_rca4_out[4]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_fa a=a[0] b=b[0] cin=gnd pg_fa_xor0=u_pg_rca4_pg_fa0_xor0 pg_fa_and0=u_pg_rca4_pg_fa0_and0
+.subckt pg_fa a=a[1] b=b[1] cin=u_pg_rca4_pg_fa0_and0 pg_fa_xor0=u_pg_rca4_pg_fa1_xor0 pg_fa_and0=u_pg_rca4_pg_fa1_and0 pg_fa_xor1=u_pg_rca4_pg_fa1_xor1
+.subckt and_gate a=u_pg_rca4_pg_fa0_and0 b=u_pg_rca4_pg_fa1_xor0 out=u_pg_rca4_and1
+.subckt or_gate a=u_pg_rca4_and1 b=u_pg_rca4_pg_fa1_and0 out=u_pg_rca4_or1
+.subckt pg_fa a=a[2] b=b[2] cin=u_pg_rca4_or1 pg_fa_xor0=u_pg_rca4_pg_fa2_xor0 pg_fa_and0=u_pg_rca4_pg_fa2_and0 pg_fa_xor1=u_pg_rca4_pg_fa2_xor1
+.subckt and_gate a=u_pg_rca4_or1 b=u_pg_rca4_pg_fa2_xor0 out=u_pg_rca4_and2
+.subckt or_gate a=u_pg_rca4_and2 b=u_pg_rca4_pg_fa2_and0 out=u_pg_rca4_or2
+.subckt pg_fa a=a[3] b=b[3] cin=u_pg_rca4_or2 pg_fa_xor0=u_pg_rca4_pg_fa3_xor0 pg_fa_and0=u_pg_rca4_pg_fa3_and0 pg_fa_xor1=u_pg_rca4_pg_fa3_xor1
+.subckt and_gate a=u_pg_rca4_or2 b=u_pg_rca4_pg_fa3_xor0 out=u_pg_rca4_and3
+.subckt or_gate a=u_pg_rca4_and3 b=u_pg_rca4_pg_fa3_and0 out=u_pg_rca4_or3
+.names u_pg_rca4_pg_fa0_xor0 u_pg_rca4_out[0]
+1 1
+.names u_pg_rca4_pg_fa1_xor1 u_pg_rca4_out[1]
+1 1
+.names u_pg_rca4_pg_fa2_xor1 u_pg_rca4_out[2]
+1 1
+.names u_pg_rca4_pg_fa3_xor1 u_pg_rca4_out[3]
+1 1
+.names u_pg_rca4_or3 u_pg_rca4_out[4]
+1 1
+.end
+
+.model pg_fa
+.inputs a b cin
+.outputs pg_fa_xor0 pg_fa_and0 pg_fa_xor1
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=pg_fa_xor0
+.subckt and_gate a=a b=b out=pg_fa_and0
+.subckt xor_gate a=pg_fa_xor0 b=cin out=pg_fa_xor1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end

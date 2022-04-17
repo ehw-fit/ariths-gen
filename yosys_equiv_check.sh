@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Script enables formal verification and equivalence of Verilog/BLIF circuit designs 
-# using Yosys Open SYnthesis Suite by Clifford Wolf.
-# For more information, please visit: http://www.clifford.at/yosys/documentation.html
+# using Yosys Open SYnthesis Suite by Claire Xenia Wolf.
+# For more information, please visit: http://bygone.clairexen.net/yosys/documentation.html
 
 # Echo script help
 help () {
@@ -23,6 +23,8 @@ help () {
     echo "      specifies input Verilog design file"
     echo "-b 'blif_file', --blif_file 'blif_file'"
     echo "      specifies input BLIF design file"
+    echo "-m 'method', --mode 'method'"
+    echo "      specifies chosen formal equivalence method (sat|equiv)"
     echo "-H, --hier"
     echo "      specifies whether designs are in hierarchical representation (default is flat)"
 }
@@ -56,6 +58,18 @@ while [[ "$#" -gt 0 ]] ; do
             exit 1
         fi
         shift 2;;
+    
+    "-m" | "--mode")
+        if [[ "$2" == "sat" || "$2" == "equiv" ]]; then
+            METHOD="$2"
+        else
+            echo "$2 is not a supported formal equivalence method!";
+            echo
+            echo "Type -h | --help for more information."
+            exit 1
+        fi
+        shift 2;;
+
     "-H" | "--hier")
         HIERARCHICAL=true
         shift 1;;
@@ -72,9 +86,10 @@ done
 
 # Check if both files compulsory parameters are set and if they have the same name.
 # To proper equiv check both designs top modules must be of same names (assumption that filename == top module name)
-if [[ -z "$VERILOG_FILE" || -z "$BLIF_FILE" ]]; then
+if [[ -z "$VERILOG_FILE" || -z "$BLIF_FILE" || -z "$METHOD" ]]; then
     [ -z "$VERILOG_FILE" ] && echo "Missing compulsory Verilog file for comparison!"
     [ -z "$BLIF_FILE" ] && echo "Missing compulsory BLIF file for comparison!"
+    [ -z "$METHOD" ] && echo "Missing choice of formal equivalence method!"
     echo
     echo "Type -h | --help for more information."
     exit 1
@@ -92,50 +107,102 @@ else
 fi
 
 # Formal verification with equiv_* for flat designs
-if [ "$HIERARCHICAL" = false ]; then
-    yosys -p "
-        # Gold design
-        read_verilog $VERILOG_FILE
-        prep -top $TOP_MODULE
-        splitnets -ports;;
-        design -stash gold
+if [ "$METHOD" = "equiv" ]; then
+    if [ "$HIERARCHICAL" = false ]; then
+        yosys -p "
+            # Gold design
+            read_verilog $VERILOG_FILE
+            prep -top $TOP_MODULE
+            splitnets -ports;;
+            design -stash gold
 
-        # Gate design
-        read_blif $BLIF_FILE
-        prep -top $TOP_MODULE
-        design -stash gate
+            # Gate design
+            read_blif $BLIF_FILE
+            prep -top $TOP_MODULE
+            design -stash gate
 
-        # Prove equivalence
-        design -copy-from gold -as gold $TOP_MODULE
-        design -copy-from gate -as gate $TOP_MODULE
-        equiv_make gold gate equiv
-        hierarchy -top equiv
-        equiv_simple
-        equiv_status -assert
-    "
-# Formal verification with equiv_* for hierarchical designs
+            # Prove equivalence
+            design -copy-from gold -as gold $TOP_MODULE
+            design -copy-from gate -as gate $TOP_MODULE
+            
+            equiv_make gold gate equiv
+            hierarchy -top equiv
+            equiv_simple
+            equiv_status -assert
+        "
+    # Formal verification with equiv_* for hierarchical designs
+    else
+        yosys -p "
+            # Gold design
+            read_verilog $VERILOG_FILE
+            prep -top $TOP_MODULE
+            flatten
+            splitnets -ports;;
+            design -stash gold
+
+            # Gate design
+            read_blif $BLIF_FILE
+            prep -top $TOP_MODULE
+            flatten
+            splitnets -ports;;
+            design -stash gate
+
+            # Prove equivalence
+            design -copy-from gold -as gold $TOP_MODULE
+            design -copy-from gate -as gate $TOP_MODULE
+
+            equiv_make gold gate equiv
+            hierarchy -top equiv
+            equiv_simple
+            equiv_status -assert
+        "
+    fi
 else
-    yosys -p "
-        # Gold design
-        read_verilog $VERILOG_FILE
-        prep -top $TOP_MODULE
-        flatten
-        splitnets -ports;;
-        design -stash gold
+    if [ "$HIERARCHICAL" = false ]; then
+        yosys -p "
+            # Gold design
+            read_verilog $VERILOG_FILE
+            prep -top $TOP_MODULE
+            splitnets -ports;;
+            design -stash gold
 
-        # Gate design
-        read_blif $BLIF_FILE
-        prep -top $TOP_MODULE
-        flatten
-        splitnets -ports;;
-        design -stash gate
+            # Gate design
+            read_blif $BLIF_FILE
+            prep -top $TOP_MODULE
+            design -stash gate
 
-        # Prove equivalence
-        design -copy-from gold -as gold $TOP_MODULE
-        design -copy-from gate -as gate $TOP_MODULE
-        equiv_make gold gate equiv
-        hierarchy -top equiv
-        equiv_simple
-        equiv_status -assert
-    "
+            # Prove equivalence
+            design -copy-from gold -as gold $TOP_MODULE
+            design -copy-from gate -as gate $TOP_MODULE
+
+            miter -equiv -flatten gold gate miter
+            hierarchy -top miter
+            sat -verify -tempinduct -prove trigger 0
+        "
+    # Formal verification with equiv_* for hierarchical designs
+    else
+        yosys -p "
+            # Gold design
+            read_verilog $VERILOG_FILE
+            prep -top $TOP_MODULE
+            flatten
+            splitnets -ports;;
+            design -stash gold
+
+            # Gate design
+            read_blif $BLIF_FILE
+            prep -top $TOP_MODULE
+            flatten
+            splitnets -ports;;
+            design -stash gate
+
+            # Prove equivalence
+            design -copy-from gold -as gold $TOP_MODULE
+            design -copy-from gate -as gate $TOP_MODULE
+
+            miter -equiv -flatten gold gate miter
+            hierarchy -top miter
+            sat -verify -tempinduct -prove trigger 0
+        "
+    fi
 fi

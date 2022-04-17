@@ -17,3 +17,8 @@ from ariths_gen.multi_bit_circuits.adders.carry_skip_adder import (
     UnsignedCarrySkipAdder,
     SignedCarrySkipAdder
 )
+
+from ariths_gen.multi_bit_circuits.adders.carry_save_adder import (
+    CarrySaveAdderComponent,
+    UnsignedCarrySaveAdder
+)

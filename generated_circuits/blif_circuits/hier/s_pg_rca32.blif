@@ -1,0 +1,217 @@
+.model s_pg_rca32
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] a[16] a[17] a[18] a[19] a[20] a[21] a[22] a[23] a[24] a[25] a[26] a[27] a[28] a[29] a[30] a[31] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15] b[16] b[17] b[18] b[19] b[20] b[21] b[22] b[23] b[24] b[25] b[26] b[27] b[28] b[29] b[30] b[31]
+.outputs s_pg_rca32_out[0] s_pg_rca32_out[1] s_pg_rca32_out[2] s_pg_rca32_out[3] s_pg_rca32_out[4] s_pg_rca32_out[5] s_pg_rca32_out[6] s_pg_rca32_out[7] s_pg_rca32_out[8] s_pg_rca32_out[9] s_pg_rca32_out[10] s_pg_rca32_out[11] s_pg_rca32_out[12] s_pg_rca32_out[13] s_pg_rca32_out[14] s_pg_rca32_out[15] s_pg_rca32_out[16] s_pg_rca32_out[17] s_pg_rca32_out[18] s_pg_rca32_out[19] s_pg_rca32_out[20] s_pg_rca32_out[21] s_pg_rca32_out[22] s_pg_rca32_out[23] s_pg_rca32_out[24] s_pg_rca32_out[25] s_pg_rca32_out[26] s_pg_rca32_out[27] s_pg_rca32_out[28] s_pg_rca32_out[29] s_pg_rca32_out[30] s_pg_rca32_out[31] s_pg_rca32_out[32]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_fa a=a[0] b=b[0] cin=gnd pg_fa_xor0=s_pg_rca32_pg_fa0_xor0 pg_fa_and0=s_pg_rca32_pg_fa0_and0
+.subckt pg_fa a=a[1] b=b[1] cin=s_pg_rca32_pg_fa0_and0 pg_fa_xor0=s_pg_rca32_pg_fa1_xor0 pg_fa_and0=s_pg_rca32_pg_fa1_and0 pg_fa_xor1=s_pg_rca32_pg_fa1_xor1
+.subckt and_gate a=s_pg_rca32_pg_fa0_and0 b=s_pg_rca32_pg_fa1_xor0 out=s_pg_rca32_and1
+.subckt or_gate a=s_pg_rca32_and1 b=s_pg_rca32_pg_fa1_and0 out=s_pg_rca32_or1
+.subckt pg_fa a=a[2] b=b[2] cin=s_pg_rca32_or1 pg_fa_xor0=s_pg_rca32_pg_fa2_xor0 pg_fa_and0=s_pg_rca32_pg_fa2_and0 pg_fa_xor1=s_pg_rca32_pg_fa2_xor1
+.subckt and_gate a=s_pg_rca32_or1 b=s_pg_rca32_pg_fa2_xor0 out=s_pg_rca32_and2
+.subckt or_gate a=s_pg_rca32_and2 b=s_pg_rca32_pg_fa2_and0 out=s_pg_rca32_or2
+.subckt pg_fa a=a[3] b=b[3] cin=s_pg_rca32_or2 pg_fa_xor0=s_pg_rca32_pg_fa3_xor0 pg_fa_and0=s_pg_rca32_pg_fa3_and0 pg_fa_xor1=s_pg_rca32_pg_fa3_xor1
+.subckt and_gate a=s_pg_rca32_or2 b=s_pg_rca32_pg_fa3_xor0 out=s_pg_rca32_and3
+.subckt or_gate a=s_pg_rca32_and3 b=s_pg_rca32_pg_fa3_and0 out=s_pg_rca32_or3
+.subckt pg_fa a=a[4] b=b[4] cin=s_pg_rca32_or3 pg_fa_xor0=s_pg_rca32_pg_fa4_xor0 pg_fa_and0=s_pg_rca32_pg_fa4_and0 pg_fa_xor1=s_pg_rca32_pg_fa4_xor1
+.subckt and_gate a=s_pg_rca32_or3 b=s_pg_rca32_pg_fa4_xor0 out=s_pg_rca32_and4
+.subckt or_gate a=s_pg_rca32_and4 b=s_pg_rca32_pg_fa4_and0 out=s_pg_rca32_or4
+.subckt pg_fa a=a[5] b=b[5] cin=s_pg_rca32_or4 pg_fa_xor0=s_pg_rca32_pg_fa5_xor0 pg_fa_and0=s_pg_rca32_pg_fa5_and0 pg_fa_xor1=s_pg_rca32_pg_fa5_xor1
+.subckt and_gate a=s_pg_rca32_or4 b=s_pg_rca32_pg_fa5_xor0 out=s_pg_rca32_and5
+.subckt or_gate a=s_pg_rca32_and5 b=s_pg_rca32_pg_fa5_and0 out=s_pg_rca32_or5
+.subckt pg_fa a=a[6] b=b[6] cin=s_pg_rca32_or5 pg_fa_xor0=s_pg_rca32_pg_fa6_xor0 pg_fa_and0=s_pg_rca32_pg_fa6_and0 pg_fa_xor1=s_pg_rca32_pg_fa6_xor1
+.subckt and_gate a=s_pg_rca32_or5 b=s_pg_rca32_pg_fa6_xor0 out=s_pg_rca32_and6
+.subckt or_gate a=s_pg_rca32_and6 b=s_pg_rca32_pg_fa6_and0 out=s_pg_rca32_or6
+.subckt pg_fa a=a[7] b=b[7] cin=s_pg_rca32_or6 pg_fa_xor0=s_pg_rca32_pg_fa7_xor0 pg_fa_and0=s_pg_rca32_pg_fa7_and0 pg_fa_xor1=s_pg_rca32_pg_fa7_xor1
+.subckt and_gate a=s_pg_rca32_or6 b=s_pg_rca32_pg_fa7_xor0 out=s_pg_rca32_and7
+.subckt or_gate a=s_pg_rca32_and7 b=s_pg_rca32_pg_fa7_and0 out=s_pg_rca32_or7
+.subckt pg_fa a=a[8] b=b[8] cin=s_pg_rca32_or7 pg_fa_xor0=s_pg_rca32_pg_fa8_xor0 pg_fa_and0=s_pg_rca32_pg_fa8_and0 pg_fa_xor1=s_pg_rca32_pg_fa8_xor1
+.subckt and_gate a=s_pg_rca32_or7 b=s_pg_rca32_pg_fa8_xor0 out=s_pg_rca32_and8
+.subckt or_gate a=s_pg_rca32_and8 b=s_pg_rca32_pg_fa8_and0 out=s_pg_rca32_or8
+.subckt pg_fa a=a[9] b=b[9] cin=s_pg_rca32_or8 pg_fa_xor0=s_pg_rca32_pg_fa9_xor0 pg_fa_and0=s_pg_rca32_pg_fa9_and0 pg_fa_xor1=s_pg_rca32_pg_fa9_xor1
+.subckt and_gate a=s_pg_rca32_or8 b=s_pg_rca32_pg_fa9_xor0 out=s_pg_rca32_and9
+.subckt or_gate a=s_pg_rca32_and9 b=s_pg_rca32_pg_fa9_and0 out=s_pg_rca32_or9
+.subckt pg_fa a=a[10] b=b[10] cin=s_pg_rca32_or9 pg_fa_xor0=s_pg_rca32_pg_fa10_xor0 pg_fa_and0=s_pg_rca32_pg_fa10_and0 pg_fa_xor1=s_pg_rca32_pg_fa10_xor1
+.subckt and_gate a=s_pg_rca32_or9 b=s_pg_rca32_pg_fa10_xor0 out=s_pg_rca32_and10
+.subckt or_gate a=s_pg_rca32_and10 b=s_pg_rca32_pg_fa10_and0 out=s_pg_rca32_or10
+.subckt pg_fa a=a[11] b=b[11] cin=s_pg_rca32_or10 pg_fa_xor0=s_pg_rca32_pg_fa11_xor0 pg_fa_and0=s_pg_rca32_pg_fa11_and0 pg_fa_xor1=s_pg_rca32_pg_fa11_xor1
+.subckt and_gate a=s_pg_rca32_or10 b=s_pg_rca32_pg_fa11_xor0 out=s_pg_rca32_and11
+.subckt or_gate a=s_pg_rca32_and11 b=s_pg_rca32_pg_fa11_and0 out=s_pg_rca32_or11
+.subckt pg_fa a=a[12] b=b[12] cin=s_pg_rca32_or11 pg_fa_xor0=s_pg_rca32_pg_fa12_xor0 pg_fa_and0=s_pg_rca32_pg_fa12_and0 pg_fa_xor1=s_pg_rca32_pg_fa12_xor1
+.subckt and_gate a=s_pg_rca32_or11 b=s_pg_rca32_pg_fa12_xor0 out=s_pg_rca32_and12
+.subckt or_gate a=s_pg_rca32_and12 b=s_pg_rca32_pg_fa12_and0 out=s_pg_rca32_or12
+.subckt pg_fa a=a[13] b=b[13] cin=s_pg_rca32_or12 pg_fa_xor0=s_pg_rca32_pg_fa13_xor0 pg_fa_and0=s_pg_rca32_pg_fa13_and0 pg_fa_xor1=s_pg_rca32_pg_fa13_xor1
+.subckt and_gate a=s_pg_rca32_or12 b=s_pg_rca32_pg_fa13_xor0 out=s_pg_rca32_and13
+.subckt or_gate a=s_pg_rca32_and13 b=s_pg_rca32_pg_fa13_and0 out=s_pg_rca32_or13
+.subckt pg_fa a=a[14] b=b[14] cin=s_pg_rca32_or13 pg_fa_xor0=s_pg_rca32_pg_fa14_xor0 pg_fa_and0=s_pg_rca32_pg_fa14_and0 pg_fa_xor1=s_pg_rca32_pg_fa14_xor1
+.subckt and_gate a=s_pg_rca32_or13 b=s_pg_rca32_pg_fa14_xor0 out=s_pg_rca32_and14
+.subckt or_gate a=s_pg_rca32_and14 b=s_pg_rca32_pg_fa14_and0 out=s_pg_rca32_or14
+.subckt pg_fa a=a[15] b=b[15] cin=s_pg_rca32_or14 pg_fa_xor0=s_pg_rca32_pg_fa15_xor0 pg_fa_and0=s_pg_rca32_pg_fa15_and0 pg_fa_xor1=s_pg_rca32_pg_fa15_xor1
+.subckt and_gate a=s_pg_rca32_or14 b=s_pg_rca32_pg_fa15_xor0 out=s_pg_rca32_and15
+.subckt or_gate a=s_pg_rca32_and15 b=s_pg_rca32_pg_fa15_and0 out=s_pg_rca32_or15
+.subckt pg_fa a=a[16] b=b[16] cin=s_pg_rca32_or15 pg_fa_xor0=s_pg_rca32_pg_fa16_xor0 pg_fa_and0=s_pg_rca32_pg_fa16_and0 pg_fa_xor1=s_pg_rca32_pg_fa16_xor1
+.subckt and_gate a=s_pg_rca32_or15 b=s_pg_rca32_pg_fa16_xor0 out=s_pg_rca32_and16
+.subckt or_gate a=s_pg_rca32_and16 b=s_pg_rca32_pg_fa16_and0 out=s_pg_rca32_or16
+.subckt pg_fa a=a[17] b=b[17] cin=s_pg_rca32_or16 pg_fa_xor0=s_pg_rca32_pg_fa17_xor0 pg_fa_and0=s_pg_rca32_pg_fa17_and0 pg_fa_xor1=s_pg_rca32_pg_fa17_xor1
+.subckt and_gate a=s_pg_rca32_or16 b=s_pg_rca32_pg_fa17_xor0 out=s_pg_rca32_and17
+.subckt or_gate a=s_pg_rca32_and17 b=s_pg_rca32_pg_fa17_and0 out=s_pg_rca32_or17
+.subckt pg_fa a=a[18] b=b[18] cin=s_pg_rca32_or17 pg_fa_xor0=s_pg_rca32_pg_fa18_xor0 pg_fa_and0=s_pg_rca32_pg_fa18_and0 pg_fa_xor1=s_pg_rca32_pg_fa18_xor1
+.subckt and_gate a=s_pg_rca32_or17 b=s_pg_rca32_pg_fa18_xor0 out=s_pg_rca32_and18
+.subckt or_gate a=s_pg_rca32_and18 b=s_pg_rca32_pg_fa18_and0 out=s_pg_rca32_or18
+.subckt pg_fa a=a[19] b=b[19] cin=s_pg_rca32_or18 pg_fa_xor0=s_pg_rca32_pg_fa19_xor0 pg_fa_and0=s_pg_rca32_pg_fa19_and0 pg_fa_xor1=s_pg_rca32_pg_fa19_xor1
+.subckt and_gate a=s_pg_rca32_or18 b=s_pg_rca32_pg_fa19_xor0 out=s_pg_rca32_and19
+.subckt or_gate a=s_pg_rca32_and19 b=s_pg_rca32_pg_fa19_and0 out=s_pg_rca32_or19
+.subckt pg_fa a=a[20] b=b[20] cin=s_pg_rca32_or19 pg_fa_xor0=s_pg_rca32_pg_fa20_xor0 pg_fa_and0=s_pg_rca32_pg_fa20_and0 pg_fa_xor1=s_pg_rca32_pg_fa20_xor1
+.subckt and_gate a=s_pg_rca32_or19 b=s_pg_rca32_pg_fa20_xor0 out=s_pg_rca32_and20
+.subckt or_gate a=s_pg_rca32_and20 b=s_pg_rca32_pg_fa20_and0 out=s_pg_rca32_or20
+.subckt pg_fa a=a[21] b=b[21] cin=s_pg_rca32_or20 pg_fa_xor0=s_pg_rca32_pg_fa21_xor0 pg_fa_and0=s_pg_rca32_pg_fa21_and0 pg_fa_xor1=s_pg_rca32_pg_fa21_xor1
+.subckt and_gate a=s_pg_rca32_or20 b=s_pg_rca32_pg_fa21_xor0 out=s_pg_rca32_and21
+.subckt or_gate a=s_pg_rca32_and21 b=s_pg_rca32_pg_fa21_and0 out=s_pg_rca32_or21
+.subckt pg_fa a=a[22] b=b[22] cin=s_pg_rca32_or21 pg_fa_xor0=s_pg_rca32_pg_fa22_xor0 pg_fa_and0=s_pg_rca32_pg_fa22_and0 pg_fa_xor1=s_pg_rca32_pg_fa22_xor1
+.subckt and_gate a=s_pg_rca32_or21 b=s_pg_rca32_pg_fa22_xor0 out=s_pg_rca32_and22
+.subckt or_gate a=s_pg_rca32_and22 b=s_pg_rca32_pg_fa22_and0 out=s_pg_rca32_or22
+.subckt pg_fa a=a[23] b=b[23] cin=s_pg_rca32_or22 pg_fa_xor0=s_pg_rca32_pg_fa23_xor0 pg_fa_and0=s_pg_rca32_pg_fa23_and0 pg_fa_xor1=s_pg_rca32_pg_fa23_xor1
+.subckt and_gate a=s_pg_rca32_or22 b=s_pg_rca32_pg_fa23_xor0 out=s_pg_rca32_and23
+.subckt or_gate a=s_pg_rca32_and23 b=s_pg_rca32_pg_fa23_and0 out=s_pg_rca32_or23
+.subckt pg_fa a=a[24] b=b[24] cin=s_pg_rca32_or23 pg_fa_xor0=s_pg_rca32_pg_fa24_xor0 pg_fa_and0=s_pg_rca32_pg_fa24_and0 pg_fa_xor1=s_pg_rca32_pg_fa24_xor1
+.subckt and_gate a=s_pg_rca32_or23 b=s_pg_rca32_pg_fa24_xor0 out=s_pg_rca32_and24
+.subckt or_gate a=s_pg_rca32_and24 b=s_pg_rca32_pg_fa24_and0 out=s_pg_rca32_or24
+.subckt pg_fa a=a[25] b=b[25] cin=s_pg_rca32_or24 pg_fa_xor0=s_pg_rca32_pg_fa25_xor0 pg_fa_and0=s_pg_rca32_pg_fa25_and0 pg_fa_xor1=s_pg_rca32_pg_fa25_xor1
+.subckt and_gate a=s_pg_rca32_or24 b=s_pg_rca32_pg_fa25_xor0 out=s_pg_rca32_and25
+.subckt or_gate a=s_pg_rca32_and25 b=s_pg_rca32_pg_fa25_and0 out=s_pg_rca32_or25
+.subckt pg_fa a=a[26] b=b[26] cin=s_pg_rca32_or25 pg_fa_xor0=s_pg_rca32_pg_fa26_xor0 pg_fa_and0=s_pg_rca32_pg_fa26_and0 pg_fa_xor1=s_pg_rca32_pg_fa26_xor1
+.subckt and_gate a=s_pg_rca32_or25 b=s_pg_rca32_pg_fa26_xor0 out=s_pg_rca32_and26
+.subckt or_gate a=s_pg_rca32_and26 b=s_pg_rca32_pg_fa26_and0 out=s_pg_rca32_or26
+.subckt pg_fa a=a[27] b=b[27] cin=s_pg_rca32_or26 pg_fa_xor0=s_pg_rca32_pg_fa27_xor0 pg_fa_and0=s_pg_rca32_pg_fa27_and0 pg_fa_xor1=s_pg_rca32_pg_fa27_xor1
+.subckt and_gate a=s_pg_rca32_or26 b=s_pg_rca32_pg_fa27_xor0 out=s_pg_rca32_and27
+.subckt or_gate a=s_pg_rca32_and27 b=s_pg_rca32_pg_fa27_and0 out=s_pg_rca32_or27
+.subckt pg_fa a=a[28] b=b[28] cin=s_pg_rca32_or27 pg_fa_xor0=s_pg_rca32_pg_fa28_xor0 pg_fa_and0=s_pg_rca32_pg_fa28_and0 pg_fa_xor1=s_pg_rca32_pg_fa28_xor1
+.subckt and_gate a=s_pg_rca32_or27 b=s_pg_rca32_pg_fa28_xor0 out=s_pg_rca32_and28
+.subckt or_gate a=s_pg_rca32_and28 b=s_pg_rca32_pg_fa28_and0 out=s_pg_rca32_or28
+.subckt pg_fa a=a[29] b=b[29] cin=s_pg_rca32_or28 pg_fa_xor0=s_pg_rca32_pg_fa29_xor0 pg_fa_and0=s_pg_rca32_pg_fa29_and0 pg_fa_xor1=s_pg_rca32_pg_fa29_xor1
+.subckt and_gate a=s_pg_rca32_or28 b=s_pg_rca32_pg_fa29_xor0 out=s_pg_rca32_and29
+.subckt or_gate a=s_pg_rca32_and29 b=s_pg_rca32_pg_fa29_and0 out=s_pg_rca32_or29
+.subckt pg_fa a=a[30] b=b[30] cin=s_pg_rca32_or29 pg_fa_xor0=s_pg_rca32_pg_fa30_xor0 pg_fa_and0=s_pg_rca32_pg_fa30_and0 pg_fa_xor1=s_pg_rca32_pg_fa30_xor1
+.subckt and_gate a=s_pg_rca32_or29 b=s_pg_rca32_pg_fa30_xor0 out=s_pg_rca32_and30
+.subckt or_gate a=s_pg_rca32_and30 b=s_pg_rca32_pg_fa30_and0 out=s_pg_rca32_or30
+.subckt pg_fa a=a[31] b=b[31] cin=s_pg_rca32_or30 pg_fa_xor0=s_pg_rca32_pg_fa31_xor0 pg_fa_and0=s_pg_rca32_pg_fa31_and0 pg_fa_xor1=s_pg_rca32_pg_fa31_xor1
+.subckt and_gate a=s_pg_rca32_or30 b=s_pg_rca32_pg_fa31_xor0 out=s_pg_rca32_and31
+.subckt or_gate a=s_pg_rca32_and31 b=s_pg_rca32_pg_fa31_and0 out=s_pg_rca32_or31
+.subckt xor_gate a=a[31] b=b[31] out=s_pg_rca32_xor0
+.subckt xor_gate a=s_pg_rca32_xor0 b=s_pg_rca32_or31 out=s_pg_rca32_xor1
+.names s_pg_rca32_pg_fa0_xor0 s_pg_rca32_out[0]
+1 1
+.names s_pg_rca32_pg_fa1_xor1 s_pg_rca32_out[1]
+1 1
+.names s_pg_rca32_pg_fa2_xor1 s_pg_rca32_out[2]
+1 1
+.names s_pg_rca32_pg_fa3_xor1 s_pg_rca32_out[3]
+1 1
+.names s_pg_rca32_pg_fa4_xor1 s_pg_rca32_out[4]
+1 1
+.names s_pg_rca32_pg_fa5_xor1 s_pg_rca32_out[5]
+1 1
+.names s_pg_rca32_pg_fa6_xor1 s_pg_rca32_out[6]
+1 1
+.names s_pg_rca32_pg_fa7_xor1 s_pg_rca32_out[7]
+1 1
+.names s_pg_rca32_pg_fa8_xor1 s_pg_rca32_out[8]
+1 1
+.names s_pg_rca32_pg_fa9_xor1 s_pg_rca32_out[9]
+1 1
+.names s_pg_rca32_pg_fa10_xor1 s_pg_rca32_out[10]
+1 1
+.names s_pg_rca32_pg_fa11_xor1 s_pg_rca32_out[11]
+1 1
+.names s_pg_rca32_pg_fa12_xor1 s_pg_rca32_out[12]
+1 1
+.names s_pg_rca32_pg_fa13_xor1 s_pg_rca32_out[13]
+1 1
+.names s_pg_rca32_pg_fa14_xor1 s_pg_rca32_out[14]
+1 1
+.names s_pg_rca32_pg_fa15_xor1 s_pg_rca32_out[15]
+1 1
+.names s_pg_rca32_pg_fa16_xor1 s_pg_rca32_out[16]
+1 1
+.names s_pg_rca32_pg_fa17_xor1 s_pg_rca32_out[17]
+1 1
+.names s_pg_rca32_pg_fa18_xor1 s_pg_rca32_out[18]
+1 1
+.names s_pg_rca32_pg_fa19_xor1 s_pg_rca32_out[19]
+1 1
+.names s_pg_rca32_pg_fa20_xor1 s_pg_rca32_out[20]
+1 1
+.names s_pg_rca32_pg_fa21_xor1 s_pg_rca32_out[21]
+1 1
+.names s_pg_rca32_pg_fa22_xor1 s_pg_rca32_out[22]
+1 1
+.names s_pg_rca32_pg_fa23_xor1 s_pg_rca32_out[23]
+1 1
+.names s_pg_rca32_pg_fa24_xor1 s_pg_rca32_out[24]
+1 1
+.names s_pg_rca32_pg_fa25_xor1 s_pg_rca32_out[25]
+1 1
+.names s_pg_rca32_pg_fa26_xor1 s_pg_rca32_out[26]
+1 1
+.names s_pg_rca32_pg_fa27_xor1 s_pg_rca32_out[27]
+1 1
+.names s_pg_rca32_pg_fa28_xor1 s_pg_rca32_out[28]
+1 1
+.names s_pg_rca32_pg_fa29_xor1 s_pg_rca32_out[29]
+1 1
+.names s_pg_rca32_pg_fa30_xor1 s_pg_rca32_out[30]
+1 1
+.names s_pg_rca32_pg_fa31_xor1 s_pg_rca32_out[31]
+1 1
+.names s_pg_rca32_xor1 s_pg_rca32_out[32]
+1 1
+.end
+
+.model pg_fa
+.inputs a b cin
+.outputs pg_fa_xor0 pg_fa_and0 pg_fa_xor1
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=pg_fa_xor0
+.subckt and_gate a=a b=b out=pg_fa_and0
+.subckt xor_gate a=pg_fa_xor0 b=cin out=pg_fa_xor1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end

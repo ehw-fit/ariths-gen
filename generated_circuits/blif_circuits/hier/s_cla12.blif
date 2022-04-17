@@ -1,0 +1,184 @@
+.model s_cla12
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11]
+.outputs s_cla12_out[0] s_cla12_out[1] s_cla12_out[2] s_cla12_out[3] s_cla12_out[4] s_cla12_out[5] s_cla12_out[6] s_cla12_out[7] s_cla12_out[8] s_cla12_out[9] s_cla12_out[10] s_cla12_out[11] s_cla12_out[12]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_logic a=a[0] b=b[0] pg_logic_or0=s_cla12_pg_logic0_or0 pg_logic_and0=s_cla12_pg_logic0_and0 pg_logic_xor0=s_cla12_pg_logic0_xor0
+.subckt pg_logic a=a[1] b=b[1] pg_logic_or0=s_cla12_pg_logic1_or0 pg_logic_and0=s_cla12_pg_logic1_and0 pg_logic_xor0=s_cla12_pg_logic1_xor0
+.subckt xor_gate a=s_cla12_pg_logic1_xor0 b=s_cla12_pg_logic0_and0 out=s_cla12_xor1
+.subckt and_gate a=s_cla12_pg_logic0_and0 b=s_cla12_pg_logic1_or0 out=s_cla12_and0
+.subckt or_gate a=s_cla12_pg_logic1_and0 b=s_cla12_and0 out=s_cla12_or0
+.subckt pg_logic a=a[2] b=b[2] pg_logic_or0=s_cla12_pg_logic2_or0 pg_logic_and0=s_cla12_pg_logic2_and0 pg_logic_xor0=s_cla12_pg_logic2_xor0
+.subckt xor_gate a=s_cla12_pg_logic2_xor0 b=s_cla12_or0 out=s_cla12_xor2
+.subckt and_gate a=s_cla12_pg_logic2_or0 b=s_cla12_pg_logic0_or0 out=s_cla12_and1
+.subckt and_gate a=s_cla12_pg_logic0_and0 b=s_cla12_pg_logic2_or0 out=s_cla12_and2
+.subckt and_gate a=s_cla12_and2 b=s_cla12_pg_logic1_or0 out=s_cla12_and3
+.subckt and_gate a=s_cla12_pg_logic1_and0 b=s_cla12_pg_logic2_or0 out=s_cla12_and4
+.subckt or_gate a=s_cla12_and3 b=s_cla12_and4 out=s_cla12_or1
+.subckt or_gate a=s_cla12_pg_logic2_and0 b=s_cla12_or1 out=s_cla12_or2
+.subckt pg_logic a=a[3] b=b[3] pg_logic_or0=s_cla12_pg_logic3_or0 pg_logic_and0=s_cla12_pg_logic3_and0 pg_logic_xor0=s_cla12_pg_logic3_xor0
+.subckt xor_gate a=s_cla12_pg_logic3_xor0 b=s_cla12_or2 out=s_cla12_xor3
+.subckt and_gate a=s_cla12_pg_logic3_or0 b=s_cla12_pg_logic1_or0 out=s_cla12_and5
+.subckt and_gate a=s_cla12_pg_logic0_and0 b=s_cla12_pg_logic2_or0 out=s_cla12_and6
+.subckt and_gate a=s_cla12_pg_logic3_or0 b=s_cla12_pg_logic1_or0 out=s_cla12_and7
+.subckt and_gate a=s_cla12_and6 b=s_cla12_and7 out=s_cla12_and8
+.subckt and_gate a=s_cla12_pg_logic1_and0 b=s_cla12_pg_logic3_or0 out=s_cla12_and9
+.subckt and_gate a=s_cla12_and9 b=s_cla12_pg_logic2_or0 out=s_cla12_and10
+.subckt and_gate a=s_cla12_pg_logic2_and0 b=s_cla12_pg_logic3_or0 out=s_cla12_and11
+.subckt or_gate a=s_cla12_and8 b=s_cla12_and11 out=s_cla12_or3
+.subckt or_gate a=s_cla12_and10 b=s_cla12_or3 out=s_cla12_or4
+.subckt or_gate a=s_cla12_pg_logic3_and0 b=s_cla12_or4 out=s_cla12_or5
+.subckt pg_logic a=a[4] b=b[4] pg_logic_or0=s_cla12_pg_logic4_or0 pg_logic_and0=s_cla12_pg_logic4_and0 pg_logic_xor0=s_cla12_pg_logic4_xor0
+.subckt xor_gate a=s_cla12_pg_logic4_xor0 b=s_cla12_or5 out=s_cla12_xor4
+.subckt and_gate a=s_cla12_or5 b=s_cla12_pg_logic4_or0 out=s_cla12_and12
+.subckt or_gate a=s_cla12_pg_logic4_and0 b=s_cla12_and12 out=s_cla12_or6
+.subckt pg_logic a=a[5] b=b[5] pg_logic_or0=s_cla12_pg_logic5_or0 pg_logic_and0=s_cla12_pg_logic5_and0 pg_logic_xor0=s_cla12_pg_logic5_xor0
+.subckt xor_gate a=s_cla12_pg_logic5_xor0 b=s_cla12_or6 out=s_cla12_xor5
+.subckt and_gate a=s_cla12_or5 b=s_cla12_pg_logic5_or0 out=s_cla12_and13
+.subckt and_gate a=s_cla12_and13 b=s_cla12_pg_logic4_or0 out=s_cla12_and14
+.subckt and_gate a=s_cla12_pg_logic4_and0 b=s_cla12_pg_logic5_or0 out=s_cla12_and15
+.subckt or_gate a=s_cla12_and14 b=s_cla12_and15 out=s_cla12_or7
+.subckt or_gate a=s_cla12_pg_logic5_and0 b=s_cla12_or7 out=s_cla12_or8
+.subckt pg_logic a=a[6] b=b[6] pg_logic_or0=s_cla12_pg_logic6_or0 pg_logic_and0=s_cla12_pg_logic6_and0 pg_logic_xor0=s_cla12_pg_logic6_xor0
+.subckt xor_gate a=s_cla12_pg_logic6_xor0 b=s_cla12_or8 out=s_cla12_xor6
+.subckt and_gate a=s_cla12_or5 b=s_cla12_pg_logic5_or0 out=s_cla12_and16
+.subckt and_gate a=s_cla12_pg_logic6_or0 b=s_cla12_pg_logic4_or0 out=s_cla12_and17
+.subckt and_gate a=s_cla12_and16 b=s_cla12_and17 out=s_cla12_and18
+.subckt and_gate a=s_cla12_pg_logic4_and0 b=s_cla12_pg_logic6_or0 out=s_cla12_and19
+.subckt and_gate a=s_cla12_and19 b=s_cla12_pg_logic5_or0 out=s_cla12_and20
+.subckt and_gate a=s_cla12_pg_logic5_and0 b=s_cla12_pg_logic6_or0 out=s_cla12_and21
+.subckt or_gate a=s_cla12_and18 b=s_cla12_and20 out=s_cla12_or9
+.subckt or_gate a=s_cla12_or9 b=s_cla12_and21 out=s_cla12_or10
+.subckt or_gate a=s_cla12_pg_logic6_and0 b=s_cla12_or10 out=s_cla12_or11
+.subckt pg_logic a=a[7] b=b[7] pg_logic_or0=s_cla12_pg_logic7_or0 pg_logic_and0=s_cla12_pg_logic7_and0 pg_logic_xor0=s_cla12_pg_logic7_xor0
+.subckt xor_gate a=s_cla12_pg_logic7_xor0 b=s_cla12_or11 out=s_cla12_xor7
+.subckt and_gate a=s_cla12_or5 b=s_cla12_pg_logic6_or0 out=s_cla12_and22
+.subckt and_gate a=s_cla12_pg_logic7_or0 b=s_cla12_pg_logic5_or0 out=s_cla12_and23
+.subckt and_gate a=s_cla12_and22 b=s_cla12_and23 out=s_cla12_and24
+.subckt and_gate a=s_cla12_and24 b=s_cla12_pg_logic4_or0 out=s_cla12_and25
+.subckt and_gate a=s_cla12_pg_logic4_and0 b=s_cla12_pg_logic6_or0 out=s_cla12_and26
+.subckt and_gate a=s_cla12_pg_logic7_or0 b=s_cla12_pg_logic5_or0 out=s_cla12_and27
+.subckt and_gate a=s_cla12_and26 b=s_cla12_and27 out=s_cla12_and28
+.subckt and_gate a=s_cla12_pg_logic5_and0 b=s_cla12_pg_logic7_or0 out=s_cla12_and29
+.subckt and_gate a=s_cla12_and29 b=s_cla12_pg_logic6_or0 out=s_cla12_and30
+.subckt and_gate a=s_cla12_pg_logic6_and0 b=s_cla12_pg_logic7_or0 out=s_cla12_and31
+.subckt or_gate a=s_cla12_and25 b=s_cla12_and30 out=s_cla12_or12
+.subckt or_gate a=s_cla12_and28 b=s_cla12_and31 out=s_cla12_or13
+.subckt or_gate a=s_cla12_or12 b=s_cla12_or13 out=s_cla12_or14
+.subckt or_gate a=s_cla12_pg_logic7_and0 b=s_cla12_or14 out=s_cla12_or15
+.subckt pg_logic a=a[8] b=b[8] pg_logic_or0=s_cla12_pg_logic8_or0 pg_logic_and0=s_cla12_pg_logic8_and0 pg_logic_xor0=s_cla12_pg_logic8_xor0
+.subckt xor_gate a=s_cla12_pg_logic8_xor0 b=s_cla12_or15 out=s_cla12_xor8
+.subckt and_gate a=s_cla12_or15 b=s_cla12_pg_logic8_or0 out=s_cla12_and32
+.subckt or_gate a=s_cla12_pg_logic8_and0 b=s_cla12_and32 out=s_cla12_or16
+.subckt pg_logic a=a[9] b=b[9] pg_logic_or0=s_cla12_pg_logic9_or0 pg_logic_and0=s_cla12_pg_logic9_and0 pg_logic_xor0=s_cla12_pg_logic9_xor0
+.subckt xor_gate a=s_cla12_pg_logic9_xor0 b=s_cla12_or16 out=s_cla12_xor9
+.subckt and_gate a=s_cla12_or15 b=s_cla12_pg_logic9_or0 out=s_cla12_and33
+.subckt and_gate a=s_cla12_and33 b=s_cla12_pg_logic8_or0 out=s_cla12_and34
+.subckt and_gate a=s_cla12_pg_logic8_and0 b=s_cla12_pg_logic9_or0 out=s_cla12_and35
+.subckt or_gate a=s_cla12_and34 b=s_cla12_and35 out=s_cla12_or17
+.subckt or_gate a=s_cla12_pg_logic9_and0 b=s_cla12_or17 out=s_cla12_or18
+.subckt pg_logic a=a[10] b=b[10] pg_logic_or0=s_cla12_pg_logic10_or0 pg_logic_and0=s_cla12_pg_logic10_and0 pg_logic_xor0=s_cla12_pg_logic10_xor0
+.subckt xor_gate a=s_cla12_pg_logic10_xor0 b=s_cla12_or18 out=s_cla12_xor10
+.subckt and_gate a=s_cla12_or15 b=s_cla12_pg_logic9_or0 out=s_cla12_and36
+.subckt and_gate a=s_cla12_pg_logic10_or0 b=s_cla12_pg_logic8_or0 out=s_cla12_and37
+.subckt and_gate a=s_cla12_and36 b=s_cla12_and37 out=s_cla12_and38
+.subckt and_gate a=s_cla12_pg_logic8_and0 b=s_cla12_pg_logic10_or0 out=s_cla12_and39
+.subckt and_gate a=s_cla12_and39 b=s_cla12_pg_logic9_or0 out=s_cla12_and40
+.subckt and_gate a=s_cla12_pg_logic9_and0 b=s_cla12_pg_logic10_or0 out=s_cla12_and41
+.subckt or_gate a=s_cla12_and38 b=s_cla12_and40 out=s_cla12_or19
+.subckt or_gate a=s_cla12_or19 b=s_cla12_and41 out=s_cla12_or20
+.subckt or_gate a=s_cla12_pg_logic10_and0 b=s_cla12_or20 out=s_cla12_or21
+.subckt pg_logic a=a[11] b=b[11] pg_logic_or0=s_cla12_pg_logic11_or0 pg_logic_and0=s_cla12_pg_logic11_and0 pg_logic_xor0=s_cla12_pg_logic11_xor0
+.subckt xor_gate a=s_cla12_pg_logic11_xor0 b=s_cla12_or21 out=s_cla12_xor11
+.subckt and_gate a=s_cla12_or15 b=s_cla12_pg_logic10_or0 out=s_cla12_and42
+.subckt and_gate a=s_cla12_pg_logic11_or0 b=s_cla12_pg_logic9_or0 out=s_cla12_and43
+.subckt and_gate a=s_cla12_and42 b=s_cla12_and43 out=s_cla12_and44
+.subckt and_gate a=s_cla12_and44 b=s_cla12_pg_logic8_or0 out=s_cla12_and45
+.subckt and_gate a=s_cla12_pg_logic8_and0 b=s_cla12_pg_logic10_or0 out=s_cla12_and46
+.subckt and_gate a=s_cla12_pg_logic11_or0 b=s_cla12_pg_logic9_or0 out=s_cla12_and47
+.subckt and_gate a=s_cla12_and46 b=s_cla12_and47 out=s_cla12_and48
+.subckt and_gate a=s_cla12_pg_logic9_and0 b=s_cla12_pg_logic11_or0 out=s_cla12_and49
+.subckt and_gate a=s_cla12_and49 b=s_cla12_pg_logic10_or0 out=s_cla12_and50
+.subckt and_gate a=s_cla12_pg_logic10_and0 b=s_cla12_pg_logic11_or0 out=s_cla12_and51
+.subckt or_gate a=s_cla12_and45 b=s_cla12_and50 out=s_cla12_or22
+.subckt or_gate a=s_cla12_and48 b=s_cla12_and51 out=s_cla12_or23
+.subckt or_gate a=s_cla12_or22 b=s_cla12_or23 out=s_cla12_or24
+.subckt or_gate a=s_cla12_pg_logic11_and0 b=s_cla12_or24 out=s_cla12_or25
+.subckt xor_gate a=a[11] b=b[11] out=s_cla12_xor12
+.subckt xor_gate a=s_cla12_xor12 b=s_cla12_or25 out=s_cla12_xor13
+.names s_cla12_pg_logic0_xor0 s_cla12_out[0]
+1 1
+.names s_cla12_xor1 s_cla12_out[1]
+1 1
+.names s_cla12_xor2 s_cla12_out[2]
+1 1
+.names s_cla12_xor3 s_cla12_out[3]
+1 1
+.names s_cla12_xor4 s_cla12_out[4]
+1 1
+.names s_cla12_xor5 s_cla12_out[5]
+1 1
+.names s_cla12_xor6 s_cla12_out[6]
+1 1
+.names s_cla12_xor7 s_cla12_out[7]
+1 1
+.names s_cla12_xor8 s_cla12_out[8]
+1 1
+.names s_cla12_xor9 s_cla12_out[9]
+1 1
+.names s_cla12_xor10 s_cla12_out[10]
+1 1
+.names s_cla12_xor11 s_cla12_out[11]
+1 1
+.names s_cla12_xor13 s_cla12_out[12]
+1 1
+.end
+
+.model pg_logic
+.inputs a b
+.outputs pg_logic_or0 pg_logic_and0 pg_logic_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt or_gate a=a b=b out=pg_logic_or0
+.subckt and_gate a=a b=b out=pg_logic_and0
+.subckt xor_gate a=a b=b out=pg_logic_xor0
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end

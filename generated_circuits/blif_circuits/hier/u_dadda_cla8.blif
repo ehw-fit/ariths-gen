@@ -1,0 +1,426 @@
+.model u_dadda_cla8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs u_dadda_cla8_out[0] u_dadda_cla8_out[1] u_dadda_cla8_out[2] u_dadda_cla8_out[3] u_dadda_cla8_out[4] u_dadda_cla8_out[5] u_dadda_cla8_out[6] u_dadda_cla8_out[7] u_dadda_cla8_out[8] u_dadda_cla8_out[9] u_dadda_cla8_out[10] u_dadda_cla8_out[11] u_dadda_cla8_out[12] u_dadda_cla8_out[13] u_dadda_cla8_out[14] u_dadda_cla8_out[15]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[6] b=b[0] out=u_dadda_cla8_and_6_0
+.subckt and_gate a=a[5] b=b[1] out=u_dadda_cla8_and_5_1
+.subckt ha a=u_dadda_cla8_and_6_0 b=u_dadda_cla8_and_5_1 ha_xor0=u_dadda_cla8_ha0_xor0 ha_and0=u_dadda_cla8_ha0_and0
+.subckt and_gate a=a[7] b=b[0] out=u_dadda_cla8_and_7_0
+.subckt and_gate a=a[6] b=b[1] out=u_dadda_cla8_and_6_1
+.subckt fa a=u_dadda_cla8_ha0_and0 b=u_dadda_cla8_and_7_0 cin=u_dadda_cla8_and_6_1 fa_xor1=u_dadda_cla8_fa0_xor1 fa_or0=u_dadda_cla8_fa0_or0
+.subckt and_gate a=a[5] b=b[2] out=u_dadda_cla8_and_5_2
+.subckt and_gate a=a[4] b=b[3] out=u_dadda_cla8_and_4_3
+.subckt ha a=u_dadda_cla8_and_5_2 b=u_dadda_cla8_and_4_3 ha_xor0=u_dadda_cla8_ha1_xor0 ha_and0=u_dadda_cla8_ha1_and0
+.subckt and_gate a=a[7] b=b[1] out=u_dadda_cla8_and_7_1
+.subckt fa a=u_dadda_cla8_ha1_and0 b=u_dadda_cla8_fa0_or0 cin=u_dadda_cla8_and_7_1 fa_xor1=u_dadda_cla8_fa1_xor1 fa_or0=u_dadda_cla8_fa1_or0
+.subckt and_gate a=a[6] b=b[2] out=u_dadda_cla8_and_6_2
+.subckt and_gate a=a[5] b=b[3] out=u_dadda_cla8_and_5_3
+.subckt ha a=u_dadda_cla8_and_6_2 b=u_dadda_cla8_and_5_3 ha_xor0=u_dadda_cla8_ha2_xor0 ha_and0=u_dadda_cla8_ha2_and0
+.subckt and_gate a=a[7] b=b[2] out=u_dadda_cla8_and_7_2
+.subckt fa a=u_dadda_cla8_ha2_and0 b=u_dadda_cla8_fa1_or0 cin=u_dadda_cla8_and_7_2 fa_xor1=u_dadda_cla8_fa2_xor1 fa_or0=u_dadda_cla8_fa2_or0
+.subckt and_gate a=a[3] b=b[0] out=u_dadda_cla8_and_3_0
+.subckt and_gate a=a[2] b=b[1] out=u_dadda_cla8_and_2_1
+.subckt ha a=u_dadda_cla8_and_3_0 b=u_dadda_cla8_and_2_1 ha_xor0=u_dadda_cla8_ha3_xor0 ha_and0=u_dadda_cla8_ha3_and0
+.subckt and_gate a=a[4] b=b[0] out=u_dadda_cla8_and_4_0
+.subckt and_gate a=a[3] b=b[1] out=u_dadda_cla8_and_3_1
+.subckt fa a=u_dadda_cla8_ha3_and0 b=u_dadda_cla8_and_4_0 cin=u_dadda_cla8_and_3_1 fa_xor1=u_dadda_cla8_fa3_xor1 fa_or0=u_dadda_cla8_fa3_or0
+.subckt and_gate a=a[2] b=b[2] out=u_dadda_cla8_and_2_2
+.subckt and_gate a=a[1] b=b[3] out=u_dadda_cla8_and_1_3
+.subckt ha a=u_dadda_cla8_and_2_2 b=u_dadda_cla8_and_1_3 ha_xor0=u_dadda_cla8_ha4_xor0 ha_and0=u_dadda_cla8_ha4_and0
+.subckt and_gate a=a[5] b=b[0] out=u_dadda_cla8_and_5_0
+.subckt fa a=u_dadda_cla8_ha4_and0 b=u_dadda_cla8_fa3_or0 cin=u_dadda_cla8_and_5_0 fa_xor1=u_dadda_cla8_fa4_xor1 fa_or0=u_dadda_cla8_fa4_or0
+.subckt and_gate a=a[4] b=b[1] out=u_dadda_cla8_and_4_1
+.subckt and_gate a=a[3] b=b[2] out=u_dadda_cla8_and_3_2
+.subckt and_gate a=a[2] b=b[3] out=u_dadda_cla8_and_2_3
+.subckt fa a=u_dadda_cla8_and_4_1 b=u_dadda_cla8_and_3_2 cin=u_dadda_cla8_and_2_3 fa_xor1=u_dadda_cla8_fa5_xor1 fa_or0=u_dadda_cla8_fa5_or0
+.subckt and_gate a=a[1] b=b[4] out=u_dadda_cla8_and_1_4
+.subckt and_gate a=a[0] b=b[5] out=u_dadda_cla8_and_0_5
+.subckt ha a=u_dadda_cla8_and_1_4 b=u_dadda_cla8_and_0_5 ha_xor0=u_dadda_cla8_ha5_xor0 ha_and0=u_dadda_cla8_ha5_and0
+.subckt fa a=u_dadda_cla8_ha5_and0 b=u_dadda_cla8_fa5_or0 cin=u_dadda_cla8_fa4_or0 fa_xor1=u_dadda_cla8_fa6_xor1 fa_or0=u_dadda_cla8_fa6_or0
+.subckt and_gate a=a[4] b=b[2] out=u_dadda_cla8_and_4_2
+.subckt and_gate a=a[3] b=b[3] out=u_dadda_cla8_and_3_3
+.subckt and_gate a=a[2] b=b[4] out=u_dadda_cla8_and_2_4
+.subckt fa a=u_dadda_cla8_and_4_2 b=u_dadda_cla8_and_3_3 cin=u_dadda_cla8_and_2_4 fa_xor1=u_dadda_cla8_fa7_xor1 fa_or0=u_dadda_cla8_fa7_or0
+.subckt and_gate a=a[1] b=b[5] out=u_dadda_cla8_and_1_5
+.subckt and_gate a=a[0] b=b[6] out=u_dadda_cla8_and_0_6
+.subckt fa a=u_dadda_cla8_and_1_5 b=u_dadda_cla8_and_0_6 cin=u_dadda_cla8_ha0_xor0 fa_xor1=u_dadda_cla8_fa8_xor1 fa_or0=u_dadda_cla8_fa8_or0
+.subckt fa a=u_dadda_cla8_fa8_or0 b=u_dadda_cla8_fa7_or0 cin=u_dadda_cla8_fa6_or0 fa_xor1=u_dadda_cla8_fa9_xor1 fa_or0=u_dadda_cla8_fa9_or0
+.subckt and_gate a=a[3] b=b[4] out=u_dadda_cla8_and_3_4
+.subckt and_gate a=a[2] b=b[5] out=u_dadda_cla8_and_2_5
+.subckt and_gate a=a[1] b=b[6] out=u_dadda_cla8_and_1_6
+.subckt fa a=u_dadda_cla8_and_3_4 b=u_dadda_cla8_and_2_5 cin=u_dadda_cla8_and_1_6 fa_xor1=u_dadda_cla8_fa10_xor1 fa_or0=u_dadda_cla8_fa10_or0
+.subckt and_gate a=a[0] b=b[7] out=u_dadda_cla8_and_0_7
+.subckt fa a=u_dadda_cla8_and_0_7 b=u_dadda_cla8_fa0_xor1 cin=u_dadda_cla8_ha1_xor0 fa_xor1=u_dadda_cla8_fa11_xor1 fa_or0=u_dadda_cla8_fa11_or0
+.subckt fa a=u_dadda_cla8_fa11_or0 b=u_dadda_cla8_fa10_or0 cin=u_dadda_cla8_fa9_or0 fa_xor1=u_dadda_cla8_fa12_xor1 fa_or0=u_dadda_cla8_fa12_or0
+.subckt and_gate a=a[4] b=b[4] out=u_dadda_cla8_and_4_4
+.subckt and_gate a=a[3] b=b[5] out=u_dadda_cla8_and_3_5
+.subckt and_gate a=a[2] b=b[6] out=u_dadda_cla8_and_2_6
+.subckt fa a=u_dadda_cla8_and_4_4 b=u_dadda_cla8_and_3_5 cin=u_dadda_cla8_and_2_6 fa_xor1=u_dadda_cla8_fa13_xor1 fa_or0=u_dadda_cla8_fa13_or0
+.subckt and_gate a=a[1] b=b[7] out=u_dadda_cla8_and_1_7
+.subckt fa a=u_dadda_cla8_and_1_7 b=u_dadda_cla8_fa1_xor1 cin=u_dadda_cla8_ha2_xor0 fa_xor1=u_dadda_cla8_fa14_xor1 fa_or0=u_dadda_cla8_fa14_or0
+.subckt fa a=u_dadda_cla8_fa14_or0 b=u_dadda_cla8_fa13_or0 cin=u_dadda_cla8_fa12_or0 fa_xor1=u_dadda_cla8_fa15_xor1 fa_or0=u_dadda_cla8_fa15_or0
+.subckt and_gate a=a[6] b=b[3] out=u_dadda_cla8_and_6_3
+.subckt and_gate a=a[5] b=b[4] out=u_dadda_cla8_and_5_4
+.subckt and_gate a=a[4] b=b[5] out=u_dadda_cla8_and_4_5
+.subckt fa a=u_dadda_cla8_and_6_3 b=u_dadda_cla8_and_5_4 cin=u_dadda_cla8_and_4_5 fa_xor1=u_dadda_cla8_fa16_xor1 fa_or0=u_dadda_cla8_fa16_or0
+.subckt and_gate a=a[3] b=b[6] out=u_dadda_cla8_and_3_6
+.subckt and_gate a=a[2] b=b[7] out=u_dadda_cla8_and_2_7
+.subckt fa a=u_dadda_cla8_and_3_6 b=u_dadda_cla8_and_2_7 cin=u_dadda_cla8_fa2_xor1 fa_xor1=u_dadda_cla8_fa17_xor1 fa_or0=u_dadda_cla8_fa17_or0
+.subckt fa a=u_dadda_cla8_fa17_or0 b=u_dadda_cla8_fa16_or0 cin=u_dadda_cla8_fa15_or0 fa_xor1=u_dadda_cla8_fa18_xor1 fa_or0=u_dadda_cla8_fa18_or0
+.subckt and_gate a=a[7] b=b[3] out=u_dadda_cla8_and_7_3
+.subckt and_gate a=a[6] b=b[4] out=u_dadda_cla8_and_6_4
+.subckt fa a=u_dadda_cla8_fa2_or0 b=u_dadda_cla8_and_7_3 cin=u_dadda_cla8_and_6_4 fa_xor1=u_dadda_cla8_fa19_xor1 fa_or0=u_dadda_cla8_fa19_or0
+.subckt and_gate a=a[5] b=b[5] out=u_dadda_cla8_and_5_5
+.subckt and_gate a=a[4] b=b[6] out=u_dadda_cla8_and_4_6
+.subckt and_gate a=a[3] b=b[7] out=u_dadda_cla8_and_3_7
+.subckt fa a=u_dadda_cla8_and_5_5 b=u_dadda_cla8_and_4_6 cin=u_dadda_cla8_and_3_7 fa_xor1=u_dadda_cla8_fa20_xor1 fa_or0=u_dadda_cla8_fa20_or0
+.subckt fa a=u_dadda_cla8_fa20_or0 b=u_dadda_cla8_fa19_or0 cin=u_dadda_cla8_fa18_or0 fa_xor1=u_dadda_cla8_fa21_xor1 fa_or0=u_dadda_cla8_fa21_or0
+.subckt and_gate a=a[7] b=b[4] out=u_dadda_cla8_and_7_4
+.subckt and_gate a=a[6] b=b[5] out=u_dadda_cla8_and_6_5
+.subckt and_gate a=a[5] b=b[6] out=u_dadda_cla8_and_5_6
+.subckt fa a=u_dadda_cla8_and_7_4 b=u_dadda_cla8_and_6_5 cin=u_dadda_cla8_and_5_6 fa_xor1=u_dadda_cla8_fa22_xor1 fa_or0=u_dadda_cla8_fa22_or0
+.subckt and_gate a=a[7] b=b[5] out=u_dadda_cla8_and_7_5
+.subckt fa a=u_dadda_cla8_fa22_or0 b=u_dadda_cla8_fa21_or0 cin=u_dadda_cla8_and_7_5 fa_xor1=u_dadda_cla8_fa23_xor1 fa_or0=u_dadda_cla8_fa23_or0
+.subckt and_gate a=a[2] b=b[0] out=u_dadda_cla8_and_2_0
+.subckt and_gate a=a[1] b=b[1] out=u_dadda_cla8_and_1_1
+.subckt ha a=u_dadda_cla8_and_2_0 b=u_dadda_cla8_and_1_1 ha_xor0=u_dadda_cla8_ha6_xor0 ha_and0=u_dadda_cla8_ha6_and0
+.subckt and_gate a=a[1] b=b[2] out=u_dadda_cla8_and_1_2
+.subckt and_gate a=a[0] b=b[3] out=u_dadda_cla8_and_0_3
+.subckt fa a=u_dadda_cla8_ha6_and0 b=u_dadda_cla8_and_1_2 cin=u_dadda_cla8_and_0_3 fa_xor1=u_dadda_cla8_fa24_xor1 fa_or0=u_dadda_cla8_fa24_or0
+.subckt and_gate a=a[0] b=b[4] out=u_dadda_cla8_and_0_4
+.subckt fa a=u_dadda_cla8_fa24_or0 b=u_dadda_cla8_and_0_4 cin=u_dadda_cla8_fa3_xor1 fa_xor1=u_dadda_cla8_fa25_xor1 fa_or0=u_dadda_cla8_fa25_or0
+.subckt fa a=u_dadda_cla8_fa25_or0 b=u_dadda_cla8_fa4_xor1 cin=u_dadda_cla8_fa5_xor1 fa_xor1=u_dadda_cla8_fa26_xor1 fa_or0=u_dadda_cla8_fa26_or0
+.subckt fa a=u_dadda_cla8_fa26_or0 b=u_dadda_cla8_fa6_xor1 cin=u_dadda_cla8_fa7_xor1 fa_xor1=u_dadda_cla8_fa27_xor1 fa_or0=u_dadda_cla8_fa27_or0
+.subckt fa a=u_dadda_cla8_fa27_or0 b=u_dadda_cla8_fa9_xor1 cin=u_dadda_cla8_fa10_xor1 fa_xor1=u_dadda_cla8_fa28_xor1 fa_or0=u_dadda_cla8_fa28_or0
+.subckt fa a=u_dadda_cla8_fa28_or0 b=u_dadda_cla8_fa12_xor1 cin=u_dadda_cla8_fa13_xor1 fa_xor1=u_dadda_cla8_fa29_xor1 fa_or0=u_dadda_cla8_fa29_or0
+.subckt fa a=u_dadda_cla8_fa29_or0 b=u_dadda_cla8_fa15_xor1 cin=u_dadda_cla8_fa16_xor1 fa_xor1=u_dadda_cla8_fa30_xor1 fa_or0=u_dadda_cla8_fa30_or0
+.subckt fa a=u_dadda_cla8_fa30_or0 b=u_dadda_cla8_fa18_xor1 cin=u_dadda_cla8_fa19_xor1 fa_xor1=u_dadda_cla8_fa31_xor1 fa_or0=u_dadda_cla8_fa31_or0
+.subckt and_gate a=a[4] b=b[7] out=u_dadda_cla8_and_4_7
+.subckt fa a=u_dadda_cla8_fa31_or0 b=u_dadda_cla8_and_4_7 cin=u_dadda_cla8_fa21_xor1 fa_xor1=u_dadda_cla8_fa32_xor1 fa_or0=u_dadda_cla8_fa32_or0
+.subckt and_gate a=a[6] b=b[6] out=u_dadda_cla8_and_6_6
+.subckt and_gate a=a[5] b=b[7] out=u_dadda_cla8_and_5_7
+.subckt fa a=u_dadda_cla8_fa32_or0 b=u_dadda_cla8_and_6_6 cin=u_dadda_cla8_and_5_7 fa_xor1=u_dadda_cla8_fa33_xor1 fa_or0=u_dadda_cla8_fa33_or0
+.subckt and_gate a=a[7] b=b[6] out=u_dadda_cla8_and_7_6
+.subckt fa a=u_dadda_cla8_fa33_or0 b=u_dadda_cla8_fa23_or0 cin=u_dadda_cla8_and_7_6 fa_xor1=u_dadda_cla8_fa34_xor1 fa_or0=u_dadda_cla8_fa34_or0
+.subckt and_gate a=a[0] b=b[0] out=u_dadda_cla8_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=u_dadda_cla8_and_1_0
+.subckt and_gate a=a[0] b=b[2] out=u_dadda_cla8_and_0_2
+.subckt and_gate a=a[6] b=b[7] out=u_dadda_cla8_and_6_7
+.subckt and_gate a=a[0] b=b[1] out=u_dadda_cla8_and_0_1
+.subckt and_gate a=a[7] b=b[7] out=u_dadda_cla8_and_7_7
+.names u_dadda_cla8_and_1_0 u_dadda_cla8_u_cla14_a[0]
+1 1
+.names u_dadda_cla8_and_0_2 u_dadda_cla8_u_cla14_a[1]
+1 1
+.names u_dadda_cla8_ha3_xor0 u_dadda_cla8_u_cla14_a[2]
+1 1
+.names u_dadda_cla8_ha4_xor0 u_dadda_cla8_u_cla14_a[3]
+1 1
+.names u_dadda_cla8_ha5_xor0 u_dadda_cla8_u_cla14_a[4]
+1 1
+.names u_dadda_cla8_fa8_xor1 u_dadda_cla8_u_cla14_a[5]
+1 1
+.names u_dadda_cla8_fa11_xor1 u_dadda_cla8_u_cla14_a[6]
+1 1
+.names u_dadda_cla8_fa14_xor1 u_dadda_cla8_u_cla14_a[7]
+1 1
+.names u_dadda_cla8_fa17_xor1 u_dadda_cla8_u_cla14_a[8]
+1 1
+.names u_dadda_cla8_fa20_xor1 u_dadda_cla8_u_cla14_a[9]
+1 1
+.names u_dadda_cla8_fa22_xor1 u_dadda_cla8_u_cla14_a[10]
+1 1
+.names u_dadda_cla8_fa23_xor1 u_dadda_cla8_u_cla14_a[11]
+1 1
+.names u_dadda_cla8_and_6_7 u_dadda_cla8_u_cla14_a[12]
+1 1
+.names u_dadda_cla8_fa34_or0 u_dadda_cla8_u_cla14_a[13]
+1 1
+.names u_dadda_cla8_and_0_1 u_dadda_cla8_u_cla14_b[0]
+1 1
+.names u_dadda_cla8_ha6_xor0 u_dadda_cla8_u_cla14_b[1]
+1 1
+.names u_dadda_cla8_fa24_xor1 u_dadda_cla8_u_cla14_b[2]
+1 1
+.names u_dadda_cla8_fa25_xor1 u_dadda_cla8_u_cla14_b[3]
+1 1
+.names u_dadda_cla8_fa26_xor1 u_dadda_cla8_u_cla14_b[4]
+1 1
+.names u_dadda_cla8_fa27_xor1 u_dadda_cla8_u_cla14_b[5]
+1 1
+.names u_dadda_cla8_fa28_xor1 u_dadda_cla8_u_cla14_b[6]
+1 1
+.names u_dadda_cla8_fa29_xor1 u_dadda_cla8_u_cla14_b[7]
+1 1
+.names u_dadda_cla8_fa30_xor1 u_dadda_cla8_u_cla14_b[8]
+1 1
+.names u_dadda_cla8_fa31_xor1 u_dadda_cla8_u_cla14_b[9]
+1 1
+.names u_dadda_cla8_fa32_xor1 u_dadda_cla8_u_cla14_b[10]
+1 1
+.names u_dadda_cla8_fa33_xor1 u_dadda_cla8_u_cla14_b[11]
+1 1
+.names u_dadda_cla8_fa34_xor1 u_dadda_cla8_u_cla14_b[12]
+1 1
+.names u_dadda_cla8_and_7_7 u_dadda_cla8_u_cla14_b[13]
+1 1
+.subckt u_cla14 a[0]=u_dadda_cla8_u_cla14_a[0] a[1]=u_dadda_cla8_u_cla14_a[1] a[2]=u_dadda_cla8_u_cla14_a[2] a[3]=u_dadda_cla8_u_cla14_a[3] a[4]=u_dadda_cla8_u_cla14_a[4] a[5]=u_dadda_cla8_u_cla14_a[5] a[6]=u_dadda_cla8_u_cla14_a[6] a[7]=u_dadda_cla8_u_cla14_a[7] a[8]=u_dadda_cla8_u_cla14_a[8] a[9]=u_dadda_cla8_u_cla14_a[9] a[10]=u_dadda_cla8_u_cla14_a[10] a[11]=u_dadda_cla8_u_cla14_a[11] a[12]=u_dadda_cla8_u_cla14_a[12] a[13]=u_dadda_cla8_u_cla14_a[13] b[0]=u_dadda_cla8_u_cla14_b[0] b[1]=u_dadda_cla8_u_cla14_b[1] b[2]=u_dadda_cla8_u_cla14_b[2] b[3]=u_dadda_cla8_u_cla14_b[3] b[4]=u_dadda_cla8_u_cla14_b[4] b[5]=u_dadda_cla8_u_cla14_b[5] b[6]=u_dadda_cla8_u_cla14_b[6] b[7]=u_dadda_cla8_u_cla14_b[7] b[8]=u_dadda_cla8_u_cla14_b[8] b[9]=u_dadda_cla8_u_cla14_b[9] b[10]=u_dadda_cla8_u_cla14_b[10] b[11]=u_dadda_cla8_u_cla14_b[11] b[12]=u_dadda_cla8_u_cla14_b[12] b[13]=u_dadda_cla8_u_cla14_b[13] u_cla14_out[0]=u_dadda_cla8_u_cla14_pg_logic0_xor0 u_cla14_out[1]=u_dadda_cla8_u_cla14_xor1 u_cla14_out[2]=u_dadda_cla8_u_cla14_xor2 u_cla14_out[3]=u_dadda_cla8_u_cla14_xor3 u_cla14_out[4]=u_dadda_cla8_u_cla14_xor4 u_cla14_out[5]=u_dadda_cla8_u_cla14_xor5 u_cla14_out[6]=u_dadda_cla8_u_cla14_xor6 u_cla14_out[7]=u_dadda_cla8_u_cla14_xor7 u_cla14_out[8]=u_dadda_cla8_u_cla14_xor8 u_cla14_out[9]=u_dadda_cla8_u_cla14_xor9 u_cla14_out[10]=u_dadda_cla8_u_cla14_xor10 u_cla14_out[11]=u_dadda_cla8_u_cla14_xor11 u_cla14_out[12]=u_dadda_cla8_u_cla14_xor12 u_cla14_out[13]=u_dadda_cla8_u_cla14_xor13 u_cla14_out[14]=u_dadda_cla8_u_cla14_or28
+.names u_dadda_cla8_and_0_0 u_dadda_cla8_out[0]
+1 1
+.names u_dadda_cla8_u_cla14_pg_logic0_xor0 u_dadda_cla8_out[1]
+1 1
+.names u_dadda_cla8_u_cla14_xor1 u_dadda_cla8_out[2]
+1 1
+.names u_dadda_cla8_u_cla14_xor2 u_dadda_cla8_out[3]
+1 1
+.names u_dadda_cla8_u_cla14_xor3 u_dadda_cla8_out[4]
+1 1
+.names u_dadda_cla8_u_cla14_xor4 u_dadda_cla8_out[5]
+1 1
+.names u_dadda_cla8_u_cla14_xor5 u_dadda_cla8_out[6]
+1 1
+.names u_dadda_cla8_u_cla14_xor6 u_dadda_cla8_out[7]
+1 1
+.names u_dadda_cla8_u_cla14_xor7 u_dadda_cla8_out[8]
+1 1
+.names u_dadda_cla8_u_cla14_xor8 u_dadda_cla8_out[9]
+1 1
+.names u_dadda_cla8_u_cla14_xor9 u_dadda_cla8_out[10]
+1 1
+.names u_dadda_cla8_u_cla14_xor10 u_dadda_cla8_out[11]
+1 1
+.names u_dadda_cla8_u_cla14_xor11 u_dadda_cla8_out[12]
+1 1
+.names u_dadda_cla8_u_cla14_xor12 u_dadda_cla8_out[13]
+1 1
+.names u_dadda_cla8_u_cla14_xor13 u_dadda_cla8_out[14]
+1 1
+.names u_dadda_cla8_u_cla14_or28 u_dadda_cla8_out[15]
+1 1
+.end
+
+.model u_cla14
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13]
+.outputs u_cla14_out[0] u_cla14_out[1] u_cla14_out[2] u_cla14_out[3] u_cla14_out[4] u_cla14_out[5] u_cla14_out[6] u_cla14_out[7] u_cla14_out[8] u_cla14_out[9] u_cla14_out[10] u_cla14_out[11] u_cla14_out[12] u_cla14_out[13] u_cla14_out[14]
+.names vdd
+1
+.names gnd
+0
+.subckt pg_logic a=a[0] b=b[0] pg_logic_or0=u_cla14_pg_logic0_or0 pg_logic_and0=u_cla14_pg_logic0_and0 pg_logic_xor0=u_cla14_pg_logic0_xor0
+.subckt pg_logic a=a[1] b=b[1] pg_logic_or0=u_cla14_pg_logic1_or0 pg_logic_and0=u_cla14_pg_logic1_and0 pg_logic_xor0=u_cla14_pg_logic1_xor0
+.subckt xor_gate a=u_cla14_pg_logic1_xor0 b=u_cla14_pg_logic0_and0 out=u_cla14_xor1
+.subckt and_gate a=u_cla14_pg_logic0_and0 b=u_cla14_pg_logic1_or0 out=u_cla14_and0
+.subckt or_gate a=u_cla14_pg_logic1_and0 b=u_cla14_and0 out=u_cla14_or0
+.subckt pg_logic a=a[2] b=b[2] pg_logic_or0=u_cla14_pg_logic2_or0 pg_logic_and0=u_cla14_pg_logic2_and0 pg_logic_xor0=u_cla14_pg_logic2_xor0
+.subckt xor_gate a=u_cla14_pg_logic2_xor0 b=u_cla14_or0 out=u_cla14_xor2
+.subckt and_gate a=u_cla14_pg_logic2_or0 b=u_cla14_pg_logic0_or0 out=u_cla14_and1
+.subckt and_gate a=u_cla14_pg_logic0_and0 b=u_cla14_pg_logic2_or0 out=u_cla14_and2
+.subckt and_gate a=u_cla14_and2 b=u_cla14_pg_logic1_or0 out=u_cla14_and3
+.subckt and_gate a=u_cla14_pg_logic1_and0 b=u_cla14_pg_logic2_or0 out=u_cla14_and4
+.subckt or_gate a=u_cla14_and3 b=u_cla14_and4 out=u_cla14_or1
+.subckt or_gate a=u_cla14_pg_logic2_and0 b=u_cla14_or1 out=u_cla14_or2
+.subckt pg_logic a=a[3] b=b[3] pg_logic_or0=u_cla14_pg_logic3_or0 pg_logic_and0=u_cla14_pg_logic3_and0 pg_logic_xor0=u_cla14_pg_logic3_xor0
+.subckt xor_gate a=u_cla14_pg_logic3_xor0 b=u_cla14_or2 out=u_cla14_xor3
+.subckt and_gate a=u_cla14_pg_logic3_or0 b=u_cla14_pg_logic1_or0 out=u_cla14_and5
+.subckt and_gate a=u_cla14_pg_logic0_and0 b=u_cla14_pg_logic2_or0 out=u_cla14_and6
+.subckt and_gate a=u_cla14_pg_logic3_or0 b=u_cla14_pg_logic1_or0 out=u_cla14_and7
+.subckt and_gate a=u_cla14_and6 b=u_cla14_and7 out=u_cla14_and8
+.subckt and_gate a=u_cla14_pg_logic1_and0 b=u_cla14_pg_logic3_or0 out=u_cla14_and9
+.subckt and_gate a=u_cla14_and9 b=u_cla14_pg_logic2_or0 out=u_cla14_and10
+.subckt and_gate a=u_cla14_pg_logic2_and0 b=u_cla14_pg_logic3_or0 out=u_cla14_and11
+.subckt or_gate a=u_cla14_and8 b=u_cla14_and11 out=u_cla14_or3
+.subckt or_gate a=u_cla14_and10 b=u_cla14_or3 out=u_cla14_or4
+.subckt or_gate a=u_cla14_pg_logic3_and0 b=u_cla14_or4 out=u_cla14_or5
+.subckt pg_logic a=a[4] b=b[4] pg_logic_or0=u_cla14_pg_logic4_or0 pg_logic_and0=u_cla14_pg_logic4_and0 pg_logic_xor0=u_cla14_pg_logic4_xor0
+.subckt xor_gate a=u_cla14_pg_logic4_xor0 b=u_cla14_or5 out=u_cla14_xor4
+.subckt and_gate a=u_cla14_or5 b=u_cla14_pg_logic4_or0 out=u_cla14_and12
+.subckt or_gate a=u_cla14_pg_logic4_and0 b=u_cla14_and12 out=u_cla14_or6
+.subckt pg_logic a=a[5] b=b[5] pg_logic_or0=u_cla14_pg_logic5_or0 pg_logic_and0=u_cla14_pg_logic5_and0 pg_logic_xor0=u_cla14_pg_logic5_xor0
+.subckt xor_gate a=u_cla14_pg_logic5_xor0 b=u_cla14_or6 out=u_cla14_xor5
+.subckt and_gate a=u_cla14_or5 b=u_cla14_pg_logic5_or0 out=u_cla14_and13
+.subckt and_gate a=u_cla14_and13 b=u_cla14_pg_logic4_or0 out=u_cla14_and14
+.subckt and_gate a=u_cla14_pg_logic4_and0 b=u_cla14_pg_logic5_or0 out=u_cla14_and15
+.subckt or_gate a=u_cla14_and14 b=u_cla14_and15 out=u_cla14_or7
+.subckt or_gate a=u_cla14_pg_logic5_and0 b=u_cla14_or7 out=u_cla14_or8
+.subckt pg_logic a=a[6] b=b[6] pg_logic_or0=u_cla14_pg_logic6_or0 pg_logic_and0=u_cla14_pg_logic6_and0 pg_logic_xor0=u_cla14_pg_logic6_xor0
+.subckt xor_gate a=u_cla14_pg_logic6_xor0 b=u_cla14_or8 out=u_cla14_xor6
+.subckt and_gate a=u_cla14_or5 b=u_cla14_pg_logic5_or0 out=u_cla14_and16
+.subckt and_gate a=u_cla14_pg_logic6_or0 b=u_cla14_pg_logic4_or0 out=u_cla14_and17
+.subckt and_gate a=u_cla14_and16 b=u_cla14_and17 out=u_cla14_and18
+.subckt and_gate a=u_cla14_pg_logic4_and0 b=u_cla14_pg_logic6_or0 out=u_cla14_and19
+.subckt and_gate a=u_cla14_and19 b=u_cla14_pg_logic5_or0 out=u_cla14_and20
+.subckt and_gate a=u_cla14_pg_logic5_and0 b=u_cla14_pg_logic6_or0 out=u_cla14_and21
+.subckt or_gate a=u_cla14_and18 b=u_cla14_and20 out=u_cla14_or9
+.subckt or_gate a=u_cla14_or9 b=u_cla14_and21 out=u_cla14_or10
+.subckt or_gate a=u_cla14_pg_logic6_and0 b=u_cla14_or10 out=u_cla14_or11
+.subckt pg_logic a=a[7] b=b[7] pg_logic_or0=u_cla14_pg_logic7_or0 pg_logic_and0=u_cla14_pg_logic7_and0 pg_logic_xor0=u_cla14_pg_logic7_xor0
+.subckt xor_gate a=u_cla14_pg_logic7_xor0 b=u_cla14_or11 out=u_cla14_xor7
+.subckt and_gate a=u_cla14_or5 b=u_cla14_pg_logic6_or0 out=u_cla14_and22
+.subckt and_gate a=u_cla14_pg_logic7_or0 b=u_cla14_pg_logic5_or0 out=u_cla14_and23
+.subckt and_gate a=u_cla14_and22 b=u_cla14_and23 out=u_cla14_and24
+.subckt and_gate a=u_cla14_and24 b=u_cla14_pg_logic4_or0 out=u_cla14_and25
+.subckt and_gate a=u_cla14_pg_logic4_and0 b=u_cla14_pg_logic6_or0 out=u_cla14_and26
+.subckt and_gate a=u_cla14_pg_logic7_or0 b=u_cla14_pg_logic5_or0 out=u_cla14_and27
+.subckt and_gate a=u_cla14_and26 b=u_cla14_and27 out=u_cla14_and28
+.subckt and_gate a=u_cla14_pg_logic5_and0 b=u_cla14_pg_logic7_or0 out=u_cla14_and29
+.subckt and_gate a=u_cla14_and29 b=u_cla14_pg_logic6_or0 out=u_cla14_and30
+.subckt and_gate a=u_cla14_pg_logic6_and0 b=u_cla14_pg_logic7_or0 out=u_cla14_and31
+.subckt or_gate a=u_cla14_and25 b=u_cla14_and30 out=u_cla14_or12
+.subckt or_gate a=u_cla14_and28 b=u_cla14_and31 out=u_cla14_or13
+.subckt or_gate a=u_cla14_or12 b=u_cla14_or13 out=u_cla14_or14
+.subckt or_gate a=u_cla14_pg_logic7_and0 b=u_cla14_or14 out=u_cla14_or15
+.subckt pg_logic a=a[8] b=b[8] pg_logic_or0=u_cla14_pg_logic8_or0 pg_logic_and0=u_cla14_pg_logic8_and0 pg_logic_xor0=u_cla14_pg_logic8_xor0
+.subckt xor_gate a=u_cla14_pg_logic8_xor0 b=u_cla14_or15 out=u_cla14_xor8
+.subckt and_gate a=u_cla14_or15 b=u_cla14_pg_logic8_or0 out=u_cla14_and32
+.subckt or_gate a=u_cla14_pg_logic8_and0 b=u_cla14_and32 out=u_cla14_or16
+.subckt pg_logic a=a[9] b=b[9] pg_logic_or0=u_cla14_pg_logic9_or0 pg_logic_and0=u_cla14_pg_logic9_and0 pg_logic_xor0=u_cla14_pg_logic9_xor0
+.subckt xor_gate a=u_cla14_pg_logic9_xor0 b=u_cla14_or16 out=u_cla14_xor9
+.subckt and_gate a=u_cla14_or15 b=u_cla14_pg_logic9_or0 out=u_cla14_and33
+.subckt and_gate a=u_cla14_and33 b=u_cla14_pg_logic8_or0 out=u_cla14_and34
+.subckt and_gate a=u_cla14_pg_logic8_and0 b=u_cla14_pg_logic9_or0 out=u_cla14_and35
+.subckt or_gate a=u_cla14_and34 b=u_cla14_and35 out=u_cla14_or17
+.subckt or_gate a=u_cla14_pg_logic9_and0 b=u_cla14_or17 out=u_cla14_or18
+.subckt pg_logic a=a[10] b=b[10] pg_logic_or0=u_cla14_pg_logic10_or0 pg_logic_and0=u_cla14_pg_logic10_and0 pg_logic_xor0=u_cla14_pg_logic10_xor0
+.subckt xor_gate a=u_cla14_pg_logic10_xor0 b=u_cla14_or18 out=u_cla14_xor10
+.subckt and_gate a=u_cla14_or15 b=u_cla14_pg_logic9_or0 out=u_cla14_and36
+.subckt and_gate a=u_cla14_pg_logic10_or0 b=u_cla14_pg_logic8_or0 out=u_cla14_and37
+.subckt and_gate a=u_cla14_and36 b=u_cla14_and37 out=u_cla14_and38
+.subckt and_gate a=u_cla14_pg_logic8_and0 b=u_cla14_pg_logic10_or0 out=u_cla14_and39
+.subckt and_gate a=u_cla14_and39 b=u_cla14_pg_logic9_or0 out=u_cla14_and40
+.subckt and_gate a=u_cla14_pg_logic9_and0 b=u_cla14_pg_logic10_or0 out=u_cla14_and41
+.subckt or_gate a=u_cla14_and38 b=u_cla14_and40 out=u_cla14_or19
+.subckt or_gate a=u_cla14_or19 b=u_cla14_and41 out=u_cla14_or20
+.subckt or_gate a=u_cla14_pg_logic10_and0 b=u_cla14_or20 out=u_cla14_or21
+.subckt pg_logic a=a[11] b=b[11] pg_logic_or0=u_cla14_pg_logic11_or0 pg_logic_and0=u_cla14_pg_logic11_and0 pg_logic_xor0=u_cla14_pg_logic11_xor0
+.subckt xor_gate a=u_cla14_pg_logic11_xor0 b=u_cla14_or21 out=u_cla14_xor11
+.subckt and_gate a=u_cla14_or15 b=u_cla14_pg_logic10_or0 out=u_cla14_and42
+.subckt and_gate a=u_cla14_pg_logic11_or0 b=u_cla14_pg_logic9_or0 out=u_cla14_and43
+.subckt and_gate a=u_cla14_and42 b=u_cla14_and43 out=u_cla14_and44
+.subckt and_gate a=u_cla14_and44 b=u_cla14_pg_logic8_or0 out=u_cla14_and45
+.subckt and_gate a=u_cla14_pg_logic8_and0 b=u_cla14_pg_logic10_or0 out=u_cla14_and46
+.subckt and_gate a=u_cla14_pg_logic11_or0 b=u_cla14_pg_logic9_or0 out=u_cla14_and47
+.subckt and_gate a=u_cla14_and46 b=u_cla14_and47 out=u_cla14_and48
+.subckt and_gate a=u_cla14_pg_logic9_and0 b=u_cla14_pg_logic11_or0 out=u_cla14_and49
+.subckt and_gate a=u_cla14_and49 b=u_cla14_pg_logic10_or0 out=u_cla14_and50
+.subckt and_gate a=u_cla14_pg_logic10_and0 b=u_cla14_pg_logic11_or0 out=u_cla14_and51
+.subckt or_gate a=u_cla14_and45 b=u_cla14_and50 out=u_cla14_or22
+.subckt or_gate a=u_cla14_and48 b=u_cla14_and51 out=u_cla14_or23
+.subckt or_gate a=u_cla14_or22 b=u_cla14_or23 out=u_cla14_or24
+.subckt or_gate a=u_cla14_pg_logic11_and0 b=u_cla14_or24 out=u_cla14_or25
+.subckt pg_logic a=a[12] b=b[12] pg_logic_or0=u_cla14_pg_logic12_or0 pg_logic_and0=u_cla14_pg_logic12_and0 pg_logic_xor0=u_cla14_pg_logic12_xor0
+.subckt xor_gate a=u_cla14_pg_logic12_xor0 b=u_cla14_or25 out=u_cla14_xor12
+.subckt and_gate a=u_cla14_or25 b=u_cla14_pg_logic12_or0 out=u_cla14_and52
+.subckt or_gate a=u_cla14_pg_logic12_and0 b=u_cla14_and52 out=u_cla14_or26
+.subckt pg_logic a=a[13] b=b[13] pg_logic_or0=u_cla14_pg_logic13_or0 pg_logic_and0=u_cla14_pg_logic13_and0 pg_logic_xor0=u_cla14_pg_logic13_xor0
+.subckt xor_gate a=u_cla14_pg_logic13_xor0 b=u_cla14_or26 out=u_cla14_xor13
+.subckt and_gate a=u_cla14_or25 b=u_cla14_pg_logic13_or0 out=u_cla14_and53
+.subckt and_gate a=u_cla14_and53 b=u_cla14_pg_logic12_or0 out=u_cla14_and54
+.subckt and_gate a=u_cla14_pg_logic12_and0 b=u_cla14_pg_logic13_or0 out=u_cla14_and55
+.subckt or_gate a=u_cla14_and54 b=u_cla14_and55 out=u_cla14_or27
+.subckt or_gate a=u_cla14_pg_logic13_and0 b=u_cla14_or27 out=u_cla14_or28
+.names u_cla14_pg_logic0_xor0 u_cla14_out[0]
+1 1
+.names u_cla14_xor1 u_cla14_out[1]
+1 1
+.names u_cla14_xor2 u_cla14_out[2]
+1 1
+.names u_cla14_xor3 u_cla14_out[3]
+1 1
+.names u_cla14_xor4 u_cla14_out[4]
+1 1
+.names u_cla14_xor5 u_cla14_out[5]
+1 1
+.names u_cla14_xor6 u_cla14_out[6]
+1 1
+.names u_cla14_xor7 u_cla14_out[7]
+1 1
+.names u_cla14_xor8 u_cla14_out[8]
+1 1
+.names u_cla14_xor9 u_cla14_out[9]
+1 1
+.names u_cla14_xor10 u_cla14_out[10]
+1 1
+.names u_cla14_xor11 u_cla14_out[11]
+1 1
+.names u_cla14_xor12 u_cla14_out[12]
+1 1
+.names u_cla14_xor13 u_cla14_out[13]
+1 1
+.names u_cla14_or28 u_cla14_out[14]
+1 1
+.end
+
+.model pg_logic
+.inputs a b
+.outputs pg_logic_or0 pg_logic_and0 pg_logic_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt or_gate a=a b=b out=pg_logic_or0
+.subckt and_gate a=a b=b out=pg_logic_and0
+.subckt xor_gate a=a b=b out=pg_logic_xor0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end

@@ -1,0 +1,223 @@
+.model u_cla8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs u_cla8_out[0] u_cla8_out[1] u_cla8_out[2] u_cla8_out[3] u_cla8_out[4] u_cla8_out[5] u_cla8_out[6] u_cla8_out[7] u_cla8_out[8]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] u_cla8_pg_logic0_or0
+1- 1
+-1 1
+.names a[0] b[0] u_cla8_pg_logic0_and0
+11 1
+.names a[0] b[0] u_cla8_pg_logic0_xor0
+01 1
+10 1
+.names a[1] b[1] u_cla8_pg_logic1_or0
+1- 1
+-1 1
+.names a[1] b[1] u_cla8_pg_logic1_and0
+11 1
+.names a[1] b[1] u_cla8_pg_logic1_xor0
+01 1
+10 1
+.names u_cla8_pg_logic1_xor0 u_cla8_pg_logic0_and0 u_cla8_xor1
+01 1
+10 1
+.names u_cla8_pg_logic0_and0 u_cla8_pg_logic1_or0 u_cla8_and0
+11 1
+.names u_cla8_pg_logic1_and0 u_cla8_and0 u_cla8_or0
+1- 1
+-1 1
+.names a[2] b[2] u_cla8_pg_logic2_or0
+1- 1
+-1 1
+.names a[2] b[2] u_cla8_pg_logic2_and0
+11 1
+.names a[2] b[2] u_cla8_pg_logic2_xor0
+01 1
+10 1
+.names u_cla8_pg_logic2_xor0 u_cla8_or0 u_cla8_xor2
+01 1
+10 1
+.names u_cla8_pg_logic2_or0 u_cla8_pg_logic0_or0 u_cla8_and1
+11 1
+.names u_cla8_pg_logic0_and0 u_cla8_pg_logic2_or0 u_cla8_and2
+11 1
+.names u_cla8_and2 u_cla8_pg_logic1_or0 u_cla8_and3
+11 1
+.names u_cla8_pg_logic1_and0 u_cla8_pg_logic2_or0 u_cla8_and4
+11 1
+.names u_cla8_and3 u_cla8_and4 u_cla8_or1
+1- 1
+-1 1
+.names u_cla8_pg_logic2_and0 u_cla8_or1 u_cla8_or2
+1- 1
+-1 1
+.names a[3] b[3] u_cla8_pg_logic3_or0
+1- 1
+-1 1
+.names a[3] b[3] u_cla8_pg_logic3_and0
+11 1
+.names a[3] b[3] u_cla8_pg_logic3_xor0
+01 1
+10 1
+.names u_cla8_pg_logic3_xor0 u_cla8_or2 u_cla8_xor3
+01 1
+10 1
+.names u_cla8_pg_logic3_or0 u_cla8_pg_logic1_or0 u_cla8_and5
+11 1
+.names u_cla8_pg_logic0_and0 u_cla8_pg_logic2_or0 u_cla8_and6
+11 1
+.names u_cla8_pg_logic3_or0 u_cla8_pg_logic1_or0 u_cla8_and7
+11 1
+.names u_cla8_and6 u_cla8_and7 u_cla8_and8
+11 1
+.names u_cla8_pg_logic1_and0 u_cla8_pg_logic3_or0 u_cla8_and9
+11 1
+.names u_cla8_and9 u_cla8_pg_logic2_or0 u_cla8_and10
+11 1
+.names u_cla8_pg_logic2_and0 u_cla8_pg_logic3_or0 u_cla8_and11
+11 1
+.names u_cla8_and8 u_cla8_and11 u_cla8_or3
+1- 1
+-1 1
+.names u_cla8_and10 u_cla8_or3 u_cla8_or4
+1- 1
+-1 1
+.names u_cla8_pg_logic3_and0 u_cla8_or4 u_cla8_or5
+1- 1
+-1 1
+.names a[4] b[4] u_cla8_pg_logic4_or0
+1- 1
+-1 1
+.names a[4] b[4] u_cla8_pg_logic4_and0
+11 1
+.names a[4] b[4] u_cla8_pg_logic4_xor0
+01 1
+10 1
+.names u_cla8_pg_logic4_xor0 u_cla8_or5 u_cla8_xor4
+01 1
+10 1
+.names u_cla8_or5 u_cla8_pg_logic4_or0 u_cla8_and12
+11 1
+.names u_cla8_pg_logic4_and0 u_cla8_and12 u_cla8_or6
+1- 1
+-1 1
+.names a[5] b[5] u_cla8_pg_logic5_or0
+1- 1
+-1 1
+.names a[5] b[5] u_cla8_pg_logic5_and0
+11 1
+.names a[5] b[5] u_cla8_pg_logic5_xor0
+01 1
+10 1
+.names u_cla8_pg_logic5_xor0 u_cla8_or6 u_cla8_xor5
+01 1
+10 1
+.names u_cla8_or5 u_cla8_pg_logic5_or0 u_cla8_and13
+11 1
+.names u_cla8_and13 u_cla8_pg_logic4_or0 u_cla8_and14
+11 1
+.names u_cla8_pg_logic4_and0 u_cla8_pg_logic5_or0 u_cla8_and15
+11 1
+.names u_cla8_and14 u_cla8_and15 u_cla8_or7
+1- 1
+-1 1
+.names u_cla8_pg_logic5_and0 u_cla8_or7 u_cla8_or8
+1- 1
+-1 1
+.names a[6] b[6] u_cla8_pg_logic6_or0
+1- 1
+-1 1
+.names a[6] b[6] u_cla8_pg_logic6_and0
+11 1
+.names a[6] b[6] u_cla8_pg_logic6_xor0
+01 1
+10 1
+.names u_cla8_pg_logic6_xor0 u_cla8_or8 u_cla8_xor6
+01 1
+10 1
+.names u_cla8_or5 u_cla8_pg_logic5_or0 u_cla8_and16
+11 1
+.names u_cla8_pg_logic6_or0 u_cla8_pg_logic4_or0 u_cla8_and17
+11 1
+.names u_cla8_and16 u_cla8_and17 u_cla8_and18
+11 1
+.names u_cla8_pg_logic4_and0 u_cla8_pg_logic6_or0 u_cla8_and19
+11 1
+.names u_cla8_and19 u_cla8_pg_logic5_or0 u_cla8_and20
+11 1
+.names u_cla8_pg_logic5_and0 u_cla8_pg_logic6_or0 u_cla8_and21
+11 1
+.names u_cla8_and18 u_cla8_and20 u_cla8_or9
+1- 1
+-1 1
+.names u_cla8_or9 u_cla8_and21 u_cla8_or10
+1- 1
+-1 1
+.names u_cla8_pg_logic6_and0 u_cla8_or10 u_cla8_or11
+1- 1
+-1 1
+.names a[7] b[7] u_cla8_pg_logic7_or0
+1- 1
+-1 1
+.names a[7] b[7] u_cla8_pg_logic7_and0
+11 1
+.names a[7] b[7] u_cla8_pg_logic7_xor0
+01 1
+10 1
+.names u_cla8_pg_logic7_xor0 u_cla8_or11 u_cla8_xor7
+01 1
+10 1
+.names u_cla8_or5 u_cla8_pg_logic6_or0 u_cla8_and22
+11 1
+.names u_cla8_pg_logic7_or0 u_cla8_pg_logic5_or0 u_cla8_and23
+11 1
+.names u_cla8_and22 u_cla8_and23 u_cla8_and24
+11 1
+.names u_cla8_and24 u_cla8_pg_logic4_or0 u_cla8_and25
+11 1
+.names u_cla8_pg_logic4_and0 u_cla8_pg_logic6_or0 u_cla8_and26
+11 1
+.names u_cla8_pg_logic7_or0 u_cla8_pg_logic5_or0 u_cla8_and27
+11 1
+.names u_cla8_and26 u_cla8_and27 u_cla8_and28
+11 1
+.names u_cla8_pg_logic5_and0 u_cla8_pg_logic7_or0 u_cla8_and29
+11 1
+.names u_cla8_and29 u_cla8_pg_logic6_or0 u_cla8_and30
+11 1
+.names u_cla8_pg_logic6_and0 u_cla8_pg_logic7_or0 u_cla8_and31
+11 1
+.names u_cla8_and25 u_cla8_and30 u_cla8_or12
+1- 1
+-1 1
+.names u_cla8_and28 u_cla8_and31 u_cla8_or13
+1- 1
+-1 1
+.names u_cla8_or12 u_cla8_or13 u_cla8_or14
+1- 1
+-1 1
+.names u_cla8_pg_logic7_and0 u_cla8_or14 u_cla8_or15
+1- 1
+-1 1
+.names u_cla8_pg_logic0_xor0 u_cla8_out[0]
+1 1
+.names u_cla8_xor1 u_cla8_out[1]
+1 1
+.names u_cla8_xor2 u_cla8_out[2]
+1 1
+.names u_cla8_xor3 u_cla8_out[3]
+1 1
+.names u_cla8_xor4 u_cla8_out[4]
+1 1
+.names u_cla8_xor5 u_cla8_out[5]
+1 1
+.names u_cla8_xor6 u_cla8_out[6]
+1 1
+.names u_cla8_xor7 u_cla8_out[7]
+1 1
+.names u_cla8_or15 u_cla8_out[8]
+1 1
+.end

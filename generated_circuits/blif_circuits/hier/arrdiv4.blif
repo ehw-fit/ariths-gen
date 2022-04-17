@@ -1,0 +1,120 @@
+.model arrdiv4
+.inputs a[0] a[1] a[2] a[3] b[0] b[1] b[2] b[3]
+.outputs arrdiv4_out[0] arrdiv4_out[1] arrdiv4_out[2] arrdiv4_out[3]
+.names vdd
+1
+.names gnd
+0
+.subckt fs a=a[3] b=b[0] bin=gnd fs_xor1=arrdiv4_fs0_xor0 fs_or0=arrdiv4_fs0_and0
+.subckt fs a=gnd b=b[1] bin=arrdiv4_fs0_and0 fs_xor1=arrdiv4_fs1_xor1 fs_or0=arrdiv4_fs1_or0
+.subckt fs a=gnd b=b[2] bin=arrdiv4_fs1_or0 fs_xor1=arrdiv4_fs2_xor1 fs_or0=arrdiv4_fs2_or0
+.subckt fs a=gnd b=b[3] bin=arrdiv4_fs2_or0 fs_xor1=arrdiv4_fs3_xor1 fs_or0=arrdiv4_fs3_or0
+.subckt mux2to1 d0=arrdiv4_fs0_xor0 d1=a[3] sel=arrdiv4_fs3_or0 mux2to1_xor0=arrdiv4_mux2to10_xor0
+.subckt mux2to1 d0=arrdiv4_fs1_xor1 d1=gnd sel=arrdiv4_fs3_or0 mux2to1_xor0=arrdiv4_mux2to11_and1
+.subckt mux2to1 d0=arrdiv4_fs2_xor1 d1=gnd sel=arrdiv4_fs3_or0 mux2to1_xor0=arrdiv4_mux2to12_and1
+.subckt not_gate a=arrdiv4_fs3_or0 out=arrdiv4_not0
+.subckt fs a=a[2] b=b[0] bin=gnd fs_xor1=arrdiv4_fs4_xor0 fs_or0=arrdiv4_fs4_and0
+.subckt fs a=arrdiv4_mux2to10_xor0 b=b[1] bin=arrdiv4_fs4_and0 fs_xor1=arrdiv4_fs5_xor1 fs_or0=arrdiv4_fs5_or0
+.subckt fs a=arrdiv4_mux2to11_and1 b=b[2] bin=arrdiv4_fs5_or0 fs_xor1=arrdiv4_fs6_xor1 fs_or0=arrdiv4_fs6_or0
+.subckt fs a=arrdiv4_mux2to12_and1 b=b[3] bin=arrdiv4_fs6_or0 fs_xor1=arrdiv4_fs7_xor1 fs_or0=arrdiv4_fs7_or0
+.subckt mux2to1 d0=arrdiv4_fs4_xor0 d1=a[2] sel=arrdiv4_fs7_or0 mux2to1_xor0=arrdiv4_mux2to13_xor0
+.subckt mux2to1 d0=arrdiv4_fs5_xor1 d1=arrdiv4_mux2to10_xor0 sel=arrdiv4_fs7_or0 mux2to1_xor0=arrdiv4_mux2to14_xor0
+.subckt mux2to1 d0=arrdiv4_fs6_xor1 d1=arrdiv4_mux2to11_and1 sel=arrdiv4_fs7_or0 mux2to1_xor0=arrdiv4_mux2to15_xor0
+.subckt not_gate a=arrdiv4_fs7_or0 out=arrdiv4_not1
+.subckt fs a=a[1] b=b[0] bin=gnd fs_xor1=arrdiv4_fs8_xor0 fs_or0=arrdiv4_fs8_and0
+.subckt fs a=arrdiv4_mux2to13_xor0 b=b[1] bin=arrdiv4_fs8_and0 fs_xor1=arrdiv4_fs9_xor1 fs_or0=arrdiv4_fs9_or0
+.subckt fs a=arrdiv4_mux2to14_xor0 b=b[2] bin=arrdiv4_fs9_or0 fs_xor1=arrdiv4_fs10_xor1 fs_or0=arrdiv4_fs10_or0
+.subckt fs a=arrdiv4_mux2to15_xor0 b=b[3] bin=arrdiv4_fs10_or0 fs_xor1=arrdiv4_fs11_xor1 fs_or0=arrdiv4_fs11_or0
+.subckt mux2to1 d0=arrdiv4_fs8_xor0 d1=a[1] sel=arrdiv4_fs11_or0 mux2to1_xor0=arrdiv4_mux2to16_xor0
+.subckt mux2to1 d0=arrdiv4_fs9_xor1 d1=arrdiv4_mux2to13_xor0 sel=arrdiv4_fs11_or0 mux2to1_xor0=arrdiv4_mux2to17_xor0
+.subckt mux2to1 d0=arrdiv4_fs10_xor1 d1=arrdiv4_mux2to14_xor0 sel=arrdiv4_fs11_or0 mux2to1_xor0=arrdiv4_mux2to18_xor0
+.subckt not_gate a=arrdiv4_fs11_or0 out=arrdiv4_not2
+.subckt fs a=a[0] b=b[0] bin=gnd fs_xor1=arrdiv4_fs12_xor0 fs_or0=arrdiv4_fs12_and0
+.subckt fs a=arrdiv4_mux2to16_xor0 b=b[1] bin=arrdiv4_fs12_and0 fs_xor1=arrdiv4_fs13_xor1 fs_or0=arrdiv4_fs13_or0
+.subckt fs a=arrdiv4_mux2to17_xor0 b=b[2] bin=arrdiv4_fs13_or0 fs_xor1=arrdiv4_fs14_xor1 fs_or0=arrdiv4_fs14_or0
+.subckt fs a=arrdiv4_mux2to18_xor0 b=b[3] bin=arrdiv4_fs14_or0 fs_xor1=arrdiv4_fs15_xor1 fs_or0=arrdiv4_fs15_or0
+.subckt not_gate a=arrdiv4_fs15_or0 out=arrdiv4_not3
+.names arrdiv4_not3 arrdiv4_out[0]
+1 1
+.names arrdiv4_not2 arrdiv4_out[1]
+1 1
+.names arrdiv4_not1 arrdiv4_out[2]
+1 1
+.names arrdiv4_not0 arrdiv4_out[3]
+1 1
+.end
+
+.model mux2to1
+.inputs d0 d1 sel
+.outputs mux2to1_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=d1 b=sel out=mux2to1_and0
+.subckt not_gate a=sel out=mux2to1_not0
+.subckt and_gate a=d0 b=mux2to1_not0 out=mux2to1_and1
+.subckt xor_gate a=mux2to1_and0 b=mux2to1_and1 out=mux2to1_xor0
+.end
+
+.model fs
+.inputs a b bin
+.outputs fs_xor1 fs_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fs_xor0
+.subckt not_gate a=a out=fs_not0
+.subckt and_gate a=fs_not0 b=b out=fs_and0
+.subckt xor_gate a=bin b=fs_xor0 out=fs_xor1
+.subckt not_gate a=fs_xor0 out=fs_not1
+.subckt and_gate a=fs_not1 b=bin out=fs_and1
+.subckt or_gate a=fs_and1 b=fs_and0 out=fs_or0
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end
+
+.model not_gate
+.inputs a
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a out
+0 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end

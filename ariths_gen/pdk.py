@@ -6,7 +6,7 @@ directly on the level of CMOS modules.
 
 You may add your own modules as in example in set_pdk45_library()
 
-Please call this function before calling get_verilog_code_XXX()
+Please call this function before calling get_v_code_XXX()
 """
 from .one_bit_circuits import (
     one_bit_components

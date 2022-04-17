@@ -1,0 +1,1964 @@
+.model u_csamul_pg_rca12
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11]
+.outputs u_csamul_pg_rca12_out[0] u_csamul_pg_rca12_out[1] u_csamul_pg_rca12_out[2] u_csamul_pg_rca12_out[3] u_csamul_pg_rca12_out[4] u_csamul_pg_rca12_out[5] u_csamul_pg_rca12_out[6] u_csamul_pg_rca12_out[7] u_csamul_pg_rca12_out[8] u_csamul_pg_rca12_out[9] u_csamul_pg_rca12_out[10] u_csamul_pg_rca12_out[11] u_csamul_pg_rca12_out[12] u_csamul_pg_rca12_out[13] u_csamul_pg_rca12_out[14] u_csamul_pg_rca12_out[15] u_csamul_pg_rca12_out[16] u_csamul_pg_rca12_out[17] u_csamul_pg_rca12_out[18] u_csamul_pg_rca12_out[19] u_csamul_pg_rca12_out[20] u_csamul_pg_rca12_out[21] u_csamul_pg_rca12_out[22] u_csamul_pg_rca12_out[23]
+.names vdd
+1
+.names gnd
+0
+.names a[0] b[0] u_csamul_pg_rca12_and0_0
+11 1
+.names a[1] b[0] u_csamul_pg_rca12_and1_0
+11 1
+.names a[2] b[0] u_csamul_pg_rca12_and2_0
+11 1
+.names a[3] b[0] u_csamul_pg_rca12_and3_0
+11 1
+.names a[4] b[0] u_csamul_pg_rca12_and4_0
+11 1
+.names a[5] b[0] u_csamul_pg_rca12_and5_0
+11 1
+.names a[6] b[0] u_csamul_pg_rca12_and6_0
+11 1
+.names a[7] b[0] u_csamul_pg_rca12_and7_0
+11 1
+.names a[8] b[0] u_csamul_pg_rca12_and8_0
+11 1
+.names a[9] b[0] u_csamul_pg_rca12_and9_0
+11 1
+.names a[10] b[0] u_csamul_pg_rca12_and10_0
+11 1
+.names a[11] b[0] u_csamul_pg_rca12_and11_0
+11 1
+.names a[0] b[1] u_csamul_pg_rca12_and0_1
+11 1
+.names u_csamul_pg_rca12_and0_1 u_csamul_pg_rca12_and1_0 u_csamul_pg_rca12_ha0_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_1 u_csamul_pg_rca12_and1_0 u_csamul_pg_rca12_ha0_1_and0
+11 1
+.names a[1] b[1] u_csamul_pg_rca12_and1_1
+11 1
+.names u_csamul_pg_rca12_and1_1 u_csamul_pg_rca12_and2_0 u_csamul_pg_rca12_ha1_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_1 u_csamul_pg_rca12_and2_0 u_csamul_pg_rca12_ha1_1_and0
+11 1
+.names a[2] b[1] u_csamul_pg_rca12_and2_1
+11 1
+.names u_csamul_pg_rca12_and2_1 u_csamul_pg_rca12_and3_0 u_csamul_pg_rca12_ha2_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_1 u_csamul_pg_rca12_and3_0 u_csamul_pg_rca12_ha2_1_and0
+11 1
+.names a[3] b[1] u_csamul_pg_rca12_and3_1
+11 1
+.names u_csamul_pg_rca12_and3_1 u_csamul_pg_rca12_and4_0 u_csamul_pg_rca12_ha3_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_1 u_csamul_pg_rca12_and4_0 u_csamul_pg_rca12_ha3_1_and0
+11 1
+.names a[4] b[1] u_csamul_pg_rca12_and4_1
+11 1
+.names u_csamul_pg_rca12_and4_1 u_csamul_pg_rca12_and5_0 u_csamul_pg_rca12_ha4_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_1 u_csamul_pg_rca12_and5_0 u_csamul_pg_rca12_ha4_1_and0
+11 1
+.names a[5] b[1] u_csamul_pg_rca12_and5_1
+11 1
+.names u_csamul_pg_rca12_and5_1 u_csamul_pg_rca12_and6_0 u_csamul_pg_rca12_ha5_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_1 u_csamul_pg_rca12_and6_0 u_csamul_pg_rca12_ha5_1_and0
+11 1
+.names a[6] b[1] u_csamul_pg_rca12_and6_1
+11 1
+.names u_csamul_pg_rca12_and6_1 u_csamul_pg_rca12_and7_0 u_csamul_pg_rca12_ha6_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_1 u_csamul_pg_rca12_and7_0 u_csamul_pg_rca12_ha6_1_and0
+11 1
+.names a[7] b[1] u_csamul_pg_rca12_and7_1
+11 1
+.names u_csamul_pg_rca12_and7_1 u_csamul_pg_rca12_and8_0 u_csamul_pg_rca12_ha7_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_1 u_csamul_pg_rca12_and8_0 u_csamul_pg_rca12_ha7_1_and0
+11 1
+.names a[8] b[1] u_csamul_pg_rca12_and8_1
+11 1
+.names u_csamul_pg_rca12_and8_1 u_csamul_pg_rca12_and9_0 u_csamul_pg_rca12_ha8_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_1 u_csamul_pg_rca12_and9_0 u_csamul_pg_rca12_ha8_1_and0
+11 1
+.names a[9] b[1] u_csamul_pg_rca12_and9_1
+11 1
+.names u_csamul_pg_rca12_and9_1 u_csamul_pg_rca12_and10_0 u_csamul_pg_rca12_ha9_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_1 u_csamul_pg_rca12_and10_0 u_csamul_pg_rca12_ha9_1_and0
+11 1
+.names a[10] b[1] u_csamul_pg_rca12_and10_1
+11 1
+.names u_csamul_pg_rca12_and10_1 u_csamul_pg_rca12_and11_0 u_csamul_pg_rca12_ha10_1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_1 u_csamul_pg_rca12_and11_0 u_csamul_pg_rca12_ha10_1_and0
+11 1
+.names a[11] b[1] u_csamul_pg_rca12_and11_1
+11 1
+.names a[0] b[2] u_csamul_pg_rca12_and0_2
+11 1
+.names u_csamul_pg_rca12_and0_2 u_csamul_pg_rca12_ha1_1_xor0 u_csamul_pg_rca12_fa0_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_2 u_csamul_pg_rca12_ha1_1_xor0 u_csamul_pg_rca12_fa0_2_and0
+11 1
+.names u_csamul_pg_rca12_fa0_2_xor0 u_csamul_pg_rca12_ha0_1_and0 u_csamul_pg_rca12_fa0_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_2_xor0 u_csamul_pg_rca12_ha0_1_and0 u_csamul_pg_rca12_fa0_2_and1
+11 1
+.names u_csamul_pg_rca12_fa0_2_and0 u_csamul_pg_rca12_fa0_2_and1 u_csamul_pg_rca12_fa0_2_or0
+1- 1
+-1 1
+.names a[1] b[2] u_csamul_pg_rca12_and1_2
+11 1
+.names u_csamul_pg_rca12_and1_2 u_csamul_pg_rca12_ha2_1_xor0 u_csamul_pg_rca12_fa1_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_2 u_csamul_pg_rca12_ha2_1_xor0 u_csamul_pg_rca12_fa1_2_and0
+11 1
+.names u_csamul_pg_rca12_fa1_2_xor0 u_csamul_pg_rca12_ha1_1_and0 u_csamul_pg_rca12_fa1_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_2_xor0 u_csamul_pg_rca12_ha1_1_and0 u_csamul_pg_rca12_fa1_2_and1
+11 1
+.names u_csamul_pg_rca12_fa1_2_and0 u_csamul_pg_rca12_fa1_2_and1 u_csamul_pg_rca12_fa1_2_or0
+1- 1
+-1 1
+.names a[2] b[2] u_csamul_pg_rca12_and2_2
+11 1
+.names u_csamul_pg_rca12_and2_2 u_csamul_pg_rca12_ha3_1_xor0 u_csamul_pg_rca12_fa2_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_2 u_csamul_pg_rca12_ha3_1_xor0 u_csamul_pg_rca12_fa2_2_and0
+11 1
+.names u_csamul_pg_rca12_fa2_2_xor0 u_csamul_pg_rca12_ha2_1_and0 u_csamul_pg_rca12_fa2_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_2_xor0 u_csamul_pg_rca12_ha2_1_and0 u_csamul_pg_rca12_fa2_2_and1
+11 1
+.names u_csamul_pg_rca12_fa2_2_and0 u_csamul_pg_rca12_fa2_2_and1 u_csamul_pg_rca12_fa2_2_or0
+1- 1
+-1 1
+.names a[3] b[2] u_csamul_pg_rca12_and3_2
+11 1
+.names u_csamul_pg_rca12_and3_2 u_csamul_pg_rca12_ha4_1_xor0 u_csamul_pg_rca12_fa3_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_2 u_csamul_pg_rca12_ha4_1_xor0 u_csamul_pg_rca12_fa3_2_and0
+11 1
+.names u_csamul_pg_rca12_fa3_2_xor0 u_csamul_pg_rca12_ha3_1_and0 u_csamul_pg_rca12_fa3_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_2_xor0 u_csamul_pg_rca12_ha3_1_and0 u_csamul_pg_rca12_fa3_2_and1
+11 1
+.names u_csamul_pg_rca12_fa3_2_and0 u_csamul_pg_rca12_fa3_2_and1 u_csamul_pg_rca12_fa3_2_or0
+1- 1
+-1 1
+.names a[4] b[2] u_csamul_pg_rca12_and4_2
+11 1
+.names u_csamul_pg_rca12_and4_2 u_csamul_pg_rca12_ha5_1_xor0 u_csamul_pg_rca12_fa4_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_2 u_csamul_pg_rca12_ha5_1_xor0 u_csamul_pg_rca12_fa4_2_and0
+11 1
+.names u_csamul_pg_rca12_fa4_2_xor0 u_csamul_pg_rca12_ha4_1_and0 u_csamul_pg_rca12_fa4_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_2_xor0 u_csamul_pg_rca12_ha4_1_and0 u_csamul_pg_rca12_fa4_2_and1
+11 1
+.names u_csamul_pg_rca12_fa4_2_and0 u_csamul_pg_rca12_fa4_2_and1 u_csamul_pg_rca12_fa4_2_or0
+1- 1
+-1 1
+.names a[5] b[2] u_csamul_pg_rca12_and5_2
+11 1
+.names u_csamul_pg_rca12_and5_2 u_csamul_pg_rca12_ha6_1_xor0 u_csamul_pg_rca12_fa5_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_2 u_csamul_pg_rca12_ha6_1_xor0 u_csamul_pg_rca12_fa5_2_and0
+11 1
+.names u_csamul_pg_rca12_fa5_2_xor0 u_csamul_pg_rca12_ha5_1_and0 u_csamul_pg_rca12_fa5_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_2_xor0 u_csamul_pg_rca12_ha5_1_and0 u_csamul_pg_rca12_fa5_2_and1
+11 1
+.names u_csamul_pg_rca12_fa5_2_and0 u_csamul_pg_rca12_fa5_2_and1 u_csamul_pg_rca12_fa5_2_or0
+1- 1
+-1 1
+.names a[6] b[2] u_csamul_pg_rca12_and6_2
+11 1
+.names u_csamul_pg_rca12_and6_2 u_csamul_pg_rca12_ha7_1_xor0 u_csamul_pg_rca12_fa6_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_2 u_csamul_pg_rca12_ha7_1_xor0 u_csamul_pg_rca12_fa6_2_and0
+11 1
+.names u_csamul_pg_rca12_fa6_2_xor0 u_csamul_pg_rca12_ha6_1_and0 u_csamul_pg_rca12_fa6_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_2_xor0 u_csamul_pg_rca12_ha6_1_and0 u_csamul_pg_rca12_fa6_2_and1
+11 1
+.names u_csamul_pg_rca12_fa6_2_and0 u_csamul_pg_rca12_fa6_2_and1 u_csamul_pg_rca12_fa6_2_or0
+1- 1
+-1 1
+.names a[7] b[2] u_csamul_pg_rca12_and7_2
+11 1
+.names u_csamul_pg_rca12_and7_2 u_csamul_pg_rca12_ha8_1_xor0 u_csamul_pg_rca12_fa7_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_2 u_csamul_pg_rca12_ha8_1_xor0 u_csamul_pg_rca12_fa7_2_and0
+11 1
+.names u_csamul_pg_rca12_fa7_2_xor0 u_csamul_pg_rca12_ha7_1_and0 u_csamul_pg_rca12_fa7_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_2_xor0 u_csamul_pg_rca12_ha7_1_and0 u_csamul_pg_rca12_fa7_2_and1
+11 1
+.names u_csamul_pg_rca12_fa7_2_and0 u_csamul_pg_rca12_fa7_2_and1 u_csamul_pg_rca12_fa7_2_or0
+1- 1
+-1 1
+.names a[8] b[2] u_csamul_pg_rca12_and8_2
+11 1
+.names u_csamul_pg_rca12_and8_2 u_csamul_pg_rca12_ha9_1_xor0 u_csamul_pg_rca12_fa8_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_2 u_csamul_pg_rca12_ha9_1_xor0 u_csamul_pg_rca12_fa8_2_and0
+11 1
+.names u_csamul_pg_rca12_fa8_2_xor0 u_csamul_pg_rca12_ha8_1_and0 u_csamul_pg_rca12_fa8_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_2_xor0 u_csamul_pg_rca12_ha8_1_and0 u_csamul_pg_rca12_fa8_2_and1
+11 1
+.names u_csamul_pg_rca12_fa8_2_and0 u_csamul_pg_rca12_fa8_2_and1 u_csamul_pg_rca12_fa8_2_or0
+1- 1
+-1 1
+.names a[9] b[2] u_csamul_pg_rca12_and9_2
+11 1
+.names u_csamul_pg_rca12_and9_2 u_csamul_pg_rca12_ha10_1_xor0 u_csamul_pg_rca12_fa9_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_2 u_csamul_pg_rca12_ha10_1_xor0 u_csamul_pg_rca12_fa9_2_and0
+11 1
+.names u_csamul_pg_rca12_fa9_2_xor0 u_csamul_pg_rca12_ha9_1_and0 u_csamul_pg_rca12_fa9_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_2_xor0 u_csamul_pg_rca12_ha9_1_and0 u_csamul_pg_rca12_fa9_2_and1
+11 1
+.names u_csamul_pg_rca12_fa9_2_and0 u_csamul_pg_rca12_fa9_2_and1 u_csamul_pg_rca12_fa9_2_or0
+1- 1
+-1 1
+.names a[10] b[2] u_csamul_pg_rca12_and10_2
+11 1
+.names u_csamul_pg_rca12_and10_2 u_csamul_pg_rca12_and11_1 u_csamul_pg_rca12_fa10_2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_2 u_csamul_pg_rca12_and11_1 u_csamul_pg_rca12_fa10_2_and0
+11 1
+.names u_csamul_pg_rca12_fa10_2_xor0 u_csamul_pg_rca12_ha10_1_and0 u_csamul_pg_rca12_fa10_2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_2_xor0 u_csamul_pg_rca12_ha10_1_and0 u_csamul_pg_rca12_fa10_2_and1
+11 1
+.names u_csamul_pg_rca12_fa10_2_and0 u_csamul_pg_rca12_fa10_2_and1 u_csamul_pg_rca12_fa10_2_or0
+1- 1
+-1 1
+.names a[11] b[2] u_csamul_pg_rca12_and11_2
+11 1
+.names a[0] b[3] u_csamul_pg_rca12_and0_3
+11 1
+.names u_csamul_pg_rca12_and0_3 u_csamul_pg_rca12_fa1_2_xor1 u_csamul_pg_rca12_fa0_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_3 u_csamul_pg_rca12_fa1_2_xor1 u_csamul_pg_rca12_fa0_3_and0
+11 1
+.names u_csamul_pg_rca12_fa0_3_xor0 u_csamul_pg_rca12_fa0_2_or0 u_csamul_pg_rca12_fa0_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_3_xor0 u_csamul_pg_rca12_fa0_2_or0 u_csamul_pg_rca12_fa0_3_and1
+11 1
+.names u_csamul_pg_rca12_fa0_3_and0 u_csamul_pg_rca12_fa0_3_and1 u_csamul_pg_rca12_fa0_3_or0
+1- 1
+-1 1
+.names a[1] b[3] u_csamul_pg_rca12_and1_3
+11 1
+.names u_csamul_pg_rca12_and1_3 u_csamul_pg_rca12_fa2_2_xor1 u_csamul_pg_rca12_fa1_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_3 u_csamul_pg_rca12_fa2_2_xor1 u_csamul_pg_rca12_fa1_3_and0
+11 1
+.names u_csamul_pg_rca12_fa1_3_xor0 u_csamul_pg_rca12_fa1_2_or0 u_csamul_pg_rca12_fa1_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_3_xor0 u_csamul_pg_rca12_fa1_2_or0 u_csamul_pg_rca12_fa1_3_and1
+11 1
+.names u_csamul_pg_rca12_fa1_3_and0 u_csamul_pg_rca12_fa1_3_and1 u_csamul_pg_rca12_fa1_3_or0
+1- 1
+-1 1
+.names a[2] b[3] u_csamul_pg_rca12_and2_3
+11 1
+.names u_csamul_pg_rca12_and2_3 u_csamul_pg_rca12_fa3_2_xor1 u_csamul_pg_rca12_fa2_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_3 u_csamul_pg_rca12_fa3_2_xor1 u_csamul_pg_rca12_fa2_3_and0
+11 1
+.names u_csamul_pg_rca12_fa2_3_xor0 u_csamul_pg_rca12_fa2_2_or0 u_csamul_pg_rca12_fa2_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_3_xor0 u_csamul_pg_rca12_fa2_2_or0 u_csamul_pg_rca12_fa2_3_and1
+11 1
+.names u_csamul_pg_rca12_fa2_3_and0 u_csamul_pg_rca12_fa2_3_and1 u_csamul_pg_rca12_fa2_3_or0
+1- 1
+-1 1
+.names a[3] b[3] u_csamul_pg_rca12_and3_3
+11 1
+.names u_csamul_pg_rca12_and3_3 u_csamul_pg_rca12_fa4_2_xor1 u_csamul_pg_rca12_fa3_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_3 u_csamul_pg_rca12_fa4_2_xor1 u_csamul_pg_rca12_fa3_3_and0
+11 1
+.names u_csamul_pg_rca12_fa3_3_xor0 u_csamul_pg_rca12_fa3_2_or0 u_csamul_pg_rca12_fa3_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_3_xor0 u_csamul_pg_rca12_fa3_2_or0 u_csamul_pg_rca12_fa3_3_and1
+11 1
+.names u_csamul_pg_rca12_fa3_3_and0 u_csamul_pg_rca12_fa3_3_and1 u_csamul_pg_rca12_fa3_3_or0
+1- 1
+-1 1
+.names a[4] b[3] u_csamul_pg_rca12_and4_3
+11 1
+.names u_csamul_pg_rca12_and4_3 u_csamul_pg_rca12_fa5_2_xor1 u_csamul_pg_rca12_fa4_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_3 u_csamul_pg_rca12_fa5_2_xor1 u_csamul_pg_rca12_fa4_3_and0
+11 1
+.names u_csamul_pg_rca12_fa4_3_xor0 u_csamul_pg_rca12_fa4_2_or0 u_csamul_pg_rca12_fa4_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_3_xor0 u_csamul_pg_rca12_fa4_2_or0 u_csamul_pg_rca12_fa4_3_and1
+11 1
+.names u_csamul_pg_rca12_fa4_3_and0 u_csamul_pg_rca12_fa4_3_and1 u_csamul_pg_rca12_fa4_3_or0
+1- 1
+-1 1
+.names a[5] b[3] u_csamul_pg_rca12_and5_3
+11 1
+.names u_csamul_pg_rca12_and5_3 u_csamul_pg_rca12_fa6_2_xor1 u_csamul_pg_rca12_fa5_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_3 u_csamul_pg_rca12_fa6_2_xor1 u_csamul_pg_rca12_fa5_3_and0
+11 1
+.names u_csamul_pg_rca12_fa5_3_xor0 u_csamul_pg_rca12_fa5_2_or0 u_csamul_pg_rca12_fa5_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_3_xor0 u_csamul_pg_rca12_fa5_2_or0 u_csamul_pg_rca12_fa5_3_and1
+11 1
+.names u_csamul_pg_rca12_fa5_3_and0 u_csamul_pg_rca12_fa5_3_and1 u_csamul_pg_rca12_fa5_3_or0
+1- 1
+-1 1
+.names a[6] b[3] u_csamul_pg_rca12_and6_3
+11 1
+.names u_csamul_pg_rca12_and6_3 u_csamul_pg_rca12_fa7_2_xor1 u_csamul_pg_rca12_fa6_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_3 u_csamul_pg_rca12_fa7_2_xor1 u_csamul_pg_rca12_fa6_3_and0
+11 1
+.names u_csamul_pg_rca12_fa6_3_xor0 u_csamul_pg_rca12_fa6_2_or0 u_csamul_pg_rca12_fa6_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_3_xor0 u_csamul_pg_rca12_fa6_2_or0 u_csamul_pg_rca12_fa6_3_and1
+11 1
+.names u_csamul_pg_rca12_fa6_3_and0 u_csamul_pg_rca12_fa6_3_and1 u_csamul_pg_rca12_fa6_3_or0
+1- 1
+-1 1
+.names a[7] b[3] u_csamul_pg_rca12_and7_3
+11 1
+.names u_csamul_pg_rca12_and7_3 u_csamul_pg_rca12_fa8_2_xor1 u_csamul_pg_rca12_fa7_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_3 u_csamul_pg_rca12_fa8_2_xor1 u_csamul_pg_rca12_fa7_3_and0
+11 1
+.names u_csamul_pg_rca12_fa7_3_xor0 u_csamul_pg_rca12_fa7_2_or0 u_csamul_pg_rca12_fa7_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_3_xor0 u_csamul_pg_rca12_fa7_2_or0 u_csamul_pg_rca12_fa7_3_and1
+11 1
+.names u_csamul_pg_rca12_fa7_3_and0 u_csamul_pg_rca12_fa7_3_and1 u_csamul_pg_rca12_fa7_3_or0
+1- 1
+-1 1
+.names a[8] b[3] u_csamul_pg_rca12_and8_3
+11 1
+.names u_csamul_pg_rca12_and8_3 u_csamul_pg_rca12_fa9_2_xor1 u_csamul_pg_rca12_fa8_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_3 u_csamul_pg_rca12_fa9_2_xor1 u_csamul_pg_rca12_fa8_3_and0
+11 1
+.names u_csamul_pg_rca12_fa8_3_xor0 u_csamul_pg_rca12_fa8_2_or0 u_csamul_pg_rca12_fa8_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_3_xor0 u_csamul_pg_rca12_fa8_2_or0 u_csamul_pg_rca12_fa8_3_and1
+11 1
+.names u_csamul_pg_rca12_fa8_3_and0 u_csamul_pg_rca12_fa8_3_and1 u_csamul_pg_rca12_fa8_3_or0
+1- 1
+-1 1
+.names a[9] b[3] u_csamul_pg_rca12_and9_3
+11 1
+.names u_csamul_pg_rca12_and9_3 u_csamul_pg_rca12_fa10_2_xor1 u_csamul_pg_rca12_fa9_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_3 u_csamul_pg_rca12_fa10_2_xor1 u_csamul_pg_rca12_fa9_3_and0
+11 1
+.names u_csamul_pg_rca12_fa9_3_xor0 u_csamul_pg_rca12_fa9_2_or0 u_csamul_pg_rca12_fa9_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_3_xor0 u_csamul_pg_rca12_fa9_2_or0 u_csamul_pg_rca12_fa9_3_and1
+11 1
+.names u_csamul_pg_rca12_fa9_3_and0 u_csamul_pg_rca12_fa9_3_and1 u_csamul_pg_rca12_fa9_3_or0
+1- 1
+-1 1
+.names a[10] b[3] u_csamul_pg_rca12_and10_3
+11 1
+.names u_csamul_pg_rca12_and10_3 u_csamul_pg_rca12_and11_2 u_csamul_pg_rca12_fa10_3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_3 u_csamul_pg_rca12_and11_2 u_csamul_pg_rca12_fa10_3_and0
+11 1
+.names u_csamul_pg_rca12_fa10_3_xor0 u_csamul_pg_rca12_fa10_2_or0 u_csamul_pg_rca12_fa10_3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_3_xor0 u_csamul_pg_rca12_fa10_2_or0 u_csamul_pg_rca12_fa10_3_and1
+11 1
+.names u_csamul_pg_rca12_fa10_3_and0 u_csamul_pg_rca12_fa10_3_and1 u_csamul_pg_rca12_fa10_3_or0
+1- 1
+-1 1
+.names a[11] b[3] u_csamul_pg_rca12_and11_3
+11 1
+.names a[0] b[4] u_csamul_pg_rca12_and0_4
+11 1
+.names u_csamul_pg_rca12_and0_4 u_csamul_pg_rca12_fa1_3_xor1 u_csamul_pg_rca12_fa0_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_4 u_csamul_pg_rca12_fa1_3_xor1 u_csamul_pg_rca12_fa0_4_and0
+11 1
+.names u_csamul_pg_rca12_fa0_4_xor0 u_csamul_pg_rca12_fa0_3_or0 u_csamul_pg_rca12_fa0_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_4_xor0 u_csamul_pg_rca12_fa0_3_or0 u_csamul_pg_rca12_fa0_4_and1
+11 1
+.names u_csamul_pg_rca12_fa0_4_and0 u_csamul_pg_rca12_fa0_4_and1 u_csamul_pg_rca12_fa0_4_or0
+1- 1
+-1 1
+.names a[1] b[4] u_csamul_pg_rca12_and1_4
+11 1
+.names u_csamul_pg_rca12_and1_4 u_csamul_pg_rca12_fa2_3_xor1 u_csamul_pg_rca12_fa1_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_4 u_csamul_pg_rca12_fa2_3_xor1 u_csamul_pg_rca12_fa1_4_and0
+11 1
+.names u_csamul_pg_rca12_fa1_4_xor0 u_csamul_pg_rca12_fa1_3_or0 u_csamul_pg_rca12_fa1_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_4_xor0 u_csamul_pg_rca12_fa1_3_or0 u_csamul_pg_rca12_fa1_4_and1
+11 1
+.names u_csamul_pg_rca12_fa1_4_and0 u_csamul_pg_rca12_fa1_4_and1 u_csamul_pg_rca12_fa1_4_or0
+1- 1
+-1 1
+.names a[2] b[4] u_csamul_pg_rca12_and2_4
+11 1
+.names u_csamul_pg_rca12_and2_4 u_csamul_pg_rca12_fa3_3_xor1 u_csamul_pg_rca12_fa2_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_4 u_csamul_pg_rca12_fa3_3_xor1 u_csamul_pg_rca12_fa2_4_and0
+11 1
+.names u_csamul_pg_rca12_fa2_4_xor0 u_csamul_pg_rca12_fa2_3_or0 u_csamul_pg_rca12_fa2_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_4_xor0 u_csamul_pg_rca12_fa2_3_or0 u_csamul_pg_rca12_fa2_4_and1
+11 1
+.names u_csamul_pg_rca12_fa2_4_and0 u_csamul_pg_rca12_fa2_4_and1 u_csamul_pg_rca12_fa2_4_or0
+1- 1
+-1 1
+.names a[3] b[4] u_csamul_pg_rca12_and3_4
+11 1
+.names u_csamul_pg_rca12_and3_4 u_csamul_pg_rca12_fa4_3_xor1 u_csamul_pg_rca12_fa3_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_4 u_csamul_pg_rca12_fa4_3_xor1 u_csamul_pg_rca12_fa3_4_and0
+11 1
+.names u_csamul_pg_rca12_fa3_4_xor0 u_csamul_pg_rca12_fa3_3_or0 u_csamul_pg_rca12_fa3_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_4_xor0 u_csamul_pg_rca12_fa3_3_or0 u_csamul_pg_rca12_fa3_4_and1
+11 1
+.names u_csamul_pg_rca12_fa3_4_and0 u_csamul_pg_rca12_fa3_4_and1 u_csamul_pg_rca12_fa3_4_or0
+1- 1
+-1 1
+.names a[4] b[4] u_csamul_pg_rca12_and4_4
+11 1
+.names u_csamul_pg_rca12_and4_4 u_csamul_pg_rca12_fa5_3_xor1 u_csamul_pg_rca12_fa4_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_4 u_csamul_pg_rca12_fa5_3_xor1 u_csamul_pg_rca12_fa4_4_and0
+11 1
+.names u_csamul_pg_rca12_fa4_4_xor0 u_csamul_pg_rca12_fa4_3_or0 u_csamul_pg_rca12_fa4_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_4_xor0 u_csamul_pg_rca12_fa4_3_or0 u_csamul_pg_rca12_fa4_4_and1
+11 1
+.names u_csamul_pg_rca12_fa4_4_and0 u_csamul_pg_rca12_fa4_4_and1 u_csamul_pg_rca12_fa4_4_or0
+1- 1
+-1 1
+.names a[5] b[4] u_csamul_pg_rca12_and5_4
+11 1
+.names u_csamul_pg_rca12_and5_4 u_csamul_pg_rca12_fa6_3_xor1 u_csamul_pg_rca12_fa5_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_4 u_csamul_pg_rca12_fa6_3_xor1 u_csamul_pg_rca12_fa5_4_and0
+11 1
+.names u_csamul_pg_rca12_fa5_4_xor0 u_csamul_pg_rca12_fa5_3_or0 u_csamul_pg_rca12_fa5_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_4_xor0 u_csamul_pg_rca12_fa5_3_or0 u_csamul_pg_rca12_fa5_4_and1
+11 1
+.names u_csamul_pg_rca12_fa5_4_and0 u_csamul_pg_rca12_fa5_4_and1 u_csamul_pg_rca12_fa5_4_or0
+1- 1
+-1 1
+.names a[6] b[4] u_csamul_pg_rca12_and6_4
+11 1
+.names u_csamul_pg_rca12_and6_4 u_csamul_pg_rca12_fa7_3_xor1 u_csamul_pg_rca12_fa6_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_4 u_csamul_pg_rca12_fa7_3_xor1 u_csamul_pg_rca12_fa6_4_and0
+11 1
+.names u_csamul_pg_rca12_fa6_4_xor0 u_csamul_pg_rca12_fa6_3_or0 u_csamul_pg_rca12_fa6_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_4_xor0 u_csamul_pg_rca12_fa6_3_or0 u_csamul_pg_rca12_fa6_4_and1
+11 1
+.names u_csamul_pg_rca12_fa6_4_and0 u_csamul_pg_rca12_fa6_4_and1 u_csamul_pg_rca12_fa6_4_or0
+1- 1
+-1 1
+.names a[7] b[4] u_csamul_pg_rca12_and7_4
+11 1
+.names u_csamul_pg_rca12_and7_4 u_csamul_pg_rca12_fa8_3_xor1 u_csamul_pg_rca12_fa7_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_4 u_csamul_pg_rca12_fa8_3_xor1 u_csamul_pg_rca12_fa7_4_and0
+11 1
+.names u_csamul_pg_rca12_fa7_4_xor0 u_csamul_pg_rca12_fa7_3_or0 u_csamul_pg_rca12_fa7_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_4_xor0 u_csamul_pg_rca12_fa7_3_or0 u_csamul_pg_rca12_fa7_4_and1
+11 1
+.names u_csamul_pg_rca12_fa7_4_and0 u_csamul_pg_rca12_fa7_4_and1 u_csamul_pg_rca12_fa7_4_or0
+1- 1
+-1 1
+.names a[8] b[4] u_csamul_pg_rca12_and8_4
+11 1
+.names u_csamul_pg_rca12_and8_4 u_csamul_pg_rca12_fa9_3_xor1 u_csamul_pg_rca12_fa8_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_4 u_csamul_pg_rca12_fa9_3_xor1 u_csamul_pg_rca12_fa8_4_and0
+11 1
+.names u_csamul_pg_rca12_fa8_4_xor0 u_csamul_pg_rca12_fa8_3_or0 u_csamul_pg_rca12_fa8_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_4_xor0 u_csamul_pg_rca12_fa8_3_or0 u_csamul_pg_rca12_fa8_4_and1
+11 1
+.names u_csamul_pg_rca12_fa8_4_and0 u_csamul_pg_rca12_fa8_4_and1 u_csamul_pg_rca12_fa8_4_or0
+1- 1
+-1 1
+.names a[9] b[4] u_csamul_pg_rca12_and9_4
+11 1
+.names u_csamul_pg_rca12_and9_4 u_csamul_pg_rca12_fa10_3_xor1 u_csamul_pg_rca12_fa9_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_4 u_csamul_pg_rca12_fa10_3_xor1 u_csamul_pg_rca12_fa9_4_and0
+11 1
+.names u_csamul_pg_rca12_fa9_4_xor0 u_csamul_pg_rca12_fa9_3_or0 u_csamul_pg_rca12_fa9_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_4_xor0 u_csamul_pg_rca12_fa9_3_or0 u_csamul_pg_rca12_fa9_4_and1
+11 1
+.names u_csamul_pg_rca12_fa9_4_and0 u_csamul_pg_rca12_fa9_4_and1 u_csamul_pg_rca12_fa9_4_or0
+1- 1
+-1 1
+.names a[10] b[4] u_csamul_pg_rca12_and10_4
+11 1
+.names u_csamul_pg_rca12_and10_4 u_csamul_pg_rca12_and11_3 u_csamul_pg_rca12_fa10_4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_4 u_csamul_pg_rca12_and11_3 u_csamul_pg_rca12_fa10_4_and0
+11 1
+.names u_csamul_pg_rca12_fa10_4_xor0 u_csamul_pg_rca12_fa10_3_or0 u_csamul_pg_rca12_fa10_4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_4_xor0 u_csamul_pg_rca12_fa10_3_or0 u_csamul_pg_rca12_fa10_4_and1
+11 1
+.names u_csamul_pg_rca12_fa10_4_and0 u_csamul_pg_rca12_fa10_4_and1 u_csamul_pg_rca12_fa10_4_or0
+1- 1
+-1 1
+.names a[11] b[4] u_csamul_pg_rca12_and11_4
+11 1
+.names a[0] b[5] u_csamul_pg_rca12_and0_5
+11 1
+.names u_csamul_pg_rca12_and0_5 u_csamul_pg_rca12_fa1_4_xor1 u_csamul_pg_rca12_fa0_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_5 u_csamul_pg_rca12_fa1_4_xor1 u_csamul_pg_rca12_fa0_5_and0
+11 1
+.names u_csamul_pg_rca12_fa0_5_xor0 u_csamul_pg_rca12_fa0_4_or0 u_csamul_pg_rca12_fa0_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_5_xor0 u_csamul_pg_rca12_fa0_4_or0 u_csamul_pg_rca12_fa0_5_and1
+11 1
+.names u_csamul_pg_rca12_fa0_5_and0 u_csamul_pg_rca12_fa0_5_and1 u_csamul_pg_rca12_fa0_5_or0
+1- 1
+-1 1
+.names a[1] b[5] u_csamul_pg_rca12_and1_5
+11 1
+.names u_csamul_pg_rca12_and1_5 u_csamul_pg_rca12_fa2_4_xor1 u_csamul_pg_rca12_fa1_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_5 u_csamul_pg_rca12_fa2_4_xor1 u_csamul_pg_rca12_fa1_5_and0
+11 1
+.names u_csamul_pg_rca12_fa1_5_xor0 u_csamul_pg_rca12_fa1_4_or0 u_csamul_pg_rca12_fa1_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_5_xor0 u_csamul_pg_rca12_fa1_4_or0 u_csamul_pg_rca12_fa1_5_and1
+11 1
+.names u_csamul_pg_rca12_fa1_5_and0 u_csamul_pg_rca12_fa1_5_and1 u_csamul_pg_rca12_fa1_5_or0
+1- 1
+-1 1
+.names a[2] b[5] u_csamul_pg_rca12_and2_5
+11 1
+.names u_csamul_pg_rca12_and2_5 u_csamul_pg_rca12_fa3_4_xor1 u_csamul_pg_rca12_fa2_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_5 u_csamul_pg_rca12_fa3_4_xor1 u_csamul_pg_rca12_fa2_5_and0
+11 1
+.names u_csamul_pg_rca12_fa2_5_xor0 u_csamul_pg_rca12_fa2_4_or0 u_csamul_pg_rca12_fa2_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_5_xor0 u_csamul_pg_rca12_fa2_4_or0 u_csamul_pg_rca12_fa2_5_and1
+11 1
+.names u_csamul_pg_rca12_fa2_5_and0 u_csamul_pg_rca12_fa2_5_and1 u_csamul_pg_rca12_fa2_5_or0
+1- 1
+-1 1
+.names a[3] b[5] u_csamul_pg_rca12_and3_5
+11 1
+.names u_csamul_pg_rca12_and3_5 u_csamul_pg_rca12_fa4_4_xor1 u_csamul_pg_rca12_fa3_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_5 u_csamul_pg_rca12_fa4_4_xor1 u_csamul_pg_rca12_fa3_5_and0
+11 1
+.names u_csamul_pg_rca12_fa3_5_xor0 u_csamul_pg_rca12_fa3_4_or0 u_csamul_pg_rca12_fa3_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_5_xor0 u_csamul_pg_rca12_fa3_4_or0 u_csamul_pg_rca12_fa3_5_and1
+11 1
+.names u_csamul_pg_rca12_fa3_5_and0 u_csamul_pg_rca12_fa3_5_and1 u_csamul_pg_rca12_fa3_5_or0
+1- 1
+-1 1
+.names a[4] b[5] u_csamul_pg_rca12_and4_5
+11 1
+.names u_csamul_pg_rca12_and4_5 u_csamul_pg_rca12_fa5_4_xor1 u_csamul_pg_rca12_fa4_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_5 u_csamul_pg_rca12_fa5_4_xor1 u_csamul_pg_rca12_fa4_5_and0
+11 1
+.names u_csamul_pg_rca12_fa4_5_xor0 u_csamul_pg_rca12_fa4_4_or0 u_csamul_pg_rca12_fa4_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_5_xor0 u_csamul_pg_rca12_fa4_4_or0 u_csamul_pg_rca12_fa4_5_and1
+11 1
+.names u_csamul_pg_rca12_fa4_5_and0 u_csamul_pg_rca12_fa4_5_and1 u_csamul_pg_rca12_fa4_5_or0
+1- 1
+-1 1
+.names a[5] b[5] u_csamul_pg_rca12_and5_5
+11 1
+.names u_csamul_pg_rca12_and5_5 u_csamul_pg_rca12_fa6_4_xor1 u_csamul_pg_rca12_fa5_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_5 u_csamul_pg_rca12_fa6_4_xor1 u_csamul_pg_rca12_fa5_5_and0
+11 1
+.names u_csamul_pg_rca12_fa5_5_xor0 u_csamul_pg_rca12_fa5_4_or0 u_csamul_pg_rca12_fa5_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_5_xor0 u_csamul_pg_rca12_fa5_4_or0 u_csamul_pg_rca12_fa5_5_and1
+11 1
+.names u_csamul_pg_rca12_fa5_5_and0 u_csamul_pg_rca12_fa5_5_and1 u_csamul_pg_rca12_fa5_5_or0
+1- 1
+-1 1
+.names a[6] b[5] u_csamul_pg_rca12_and6_5
+11 1
+.names u_csamul_pg_rca12_and6_5 u_csamul_pg_rca12_fa7_4_xor1 u_csamul_pg_rca12_fa6_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_5 u_csamul_pg_rca12_fa7_4_xor1 u_csamul_pg_rca12_fa6_5_and0
+11 1
+.names u_csamul_pg_rca12_fa6_5_xor0 u_csamul_pg_rca12_fa6_4_or0 u_csamul_pg_rca12_fa6_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_5_xor0 u_csamul_pg_rca12_fa6_4_or0 u_csamul_pg_rca12_fa6_5_and1
+11 1
+.names u_csamul_pg_rca12_fa6_5_and0 u_csamul_pg_rca12_fa6_5_and1 u_csamul_pg_rca12_fa6_5_or0
+1- 1
+-1 1
+.names a[7] b[5] u_csamul_pg_rca12_and7_5
+11 1
+.names u_csamul_pg_rca12_and7_5 u_csamul_pg_rca12_fa8_4_xor1 u_csamul_pg_rca12_fa7_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_5 u_csamul_pg_rca12_fa8_4_xor1 u_csamul_pg_rca12_fa7_5_and0
+11 1
+.names u_csamul_pg_rca12_fa7_5_xor0 u_csamul_pg_rca12_fa7_4_or0 u_csamul_pg_rca12_fa7_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_5_xor0 u_csamul_pg_rca12_fa7_4_or0 u_csamul_pg_rca12_fa7_5_and1
+11 1
+.names u_csamul_pg_rca12_fa7_5_and0 u_csamul_pg_rca12_fa7_5_and1 u_csamul_pg_rca12_fa7_5_or0
+1- 1
+-1 1
+.names a[8] b[5] u_csamul_pg_rca12_and8_5
+11 1
+.names u_csamul_pg_rca12_and8_5 u_csamul_pg_rca12_fa9_4_xor1 u_csamul_pg_rca12_fa8_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_5 u_csamul_pg_rca12_fa9_4_xor1 u_csamul_pg_rca12_fa8_5_and0
+11 1
+.names u_csamul_pg_rca12_fa8_5_xor0 u_csamul_pg_rca12_fa8_4_or0 u_csamul_pg_rca12_fa8_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_5_xor0 u_csamul_pg_rca12_fa8_4_or0 u_csamul_pg_rca12_fa8_5_and1
+11 1
+.names u_csamul_pg_rca12_fa8_5_and0 u_csamul_pg_rca12_fa8_5_and1 u_csamul_pg_rca12_fa8_5_or0
+1- 1
+-1 1
+.names a[9] b[5] u_csamul_pg_rca12_and9_5
+11 1
+.names u_csamul_pg_rca12_and9_5 u_csamul_pg_rca12_fa10_4_xor1 u_csamul_pg_rca12_fa9_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_5 u_csamul_pg_rca12_fa10_4_xor1 u_csamul_pg_rca12_fa9_5_and0
+11 1
+.names u_csamul_pg_rca12_fa9_5_xor0 u_csamul_pg_rca12_fa9_4_or0 u_csamul_pg_rca12_fa9_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_5_xor0 u_csamul_pg_rca12_fa9_4_or0 u_csamul_pg_rca12_fa9_5_and1
+11 1
+.names u_csamul_pg_rca12_fa9_5_and0 u_csamul_pg_rca12_fa9_5_and1 u_csamul_pg_rca12_fa9_5_or0
+1- 1
+-1 1
+.names a[10] b[5] u_csamul_pg_rca12_and10_5
+11 1
+.names u_csamul_pg_rca12_and10_5 u_csamul_pg_rca12_and11_4 u_csamul_pg_rca12_fa10_5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_5 u_csamul_pg_rca12_and11_4 u_csamul_pg_rca12_fa10_5_and0
+11 1
+.names u_csamul_pg_rca12_fa10_5_xor0 u_csamul_pg_rca12_fa10_4_or0 u_csamul_pg_rca12_fa10_5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_5_xor0 u_csamul_pg_rca12_fa10_4_or0 u_csamul_pg_rca12_fa10_5_and1
+11 1
+.names u_csamul_pg_rca12_fa10_5_and0 u_csamul_pg_rca12_fa10_5_and1 u_csamul_pg_rca12_fa10_5_or0
+1- 1
+-1 1
+.names a[11] b[5] u_csamul_pg_rca12_and11_5
+11 1
+.names a[0] b[6] u_csamul_pg_rca12_and0_6
+11 1
+.names u_csamul_pg_rca12_and0_6 u_csamul_pg_rca12_fa1_5_xor1 u_csamul_pg_rca12_fa0_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_6 u_csamul_pg_rca12_fa1_5_xor1 u_csamul_pg_rca12_fa0_6_and0
+11 1
+.names u_csamul_pg_rca12_fa0_6_xor0 u_csamul_pg_rca12_fa0_5_or0 u_csamul_pg_rca12_fa0_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_6_xor0 u_csamul_pg_rca12_fa0_5_or0 u_csamul_pg_rca12_fa0_6_and1
+11 1
+.names u_csamul_pg_rca12_fa0_6_and0 u_csamul_pg_rca12_fa0_6_and1 u_csamul_pg_rca12_fa0_6_or0
+1- 1
+-1 1
+.names a[1] b[6] u_csamul_pg_rca12_and1_6
+11 1
+.names u_csamul_pg_rca12_and1_6 u_csamul_pg_rca12_fa2_5_xor1 u_csamul_pg_rca12_fa1_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_6 u_csamul_pg_rca12_fa2_5_xor1 u_csamul_pg_rca12_fa1_6_and0
+11 1
+.names u_csamul_pg_rca12_fa1_6_xor0 u_csamul_pg_rca12_fa1_5_or0 u_csamul_pg_rca12_fa1_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_6_xor0 u_csamul_pg_rca12_fa1_5_or0 u_csamul_pg_rca12_fa1_6_and1
+11 1
+.names u_csamul_pg_rca12_fa1_6_and0 u_csamul_pg_rca12_fa1_6_and1 u_csamul_pg_rca12_fa1_6_or0
+1- 1
+-1 1
+.names a[2] b[6] u_csamul_pg_rca12_and2_6
+11 1
+.names u_csamul_pg_rca12_and2_6 u_csamul_pg_rca12_fa3_5_xor1 u_csamul_pg_rca12_fa2_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_6 u_csamul_pg_rca12_fa3_5_xor1 u_csamul_pg_rca12_fa2_6_and0
+11 1
+.names u_csamul_pg_rca12_fa2_6_xor0 u_csamul_pg_rca12_fa2_5_or0 u_csamul_pg_rca12_fa2_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_6_xor0 u_csamul_pg_rca12_fa2_5_or0 u_csamul_pg_rca12_fa2_6_and1
+11 1
+.names u_csamul_pg_rca12_fa2_6_and0 u_csamul_pg_rca12_fa2_6_and1 u_csamul_pg_rca12_fa2_6_or0
+1- 1
+-1 1
+.names a[3] b[6] u_csamul_pg_rca12_and3_6
+11 1
+.names u_csamul_pg_rca12_and3_6 u_csamul_pg_rca12_fa4_5_xor1 u_csamul_pg_rca12_fa3_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_6 u_csamul_pg_rca12_fa4_5_xor1 u_csamul_pg_rca12_fa3_6_and0
+11 1
+.names u_csamul_pg_rca12_fa3_6_xor0 u_csamul_pg_rca12_fa3_5_or0 u_csamul_pg_rca12_fa3_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_6_xor0 u_csamul_pg_rca12_fa3_5_or0 u_csamul_pg_rca12_fa3_6_and1
+11 1
+.names u_csamul_pg_rca12_fa3_6_and0 u_csamul_pg_rca12_fa3_6_and1 u_csamul_pg_rca12_fa3_6_or0
+1- 1
+-1 1
+.names a[4] b[6] u_csamul_pg_rca12_and4_6
+11 1
+.names u_csamul_pg_rca12_and4_6 u_csamul_pg_rca12_fa5_5_xor1 u_csamul_pg_rca12_fa4_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_6 u_csamul_pg_rca12_fa5_5_xor1 u_csamul_pg_rca12_fa4_6_and0
+11 1
+.names u_csamul_pg_rca12_fa4_6_xor0 u_csamul_pg_rca12_fa4_5_or0 u_csamul_pg_rca12_fa4_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_6_xor0 u_csamul_pg_rca12_fa4_5_or0 u_csamul_pg_rca12_fa4_6_and1
+11 1
+.names u_csamul_pg_rca12_fa4_6_and0 u_csamul_pg_rca12_fa4_6_and1 u_csamul_pg_rca12_fa4_6_or0
+1- 1
+-1 1
+.names a[5] b[6] u_csamul_pg_rca12_and5_6
+11 1
+.names u_csamul_pg_rca12_and5_6 u_csamul_pg_rca12_fa6_5_xor1 u_csamul_pg_rca12_fa5_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_6 u_csamul_pg_rca12_fa6_5_xor1 u_csamul_pg_rca12_fa5_6_and0
+11 1
+.names u_csamul_pg_rca12_fa5_6_xor0 u_csamul_pg_rca12_fa5_5_or0 u_csamul_pg_rca12_fa5_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_6_xor0 u_csamul_pg_rca12_fa5_5_or0 u_csamul_pg_rca12_fa5_6_and1
+11 1
+.names u_csamul_pg_rca12_fa5_6_and0 u_csamul_pg_rca12_fa5_6_and1 u_csamul_pg_rca12_fa5_6_or0
+1- 1
+-1 1
+.names a[6] b[6] u_csamul_pg_rca12_and6_6
+11 1
+.names u_csamul_pg_rca12_and6_6 u_csamul_pg_rca12_fa7_5_xor1 u_csamul_pg_rca12_fa6_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_6 u_csamul_pg_rca12_fa7_5_xor1 u_csamul_pg_rca12_fa6_6_and0
+11 1
+.names u_csamul_pg_rca12_fa6_6_xor0 u_csamul_pg_rca12_fa6_5_or0 u_csamul_pg_rca12_fa6_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_6_xor0 u_csamul_pg_rca12_fa6_5_or0 u_csamul_pg_rca12_fa6_6_and1
+11 1
+.names u_csamul_pg_rca12_fa6_6_and0 u_csamul_pg_rca12_fa6_6_and1 u_csamul_pg_rca12_fa6_6_or0
+1- 1
+-1 1
+.names a[7] b[6] u_csamul_pg_rca12_and7_6
+11 1
+.names u_csamul_pg_rca12_and7_6 u_csamul_pg_rca12_fa8_5_xor1 u_csamul_pg_rca12_fa7_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_6 u_csamul_pg_rca12_fa8_5_xor1 u_csamul_pg_rca12_fa7_6_and0
+11 1
+.names u_csamul_pg_rca12_fa7_6_xor0 u_csamul_pg_rca12_fa7_5_or0 u_csamul_pg_rca12_fa7_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_6_xor0 u_csamul_pg_rca12_fa7_5_or0 u_csamul_pg_rca12_fa7_6_and1
+11 1
+.names u_csamul_pg_rca12_fa7_6_and0 u_csamul_pg_rca12_fa7_6_and1 u_csamul_pg_rca12_fa7_6_or0
+1- 1
+-1 1
+.names a[8] b[6] u_csamul_pg_rca12_and8_6
+11 1
+.names u_csamul_pg_rca12_and8_6 u_csamul_pg_rca12_fa9_5_xor1 u_csamul_pg_rca12_fa8_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_6 u_csamul_pg_rca12_fa9_5_xor1 u_csamul_pg_rca12_fa8_6_and0
+11 1
+.names u_csamul_pg_rca12_fa8_6_xor0 u_csamul_pg_rca12_fa8_5_or0 u_csamul_pg_rca12_fa8_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_6_xor0 u_csamul_pg_rca12_fa8_5_or0 u_csamul_pg_rca12_fa8_6_and1
+11 1
+.names u_csamul_pg_rca12_fa8_6_and0 u_csamul_pg_rca12_fa8_6_and1 u_csamul_pg_rca12_fa8_6_or0
+1- 1
+-1 1
+.names a[9] b[6] u_csamul_pg_rca12_and9_6
+11 1
+.names u_csamul_pg_rca12_and9_6 u_csamul_pg_rca12_fa10_5_xor1 u_csamul_pg_rca12_fa9_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_6 u_csamul_pg_rca12_fa10_5_xor1 u_csamul_pg_rca12_fa9_6_and0
+11 1
+.names u_csamul_pg_rca12_fa9_6_xor0 u_csamul_pg_rca12_fa9_5_or0 u_csamul_pg_rca12_fa9_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_6_xor0 u_csamul_pg_rca12_fa9_5_or0 u_csamul_pg_rca12_fa9_6_and1
+11 1
+.names u_csamul_pg_rca12_fa9_6_and0 u_csamul_pg_rca12_fa9_6_and1 u_csamul_pg_rca12_fa9_6_or0
+1- 1
+-1 1
+.names a[10] b[6] u_csamul_pg_rca12_and10_6
+11 1
+.names u_csamul_pg_rca12_and10_6 u_csamul_pg_rca12_and11_5 u_csamul_pg_rca12_fa10_6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_6 u_csamul_pg_rca12_and11_5 u_csamul_pg_rca12_fa10_6_and0
+11 1
+.names u_csamul_pg_rca12_fa10_6_xor0 u_csamul_pg_rca12_fa10_5_or0 u_csamul_pg_rca12_fa10_6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_6_xor0 u_csamul_pg_rca12_fa10_5_or0 u_csamul_pg_rca12_fa10_6_and1
+11 1
+.names u_csamul_pg_rca12_fa10_6_and0 u_csamul_pg_rca12_fa10_6_and1 u_csamul_pg_rca12_fa10_6_or0
+1- 1
+-1 1
+.names a[11] b[6] u_csamul_pg_rca12_and11_6
+11 1
+.names a[0] b[7] u_csamul_pg_rca12_and0_7
+11 1
+.names u_csamul_pg_rca12_and0_7 u_csamul_pg_rca12_fa1_6_xor1 u_csamul_pg_rca12_fa0_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_7 u_csamul_pg_rca12_fa1_6_xor1 u_csamul_pg_rca12_fa0_7_and0
+11 1
+.names u_csamul_pg_rca12_fa0_7_xor0 u_csamul_pg_rca12_fa0_6_or0 u_csamul_pg_rca12_fa0_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_7_xor0 u_csamul_pg_rca12_fa0_6_or0 u_csamul_pg_rca12_fa0_7_and1
+11 1
+.names u_csamul_pg_rca12_fa0_7_and0 u_csamul_pg_rca12_fa0_7_and1 u_csamul_pg_rca12_fa0_7_or0
+1- 1
+-1 1
+.names a[1] b[7] u_csamul_pg_rca12_and1_7
+11 1
+.names u_csamul_pg_rca12_and1_7 u_csamul_pg_rca12_fa2_6_xor1 u_csamul_pg_rca12_fa1_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_7 u_csamul_pg_rca12_fa2_6_xor1 u_csamul_pg_rca12_fa1_7_and0
+11 1
+.names u_csamul_pg_rca12_fa1_7_xor0 u_csamul_pg_rca12_fa1_6_or0 u_csamul_pg_rca12_fa1_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_7_xor0 u_csamul_pg_rca12_fa1_6_or0 u_csamul_pg_rca12_fa1_7_and1
+11 1
+.names u_csamul_pg_rca12_fa1_7_and0 u_csamul_pg_rca12_fa1_7_and1 u_csamul_pg_rca12_fa1_7_or0
+1- 1
+-1 1
+.names a[2] b[7] u_csamul_pg_rca12_and2_7
+11 1
+.names u_csamul_pg_rca12_and2_7 u_csamul_pg_rca12_fa3_6_xor1 u_csamul_pg_rca12_fa2_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_7 u_csamul_pg_rca12_fa3_6_xor1 u_csamul_pg_rca12_fa2_7_and0
+11 1
+.names u_csamul_pg_rca12_fa2_7_xor0 u_csamul_pg_rca12_fa2_6_or0 u_csamul_pg_rca12_fa2_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_7_xor0 u_csamul_pg_rca12_fa2_6_or0 u_csamul_pg_rca12_fa2_7_and1
+11 1
+.names u_csamul_pg_rca12_fa2_7_and0 u_csamul_pg_rca12_fa2_7_and1 u_csamul_pg_rca12_fa2_7_or0
+1- 1
+-1 1
+.names a[3] b[7] u_csamul_pg_rca12_and3_7
+11 1
+.names u_csamul_pg_rca12_and3_7 u_csamul_pg_rca12_fa4_6_xor1 u_csamul_pg_rca12_fa3_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_7 u_csamul_pg_rca12_fa4_6_xor1 u_csamul_pg_rca12_fa3_7_and0
+11 1
+.names u_csamul_pg_rca12_fa3_7_xor0 u_csamul_pg_rca12_fa3_6_or0 u_csamul_pg_rca12_fa3_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_7_xor0 u_csamul_pg_rca12_fa3_6_or0 u_csamul_pg_rca12_fa3_7_and1
+11 1
+.names u_csamul_pg_rca12_fa3_7_and0 u_csamul_pg_rca12_fa3_7_and1 u_csamul_pg_rca12_fa3_7_or0
+1- 1
+-1 1
+.names a[4] b[7] u_csamul_pg_rca12_and4_7
+11 1
+.names u_csamul_pg_rca12_and4_7 u_csamul_pg_rca12_fa5_6_xor1 u_csamul_pg_rca12_fa4_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_7 u_csamul_pg_rca12_fa5_6_xor1 u_csamul_pg_rca12_fa4_7_and0
+11 1
+.names u_csamul_pg_rca12_fa4_7_xor0 u_csamul_pg_rca12_fa4_6_or0 u_csamul_pg_rca12_fa4_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_7_xor0 u_csamul_pg_rca12_fa4_6_or0 u_csamul_pg_rca12_fa4_7_and1
+11 1
+.names u_csamul_pg_rca12_fa4_7_and0 u_csamul_pg_rca12_fa4_7_and1 u_csamul_pg_rca12_fa4_7_or0
+1- 1
+-1 1
+.names a[5] b[7] u_csamul_pg_rca12_and5_7
+11 1
+.names u_csamul_pg_rca12_and5_7 u_csamul_pg_rca12_fa6_6_xor1 u_csamul_pg_rca12_fa5_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_7 u_csamul_pg_rca12_fa6_6_xor1 u_csamul_pg_rca12_fa5_7_and0
+11 1
+.names u_csamul_pg_rca12_fa5_7_xor0 u_csamul_pg_rca12_fa5_6_or0 u_csamul_pg_rca12_fa5_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_7_xor0 u_csamul_pg_rca12_fa5_6_or0 u_csamul_pg_rca12_fa5_7_and1
+11 1
+.names u_csamul_pg_rca12_fa5_7_and0 u_csamul_pg_rca12_fa5_7_and1 u_csamul_pg_rca12_fa5_7_or0
+1- 1
+-1 1
+.names a[6] b[7] u_csamul_pg_rca12_and6_7
+11 1
+.names u_csamul_pg_rca12_and6_7 u_csamul_pg_rca12_fa7_6_xor1 u_csamul_pg_rca12_fa6_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_7 u_csamul_pg_rca12_fa7_6_xor1 u_csamul_pg_rca12_fa6_7_and0
+11 1
+.names u_csamul_pg_rca12_fa6_7_xor0 u_csamul_pg_rca12_fa6_6_or0 u_csamul_pg_rca12_fa6_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_7_xor0 u_csamul_pg_rca12_fa6_6_or0 u_csamul_pg_rca12_fa6_7_and1
+11 1
+.names u_csamul_pg_rca12_fa6_7_and0 u_csamul_pg_rca12_fa6_7_and1 u_csamul_pg_rca12_fa6_7_or0
+1- 1
+-1 1
+.names a[7] b[7] u_csamul_pg_rca12_and7_7
+11 1
+.names u_csamul_pg_rca12_and7_7 u_csamul_pg_rca12_fa8_6_xor1 u_csamul_pg_rca12_fa7_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_7 u_csamul_pg_rca12_fa8_6_xor1 u_csamul_pg_rca12_fa7_7_and0
+11 1
+.names u_csamul_pg_rca12_fa7_7_xor0 u_csamul_pg_rca12_fa7_6_or0 u_csamul_pg_rca12_fa7_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_7_xor0 u_csamul_pg_rca12_fa7_6_or0 u_csamul_pg_rca12_fa7_7_and1
+11 1
+.names u_csamul_pg_rca12_fa7_7_and0 u_csamul_pg_rca12_fa7_7_and1 u_csamul_pg_rca12_fa7_7_or0
+1- 1
+-1 1
+.names a[8] b[7] u_csamul_pg_rca12_and8_7
+11 1
+.names u_csamul_pg_rca12_and8_7 u_csamul_pg_rca12_fa9_6_xor1 u_csamul_pg_rca12_fa8_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_7 u_csamul_pg_rca12_fa9_6_xor1 u_csamul_pg_rca12_fa8_7_and0
+11 1
+.names u_csamul_pg_rca12_fa8_7_xor0 u_csamul_pg_rca12_fa8_6_or0 u_csamul_pg_rca12_fa8_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_7_xor0 u_csamul_pg_rca12_fa8_6_or0 u_csamul_pg_rca12_fa8_7_and1
+11 1
+.names u_csamul_pg_rca12_fa8_7_and0 u_csamul_pg_rca12_fa8_7_and1 u_csamul_pg_rca12_fa8_7_or0
+1- 1
+-1 1
+.names a[9] b[7] u_csamul_pg_rca12_and9_7
+11 1
+.names u_csamul_pg_rca12_and9_7 u_csamul_pg_rca12_fa10_6_xor1 u_csamul_pg_rca12_fa9_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_7 u_csamul_pg_rca12_fa10_6_xor1 u_csamul_pg_rca12_fa9_7_and0
+11 1
+.names u_csamul_pg_rca12_fa9_7_xor0 u_csamul_pg_rca12_fa9_6_or0 u_csamul_pg_rca12_fa9_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_7_xor0 u_csamul_pg_rca12_fa9_6_or0 u_csamul_pg_rca12_fa9_7_and1
+11 1
+.names u_csamul_pg_rca12_fa9_7_and0 u_csamul_pg_rca12_fa9_7_and1 u_csamul_pg_rca12_fa9_7_or0
+1- 1
+-1 1
+.names a[10] b[7] u_csamul_pg_rca12_and10_7
+11 1
+.names u_csamul_pg_rca12_and10_7 u_csamul_pg_rca12_and11_6 u_csamul_pg_rca12_fa10_7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_7 u_csamul_pg_rca12_and11_6 u_csamul_pg_rca12_fa10_7_and0
+11 1
+.names u_csamul_pg_rca12_fa10_7_xor0 u_csamul_pg_rca12_fa10_6_or0 u_csamul_pg_rca12_fa10_7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_7_xor0 u_csamul_pg_rca12_fa10_6_or0 u_csamul_pg_rca12_fa10_7_and1
+11 1
+.names u_csamul_pg_rca12_fa10_7_and0 u_csamul_pg_rca12_fa10_7_and1 u_csamul_pg_rca12_fa10_7_or0
+1- 1
+-1 1
+.names a[11] b[7] u_csamul_pg_rca12_and11_7
+11 1
+.names a[0] b[8] u_csamul_pg_rca12_and0_8
+11 1
+.names u_csamul_pg_rca12_and0_8 u_csamul_pg_rca12_fa1_7_xor1 u_csamul_pg_rca12_fa0_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_8 u_csamul_pg_rca12_fa1_7_xor1 u_csamul_pg_rca12_fa0_8_and0
+11 1
+.names u_csamul_pg_rca12_fa0_8_xor0 u_csamul_pg_rca12_fa0_7_or0 u_csamul_pg_rca12_fa0_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_8_xor0 u_csamul_pg_rca12_fa0_7_or0 u_csamul_pg_rca12_fa0_8_and1
+11 1
+.names u_csamul_pg_rca12_fa0_8_and0 u_csamul_pg_rca12_fa0_8_and1 u_csamul_pg_rca12_fa0_8_or0
+1- 1
+-1 1
+.names a[1] b[8] u_csamul_pg_rca12_and1_8
+11 1
+.names u_csamul_pg_rca12_and1_8 u_csamul_pg_rca12_fa2_7_xor1 u_csamul_pg_rca12_fa1_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_8 u_csamul_pg_rca12_fa2_7_xor1 u_csamul_pg_rca12_fa1_8_and0
+11 1
+.names u_csamul_pg_rca12_fa1_8_xor0 u_csamul_pg_rca12_fa1_7_or0 u_csamul_pg_rca12_fa1_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_8_xor0 u_csamul_pg_rca12_fa1_7_or0 u_csamul_pg_rca12_fa1_8_and1
+11 1
+.names u_csamul_pg_rca12_fa1_8_and0 u_csamul_pg_rca12_fa1_8_and1 u_csamul_pg_rca12_fa1_8_or0
+1- 1
+-1 1
+.names a[2] b[8] u_csamul_pg_rca12_and2_8
+11 1
+.names u_csamul_pg_rca12_and2_8 u_csamul_pg_rca12_fa3_7_xor1 u_csamul_pg_rca12_fa2_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_8 u_csamul_pg_rca12_fa3_7_xor1 u_csamul_pg_rca12_fa2_8_and0
+11 1
+.names u_csamul_pg_rca12_fa2_8_xor0 u_csamul_pg_rca12_fa2_7_or0 u_csamul_pg_rca12_fa2_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_8_xor0 u_csamul_pg_rca12_fa2_7_or0 u_csamul_pg_rca12_fa2_8_and1
+11 1
+.names u_csamul_pg_rca12_fa2_8_and0 u_csamul_pg_rca12_fa2_8_and1 u_csamul_pg_rca12_fa2_8_or0
+1- 1
+-1 1
+.names a[3] b[8] u_csamul_pg_rca12_and3_8
+11 1
+.names u_csamul_pg_rca12_and3_8 u_csamul_pg_rca12_fa4_7_xor1 u_csamul_pg_rca12_fa3_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_8 u_csamul_pg_rca12_fa4_7_xor1 u_csamul_pg_rca12_fa3_8_and0
+11 1
+.names u_csamul_pg_rca12_fa3_8_xor0 u_csamul_pg_rca12_fa3_7_or0 u_csamul_pg_rca12_fa3_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_8_xor0 u_csamul_pg_rca12_fa3_7_or0 u_csamul_pg_rca12_fa3_8_and1
+11 1
+.names u_csamul_pg_rca12_fa3_8_and0 u_csamul_pg_rca12_fa3_8_and1 u_csamul_pg_rca12_fa3_8_or0
+1- 1
+-1 1
+.names a[4] b[8] u_csamul_pg_rca12_and4_8
+11 1
+.names u_csamul_pg_rca12_and4_8 u_csamul_pg_rca12_fa5_7_xor1 u_csamul_pg_rca12_fa4_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_8 u_csamul_pg_rca12_fa5_7_xor1 u_csamul_pg_rca12_fa4_8_and0
+11 1
+.names u_csamul_pg_rca12_fa4_8_xor0 u_csamul_pg_rca12_fa4_7_or0 u_csamul_pg_rca12_fa4_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_8_xor0 u_csamul_pg_rca12_fa4_7_or0 u_csamul_pg_rca12_fa4_8_and1
+11 1
+.names u_csamul_pg_rca12_fa4_8_and0 u_csamul_pg_rca12_fa4_8_and1 u_csamul_pg_rca12_fa4_8_or0
+1- 1
+-1 1
+.names a[5] b[8] u_csamul_pg_rca12_and5_8
+11 1
+.names u_csamul_pg_rca12_and5_8 u_csamul_pg_rca12_fa6_7_xor1 u_csamul_pg_rca12_fa5_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_8 u_csamul_pg_rca12_fa6_7_xor1 u_csamul_pg_rca12_fa5_8_and0
+11 1
+.names u_csamul_pg_rca12_fa5_8_xor0 u_csamul_pg_rca12_fa5_7_or0 u_csamul_pg_rca12_fa5_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_8_xor0 u_csamul_pg_rca12_fa5_7_or0 u_csamul_pg_rca12_fa5_8_and1
+11 1
+.names u_csamul_pg_rca12_fa5_8_and0 u_csamul_pg_rca12_fa5_8_and1 u_csamul_pg_rca12_fa5_8_or0
+1- 1
+-1 1
+.names a[6] b[8] u_csamul_pg_rca12_and6_8
+11 1
+.names u_csamul_pg_rca12_and6_8 u_csamul_pg_rca12_fa7_7_xor1 u_csamul_pg_rca12_fa6_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_8 u_csamul_pg_rca12_fa7_7_xor1 u_csamul_pg_rca12_fa6_8_and0
+11 1
+.names u_csamul_pg_rca12_fa6_8_xor0 u_csamul_pg_rca12_fa6_7_or0 u_csamul_pg_rca12_fa6_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_8_xor0 u_csamul_pg_rca12_fa6_7_or0 u_csamul_pg_rca12_fa6_8_and1
+11 1
+.names u_csamul_pg_rca12_fa6_8_and0 u_csamul_pg_rca12_fa6_8_and1 u_csamul_pg_rca12_fa6_8_or0
+1- 1
+-1 1
+.names a[7] b[8] u_csamul_pg_rca12_and7_8
+11 1
+.names u_csamul_pg_rca12_and7_8 u_csamul_pg_rca12_fa8_7_xor1 u_csamul_pg_rca12_fa7_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_8 u_csamul_pg_rca12_fa8_7_xor1 u_csamul_pg_rca12_fa7_8_and0
+11 1
+.names u_csamul_pg_rca12_fa7_8_xor0 u_csamul_pg_rca12_fa7_7_or0 u_csamul_pg_rca12_fa7_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_8_xor0 u_csamul_pg_rca12_fa7_7_or0 u_csamul_pg_rca12_fa7_8_and1
+11 1
+.names u_csamul_pg_rca12_fa7_8_and0 u_csamul_pg_rca12_fa7_8_and1 u_csamul_pg_rca12_fa7_8_or0
+1- 1
+-1 1
+.names a[8] b[8] u_csamul_pg_rca12_and8_8
+11 1
+.names u_csamul_pg_rca12_and8_8 u_csamul_pg_rca12_fa9_7_xor1 u_csamul_pg_rca12_fa8_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_8 u_csamul_pg_rca12_fa9_7_xor1 u_csamul_pg_rca12_fa8_8_and0
+11 1
+.names u_csamul_pg_rca12_fa8_8_xor0 u_csamul_pg_rca12_fa8_7_or0 u_csamul_pg_rca12_fa8_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_8_xor0 u_csamul_pg_rca12_fa8_7_or0 u_csamul_pg_rca12_fa8_8_and1
+11 1
+.names u_csamul_pg_rca12_fa8_8_and0 u_csamul_pg_rca12_fa8_8_and1 u_csamul_pg_rca12_fa8_8_or0
+1- 1
+-1 1
+.names a[9] b[8] u_csamul_pg_rca12_and9_8
+11 1
+.names u_csamul_pg_rca12_and9_8 u_csamul_pg_rca12_fa10_7_xor1 u_csamul_pg_rca12_fa9_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_8 u_csamul_pg_rca12_fa10_7_xor1 u_csamul_pg_rca12_fa9_8_and0
+11 1
+.names u_csamul_pg_rca12_fa9_8_xor0 u_csamul_pg_rca12_fa9_7_or0 u_csamul_pg_rca12_fa9_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_8_xor0 u_csamul_pg_rca12_fa9_7_or0 u_csamul_pg_rca12_fa9_8_and1
+11 1
+.names u_csamul_pg_rca12_fa9_8_and0 u_csamul_pg_rca12_fa9_8_and1 u_csamul_pg_rca12_fa9_8_or0
+1- 1
+-1 1
+.names a[10] b[8] u_csamul_pg_rca12_and10_8
+11 1
+.names u_csamul_pg_rca12_and10_8 u_csamul_pg_rca12_and11_7 u_csamul_pg_rca12_fa10_8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_8 u_csamul_pg_rca12_and11_7 u_csamul_pg_rca12_fa10_8_and0
+11 1
+.names u_csamul_pg_rca12_fa10_8_xor0 u_csamul_pg_rca12_fa10_7_or0 u_csamul_pg_rca12_fa10_8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_8_xor0 u_csamul_pg_rca12_fa10_7_or0 u_csamul_pg_rca12_fa10_8_and1
+11 1
+.names u_csamul_pg_rca12_fa10_8_and0 u_csamul_pg_rca12_fa10_8_and1 u_csamul_pg_rca12_fa10_8_or0
+1- 1
+-1 1
+.names a[11] b[8] u_csamul_pg_rca12_and11_8
+11 1
+.names a[0] b[9] u_csamul_pg_rca12_and0_9
+11 1
+.names u_csamul_pg_rca12_and0_9 u_csamul_pg_rca12_fa1_8_xor1 u_csamul_pg_rca12_fa0_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_9 u_csamul_pg_rca12_fa1_8_xor1 u_csamul_pg_rca12_fa0_9_and0
+11 1
+.names u_csamul_pg_rca12_fa0_9_xor0 u_csamul_pg_rca12_fa0_8_or0 u_csamul_pg_rca12_fa0_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_9_xor0 u_csamul_pg_rca12_fa0_8_or0 u_csamul_pg_rca12_fa0_9_and1
+11 1
+.names u_csamul_pg_rca12_fa0_9_and0 u_csamul_pg_rca12_fa0_9_and1 u_csamul_pg_rca12_fa0_9_or0
+1- 1
+-1 1
+.names a[1] b[9] u_csamul_pg_rca12_and1_9
+11 1
+.names u_csamul_pg_rca12_and1_9 u_csamul_pg_rca12_fa2_8_xor1 u_csamul_pg_rca12_fa1_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_9 u_csamul_pg_rca12_fa2_8_xor1 u_csamul_pg_rca12_fa1_9_and0
+11 1
+.names u_csamul_pg_rca12_fa1_9_xor0 u_csamul_pg_rca12_fa1_8_or0 u_csamul_pg_rca12_fa1_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_9_xor0 u_csamul_pg_rca12_fa1_8_or0 u_csamul_pg_rca12_fa1_9_and1
+11 1
+.names u_csamul_pg_rca12_fa1_9_and0 u_csamul_pg_rca12_fa1_9_and1 u_csamul_pg_rca12_fa1_9_or0
+1- 1
+-1 1
+.names a[2] b[9] u_csamul_pg_rca12_and2_9
+11 1
+.names u_csamul_pg_rca12_and2_9 u_csamul_pg_rca12_fa3_8_xor1 u_csamul_pg_rca12_fa2_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_9 u_csamul_pg_rca12_fa3_8_xor1 u_csamul_pg_rca12_fa2_9_and0
+11 1
+.names u_csamul_pg_rca12_fa2_9_xor0 u_csamul_pg_rca12_fa2_8_or0 u_csamul_pg_rca12_fa2_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_9_xor0 u_csamul_pg_rca12_fa2_8_or0 u_csamul_pg_rca12_fa2_9_and1
+11 1
+.names u_csamul_pg_rca12_fa2_9_and0 u_csamul_pg_rca12_fa2_9_and1 u_csamul_pg_rca12_fa2_9_or0
+1- 1
+-1 1
+.names a[3] b[9] u_csamul_pg_rca12_and3_9
+11 1
+.names u_csamul_pg_rca12_and3_9 u_csamul_pg_rca12_fa4_8_xor1 u_csamul_pg_rca12_fa3_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_9 u_csamul_pg_rca12_fa4_8_xor1 u_csamul_pg_rca12_fa3_9_and0
+11 1
+.names u_csamul_pg_rca12_fa3_9_xor0 u_csamul_pg_rca12_fa3_8_or0 u_csamul_pg_rca12_fa3_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_9_xor0 u_csamul_pg_rca12_fa3_8_or0 u_csamul_pg_rca12_fa3_9_and1
+11 1
+.names u_csamul_pg_rca12_fa3_9_and0 u_csamul_pg_rca12_fa3_9_and1 u_csamul_pg_rca12_fa3_9_or0
+1- 1
+-1 1
+.names a[4] b[9] u_csamul_pg_rca12_and4_9
+11 1
+.names u_csamul_pg_rca12_and4_9 u_csamul_pg_rca12_fa5_8_xor1 u_csamul_pg_rca12_fa4_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_9 u_csamul_pg_rca12_fa5_8_xor1 u_csamul_pg_rca12_fa4_9_and0
+11 1
+.names u_csamul_pg_rca12_fa4_9_xor0 u_csamul_pg_rca12_fa4_8_or0 u_csamul_pg_rca12_fa4_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_9_xor0 u_csamul_pg_rca12_fa4_8_or0 u_csamul_pg_rca12_fa4_9_and1
+11 1
+.names u_csamul_pg_rca12_fa4_9_and0 u_csamul_pg_rca12_fa4_9_and1 u_csamul_pg_rca12_fa4_9_or0
+1- 1
+-1 1
+.names a[5] b[9] u_csamul_pg_rca12_and5_9
+11 1
+.names u_csamul_pg_rca12_and5_9 u_csamul_pg_rca12_fa6_8_xor1 u_csamul_pg_rca12_fa5_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_9 u_csamul_pg_rca12_fa6_8_xor1 u_csamul_pg_rca12_fa5_9_and0
+11 1
+.names u_csamul_pg_rca12_fa5_9_xor0 u_csamul_pg_rca12_fa5_8_or0 u_csamul_pg_rca12_fa5_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_9_xor0 u_csamul_pg_rca12_fa5_8_or0 u_csamul_pg_rca12_fa5_9_and1
+11 1
+.names u_csamul_pg_rca12_fa5_9_and0 u_csamul_pg_rca12_fa5_9_and1 u_csamul_pg_rca12_fa5_9_or0
+1- 1
+-1 1
+.names a[6] b[9] u_csamul_pg_rca12_and6_9
+11 1
+.names u_csamul_pg_rca12_and6_9 u_csamul_pg_rca12_fa7_8_xor1 u_csamul_pg_rca12_fa6_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_9 u_csamul_pg_rca12_fa7_8_xor1 u_csamul_pg_rca12_fa6_9_and0
+11 1
+.names u_csamul_pg_rca12_fa6_9_xor0 u_csamul_pg_rca12_fa6_8_or0 u_csamul_pg_rca12_fa6_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_9_xor0 u_csamul_pg_rca12_fa6_8_or0 u_csamul_pg_rca12_fa6_9_and1
+11 1
+.names u_csamul_pg_rca12_fa6_9_and0 u_csamul_pg_rca12_fa6_9_and1 u_csamul_pg_rca12_fa6_9_or0
+1- 1
+-1 1
+.names a[7] b[9] u_csamul_pg_rca12_and7_9
+11 1
+.names u_csamul_pg_rca12_and7_9 u_csamul_pg_rca12_fa8_8_xor1 u_csamul_pg_rca12_fa7_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_9 u_csamul_pg_rca12_fa8_8_xor1 u_csamul_pg_rca12_fa7_9_and0
+11 1
+.names u_csamul_pg_rca12_fa7_9_xor0 u_csamul_pg_rca12_fa7_8_or0 u_csamul_pg_rca12_fa7_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_9_xor0 u_csamul_pg_rca12_fa7_8_or0 u_csamul_pg_rca12_fa7_9_and1
+11 1
+.names u_csamul_pg_rca12_fa7_9_and0 u_csamul_pg_rca12_fa7_9_and1 u_csamul_pg_rca12_fa7_9_or0
+1- 1
+-1 1
+.names a[8] b[9] u_csamul_pg_rca12_and8_9
+11 1
+.names u_csamul_pg_rca12_and8_9 u_csamul_pg_rca12_fa9_8_xor1 u_csamul_pg_rca12_fa8_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_9 u_csamul_pg_rca12_fa9_8_xor1 u_csamul_pg_rca12_fa8_9_and0
+11 1
+.names u_csamul_pg_rca12_fa8_9_xor0 u_csamul_pg_rca12_fa8_8_or0 u_csamul_pg_rca12_fa8_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_9_xor0 u_csamul_pg_rca12_fa8_8_or0 u_csamul_pg_rca12_fa8_9_and1
+11 1
+.names u_csamul_pg_rca12_fa8_9_and0 u_csamul_pg_rca12_fa8_9_and1 u_csamul_pg_rca12_fa8_9_or0
+1- 1
+-1 1
+.names a[9] b[9] u_csamul_pg_rca12_and9_9
+11 1
+.names u_csamul_pg_rca12_and9_9 u_csamul_pg_rca12_fa10_8_xor1 u_csamul_pg_rca12_fa9_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_9 u_csamul_pg_rca12_fa10_8_xor1 u_csamul_pg_rca12_fa9_9_and0
+11 1
+.names u_csamul_pg_rca12_fa9_9_xor0 u_csamul_pg_rca12_fa9_8_or0 u_csamul_pg_rca12_fa9_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_9_xor0 u_csamul_pg_rca12_fa9_8_or0 u_csamul_pg_rca12_fa9_9_and1
+11 1
+.names u_csamul_pg_rca12_fa9_9_and0 u_csamul_pg_rca12_fa9_9_and1 u_csamul_pg_rca12_fa9_9_or0
+1- 1
+-1 1
+.names a[10] b[9] u_csamul_pg_rca12_and10_9
+11 1
+.names u_csamul_pg_rca12_and10_9 u_csamul_pg_rca12_and11_8 u_csamul_pg_rca12_fa10_9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_9 u_csamul_pg_rca12_and11_8 u_csamul_pg_rca12_fa10_9_and0
+11 1
+.names u_csamul_pg_rca12_fa10_9_xor0 u_csamul_pg_rca12_fa10_8_or0 u_csamul_pg_rca12_fa10_9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_9_xor0 u_csamul_pg_rca12_fa10_8_or0 u_csamul_pg_rca12_fa10_9_and1
+11 1
+.names u_csamul_pg_rca12_fa10_9_and0 u_csamul_pg_rca12_fa10_9_and1 u_csamul_pg_rca12_fa10_9_or0
+1- 1
+-1 1
+.names a[11] b[9] u_csamul_pg_rca12_and11_9
+11 1
+.names a[0] b[10] u_csamul_pg_rca12_and0_10
+11 1
+.names u_csamul_pg_rca12_and0_10 u_csamul_pg_rca12_fa1_9_xor1 u_csamul_pg_rca12_fa0_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_10 u_csamul_pg_rca12_fa1_9_xor1 u_csamul_pg_rca12_fa0_10_and0
+11 1
+.names u_csamul_pg_rca12_fa0_10_xor0 u_csamul_pg_rca12_fa0_9_or0 u_csamul_pg_rca12_fa0_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_10_xor0 u_csamul_pg_rca12_fa0_9_or0 u_csamul_pg_rca12_fa0_10_and1
+11 1
+.names u_csamul_pg_rca12_fa0_10_and0 u_csamul_pg_rca12_fa0_10_and1 u_csamul_pg_rca12_fa0_10_or0
+1- 1
+-1 1
+.names a[1] b[10] u_csamul_pg_rca12_and1_10
+11 1
+.names u_csamul_pg_rca12_and1_10 u_csamul_pg_rca12_fa2_9_xor1 u_csamul_pg_rca12_fa1_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_10 u_csamul_pg_rca12_fa2_9_xor1 u_csamul_pg_rca12_fa1_10_and0
+11 1
+.names u_csamul_pg_rca12_fa1_10_xor0 u_csamul_pg_rca12_fa1_9_or0 u_csamul_pg_rca12_fa1_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_10_xor0 u_csamul_pg_rca12_fa1_9_or0 u_csamul_pg_rca12_fa1_10_and1
+11 1
+.names u_csamul_pg_rca12_fa1_10_and0 u_csamul_pg_rca12_fa1_10_and1 u_csamul_pg_rca12_fa1_10_or0
+1- 1
+-1 1
+.names a[2] b[10] u_csamul_pg_rca12_and2_10
+11 1
+.names u_csamul_pg_rca12_and2_10 u_csamul_pg_rca12_fa3_9_xor1 u_csamul_pg_rca12_fa2_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_10 u_csamul_pg_rca12_fa3_9_xor1 u_csamul_pg_rca12_fa2_10_and0
+11 1
+.names u_csamul_pg_rca12_fa2_10_xor0 u_csamul_pg_rca12_fa2_9_or0 u_csamul_pg_rca12_fa2_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_10_xor0 u_csamul_pg_rca12_fa2_9_or0 u_csamul_pg_rca12_fa2_10_and1
+11 1
+.names u_csamul_pg_rca12_fa2_10_and0 u_csamul_pg_rca12_fa2_10_and1 u_csamul_pg_rca12_fa2_10_or0
+1- 1
+-1 1
+.names a[3] b[10] u_csamul_pg_rca12_and3_10
+11 1
+.names u_csamul_pg_rca12_and3_10 u_csamul_pg_rca12_fa4_9_xor1 u_csamul_pg_rca12_fa3_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_10 u_csamul_pg_rca12_fa4_9_xor1 u_csamul_pg_rca12_fa3_10_and0
+11 1
+.names u_csamul_pg_rca12_fa3_10_xor0 u_csamul_pg_rca12_fa3_9_or0 u_csamul_pg_rca12_fa3_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_10_xor0 u_csamul_pg_rca12_fa3_9_or0 u_csamul_pg_rca12_fa3_10_and1
+11 1
+.names u_csamul_pg_rca12_fa3_10_and0 u_csamul_pg_rca12_fa3_10_and1 u_csamul_pg_rca12_fa3_10_or0
+1- 1
+-1 1
+.names a[4] b[10] u_csamul_pg_rca12_and4_10
+11 1
+.names u_csamul_pg_rca12_and4_10 u_csamul_pg_rca12_fa5_9_xor1 u_csamul_pg_rca12_fa4_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_10 u_csamul_pg_rca12_fa5_9_xor1 u_csamul_pg_rca12_fa4_10_and0
+11 1
+.names u_csamul_pg_rca12_fa4_10_xor0 u_csamul_pg_rca12_fa4_9_or0 u_csamul_pg_rca12_fa4_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_10_xor0 u_csamul_pg_rca12_fa4_9_or0 u_csamul_pg_rca12_fa4_10_and1
+11 1
+.names u_csamul_pg_rca12_fa4_10_and0 u_csamul_pg_rca12_fa4_10_and1 u_csamul_pg_rca12_fa4_10_or0
+1- 1
+-1 1
+.names a[5] b[10] u_csamul_pg_rca12_and5_10
+11 1
+.names u_csamul_pg_rca12_and5_10 u_csamul_pg_rca12_fa6_9_xor1 u_csamul_pg_rca12_fa5_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_10 u_csamul_pg_rca12_fa6_9_xor1 u_csamul_pg_rca12_fa5_10_and0
+11 1
+.names u_csamul_pg_rca12_fa5_10_xor0 u_csamul_pg_rca12_fa5_9_or0 u_csamul_pg_rca12_fa5_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_10_xor0 u_csamul_pg_rca12_fa5_9_or0 u_csamul_pg_rca12_fa5_10_and1
+11 1
+.names u_csamul_pg_rca12_fa5_10_and0 u_csamul_pg_rca12_fa5_10_and1 u_csamul_pg_rca12_fa5_10_or0
+1- 1
+-1 1
+.names a[6] b[10] u_csamul_pg_rca12_and6_10
+11 1
+.names u_csamul_pg_rca12_and6_10 u_csamul_pg_rca12_fa7_9_xor1 u_csamul_pg_rca12_fa6_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_10 u_csamul_pg_rca12_fa7_9_xor1 u_csamul_pg_rca12_fa6_10_and0
+11 1
+.names u_csamul_pg_rca12_fa6_10_xor0 u_csamul_pg_rca12_fa6_9_or0 u_csamul_pg_rca12_fa6_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_10_xor0 u_csamul_pg_rca12_fa6_9_or0 u_csamul_pg_rca12_fa6_10_and1
+11 1
+.names u_csamul_pg_rca12_fa6_10_and0 u_csamul_pg_rca12_fa6_10_and1 u_csamul_pg_rca12_fa6_10_or0
+1- 1
+-1 1
+.names a[7] b[10] u_csamul_pg_rca12_and7_10
+11 1
+.names u_csamul_pg_rca12_and7_10 u_csamul_pg_rca12_fa8_9_xor1 u_csamul_pg_rca12_fa7_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_10 u_csamul_pg_rca12_fa8_9_xor1 u_csamul_pg_rca12_fa7_10_and0
+11 1
+.names u_csamul_pg_rca12_fa7_10_xor0 u_csamul_pg_rca12_fa7_9_or0 u_csamul_pg_rca12_fa7_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_10_xor0 u_csamul_pg_rca12_fa7_9_or0 u_csamul_pg_rca12_fa7_10_and1
+11 1
+.names u_csamul_pg_rca12_fa7_10_and0 u_csamul_pg_rca12_fa7_10_and1 u_csamul_pg_rca12_fa7_10_or0
+1- 1
+-1 1
+.names a[8] b[10] u_csamul_pg_rca12_and8_10
+11 1
+.names u_csamul_pg_rca12_and8_10 u_csamul_pg_rca12_fa9_9_xor1 u_csamul_pg_rca12_fa8_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_10 u_csamul_pg_rca12_fa9_9_xor1 u_csamul_pg_rca12_fa8_10_and0
+11 1
+.names u_csamul_pg_rca12_fa8_10_xor0 u_csamul_pg_rca12_fa8_9_or0 u_csamul_pg_rca12_fa8_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_10_xor0 u_csamul_pg_rca12_fa8_9_or0 u_csamul_pg_rca12_fa8_10_and1
+11 1
+.names u_csamul_pg_rca12_fa8_10_and0 u_csamul_pg_rca12_fa8_10_and1 u_csamul_pg_rca12_fa8_10_or0
+1- 1
+-1 1
+.names a[9] b[10] u_csamul_pg_rca12_and9_10
+11 1
+.names u_csamul_pg_rca12_and9_10 u_csamul_pg_rca12_fa10_9_xor1 u_csamul_pg_rca12_fa9_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_10 u_csamul_pg_rca12_fa10_9_xor1 u_csamul_pg_rca12_fa9_10_and0
+11 1
+.names u_csamul_pg_rca12_fa9_10_xor0 u_csamul_pg_rca12_fa9_9_or0 u_csamul_pg_rca12_fa9_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_10_xor0 u_csamul_pg_rca12_fa9_9_or0 u_csamul_pg_rca12_fa9_10_and1
+11 1
+.names u_csamul_pg_rca12_fa9_10_and0 u_csamul_pg_rca12_fa9_10_and1 u_csamul_pg_rca12_fa9_10_or0
+1- 1
+-1 1
+.names a[10] b[10] u_csamul_pg_rca12_and10_10
+11 1
+.names u_csamul_pg_rca12_and10_10 u_csamul_pg_rca12_and11_9 u_csamul_pg_rca12_fa10_10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_10 u_csamul_pg_rca12_and11_9 u_csamul_pg_rca12_fa10_10_and0
+11 1
+.names u_csamul_pg_rca12_fa10_10_xor0 u_csamul_pg_rca12_fa10_9_or0 u_csamul_pg_rca12_fa10_10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_10_xor0 u_csamul_pg_rca12_fa10_9_or0 u_csamul_pg_rca12_fa10_10_and1
+11 1
+.names u_csamul_pg_rca12_fa10_10_and0 u_csamul_pg_rca12_fa10_10_and1 u_csamul_pg_rca12_fa10_10_or0
+1- 1
+-1 1
+.names a[11] b[10] u_csamul_pg_rca12_and11_10
+11 1
+.names a[0] b[11] u_csamul_pg_rca12_and0_11
+11 1
+.names u_csamul_pg_rca12_and0_11 u_csamul_pg_rca12_fa1_10_xor1 u_csamul_pg_rca12_fa0_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and0_11 u_csamul_pg_rca12_fa1_10_xor1 u_csamul_pg_rca12_fa0_11_and0
+11 1
+.names u_csamul_pg_rca12_fa0_11_xor0 u_csamul_pg_rca12_fa0_10_or0 u_csamul_pg_rca12_fa0_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa0_11_xor0 u_csamul_pg_rca12_fa0_10_or0 u_csamul_pg_rca12_fa0_11_and1
+11 1
+.names u_csamul_pg_rca12_fa0_11_and0 u_csamul_pg_rca12_fa0_11_and1 u_csamul_pg_rca12_fa0_11_or0
+1- 1
+-1 1
+.names a[1] b[11] u_csamul_pg_rca12_and1_11
+11 1
+.names u_csamul_pg_rca12_and1_11 u_csamul_pg_rca12_fa2_10_xor1 u_csamul_pg_rca12_fa1_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and1_11 u_csamul_pg_rca12_fa2_10_xor1 u_csamul_pg_rca12_fa1_11_and0
+11 1
+.names u_csamul_pg_rca12_fa1_11_xor0 u_csamul_pg_rca12_fa1_10_or0 u_csamul_pg_rca12_fa1_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_11_xor0 u_csamul_pg_rca12_fa1_10_or0 u_csamul_pg_rca12_fa1_11_and1
+11 1
+.names u_csamul_pg_rca12_fa1_11_and0 u_csamul_pg_rca12_fa1_11_and1 u_csamul_pg_rca12_fa1_11_or0
+1- 1
+-1 1
+.names a[2] b[11] u_csamul_pg_rca12_and2_11
+11 1
+.names u_csamul_pg_rca12_and2_11 u_csamul_pg_rca12_fa3_10_xor1 u_csamul_pg_rca12_fa2_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and2_11 u_csamul_pg_rca12_fa3_10_xor1 u_csamul_pg_rca12_fa2_11_and0
+11 1
+.names u_csamul_pg_rca12_fa2_11_xor0 u_csamul_pg_rca12_fa2_10_or0 u_csamul_pg_rca12_fa2_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_11_xor0 u_csamul_pg_rca12_fa2_10_or0 u_csamul_pg_rca12_fa2_11_and1
+11 1
+.names u_csamul_pg_rca12_fa2_11_and0 u_csamul_pg_rca12_fa2_11_and1 u_csamul_pg_rca12_fa2_11_or0
+1- 1
+-1 1
+.names a[3] b[11] u_csamul_pg_rca12_and3_11
+11 1
+.names u_csamul_pg_rca12_and3_11 u_csamul_pg_rca12_fa4_10_xor1 u_csamul_pg_rca12_fa3_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and3_11 u_csamul_pg_rca12_fa4_10_xor1 u_csamul_pg_rca12_fa3_11_and0
+11 1
+.names u_csamul_pg_rca12_fa3_11_xor0 u_csamul_pg_rca12_fa3_10_or0 u_csamul_pg_rca12_fa3_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_11_xor0 u_csamul_pg_rca12_fa3_10_or0 u_csamul_pg_rca12_fa3_11_and1
+11 1
+.names u_csamul_pg_rca12_fa3_11_and0 u_csamul_pg_rca12_fa3_11_and1 u_csamul_pg_rca12_fa3_11_or0
+1- 1
+-1 1
+.names a[4] b[11] u_csamul_pg_rca12_and4_11
+11 1
+.names u_csamul_pg_rca12_and4_11 u_csamul_pg_rca12_fa5_10_xor1 u_csamul_pg_rca12_fa4_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and4_11 u_csamul_pg_rca12_fa5_10_xor1 u_csamul_pg_rca12_fa4_11_and0
+11 1
+.names u_csamul_pg_rca12_fa4_11_xor0 u_csamul_pg_rca12_fa4_10_or0 u_csamul_pg_rca12_fa4_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_11_xor0 u_csamul_pg_rca12_fa4_10_or0 u_csamul_pg_rca12_fa4_11_and1
+11 1
+.names u_csamul_pg_rca12_fa4_11_and0 u_csamul_pg_rca12_fa4_11_and1 u_csamul_pg_rca12_fa4_11_or0
+1- 1
+-1 1
+.names a[5] b[11] u_csamul_pg_rca12_and5_11
+11 1
+.names u_csamul_pg_rca12_and5_11 u_csamul_pg_rca12_fa6_10_xor1 u_csamul_pg_rca12_fa5_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and5_11 u_csamul_pg_rca12_fa6_10_xor1 u_csamul_pg_rca12_fa5_11_and0
+11 1
+.names u_csamul_pg_rca12_fa5_11_xor0 u_csamul_pg_rca12_fa5_10_or0 u_csamul_pg_rca12_fa5_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_11_xor0 u_csamul_pg_rca12_fa5_10_or0 u_csamul_pg_rca12_fa5_11_and1
+11 1
+.names u_csamul_pg_rca12_fa5_11_and0 u_csamul_pg_rca12_fa5_11_and1 u_csamul_pg_rca12_fa5_11_or0
+1- 1
+-1 1
+.names a[6] b[11] u_csamul_pg_rca12_and6_11
+11 1
+.names u_csamul_pg_rca12_and6_11 u_csamul_pg_rca12_fa7_10_xor1 u_csamul_pg_rca12_fa6_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and6_11 u_csamul_pg_rca12_fa7_10_xor1 u_csamul_pg_rca12_fa6_11_and0
+11 1
+.names u_csamul_pg_rca12_fa6_11_xor0 u_csamul_pg_rca12_fa6_10_or0 u_csamul_pg_rca12_fa6_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_11_xor0 u_csamul_pg_rca12_fa6_10_or0 u_csamul_pg_rca12_fa6_11_and1
+11 1
+.names u_csamul_pg_rca12_fa6_11_and0 u_csamul_pg_rca12_fa6_11_and1 u_csamul_pg_rca12_fa6_11_or0
+1- 1
+-1 1
+.names a[7] b[11] u_csamul_pg_rca12_and7_11
+11 1
+.names u_csamul_pg_rca12_and7_11 u_csamul_pg_rca12_fa8_10_xor1 u_csamul_pg_rca12_fa7_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and7_11 u_csamul_pg_rca12_fa8_10_xor1 u_csamul_pg_rca12_fa7_11_and0
+11 1
+.names u_csamul_pg_rca12_fa7_11_xor0 u_csamul_pg_rca12_fa7_10_or0 u_csamul_pg_rca12_fa7_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_11_xor0 u_csamul_pg_rca12_fa7_10_or0 u_csamul_pg_rca12_fa7_11_and1
+11 1
+.names u_csamul_pg_rca12_fa7_11_and0 u_csamul_pg_rca12_fa7_11_and1 u_csamul_pg_rca12_fa7_11_or0
+1- 1
+-1 1
+.names a[8] b[11] u_csamul_pg_rca12_and8_11
+11 1
+.names u_csamul_pg_rca12_and8_11 u_csamul_pg_rca12_fa9_10_xor1 u_csamul_pg_rca12_fa8_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and8_11 u_csamul_pg_rca12_fa9_10_xor1 u_csamul_pg_rca12_fa8_11_and0
+11 1
+.names u_csamul_pg_rca12_fa8_11_xor0 u_csamul_pg_rca12_fa8_10_or0 u_csamul_pg_rca12_fa8_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_11_xor0 u_csamul_pg_rca12_fa8_10_or0 u_csamul_pg_rca12_fa8_11_and1
+11 1
+.names u_csamul_pg_rca12_fa8_11_and0 u_csamul_pg_rca12_fa8_11_and1 u_csamul_pg_rca12_fa8_11_or0
+1- 1
+-1 1
+.names a[9] b[11] u_csamul_pg_rca12_and9_11
+11 1
+.names u_csamul_pg_rca12_and9_11 u_csamul_pg_rca12_fa10_10_xor1 u_csamul_pg_rca12_fa9_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and9_11 u_csamul_pg_rca12_fa10_10_xor1 u_csamul_pg_rca12_fa9_11_and0
+11 1
+.names u_csamul_pg_rca12_fa9_11_xor0 u_csamul_pg_rca12_fa9_10_or0 u_csamul_pg_rca12_fa9_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_11_xor0 u_csamul_pg_rca12_fa9_10_or0 u_csamul_pg_rca12_fa9_11_and1
+11 1
+.names u_csamul_pg_rca12_fa9_11_and0 u_csamul_pg_rca12_fa9_11_and1 u_csamul_pg_rca12_fa9_11_or0
+1- 1
+-1 1
+.names a[10] b[11] u_csamul_pg_rca12_and10_11
+11 1
+.names u_csamul_pg_rca12_and10_11 u_csamul_pg_rca12_and11_10 u_csamul_pg_rca12_fa10_11_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and10_11 u_csamul_pg_rca12_and11_10 u_csamul_pg_rca12_fa10_11_and0
+11 1
+.names u_csamul_pg_rca12_fa10_11_xor0 u_csamul_pg_rca12_fa10_10_or0 u_csamul_pg_rca12_fa10_11_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_11_xor0 u_csamul_pg_rca12_fa10_10_or0 u_csamul_pg_rca12_fa10_11_and1
+11 1
+.names u_csamul_pg_rca12_fa10_11_and0 u_csamul_pg_rca12_fa10_11_and1 u_csamul_pg_rca12_fa10_11_or0
+1- 1
+-1 1
+.names a[11] b[11] u_csamul_pg_rca12_and11_11
+11 1
+.names u_csamul_pg_rca12_fa1_11_xor1 u_csamul_pg_rca12_fa0_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa0_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa1_11_xor1 u_csamul_pg_rca12_fa0_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa0_and0
+11 1
+.names u_csamul_pg_rca12_fa2_11_xor1 u_csamul_pg_rca12_fa1_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa1_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa2_11_xor1 u_csamul_pg_rca12_fa1_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa1_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa1_xor0 u_csamul_pg_rca12_u_pg_rca12_pg_fa0_and0 u_csamul_pg_rca12_u_pg_rca12_pg_fa1_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa0_and0 u_csamul_pg_rca12_u_pg_rca12_pg_fa1_xor0 u_csamul_pg_rca12_u_pg_rca12_and1
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and1 u_csamul_pg_rca12_u_pg_rca12_pg_fa1_and0 u_csamul_pg_rca12_u_pg_rca12_or1
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa3_11_xor1 u_csamul_pg_rca12_fa2_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa2_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa3_11_xor1 u_csamul_pg_rca12_fa2_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa2_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa2_xor0 u_csamul_pg_rca12_u_pg_rca12_or1 u_csamul_pg_rca12_u_pg_rca12_pg_fa2_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or1 u_csamul_pg_rca12_u_pg_rca12_pg_fa2_xor0 u_csamul_pg_rca12_u_pg_rca12_and2
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and2 u_csamul_pg_rca12_u_pg_rca12_pg_fa2_and0 u_csamul_pg_rca12_u_pg_rca12_or2
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa4_11_xor1 u_csamul_pg_rca12_fa3_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa3_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa4_11_xor1 u_csamul_pg_rca12_fa3_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa3_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa3_xor0 u_csamul_pg_rca12_u_pg_rca12_or2 u_csamul_pg_rca12_u_pg_rca12_pg_fa3_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or2 u_csamul_pg_rca12_u_pg_rca12_pg_fa3_xor0 u_csamul_pg_rca12_u_pg_rca12_and3
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and3 u_csamul_pg_rca12_u_pg_rca12_pg_fa3_and0 u_csamul_pg_rca12_u_pg_rca12_or3
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa5_11_xor1 u_csamul_pg_rca12_fa4_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa4_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa5_11_xor1 u_csamul_pg_rca12_fa4_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa4_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa4_xor0 u_csamul_pg_rca12_u_pg_rca12_or3 u_csamul_pg_rca12_u_pg_rca12_pg_fa4_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or3 u_csamul_pg_rca12_u_pg_rca12_pg_fa4_xor0 u_csamul_pg_rca12_u_pg_rca12_and4
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and4 u_csamul_pg_rca12_u_pg_rca12_pg_fa4_and0 u_csamul_pg_rca12_u_pg_rca12_or4
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa6_11_xor1 u_csamul_pg_rca12_fa5_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa5_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa6_11_xor1 u_csamul_pg_rca12_fa5_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa5_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa5_xor0 u_csamul_pg_rca12_u_pg_rca12_or4 u_csamul_pg_rca12_u_pg_rca12_pg_fa5_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or4 u_csamul_pg_rca12_u_pg_rca12_pg_fa5_xor0 u_csamul_pg_rca12_u_pg_rca12_and5
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and5 u_csamul_pg_rca12_u_pg_rca12_pg_fa5_and0 u_csamul_pg_rca12_u_pg_rca12_or5
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa7_11_xor1 u_csamul_pg_rca12_fa6_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa6_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa7_11_xor1 u_csamul_pg_rca12_fa6_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa6_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa6_xor0 u_csamul_pg_rca12_u_pg_rca12_or5 u_csamul_pg_rca12_u_pg_rca12_pg_fa6_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or5 u_csamul_pg_rca12_u_pg_rca12_pg_fa6_xor0 u_csamul_pg_rca12_u_pg_rca12_and6
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and6 u_csamul_pg_rca12_u_pg_rca12_pg_fa6_and0 u_csamul_pg_rca12_u_pg_rca12_or6
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa8_11_xor1 u_csamul_pg_rca12_fa7_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa7_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa8_11_xor1 u_csamul_pg_rca12_fa7_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa7_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa7_xor0 u_csamul_pg_rca12_u_pg_rca12_or6 u_csamul_pg_rca12_u_pg_rca12_pg_fa7_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or6 u_csamul_pg_rca12_u_pg_rca12_pg_fa7_xor0 u_csamul_pg_rca12_u_pg_rca12_and7
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and7 u_csamul_pg_rca12_u_pg_rca12_pg_fa7_and0 u_csamul_pg_rca12_u_pg_rca12_or7
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa9_11_xor1 u_csamul_pg_rca12_fa8_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa8_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa9_11_xor1 u_csamul_pg_rca12_fa8_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa8_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa8_xor0 u_csamul_pg_rca12_u_pg_rca12_or7 u_csamul_pg_rca12_u_pg_rca12_pg_fa8_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or7 u_csamul_pg_rca12_u_pg_rca12_pg_fa8_xor0 u_csamul_pg_rca12_u_pg_rca12_and8
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and8 u_csamul_pg_rca12_u_pg_rca12_pg_fa8_and0 u_csamul_pg_rca12_u_pg_rca12_or8
+1- 1
+-1 1
+.names u_csamul_pg_rca12_fa10_11_xor1 u_csamul_pg_rca12_fa9_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa9_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_fa10_11_xor1 u_csamul_pg_rca12_fa9_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa9_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa9_xor0 u_csamul_pg_rca12_u_pg_rca12_or8 u_csamul_pg_rca12_u_pg_rca12_pg_fa9_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or8 u_csamul_pg_rca12_u_pg_rca12_pg_fa9_xor0 u_csamul_pg_rca12_u_pg_rca12_and9
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and9 u_csamul_pg_rca12_u_pg_rca12_pg_fa9_and0 u_csamul_pg_rca12_u_pg_rca12_or9
+1- 1
+-1 1
+.names u_csamul_pg_rca12_and11_11 u_csamul_pg_rca12_fa10_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa10_xor0
+01 1
+10 1
+.names u_csamul_pg_rca12_and11_11 u_csamul_pg_rca12_fa10_11_or0 u_csamul_pg_rca12_u_pg_rca12_pg_fa10_and0
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa10_xor0 u_csamul_pg_rca12_u_pg_rca12_or9 u_csamul_pg_rca12_u_pg_rca12_pg_fa10_xor1
+01 1
+10 1
+.names u_csamul_pg_rca12_u_pg_rca12_or9 u_csamul_pg_rca12_u_pg_rca12_pg_fa10_xor0 u_csamul_pg_rca12_u_pg_rca12_and10
+11 1
+.names u_csamul_pg_rca12_u_pg_rca12_and10 u_csamul_pg_rca12_u_pg_rca12_pg_fa10_and0 u_csamul_pg_rca12_u_pg_rca12_or10
+1- 1
+-1 1
+.names u_csamul_pg_rca12_and0_0 u_csamul_pg_rca12_out[0]
+1 1
+.names u_csamul_pg_rca12_ha0_1_xor0 u_csamul_pg_rca12_out[1]
+1 1
+.names u_csamul_pg_rca12_fa0_2_xor1 u_csamul_pg_rca12_out[2]
+1 1
+.names u_csamul_pg_rca12_fa0_3_xor1 u_csamul_pg_rca12_out[3]
+1 1
+.names u_csamul_pg_rca12_fa0_4_xor1 u_csamul_pg_rca12_out[4]
+1 1
+.names u_csamul_pg_rca12_fa0_5_xor1 u_csamul_pg_rca12_out[5]
+1 1
+.names u_csamul_pg_rca12_fa0_6_xor1 u_csamul_pg_rca12_out[6]
+1 1
+.names u_csamul_pg_rca12_fa0_7_xor1 u_csamul_pg_rca12_out[7]
+1 1
+.names u_csamul_pg_rca12_fa0_8_xor1 u_csamul_pg_rca12_out[8]
+1 1
+.names u_csamul_pg_rca12_fa0_9_xor1 u_csamul_pg_rca12_out[9]
+1 1
+.names u_csamul_pg_rca12_fa0_10_xor1 u_csamul_pg_rca12_out[10]
+1 1
+.names u_csamul_pg_rca12_fa0_11_xor1 u_csamul_pg_rca12_out[11]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa0_xor0 u_csamul_pg_rca12_out[12]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa1_xor1 u_csamul_pg_rca12_out[13]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa2_xor1 u_csamul_pg_rca12_out[14]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa3_xor1 u_csamul_pg_rca12_out[15]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa4_xor1 u_csamul_pg_rca12_out[16]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa5_xor1 u_csamul_pg_rca12_out[17]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa6_xor1 u_csamul_pg_rca12_out[18]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa7_xor1 u_csamul_pg_rca12_out[19]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa8_xor1 u_csamul_pg_rca12_out[20]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa9_xor1 u_csamul_pg_rca12_out[21]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_pg_fa10_xor1 u_csamul_pg_rca12_out[22]
+1 1
+.names u_csamul_pg_rca12_u_pg_rca12_or10 u_csamul_pg_rca12_out[23]
+1 1
+.end

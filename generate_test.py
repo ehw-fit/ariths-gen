@@ -40,9 +40,11 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
     UnsignedWallaceMultiplier,
+    UnsignedCarrySaveMultiplier,
     SignedArrayMultiplier,
     SignedDaddaMultiplier,
     SignedWallaceMultiplier,
+    SignedCarrySaveMultiplier
 )
 
 from ariths_gen.multi_bit_circuits.dividers import (
@@ -55,6 +57,7 @@ import os
 def prepare_directory(path):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     return open(path, "w")
+
 
 def export_circuit(circuit, name):
     directory = "test_circuits"
@@ -78,6 +81,7 @@ if __name__ == "__main__":
 
         representation = "h"
 
+        """ ADDERS """
         # RCA
         name = f"u_rca{N}"
         circuit = UnsignedRippleCarryAdder(a, b, name=name)
@@ -114,6 +118,7 @@ if __name__ == "__main__":
         circuit = SignedCarryLookaheadAdder(a, b, name=name)
         export_circuit(circuit, name)
 
+        """ MULTIPLIERS """
         # Arrmul
         name = f"u_arrmul{N}"
         circuit = UnsignedArrayMultiplier(a, b, name=name)
@@ -123,40 +128,106 @@ if __name__ == "__main__":
         circuit = SignedArrayMultiplier(a, b, name=name)
         export_circuit(circuit, name)
 
-        # Wallace
+        # Csamul (Braun multiplier)
+        name = f"u_csamul_cla{N}"
+        circuit = UnsignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_csamul_cla{N}"
+        circuit = SignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        export_circuit(circuit, name)
+
+        name = f"u_csamul_rca{N}"
+        circuit = UnsignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_csamul_rca{N}"
+        circuit = SignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"u_csamul_pg_rca{N}"
+        circuit = UnsignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_csamul_pg_rca{N}"
+        circuit = SignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"u_csamul_cska{N}"
+        circuit = UnsignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_csamul_cska{N}"
+        circuit = SignedCarrySaveMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        export_circuit(circuit, name)
+
+        # Wallace implemented with interconnected HAs/FAs
         name = f"u_wallace_cla{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_cla{N}"
-        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
 
         name = f"u_wallace_rca{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_rca{N}"
-        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"u_wallace_pg_rca{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_pg_rca{N}"
-        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        circuit = SignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
         export_circuit(circuit, name)
 
         name = f"u_wallace_cska{N}"
-        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
         name = f"s_wallace_cska{N}"
+        circuit = SignedWallaceMultiplier(a, b, name=name, use_csa=False, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        export_circuit(circuit, name)
+
+        # Wallace implemented with interconnected CSAs (default choice)
+        name = f"u_CSAwallace_cla{N}"
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_CSAwallace_cla{N}"
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
+        export_circuit(circuit, name)
+
+        name = f"u_CSAwallace_rca{N}"
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_CSAwallace_rca{N}"
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"u_CSAwallace_pg_rca{N}"
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_CSAwallace_pg_rca{N}"
+        circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedPGRippleCarryAdder)
+        export_circuit(circuit, name)
+
+        name = f"u_CSAwallace_cska{N}"
+        circuit = UnsignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
+        export_circuit(circuit, name)
+
+        name = f"s_CSAwallace_cska{N}"
         circuit = SignedWallaceMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
-        # Dadda
+        # Dadda with interconnected HAs/FAs
         name = f"u_dadda_cla{N}"
         circuit = UnsignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarryLookaheadAdder)
         export_circuit(circuit, name)
@@ -189,6 +260,7 @@ if __name__ == "__main__":
         circuit = SignedDaddaMultiplier(a, b, name=name, unsigned_adder_class_name=UnsignedCarrySkipAdder)
         export_circuit(circuit, name)
 
+        """ DIVIDERS """
         # Arrdiv
         name = f"arrdiv{N}"
         circuit = ArrayDivider(a, b, name=name)

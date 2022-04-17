@@ -9,6 +9,7 @@ from ariths_gen.wire_components import (
 
 from io import StringIO
 
+
 class GeneralCircuit():
     """Class represents a general circuit and ensures its generation to various representations.
 
@@ -16,21 +17,23 @@ class GeneralCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list=[], signed: bool = False):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None):
         if prefix == "":
             self.prefix = name
         else:
             self.prefix = prefix + "_" + name
         self.inner_component = inner_component
         self.inputs = inputs
-        self.out = Bus(self.prefix+"_out", out_N, out_bus=True)
+        if not outname:
+            outname = self.prefix+"_out"
+        self.out = Bus(outname, out_N, out_bus=True, signed=signed)
 
         self.components = []
         self.circuit_wires = []
         self.circuit_gates = []
-        self.c_data_type = "uint64_t"
         self.signed = signed
-        self.pyc = None # Python compiled function
+        self.c_data_type = "int64_t" if self.signed is True else "uint64_t"
+        self.pyc = None  # Python compiled function
 
     def __call__(self, *args):
         if not self.pyc:
@@ -39,7 +42,6 @@ class GeneralCircuit():
 
             globs, locs = {}, {}
             exec(buf.getvalue(), globs, locs)
-            #print(locs)
             self.pyc = locs[self.prefix]
 
         return self.pyc(*args)
@@ -206,6 +208,9 @@ class GeneralCircuit():
                 (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.a.bus]
             [self.circuit_wires.append(
                 (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.b.bus]
+            if hasattr(self, 'c'):
+                [self.circuit_wires.append(
+                    (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.c.bus]
         else:
             self.circuit_wires.append(
                 (self.a, f"{self.a.name}", self.save_wire_id(wire=self.a)))
@@ -282,7 +287,7 @@ class GeneralCircuit():
         #file_object.write(self.get_declaration_python_flat()+"\n")
         file_object.write(self.get_init_python_flat()+"\n")
         file_object.write(self.get_function_out_python_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_python())
+        file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
         file_object.write(f"  return {self.out.prefix}"+"\n")
 
     """ C CODE GENERATION """
@@ -341,7 +346,7 @@ class GeneralCircuit():
         file_object.write(self.get_declaration_c_flat()+"\n")
         file_object.write(self.get_init_c_flat()+"\n")
         file_object.write(self.get_function_out_c_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_c())
+        file_object.write(self.out.return_bus_wires_sign_extend_c_flat())
         file_object.write(f"  return {self.out.prefix}"+";\n}")
 
     # HIERARCHICAL C #
@@ -395,17 +400,14 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical C code initialization of arithmetic circuit wires.
         """
-        return "".join([c.get_gate_invocation_c() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_c(circuit_prefix=self.prefix) for c in self.components])
+        return "".join([c.get_gate_invocation_c() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_c() for c in self.components])
 
-    def get_out_invocation_c(self, circuit_prefix: str):
+    def get_out_invocation_c(self):
         """Generates hierarchical C code invocation of corresponding arithmetic circuit's generated function block.
 
         Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
         Assigns output values from invocation of the corresponding function block into inner wires present inside
         the upper component from which function block has been invoked.
-
-        Args:
-            circuit_prefix (str): Prefix name of the upper component from which function block is being invoked.
 
         Returns:
             str: Hierarchical C code of subcomponent's C function invocation and output assignment.
@@ -434,7 +436,7 @@ class GeneralCircuit():
                f"{self.get_declarations_c_hier()}\n" + \
                f"{self.get_init_c_hier()}\n" + \
                f"{self.get_function_out_c_hier()}" + \
-               f"{self.out.return_bus_wires_sign_extend_c()}" + \
+               f"{self.out.return_bus_wires_sign_extend_c_hier()}" + \
                f"  return {self.out.prefix}"+";\n}"
 
     # Generating hierarchical C code representation of circuit
@@ -547,17 +549,14 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Verilog code initialization of arithmetic circuit wires.
         """
-        return "".join([c.get_gate_invocation_v() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_v(circuit_prefix=self.prefix) for c in self.components])
+        return "".join([c.get_gate_invocation_v() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_v() for c in self.components])
 
-    def get_out_invocation_v(self, circuit_prefix: str):
+    def get_out_invocation_v(self):
         """Generates hierarchical Verilog code invocation of corresponding arithmetic circuit's generated function block.
 
         Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
         Assigns output values from invocation of the corresponding function block into inner wires present inside
         the upper component from which function block has been invoked.
-
-        Args:
-            circuit_prefix (str): Prefix name of the upper component from which function block is being invoked.
 
         Returns:
             str: Hierarchical Verilog code of subcomponent's module invocation and output assignment.
@@ -657,15 +656,12 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Blif code containing invocations of inner subcomponents function blocks.
         """
-        return "".join(c.get_invocation_blif_hier(circuit_prefix=self.prefix) for c in self.components)
+        return "".join(c.get_invocation_blif_hier() for c in self.components)
 
-    def get_invocation_blif_hier(self, circuit_prefix: str):
+    def get_invocation_blif_hier(self):
         """Generates hierarchical Blif code invocation of corresponding arithmetic circuit's generated function block.
 
         Used for multi-bit subcomponent's modul invocation.
-
-        Args:
-            circuit_prefix (str): Prefix name of the upper component from which function block is being invoked.
 
         Returns:
             str: Hierarchical Blif code of subcomponent's model invocation and output assignment.
@@ -739,7 +735,7 @@ class GeneralCircuit():
             str: CGP chromosome parameters of described arithmetic circuit.
         """
         self.circuit_gates = self.get_circuit_gates()
-        return f"{{{self.a.N+self.a.N},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}"
+        return f"{{{sum(input_bus.N for input_bus in self.inputs)},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}"
 
     def get_triplets_cgp(self):
         """Generates list of logic gate triplets (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.

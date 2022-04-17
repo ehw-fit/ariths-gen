@@ -1,0 +1,1203 @@
+.model u_CSAwallace_rca8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs u_CSAwallace_rca8_out[0] u_CSAwallace_rca8_out[1] u_CSAwallace_rca8_out[2] u_CSAwallace_rca8_out[3] u_CSAwallace_rca8_out[4] u_CSAwallace_rca8_out[5] u_CSAwallace_rca8_out[6] u_CSAwallace_rca8_out[7] u_CSAwallace_rca8_out[8] u_CSAwallace_rca8_out[9] u_CSAwallace_rca8_out[10] u_CSAwallace_rca8_out[11] u_CSAwallace_rca8_out[12] u_CSAwallace_rca8_out[13] u_CSAwallace_rca8_out[14] u_CSAwallace_rca8_out[15]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[0] b=b[0] out=u_CSAwallace_rca8_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=u_CSAwallace_rca8_and_1_0
+.subckt and_gate a=a[2] b=b[0] out=u_CSAwallace_rca8_and_2_0
+.subckt and_gate a=a[3] b=b[0] out=u_CSAwallace_rca8_and_3_0
+.subckt and_gate a=a[4] b=b[0] out=u_CSAwallace_rca8_and_4_0
+.subckt and_gate a=a[5] b=b[0] out=u_CSAwallace_rca8_and_5_0
+.subckt and_gate a=a[6] b=b[0] out=u_CSAwallace_rca8_and_6_0
+.subckt and_gate a=a[7] b=b[0] out=u_CSAwallace_rca8_and_7_0
+.subckt and_gate a=a[0] b=b[1] out=u_CSAwallace_rca8_and_0_1
+.subckt and_gate a=a[1] b=b[1] out=u_CSAwallace_rca8_and_1_1
+.subckt and_gate a=a[2] b=b[1] out=u_CSAwallace_rca8_and_2_1
+.subckt and_gate a=a[3] b=b[1] out=u_CSAwallace_rca8_and_3_1
+.subckt and_gate a=a[4] b=b[1] out=u_CSAwallace_rca8_and_4_1
+.subckt and_gate a=a[5] b=b[1] out=u_CSAwallace_rca8_and_5_1
+.subckt and_gate a=a[6] b=b[1] out=u_CSAwallace_rca8_and_6_1
+.subckt and_gate a=a[7] b=b[1] out=u_CSAwallace_rca8_and_7_1
+.subckt and_gate a=a[0] b=b[2] out=u_CSAwallace_rca8_and_0_2
+.subckt and_gate a=a[1] b=b[2] out=u_CSAwallace_rca8_and_1_2
+.subckt and_gate a=a[2] b=b[2] out=u_CSAwallace_rca8_and_2_2
+.subckt and_gate a=a[3] b=b[2] out=u_CSAwallace_rca8_and_3_2
+.subckt and_gate a=a[4] b=b[2] out=u_CSAwallace_rca8_and_4_2
+.subckt and_gate a=a[5] b=b[2] out=u_CSAwallace_rca8_and_5_2
+.subckt and_gate a=a[6] b=b[2] out=u_CSAwallace_rca8_and_6_2
+.subckt and_gate a=a[7] b=b[2] out=u_CSAwallace_rca8_and_7_2
+.subckt and_gate a=a[0] b=b[3] out=u_CSAwallace_rca8_and_0_3
+.subckt and_gate a=a[1] b=b[3] out=u_CSAwallace_rca8_and_1_3
+.subckt and_gate a=a[2] b=b[3] out=u_CSAwallace_rca8_and_2_3
+.subckt and_gate a=a[3] b=b[3] out=u_CSAwallace_rca8_and_3_3
+.subckt and_gate a=a[4] b=b[3] out=u_CSAwallace_rca8_and_4_3
+.subckt and_gate a=a[5] b=b[3] out=u_CSAwallace_rca8_and_5_3
+.subckt and_gate a=a[6] b=b[3] out=u_CSAwallace_rca8_and_6_3
+.subckt and_gate a=a[7] b=b[3] out=u_CSAwallace_rca8_and_7_3
+.subckt and_gate a=a[0] b=b[4] out=u_CSAwallace_rca8_and_0_4
+.subckt and_gate a=a[1] b=b[4] out=u_CSAwallace_rca8_and_1_4
+.subckt and_gate a=a[2] b=b[4] out=u_CSAwallace_rca8_and_2_4
+.subckt and_gate a=a[3] b=b[4] out=u_CSAwallace_rca8_and_3_4
+.subckt and_gate a=a[4] b=b[4] out=u_CSAwallace_rca8_and_4_4
+.subckt and_gate a=a[5] b=b[4] out=u_CSAwallace_rca8_and_5_4
+.subckt and_gate a=a[6] b=b[4] out=u_CSAwallace_rca8_and_6_4
+.subckt and_gate a=a[7] b=b[4] out=u_CSAwallace_rca8_and_7_4
+.subckt and_gate a=a[0] b=b[5] out=u_CSAwallace_rca8_and_0_5
+.subckt and_gate a=a[1] b=b[5] out=u_CSAwallace_rca8_and_1_5
+.subckt and_gate a=a[2] b=b[5] out=u_CSAwallace_rca8_and_2_5
+.subckt and_gate a=a[3] b=b[5] out=u_CSAwallace_rca8_and_3_5
+.subckt and_gate a=a[4] b=b[5] out=u_CSAwallace_rca8_and_4_5
+.subckt and_gate a=a[5] b=b[5] out=u_CSAwallace_rca8_and_5_5
+.subckt and_gate a=a[6] b=b[5] out=u_CSAwallace_rca8_and_6_5
+.subckt and_gate a=a[7] b=b[5] out=u_CSAwallace_rca8_and_7_5
+.subckt and_gate a=a[0] b=b[6] out=u_CSAwallace_rca8_and_0_6
+.subckt and_gate a=a[1] b=b[6] out=u_CSAwallace_rca8_and_1_6
+.subckt and_gate a=a[2] b=b[6] out=u_CSAwallace_rca8_and_2_6
+.subckt and_gate a=a[3] b=b[6] out=u_CSAwallace_rca8_and_3_6
+.subckt and_gate a=a[4] b=b[6] out=u_CSAwallace_rca8_and_4_6
+.subckt and_gate a=a[5] b=b[6] out=u_CSAwallace_rca8_and_5_6
+.subckt and_gate a=a[6] b=b[6] out=u_CSAwallace_rca8_and_6_6
+.subckt and_gate a=a[7] b=b[6] out=u_CSAwallace_rca8_and_7_6
+.subckt and_gate a=a[0] b=b[7] out=u_CSAwallace_rca8_and_0_7
+.subckt and_gate a=a[1] b=b[7] out=u_CSAwallace_rca8_and_1_7
+.subckt and_gate a=a[2] b=b[7] out=u_CSAwallace_rca8_and_2_7
+.subckt and_gate a=a[3] b=b[7] out=u_CSAwallace_rca8_and_3_7
+.subckt and_gate a=a[4] b=b[7] out=u_CSAwallace_rca8_and_4_7
+.subckt and_gate a=a[5] b=b[7] out=u_CSAwallace_rca8_and_5_7
+.subckt and_gate a=a[6] b=b[7] out=u_CSAwallace_rca8_and_6_7
+.subckt and_gate a=a[7] b=b[7] out=u_CSAwallace_rca8_and_7_7
+.names u_CSAwallace_rca8_and_0_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[0]
+1 1
+.names u_CSAwallace_rca8_and_1_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[1]
+1 1
+.names u_CSAwallace_rca8_and_2_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[2]
+1 1
+.names u_CSAwallace_rca8_and_3_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[3]
+1 1
+.names u_CSAwallace_rca8_and_4_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[4]
+1 1
+.names u_CSAwallace_rca8_and_5_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[5]
+1 1
+.names u_CSAwallace_rca8_and_6_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[6]
+1 1
+.names u_CSAwallace_rca8_and_7_0 u_CSAwallace_rca8_csa0_csa_component_pp_row0[7]
+1 1
+.names gnd u_CSAwallace_rca8_csa0_csa_component_pp_row0[8]
+1 1
+.names gnd u_CSAwallace_rca8_csa0_csa_component_pp_row0[9]
+1 1
+.names gnd u_CSAwallace_rca8_csa0_csa_component_pp_row1[0]
+1 1
+.names u_CSAwallace_rca8_and_0_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[1]
+1 1
+.names u_CSAwallace_rca8_and_1_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[2]
+1 1
+.names u_CSAwallace_rca8_and_2_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[3]
+1 1
+.names u_CSAwallace_rca8_and_3_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[4]
+1 1
+.names u_CSAwallace_rca8_and_4_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[5]
+1 1
+.names u_CSAwallace_rca8_and_5_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[6]
+1 1
+.names u_CSAwallace_rca8_and_6_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[7]
+1 1
+.names u_CSAwallace_rca8_and_7_1 u_CSAwallace_rca8_csa0_csa_component_pp_row1[8]
+1 1
+.names gnd u_CSAwallace_rca8_csa0_csa_component_pp_row1[9]
+1 1
+.names gnd u_CSAwallace_rca8_csa0_csa_component_pp_row2[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa0_csa_component_pp_row2[1]
+1 1
+.names u_CSAwallace_rca8_and_0_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[2]
+1 1
+.names u_CSAwallace_rca8_and_1_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[3]
+1 1
+.names u_CSAwallace_rca8_and_2_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[4]
+1 1
+.names u_CSAwallace_rca8_and_3_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[5]
+1 1
+.names u_CSAwallace_rca8_and_4_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[6]
+1 1
+.names u_CSAwallace_rca8_and_5_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[7]
+1 1
+.names u_CSAwallace_rca8_and_6_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[8]
+1 1
+.names u_CSAwallace_rca8_and_7_2 u_CSAwallace_rca8_csa0_csa_component_pp_row2[9]
+1 1
+.subckt csa_component10 a[0]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[0] a[1]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[1] a[2]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[2] a[3]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[3] a[4]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[4] a[5]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[5] a[6]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[6] a[7]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[7] a[8]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[8] a[8]=u_CSAwallace_rca8_csa0_csa_component_pp_row0[8] b[0]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[0] b[1]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[1] b[2]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[2] b[3]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[3] b[4]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[4] b[5]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[5] b[6]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[6] b[7]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[7] b[8]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[8] b[9]=u_CSAwallace_rca8_csa0_csa_component_pp_row1[9] c[0]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[0] c[1]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[1] c[2]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[2] c[3]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[3] c[4]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[4] c[5]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[5] c[6]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[6] c[7]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[7] c[8]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[8] c[9]=u_CSAwallace_rca8_csa0_csa_component_pp_row2[9] csa_component10_out[0]=u_CSAwallace_rca8_and_0_0 csa_component10_out[1]=u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 csa_component10_out[2]=u_CSAwallace_rca8_csa0_csa_component_fa2_xor1 csa_component10_out[3]=u_CSAwallace_rca8_csa0_csa_component_fa3_xor1 csa_component10_out[4]=u_CSAwallace_rca8_csa0_csa_component_fa4_xor1 csa_component10_out[5]=u_CSAwallace_rca8_csa0_csa_component_fa5_xor1 csa_component10_out[6]=u_CSAwallace_rca8_csa0_csa_component_fa6_xor1 csa_component10_out[7]=u_CSAwallace_rca8_csa0_csa_component_fa7_xor1 csa_component10_out[8]=u_CSAwallace_rca8_csa0_csa_component_fa8_xor1 csa_component10_out[9]=u_CSAwallace_rca8_and_7_2 csa_component10_out[10]=constant_value_0 csa_component10_out[11]=constant_value_0 csa_component10_out[12]=constant_value_0 csa_component10_out[13]=u_CSAwallace_rca8_csa0_csa_component_fa1_and0 csa_component10_out[14]=u_CSAwallace_rca8_csa0_csa_component_fa2_or0 csa_component10_out[15]=u_CSAwallace_rca8_csa0_csa_component_fa3_or0 csa_component10_out[16]=u_CSAwallace_rca8_csa0_csa_component_fa4_or0 csa_component10_out[17]=u_CSAwallace_rca8_csa0_csa_component_fa5_or0 csa_component10_out[18]=u_CSAwallace_rca8_csa0_csa_component_fa6_or0 csa_component10_out[19]=u_CSAwallace_rca8_csa0_csa_component_fa7_or0 csa_component10_out[20]=u_CSAwallace_rca8_csa0_csa_component_fa8_and1 csa_component10_out[21]=constant_value_0
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row3[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row3[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row3[2]
+1 1
+.names u_CSAwallace_rca8_and_0_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[3]
+1 1
+.names u_CSAwallace_rca8_and_1_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[4]
+1 1
+.names u_CSAwallace_rca8_and_2_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[5]
+1 1
+.names u_CSAwallace_rca8_and_3_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[6]
+1 1
+.names u_CSAwallace_rca8_and_4_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[7]
+1 1
+.names u_CSAwallace_rca8_and_5_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[8]
+1 1
+.names u_CSAwallace_rca8_and_6_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[9]
+1 1
+.names u_CSAwallace_rca8_and_7_3 u_CSAwallace_rca8_csa1_csa_component_pp_row3[10]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row3[11]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row3[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row4[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row4[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row4[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row4[3]
+1 1
+.names u_CSAwallace_rca8_and_0_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[4]
+1 1
+.names u_CSAwallace_rca8_and_1_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[5]
+1 1
+.names u_CSAwallace_rca8_and_2_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[6]
+1 1
+.names u_CSAwallace_rca8_and_3_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[7]
+1 1
+.names u_CSAwallace_rca8_and_4_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[8]
+1 1
+.names u_CSAwallace_rca8_and_5_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[9]
+1 1
+.names u_CSAwallace_rca8_and_6_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[10]
+1 1
+.names u_CSAwallace_rca8_and_7_4 u_CSAwallace_rca8_csa1_csa_component_pp_row4[11]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row4[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row5[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row5[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row5[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row5[3]
+1 1
+.names gnd u_CSAwallace_rca8_csa1_csa_component_pp_row5[4]
+1 1
+.names u_CSAwallace_rca8_and_0_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[5]
+1 1
+.names u_CSAwallace_rca8_and_1_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[6]
+1 1
+.names u_CSAwallace_rca8_and_2_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[7]
+1 1
+.names u_CSAwallace_rca8_and_3_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[8]
+1 1
+.names u_CSAwallace_rca8_and_4_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[9]
+1 1
+.names u_CSAwallace_rca8_and_5_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[10]
+1 1
+.names u_CSAwallace_rca8_and_6_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[11]
+1 1
+.names u_CSAwallace_rca8_and_7_5 u_CSAwallace_rca8_csa1_csa_component_pp_row5[12]
+1 1
+.subckt csa_component13 a[0]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[0] a[1]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[1] a[2]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[2] a[3]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[3] a[4]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[4] a[5]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[5] a[6]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[6] a[7]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[7] a[8]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[8] a[9]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[9] a[10]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[10] a[11]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[11] a[11]=u_CSAwallace_rca8_csa1_csa_component_pp_row3[11] b[0]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[0] b[1]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[1] b[2]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[2] b[3]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[3] b[4]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[4] b[5]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[5] b[6]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[6] b[7]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[7] b[8]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[8] b[9]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[9] b[10]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[10] b[11]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[11] b[12]=u_CSAwallace_rca8_csa1_csa_component_pp_row4[12] c[0]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[0] c[1]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[1] c[2]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[2] c[3]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[3] c[4]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[4] c[5]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[5] c[6]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[6] c[7]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[7] c[8]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[8] c[9]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[9] c[10]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[10] c[11]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[11] c[12]=u_CSAwallace_rca8_csa1_csa_component_pp_row5[12] csa_component13_out[0]=constant_value_0 csa_component13_out[1]=constant_value_0 csa_component13_out[2]=constant_value_0 csa_component13_out[3]=u_CSAwallace_rca8_and_0_3 csa_component13_out[4]=u_CSAwallace_rca8_csa1_csa_component_fa4_xor0 csa_component13_out[5]=u_CSAwallace_rca8_csa1_csa_component_fa5_xor1 csa_component13_out[6]=u_CSAwallace_rca8_csa1_csa_component_fa6_xor1 csa_component13_out[7]=u_CSAwallace_rca8_csa1_csa_component_fa7_xor1 csa_component13_out[8]=u_CSAwallace_rca8_csa1_csa_component_fa8_xor1 csa_component13_out[9]=u_CSAwallace_rca8_csa1_csa_component_fa9_xor1 csa_component13_out[10]=u_CSAwallace_rca8_csa1_csa_component_fa10_xor1 csa_component13_out[11]=u_CSAwallace_rca8_csa1_csa_component_fa11_xor1 csa_component13_out[12]=u_CSAwallace_rca8_and_7_5 csa_component13_out[13]=constant_value_0 csa_component13_out[14]=constant_value_0 csa_component13_out[15]=constant_value_0 csa_component13_out[16]=constant_value_0 csa_component13_out[17]=constant_value_0 csa_component13_out[18]=constant_value_0 csa_component13_out[19]=u_CSAwallace_rca8_csa1_csa_component_fa4_and0 csa_component13_out[20]=u_CSAwallace_rca8_csa1_csa_component_fa5_or0 csa_component13_out[21]=u_CSAwallace_rca8_csa1_csa_component_fa6_or0 csa_component13_out[22]=u_CSAwallace_rca8_csa1_csa_component_fa7_or0 csa_component13_out[23]=u_CSAwallace_rca8_csa1_csa_component_fa8_or0 csa_component13_out[24]=u_CSAwallace_rca8_csa1_csa_component_fa9_or0 csa_component13_out[25]=u_CSAwallace_rca8_csa1_csa_component_fa10_or0 csa_component13_out[26]=u_CSAwallace_rca8_csa1_csa_component_fa11_and1 csa_component13_out[27]=constant_value_0
+.names u_CSAwallace_rca8_and_0_0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[0]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[1]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa2_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[2]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa3_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[3]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa4_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[4]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa5_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[5]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa6_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[6]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa7_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[7]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa8_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[8]
+1 1
+.names u_CSAwallace_rca8_and_7_2 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[9]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[10]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[11]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[1]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa1_and0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[2]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa2_or0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[3]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa3_or0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[4]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa4_or0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[5]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa5_or0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[6]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa6_or0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[7]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa7_or0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[8]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa8_and1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[9]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[10]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[11]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[2]
+1 1
+.names u_CSAwallace_rca8_and_0_3 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[3]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa4_xor0 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[4]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa5_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[5]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa6_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[6]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa7_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[7]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa8_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[8]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa9_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[9]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa10_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[10]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa11_xor1 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[11]
+1 1
+.names u_CSAwallace_rca8_and_7_5 u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[13]
+1 1
+.subckt csa_component14 a[0]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[0] a[1]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[1] a[2]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[2] a[3]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[3] a[4]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[4] a[5]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[5] a[6]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[6] a[7]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[7] a[8]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[8] a[9]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[9] a[10]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[10] a[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[11] a[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[11] a[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s1[11] b[0]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[0] b[1]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[1] b[2]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[2] b[3]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[3] b[4]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[4] b[5]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[5] b[6]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[6] b[7]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[7] b[8]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[8] b[9]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[9] b[10]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[10] b[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[11] b[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[11] b[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_c1[11] c[0]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[0] c[1]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[1] c[2]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[2] c[3]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[3] c[4]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[4] c[5]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[5] c[6]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[6] c[7]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[7] c[8]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[8] c[9]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[9] c[10]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[10] c[11]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[11] c[12]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[12] c[13]=u_CSAwallace_rca8_csa2_csa_component_u_CSAwallace_rca8_csa_s2[13] csa_component14_out[0]=u_CSAwallace_rca8_and_0_0 csa_component14_out[1]=u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 csa_component14_out[2]=u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 csa_component14_out[3]=u_CSAwallace_rca8_csa2_csa_component_fa3_xor1 csa_component14_out[4]=u_CSAwallace_rca8_csa2_csa_component_fa4_xor1 csa_component14_out[5]=u_CSAwallace_rca8_csa2_csa_component_fa5_xor1 csa_component14_out[6]=u_CSAwallace_rca8_csa2_csa_component_fa6_xor1 csa_component14_out[7]=u_CSAwallace_rca8_csa2_csa_component_fa7_xor1 csa_component14_out[8]=u_CSAwallace_rca8_csa2_csa_component_fa8_xor1 csa_component14_out[9]=u_CSAwallace_rca8_csa2_csa_component_fa9_xor1 csa_component14_out[10]=u_CSAwallace_rca8_csa1_csa_component_fa10_xor1 csa_component14_out[11]=u_CSAwallace_rca8_csa1_csa_component_fa11_xor1 csa_component14_out[12]=u_CSAwallace_rca8_and_7_5 csa_component14_out[13]=constant_value_0 csa_component14_out[14]=constant_value_0 csa_component14_out[15]=constant_value_0 csa_component14_out[16]=constant_value_0 csa_component14_out[17]=constant_value_0 csa_component14_out[18]=u_CSAwallace_rca8_csa2_csa_component_fa2_and0 csa_component14_out[19]=u_CSAwallace_rca8_csa2_csa_component_fa3_or0 csa_component14_out[20]=u_CSAwallace_rca8_csa2_csa_component_fa4_or0 csa_component14_out[21]=u_CSAwallace_rca8_csa2_csa_component_fa5_or0 csa_component14_out[22]=u_CSAwallace_rca8_csa2_csa_component_fa6_or0 csa_component14_out[23]=u_CSAwallace_rca8_csa2_csa_component_fa7_or0 csa_component14_out[24]=u_CSAwallace_rca8_csa2_csa_component_fa8_or0 csa_component14_out[25]=u_CSAwallace_rca8_csa2_csa_component_fa9_or0 csa_component14_out[26]=constant_value_0 csa_component14_out[27]=constant_value_0 csa_component14_out[28]=constant_value_0 csa_component14_out[29]=constant_value_0
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[3]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[4]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa4_and0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[5]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa5_or0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[6]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa6_or0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[7]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa7_or0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[8]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa8_or0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[9]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa9_or0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[10]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa10_or0 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[11]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa11_and1 u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[3]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[4]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[5]
+1 1
+.names u_CSAwallace_rca8_and_0_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[6]
+1 1
+.names u_CSAwallace_rca8_and_1_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[7]
+1 1
+.names u_CSAwallace_rca8_and_2_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[8]
+1 1
+.names u_CSAwallace_rca8_and_3_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[9]
+1 1
+.names u_CSAwallace_rca8_and_4_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[10]
+1 1
+.names u_CSAwallace_rca8_and_5_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[11]
+1 1
+.names u_CSAwallace_rca8_and_6_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[12]
+1 1
+.names u_CSAwallace_rca8_and_7_6 u_CSAwallace_rca8_csa3_csa_component_pp_row6[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row6[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[3]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[4]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[5]
+1 1
+.names gnd u_CSAwallace_rca8_csa3_csa_component_pp_row7[6]
+1 1
+.names u_CSAwallace_rca8_and_0_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[7]
+1 1
+.names u_CSAwallace_rca8_and_1_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[8]
+1 1
+.names u_CSAwallace_rca8_and_2_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[9]
+1 1
+.names u_CSAwallace_rca8_and_3_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[10]
+1 1
+.names u_CSAwallace_rca8_and_4_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[11]
+1 1
+.names u_CSAwallace_rca8_and_5_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[12]
+1 1
+.names u_CSAwallace_rca8_and_6_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[13]
+1 1
+.names u_CSAwallace_rca8_and_7_7 u_CSAwallace_rca8_csa3_csa_component_pp_row7[14]
+1 1
+.subckt csa_component15 a[0]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[0] a[1]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[1] a[2]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[2] a[3]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[3] a[4]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[4] a[5]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[5] a[6]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[6] a[7]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[7] a[8]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[8] a[9]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[9] a[10]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[10] a[11]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[11] a[12]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[12] a[13]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[13] a[14]=u_CSAwallace_rca8_csa3_csa_component_u_CSAwallace_rca8_csa_c2[14] b[0]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[0] b[1]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[1] b[2]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[2] b[3]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[3] b[4]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[4] b[5]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[5] b[6]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[6] b[7]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[7] b[8]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[8] b[9]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[9] b[10]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[10] b[11]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[11] b[12]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[12] b[13]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[13] b[14]=u_CSAwallace_rca8_csa3_csa_component_pp_row6[14] c[0]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[0] c[1]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[1] c[2]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[2] c[3]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[3] c[4]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[4] c[5]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[5] c[6]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[6] c[7]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[7] c[8]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[8] c[9]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[9] c[10]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[10] c[11]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[11] c[12]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[12] c[13]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[13] c[14]=u_CSAwallace_rca8_csa3_csa_component_pp_row7[14] csa_component15_out[0]=constant_value_0 csa_component15_out[1]=constant_value_0 csa_component15_out[2]=constant_value_0 csa_component15_out[3]=constant_value_0 csa_component15_out[4]=constant_value_0 csa_component15_out[5]=u_CSAwallace_rca8_csa1_csa_component_fa4_and0 csa_component15_out[6]=u_CSAwallace_rca8_csa3_csa_component_fa6_xor0 csa_component15_out[7]=u_CSAwallace_rca8_csa3_csa_component_fa7_xor1 csa_component15_out[8]=u_CSAwallace_rca8_csa3_csa_component_fa8_xor1 csa_component15_out[9]=u_CSAwallace_rca8_csa3_csa_component_fa9_xor1 csa_component15_out[10]=u_CSAwallace_rca8_csa3_csa_component_fa10_xor1 csa_component15_out[11]=u_CSAwallace_rca8_csa3_csa_component_fa11_xor1 csa_component15_out[12]=u_CSAwallace_rca8_csa3_csa_component_fa12_xor1 csa_component15_out[13]=u_CSAwallace_rca8_csa3_csa_component_fa13_xor1 csa_component15_out[14]=u_CSAwallace_rca8_and_7_7 csa_component15_out[15]=constant_value_0 csa_component15_out[16]=constant_value_0 csa_component15_out[17]=constant_value_0 csa_component15_out[18]=constant_value_0 csa_component15_out[19]=constant_value_0 csa_component15_out[20]=constant_value_0 csa_component15_out[21]=constant_value_0 csa_component15_out[22]=constant_value_0 csa_component15_out[23]=u_CSAwallace_rca8_csa3_csa_component_fa6_and0 csa_component15_out[24]=u_CSAwallace_rca8_csa3_csa_component_fa7_or0 csa_component15_out[25]=u_CSAwallace_rca8_csa3_csa_component_fa8_or0 csa_component15_out[26]=u_CSAwallace_rca8_csa3_csa_component_fa9_or0 csa_component15_out[27]=u_CSAwallace_rca8_csa3_csa_component_fa10_or0 csa_component15_out[28]=u_CSAwallace_rca8_csa3_csa_component_fa11_or0 csa_component15_out[29]=u_CSAwallace_rca8_csa3_csa_component_fa12_or0 csa_component15_out[30]=u_CSAwallace_rca8_csa3_csa_component_fa13_and1 csa_component15_out[31]=constant_value_0
+.names u_CSAwallace_rca8_and_0_0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[0]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[1]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[2]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa3_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[3]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa4_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[4]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa5_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[5]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa6_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[6]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa7_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[7]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa8_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[8]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa9_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[9]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa10_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[10]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa11_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[11]
+1 1
+.names u_CSAwallace_rca8_and_7_5 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[15]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[2]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa2_and0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[3]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa3_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[4]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa4_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[5]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa5_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[6]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa6_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[7]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa7_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[8]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa8_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[9]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa9_or0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[10]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[11]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[12]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[15]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[3]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[4]
+1 1
+.names u_CSAwallace_rca8_csa1_csa_component_fa4_and0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[5]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa6_xor0 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[6]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa7_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[7]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa8_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[8]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa9_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[9]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa10_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[10]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa11_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[11]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa12_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[12]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa13_xor1 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[13]
+1 1
+.names u_CSAwallace_rca8_and_7_7 u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[15]
+1 1
+.subckt csa_component16 a[0]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[0] a[1]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[1] a[2]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[2] a[3]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[3] a[4]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[4] a[5]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[5] a[6]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[6] a[7]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[7] a[8]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[8] a[9]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[9] a[10]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[10] a[11]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[11] a[12]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[12] a[13]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[13] a[14]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[14] a[15]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s3[15] b[0]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[0] b[1]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[1] b[2]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[2] b[3]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[3] b[4]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[4] b[5]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[5] b[6]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[6] b[7]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[7] b[8]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[8] b[9]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[9] b[10]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[10] b[11]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[11] b[12]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[12] b[13]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[13] b[14]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[14] b[15]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_c3[15] c[0]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[0] c[1]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[1] c[2]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[2] c[3]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[3] c[4]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[4] c[5]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[5] c[6]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[6] c[7]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[7] c[8]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[8] c[9]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[9] c[10]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[10] c[11]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[11] c[12]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[12] c[13]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[13] c[14]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[14] c[15]=u_CSAwallace_rca8_csa4_csa_component_u_CSAwallace_rca8_csa_s4[15] csa_component16_out[0]=u_CSAwallace_rca8_and_0_0 csa_component16_out[1]=u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 csa_component16_out[2]=u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 csa_component16_out[3]=u_CSAwallace_rca8_csa4_csa_component_fa3_xor0 csa_component16_out[4]=u_CSAwallace_rca8_csa4_csa_component_fa4_xor0 csa_component16_out[5]=u_CSAwallace_rca8_csa4_csa_component_fa5_xor1 csa_component16_out[6]=u_CSAwallace_rca8_csa4_csa_component_fa6_xor1 csa_component16_out[7]=u_CSAwallace_rca8_csa4_csa_component_fa7_xor1 csa_component16_out[8]=u_CSAwallace_rca8_csa4_csa_component_fa8_xor1 csa_component16_out[9]=u_CSAwallace_rca8_csa4_csa_component_fa9_xor1 csa_component16_out[10]=u_CSAwallace_rca8_csa4_csa_component_fa10_xor1 csa_component16_out[11]=u_CSAwallace_rca8_csa4_csa_component_fa11_xor1 csa_component16_out[12]=u_CSAwallace_rca8_csa4_csa_component_fa12_xor1 csa_component16_out[13]=u_CSAwallace_rca8_csa3_csa_component_fa13_xor1 csa_component16_out[14]=u_CSAwallace_rca8_and_7_7 csa_component16_out[15]=constant_value_0 csa_component16_out[16]=constant_value_0 csa_component16_out[17]=constant_value_0 csa_component16_out[18]=constant_value_0 csa_component16_out[19]=constant_value_0 csa_component16_out[20]=constant_value_0 csa_component16_out[21]=u_CSAwallace_rca8_csa4_csa_component_fa3_and0 csa_component16_out[22]=u_CSAwallace_rca8_csa4_csa_component_fa4_and0 csa_component16_out[23]=u_CSAwallace_rca8_csa4_csa_component_fa5_or0 csa_component16_out[24]=u_CSAwallace_rca8_csa4_csa_component_fa6_or0 csa_component16_out[25]=u_CSAwallace_rca8_csa4_csa_component_fa7_or0 csa_component16_out[26]=u_CSAwallace_rca8_csa4_csa_component_fa8_or0 csa_component16_out[27]=u_CSAwallace_rca8_csa4_csa_component_fa9_or0 csa_component16_out[28]=u_CSAwallace_rca8_csa4_csa_component_fa10_or0 csa_component16_out[29]=u_CSAwallace_rca8_csa4_csa_component_fa11_and1 csa_component16_out[30]=u_CSAwallace_rca8_csa4_csa_component_fa12_and1 csa_component16_out[31]=constant_value_0 csa_component16_out[32]=constant_value_0 csa_component16_out[33]=constant_value_0
+.names u_CSAwallace_rca8_and_0_0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[0]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[1]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[2]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa3_xor0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[3]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa4_xor0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[4]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa5_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[5]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa6_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[6]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa7_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[7]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa8_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[8]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa9_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[9]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa10_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[10]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa11_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[11]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa12_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[12]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa13_xor1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[13]
+1 1
+.names u_CSAwallace_rca8_and_7_7 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[15]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[3]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa3_and0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[4]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa4_and0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[5]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa5_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[6]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa6_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[7]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa7_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[8]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa8_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[9]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa9_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[10]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa10_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[11]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa11_and1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[12]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa12_and1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[13]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[15]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[0]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[1]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[2]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[3]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[4]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[5]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[6]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa6_and0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[7]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa7_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[8]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa8_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[9]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa9_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[10]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa10_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[11]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa11_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[12]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa12_or0 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[13]
+1 1
+.names u_CSAwallace_rca8_csa3_csa_component_fa13_and1 u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[14]
+1 1
+.names gnd u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[15]
+1 1
+.subckt csa_component16 a[0]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[0] a[1]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[1] a[2]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[2] a[3]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[3] a[4]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[4] a[5]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[5] a[6]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[6] a[7]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[7] a[8]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[8] a[9]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[9] a[10]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[10] a[11]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[11] a[12]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[12] a[13]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[13] a[14]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[14] a[15]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_s5[15] b[0]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[0] b[1]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[1] b[2]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[2] b[3]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[3] b[4]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[4] b[5]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[5] b[6]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[6] b[7]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[7] b[8]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[8] b[9]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[9] b[10]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[10] b[11]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[11] b[12]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[12] b[13]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[13] b[14]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[14] b[15]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c5[15] c[0]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[0] c[1]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[1] c[2]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[2] c[3]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[3] c[4]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[4] c[5]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[5] c[6]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[6] c[7]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[7] c[8]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[8] c[9]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[9] c[10]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[10] c[11]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[11] c[12]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[12] c[13]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[13] c[14]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[14] c[15]=u_CSAwallace_rca8_csa5_csa_component_u_CSAwallace_rca8_csa_c4[15] csa_component16_out[0]=u_CSAwallace_rca8_and_0_0 csa_component16_out[1]=u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 csa_component16_out[2]=u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 csa_component16_out[3]=u_CSAwallace_rca8_csa4_csa_component_fa3_xor0 csa_component16_out[4]=u_CSAwallace_rca8_csa5_csa_component_fa4_xor0 csa_component16_out[5]=u_CSAwallace_rca8_csa5_csa_component_fa5_xor0 csa_component16_out[6]=u_CSAwallace_rca8_csa5_csa_component_fa6_xor0 csa_component16_out[7]=u_CSAwallace_rca8_csa5_csa_component_fa7_xor1 csa_component16_out[8]=u_CSAwallace_rca8_csa5_csa_component_fa8_xor1 csa_component16_out[9]=u_CSAwallace_rca8_csa5_csa_component_fa9_xor1 csa_component16_out[10]=u_CSAwallace_rca8_csa5_csa_component_fa10_xor1 csa_component16_out[11]=u_CSAwallace_rca8_csa5_csa_component_fa11_xor1 csa_component16_out[12]=u_CSAwallace_rca8_csa5_csa_component_fa12_xor1 csa_component16_out[13]=u_CSAwallace_rca8_csa5_csa_component_fa13_xor1 csa_component16_out[14]=u_CSAwallace_rca8_csa5_csa_component_fa14_xor1 csa_component16_out[15]=constant_value_0 csa_component16_out[16]=constant_value_0 csa_component16_out[17]=constant_value_0 csa_component16_out[18]=constant_value_0 csa_component16_out[19]=constant_value_0 csa_component16_out[20]=constant_value_0 csa_component16_out[21]=constant_value_0 csa_component16_out[22]=u_CSAwallace_rca8_csa5_csa_component_fa4_and0 csa_component16_out[23]=u_CSAwallace_rca8_csa5_csa_component_fa5_and0 csa_component16_out[24]=u_CSAwallace_rca8_csa5_csa_component_fa6_and0 csa_component16_out[25]=u_CSAwallace_rca8_csa5_csa_component_fa7_or0 csa_component16_out[26]=u_CSAwallace_rca8_csa5_csa_component_fa8_or0 csa_component16_out[27]=u_CSAwallace_rca8_csa5_csa_component_fa9_or0 csa_component16_out[28]=u_CSAwallace_rca8_csa5_csa_component_fa10_or0 csa_component16_out[29]=u_CSAwallace_rca8_csa5_csa_component_fa11_or0 csa_component16_out[30]=u_CSAwallace_rca8_csa5_csa_component_fa12_or0 csa_component16_out[31]=u_CSAwallace_rca8_csa5_csa_component_fa13_or0 csa_component16_out[32]=u_CSAwallace_rca8_csa5_csa_component_fa14_and1 csa_component16_out[33]=constant_value_0
+.names u_CSAwallace_rca8_and_0_0 u_CSAwallace_rca8_u_rca16_a[0]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 u_CSAwallace_rca8_u_rca16_a[1]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 u_CSAwallace_rca8_u_rca16_a[2]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa3_xor0 u_CSAwallace_rca8_u_rca16_a[3]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa4_xor0 u_CSAwallace_rca8_u_rca16_a[4]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa5_xor0 u_CSAwallace_rca8_u_rca16_a[5]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa6_xor0 u_CSAwallace_rca8_u_rca16_a[6]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa7_xor1 u_CSAwallace_rca8_u_rca16_a[7]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa8_xor1 u_CSAwallace_rca8_u_rca16_a[8]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa9_xor1 u_CSAwallace_rca8_u_rca16_a[9]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa10_xor1 u_CSAwallace_rca8_u_rca16_a[10]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa11_xor1 u_CSAwallace_rca8_u_rca16_a[11]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa12_xor1 u_CSAwallace_rca8_u_rca16_a[12]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa13_xor1 u_CSAwallace_rca8_u_rca16_a[13]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa14_xor1 u_CSAwallace_rca8_u_rca16_a[14]
+1 1
+.names gnd u_CSAwallace_rca8_u_rca16_a[15]
+1 1
+.names gnd u_CSAwallace_rca8_u_rca16_b[0]
+1 1
+.names gnd u_CSAwallace_rca8_u_rca16_b[1]
+1 1
+.names gnd u_CSAwallace_rca8_u_rca16_b[2]
+1 1
+.names gnd u_CSAwallace_rca8_u_rca16_b[3]
+1 1
+.names gnd u_CSAwallace_rca8_u_rca16_b[4]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa4_and0 u_CSAwallace_rca8_u_rca16_b[5]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa5_and0 u_CSAwallace_rca8_u_rca16_b[6]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa6_and0 u_CSAwallace_rca8_u_rca16_b[7]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa7_or0 u_CSAwallace_rca8_u_rca16_b[8]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa8_or0 u_CSAwallace_rca8_u_rca16_b[9]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa9_or0 u_CSAwallace_rca8_u_rca16_b[10]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa10_or0 u_CSAwallace_rca8_u_rca16_b[11]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa11_or0 u_CSAwallace_rca8_u_rca16_b[12]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa12_or0 u_CSAwallace_rca8_u_rca16_b[13]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa13_or0 u_CSAwallace_rca8_u_rca16_b[14]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa14_and1 u_CSAwallace_rca8_u_rca16_b[15]
+1 1
+.subckt u_rca16 a[0]=u_CSAwallace_rca8_u_rca16_a[0] a[1]=u_CSAwallace_rca8_u_rca16_a[1] a[2]=u_CSAwallace_rca8_u_rca16_a[2] a[3]=u_CSAwallace_rca8_u_rca16_a[3] a[4]=u_CSAwallace_rca8_u_rca16_a[4] a[5]=u_CSAwallace_rca8_u_rca16_a[5] a[6]=u_CSAwallace_rca8_u_rca16_a[6] a[7]=u_CSAwallace_rca8_u_rca16_a[7] a[8]=u_CSAwallace_rca8_u_rca16_a[8] a[9]=u_CSAwallace_rca8_u_rca16_a[9] a[10]=u_CSAwallace_rca8_u_rca16_a[10] a[11]=u_CSAwallace_rca8_u_rca16_a[11] a[12]=u_CSAwallace_rca8_u_rca16_a[12] a[13]=u_CSAwallace_rca8_u_rca16_a[13] a[14]=u_CSAwallace_rca8_u_rca16_a[14] a[15]=u_CSAwallace_rca8_u_rca16_a[15] b[0]=u_CSAwallace_rca8_u_rca16_b[0] b[1]=u_CSAwallace_rca8_u_rca16_b[1] b[2]=u_CSAwallace_rca8_u_rca16_b[2] b[3]=u_CSAwallace_rca8_u_rca16_b[3] b[4]=u_CSAwallace_rca8_u_rca16_b[4] b[5]=u_CSAwallace_rca8_u_rca16_b[5] b[6]=u_CSAwallace_rca8_u_rca16_b[6] b[7]=u_CSAwallace_rca8_u_rca16_b[7] b[8]=u_CSAwallace_rca8_u_rca16_b[8] b[9]=u_CSAwallace_rca8_u_rca16_b[9] b[10]=u_CSAwallace_rca8_u_rca16_b[10] b[11]=u_CSAwallace_rca8_u_rca16_b[11] b[12]=u_CSAwallace_rca8_u_rca16_b[12] b[13]=u_CSAwallace_rca8_u_rca16_b[13] b[14]=u_CSAwallace_rca8_u_rca16_b[14] b[15]=u_CSAwallace_rca8_u_rca16_b[15] u_rca16_out[0]=u_CSAwallace_rca8_and_0_0 u_rca16_out[1]=u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 u_rca16_out[2]=u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 u_rca16_out[3]=u_CSAwallace_rca8_csa4_csa_component_fa3_xor0 u_rca16_out[4]=u_CSAwallace_rca8_csa5_csa_component_fa4_xor0 u_rca16_out[5]=u_CSAwallace_rca8_u_rca16_fa5_xor0 u_rca16_out[6]=u_CSAwallace_rca8_u_rca16_fa6_xor1 u_rca16_out[7]=u_CSAwallace_rca8_u_rca16_fa7_xor1 u_rca16_out[8]=u_CSAwallace_rca8_u_rca16_fa8_xor1 u_rca16_out[9]=u_CSAwallace_rca8_u_rca16_fa9_xor1 u_rca16_out[10]=u_CSAwallace_rca8_u_rca16_fa10_xor1 u_rca16_out[11]=u_CSAwallace_rca8_u_rca16_fa11_xor1 u_rca16_out[12]=u_CSAwallace_rca8_u_rca16_fa12_xor1 u_rca16_out[13]=u_CSAwallace_rca8_u_rca16_fa13_xor1 u_rca16_out[14]=u_CSAwallace_rca8_u_rca16_fa14_xor1 u_rca16_out[15]=u_CSAwallace_rca8_u_rca16_fa15_xor1 u_rca16_out[16]=u_CSAwallace_rca8_u_rca16_fa15_and1
+.names u_CSAwallace_rca8_and_0_0 u_CSAwallace_rca8_out[0]
+1 1
+.names u_CSAwallace_rca8_csa0_csa_component_fa1_xor0 u_CSAwallace_rca8_out[1]
+1 1
+.names u_CSAwallace_rca8_csa2_csa_component_fa2_xor0 u_CSAwallace_rca8_out[2]
+1 1
+.names u_CSAwallace_rca8_csa4_csa_component_fa3_xor0 u_CSAwallace_rca8_out[3]
+1 1
+.names u_CSAwallace_rca8_csa5_csa_component_fa4_xor0 u_CSAwallace_rca8_out[4]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa5_xor0 u_CSAwallace_rca8_out[5]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa6_xor1 u_CSAwallace_rca8_out[6]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa7_xor1 u_CSAwallace_rca8_out[7]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa8_xor1 u_CSAwallace_rca8_out[8]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa9_xor1 u_CSAwallace_rca8_out[9]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa10_xor1 u_CSAwallace_rca8_out[10]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa11_xor1 u_CSAwallace_rca8_out[11]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa12_xor1 u_CSAwallace_rca8_out[12]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa13_xor1 u_CSAwallace_rca8_out[13]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa14_xor1 u_CSAwallace_rca8_out[14]
+1 1
+.names u_CSAwallace_rca8_u_rca16_fa15_xor1 u_CSAwallace_rca8_out[15]
+1 1
+.end
+
+.model u_rca16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15]
+.outputs u_rca16_out[0] u_rca16_out[1] u_rca16_out[2] u_rca16_out[3] u_rca16_out[4] u_rca16_out[5] u_rca16_out[6] u_rca16_out[7] u_rca16_out[8] u_rca16_out[9] u_rca16_out[10] u_rca16_out[11] u_rca16_out[12] u_rca16_out[13] u_rca16_out[14] u_rca16_out[15] u_rca16_out[16]
+.names vdd
+1
+.names gnd
+0
+.subckt ha a=a[0] b=b[0] ha_xor0=u_rca16_ha_xor0 ha_and0=u_rca16_ha_and0
+.subckt fa a=a[1] b=b[1] cin=u_rca16_ha_and0 fa_xor1=u_rca16_fa1_xor1 fa_or0=u_rca16_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=u_rca16_fa1_or0 fa_xor1=u_rca16_fa2_xor1 fa_or0=u_rca16_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=u_rca16_fa2_or0 fa_xor1=u_rca16_fa3_xor1 fa_or0=u_rca16_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=u_rca16_fa3_or0 fa_xor1=u_rca16_fa4_xor1 fa_or0=u_rca16_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=u_rca16_fa4_or0 fa_xor1=u_rca16_fa5_xor1 fa_or0=u_rca16_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=u_rca16_fa5_or0 fa_xor1=u_rca16_fa6_xor1 fa_or0=u_rca16_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=u_rca16_fa6_or0 fa_xor1=u_rca16_fa7_xor1 fa_or0=u_rca16_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=u_rca16_fa7_or0 fa_xor1=u_rca16_fa8_xor1 fa_or0=u_rca16_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=u_rca16_fa8_or0 fa_xor1=u_rca16_fa9_xor1 fa_or0=u_rca16_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=u_rca16_fa9_or0 fa_xor1=u_rca16_fa10_xor1 fa_or0=u_rca16_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=u_rca16_fa10_or0 fa_xor1=u_rca16_fa11_xor1 fa_or0=u_rca16_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=u_rca16_fa11_or0 fa_xor1=u_rca16_fa12_xor1 fa_or0=u_rca16_fa12_or0
+.subckt fa a=a[13] b=b[13] cin=u_rca16_fa12_or0 fa_xor1=u_rca16_fa13_xor1 fa_or0=u_rca16_fa13_or0
+.subckt fa a=a[14] b=b[14] cin=u_rca16_fa13_or0 fa_xor1=u_rca16_fa14_xor1 fa_or0=u_rca16_fa14_or0
+.subckt fa a=a[15] b=b[15] cin=u_rca16_fa14_or0 fa_xor1=u_rca16_fa15_xor1 fa_or0=u_rca16_fa15_or0
+.names u_rca16_ha_xor0 u_rca16_out[0]
+1 1
+.names u_rca16_fa1_xor1 u_rca16_out[1]
+1 1
+.names u_rca16_fa2_xor1 u_rca16_out[2]
+1 1
+.names u_rca16_fa3_xor1 u_rca16_out[3]
+1 1
+.names u_rca16_fa4_xor1 u_rca16_out[4]
+1 1
+.names u_rca16_fa5_xor1 u_rca16_out[5]
+1 1
+.names u_rca16_fa6_xor1 u_rca16_out[6]
+1 1
+.names u_rca16_fa7_xor1 u_rca16_out[7]
+1 1
+.names u_rca16_fa8_xor1 u_rca16_out[8]
+1 1
+.names u_rca16_fa9_xor1 u_rca16_out[9]
+1 1
+.names u_rca16_fa10_xor1 u_rca16_out[10]
+1 1
+.names u_rca16_fa11_xor1 u_rca16_out[11]
+1 1
+.names u_rca16_fa12_xor1 u_rca16_out[12]
+1 1
+.names u_rca16_fa13_xor1 u_rca16_out[13]
+1 1
+.names u_rca16_fa14_xor1 u_rca16_out[14]
+1 1
+.names u_rca16_fa15_xor1 u_rca16_out[15]
+1 1
+.names u_rca16_fa15_or0 u_rca16_out[16]
+1 1
+.end
+
+.model csa_component16
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] a[15] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] b[15] c[0] c[1] c[2] c[3] c[4] c[5] c[6] c[7] c[8] c[9] c[10] c[11] c[12] c[13] c[14] c[15]
+.outputs csa_component16_out[0] csa_component16_out[1] csa_component16_out[2] csa_component16_out[3] csa_component16_out[4] csa_component16_out[5] csa_component16_out[6] csa_component16_out[7] csa_component16_out[8] csa_component16_out[9] csa_component16_out[10] csa_component16_out[11] csa_component16_out[12] csa_component16_out[13] csa_component16_out[14] csa_component16_out[15] csa_component16_out[16] csa_component16_out[17] csa_component16_out[18] csa_component16_out[19] csa_component16_out[20] csa_component16_out[21] csa_component16_out[22] csa_component16_out[23] csa_component16_out[24] csa_component16_out[25] csa_component16_out[26] csa_component16_out[27] csa_component16_out[28] csa_component16_out[29] csa_component16_out[30] csa_component16_out[31] csa_component16_out[32] csa_component16_out[33]
+.names vdd
+1
+.names gnd
+0
+.subckt fa a=a[0] b=b[0] cin=c[0] fa_xor1=csa_component16_fa0_xor1 fa_or0=csa_component16_fa0_or0
+.subckt fa a=a[1] b=b[1] cin=c[1] fa_xor1=csa_component16_fa1_xor1 fa_or0=csa_component16_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=c[2] fa_xor1=csa_component16_fa2_xor1 fa_or0=csa_component16_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=c[3] fa_xor1=csa_component16_fa3_xor1 fa_or0=csa_component16_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=c[4] fa_xor1=csa_component16_fa4_xor1 fa_or0=csa_component16_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=c[5] fa_xor1=csa_component16_fa5_xor1 fa_or0=csa_component16_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=c[6] fa_xor1=csa_component16_fa6_xor1 fa_or0=csa_component16_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=c[7] fa_xor1=csa_component16_fa7_xor1 fa_or0=csa_component16_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=c[8] fa_xor1=csa_component16_fa8_xor1 fa_or0=csa_component16_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=c[9] fa_xor1=csa_component16_fa9_xor1 fa_or0=csa_component16_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=c[10] fa_xor1=csa_component16_fa10_xor1 fa_or0=csa_component16_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=c[11] fa_xor1=csa_component16_fa11_xor1 fa_or0=csa_component16_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=c[12] fa_xor1=csa_component16_fa12_xor1 fa_or0=csa_component16_fa12_or0
+.subckt fa a=a[13] b=b[13] cin=c[13] fa_xor1=csa_component16_fa13_xor1 fa_or0=csa_component16_fa13_or0
+.subckt fa a=a[14] b=b[14] cin=c[14] fa_xor1=csa_component16_fa14_xor1 fa_or0=csa_component16_fa14_or0
+.subckt fa a=a[15] b=b[15] cin=c[15] fa_xor1=csa_component16_fa15_xor1 fa_or0=csa_component16_fa15_or0
+.names csa_component16_fa0_xor1 csa_component16_out[0]
+1 1
+.names csa_component16_fa1_xor1 csa_component16_out[1]
+1 1
+.names csa_component16_fa2_xor1 csa_component16_out[2]
+1 1
+.names csa_component16_fa3_xor1 csa_component16_out[3]
+1 1
+.names csa_component16_fa4_xor1 csa_component16_out[4]
+1 1
+.names csa_component16_fa5_xor1 csa_component16_out[5]
+1 1
+.names csa_component16_fa6_xor1 csa_component16_out[6]
+1 1
+.names csa_component16_fa7_xor1 csa_component16_out[7]
+1 1
+.names csa_component16_fa8_xor1 csa_component16_out[8]
+1 1
+.names csa_component16_fa9_xor1 csa_component16_out[9]
+1 1
+.names csa_component16_fa10_xor1 csa_component16_out[10]
+1 1
+.names csa_component16_fa11_xor1 csa_component16_out[11]
+1 1
+.names csa_component16_fa12_xor1 csa_component16_out[12]
+1 1
+.names csa_component16_fa13_xor1 csa_component16_out[13]
+1 1
+.names csa_component16_fa14_xor1 csa_component16_out[14]
+1 1
+.names csa_component16_fa15_xor1 csa_component16_out[15]
+1 1
+.names gnd csa_component16_out[16]
+1 1
+.names gnd csa_component16_out[17]
+1 1
+.names csa_component16_fa0_or0 csa_component16_out[18]
+1 1
+.names csa_component16_fa1_or0 csa_component16_out[19]
+1 1
+.names csa_component16_fa2_or0 csa_component16_out[20]
+1 1
+.names csa_component16_fa3_or0 csa_component16_out[21]
+1 1
+.names csa_component16_fa4_or0 csa_component16_out[22]
+1 1
+.names csa_component16_fa5_or0 csa_component16_out[23]
+1 1
+.names csa_component16_fa6_or0 csa_component16_out[24]
+1 1
+.names csa_component16_fa7_or0 csa_component16_out[25]
+1 1
+.names csa_component16_fa8_or0 csa_component16_out[26]
+1 1
+.names csa_component16_fa9_or0 csa_component16_out[27]
+1 1
+.names csa_component16_fa10_or0 csa_component16_out[28]
+1 1
+.names csa_component16_fa11_or0 csa_component16_out[29]
+1 1
+.names csa_component16_fa12_or0 csa_component16_out[30]
+1 1
+.names csa_component16_fa13_or0 csa_component16_out[31]
+1 1
+.names csa_component16_fa14_or0 csa_component16_out[32]
+1 1
+.names csa_component16_fa15_or0 csa_component16_out[33]
+1 1
+.end
+
+.model csa_component15
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] a[14] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] b[14] c[0] c[1] c[2] c[3] c[4] c[5] c[6] c[7] c[8] c[9] c[10] c[11] c[12] c[13] c[14]
+.outputs csa_component15_out[0] csa_component15_out[1] csa_component15_out[2] csa_component15_out[3] csa_component15_out[4] csa_component15_out[5] csa_component15_out[6] csa_component15_out[7] csa_component15_out[8] csa_component15_out[9] csa_component15_out[10] csa_component15_out[11] csa_component15_out[12] csa_component15_out[13] csa_component15_out[14] csa_component15_out[15] csa_component15_out[16] csa_component15_out[17] csa_component15_out[18] csa_component15_out[19] csa_component15_out[20] csa_component15_out[21] csa_component15_out[22] csa_component15_out[23] csa_component15_out[24] csa_component15_out[25] csa_component15_out[26] csa_component15_out[27] csa_component15_out[28] csa_component15_out[29] csa_component15_out[30] csa_component15_out[31]
+.names vdd
+1
+.names gnd
+0
+.subckt fa a=a[0] b=b[0] cin=c[0] fa_xor1=csa_component15_fa0_xor1 fa_or0=csa_component15_fa0_or0
+.subckt fa a=a[1] b=b[1] cin=c[1] fa_xor1=csa_component15_fa1_xor1 fa_or0=csa_component15_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=c[2] fa_xor1=csa_component15_fa2_xor1 fa_or0=csa_component15_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=c[3] fa_xor1=csa_component15_fa3_xor1 fa_or0=csa_component15_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=c[4] fa_xor1=csa_component15_fa4_xor1 fa_or0=csa_component15_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=c[5] fa_xor1=csa_component15_fa5_xor1 fa_or0=csa_component15_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=c[6] fa_xor1=csa_component15_fa6_xor1 fa_or0=csa_component15_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=c[7] fa_xor1=csa_component15_fa7_xor1 fa_or0=csa_component15_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=c[8] fa_xor1=csa_component15_fa8_xor1 fa_or0=csa_component15_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=c[9] fa_xor1=csa_component15_fa9_xor1 fa_or0=csa_component15_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=c[10] fa_xor1=csa_component15_fa10_xor1 fa_or0=csa_component15_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=c[11] fa_xor1=csa_component15_fa11_xor1 fa_or0=csa_component15_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=c[12] fa_xor1=csa_component15_fa12_xor1 fa_or0=csa_component15_fa12_or0
+.subckt fa a=a[13] b=b[13] cin=c[13] fa_xor1=csa_component15_fa13_xor1 fa_or0=csa_component15_fa13_or0
+.subckt fa a=a[14] b=b[14] cin=c[14] fa_xor1=csa_component15_fa14_xor1 fa_or0=csa_component15_fa14_or0
+.names csa_component15_fa0_xor1 csa_component15_out[0]
+1 1
+.names csa_component15_fa1_xor1 csa_component15_out[1]
+1 1
+.names csa_component15_fa2_xor1 csa_component15_out[2]
+1 1
+.names csa_component15_fa3_xor1 csa_component15_out[3]
+1 1
+.names csa_component15_fa4_xor1 csa_component15_out[4]
+1 1
+.names csa_component15_fa5_xor1 csa_component15_out[5]
+1 1
+.names csa_component15_fa6_xor1 csa_component15_out[6]
+1 1
+.names csa_component15_fa7_xor1 csa_component15_out[7]
+1 1
+.names csa_component15_fa8_xor1 csa_component15_out[8]
+1 1
+.names csa_component15_fa9_xor1 csa_component15_out[9]
+1 1
+.names csa_component15_fa10_xor1 csa_component15_out[10]
+1 1
+.names csa_component15_fa11_xor1 csa_component15_out[11]
+1 1
+.names csa_component15_fa12_xor1 csa_component15_out[12]
+1 1
+.names csa_component15_fa13_xor1 csa_component15_out[13]
+1 1
+.names csa_component15_fa14_xor1 csa_component15_out[14]
+1 1
+.names gnd csa_component15_out[15]
+1 1
+.names gnd csa_component15_out[16]
+1 1
+.names csa_component15_fa0_or0 csa_component15_out[17]
+1 1
+.names csa_component15_fa1_or0 csa_component15_out[18]
+1 1
+.names csa_component15_fa2_or0 csa_component15_out[19]
+1 1
+.names csa_component15_fa3_or0 csa_component15_out[20]
+1 1
+.names csa_component15_fa4_or0 csa_component15_out[21]
+1 1
+.names csa_component15_fa5_or0 csa_component15_out[22]
+1 1
+.names csa_component15_fa6_or0 csa_component15_out[23]
+1 1
+.names csa_component15_fa7_or0 csa_component15_out[24]
+1 1
+.names csa_component15_fa8_or0 csa_component15_out[25]
+1 1
+.names csa_component15_fa9_or0 csa_component15_out[26]
+1 1
+.names csa_component15_fa10_or0 csa_component15_out[27]
+1 1
+.names csa_component15_fa11_or0 csa_component15_out[28]
+1 1
+.names csa_component15_fa12_or0 csa_component15_out[29]
+1 1
+.names csa_component15_fa13_or0 csa_component15_out[30]
+1 1
+.names csa_component15_fa14_or0 csa_component15_out[31]
+1 1
+.end
+
+.model csa_component14
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13] c[0] c[1] c[2] c[3] c[4] c[5] c[6] c[7] c[8] c[9] c[10] c[11] c[12] c[13]
+.outputs csa_component14_out[0] csa_component14_out[1] csa_component14_out[2] csa_component14_out[3] csa_component14_out[4] csa_component14_out[5] csa_component14_out[6] csa_component14_out[7] csa_component14_out[8] csa_component14_out[9] csa_component14_out[10] csa_component14_out[11] csa_component14_out[12] csa_component14_out[13] csa_component14_out[14] csa_component14_out[15] csa_component14_out[16] csa_component14_out[17] csa_component14_out[18] csa_component14_out[19] csa_component14_out[20] csa_component14_out[21] csa_component14_out[22] csa_component14_out[23] csa_component14_out[24] csa_component14_out[25] csa_component14_out[26] csa_component14_out[27] csa_component14_out[28] csa_component14_out[29]
+.names vdd
+1
+.names gnd
+0
+.subckt fa a=a[0] b=b[0] cin=c[0] fa_xor1=csa_component14_fa0_xor1 fa_or0=csa_component14_fa0_or0
+.subckt fa a=a[1] b=b[1] cin=c[1] fa_xor1=csa_component14_fa1_xor1 fa_or0=csa_component14_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=c[2] fa_xor1=csa_component14_fa2_xor1 fa_or0=csa_component14_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=c[3] fa_xor1=csa_component14_fa3_xor1 fa_or0=csa_component14_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=c[4] fa_xor1=csa_component14_fa4_xor1 fa_or0=csa_component14_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=c[5] fa_xor1=csa_component14_fa5_xor1 fa_or0=csa_component14_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=c[6] fa_xor1=csa_component14_fa6_xor1 fa_or0=csa_component14_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=c[7] fa_xor1=csa_component14_fa7_xor1 fa_or0=csa_component14_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=c[8] fa_xor1=csa_component14_fa8_xor1 fa_or0=csa_component14_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=c[9] fa_xor1=csa_component14_fa9_xor1 fa_or0=csa_component14_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=c[10] fa_xor1=csa_component14_fa10_xor1 fa_or0=csa_component14_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=c[11] fa_xor1=csa_component14_fa11_xor1 fa_or0=csa_component14_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=c[12] fa_xor1=csa_component14_fa12_xor1 fa_or0=csa_component14_fa12_or0
+.subckt fa a=a[13] b=b[13] cin=c[13] fa_xor1=csa_component14_fa13_xor1 fa_or0=csa_component14_fa13_or0
+.names csa_component14_fa0_xor1 csa_component14_out[0]
+1 1
+.names csa_component14_fa1_xor1 csa_component14_out[1]
+1 1
+.names csa_component14_fa2_xor1 csa_component14_out[2]
+1 1
+.names csa_component14_fa3_xor1 csa_component14_out[3]
+1 1
+.names csa_component14_fa4_xor1 csa_component14_out[4]
+1 1
+.names csa_component14_fa5_xor1 csa_component14_out[5]
+1 1
+.names csa_component14_fa6_xor1 csa_component14_out[6]
+1 1
+.names csa_component14_fa7_xor1 csa_component14_out[7]
+1 1
+.names csa_component14_fa8_xor1 csa_component14_out[8]
+1 1
+.names csa_component14_fa9_xor1 csa_component14_out[9]
+1 1
+.names csa_component14_fa10_xor1 csa_component14_out[10]
+1 1
+.names csa_component14_fa11_xor1 csa_component14_out[11]
+1 1
+.names csa_component14_fa12_xor1 csa_component14_out[12]
+1 1
+.names csa_component14_fa13_xor1 csa_component14_out[13]
+1 1
+.names gnd csa_component14_out[14]
+1 1
+.names gnd csa_component14_out[15]
+1 1
+.names csa_component14_fa0_or0 csa_component14_out[16]
+1 1
+.names csa_component14_fa1_or0 csa_component14_out[17]
+1 1
+.names csa_component14_fa2_or0 csa_component14_out[18]
+1 1
+.names csa_component14_fa3_or0 csa_component14_out[19]
+1 1
+.names csa_component14_fa4_or0 csa_component14_out[20]
+1 1
+.names csa_component14_fa5_or0 csa_component14_out[21]
+1 1
+.names csa_component14_fa6_or0 csa_component14_out[22]
+1 1
+.names csa_component14_fa7_or0 csa_component14_out[23]
+1 1
+.names csa_component14_fa8_or0 csa_component14_out[24]
+1 1
+.names csa_component14_fa9_or0 csa_component14_out[25]
+1 1
+.names csa_component14_fa10_or0 csa_component14_out[26]
+1 1
+.names csa_component14_fa11_or0 csa_component14_out[27]
+1 1
+.names csa_component14_fa12_or0 csa_component14_out[28]
+1 1
+.names csa_component14_fa13_or0 csa_component14_out[29]
+1 1
+.end
+
+.model csa_component13
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] c[0] c[1] c[2] c[3] c[4] c[5] c[6] c[7] c[8] c[9] c[10] c[11] c[12]
+.outputs csa_component13_out[0] csa_component13_out[1] csa_component13_out[2] csa_component13_out[3] csa_component13_out[4] csa_component13_out[5] csa_component13_out[6] csa_component13_out[7] csa_component13_out[8] csa_component13_out[9] csa_component13_out[10] csa_component13_out[11] csa_component13_out[12] csa_component13_out[13] csa_component13_out[14] csa_component13_out[15] csa_component13_out[16] csa_component13_out[17] csa_component13_out[18] csa_component13_out[19] csa_component13_out[20] csa_component13_out[21] csa_component13_out[22] csa_component13_out[23] csa_component13_out[24] csa_component13_out[25] csa_component13_out[26] csa_component13_out[27]
+.names vdd
+1
+.names gnd
+0
+.subckt fa a=a[0] b=b[0] cin=c[0] fa_xor1=csa_component13_fa0_xor1 fa_or0=csa_component13_fa0_or0
+.subckt fa a=a[1] b=b[1] cin=c[1] fa_xor1=csa_component13_fa1_xor1 fa_or0=csa_component13_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=c[2] fa_xor1=csa_component13_fa2_xor1 fa_or0=csa_component13_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=c[3] fa_xor1=csa_component13_fa3_xor1 fa_or0=csa_component13_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=c[4] fa_xor1=csa_component13_fa4_xor1 fa_or0=csa_component13_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=c[5] fa_xor1=csa_component13_fa5_xor1 fa_or0=csa_component13_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=c[6] fa_xor1=csa_component13_fa6_xor1 fa_or0=csa_component13_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=c[7] fa_xor1=csa_component13_fa7_xor1 fa_or0=csa_component13_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=c[8] fa_xor1=csa_component13_fa8_xor1 fa_or0=csa_component13_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=c[9] fa_xor1=csa_component13_fa9_xor1 fa_or0=csa_component13_fa9_or0
+.subckt fa a=a[10] b=b[10] cin=c[10] fa_xor1=csa_component13_fa10_xor1 fa_or0=csa_component13_fa10_or0
+.subckt fa a=a[11] b=b[11] cin=c[11] fa_xor1=csa_component13_fa11_xor1 fa_or0=csa_component13_fa11_or0
+.subckt fa a=a[12] b=b[12] cin=c[12] fa_xor1=csa_component13_fa12_xor1 fa_or0=csa_component13_fa12_or0
+.names csa_component13_fa0_xor1 csa_component13_out[0]
+1 1
+.names csa_component13_fa1_xor1 csa_component13_out[1]
+1 1
+.names csa_component13_fa2_xor1 csa_component13_out[2]
+1 1
+.names csa_component13_fa3_xor1 csa_component13_out[3]
+1 1
+.names csa_component13_fa4_xor1 csa_component13_out[4]
+1 1
+.names csa_component13_fa5_xor1 csa_component13_out[5]
+1 1
+.names csa_component13_fa6_xor1 csa_component13_out[6]
+1 1
+.names csa_component13_fa7_xor1 csa_component13_out[7]
+1 1
+.names csa_component13_fa8_xor1 csa_component13_out[8]
+1 1
+.names csa_component13_fa9_xor1 csa_component13_out[9]
+1 1
+.names csa_component13_fa10_xor1 csa_component13_out[10]
+1 1
+.names csa_component13_fa11_xor1 csa_component13_out[11]
+1 1
+.names csa_component13_fa12_xor1 csa_component13_out[12]
+1 1
+.names gnd csa_component13_out[13]
+1 1
+.names gnd csa_component13_out[14]
+1 1
+.names csa_component13_fa0_or0 csa_component13_out[15]
+1 1
+.names csa_component13_fa1_or0 csa_component13_out[16]
+1 1
+.names csa_component13_fa2_or0 csa_component13_out[17]
+1 1
+.names csa_component13_fa3_or0 csa_component13_out[18]
+1 1
+.names csa_component13_fa4_or0 csa_component13_out[19]
+1 1
+.names csa_component13_fa5_or0 csa_component13_out[20]
+1 1
+.names csa_component13_fa6_or0 csa_component13_out[21]
+1 1
+.names csa_component13_fa7_or0 csa_component13_out[22]
+1 1
+.names csa_component13_fa8_or0 csa_component13_out[23]
+1 1
+.names csa_component13_fa9_or0 csa_component13_out[24]
+1 1
+.names csa_component13_fa10_or0 csa_component13_out[25]
+1 1
+.names csa_component13_fa11_or0 csa_component13_out[26]
+1 1
+.names csa_component13_fa12_or0 csa_component13_out[27]
+1 1
+.end
+
+.model csa_component10
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] c[0] c[1] c[2] c[3] c[4] c[5] c[6] c[7] c[8] c[9]
+.outputs csa_component10_out[0] csa_component10_out[1] csa_component10_out[2] csa_component10_out[3] csa_component10_out[4] csa_component10_out[5] csa_component10_out[6] csa_component10_out[7] csa_component10_out[8] csa_component10_out[9] csa_component10_out[10] csa_component10_out[11] csa_component10_out[12] csa_component10_out[13] csa_component10_out[14] csa_component10_out[15] csa_component10_out[16] csa_component10_out[17] csa_component10_out[18] csa_component10_out[19] csa_component10_out[20] csa_component10_out[21]
+.names vdd
+1
+.names gnd
+0
+.subckt fa a=a[0] b=b[0] cin=c[0] fa_xor1=csa_component10_fa0_xor1 fa_or0=csa_component10_fa0_or0
+.subckt fa a=a[1] b=b[1] cin=c[1] fa_xor1=csa_component10_fa1_xor1 fa_or0=csa_component10_fa1_or0
+.subckt fa a=a[2] b=b[2] cin=c[2] fa_xor1=csa_component10_fa2_xor1 fa_or0=csa_component10_fa2_or0
+.subckt fa a=a[3] b=b[3] cin=c[3] fa_xor1=csa_component10_fa3_xor1 fa_or0=csa_component10_fa3_or0
+.subckt fa a=a[4] b=b[4] cin=c[4] fa_xor1=csa_component10_fa4_xor1 fa_or0=csa_component10_fa4_or0
+.subckt fa a=a[5] b=b[5] cin=c[5] fa_xor1=csa_component10_fa5_xor1 fa_or0=csa_component10_fa5_or0
+.subckt fa a=a[6] b=b[6] cin=c[6] fa_xor1=csa_component10_fa6_xor1 fa_or0=csa_component10_fa6_or0
+.subckt fa a=a[7] b=b[7] cin=c[7] fa_xor1=csa_component10_fa7_xor1 fa_or0=csa_component10_fa7_or0
+.subckt fa a=a[8] b=b[8] cin=c[8] fa_xor1=csa_component10_fa8_xor1 fa_or0=csa_component10_fa8_or0
+.subckt fa a=a[9] b=b[9] cin=c[9] fa_xor1=csa_component10_fa9_xor1 fa_or0=csa_component10_fa9_or0
+.names csa_component10_fa0_xor1 csa_component10_out[0]
+1 1
+.names csa_component10_fa1_xor1 csa_component10_out[1]
+1 1
+.names csa_component10_fa2_xor1 csa_component10_out[2]
+1 1
+.names csa_component10_fa3_xor1 csa_component10_out[3]
+1 1
+.names csa_component10_fa4_xor1 csa_component10_out[4]
+1 1
+.names csa_component10_fa5_xor1 csa_component10_out[5]
+1 1
+.names csa_component10_fa6_xor1 csa_component10_out[6]
+1 1
+.names csa_component10_fa7_xor1 csa_component10_out[7]
+1 1
+.names csa_component10_fa8_xor1 csa_component10_out[8]
+1 1
+.names csa_component10_fa9_xor1 csa_component10_out[9]
+1 1
+.names gnd csa_component10_out[10]
+1 1
+.names gnd csa_component10_out[11]
+1 1
+.names csa_component10_fa0_or0 csa_component10_out[12]
+1 1
+.names csa_component10_fa1_or0 csa_component10_out[13]
+1 1
+.names csa_component10_fa2_or0 csa_component10_out[14]
+1 1
+.names csa_component10_fa3_or0 csa_component10_out[15]
+1 1
+.names csa_component10_fa4_or0 csa_component10_out[16]
+1 1
+.names csa_component10_fa5_or0 csa_component10_out[17]
+1 1
+.names csa_component10_fa6_or0 csa_component10_out[18]
+1 1
+.names csa_component10_fa7_or0 csa_component10_out[19]
+1 1
+.names csa_component10_fa8_or0 csa_component10_out[20]
+1 1
+.names csa_component10_fa9_or0 csa_component10_out[21]
+1 1
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end

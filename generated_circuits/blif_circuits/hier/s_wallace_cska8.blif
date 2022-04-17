@@ -1,0 +1,381 @@
+.model s_wallace_cska8
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7]
+.outputs s_wallace_cska8_out[0] s_wallace_cska8_out[1] s_wallace_cska8_out[2] s_wallace_cska8_out[3] s_wallace_cska8_out[4] s_wallace_cska8_out[5] s_wallace_cska8_out[6] s_wallace_cska8_out[7] s_wallace_cska8_out[8] s_wallace_cska8_out[9] s_wallace_cska8_out[10] s_wallace_cska8_out[11] s_wallace_cska8_out[12] s_wallace_cska8_out[13] s_wallace_cska8_out[14] s_wallace_cska8_out[15]
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=a[2] b=b[0] out=s_wallace_cska8_and_2_0
+.subckt and_gate a=a[1] b=b[1] out=s_wallace_cska8_and_1_1
+.subckt ha a=s_wallace_cska8_and_2_0 b=s_wallace_cska8_and_1_1 ha_xor0=s_wallace_cska8_ha0_xor0 ha_and0=s_wallace_cska8_ha0_and0
+.subckt and_gate a=a[3] b=b[0] out=s_wallace_cska8_and_3_0
+.subckt and_gate a=a[2] b=b[1] out=s_wallace_cska8_and_2_1
+.subckt fa a=s_wallace_cska8_ha0_and0 b=s_wallace_cska8_and_3_0 cin=s_wallace_cska8_and_2_1 fa_xor1=s_wallace_cska8_fa0_xor1 fa_or0=s_wallace_cska8_fa0_or0
+.subckt and_gate a=a[4] b=b[0] out=s_wallace_cska8_and_4_0
+.subckt and_gate a=a[3] b=b[1] out=s_wallace_cska8_and_3_1
+.subckt fa a=s_wallace_cska8_fa0_or0 b=s_wallace_cska8_and_4_0 cin=s_wallace_cska8_and_3_1 fa_xor1=s_wallace_cska8_fa1_xor1 fa_or0=s_wallace_cska8_fa1_or0
+.subckt and_gate a=a[5] b=b[0] out=s_wallace_cska8_and_5_0
+.subckt and_gate a=a[4] b=b[1] out=s_wallace_cska8_and_4_1
+.subckt fa a=s_wallace_cska8_fa1_or0 b=s_wallace_cska8_and_5_0 cin=s_wallace_cska8_and_4_1 fa_xor1=s_wallace_cska8_fa2_xor1 fa_or0=s_wallace_cska8_fa2_or0
+.subckt and_gate a=a[6] b=b[0] out=s_wallace_cska8_and_6_0
+.subckt and_gate a=a[5] b=b[1] out=s_wallace_cska8_and_5_1
+.subckt fa a=s_wallace_cska8_fa2_or0 b=s_wallace_cska8_and_6_0 cin=s_wallace_cska8_and_5_1 fa_xor1=s_wallace_cska8_fa3_xor1 fa_or0=s_wallace_cska8_fa3_or0
+.subckt nand_gate a=a[7] b=b[0] out=s_wallace_cska8_nand_7_0
+.subckt and_gate a=a[6] b=b[1] out=s_wallace_cska8_and_6_1
+.subckt fa a=s_wallace_cska8_fa3_or0 b=s_wallace_cska8_nand_7_0 cin=s_wallace_cska8_and_6_1 fa_xor1=s_wallace_cska8_fa4_xor1 fa_or0=s_wallace_cska8_fa4_or0
+.subckt nand_gate a=a[7] b=b[1] out=s_wallace_cska8_nand_7_1
+.subckt fa a=s_wallace_cska8_fa4_or0 b=vdd cin=s_wallace_cska8_nand_7_1 fa_xor1=s_wallace_cska8_fa5_xor1 fa_or0=s_wallace_cska8_fa5_or0
+.subckt nand_gate a=a[7] b=b[2] out=s_wallace_cska8_nand_7_2
+.subckt and_gate a=a[6] b=b[3] out=s_wallace_cska8_and_6_3
+.subckt fa a=s_wallace_cska8_fa5_or0 b=s_wallace_cska8_nand_7_2 cin=s_wallace_cska8_and_6_3 fa_xor1=s_wallace_cska8_fa6_xor1 fa_or0=s_wallace_cska8_fa6_or0
+.subckt nand_gate a=a[7] b=b[3] out=s_wallace_cska8_nand_7_3
+.subckt and_gate a=a[6] b=b[4] out=s_wallace_cska8_and_6_4
+.subckt fa a=s_wallace_cska8_fa6_or0 b=s_wallace_cska8_nand_7_3 cin=s_wallace_cska8_and_6_4 fa_xor1=s_wallace_cska8_fa7_xor1 fa_or0=s_wallace_cska8_fa7_or0
+.subckt nand_gate a=a[7] b=b[4] out=s_wallace_cska8_nand_7_4
+.subckt and_gate a=a[6] b=b[5] out=s_wallace_cska8_and_6_5
+.subckt fa a=s_wallace_cska8_fa7_or0 b=s_wallace_cska8_nand_7_4 cin=s_wallace_cska8_and_6_5 fa_xor1=s_wallace_cska8_fa8_xor1 fa_or0=s_wallace_cska8_fa8_or0
+.subckt nand_gate a=a[7] b=b[5] out=s_wallace_cska8_nand_7_5
+.subckt and_gate a=a[6] b=b[6] out=s_wallace_cska8_and_6_6
+.subckt fa a=s_wallace_cska8_fa8_or0 b=s_wallace_cska8_nand_7_5 cin=s_wallace_cska8_and_6_6 fa_xor1=s_wallace_cska8_fa9_xor1 fa_or0=s_wallace_cska8_fa9_or0
+.subckt and_gate a=a[1] b=b[2] out=s_wallace_cska8_and_1_2
+.subckt and_gate a=a[0] b=b[3] out=s_wallace_cska8_and_0_3
+.subckt ha a=s_wallace_cska8_and_1_2 b=s_wallace_cska8_and_0_3 ha_xor0=s_wallace_cska8_ha1_xor0 ha_and0=s_wallace_cska8_ha1_and0
+.subckt and_gate a=a[2] b=b[2] out=s_wallace_cska8_and_2_2
+.subckt and_gate a=a[1] b=b[3] out=s_wallace_cska8_and_1_3
+.subckt fa a=s_wallace_cska8_ha1_and0 b=s_wallace_cska8_and_2_2 cin=s_wallace_cska8_and_1_3 fa_xor1=s_wallace_cska8_fa10_xor1 fa_or0=s_wallace_cska8_fa10_or0
+.subckt and_gate a=a[3] b=b[2] out=s_wallace_cska8_and_3_2
+.subckt and_gate a=a[2] b=b[3] out=s_wallace_cska8_and_2_3
+.subckt fa a=s_wallace_cska8_fa10_or0 b=s_wallace_cska8_and_3_2 cin=s_wallace_cska8_and_2_3 fa_xor1=s_wallace_cska8_fa11_xor1 fa_or0=s_wallace_cska8_fa11_or0
+.subckt and_gate a=a[4] b=b[2] out=s_wallace_cska8_and_4_2
+.subckt and_gate a=a[3] b=b[3] out=s_wallace_cska8_and_3_3
+.subckt fa a=s_wallace_cska8_fa11_or0 b=s_wallace_cska8_and_4_2 cin=s_wallace_cska8_and_3_3 fa_xor1=s_wallace_cska8_fa12_xor1 fa_or0=s_wallace_cska8_fa12_or0
+.subckt and_gate a=a[5] b=b[2] out=s_wallace_cska8_and_5_2
+.subckt and_gate a=a[4] b=b[3] out=s_wallace_cska8_and_4_3
+.subckt fa a=s_wallace_cska8_fa12_or0 b=s_wallace_cska8_and_5_2 cin=s_wallace_cska8_and_4_3 fa_xor1=s_wallace_cska8_fa13_xor1 fa_or0=s_wallace_cska8_fa13_or0
+.subckt and_gate a=a[6] b=b[2] out=s_wallace_cska8_and_6_2
+.subckt and_gate a=a[5] b=b[3] out=s_wallace_cska8_and_5_3
+.subckt fa a=s_wallace_cska8_fa13_or0 b=s_wallace_cska8_and_6_2 cin=s_wallace_cska8_and_5_3 fa_xor1=s_wallace_cska8_fa14_xor1 fa_or0=s_wallace_cska8_fa14_or0
+.subckt and_gate a=a[5] b=b[4] out=s_wallace_cska8_and_5_4
+.subckt and_gate a=a[4] b=b[5] out=s_wallace_cska8_and_4_5
+.subckt fa a=s_wallace_cska8_fa14_or0 b=s_wallace_cska8_and_5_4 cin=s_wallace_cska8_and_4_5 fa_xor1=s_wallace_cska8_fa15_xor1 fa_or0=s_wallace_cska8_fa15_or0
+.subckt and_gate a=a[5] b=b[5] out=s_wallace_cska8_and_5_5
+.subckt and_gate a=a[4] b=b[6] out=s_wallace_cska8_and_4_6
+.subckt fa a=s_wallace_cska8_fa15_or0 b=s_wallace_cska8_and_5_5 cin=s_wallace_cska8_and_4_6 fa_xor1=s_wallace_cska8_fa16_xor1 fa_or0=s_wallace_cska8_fa16_or0
+.subckt and_gate a=a[5] b=b[6] out=s_wallace_cska8_and_5_6
+.subckt nand_gate a=a[4] b=b[7] out=s_wallace_cska8_nand_4_7
+.subckt fa a=s_wallace_cska8_fa16_or0 b=s_wallace_cska8_and_5_6 cin=s_wallace_cska8_nand_4_7 fa_xor1=s_wallace_cska8_fa17_xor1 fa_or0=s_wallace_cska8_fa17_or0
+.subckt and_gate a=a[0] b=b[4] out=s_wallace_cska8_and_0_4
+.subckt ha a=s_wallace_cska8_and_0_4 b=s_wallace_cska8_fa1_xor1 ha_xor0=s_wallace_cska8_ha2_xor0 ha_and0=s_wallace_cska8_ha2_and0
+.subckt and_gate a=a[1] b=b[4] out=s_wallace_cska8_and_1_4
+.subckt and_gate a=a[0] b=b[5] out=s_wallace_cska8_and_0_5
+.subckt fa a=s_wallace_cska8_ha2_and0 b=s_wallace_cska8_and_1_4 cin=s_wallace_cska8_and_0_5 fa_xor1=s_wallace_cska8_fa18_xor1 fa_or0=s_wallace_cska8_fa18_or0
+.subckt and_gate a=a[2] b=b[4] out=s_wallace_cska8_and_2_4
+.subckt and_gate a=a[1] b=b[5] out=s_wallace_cska8_and_1_5
+.subckt fa a=s_wallace_cska8_fa18_or0 b=s_wallace_cska8_and_2_4 cin=s_wallace_cska8_and_1_5 fa_xor1=s_wallace_cska8_fa19_xor1 fa_or0=s_wallace_cska8_fa19_or0
+.subckt and_gate a=a[3] b=b[4] out=s_wallace_cska8_and_3_4
+.subckt and_gate a=a[2] b=b[5] out=s_wallace_cska8_and_2_5
+.subckt fa a=s_wallace_cska8_fa19_or0 b=s_wallace_cska8_and_3_4 cin=s_wallace_cska8_and_2_5 fa_xor1=s_wallace_cska8_fa20_xor1 fa_or0=s_wallace_cska8_fa20_or0
+.subckt and_gate a=a[4] b=b[4] out=s_wallace_cska8_and_4_4
+.subckt and_gate a=a[3] b=b[5] out=s_wallace_cska8_and_3_5
+.subckt fa a=s_wallace_cska8_fa20_or0 b=s_wallace_cska8_and_4_4 cin=s_wallace_cska8_and_3_5 fa_xor1=s_wallace_cska8_fa21_xor1 fa_or0=s_wallace_cska8_fa21_or0
+.subckt and_gate a=a[3] b=b[6] out=s_wallace_cska8_and_3_6
+.subckt nand_gate a=a[2] b=b[7] out=s_wallace_cska8_nand_2_7
+.subckt fa a=s_wallace_cska8_fa21_or0 b=s_wallace_cska8_and_3_6 cin=s_wallace_cska8_nand_2_7 fa_xor1=s_wallace_cska8_fa22_xor1 fa_or0=s_wallace_cska8_fa22_or0
+.subckt nand_gate a=a[3] b=b[7] out=s_wallace_cska8_nand_3_7
+.subckt fa a=s_wallace_cska8_fa22_or0 b=s_wallace_cska8_nand_3_7 cin=s_wallace_cska8_fa7_xor1 fa_xor1=s_wallace_cska8_fa23_xor1 fa_or0=s_wallace_cska8_fa23_or0
+.subckt ha a=s_wallace_cska8_fa2_xor1 b=s_wallace_cska8_fa11_xor1 ha_xor0=s_wallace_cska8_ha3_xor0 ha_and0=s_wallace_cska8_ha3_and0
+.subckt and_gate a=a[0] b=b[6] out=s_wallace_cska8_and_0_6
+.subckt fa a=s_wallace_cska8_ha3_and0 b=s_wallace_cska8_and_0_6 cin=s_wallace_cska8_fa3_xor1 fa_xor1=s_wallace_cska8_fa24_xor1 fa_or0=s_wallace_cska8_fa24_or0
+.subckt and_gate a=a[1] b=b[6] out=s_wallace_cska8_and_1_6
+.subckt nand_gate a=a[0] b=b[7] out=s_wallace_cska8_nand_0_7
+.subckt fa a=s_wallace_cska8_fa24_or0 b=s_wallace_cska8_and_1_6 cin=s_wallace_cska8_nand_0_7 fa_xor1=s_wallace_cska8_fa25_xor1 fa_or0=s_wallace_cska8_fa25_or0
+.subckt and_gate a=a[2] b=b[6] out=s_wallace_cska8_and_2_6
+.subckt nand_gate a=a[1] b=b[7] out=s_wallace_cska8_nand_1_7
+.subckt fa a=s_wallace_cska8_fa25_or0 b=s_wallace_cska8_and_2_6 cin=s_wallace_cska8_nand_1_7 fa_xor1=s_wallace_cska8_fa26_xor1 fa_or0=s_wallace_cska8_fa26_or0
+.subckt fa a=s_wallace_cska8_fa26_or0 b=s_wallace_cska8_fa6_xor1 cin=s_wallace_cska8_fa15_xor1 fa_xor1=s_wallace_cska8_fa27_xor1 fa_or0=s_wallace_cska8_fa27_or0
+.subckt ha a=s_wallace_cska8_fa12_xor1 b=s_wallace_cska8_fa19_xor1 ha_xor0=s_wallace_cska8_ha4_xor0 ha_and0=s_wallace_cska8_ha4_and0
+.subckt fa a=s_wallace_cska8_ha4_and0 b=s_wallace_cska8_fa4_xor1 cin=s_wallace_cska8_fa13_xor1 fa_xor1=s_wallace_cska8_fa28_xor1 fa_or0=s_wallace_cska8_fa28_or0
+.subckt fa a=s_wallace_cska8_fa28_or0 b=s_wallace_cska8_fa5_xor1 cin=s_wallace_cska8_fa14_xor1 fa_xor1=s_wallace_cska8_fa29_xor1 fa_or0=s_wallace_cska8_fa29_or0
+.subckt ha a=s_wallace_cska8_fa20_xor1 b=s_wallace_cska8_fa25_xor1 ha_xor0=s_wallace_cska8_ha5_xor0 ha_and0=s_wallace_cska8_ha5_and0
+.subckt fa a=s_wallace_cska8_ha5_and0 b=s_wallace_cska8_fa21_xor1 cin=s_wallace_cska8_fa26_xor1 fa_xor1=s_wallace_cska8_fa30_xor1 fa_or0=s_wallace_cska8_fa30_or0
+.subckt fa a=s_wallace_cska8_fa30_or0 b=s_wallace_cska8_fa29_or0 cin=s_wallace_cska8_fa22_xor1 fa_xor1=s_wallace_cska8_fa31_xor1 fa_or0=s_wallace_cska8_fa31_or0
+.subckt fa a=s_wallace_cska8_fa31_or0 b=s_wallace_cska8_fa27_or0 cin=s_wallace_cska8_fa16_xor1 fa_xor1=s_wallace_cska8_fa32_xor1 fa_or0=s_wallace_cska8_fa32_or0
+.subckt fa a=s_wallace_cska8_fa32_or0 b=s_wallace_cska8_fa23_or0 cin=s_wallace_cska8_fa8_xor1 fa_xor1=s_wallace_cska8_fa33_xor1 fa_or0=s_wallace_cska8_fa33_or0
+.subckt nand_gate a=a[5] b=b[7] out=s_wallace_cska8_nand_5_7
+.subckt fa a=s_wallace_cska8_fa33_or0 b=s_wallace_cska8_fa17_or0 cin=s_wallace_cska8_nand_5_7 fa_xor1=s_wallace_cska8_fa34_xor1 fa_or0=s_wallace_cska8_fa34_or0
+.subckt nand_gate a=a[7] b=b[6] out=s_wallace_cska8_nand_7_6
+.subckt fa a=s_wallace_cska8_fa34_or0 b=s_wallace_cska8_fa9_or0 cin=s_wallace_cska8_nand_7_6 fa_xor1=s_wallace_cska8_fa35_xor1 fa_or0=s_wallace_cska8_fa35_or0
+.subckt and_gate a=a[0] b=b[0] out=s_wallace_cska8_and_0_0
+.subckt and_gate a=a[1] b=b[0] out=s_wallace_cska8_and_1_0
+.subckt and_gate a=a[0] b=b[2] out=s_wallace_cska8_and_0_2
+.subckt nand_gate a=a[6] b=b[7] out=s_wallace_cska8_nand_6_7
+.subckt and_gate a=a[0] b=b[1] out=s_wallace_cska8_and_0_1
+.subckt and_gate a=a[7] b=b[7] out=s_wallace_cska8_and_7_7
+.names s_wallace_cska8_and_1_0 s_wallace_cska8_u_cska14_a[0]
+1 1
+.names s_wallace_cska8_and_0_2 s_wallace_cska8_u_cska14_a[1]
+1 1
+.names s_wallace_cska8_fa0_xor1 s_wallace_cska8_u_cska14_a[2]
+1 1
+.names s_wallace_cska8_fa10_xor1 s_wallace_cska8_u_cska14_a[3]
+1 1
+.names s_wallace_cska8_fa18_xor1 s_wallace_cska8_u_cska14_a[4]
+1 1
+.names s_wallace_cska8_fa24_xor1 s_wallace_cska8_u_cska14_a[5]
+1 1
+.names s_wallace_cska8_fa28_xor1 s_wallace_cska8_u_cska14_a[6]
+1 1
+.names s_wallace_cska8_fa29_xor1 s_wallace_cska8_u_cska14_a[7]
+1 1
+.names s_wallace_cska8_fa27_xor1 s_wallace_cska8_u_cska14_a[8]
+1 1
+.names s_wallace_cska8_fa23_xor1 s_wallace_cska8_u_cska14_a[9]
+1 1
+.names s_wallace_cska8_fa17_xor1 s_wallace_cska8_u_cska14_a[10]
+1 1
+.names s_wallace_cska8_fa9_xor1 s_wallace_cska8_u_cska14_a[11]
+1 1
+.names s_wallace_cska8_nand_6_7 s_wallace_cska8_u_cska14_a[12]
+1 1
+.names s_wallace_cska8_fa35_or0 s_wallace_cska8_u_cska14_a[13]
+1 1
+.names s_wallace_cska8_and_0_1 s_wallace_cska8_u_cska14_b[0]
+1 1
+.names s_wallace_cska8_ha0_xor0 s_wallace_cska8_u_cska14_b[1]
+1 1
+.names s_wallace_cska8_ha1_xor0 s_wallace_cska8_u_cska14_b[2]
+1 1
+.names s_wallace_cska8_ha2_xor0 s_wallace_cska8_u_cska14_b[3]
+1 1
+.names s_wallace_cska8_ha3_xor0 s_wallace_cska8_u_cska14_b[4]
+1 1
+.names s_wallace_cska8_ha4_xor0 s_wallace_cska8_u_cska14_b[5]
+1 1
+.names s_wallace_cska8_ha5_xor0 s_wallace_cska8_u_cska14_b[6]
+1 1
+.names s_wallace_cska8_fa30_xor1 s_wallace_cska8_u_cska14_b[7]
+1 1
+.names s_wallace_cska8_fa31_xor1 s_wallace_cska8_u_cska14_b[8]
+1 1
+.names s_wallace_cska8_fa32_xor1 s_wallace_cska8_u_cska14_b[9]
+1 1
+.names s_wallace_cska8_fa33_xor1 s_wallace_cska8_u_cska14_b[10]
+1 1
+.names s_wallace_cska8_fa34_xor1 s_wallace_cska8_u_cska14_b[11]
+1 1
+.names s_wallace_cska8_fa35_xor1 s_wallace_cska8_u_cska14_b[12]
+1 1
+.names s_wallace_cska8_and_7_7 s_wallace_cska8_u_cska14_b[13]
+1 1
+.subckt u_cska14 a[0]=s_wallace_cska8_u_cska14_a[0] a[1]=s_wallace_cska8_u_cska14_a[1] a[2]=s_wallace_cska8_u_cska14_a[2] a[3]=s_wallace_cska8_u_cska14_a[3] a[4]=s_wallace_cska8_u_cska14_a[4] a[5]=s_wallace_cska8_u_cska14_a[5] a[6]=s_wallace_cska8_u_cska14_a[6] a[7]=s_wallace_cska8_u_cska14_a[7] a[8]=s_wallace_cska8_u_cska14_a[8] a[9]=s_wallace_cska8_u_cska14_a[9] a[10]=s_wallace_cska8_u_cska14_a[10] a[11]=s_wallace_cska8_u_cska14_a[11] a[12]=s_wallace_cska8_u_cska14_a[12] a[13]=s_wallace_cska8_u_cska14_a[13] b[0]=s_wallace_cska8_u_cska14_b[0] b[1]=s_wallace_cska8_u_cska14_b[1] b[2]=s_wallace_cska8_u_cska14_b[2] b[3]=s_wallace_cska8_u_cska14_b[3] b[4]=s_wallace_cska8_u_cska14_b[4] b[5]=s_wallace_cska8_u_cska14_b[5] b[6]=s_wallace_cska8_u_cska14_b[6] b[7]=s_wallace_cska8_u_cska14_b[7] b[8]=s_wallace_cska8_u_cska14_b[8] b[9]=s_wallace_cska8_u_cska14_b[9] b[10]=s_wallace_cska8_u_cska14_b[10] b[11]=s_wallace_cska8_u_cska14_b[11] b[12]=s_wallace_cska8_u_cska14_b[12] b[13]=s_wallace_cska8_u_cska14_b[13] u_cska14_out[0]=s_wallace_cska8_u_cska14_ha0_xor0 u_cska14_out[1]=s_wallace_cska8_u_cska14_fa0_xor1 u_cska14_out[2]=s_wallace_cska8_u_cska14_fa1_xor1 u_cska14_out[3]=s_wallace_cska8_u_cska14_fa2_xor1 u_cska14_out[4]=s_wallace_cska8_u_cska14_fa3_xor1 u_cska14_out[5]=s_wallace_cska8_u_cska14_fa4_xor1 u_cska14_out[6]=s_wallace_cska8_u_cska14_fa5_xor1 u_cska14_out[7]=s_wallace_cska8_u_cska14_fa6_xor1 u_cska14_out[8]=s_wallace_cska8_u_cska14_fa7_xor1 u_cska14_out[9]=s_wallace_cska8_u_cska14_fa8_xor1 u_cska14_out[10]=s_wallace_cska8_u_cska14_fa9_xor1 u_cska14_out[11]=s_wallace_cska8_u_cska14_fa10_xor1 u_cska14_out[12]=s_wallace_cska8_u_cska14_fa11_xor1 u_cska14_out[13]=s_wallace_cska8_u_cska14_fa12_xor1 u_cska14_out[14]=s_wallace_cska8_u_cska14_mux2to13_xor0
+.subckt not_gate a=s_wallace_cska8_u_cska14_mux2to13_xor0 out=s_wallace_cska8_xor0
+.names s_wallace_cska8_and_0_0 s_wallace_cska8_out[0]
+1 1
+.names s_wallace_cska8_u_cska14_ha0_xor0 s_wallace_cska8_out[1]
+1 1
+.names s_wallace_cska8_u_cska14_fa0_xor1 s_wallace_cska8_out[2]
+1 1
+.names s_wallace_cska8_u_cska14_fa1_xor1 s_wallace_cska8_out[3]
+1 1
+.names s_wallace_cska8_u_cska14_fa2_xor1 s_wallace_cska8_out[4]
+1 1
+.names s_wallace_cska8_u_cska14_fa3_xor1 s_wallace_cska8_out[5]
+1 1
+.names s_wallace_cska8_u_cska14_fa4_xor1 s_wallace_cska8_out[6]
+1 1
+.names s_wallace_cska8_u_cska14_fa5_xor1 s_wallace_cska8_out[7]
+1 1
+.names s_wallace_cska8_u_cska14_fa6_xor1 s_wallace_cska8_out[8]
+1 1
+.names s_wallace_cska8_u_cska14_fa7_xor1 s_wallace_cska8_out[9]
+1 1
+.names s_wallace_cska8_u_cska14_fa8_xor1 s_wallace_cska8_out[10]
+1 1
+.names s_wallace_cska8_u_cska14_fa9_xor1 s_wallace_cska8_out[11]
+1 1
+.names s_wallace_cska8_u_cska14_fa10_xor1 s_wallace_cska8_out[12]
+1 1
+.names s_wallace_cska8_u_cska14_fa11_xor1 s_wallace_cska8_out[13]
+1 1
+.names s_wallace_cska8_u_cska14_fa12_xor1 s_wallace_cska8_out[14]
+1 1
+.names s_wallace_cska8_xor0 s_wallace_cska8_out[15]
+1 1
+.end
+
+.model u_cska14
+.inputs a[0] a[1] a[2] a[3] a[4] a[5] a[6] a[7] a[8] a[9] a[10] a[11] a[12] a[13] b[0] b[1] b[2] b[3] b[4] b[5] b[6] b[7] b[8] b[9] b[10] b[11] b[12] b[13]
+.outputs u_cska14_out[0] u_cska14_out[1] u_cska14_out[2] u_cska14_out[3] u_cska14_out[4] u_cska14_out[5] u_cska14_out[6] u_cska14_out[7] u_cska14_out[8] u_cska14_out[9] u_cska14_out[10] u_cska14_out[11] u_cska14_out[12] u_cska14_out[13] u_cska14_out[14]
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a[0] b=b[0] out=u_cska14_xor0
+.subckt ha a=a[0] b=b[0] ha_xor0=u_cska14_ha0_xor0 ha_and0=u_cska14_ha0_and0
+.subckt xor_gate a=a[1] b=b[1] out=u_cska14_xor1
+.subckt fa a=a[1] b=b[1] cin=u_cska14_ha0_and0 fa_xor1=u_cska14_fa0_xor1 fa_or0=u_cska14_fa0_or0
+.subckt xor_gate a=a[2] b=b[2] out=u_cska14_xor2
+.subckt fa a=a[2] b=b[2] cin=u_cska14_fa0_or0 fa_xor1=u_cska14_fa1_xor1 fa_or0=u_cska14_fa1_or0
+.subckt xor_gate a=a[3] b=b[3] out=u_cska14_xor3
+.subckt fa a=a[3] b=b[3] cin=u_cska14_fa1_or0 fa_xor1=u_cska14_fa2_xor1 fa_or0=u_cska14_fa2_or0
+.subckt and_gate a=u_cska14_xor0 b=u_cska14_xor2 out=u_cska14_and_propagate00
+.subckt and_gate a=u_cska14_xor1 b=u_cska14_xor3 out=u_cska14_and_propagate01
+.subckt and_gate a=u_cska14_and_propagate00 b=u_cska14_and_propagate01 out=u_cska14_and_propagate02
+.subckt mux2to1 d0=u_cska14_fa2_or0 d1=gnd sel=u_cska14_and_propagate02 mux2to1_xor0=u_cska14_mux2to10_and1
+.subckt xor_gate a=a[4] b=b[4] out=u_cska14_xor4
+.subckt fa a=a[4] b=b[4] cin=u_cska14_mux2to10_and1 fa_xor1=u_cska14_fa3_xor1 fa_or0=u_cska14_fa3_or0
+.subckt xor_gate a=a[5] b=b[5] out=u_cska14_xor5
+.subckt fa a=a[5] b=b[5] cin=u_cska14_fa3_or0 fa_xor1=u_cska14_fa4_xor1 fa_or0=u_cska14_fa4_or0
+.subckt xor_gate a=a[6] b=b[6] out=u_cska14_xor6
+.subckt fa a=a[6] b=b[6] cin=u_cska14_fa4_or0 fa_xor1=u_cska14_fa5_xor1 fa_or0=u_cska14_fa5_or0
+.subckt xor_gate a=a[7] b=b[7] out=u_cska14_xor7
+.subckt fa a=a[7] b=b[7] cin=u_cska14_fa5_or0 fa_xor1=u_cska14_fa6_xor1 fa_or0=u_cska14_fa6_or0
+.subckt and_gate a=u_cska14_xor4 b=u_cska14_xor6 out=u_cska14_and_propagate13
+.subckt and_gate a=u_cska14_xor5 b=u_cska14_xor7 out=u_cska14_and_propagate14
+.subckt and_gate a=u_cska14_and_propagate13 b=u_cska14_and_propagate14 out=u_cska14_and_propagate15
+.subckt mux2to1 d0=u_cska14_fa6_or0 d1=u_cska14_mux2to10_and1 sel=u_cska14_and_propagate15 mux2to1_xor0=u_cska14_mux2to11_xor0
+.subckt xor_gate a=a[8] b=b[8] out=u_cska14_xor8
+.subckt fa a=a[8] b=b[8] cin=u_cska14_mux2to11_xor0 fa_xor1=u_cska14_fa7_xor1 fa_or0=u_cska14_fa7_or0
+.subckt xor_gate a=a[9] b=b[9] out=u_cska14_xor9
+.subckt fa a=a[9] b=b[9] cin=u_cska14_fa7_or0 fa_xor1=u_cska14_fa8_xor1 fa_or0=u_cska14_fa8_or0
+.subckt xor_gate a=a[10] b=b[10] out=u_cska14_xor10
+.subckt fa a=a[10] b=b[10] cin=u_cska14_fa8_or0 fa_xor1=u_cska14_fa9_xor1 fa_or0=u_cska14_fa9_or0
+.subckt xor_gate a=a[11] b=b[11] out=u_cska14_xor11
+.subckt fa a=a[11] b=b[11] cin=u_cska14_fa9_or0 fa_xor1=u_cska14_fa10_xor1 fa_or0=u_cska14_fa10_or0
+.subckt and_gate a=u_cska14_xor8 b=u_cska14_xor10 out=u_cska14_and_propagate26
+.subckt and_gate a=u_cska14_xor9 b=u_cska14_xor11 out=u_cska14_and_propagate27
+.subckt and_gate a=u_cska14_and_propagate26 b=u_cska14_and_propagate27 out=u_cska14_and_propagate28
+.subckt mux2to1 d0=u_cska14_fa10_or0 d1=u_cska14_mux2to11_xor0 sel=u_cska14_and_propagate28 mux2to1_xor0=u_cska14_mux2to12_xor0
+.subckt xor_gate a=a[12] b=b[12] out=u_cska14_xor12
+.subckt fa a=a[12] b=b[12] cin=u_cska14_mux2to12_xor0 fa_xor1=u_cska14_fa11_xor1 fa_or0=u_cska14_fa11_or0
+.subckt xor_gate a=a[13] b=b[13] out=u_cska14_xor13
+.subckt fa a=a[13] b=b[13] cin=u_cska14_fa11_or0 fa_xor1=u_cska14_fa12_xor1 fa_or0=u_cska14_fa12_or0
+.subckt and_gate a=u_cska14_xor12 b=u_cska14_xor13 out=u_cska14_and_propagate39
+.subckt mux2to1 d0=u_cska14_fa12_or0 d1=u_cska14_mux2to12_xor0 sel=u_cska14_and_propagate39 mux2to1_xor0=u_cska14_mux2to13_xor0
+.names u_cska14_ha0_xor0 u_cska14_out[0]
+1 1
+.names u_cska14_fa0_xor1 u_cska14_out[1]
+1 1
+.names u_cska14_fa1_xor1 u_cska14_out[2]
+1 1
+.names u_cska14_fa2_xor1 u_cska14_out[3]
+1 1
+.names u_cska14_fa3_xor1 u_cska14_out[4]
+1 1
+.names u_cska14_fa4_xor1 u_cska14_out[5]
+1 1
+.names u_cska14_fa5_xor1 u_cska14_out[6]
+1 1
+.names u_cska14_fa6_xor1 u_cska14_out[7]
+1 1
+.names u_cska14_fa7_xor1 u_cska14_out[8]
+1 1
+.names u_cska14_fa8_xor1 u_cska14_out[9]
+1 1
+.names u_cska14_fa9_xor1 u_cska14_out[10]
+1 1
+.names u_cska14_fa10_xor1 u_cska14_out[11]
+1 1
+.names u_cska14_fa11_xor1 u_cska14_out[12]
+1 1
+.names u_cska14_fa12_xor1 u_cska14_out[13]
+1 1
+.names u_cska14_mux2to13_xor0 u_cska14_out[14]
+1 1
+.end
+
+.model mux2to1
+.inputs d0 d1 sel
+.outputs mux2to1_xor0
+.names vdd
+1
+.names gnd
+0
+.subckt and_gate a=d1 b=sel out=mux2to1_and0
+.subckt not_gate a=sel out=mux2to1_not0
+.subckt and_gate a=d0 b=mux2to1_not0 out=mux2to1_and1
+.subckt xor_gate a=mux2to1_and0 b=mux2to1_and1 out=mux2to1_xor0
+.end
+
+.model fa
+.inputs a b cin
+.outputs fa_xor1 fa_or0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=fa_xor0
+.subckt and_gate a=a b=b out=fa_and0
+.subckt xor_gate a=fa_xor0 b=cin out=fa_xor1
+.subckt and_gate a=fa_xor0 b=cin out=fa_and1
+.subckt or_gate a=fa_and0 b=fa_and1 out=fa_or0
+.end
+
+.model ha
+.inputs a b
+.outputs ha_xor0 ha_and0
+.names vdd
+1
+.names gnd
+0
+.subckt xor_gate a=a b=b out=ha_xor0
+.subckt and_gate a=a b=b out=ha_and0
+.end
+
+.model not_gate
+.inputs a
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a out
+0 1
+.end
+
+.model nand_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+0- 1
+-0 1
+.end
+
+.model or_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+1- 1
+-1 1
+.end
+
+.model xor_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+01 1
+10 1
+.end
+
+.model and_gate
+.inputs a b
+.outputs out
+.names vdd
+1
+.names gnd
+0
+.names a b out
+11 1
+.end

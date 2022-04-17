@@ -1,4 +1,3 @@
-
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -23,19 +22,19 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
     UnsignedWallaceMultiplier,
+    UnsignedCarrySaveMultiplier,
     SignedArrayMultiplier,
     SignedDaddaMultiplier,
     SignedWallaceMultiplier,
+    SignedCarrySaveMultiplier
 )
-
 
 from ariths_gen.multi_bit_circuits.approximate_multipliers import (
-    UnsignedTruncatedMultiplier,
-    SignedTruncatedMultiplier,
+    UnsignedTruncatedArrayMultiplier,
+    UnsignedTruncatedCarrySaveMultiplier,
     UnsignedBrokenArrayMultiplier,
-    SignedBrokenArrayMultiplier
+    UnsignedBrokenCarrySaveMultiplier
 )
-
 import numpy as np
 
 
@@ -48,10 +47,10 @@ def test_unsigned_approxmul(values = False):
     bv = av.reshape(-1, 1)
     expected = av * bv
     
-    for c in [UnsignedBrokenArrayMultiplier, UnsignedTruncatedMultiplier]:    
-        if c == UnsignedTruncatedMultiplier:
+    for c in [UnsignedBrokenArrayMultiplier, UnsignedBrokenCarrySaveMultiplier, UnsignedTruncatedArrayMultiplier, UnsignedTruncatedCarrySaveMultiplier]:    
+        if c == UnsignedTruncatedArrayMultiplier or c == UnsignedTruncatedCarrySaveMultiplier:
             mul = c(a=a, b=b, truncation_cut=2)
-        elif c == UnsignedBrokenArrayMultiplier:
+        elif c == UnsignedBrokenArrayMultiplier or c == UnsignedBrokenCarrySaveMultiplier:
             mul = c(a=a, b=b, horizontal_cut=1, vertical_cut=2)
     r = mul(av, bv)
     
@@ -62,10 +61,10 @@ def test_unsigned_approxmul(values = False):
     np.seterr(divide='ignore', invalid='ignore')
     WCRE = np.max(np.nan_to_num(abs(np.subtract(r, expected)) / expected))
     
-    if isinstance(mul, UnsignedTruncatedMultiplier):
+    if isinstance(mul, UnsignedTruncatedArrayMultiplier) or isinstance(mul, UnsignedTruncatedCarrySaveMultiplier):
         # WCE_TM(n,k) = (2^k - 1) * (2^(n+1) - 2^k - 1)
         expected_WCE = (2 ** mul.truncation_cut - 1) * (2 ** (mul.a.N+1) - 2 ** mul.truncation_cut - 1)
-    elif isinstance(mul, UnsignedBrokenArrayMultiplier):
+    elif isinstance(mul, UnsignedBrokenArrayMultiplier) or isinstance(mul, UnsignedBrokenCarrySaveMultiplier):
         # WCE_BAM(n,h,v) = (2^n - 1) * {SUM_i0_to_h-1}(2^i) + 2^h * {SUM_i0_to_v-h-1}(2^(v-h) - 2^i)
         sum_1 = sum([2**i for i in range(0, mul.horizontal_cut)])
         sum_2 = sum([2**(mul.vertical_cut-mul.horizontal_cut) - 2**i for i in range(0, mul.vertical_cut-mul.horizontal_cut)])
@@ -76,7 +75,6 @@ def test_unsigned_approxmul(values = False):
     if values is True:
         np.testing.assert_array_equal(expected, r)
 
-
 def test_unsigned_mul():
     """ Test unsigned multipliers """
     N = 7
@@ -86,12 +84,16 @@ def test_unsigned_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [ UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedWallaceMultiplier]:
+    for c in [UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedCarrySaveMultiplier, UnsignedWallaceMultiplier]:
         mul = c(a, b)
+        assert mul(0, 0) == 0
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
-
-
+    # For array wallace tree implementation
+    mul = UnsignedWallaceMultiplier(a, b, use_csa=False)
+    assert mul(0, 0) == 0
+    r = mul(av, bv)
+    np.testing.assert_array_equal(expected, r)
 
 def test_signed_mul():
     """ Test signed multipliers """
@@ -102,14 +104,16 @@ def test_signed_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [ SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier]:
+    for c in [SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier, SignedCarrySaveMultiplier]:
         mul = c(a, b)
         r = mul(av, bv)
-
-        # r[r >= 2**(2*N-1)] -= 2**(2*N)  # hack!!! two's complement not implemented yet
+        assert mul(0, 0) == 0
         np.testing.assert_array_equal(expected, r)
-
-
+    # For array wallace tree implementation
+    mul = SignedWallaceMultiplier(a, b, use_csa=False)
+    r = mul(av, bv)
+    assert mul(0, 0) == 0
+    np.testing.assert_array_equal(expected, r)
 
 def test_unsigned_add():
     """ Test unsigned adders """
@@ -125,8 +129,6 @@ def test_unsigned_add():
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
 
-
-
 def test_signed_add():
     """ Test signed adders """
     N = 7
@@ -139,9 +141,7 @@ def test_signed_add():
     for c in [SignedCarryLookaheadAdder, SignedPGRippleCarryAdder, SignedRippleCarryAdder, SignedCarrySkipAdder]:
         mul = c(a, b)
         r = mul(av, bv)
-        # r[r >= 2**(N)] -= 2**(N+1)   # hack!!! two's complement not implemented yet
         np.testing.assert_array_equal(expected, r)
-
 
 def test_mac():
     class MAC(GeneralCircuit):

@@ -26,6 +26,9 @@ class Wire():
         """
         return False
 
+    def is_buswire(self):
+        return self.name.endswith("["+str(self.index)+"]") and self.parent_bus is not None
+
     """ PYTHON CODE GENERATION """
     def return_wire_value_python_flat(self, offset: int = 0):
         """Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.
@@ -38,6 +41,10 @@ class Wire():
         """
         if self.is_const():
             return f"({self.c_const}) << {offset}\n"
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
+        elif self.is_buswire():
+            return f"(({self.prefix} >> {self.index}) & 0x01) << {offset}\n"
         else:
             return f"(({self.name} >> 0) & 0x01) << {offset}\n"
 
@@ -61,13 +68,12 @@ class Wire():
         """
         if self.is_const():
             return f"({self.c_const})"
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
+        elif self.is_buswire():
+            return f"(({self.prefix} >> {self.index}) & 0x01)"
         else:
-            # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
-            if self.name.endswith("["+str(self.index)+"]") and self.parent_bus is not None:
-                return f"(({self.prefix} >> {self.index}) & 0x01)"
-            else:
-                return f"(({self.name} >> 0) & 0x01)"
+            return f"(({self.name} >> 0) & 0x01)"
 
     def get_wire_value_c_hier(self):
         """Accesses desired bit value from wire represented in C code variable used for hierarchical generation.
@@ -103,6 +109,8 @@ class Wire():
         Returns:
             str: C code bitwise shift for storing (constant/variable) wire value at desired offset position.
         """
+        # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
+        # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
         if self.is_const():
             return f"({self.c_const}) << {offset};\n"
         else:
