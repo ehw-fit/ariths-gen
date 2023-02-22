@@ -1,6 +1,7 @@
 # ArithsGen – tool for arithmetic circuits generation
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Documentation](https://img.shields.io/badge/api-reference-blue.svg)](https://ehw-fit.github.io/ariths-gen)
+[![arXiv](https://img.shields.io/badge/arXiv-2203.04649-b31b1b.svg)](https://arxiv.org/abs/2203.04649)
 
 
 ## Description
@@ -10,6 +11,20 @@ In contrast to standard HDL languages Python supports
 * Multiple output formats (BLIF, Verilog, C, Integer netlist)
 * Advanced language construction (better configuration, inheritance, etc.)
 * Support of various PDKs (for using library cells as half-adders and full-adders)
+
+## Reference
+When you use this tool in your work/research, please cite the following article: KLHUFEK Jan and MRAZEK Vojtech. ArithsGen: Arithmetics Circuit Generator for HW Accelerators. In: 2022 25th International Symposium on Design and Diagnostics of Electronic Circuits and Systems (DDECS '22). Prague, 2022, p. 4.
+
+```bibtex
+@INPROCEEDINGS{klhufek:DDECS22,
+   author = "Jan Klhufek and Vojtech Mrazek",
+   title = "ArithsGen: Arithmetics Circuit Generator for HW Accelerators",
+   pages = 4,
+   booktitle = "2022 25th International Symposium on Design and Diagnostics of Electronic Circuits and Systems (DDECS '22)",
+   year = 2022,
+   location = "Prague, CZ"
+}
+```
 
 ## Prebuild circuits
 To enable fast work with the circuits, we published pre-build arithmetic circuits in various formats in [generated_circuits](generated_circuits) folder and as a [Release](https://github.com/ehw-fit/ariths-gen/releases).

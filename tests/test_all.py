@@ -45,7 +45,6 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XnorGate,
     NotGate
 )
-
 import numpy as np
 
 
