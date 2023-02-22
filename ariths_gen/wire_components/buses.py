@@ -76,6 +76,9 @@ class Bus():
             Wire: Returning wire from the bus.
         """
         return self.bus[wire_index]
+        
+    def __getitem__(self, i):
+        return self.bus[i]
 
     # Connecting output wire of the inner circuit component to desired position in the described circuit's output bus
     def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):

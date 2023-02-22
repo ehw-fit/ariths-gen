@@ -186,7 +186,7 @@ def test_direct():
             self.b = Bus(prefix=b.prefix, wires_list=b.bus)
             self.out = Bus(self.prefix+"_out", self.N+1)
 
-            a_0 = self.a.get_wire(0)
+            a_0 = self.a[0]
             b_0 = self.b.get_wire(0)
             
             or_1 = OrGate(a_0, b_0, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)), parent_component=self)
