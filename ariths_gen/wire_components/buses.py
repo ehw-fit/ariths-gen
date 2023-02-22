@@ -77,6 +77,9 @@ class Bus():
         """
         return self.bus[wire_index]
 
+    def __getitem__(self, i):
+        return self.get_wire(i)
+
     # Connecting output wire of the inner circuit component to desired position in the described circuit's output bus
     def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):
         """Connects given 'Wire' object to a 'bus_wire_index' within this bus.
@@ -99,6 +102,9 @@ class Bus():
         # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+
+    def __setitem__(self, i, v):
+        self.connect(i, v)
 
     def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0):
         """Ensures connection of specified bus wires to this bus wires.
@@ -140,6 +146,9 @@ class Bus():
             return "".join([f"  {self.prefix} = ({self.prefix}) | {last_bus_wire.return_wire_value_python_flat(offset=i)}" for i in range(len(self.bus), 64)])
         else:
             return ""
+
+    def __str__(self):
+        return f"<wire N={self.N} prefix={self.prefix} \"" + (",".join([str(w) for w in self.bus])) + "\">"
 
     """ C CODE GENERATION """
     def get_declaration_c(self):
