@@ -127,7 +127,7 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}" for w in mapped_positions])
+        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} = ({self.prefix}) | {w[1].return_wire_value_python_flat(offset=w[0])}" for w in mapped_positions])
 
     def return_bus_wires_sign_extend_python_flat(self):
         """Sign extends the bus's corresponding Python variable (object) to ensure proper flat Python code variable signedness.
@@ -137,7 +137,7 @@ class Bus():
         """
         if self.signed is True:
             last_bus_wire = self.bus[-1]
-            return "".join([f"  {self.prefix} |= {last_bus_wire.return_wire_value_python_flat(offset=i)}" for i in range(len(self.bus), 64)])
+            return "".join([f"  {self.prefix} = ({self.prefix}) | {last_bus_wire.return_wire_value_python_flat(offset=i)}" for i in range(len(self.bus), 64)])
         else:
             return ""
 

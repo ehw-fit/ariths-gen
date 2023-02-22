@@ -35,6 +35,17 @@ from ariths_gen.multi_bit_circuits.approximate_multipliers import (
     UnsignedBrokenArrayMultiplier,
     UnsignedBrokenCarrySaveMultiplier
 )
+
+from ariths_gen.one_bit_circuits.logic_gates import (
+    AndGate,
+    NandGate,
+    OrGate,
+    NorGate,
+    XorGate,
+    XnorGate,
+    NotGate
+)
+
 import numpy as np
 
 
@@ -164,3 +175,32 @@ def test_mac():
     r = mymac(av, bv, cv)
     expected = (av * bv) + cv
     np.testing.assert_array_equal(r, expected)
+
+def test_direct():
+    class err_circuit(GeneralCircuit):
+        def __init__(self, prefix: str = "", name: str = "adder", inner_component: bool = True, a: Bus = Bus(), b: Bus = Bus()):
+            super().__init__(prefix = prefix, name=name, out_N = (a.N + 1), inner_component=inner_component, inputs = [a, b])
+            self.N = 1
+            self.prefix = prefix
+            self.a = Bus(prefix=a.prefix, wires_list=a.bus)
+            self.b = Bus(prefix=b.prefix, wires_list=b.bus)
+            self.out = Bus(self.prefix+"_out", self.N+1)
+
+            a_0 = self.a.get_wire(0)
+            b_0 = self.b.get_wire(0)
+            
+            or_1 = OrGate(a_0, b_0, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)), parent_component=self)
+            self.add_component(or_1)
+
+            self.out.connect(0, a_0)
+            self.out.connect(1, or_1.out)
+
+
+    av = np.arange(0, 4).reshape(1, -1)
+    bv = np.arange(0, 4).reshape(-1, 1)
+    example = err_circuit(prefix = "err_circuit", a = Bus("a", 2) , b = Bus("b", 2))
+
+    r = example(av, bv)
+    expected = np.array([[0, 3, 0, 3], [2, 3 ,2, 3], [0, 3, 0, 3], [2, 3, 2, 3]])
+    np.testing.assert_equal(r, expected)
+    print(r)
