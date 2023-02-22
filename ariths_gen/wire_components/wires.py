@@ -40,13 +40,14 @@ class Wire():
             str: Python code bitwise shift for storing (constant/variable) wire value at desired offset position.
         """
         if self.is_const():
-            return f"({self.c_const}) << {offset}\n"
+            return f"(({self.c_const}) << {offset})\n"
         # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
         # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
         elif self.is_buswire():
-            return f"(({self.prefix} >> {self.index}) & 0x01) << {offset}\n"
+            return f"((({self.prefix} >> {self.index}) & 0x01) << {offset})\n"
+
         else:
-            return f"(({self.name} >> 0) & 0x01) << {offset}\n"
+            return f"((({self.name} >> 0) & 0x01) << {offset})\n"
 
     """ C CODE GENERATION """
     def get_declaration_c(self):
@@ -246,6 +247,13 @@ class Wire():
         else:
             return self.prefix
 
+    def __str__(self):
+        if self.is_const():
+            return f"<w={self.c_const}>"
+        elif self.is_buswire():
+            return f"<w={self.prefix}[{self.index}]>"
+        else:
+            return f"<w={self.name}>"
 
 # Wires with constant values #
 class ConstantWireValue0(Wire):
@@ -281,6 +289,7 @@ class ConstantWireValue0(Wire):
         return True
 
 
+
 class ConstantWireValue1(Wire):
     """Class representing wire carrying constant value 1 used to interconnect components.
 
@@ -312,3 +321,4 @@ class ConstantWireValue1(Wire):
             bool: True, because constant wire carries a constant value 1.
         """
         return True
+

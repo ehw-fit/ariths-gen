@@ -46,6 +46,11 @@ class GeneralCircuit():
 
         return self.pyc(*args)
 
+    def __str__(self):
+        return f"<{type(self).__name__} prefix={self.prefix} " + (", ".join([f"input={i}" for i in self.inputs])) + ">"
+
+        #super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
+
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
 

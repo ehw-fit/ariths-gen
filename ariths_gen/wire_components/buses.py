@@ -76,6 +76,12 @@ class Bus():
             Wire: Returning wire from the bus.
         """
         return self.bus[wire_index]
+        
+    def __getitem__(self, i):
+        return self.bus[i]
+
+    def __getitem__(self, i):
+        return self.get_wire(i)
 
     # Connecting output wire of the inner circuit component to desired position in the described circuit's output bus
     def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):
@@ -99,6 +105,9 @@ class Bus():
         # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+
+    def __setitem__(self, i, v):
+        self.connect(i, v)
 
     def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0):
         """Ensures connection of specified bus wires to this bus wires.
@@ -127,7 +136,7 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}" for w in mapped_positions])
+        return "".join([f"  {self.prefix} = 0\n"] + [f"  {self.prefix} = ({self.prefix}) | {w[1].return_wire_value_python_flat(offset=w[0])}" for w in mapped_positions])
 
     def return_bus_wires_sign_extend_python_flat(self):
         """Sign extends the bus's corresponding Python variable (object) to ensure proper flat Python code variable signedness.
@@ -137,9 +146,12 @@ class Bus():
         """
         if self.signed is True:
             last_bus_wire = self.bus[-1]
-            return "".join([f"  {self.prefix} |= {last_bus_wire.return_wire_value_python_flat(offset=i)}" for i in range(len(self.bus), 64)])
+            return "".join([f"  {self.prefix} = ({self.prefix}) | {last_bus_wire.return_wire_value_python_flat(offset=i)}" for i in range(len(self.bus), 64)])
         else:
             return ""
+
+    def __str__(self):
+        return f"<wire N={self.N} prefix={self.prefix} \"" + (",".join([str(w) for w in self.bus])) + "\">"
 
     """ C CODE GENERATION """
     def get_declaration_c(self):
