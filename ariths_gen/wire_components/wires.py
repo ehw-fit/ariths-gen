@@ -246,6 +246,13 @@ class Wire():
         else:
             return self.prefix
 
+    def __str__(self):
+        if self.is_const():
+            return f"<w={self.c_const}>"
+        elif self.is_buswire():
+            return f"<w={self.prefix}[{self.index}]>"
+        else:
+            return f"<w={self.name}>"
 
 # Wires with constant values #
 class ConstantWireValue0(Wire):
@@ -281,6 +288,7 @@ class ConstantWireValue0(Wire):
         return True
 
 
+
 class ConstantWireValue1(Wire):
     """Class representing wire carrying constant value 1 used to interconnect components.
 
@@ -312,3 +320,4 @@ class ConstantWireValue1(Wire):
             bool: True, because constant wire carries a constant value 1.
         """
         return True
+
