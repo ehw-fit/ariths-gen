@@ -6,6 +6,7 @@ from ariths_gen.multi_bit_circuits.adders import UnsignedRippleCarryAdder
 from ariths_gen.multi_bit_circuits.multipliers import UnsignedArrayMultiplier, UnsignedDaddaMultiplier
 import os
 
+
 class MAC(GeneralCircuit):
     def __init__(self, a: Bus, b: Bus, r: Bus, prefix: str = "", name: str = "mac", **kwargs):
         super().__init__(prefix=prefix, name=name, out_N=2*a.N+1, inputs=[a, b, r], **kwargs)
@@ -15,6 +16,7 @@ class MAC(GeneralCircuit):
         self.mul = self.add_component(UnsignedArrayMultiplier(a=a, b=b, prefix=self.prefix, name=f"u_arrmul{a.N}", inner_component=True))
         self.add = self.add_component(UnsignedRippleCarryAdder(a=r, b=self.mul.out, prefix=self.prefix, name=f"u_rca{r.N}", inner_component=True))
         self.out.connect_bus(connecting_bus=self.add.out)
+
 
 # usage
 if __name__ == "__main__":

@@ -127,7 +127,7 @@ class ThreeInputArithmeticCircuit(GeneralCircuit):
             a=Bus("a"), b=Bus("b"), c=Bus("c")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), c=Bus(
-            N=self.N, prefix="c"), name=circuit_prefix)
+            N=self.N, prefix="c"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declaration_c_hier(self):
@@ -178,7 +178,7 @@ class ThreeInputArithmeticCircuit(GeneralCircuit):
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b"), c=Bus("c")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), c=Bus(N=self.N, prefix="c"), name=circuit_prefix)
+            N=self.N, prefix="b"), c=Bus(N=self.N, prefix="c"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declaration_v_hier(self):
@@ -261,5 +261,5 @@ class ThreeInputArithmeticCircuit(GeneralCircuit):
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b"), c=Bus("c")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), c=Bus(N=self.N, prefix="c"), name=circuit_prefix)
+            N=self.N, prefix="b"), c=Bus(N=self.N, prefix="c"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_blif()}"

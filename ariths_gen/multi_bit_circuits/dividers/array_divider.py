@@ -11,7 +11,6 @@ from ariths_gen.core.arithmetic_circuits import (
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     FullAdder,
-    FullAdderPG,
     TwoOneMultiplexer,
     FullSubtractor
 )

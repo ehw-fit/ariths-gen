@@ -17,7 +17,7 @@ class GeneralCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None, **kwargs):
         if prefix == "":
             self.prefix = name
         else:
@@ -34,6 +34,7 @@ class GeneralCircuit():
         self.signed = signed
         self.c_data_type = "int64_t" if self.signed is True else "uint64_t"
         self.pyc = None  # Python compiled function
+        self.kwargs = kwargs
 
     def __call__(self, *args):
         if not self.pyc:
@@ -49,7 +50,7 @@ class GeneralCircuit():
     def __str__(self):
         return f"<{type(self).__name__} prefix={self.prefix} " + (", ".join([f"input={i}" for i in self.inputs])) + ">"
 
-        #super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
+        # super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
 
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
@@ -166,22 +167,6 @@ class GeneralCircuit():
         all_components = gate_comps + one_bit_comps + multi_bit_comps
         return all_components
 
-    def get_sum_wire(self):
-        """Get output wire carrying sum value.
-
-        Returns:
-           Wire: Return sum wire.
-        """
-        return self.out.get_wire(0)
-
-    def get_carry_wire(self):
-        """Get output wire carrying carry out value.
-
-        Returns:
-           Wire: Return carry out wire.
-        """
-        return self.out.get_wire(1)
-
     def save_wire_id(self, wire: Wire):
         """Returns appropriate wire index position within the circuit.
 
@@ -198,7 +183,7 @@ class GeneralCircuit():
         if wire.is_const():
             return wire.cgp_const
         else:
-            return len([w[0] for w in self.circuit_wires if w[0].is_const() is False]) + 2
+            return len(self.circuit_wires)+2
 
     def get_cgp_wires(self):
         """Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
@@ -208,35 +193,45 @@ class GeneralCircuit():
         Other wires indexes start counting from 2 and up.
         """
         self.circuit_wires = []
+        circuit_wires_names = []
         if isinstance(self.a, Bus):
             [self.circuit_wires.append(
                 (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.a.bus]
             [self.circuit_wires.append(
                 (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.b.bus]
+            [circuit_wires_names.append(w.name) for w in self.a.bus]
+            [circuit_wires_names.append(w.name) for w in self.b.bus]
             if hasattr(self, 'c'):
                 [self.circuit_wires.append(
                     (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.c.bus]
+                [circuit_wires_names.append(w.name) for w in self.c.bus]
         else:
             self.circuit_wires.append(
                 (self.a, f"{self.a.name}", self.save_wire_id(wire=self.a)))
             self.circuit_wires.append(
                 (self.b, f"{self.b.name}", self.save_wire_id(wire=self.b)))
+            circuit_wires_names.append(self.a.name)
+            circuit_wires_names.append(self.b.name)
             if hasattr(self, 'c'):
                 self.circuit_wires.append(
                     (self.c, f"{self.c.name}", self.save_wire_id(wire=self.c)))
+                circuit_wires_names.append(self.c.name)
 
         for gate in self.circuit_gates:
-            if not [item for item in self.circuit_wires if gate.a.name == item[1]]:
+            if gate.a.name not in circuit_wires_names:
                 self.circuit_wires.append(
                     (gate.a, gate.a.name, self.save_wire_id(wire=gate.a)))
+                circuit_wires_names.append(gate.a.name)
 
-            if hasattr(gate, 'b') and not [item for item in self.circuit_wires if gate.b.name == item[1]]:
+            if hasattr(gate, 'b') and gate.b.name not in circuit_wires_names:
                 self.circuit_wires.append(
                     (gate.b, gate.b.name, self.save_wire_id(wire=gate.b)))
+                circuit_wires_names.append(gate.b.name)
 
-            if not [item for item in self.circuit_wires if gate.out.name == item[1]]:
+            if gate.out.name not in circuit_wires_names:
                 self.circuit_wires.append(
                     (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
+                circuit_wires_names.append(gate.out.name)
 
     def get_circuit_wire_index(self, wire: Wire):
         """Searches for circuit's wire unique index position within the circuit. Used for cgp chromosome generation.
@@ -288,8 +283,8 @@ class GeneralCircuit():
             file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
         """
         file_object.write(self.get_prototype_python())
-        #file_object.write(self.out.get_declaration_python())
-        #file_object.write(self.get_declaration_python_flat()+"\n")
+        # file_object.write(self.out.get_declaration_python())
+        # file_object.write(self.get_declaration_python_flat()+"\n")
         file_object.write(self.get_init_python_flat()+"\n")
         file_object.write(self.get_function_out_python_flat())
         file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
@@ -361,8 +356,10 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical C code of all subcomponents function blocks description.
         """
-        # Retrieve all unique component types composing this circuit
+        # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         self.component_types = self.get_component_types()
+        for c in self.component_types:
+            c._parent_kwargs = self.kwargs
         return "".join([c.get_function_block_c() for c in self.component_types])
 
     def get_function_block_c(self):
@@ -374,8 +371,9 @@ class GeneralCircuit():
         # Obtain proper circuit name with its bit width
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        print(self._parent_kwargs)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
@@ -510,8 +508,10 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Verilog code of all subcomponents function blocks description.
         """
-        # Retrieve all unique component types composing this circuit
+        # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         self.component_types = self.get_component_types()
+        for c in self.component_types:
+            c._parent_kwargs = self.kwargs
         return "".join([c.get_function_block_v() for c in self.component_types])
 
     def get_function_block_v(self):
@@ -524,7 +524,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
@@ -699,9 +699,11 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Blif code of all subcomponents function blocks description.
         """
-        # Retrieve all unique component types composing this circuit
+        # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         # (iterating backwards as opposed to other representations so the top modul is always above its subcomponents)
         self.component_types = self.get_component_types()
+        for c in self.component_types:
+            c._parent_kwargs = self.kwargs
         return "\n".join([c.get_function_block_blif() for c in self.component_types[::-1]])
 
     def get_function_block_blif(self):
@@ -714,7 +716,7 @@ class GeneralCircuit():
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix)
+            N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit

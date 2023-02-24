@@ -11,8 +11,7 @@ from ariths_gen.core.arithmetic_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    FullAdder,
-    FullAdderPG
+    FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
@@ -121,7 +120,7 @@ class UnsignedDaddaMultiplier(MultiplierCircuit):
             adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
             adder_a = Bus(prefix=f"a", wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
             adder_b = Bus(prefix=f"b", wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True, **kwargs)
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]
@@ -232,7 +231,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
             adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(len(self.columns)-1)
             adder_a = Bus(prefix=f"a", wires_list=[self.add_column_wire(column=col, bit=0) for col in range(1, len(self.columns))])
             adder_b = Bus(prefix=f"b", wires_list=[self.add_column_wire(column=col, bit=1) for col in range(1, len(self.columns))])
-            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+            final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True, **kwargs)
             self.add_component(final_adder)
 
             [self.out.connect(o, final_adder.out.get_wire(o-1), inserted_wire_desired_index=o-1) for o in range(1, len(self.out.bus))]

@@ -1,12 +1,14 @@
 """
 Support of custom PDK
 
-This file defines functions for generating of full and half adders
-directly on the level of CMOS modules. 
+This file defines functions for generating full and half adders
+directly on the CMOS modules level.
 
-You may add your own modules as in example in set_pdk45_library()
+You may add your own modules as defined in the example below
+(inside `set_pdk45_library()`)
 
-Please call this function before calling get_v_code_XXX()
+NOTE: Please call this function before calling `get_v_code_XXX()` to allow the
+Verilog generation process to take into account the library's specific definitions.
 """
 from .one_bit_circuits import (
     one_bit_components

@@ -13,8 +13,7 @@ from ariths_gen.core.logic_gate_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    FullAdder,
-    FullAdderPG
+    FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,

@@ -11,9 +11,7 @@ from ariths_gen.core.arithmetic_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    PGLogicBlock,
-    FullAdder,
-    FullAdderPG
+    FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
@@ -39,7 +37,7 @@ class CarrySaveAdderComponent(ThreeInputArithmeticCircuit):
 
     The carry save adder component is especially useful when constructing tree multiplier architectures to reduce the propagation delay as opposed to traditional implementation of tree multipliers with half/full adders.
 
-    The circuit is composed of full adders that operate paralelly and each take 3 input operands.
+    The circuit is composed of full adders that operate in parallel and each take 3 input operands.
     The final output bus is composed of sum and carry bits of its corresponding contained full adders.
     ```
           C3 B3 A3   C2 B2 A2   C1 B1 A1   C0 B0 A0
@@ -101,7 +99,7 @@ class UnsignedCarrySaveAdder(ThreeInputArithmeticCircuit):
 
     Unsigned carry save adder represents 3 input N-bit unsigned adder which is composed of
     N one bit full adders, that are not interconnected as in for example the ripple carry adder,
-    but instead operate parallelly.
+    but instead operate in parallel.
 
     The sum and carry bits of the individual full adders are connected to a multi bit adder to sum the final result.
     ```

@@ -3,7 +3,7 @@ from .arithmetic_circuit import (
     ThreeInputArithmeticCircuit
 )
 
-from .general_circuit import (GeneralCircuit )
+from .general_circuit import (GeneralCircuit)
 
 from .multiplier_circuit import (
     MultiplierCircuit
