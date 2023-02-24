@@ -22,7 +22,7 @@ class HalfAdder(TwoInputOneBitCircuit):
         prefix (str, optional): Prefix name of half adder. Defaults to "ha".
     """
     use_verilog_instance = False
-    
+
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "ha"):
         super().__init__(a, b, prefix)
         # 2 wires for component's bus output (sum, cout)
@@ -40,6 +40,22 @@ class HalfAdder(TwoInputOneBitCircuit):
         self.add_component(obj_and)
         self.out.connect(1, obj_and.out)
 
+    def get_sum_wire(self):
+        """Get output wire carrying sum value.
+
+        Returns:
+           Wire: Return sum wire.
+        """
+        return self.out.get_wire(0)
+
+    def get_carry_wire(self):
+        """Get output wire carrying carry out value.
+
+        Returns:
+           Wire: Return carry out wire.
+        """
+        return self.out.get_wire(1)
+
     def get_init_v_flat(self):
         """ support of custom PDK """
         if not self.use_verilog_instance:
@@ -55,7 +71,6 @@ class HalfAdder(TwoInputOneBitCircuit):
             }
         ) + ";\n"
 
-
     def get_self_init_v_hier(self):
         """ support of custom PDK """
         if not self.use_verilog_instance:
@@ -63,7 +78,7 @@ class HalfAdder(TwoInputOneBitCircuit):
 
         unique_out_wires = []
         for o in self.out.bus:
-            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) 
+            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
 
         return "  " + self.use_verilog_instance.format(**{
                 "unit": self.prefix,
@@ -72,6 +87,7 @@ class HalfAdder(TwoInputOneBitCircuit):
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
             }) + ";\n"
+
 
 class PGLogicBlock(TwoInputOneBitCircuit):
     """Class representing two input one bit propagate/generate logic block.

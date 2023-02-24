@@ -10,9 +10,8 @@ from ariths_gen.core.arithmetic_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    PGLogicBlock,
     FullAdder,
-    FullAdderPG
+    PGSumLogic
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
@@ -29,14 +28,20 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
     """Class representing unsigned ripple carry adder with propagate/generate logic.
 
     Unsigned ripple carry adder with PG logic represents slightly different rca implementation
-    of N-bit unsigned adder which is composed of N one bit full adders with P/G logic.
+    of N-bit unsigned adder which is composed of N one bit three input P/G/Sum logic function blocks.
+
+    Each of them generates the P/G signals and contains a XOR gate responsible
+    for the creation of corresponding sum bit. Besides this the Group PG logic is composed
+    of AND and OR gates (basically a GreyCell) for computing the prefixes.
+
+    You can find more info in the book: CMOS VLSI Design
 
     ```
       B3 A3         B2 A2       B1 A1       B0 A0
       │  │          │  │        │  │        │  │
     ┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
     │  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
-    │  FA  │◄────┐│  FA  │◄──┐│  FA  │◄──┐│  FA  │◄──0
+    │  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
     │      │     ││      │   ││      │   ││      │
     └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
       │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
@@ -44,10 +49,10 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
       │ │          Group PG logic                │
       │ │                                        │
       │ └─┬───────┬──────────┬──────────┬────────┘
-      │   │       │          │          │
+      │   │S3     │S2        │S1        │S0
     ┌─▼───▼───────▼──────────▼──────────▼────────┐
-    │                Sum logic                   │
-    │                                            │
+    │                Sum + Cout                  │
+    │                  logic                     │
     └┬────┬───────┬──────────┬──────────┬────────┘
      │    │       │          │          │
      ▼    ▼       ▼          ▼          ▼
@@ -74,9 +79,9 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
         for input_index in range(self.N):
             if input_index == 0:
                 # First full adder with connected constant wire with value 0 as cin 0
-                obj_pg_fa = FullAdderPG(self.a.get_wire(input_index), self.b.get_wire(input_index), ConstantWireValue0(), prefix=self.prefix+"_pg_fa"+str(input_index))
+                obj_pg_fa = PGSumLogic(self.a.get_wire(input_index), self.b.get_wire(input_index), ConstantWireValue0(), prefix=self.prefix+"_pg_sum"+str(input_index))
             else:
-                obj_pg_fa = FullAdderPG(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().out, prefix=self.prefix+"_pg_fa"+str(input_index))
+                obj_pg_fa = PGSumLogic(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().out, prefix=self.prefix+"_pg_sum"+str(input_index))
 
             self.add_component(obj_pg_fa)
             self.out.connect(input_index, obj_pg_fa.get_sum_wire())
@@ -95,15 +100,22 @@ class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
     """Class representing signed ripple carry adder with propagate/generate logic.
 
     Signed ripple carry adder with PG logic represents slightly different rca implementation
-    of N-bit signed adder which is composed of N one bit full adders with P/G logic.
+    of N-bit signed adder which is composed of N one bit three input P/G/Sum logic function blocks.
+
+    Each of them generates the P/G signals and contains a XOR gate responsible
+    for the creation of corresponding sum bit. Besides this the Group PG logic is composed
+    of AND and OR gates (basically a GreyCell) for computing the prefixes.
+
     At last XOR gates are used to ensure proper sign extension.
+
+    You can find more info in the book: CMOS VLSI Design
 
     ```
       B3 A3         B2 A2       B1 A1       B0 A0
       │  │          │  │        │  │        │  │
     ┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
     │  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
-    │  FA  │◄────┐│  FA  │◄──┐│  FA  │◄──┐│  FA  │◄──0
+    │  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
     │      │     ││      │   ││      │   ││      │
     └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
       │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
@@ -111,9 +123,9 @@ class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
       │ │          Group PG logic                │
       │ │                                        │
       │ └─┬───────┬──────────┬──────────┬────────┘
-      │   │       │          │          │
+      │   │S3     │S2        │S1        │S0
     ┌─▼───▼───────▼──────────▼──────────▼────────┐
-    │                Sum logic                   │
+    │            Sum + Cout logic                │
     │           with sign extension              │
     └┬────┬───────┬──────────┬──────────┬────────┘
      │    │       │          │          │

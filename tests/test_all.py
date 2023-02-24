@@ -16,6 +16,24 @@ from ariths_gen.multi_bit_circuits.adders import (
     SignedRippleCarryAdder,
     UnsignedCarrySkipAdder,
     SignedCarrySkipAdder,
+    UnsignedKoggeStoneAdder,
+    SignedKoggeStoneAdder,
+    UnsignedBrentKungAdder,
+    SignedBrentKungAdder,
+    UnsignedSklanskyAdder,
+    SignedSklanskyAdder,
+    UnsignedHanCarlsonAdder,
+    SignedHanCarlsonAdder,
+    UnsignedLadnerFischerAdder,
+    SignedLadnerFischerAdder,
+    UnsignedKnowlesAdder,
+    SignedKnowlesAdder,
+    UnsignedCarrySelectAdder,
+    SignedCarrySelectAdder,
+    UnsignedConditionalSumAdder,
+    SignedConditionalSumAdder,
+    UnsignedCarryIncrementAdder,
+    SignedCarryIncrementAdder
 )
 
 from ariths_gen.multi_bit_circuits.multipliers import (
@@ -46,9 +64,10 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     NotGate
 )
 import numpy as np
+import math
 
 
-def test_unsigned_approxmul(values = False):
+def test_unsigned_approxmul(values=False):
     """ Test unsigned approximate multipliers """
     N = 7
     a = Bus(N=N, prefix="a")
@@ -56,21 +75,21 @@ def test_unsigned_approxmul(values = False):
     av = np.arange(2**N)
     bv = av.reshape(-1, 1)
     expected = av * bv
-    
-    for c in [UnsignedBrokenArrayMultiplier, UnsignedBrokenCarrySaveMultiplier, UnsignedTruncatedArrayMultiplier, UnsignedTruncatedCarrySaveMultiplier]:    
+
+    for c in [UnsignedBrokenArrayMultiplier, UnsignedBrokenCarrySaveMultiplier, UnsignedTruncatedArrayMultiplier, UnsignedTruncatedCarrySaveMultiplier]:
         if c == UnsignedTruncatedArrayMultiplier or c == UnsignedTruncatedCarrySaveMultiplier:
             mul = c(a=a, b=b, truncation_cut=2)
         elif c == UnsignedBrokenArrayMultiplier or c == UnsignedBrokenCarrySaveMultiplier:
             mul = c(a=a, b=b, horizontal_cut=1, vertical_cut=2)
     r = mul(av, bv)
-    
+
     # WCE – worst case error; used for approximate multiplier error measurement
     WCE = np.amax(abs(np.subtract(r, expected)))
-    
+
     # WCRE – worst case relative error; used for approximate multiplier error measurement
     np.seterr(divide='ignore', invalid='ignore')
     WCRE = np.max(np.nan_to_num(abs(np.subtract(r, expected)) / expected))
-    
+
     if isinstance(mul, UnsignedTruncatedArrayMultiplier) or isinstance(mul, UnsignedTruncatedCarrySaveMultiplier):
         # WCE_TM(n,k) = (2^k - 1) * (2^(n+1) - 2^k - 1)
         expected_WCE = (2 ** mul.truncation_cut - 1) * (2 ** (mul.a.N+1) - 2 ** mul.truncation_cut - 1)
@@ -85,6 +104,7 @@ def test_unsigned_approxmul(values = False):
     if values is True:
         np.testing.assert_array_equal(expected, r)
 
+
 def test_unsigned_mul():
     """ Test unsigned multipliers """
     N = 7
@@ -94,16 +114,59 @@ def test_unsigned_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [UnsignedDaddaMultiplier, UnsignedArrayMultiplier, UnsignedCarrySaveMultiplier, UnsignedWallaceMultiplier]:
+    # No configurability
+    for c in [UnsignedArrayMultiplier]:
         mul = c(a, b)
         assert mul(0, 0) == 0
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
-    # For array wallace tree implementation
-    mul = UnsignedWallaceMultiplier(a, b, use_csa=False)
-    assert mul(0, 0) == 0
-    r = mul(av, bv)
-    np.testing.assert_array_equal(expected, r)
+
+    # Configurable PPA
+    for c in [UnsignedDaddaMultiplier, UnsignedCarrySaveMultiplier, UnsignedWallaceMultiplier]:
+        # Non configurable multi-bit adders
+        for ppa in [UnsignedPGRippleCarryAdder, UnsignedRippleCarryAdder, UnsignedConditionalSumAdder, UnsignedKoggeStoneAdder, UnsignedBrentKungAdder, UnsignedSklanskyAdder]:
+            # Test first the array wallace tree implementation (using more HAs/FAs than CSA implementation)
+            if c == UnsignedWallaceMultiplier:
+                mul = c(a, b, unsigned_adder_class_name=ppa, use_csa=False)
+                assert mul(0, 0) == 0
+                r = mul(av, bv)
+                np.testing.assert_array_equal(expected, r)
+
+            mul = c(a, b, unsigned_adder_class_name=ppa)
+            assert mul(0, 0) == 0
+            r = mul(av, bv)
+            np.testing.assert_array_equal(expected, r)
+
+        # Multi-bit adders with configurable (uniform) logic blocks for parallel prefix computation (the ppa will use the block_size argument it recognizes, others are ignored)
+        for ppa in [UnsignedCarryLookaheadAdder, UnsignedCarrySkipAdder, UnsignedCarrySelectAdder, UnsignedCarryIncrementAdder]:
+            for i in range(1, N+1):
+                # Test first the array wallace tree implementation (using more HAs/FAs than CSA implementation)
+                if c == UnsignedWallaceMultiplier:
+                    mul = c(a, b, unsigned_adder_class_name=ppa, use_csa=False, cla_block_size=i, bypass_block_size=i, select_block_size=i, increment_block_size=i)
+                    assert mul(0, 0) == 0
+                    r = mul(av, bv)
+                    np.testing.assert_array_equal(expected, r)
+
+                mul = c(a, b, unsigned_adder_class_name=ppa, cla_block_size=i, bypass_block_size=i, select_block_size=i, increment_block_size=i)
+                assert mul(0, 0) == 0
+                r = mul(av, bv)
+                np.testing.assert_array_equal(expected, r)
+
+        # Multi-bit tree adders with configurable structure based on input bit width (NOTE for showcase here, the second config would be applicable from bit width 9 onward; not tested here for the sake of saving deployment testing time)
+        for adder in [UnsignedHanCarlsonAdder, UnsignedKnowlesAdder, UnsignedLadnerFischerAdder]:
+            for i in range(1, N+1):
+                # Test first the array wallace tree implementation (using more HAs/FAs than CSA implementation)
+                if c == UnsignedWallaceMultiplier:
+                    mul = c(a, b, unsigned_adder_class_name=ppa, use_csa=False, config_choice=1)
+                    assert mul(0, 0) == 0
+                    r = mul(av, bv)
+                    np.testing.assert_array_equal(expected, r)
+
+                mul = c(a, b, unsigned_adder_class_name=ppa, config_choice=1)
+                assert mul(0, 0) == 0
+                r = mul(av, bv)
+                np.testing.assert_array_equal(expected, r)
+
 
 def test_signed_mul():
     """ Test signed multipliers """
@@ -114,44 +177,119 @@ def test_signed_mul():
     bv = av.reshape(-1, 1)
     expected = av * bv
 
-    for c in [SignedDaddaMultiplier, SignedArrayMultiplier, SignedWallaceMultiplier, SignedCarrySaveMultiplier]:
+    # No configurability
+    for c in [SignedArrayMultiplier]:
         mul = c(a, b)
-        r = mul(av, bv)
         assert mul(0, 0) == 0
+        r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
-    # For array wallace tree implementation
-    mul = SignedWallaceMultiplier(a, b, use_csa=False)
-    r = mul(av, bv)
-    assert mul(0, 0) == 0
-    np.testing.assert_array_equal(expected, r)
+
+    # Configurable PPA
+    for c in [SignedDaddaMultiplier, SignedCarrySaveMultiplier, SignedWallaceMultiplier]:
+        # Non configurable multi-bit adders
+        for ppa in [UnsignedPGRippleCarryAdder, UnsignedRippleCarryAdder, UnsignedConditionalSumAdder, UnsignedKoggeStoneAdder, UnsignedBrentKungAdder, UnsignedSklanskyAdder]:
+            # Test first the array wallace tree implementation (using more HAs/FAs than CSA implementation)
+            if c == UnsignedWallaceMultiplier:
+                mul = c(a, b, unsigned_adder_class_name=ppa, use_csa=False)
+                assert mul(0, 0) == 0
+                r = mul(av, bv)
+                np.testing.assert_array_equal(expected, r)
+
+            mul = c(a, b, unsigned_adder_class_name=ppa)
+            assert mul(0, 0) == 0
+            r = mul(av, bv)
+            np.testing.assert_array_equal(expected, r)
+
+        # Multi-bit adders with configurable (uniform) logic blocks for parallel prefix computation (the ppa will use the block_size argument it recognizes, others are ignored)
+        for ppa in [UnsignedCarryLookaheadAdder, UnsignedCarrySkipAdder, UnsignedCarrySelectAdder, UnsignedCarryIncrementAdder]:
+            for bs in range(1, N+1):
+                # Test first the array wallace tree implementation (using more HAs/FAs than CSA implementation)
+                if c == UnsignedWallaceMultiplier:
+                    mul = c(a, b, unsigned_adder_class_name=ppa, use_csa=False, cla_block_size=bs, bypass_block_size=bs, select_block_size=bs, increment_block_size=bs)
+                    assert mul(0, 0) == 0
+                    r = mul(av, bv)
+                    np.testing.assert_array_equal(expected, r)
+
+                mul = c(a, b, unsigned_adder_class_name=ppa, cla_block_size=bs, bypass_block_size=bs, select_block_size=bs, increment_block_size=bs)
+                assert mul(0, 0) == 0
+                r = mul(av, bv)
+                np.testing.assert_array_equal(expected, r)
+
+        # Multi-bit tree adders with configurable structure based on input bit width (NOTE for showcase here, the second config would be applicable from bit width 9 onward; not tested here for the sake of saving deployment testing time)
+        for adder in [UnsignedHanCarlsonAdder, UnsignedKnowlesAdder, UnsignedLadnerFischerAdder]:
+            for i in range(1, N+1):
+                # Test first the array wallace tree implementation (using more HAs/FAs than CSA implementation)
+                if c == UnsignedWallaceMultiplier:
+                    mul = c(a, b, unsigned_adder_class_name=ppa, use_csa=False, config_choice=1)
+                    assert mul(0, 0) == 0
+                    r = mul(av, bv)
+                    np.testing.assert_array_equal(expected, r)
+
+                mul = c(a, b, unsigned_adder_class_name=ppa, config_choice=1)
+                assert mul(0, 0) == 0
+                r = mul(av, bv)
+                np.testing.assert_array_equal(expected, r)
+
 
 def test_unsigned_add():
     """ Test unsigned adders """
-    N = 7
+    N = 9
     a = Bus(N=N, prefix="a")
     b = Bus(N=N, prefix="b")
     av = np.arange(2**N)
     bv = av.reshape(-1, 1)
     expected = av + bv
 
-    for c in [UnsignedCarryLookaheadAdder, UnsignedPGRippleCarryAdder, UnsignedRippleCarryAdder, UnsignedCarrySkipAdder]:
-        mul = c(a, b)
-        r = mul(av, bv)
+    # Non configurable multi-bit adders
+    for c in [UnsignedPGRippleCarryAdder, UnsignedRippleCarryAdder, UnsignedConditionalSumAdder, UnsignedKoggeStoneAdder, UnsignedBrentKungAdder, UnsignedSklanskyAdder]:
+        add = c(a, b)
+        r = add(av, bv)
         np.testing.assert_array_equal(expected, r)
+
+    # Multi-bit adders with configurable (uniform) logic blocks for parallel prefix computation (the adder will use the block_size argument it recognizes, others are ignored)
+    for c in [UnsignedCarryLookaheadAdder, UnsignedCarrySkipAdder, UnsignedCarrySelectAdder, UnsignedCarryIncrementAdder]:
+        for bs in range(1, N+1):
+            add = c(a, b, cla_block_size=bs, bypass_block_size=bs, select_block_size=bs, increment_block_size=bs)
+            r = add(av, bv)
+            np.testing.assert_array_equal(expected, r)
+
+    # Multi-bit tree adders with configurable structure based on input bit width (2 configs tested here for the 9-bitwidth input)
+    for c in [UnsignedHanCarlsonAdder, UnsignedKnowlesAdder, UnsignedLadnerFischerAdder]:
+        for config in range(1, (math.ceil(math.log(N, 2))-2)+1):
+            add = c(a, b, config_choice=config)
+            r = add(av, bv)
+            np.testing.assert_array_equal(expected, r)
+
 
 def test_signed_add():
     """ Test signed adders """
-    N = 7
+    N = 9
     a = Bus(N=N, prefix="a")
     b = Bus(N=N, prefix="b")
     av = np.arange(-(2**(N-1)), 2**(N-1))
     bv = av.reshape(-1, 1)
     expected = av + bv
 
-    for c in [SignedCarryLookaheadAdder, SignedPGRippleCarryAdder, SignedRippleCarryAdder, SignedCarrySkipAdder]:
-        mul = c(a, b)
-        r = mul(av, bv)
+    # Non configurable multi-bit adders
+    for c in [SignedPGRippleCarryAdder, SignedRippleCarryAdder, SignedConditionalSumAdder, SignedKoggeStoneAdder, SignedBrentKungAdder, SignedSklanskyAdder]:
+        add = c(a, b)
+        r = add(av, bv)
         np.testing.assert_array_equal(expected, r)
+
+    # Multi-bit adders with configurable (uniform) logic blocks for parallel prefix computation (the adder will use the block_size argument it recognizes, others are ignored)
+    for c in [SignedCarryLookaheadAdder, SignedCarrySkipAdder, SignedCarrySelectAdder, SignedCarryIncrementAdder]:
+        for bs in range(1, N+1):
+            add = c(a, b, cla_block_size=bs, bypass_block_size=bs, select_block_size=bs, increment_block_size=bs)
+            r = add(av, bv)
+            np.testing.assert_array_equal(expected, r)
+
+    # Multi-bit tree adders with configurable structure based on input bit width (2 configs tested here for the 9-bitwidth input)
+    for c in [SignedHanCarlsonAdder, SignedKnowlesAdder, SignedLadnerFischerAdder]:
+        for config in range(1, (math.ceil(math.log(N, 2))-2)+1):
+            add = c(a, b, config_choice=config)
+            r = add(av, bv)
+            np.testing.assert_array_equal(expected, r)
+
 
 def test_mac():
     class MAC(GeneralCircuit):
@@ -175,10 +313,11 @@ def test_mac():
     expected = (av * bv) + cv
     np.testing.assert_array_equal(r, expected)
 
+
 def test_direct():
     class err_circuit(GeneralCircuit):
         def __init__(self, prefix: str = "", name: str = "adder", inner_component: bool = True, a: Bus = Bus(), b: Bus = Bus()):
-            super().__init__(prefix = prefix, name=name, out_N = (a.N + 1), inner_component=inner_component, inputs = [a, b])
+            super().__init__(prefix=prefix, name=name, out_N=(a.N + 1), inner_component=inner_component, inputs=[a, b])
             self.N = 1
             self.prefix = prefix
             self.a = Bus(prefix=a.prefix, wires_list=a.bus)
@@ -187,19 +326,18 @@ def test_direct():
 
             a_0 = self.a[0]
             b_0 = self.b.get_wire(0)
-            
+
             or_1 = OrGate(a_0, b_0, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)), parent_component=self)
             self.add_component(or_1)
 
             self.out.connect(0, a_0)
             self.out.connect(1, or_1.out)
 
-
     av = np.arange(0, 4).reshape(1, -1)
     bv = np.arange(0, 4).reshape(-1, 1)
-    example = err_circuit(prefix = "err_circuit", a = Bus("a", 2) , b = Bus("b", 2))
+    example = err_circuit(prefix="err_circuit", a=Bus("a", 2), b=Bus("b", 2))
 
     r = example(av, bv)
-    expected = np.array([[0, 3, 0, 3], [2, 3 ,2, 3], [0, 3, 0, 3], [2, 3, 2, 3]])
+    expected = np.array([[0, 3, 0, 3], [2, 3, 2, 3], [0, 3, 0, 3], [2, 3, 2, 3]])
     np.testing.assert_equal(r, expected)
     print(r)

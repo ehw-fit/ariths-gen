@@ -76,7 +76,7 @@ class Bus():
             Wire: Returning wire from the bus.
         """
         return self.bus[wire_index]
-        
+
     def __getitem__(self, i):
         return self.bus[i]
 

@@ -255,6 +255,7 @@ class Wire():
         else:
             return f"<w={self.name}>"
 
+
 # Wires with constant values #
 class ConstantWireValue0(Wire):
     """Class representing wire carrying constant value 0 used to interconnect components.
@@ -289,7 +290,6 @@ class ConstantWireValue0(Wire):
         return True
 
 
-
 class ConstantWireValue1(Wire):
     """Class representing wire carrying constant value 1 used to interconnect components.
 
@@ -321,4 +321,3 @@ class ConstantWireValue1(Wire):
             bool: True, because constant wire carries a constant value 1.
         """
         return True
-

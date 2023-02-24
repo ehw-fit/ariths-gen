@@ -10,8 +10,7 @@ from ariths_gen.core.arithmetic_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    FullAdder,
-    FullAdderPG
+    FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
@@ -192,7 +191,7 @@ class SignedArrayMultiplier(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_arrmul", **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
-        
+
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)

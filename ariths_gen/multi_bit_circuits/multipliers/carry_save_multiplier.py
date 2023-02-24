@@ -10,8 +10,7 @@ from ariths_gen.core.arithmetic_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    FullAdder,
-    FullAdderPG
+    FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
@@ -145,7 +144,7 @@ class UnsignedCarrySaveMultiplier(MultiplierCircuit):
         adder_a = Bus(prefix=f"a", wires_list=previous_sums)
         adder_b = Bus(prefix=f"b", wires_list=previous_carries)
 
-        final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+        final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True, **kwargs)
         self.add_component(final_adder)
         [self.out.connect(o, final_adder.out.get_wire(o-self.N), inserted_wire_desired_index=o-self.N) for o in range(self.N, len(self.out.bus))]
 
@@ -280,6 +279,6 @@ class SignedCarrySaveMultiplier(MultiplierCircuit):
         adder_a = Bus(prefix=f"a", wires_list=previous_sums)
         adder_b = Bus(prefix=f"b", wires_list=previous_carries)
 
-        final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
+        final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True, **kwargs)
         self.add_component(final_adder)
         self.out.connect_bus(connecting_bus=final_adder.out, end_connection_pos=final_adder.out.N-1, offset=(-self.N))

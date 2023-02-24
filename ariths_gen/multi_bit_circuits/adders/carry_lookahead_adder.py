@@ -13,9 +13,9 @@ from ariths_gen.core.logic_gate_circuits import (
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
-    PGLogicBlock,
     FullAdder,
-    FullAdderPG
+    FullAdderPG,
+    PGLogicBlock
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
@@ -48,7 +48,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘   └─┬┬┬──┘
       │││G3P3S3  │││G2P2S2  │││G1P1S1  │││G0P0S0
     ┌─▼▼▼────────▼▼▼────────▼▼▼────────▼▼▼──┐
-    │         Carry Lookahead logic         │
+    │     Carry Lookahead logic block       │
     │                                       │
     └┬────┬───────┬──────────┬──────────┬───┘
      │    │       │          │          │
@@ -73,73 +73,56 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
+        assert cla_block_size > 0, "Block size of the individual cla groups must be greater than 0."
+
         # To signify current number of blocks and number of bits that remain to be added into function blocks
-        N_blocks = 0
+        block_n = 0
         N_wires = self.N
         cin = ConstantWireValue0()
-
         while N_wires != 0:
-            # Lists containing all propagate/generate wires
-            self.propagate = []
-            self.generate = []
+            # Lists containing all propagate/generate wires for the current cla block
+            propagate_sig = []
+            generate_sig = []
             # Cin0 used as a first generate wire for obtaining next carry bits
-            self.generate.append(cin)
+            generate_sig.append(cin)
             block_size = cla_block_size if N_wires >= cla_block_size else N_wires
 
             # Gradual addition of propagate/generate logic blocks and AND/OR gates for Cout bits generation, XOR gates for Sum bits generation
             for i in range(block_size):
-                pg_block = PGLogicBlock(self.a.get_wire((N_blocks*cla_block_size)+i), self.b.get_wire((N_blocks*cla_block_size)+i), prefix=self.prefix+"_pg_logic"+str(self.get_instance_num(cls=PGLogicBlock)))
-                self.propagate.append(pg_block.get_propagate_wire())
-                self.generate.append(pg_block.get_generate_wire())
+                pg_block = PGLogicBlock(self.a.get_wire((block_n*cla_block_size)+i), self.b.get_wire((block_n*cla_block_size)+i), prefix=self.prefix+"_pg_logic"+str(self.get_instance_num(cls=PGLogicBlock)))
+                propagate_sig.append(pg_block.get_propagate_wire())
+                generate_sig.append(pg_block.get_generate_wire())
                 self.add_component(pg_block)
 
-                if i == 0 and N_blocks == 0:
-                    obj_sum_xor = XorGate(pg_block.get_sum_wire(), cin, prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
-                    self.add_component(obj_sum_xor)
-                    self.out.connect(i+(N_blocks*cla_block_size), obj_sum_xor.out)
+                self.add_component(XorGate(pg_block.get_sum_wire(), cin, prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self))
+                self.out.connect(i+(block_n*cla_block_size), self.get_previous_component().out)
 
-                    # Carry propagation calculation
-                    obj_and = AndGate(self.propagate[(N_blocks*cla_block_size)+i], self.generate[(N_blocks*cla_block_size)+i], prefix=self.prefix+"_and"+str(self.get_instance_num(cls=AndGate)), parent_component=self)
-                    self.add_component(obj_and)
+                # List of AND gates outputs that are later combined in a multi-bit OR gate
+                composite_or_gates_inputs = []
+                for g_index in range(len(generate_sig)-1):
+                    composite_wires = []
+                    # Getting a list of wires used for current bit position cout composite AND gate's generation
+                    # E.g. for Cout2 = G1 + G0·P1 C0·P0·P1 it gets a list containing [C0,P0,P1] then [G0,P1]
+                    composite_wires.append(generate_sig[g_index])
+                    for p_index in range(len(propagate_sig)-1, g_index-1, -1):
+                        composite_wires.append(propagate_sig[p_index])
 
-                    # Carry bit generation
-                    obj_cout_or = OrGate(pg_block.get_generate_wire(), self.get_previous_component().out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
-                    self.add_component(obj_cout_or)
-                else:
-                    obj_sum_xor = XorGate(pg_block.get_sum_wire(), self.get_previous_component(2).out, prefix=self.prefix+"_xor"+str(self.get_instance_num(cls=XorGate)), parent_component=self)
-                    self.add_component(obj_sum_xor)
-                    self.out.connect(i+(N_blocks*cla_block_size), obj_sum_xor.out)
+                    # For each pg pair values algorithmically combine two input AND gates to replace multiple input gates (resolves fan-in issue)
+                    pg_wires = Bus(wires_list=composite_wires)
+                    multi_bit_and_gate = MultipleInputLogicGate(a=pg_wires, two_input_gate_cls=AndGate, prefix=self.prefix+"_and", parent_component=self)
+                    composite_or_gates_inputs.append(multi_bit_and_gate.out)
 
-                    # List of AND gates outputs that are later combined in a multi-bit OR gate
-                    composite_or_gates_inputs = []
-
-                    for g_index in range(len(self.generate)-1):
-                        composite_wires = []
-                        # Getting a list of wires used for current bit position cout composite AND gate's generation
-                        # E.g. for Cout2 = G1 + G0·P1 C0·P0·P1 it gets a list containing [C0,P0,P1] then [G0,P1]
-                        composite_wires.append(self.generate[g_index])
-                        for p_index in range(len(self.propagate)-1, g_index-1, -1):
-                            composite_wires.append(self.propagate[p_index])
-
-                        # For each pg pair values algorithmically combine two input AND gates to replace multiple input gates (resolves fan-in issue)
-                        pg_wires = Bus(wires_list=composite_wires)
-                        multi_bit_and_gate = MultipleInputLogicGate(a=pg_wires, two_input_gate_cls=AndGate, prefix=self.prefix+"_and", parent_component=self)
-                        composite_or_gates_inputs.append(multi_bit_and_gate.out)
-
-                    # Final OR gates cascade using generated AND gates output wires
-                    composite_or_wires = Bus(wires_list=composite_or_gates_inputs)
-                    multi_bit_or_gate = MultipleInputLogicGate(a=composite_or_wires, two_input_gate_cls=OrGate, prefix=self.prefix+"_or", parent_component=self)
-
-                    # Carry bit generation
-                    obj_cout_or = OrGate(pg_block.get_generate_wire(), multi_bit_or_gate.out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
-                    self.add_component(obj_cout_or)
-
-            # Updating cin for the the next bypass block
-            # Also updating cout value which is used as cin for the first adder of the next block
-            cin = obj_cout_or.out
+                # Final OR gates cascade using generated AND gates output wires
+                composite_or_wires = Bus(wires_list=composite_or_gates_inputs)
+                multi_bit_or_gate = MultipleInputLogicGate(a=composite_or_wires, two_input_gate_cls=OrGate, prefix=self.prefix+"_or", parent_component=self)
+                # Carry bit generation
+                obj_cout_or = OrGate(pg_block.get_generate_wire(), multi_bit_or_gate.out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
+                self.add_component(obj_cout_or)
+                # Updating cin for the the next cla block/sum XOR
+                cin = obj_cout_or.out
 
             N_wires -= block_size
-            N_blocks += 1
+            block_n += 1
 
         # Connection of final Cout
         self.out.connect(self.N, cin)

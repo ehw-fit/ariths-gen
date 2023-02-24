@@ -52,6 +52,22 @@ class FullAdder(ThreeInputOneBitCircuit):
 
         self.out.connect(1, obj_or.out)
 
+    def get_sum_wire(self):
+        """Get output wire carrying sum value.
+
+        Returns:
+           Wire: Return sum wire.
+        """
+        return self.out.get_wire(0)
+
+    def get_carry_wire(self):
+        """Get output wire carrying carry out value.
+
+        Returns:
+           Wire: Return carry out wire.
+        """
+        return self.out.get_wire(1)
+
     def get_init_v_flat(self):
         """ support of custom PDK """
         if not self.use_verilog_instance:
@@ -68,7 +84,6 @@ class FullAdder(ThreeInputOneBitCircuit):
             }
         ) + ";\n"
 
-        
     def get_self_init_v_hier(self):
         """ support of custom PDK """
         if not self.use_verilog_instance:
@@ -76,7 +91,7 @@ class FullAdder(ThreeInputOneBitCircuit):
 
         unique_out_wires = []
         for o in self.out.bus:
-            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) 
+            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
 
         return "  " + self.use_verilog_instance.format(**{
                 "unit": self.prefix,
@@ -87,8 +102,87 @@ class FullAdder(ThreeInputOneBitCircuit):
                 "wireyc": unique_out_wires[1],
             }) + ";\n"
 
-class FullAdderPG(ThreeInputOneBitCircuit):
-    """Class representing modified three input one bit full adder with propagate/generate logic.
+
+class FullAdderP(FullAdder, ThreeInputOneBitCircuit):
+    """Class representing three input one bit full adder with additional output wire for P signal.
+
+    ```
+        ┌──────┐
+    ───►│      ├─► Sum
+    ───►│      ├─► Cout
+    ───►│      ├─► P
+        └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
+        prefix (str, optional): Prefix name of full adder with p logic. Defaults to "fa_p".
+    """
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa_p"):
+        super().__init__(a, b, c, prefix)
+        # 3 wires for component's bus output (sum, cout, propagate)
+        self.out.bus_extend(3)
+        self.out.connect(2, self.get_previous_component(5).out)
+
+    def get_propagate_wire(self):
+        """Get output wire carrying propagate value.
+
+        Returns:
+            Wire: Return propagate wire.
+        """
+        return self.out.get_wire(2)
+
+
+class FullAdderPG(FullAdder, ThreeInputOneBitCircuit):
+    """Class representing three input one bit full adder with additional output wires for P and G signals.
+
+    ```
+        ┌──────┐
+    ───►│      ├─► Sum
+    ───►│      ├─► Cout
+    ───►│      ├─► P
+        │      ├─► G
+        └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire. Defaults to Wire(name="a").
+        b (Wire, optional): Second input wire. Defaults to Wire(name="b").
+        c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
+        prefix (str, optional): Prefix name of full adder with pg logic. Defaults to "fa_pg".
+    """
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa_pg"):
+        super().__init__(a, b, c, prefix)
+        # 4 wires for component's bus output (sum, cout, propagate, generate)
+        self.out.bus_extend(4)
+        self.out.connect(2, self.get_previous_component(5).out)
+        self.out.connect(3, self.get_previous_component(4).out)
+
+    def get_propagate_wire(self):
+        """Get output wire carrying propagate value.
+
+        Returns:
+            Wire: Return propagate wire.
+        """
+        return self.out.get_wire(2)
+
+    def get_generate_wire(self):
+        """Get output wire carrying generate value.
+
+        Returns:
+            Wire: Return generate wire.
+        """
+        return self.out.get_wire(3)
+
+
+class PGSumLogic(ThreeInputOneBitCircuit):
+    """Class represents a three input function block that contains logic for obtaining the propagate/generate/sum signals.
 
     ```
         ┌──────┐
@@ -104,9 +198,9 @@ class FullAdderPG(ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
-        prefix (str, optional): Prefix name of full adder with pg logic. Defaults to "pg_fa".
+        prefix (str, optional): Prefix name of pg sum logic. Defaults to "pg_sum".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "pg_fa"):
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "pg_sum"):
         super().__init__(a, b, c, prefix)
         # 3 wires for component's bus output (sum, propagate, generate)
         self.out = Bus(self.prefix+"_out", 3)
@@ -193,6 +287,14 @@ class TwoOneMultiplexer(ThreeInputOneBitCircuit):
         # Connection of MUX output wire
         self.out.connect(0, xor_obj.out)
 
+    def get_mux_out_wire(self):
+        """Get multiplexer output wire.
+
+        Returns:
+           Wire: Return multiplexer out wire.
+        """
+        return self.out.get_wire(0)
+
 
 class FullSubtractor(ThreeInputOneBitCircuit):
     """Class representing three input one bit full subtractor.
@@ -258,3 +360,43 @@ class FullSubtractor(ThreeInputOneBitCircuit):
            Wire: Return borrow out wire.
         """
         return self.out.get_wire(1)
+
+
+class GreyCell(ThreeInputOneBitCircuit):
+    """Class representing three input grey cell used in parallel prefix adders inside the PG (parallel prefix computation) logic.
+
+    Grey cell is based on a notation used in the book CMOS VLSI Design (please refer to the book for more details not deducible from the code itself).
+    ```
+        ┌──────┐
+    ───►│      │
+    ───►│      ├─► Generate
+    ───►│      │
+        └──────┘
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Wire, optional): First input wire, represents generate signal from the current stage. Defaults to Wire(name="g1").
+        b (Wire, optional): Second input wire, represents propagate signal from the current stage. Defaults to Wire(name="p1").
+        c (Wire, optional): Third input wire, represents generate signal from a preceding stage. Defaults to Wire(name="g0").
+        prefix (str, optional): Prefix name of grey cell. Defaults to "gc".
+    """
+    def __init__(self, a: Wire = Wire(name="g1"), b: Wire = Wire(name="p1"), c: Wire = Wire(name="g0"), prefix: str = "gc"):
+        super().__init__(a, b, c, prefix)
+        # 1 wire for component's bus output (output generate)
+        self.out = Bus(self.prefix+"_out", 1)
+
+        # Create/propagate the generate signal
+        self.add_component(AndGate(a=self.b, b=self.c, prefix=self.prefix+"_and"+str(self.get_instance_num(cls=AndGate)), parent_component=self))
+        self.add_component(OrGate(a=self.a, b=self.get_previous_component().out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate)), parent_component=self))
+        # Connection of the generate output wire
+        self.out.connect(0, self.get_previous_component().out)
+
+    def get_generate_wire(self):
+        """Get output wire carrying generate value.
+
+        Returns:
+           Wire: Return generate wire.
+        """
+        return self.out.get_wire(0)
