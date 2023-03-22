@@ -86,19 +86,24 @@ class GeneralCircuit():
         else:
             return sum(isinstance(c, cls) for c in self.components)
 
-    def get_circuit_gates(self):
+    def get_circuit_gates(self, verilog_output: bool = False):
         """Gets a list of all the logic gates in circuit that should be generated.
 
+        Args:
+            verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.
         Returns:
             list: List of composite logic gates.
         """
         gates = []
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
-                if c.disable_generation is False:
+                if c.disable_generation is False and (verilog_output is False or (hasattr(self, "use_verilog_instance") and self.use_verilog_instance is False)) or hasattr(self, "use_verilog_instance") is False:
                     gates.append(c)
             else:
-                gates.extend((c.get_circuit_gates()))
+                # Check whether it is necessary to use gates for the Verilog component
+                # description (ArithsGen internally defined comp) or not (technology specific instance)
+                if verilog_output is False or (hasattr(c, "use_verilog_instance") and c.use_verilog_instance is False) or hasattr(c, "use_verilog_instance") is False:
+                    gates.extend((c.get_circuit_gates(verilog_output)))
         return gates
 
     def get_one_bit_components(self):
@@ -150,15 +155,17 @@ class GeneralCircuit():
         else:
             return list({type(c): c for c in components}.values())
 
-    def get_component_types(self):
+    def get_component_types(self, verilog_output: bool = False):
         """Retrieves a list of all the unique types of subcomponents composing the circuit.
 
         Returning list consists of only the unique types of logic gates, one bit circuits and multi bit circuits.
 
+        Args:
+            verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.
         Returns:
             list: List of unique component types describing the circuit.
         """
-        gate_comps = self.get_unique_types(components=self.get_circuit_gates())
+        gate_comps = self.get_unique_types(components=self.get_circuit_gates(verilog_output))
         one_bit_comps = self.get_unique_types(
             components=self.get_one_bit_components())
         multi_bit_comps = self.get_unique_types(
@@ -371,7 +378,6 @@ class GeneralCircuit():
         # Obtain proper circuit name with its bit width
         circuit_prefix = self.__class__(
             a=Bus("a"), b=Bus("b")).prefix + str(self.N)
-        print(self._parent_kwargs)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_c()}\n\n"
@@ -509,7 +515,7 @@ class GeneralCircuit():
             str: Hierarchical Verilog code of all subcomponents function blocks description.
         """
         # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
-        self.component_types = self.get_component_types()
+        self.component_types = self.get_component_types(verilog_output=True)
         for c in self.component_types:
             c._parent_kwargs = self.kwargs
         return "".join([c.get_function_block_v() for c in self.component_types])

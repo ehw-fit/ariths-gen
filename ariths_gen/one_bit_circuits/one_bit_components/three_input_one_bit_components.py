@@ -76,13 +76,12 @@ class FullAdder(ThreeInputOneBitCircuit):
         return "  " + self.use_verilog_instance.format(
             **{
                 "unit": self.prefix,
-                "wirea": self.a.prefix,
-                "wireb": self.b.prefix,
-                "wirec": self.c.prefix,
+                "wirea": f"1'b{self.a.value}" if self.a.is_const() else self.a.name,
+                "wireb": f"1'b{self.b.value}" if self.b.is_const() else self.b.name,
+                "wirec": f"1'b{self.c.value}" if self.c.is_const() else self.c.name,
                 "wireys": self.get_sum_wire().prefix,
                 "wireyc": self.get_carry_wire().prefix,
-            }
-        ) + ";\n"
+            }) + ";\n"
 
     def get_self_init_v_hier(self):
         """ support of custom PDK """
@@ -93,7 +92,8 @@ class FullAdder(ThreeInputOneBitCircuit):
         for o in self.out.bus:
             unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
 
-        return "  " + self.use_verilog_instance.format(**{
+        return "  " + self.use_verilog_instance.format(
+            **{
                 "unit": self.prefix,
                 "wirea": self.a.name,
                 "wireb": self.b.name,
@@ -101,6 +101,15 @@ class FullAdder(ThreeInputOneBitCircuit):
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
             }) + ";\n"
+
+    def get_circuit_v(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_circuit_v()
+
+        return f"{self.get_prototype_v_hier()}" + \
+               f"{self.get_self_init_v_hier()}" + \
+               f"endmodule"
 
 
 class FullAdderP(FullAdder, ThreeInputOneBitCircuit):
@@ -264,6 +273,8 @@ class TwoOneMultiplexer(ThreeInputOneBitCircuit):
         c (Wire, optional): Select signal. Defaults to Wire(name="sel").
         prefix (str, optional): Prefix name of two to one multiplexer. Defaults to "mux2to1".
     """
+    use_verilog_instance = False
+
     def __init__(self, a: Wire = Wire(name="d0"), b: Wire = Wire(name="d1"), c: Wire = Wire(name="sel"), prefix: str = "mux2to1"):
         super().__init__(a, b, c, prefix)
         # Represents select signal (self.c naming for proper unified generation)
@@ -294,6 +305,49 @@ class TwoOneMultiplexer(ThreeInputOneBitCircuit):
            Wire: Return multiplexer out wire.
         """
         return self.out.get_wire(0)
+
+    def get_init_v_flat(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_init_v_flat()
+
+        neg_out_w_name = f"neg_{self.out.get_wire(0).name}"
+        return f"  wire {neg_out_w_name};\n  " + self.use_verilog_instance.format(
+            **{
+                "unit": self.prefix,
+                "wirea": self.a.name,
+                "wireb": self.b.name,
+                "wires": self.c.name,
+                "wirey": neg_out_w_name,
+            }) + ";\n" + f"  assign {self.out.get_wire(0).name} = ~{neg_out_w_name};\n"
+
+    def get_self_init_v_hier(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_self_init_v_hier()
+
+        unique_out_wires = []
+        for o in self.out.bus:
+            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
+
+        neg_out_w_name = f"neg_{unique_out_wires[0]}"
+        return f"  wire {neg_out_w_name};\n  " + self.use_verilog_instance.format(
+            **{
+                "unit": self.prefix,
+                "wirea": self.a.name,
+                "wireb": self.b.name,
+                "wires": self.c.name,
+                "wirey": neg_out_w_name
+            }) + ";\n" + f"  assign {unique_out_wires[0]} = ~{neg_out_w_name};\n"
+
+    def get_circuit_v(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_circuit_v()
+
+        return f"{self.get_prototype_v_hier()}" + \
+               f"{self.get_self_init_v_hier()}" + \
+               f"endmodule"
 
 
 class FullSubtractor(ThreeInputOneBitCircuit):

@@ -18,3 +18,4 @@ from .one_bit_circuits import (
 def set_pdk45_library():
     one_bit_components.FullAdder.use_verilog_instance = "FAX1 {unit} (.A({wirea}), .B({wireb}), .C({wirec}), .YS({wireys}), .YC({wireyc}))"
     one_bit_components.HalfAdder.use_verilog_instance = "HAX1 {unit} (.A({wirea}), .B({wireb}), .YS({wireys}), .YC({wireyc}))"
+    one_bit_components.TwoOneMultiplexer.use_verilog_instance = "MUX2X1 {unit} (.A({wirea}), .B({wireb}), .S({wires}), .Y({wirey}))"

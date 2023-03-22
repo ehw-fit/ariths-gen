@@ -64,12 +64,11 @@ class HalfAdder(TwoInputOneBitCircuit):
         return "  " + self.use_verilog_instance.format(
             **{
                 "unit": self.prefix,
-                "wirea": self.a.prefix,
-                "wireb": self.b.prefix,
+                "wirea": f"1'b{self.a.value}" if self.a.is_const() else self.a.name,
+                "wireb": f"1'b{self.b.value}" if self.b.is_const() else self.b.name,
                 "wireys": self.get_sum_wire().prefix,
                 "wireyc": self.get_carry_wire().prefix,
-            }
-        ) + ";\n"
+            }) + ";\n"
 
     def get_self_init_v_hier(self):
         """ support of custom PDK """
@@ -80,13 +79,23 @@ class HalfAdder(TwoInputOneBitCircuit):
         for o in self.out.bus:
             unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
 
-        return "  " + self.use_verilog_instance.format(**{
+        return "  " + self.use_verilog_instance.format(
+            **{
                 "unit": self.prefix,
                 "wirea": self.a.name,
                 "wireb": self.b.name,
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
             }) + ";\n"
+
+    def get_circuit_v(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_circuit_v()
+
+        return f"{self.get_prototype_v_hier()}" + \
+               f"{self.get_self_init_v_hier()}" + \
+               f"endmodule"
 
 
 class PGLogicBlock(TwoInputOneBitCircuit):
