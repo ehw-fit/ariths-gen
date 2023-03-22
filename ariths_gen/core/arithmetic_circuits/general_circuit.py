@@ -97,12 +97,12 @@ class GeneralCircuit():
         gates = []
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
-                if c.disable_generation is False and (verilog_output is False or (hasattr(self, "use_verilog_instance") and self.use_verilog_instance is False)) or hasattr(self, "use_verilog_instance") is False:
+                if c.disable_generation is False and (verilog_output is False or ((hasattr(self, "use_verilog_instance") and self.use_verilog_instance is False) or hasattr(self, "use_verilog_instance") is False)):
                     gates.append(c)
             else:
                 # Check whether it is necessary to use gates for the Verilog component
                 # description (ArithsGen internally defined comp) or not (technology specific instance)
-                if verilog_output is False or (hasattr(c, "use_verilog_instance") and c.use_verilog_instance is False) or hasattr(c, "use_verilog_instance") is False:
+                if verilog_output is False or ((hasattr(c, "use_verilog_instance") and c.use_verilog_instance is False) or hasattr(c, "use_verilog_instance") is False):
                     gates.extend((c.get_circuit_gates(verilog_output)))
         return gates
 
