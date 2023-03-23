@@ -255,6 +255,11 @@ class Wire():
         else:
             return f"<w={self.name}>"
 
+    """ define read-only parameter N"""
+    @property
+    def N(self):
+        return 1
+
 
 # Wires with constant values #
 class ConstantWireValue0(Wire):
