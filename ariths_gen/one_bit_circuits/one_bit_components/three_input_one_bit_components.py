@@ -311,13 +311,14 @@ class TwoOneMultiplexer(ThreeInputOneBitCircuit):
         if not self.use_verilog_instance:
             return super().get_init_v_flat()
 
+        # TODO - replace by one verilog_instance_format!
         neg_out_w_name = f"neg_{self.out.get_wire(0).name}"
         return f"  wire {neg_out_w_name};\n  " + self.use_verilog_instance.format(
             **{
                 "unit": self.prefix,
-                "wirea": self.a.name,
-                "wireb": self.b.name,
-                "wires": self.c.name,
+                "wirea": f"1'b{self.a.value}" if self.a.is_const() else self.a.name,
+                "wireb": f"1'b{self.b.value}" if self.b.is_const() else self.b.name,
+                "wires": f"1'b{self.c.value}" if self.c.is_const() else self.c.name,
                 "wirey": neg_out_w_name,
             }) + ";\n" + f"  assign {self.out.get_wire(0).name} = ~{neg_out_w_name};\n"
 
