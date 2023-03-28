@@ -75,10 +75,8 @@ class Bus():
         Returns:
             Wire: Returning wire from the bus.
         """
+        assert wire_index < self.N, f"Wire index {wire_index} is out of bounds of the bus {self.prefix} with size {self.N}"
         return self.bus[wire_index]
-
-    def __getitem__(self, i):
-        return self.bus[i]
 
     def __getitem__(self, i):
         return self.get_wire(i)
