@@ -60,8 +60,12 @@ class UnsignedCGPCircuit(GeneralCircuit):
             i, in_a, in_b, fn = map(int, re.match(
                 r"\(?\[(\d+)\](\d+),(\d+),(\d+)\)?", definition).groups())
 
-            assert in_a < i
-            assert in_b < i
+            if in_a > i or in_b > i:
+                raise ValueError(f"Backward connection in CGP gene \"{definition}\", maxid = {i}")
+
+            if in_a == i or in_b == i:
+                raise ValueError(f"Loop connection in CGP gene: \"{definition}\", maxid = {i}")
+
             comp_set = dict(prefix=f"{self.prefix}_core_{i:03d}", parent_component=self)
 
             a, b = self._get_wire(in_a), self._get_wire(in_b)
@@ -91,6 +95,9 @@ class UnsignedCGPCircuit(GeneralCircuit):
 
         # Output connection
         for i, o in enumerate(map(int, cgp_outputs.split(","))):
+            if o >= c_in + c_rows * c_cols + 2:
+                raise ValueError(
+                    f"Output {i} is connected to wire {o} which is not in the range of CGP wires ({c_in + c_rows * c_cols + 2})")
             w = self._get_wire(o)
             self.out.connect(i, w)
 
