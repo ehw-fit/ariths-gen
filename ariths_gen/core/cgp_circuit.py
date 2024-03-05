@@ -43,6 +43,13 @@ class UnsignedCGPCircuit(GeneralCircuit):
         inputs = [Bus(N=bw, prefix=f"input_{chr(i)}")
                   for i, bw in enumerate(input_widths, start=0x61)]
 
+        # Assign each Bus object in self.inputs to a named attribute of self
+        for bus in inputs:
+            # Here, bus.prefix is 'input_a', 'input_b', etc.
+            # We strip 'input_' and use the remaining part (e.g., 'a', 'b') to create the attribute name
+            attr_name = bus.prefix.replace('input_', '')
+            setattr(self, attr_name, bus)
+
         # Adding values to the list
         self.vals = {}
         j = 2  # Start from two, 0=False, 1=True
