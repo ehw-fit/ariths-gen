@@ -242,6 +242,15 @@ class Bus():
         [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
         return "".join([f", .{circuit_block.out.get_wire(self.bus.index(o)).prefix}({unique_out_wires.pop(unique_out_wires.index(o.prefix))})" if o.prefix in unique_out_wires else f", .{circuit_block.out.get_wire(self.bus.index(o)).prefix}()" for o in self.bus])
 
+    def get_wire_declaration_v(self):
+        """Declare the wire in Verilog code representation.
+
+        Returns:
+            str: Verilog code for declaration of individual bus wires.
+        """
+        return f"  wire [{self.N-1}:0] {self.prefix};\n"
+
+
     """ BLIF CODE GENERATION """
     def get_wire_declaration_blif(self, array: bool = True):
         """Declare each wire from the bus independently in Blif code representation.

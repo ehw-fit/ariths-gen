@@ -1,3 +1,4 @@
+from typing import Dict
 from ariths_gen.core.logic_gate_circuits.logic_gate_circuit import OneInputLogicGate, TwoInputLogicGate
 
 from ariths_gen.wire_components import (
@@ -52,12 +53,22 @@ class GeneralCircuit():
 
         # super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
 
+
+    def get_circuit_def(self) -> Dict[str, Wire]:
+        """ returns IDs and wires of the inputs and output"""
+     #.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n" 
+        r = {chr(97 + i): self.inputs[i] for i in range(len(self.inputs))}
+        r['out'] = self.get_global_prefix() + "_out"
+        return r
+    
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
 
         Args:
             component: Subcomponent to be added into list of components composing described circuit.
         """
+        prefixes = [c.prefix for c in self.components]
+        #assert component.prefix not in prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
         self.components.append(component)
         return component
 
@@ -550,6 +561,8 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Verilog code of subcomponent arithmetic circuit's wires declaration.
         """
+        return "".join(w.get_wire_declaration_v() for w in self.inputs + [self.out]) + "\n"
+
         return f"  wire [{self.a.N-1}:0] {self.a.prefix};\n" + \
                f"  wire [{self.b.N-1}:0] {self.b.prefix};\n" + \
                f"  wire [{self.out.N-1}:0] {self.out.prefix};\n"
@@ -576,8 +589,9 @@ class GeneralCircuit():
         circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), name=circuit_type)
-        return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-            f"  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
+        return "".join([c.return_bus_wires_values_v_hier() for c in self.inputs]) + \
+            f"  {circuit_type} {circuit_type}_{self.out.prefix}(" + ",".join([f".{a.prefix}({b.prefix})" for a, b in zip(circuit_block.inputs, self.inputs)]) + f", .{circuit_block.out.prefix}({self.out.prefix}));\n"
+        #.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
     def get_function_out_v_hier(self):
         """Generates hierarchical Verilog code assignment of corresponding arithmetic circuit's output bus wires.
