@@ -337,7 +337,7 @@ def test_mac():
 
 def test_direct():
     class err_circuit(GeneralCircuit):
-        def __init__(self, prefix: str = "", name: str = "adder", inner_component: bool = True, a: Bus = Bus(), b: Bus = Bus()):
+        def __init__(self, a: Bus = Bus(), b: Bus = Bus(), prefix: str = "", name: str = "adder", inner_component: bool = False):
             super().__init__(prefix=prefix, name=name, out_N=(a.N + 1), inner_component=inner_component, inputs=[a, b])
             self.N = 1
             self.prefix = prefix
@@ -389,4 +389,6 @@ if __name__ == "__main__":
     test_unsigned_add()
     test_signed_add()
     test_mac()
+    test_direct()
+    test_wire_as_bus()
     print("Python tests were successful!")

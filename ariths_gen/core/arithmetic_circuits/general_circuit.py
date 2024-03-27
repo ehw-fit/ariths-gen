@@ -30,16 +30,22 @@ class GeneralCircuit():
             self.inputs = []
             input_names = "abcdefghijklmnopqrstuvwxyz"  # This should be enough..
             assert len(input_names) >= len(inputs)
-            for i, input_bus in enumerate(inputs):
+            for i, input in enumerate(inputs):
                 attr_name = input_names[i]
-                full_prefix = f"{self.prefix}_{input_bus.prefix}" if self.inner_component else f"{input_bus.prefix}"
-                bus = Bus(prefix=full_prefix, wires_list=input_bus.bus)
-                setattr(self, attr_name, bus)
-                self.inputs.append(bus)
+                full_prefix = f"{self.prefix}_{input.prefix}" if self.inner_component else f"{input.prefix}"
+                if isinstance(input, Bus):
+                    bus = Bus(prefix=full_prefix, wires_list=input.bus)
+                    setattr(self, attr_name, bus)
+                    self.inputs.append(bus)
+                    
+                    # If the input bus is an output bus, connect it
+                    if input.is_output_bus():
+                        getattr(self, attr_name).connect_bus(connecting_bus=input)
+                else:
+                    wire = Wire(name=input.name, prefix=full_prefix)
+                    setattr(self, attr_name, wire)
+                    self.inputs.append(wire)
 
-                # If the input bus is an output bus, connect it
-                if input_bus.is_output_bus():
-                    getattr(self, attr_name).connect_bus(connecting_bus=input_bus)
         else:
             self.inputs = inputs
 
