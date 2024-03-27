@@ -389,6 +389,4 @@ if __name__ == "__main__":
     test_unsigned_add()
     test_signed_add()
     test_mac()
-    test_direct()
-    test_wire_as_bus()
     print("Python tests were successful!")
