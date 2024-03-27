@@ -293,11 +293,11 @@ class UnsignedRecursiveMultiplier(MultiplierCircuit):
         b (Bus): Second input bus.
         prefix (str, optional): Prefix name of unsigned recursive multiplier. Defaults to "".
         name (str, optional): Name of unsigned recursive multiplier. Defaults to "u_rm".
-        submultipliers (list[MultiplierCircuit], optional): List of submultipliers.
+        submultipliers (list, optional): List of composite two bit submultiplier classes for instantiation. If None are provided, accurate submultipliers are assumed. Defaults to None.
                         Defaults (if None) to the required number of UnsignedAccurateTwoBitMultiplier instances.
         unsigned_adder_class_name (str, optional): Unsigned multi bit adder used to obtain final sums of products. Defaults to UnsignedCarryLookaheadAdder.
     """
-    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_rm", submultipliers: list[MultiplierCircuit] = None, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_rm", submultipliers: list = None, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         assert self.N > 1 and self.N & (self.N-1) == 0  # assure that N is a power of two greater than 1 (So allowed N is 2, 4, 8, ..)
         super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
