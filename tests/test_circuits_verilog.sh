@@ -122,6 +122,7 @@ test_circuit "multiplier_signed" "s_dadda_lfa8"
 
 
 test_circuit "multiplier_unsigned" "u_arrmul8"
+test_circuit "multiplier_unsigned" "u_recmul8"
 test_circuit "multiplier_unsigned" "u_csamul_cla8" 
 test_circuit "multiplier_unsigned" "u_csamul_rca8" 
 test_circuit "multiplier_unsigned" "u_csamul_pg_rca8" 

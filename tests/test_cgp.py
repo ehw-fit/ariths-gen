@@ -1,3 +1,13 @@
+import os
+import sys
+# Add the parent directory to the system path
+DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(DIR_PATH, '..'))
+
+import numpy as np
+import math
+from io import StringIO
+
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -56,10 +66,6 @@ from ariths_gen.multi_bit_circuits.approximate_multipliers import (
 )
 
 from ariths_gen.core.cgp_circuit import UnsignedCGPCircuit, SignedCGPCircuit
-
-import numpy as np
-import math
-from io import StringIO
 
 
 def test_cgp_unsigned_add():
@@ -199,7 +205,7 @@ def test_cgp_signed_add():
             np.testing.assert_array_equal(expected, r)
 
 
-def test_unsigned_mul():
+def test_cgp_unsigned_mul():
     """ Test unsigned multipliers """
     N = 7
     a = Bus(N=N, prefix="a")
@@ -311,7 +317,7 @@ def test_unsigned_mul():
                 np.testing.assert_array_equal(expected, r)
 
 
-def test_signed_mul():
+def test_cgp_signed_mul():
     """ Test signed multipliers """
     N = 7
     a = Bus(N=N, prefix="a")
@@ -429,3 +435,12 @@ def test_cgp_variant1():
 
     c = UnsignedCGPCircuit(cgp, [8, 8], name="cgp_circuit")
     assert c(0, 0) == 8  # TypeError: 'int' object is not subscriptable
+
+
+if __name__ == "__main__":
+    test_cgp_unsigned_add()
+    test_cgp_signed_add()
+    test_cgp_unsigned_mul()
+    test_cgp_signed_mul()
+    test_cgp_variant1()
+    print("CGP Python tests were successful!")

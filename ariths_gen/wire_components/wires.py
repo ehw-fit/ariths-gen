@@ -99,7 +99,7 @@ class Wire():
         if self.is_const():
             return f"({self.c_const}) << {offset};\n"
         else:
-            return f"(({self.prefix} >> {self.index}) & 0x01ull) << {offset};\n"
+            return f"(({self.name} >> 0) & 0x01ull) << {offset};\n"
 
     def return_wire_value_c_hier(self, offset: int = 0):
         """Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for hierarchical generation.
