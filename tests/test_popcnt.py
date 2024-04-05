@@ -1,3 +1,4 @@
+from io import StringIO
 from ariths_gen.core.cgp_circuit import UnsignedCGPCircuit
 from ariths_gen.wire_components import (
     Wire,
@@ -11,6 +12,7 @@ from ariths_gen.core.arithmetic_circuits import GeneralCircuit
 from ariths_gen.multi_bit_circuits.others import (
     UnsignedPopCount
 )
+import numpy as np
 
 
 def test_popcount():

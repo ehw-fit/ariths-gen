@@ -381,6 +381,25 @@ def test_wire_as_bus():
     assert r.sum() == 1
     assert r[-1, -1, -1] == 1
 
+def test_unique():
+    from ariths_gen.wire_components import Wire, Bus
+    import pytest
+    import sys
+    from ariths_gen.one_bit_circuits.logic_gates import AndGate
+    from ariths_gen.one_bit_circuits.one_bit_components import TwoOneMultiplexer
+    from ariths_gen.core.arithmetic_circuits import GeneralCircuit
+
+    class test_circuit(GeneralCircuit):
+        def __init__(self, a: Bus, prefix="test_circuit", **kwargs):
+            super().__init__(prefix=prefix, name="test_circuit", inputs=[a], out_N=1, **kwargs)
+            g = self.add_component(AndGate(a[0], a[1], prefix="g2"))
+            g2 = self.add_component(AndGate(g.out, a[2], prefix="g2"))
+            g3 = self.add_component(AndGate(g2.out, g.out, prefix="g2"))
+            self.out[0] = g3.out
+
+    with pytest.raises(AssertionError):
+        circ = test_circuit(Bus("a", 3), "c1")
+        circ.get_v_code_flat(file_object=sys.stdout)
 
 if __name__ == "__main__":
     test_unsigned_approxmul()
