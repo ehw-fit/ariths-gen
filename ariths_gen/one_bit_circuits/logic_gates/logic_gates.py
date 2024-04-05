@@ -92,7 +92,8 @@ class NandGate(TwoInputInvertedLogicGate):
         # If constant input is present, logic gate is not generated and corresponding
         # input value is propagated to the output to connect to other components
         if a.is_const() and a.value == 1:
-            output = NotGate(a=b, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=b, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -100,7 +101,8 @@ class NandGate(TwoInputInvertedLogicGate):
             self.out = ConstantWireValue1()
             self.disable_generation = True
         elif b.is_const() and b.value == 1:
-            output = NotGate(a=a, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=a, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -217,7 +219,8 @@ class NorGate(TwoInputInvertedLogicGate):
             self.out = ConstantWireValue0()
             self.disable_generation = True
         elif a.is_const() and a.value == 0:
-            output = NotGate(a=b, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=b, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -225,7 +228,8 @@ class NorGate(TwoInputInvertedLogicGate):
             self.out = ConstantWireValue0()
             self.disable_generation = True
         elif b.is_const() and b.value == 0:
-            output = NotGate(a=a, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=a, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -277,7 +281,8 @@ class XorGate(TwoInputLogicGate):
         # If constant input is present, logic gate is not generated and corresponding
         # input value is propagated to the output to connect to other components
         if a.is_const() and a.value == 1:
-            output = NotGate(a=b, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=b, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -285,7 +290,8 @@ class XorGate(TwoInputLogicGate):
             self.out = b
             self.disable_generation = True
         elif b.is_const() and b.value == 1:
-            output = NotGate(a=a, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=a, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -343,7 +349,8 @@ class XnorGate(TwoInputInvertedLogicGate):
             self.out = b
             self.disable_generation = True
         elif a.is_const() and a.value == 0:
-            output = NotGate(a=b, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=b, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True
@@ -351,7 +358,8 @@ class XnorGate(TwoInputInvertedLogicGate):
             self.out = a
             self.disable_generation = True
         elif b.is_const() and b.value == 0:
-            output = NotGate(a=a, prefix=prefix, outid=outid, parent_component=parent_component)
+            assert self.parent_component, "Parent component for gate {self} is not defined"
+            output = NotGate(a=a, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
             self.disable_generation = True

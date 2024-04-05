@@ -68,7 +68,7 @@ class GeneralCircuit():
             component: Subcomponent to be added into list of components composing described circuit.
         """
         prefixes = [c.prefix for c in self.components]
-        #assert component.prefix not in prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
+        assert component.prefix not in prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
         self.components.append(component)
         return component
 
@@ -212,28 +212,16 @@ class GeneralCircuit():
         """
         self.circuit_wires = []
         circuit_wires_names = []
-        if isinstance(self.a, Bus):
-            [self.circuit_wires.append(
-                (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.a.bus]
-            [self.circuit_wires.append(
-                (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.b.bus]
-            [circuit_wires_names.append(w.name) for w in self.a.bus]
-            [circuit_wires_names.append(w.name) for w in self.b.bus]
-            if hasattr(self, 'c'):
+
+        for input in self.inputs:
+            if isinstance(input, Bus):
                 [self.circuit_wires.append(
-                    (w, f"{w.name}", self.save_wire_id(wire=w))) for w in self.c.bus]
-                [circuit_wires_names.append(w.name) for w in self.c.bus]
-        else:
-            self.circuit_wires.append(
-                (self.a, f"{self.a.name}", self.save_wire_id(wire=self.a)))
-            self.circuit_wires.append(
-                (self.b, f"{self.b.name}", self.save_wire_id(wire=self.b)))
-            circuit_wires_names.append(self.a.name)
-            circuit_wires_names.append(self.b.name)
-            if hasattr(self, 'c'):
+                    (w, f"{w.name}", self.save_wire_id(wire=w))) for w in input.bus]
+                [circuit_wires_names.append(w.name) for w in input.bus]
+            else:
                 self.circuit_wires.append(
-                    (self.c, f"{self.c.name}", self.save_wire_id(wire=self.c)))
-                circuit_wires_names.append(self.c.name)
+                    (input, f"{input.name}", self.save_wire_id(wire=input)))
+                circuit_wires_names.append(input.name)
 
         for gate in self.circuit_gates:
             if gate.a.name not in circuit_wires_names:

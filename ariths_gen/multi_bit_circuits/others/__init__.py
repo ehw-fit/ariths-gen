@@ -8,5 +8,7 @@ from ariths_gen.multi_bit_circuits.others.bit_reduce import (
 )
 
 from ariths_gen.multi_bit_circuits.others.compare import (
-    UnsignedCompareLT
+    UnsignedCompareLT, UnsignedCompareLTE, UnsignedCompareGT, UnsignedCompareGTE
 )
+
+from ariths_gen.multi_bit_circuits.others.popcount_compare import PopCountCompare

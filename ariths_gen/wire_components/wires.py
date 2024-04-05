@@ -17,6 +17,9 @@ class Wire():
         self.prefix = name if prefix == "" else prefix
         self.parent_bus = parent_bus
 
+    def __str__(self):
+        return f"wire{self.name}{self.value}{self.index}"
+
     @staticmethod
     def is_const():
         """Information whether wire carries constant value.
