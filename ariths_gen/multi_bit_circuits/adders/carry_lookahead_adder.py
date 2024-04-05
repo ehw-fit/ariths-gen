@@ -109,14 +109,14 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
 
                     # For each pg pair values algorithmically combine two input AND gates to replace multiple input gates (resolves fan-in issue)
                     pg_wires = Bus(wires_list=composite_wires)
-                    multi_bit_and_gate = MultipleInputLogicGate(a=pg_wires, two_input_gate_cls=AndGate, prefix=self.prefix+"_and", parent_component=self)
+                    multi_bit_and_gate = MultipleInputLogicGate(a=pg_wires, two_input_gate_cls=AndGate, prefix=self.prefix+f"_and{block_n}_{i}_{g_index}", parent_component=self)
                     composite_or_gates_inputs.append(multi_bit_and_gate.out)
 
                 # Final OR gates cascade using generated AND gates output wires
                 composite_or_wires = Bus(wires_list=composite_or_gates_inputs)
-                multi_bit_or_gate = MultipleInputLogicGate(a=composite_or_wires, two_input_gate_cls=OrGate, prefix=self.prefix+"_or", parent_component=self)
+                multi_bit_or_gate = MultipleInputLogicGate(a=composite_or_wires, two_input_gate_cls=OrGate, prefix=self.prefix+f"_orred{block_n}_{i}_{g_index}_", parent_component=self)
                 # Carry bit generation
-                obj_cout_or = OrGate(pg_block.get_generate_wire(), multi_bit_or_gate.out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
+                obj_cout_or = OrGate(pg_block.get_generate_wire(), multi_bit_or_gate.out, prefix=self.prefix+f"_or{block_n}_{i}_{g_index}_"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
                 self.add_component(obj_cout_or)
                 # Updating cin for the the next cla block/sum XOR
                 cin = obj_cout_or.out

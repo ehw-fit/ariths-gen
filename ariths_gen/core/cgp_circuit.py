@@ -123,7 +123,13 @@ class UnsignedCGPCircuit(GeneralCircuit):
             return ConstantWireValue0()
         if i == 1:
             return ConstantWireValue1()
-        return self.vals[i]
+        try:
+            return self.vals[i]
+        except KeyError:
+
+            raise KeyError(f"Key {i} not found in " + ", ".join(
+                [f"{i}: {v}" for i, v in self.vals.items()]
+            ))
 
 
 class SignedCGPCircuit(UnsignedCGPCircuit):

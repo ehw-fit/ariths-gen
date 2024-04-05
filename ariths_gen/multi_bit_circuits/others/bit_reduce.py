@@ -68,8 +68,8 @@ class BitReduce(GeneralCircuit):
                 for i, j in enumerate(range(half, a.N)):
                     c_in[i] = a[j]
 
-                b = create_tree(b_in, depth=depth + 1, branch = "A")
-                c = create_tree(c_in, depth= depth + 1, branch = "B")
+                b = create_tree(b_in, depth=depth + 1, branch = branch + "A")
+                c = create_tree(c_in, depth= depth + 1, branch = branch + "B")
                 d = gate(a=b, b=c, prefix = f"{self.prefix}_red_{branch}_{depth}")
                 self.add_component(d)
                 return d.out

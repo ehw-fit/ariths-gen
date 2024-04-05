@@ -370,8 +370,8 @@ def test_wire_as_bus():
         def __init__(self, a: Wire, b: Wire, c: Bus, prefix="test_circuit", **kwargs):
             super().__init__(prefix=prefix, name="test_circuit", inputs=[a, b, c], out_N=1, **kwargs)
             g = self.add_component(AndGate(a, b, prefix="g2"))
-            g2 = self.add_component(AndGate(g.out, c[0], prefix="g2"))
-            g3 = self.add_component(AndGate(g2.out, c[1], prefix="g2"))
+            g2 = self.add_component(AndGate(g.out, c[0], prefix="g3"))
+            g3 = self.add_component(AndGate(g2.out, c[1], prefix="g4"))
             self.out[0] = g3.out
 
     circ = test_circuit(Wire("a"), Wire("b"), Bus("c", 2), "c1")
