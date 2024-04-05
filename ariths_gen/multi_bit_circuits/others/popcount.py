@@ -1,7 +1,7 @@
 """
 
 """
-from typing import Union
+from typing import Union, Optional
 
 from ariths_gen.wire_components import (
     Wire,
@@ -45,7 +45,7 @@ class UnsignedPopCount(GeneralCircuit):
 
     """
 
-    def __init__(self, a: Bus, adder : Union[ArithmeticCircuit, None] = None, prefix : str = "", name : str = "popcnt", **kwargs):
+    def __init__(self, a: Bus, adder : Optional[ArithmeticCircuit] = None, prefix : str = "", name : str = "popcnt", **kwargs):
         self.N = a.N
         self.a = a
 
