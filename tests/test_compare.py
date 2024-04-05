@@ -1,3 +1,13 @@
+import os
+import sys
+# Add the parent directory to the system path
+DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(DIR_PATH, '..'))
+
+import numpy as np
+import math
+from io import StringIO
+
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -78,6 +88,7 @@ def test_compare_lt_small():
     #expected = np.sum(r, axis=1)
 
     np.testing.assert_array_equal(v, expected)
+
 
 
     

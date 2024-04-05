@@ -1,3 +1,13 @@
+import os
+import sys
+# Add the parent directory to the system path
+DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(DIR_PATH, '..'))
+
+import numpy as np
+import math
+from io import StringIO
+
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -8,12 +18,10 @@ from ariths_gen.wire_components import (
 from ariths_gen.core.arithmetic_circuits import GeneralCircuit
 
 from ariths_gen.multi_bit_circuits.others import (
-    BitReduce, AndReduce, OrReduce
+    BitReduce,
+    AndReduce,
+    OrReduce
 )
-
-import numpy as np
-import math
-from io import StringIO
 
 
 def test_orreduce():
@@ -75,4 +83,8 @@ def test_andreduce():
 
         np.testing.assert_array_equal(reduce(av), expected)
 
-    
+
+if __name__ == "__main__":
+    test_andreduce()
+    test_orreduce()
+    print("Python reduce tests were successful!")

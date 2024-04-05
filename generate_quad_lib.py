@@ -16,6 +16,7 @@ import itertools
 
 if __name__ == "__main__":
 
+    N = 8
     directory = f"lib_quad/lib_quad{N}"
     os.makedirs(directory, exist_ok=True)
 
@@ -30,7 +31,6 @@ if __name__ == "__main__":
     import zipfile
     vfile = zipfile.ZipFile(file=f"{directory}/lib_quad_{N}.zip", mode="w", compression=zipfile.ZIP_DEFLATED)
     cnt = 0
-    N = 8
 
     # up to 3 stages
     for n in [1, 2, 3]:

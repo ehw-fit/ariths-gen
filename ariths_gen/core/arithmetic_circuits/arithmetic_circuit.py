@@ -18,25 +18,7 @@ class ArithmeticCircuit(GeneralCircuit):
     """
 
     def __init__(self, a, b, prefix: str, name: str, out_N: int, inner_component: bool = False, one_bit_circuit: bool = False, signed: bool = False, **kwargs):
-        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
-        if one_bit_circuit is False:
-            if prefix == "":
-                self.prefix = name
-            else:
-                self.prefix = prefix + "_" + name
-
-            self.inner_component = inner_component
-            if self.inner_component is True:
-                self.a = Bus(prefix=f"{self.prefix}_{a.prefix}", wires_list=a.bus)
-                self.b = Bus(prefix=f"{self.prefix}_{b.prefix}", wires_list=b.bus)
-
-                if a.is_output_bus():
-                    self.a.connect_bus(connecting_bus=a)
-                if b.is_output_bus():
-                    self.b.connect_bus(connecting_bus=b)
-            else:
-                self.a = Bus(prefix=f"{a.prefix}", wires_list=a.bus)
-                self.b = Bus(prefix=f"{b.prefix}", wires_list=b.bus)
+        super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, one_bit_circuit=one_bit_circuit, **kwargs)
 
     """ C CODE GENERATION """
     def get_prototype_c(self):

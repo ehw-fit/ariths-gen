@@ -65,6 +65,11 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     SignedCarrySaveMultiplier
 )
 
+from ariths_gen.multi_bit_circuits.approximate_multipliers import (
+    UnsignedRecursiveMultiplier,
+    UnsignedAccurateTwoBitMultiplier
+)
+
 from ariths_gen.multi_bit_circuits.dividers import (
     ArrayDivider
 )
@@ -225,6 +230,11 @@ if __name__ == "__main__":
 
         name = f"s_arrmul{N}"
         circuit = SignedArrayMultiplier(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        # Accurate recursive multiplier
+        name = f"u_recmul{N}"
+        circuit = UnsignedRecursiveMultiplier(a, b, name=name)
         export_circuit(circuit, name)
 
         # Csamul (Braun multiplier) – the ppa adders are also configurable as above if desirable

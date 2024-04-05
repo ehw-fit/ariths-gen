@@ -141,6 +141,11 @@ print("Mean average error", np.abs(r - (va * vb)).mean())
 The `yosys_equiv_check.sh` script enables to formally check the equivalence of generated Verilog and BLIF representations of the same circuit.
 It uses the Yosys Open SYnthesis Suite tool by Claire Xenia Wolf. For further information, please visit: https://yosyshq.readthedocs.io/projects/yosys/en/latest/index.html.
 
+## Install Yosys
+```bash
+sudo apt-get install yosys
+```
+
 ## Execute permission
 ```bash
 chmod +x yosys_equiv_check.sh

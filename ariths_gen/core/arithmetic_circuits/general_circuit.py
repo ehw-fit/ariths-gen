@@ -18,13 +18,37 @@ class GeneralCircuit():
     that are later used for generation into various representations.
     """
 
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None, **kwargs):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, outname=None, **kwargs):
         if prefix == "":
             self.prefix = name
         else:
             self.prefix = prefix + "_" + name
         self.inner_component = inner_component
-        self.inputs = inputs
+
+        if one_bit_circuit is False:
+            # Dynamic input bus assignment
+            self.inputs = []
+            input_names = "abcdefghijklmnopqrstuvwxyz"  # This should be enough..
+            assert len(input_names) >= len(inputs)
+            for i, input in enumerate(inputs):
+                attr_name = input_names[i]
+                full_prefix = f"{self.prefix}_{input.prefix}" if self.inner_component else f"{input.prefix}"
+                if isinstance(input, Bus):
+                    bus = Bus(prefix=full_prefix, wires_list=input.bus)
+                    setattr(self, attr_name, bus)
+                    self.inputs.append(bus)
+                    
+                    # If the input bus is an output bus, connect it
+                    if input.is_output_bus():
+                        getattr(self, attr_name).connect_bus(connecting_bus=input)
+                else:
+                    wire = Wire(name=input.name, prefix=full_prefix)
+                    setattr(self, attr_name, wire)
+                    self.inputs.append(wire)
+
+        else:
+            self.inputs = inputs
+
         if not outname:
             outname = self.prefix+"_out"
         self.out = Bus(outname, out_N, out_bus=True, signed=signed)
@@ -376,7 +400,7 @@ class GeneralCircuit():
         """
         # Obtain proper circuit name with its bit width
         circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+            a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_c()}\n\n"
@@ -421,7 +445,7 @@ class GeneralCircuit():
             str: Hierarchical C code of subcomponent's C function invocation and output assignment.
         """
         # Getting name of circuit type for proper C code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_type = self.__class__(a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
         return self.a.return_bus_wires_values_c_hier() + self.b.return_bus_wires_values_c_hier() + \
             f"  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n"
 
@@ -527,7 +551,7 @@ class GeneralCircuit():
         """
         # Obtain proper circuit name with its bit width
         circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+            a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_v()}\n\n"
@@ -551,6 +575,7 @@ class GeneralCircuit():
         """
         return "".join(w.get_wire_declaration_v() for w in self.inputs + [self.out]) + "\n"
 
+        # TODO del..
         return f"  wire [{self.a.N-1}:0] {self.a.prefix};\n" + \
                f"  wire [{self.b.N-1}:0] {self.b.prefix};\n" + \
                f"  wire [{self.out.N-1}:0] {self.out.prefix};\n"
@@ -574,7 +599,7 @@ class GeneralCircuit():
             str: Hierarchical Verilog code of subcomponent's module invocation and output assignment.
         """
         # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_type = self.__class__(a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), name=circuit_type)
         return "".join([c.return_bus_wires_values_v_hier() for c in self.inputs]) + \
@@ -680,14 +705,13 @@ class GeneralCircuit():
             str: Hierarchical Blif code of subcomponent's model invocation and output assignment.
         """
         # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+        circuit_type = self.__class__(a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
         return f"{self.a.get_wire_assign_blif(output=True)}" + \
                f"{self.b.get_wire_assign_blif(output=True)}" + \
                f".subckt {circuit_type}" + \
                "".join([f" a[{self.a.bus.index(w)}]={self.a.prefix}[{self.a.bus.index(w)}]" for w in self.a.bus]) + \
                "".join([f" b[{self.b.bus.index(w)}]={self.b.prefix}[{self.b.bus.index(w)}]" for w in self.b.bus]) + \
-               "".join(
-                   [f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus]) + "\n"
+               "".join([f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus]) + "\n"
 
     def get_circuit_blif(self):
         """Generates hierarchical Blif code subcomponent's function block.
@@ -722,7 +746,7 @@ class GeneralCircuit():
         """
         # Obtain proper circuit name with its bit width
         circuit_prefix = self.__class__(
-            a=Bus("a"), b=Bus("b")).prefix + str(self.N)
+            a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
         circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
             N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
         return f"{circuit_block.get_circuit_blif()}"

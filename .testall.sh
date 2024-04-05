@@ -6,3 +6,9 @@ bash test_mac.sh
 bash test_circuits.sh
 bash test_circuits_verilog.sh
 bash test_circuits_cgp.sh
+python test_all.py
+python test_ax.py
+python test_cgp.py
+python test_compare.py
+python test_popcnt.py
+python test_reduce.py

@@ -12,10 +12,6 @@ from ariths_gen.multi_bit_circuits.others import (
     UnsignedPopCount
 )
 
-import numpy as np
-import math
-from io import StringIO
-
 
 def test_popcount():
     """ Test unsigned adders """
@@ -46,10 +42,6 @@ def test_popcount():
         expected = np.sum(r, axis=1)
 
         np.testing.assert_array_equal(popcnt(av), expected)
-
-
-
-
 
 def test_popcount_cgp():
     """ Test unsigned adders """
@@ -82,4 +74,3 @@ def test_popcount_cgp():
 
         np.testing.assert_array_equal(v, expected)
 
-    
