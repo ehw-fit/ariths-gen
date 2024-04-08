@@ -73,9 +73,9 @@ class PopCountCompare(GeneralCircuit):
                                                  prefix=f"{prefix}_popcount2",
                                                  inner_component=True)).out
 
-        N = max(p1.N, p2.N)
-        p1.bus_extend(N)
-        p2.bus_extend(N)
+        #N = max(p1.N, p2.N)
+        #p1.bus_extend(N)
+        #p2.bus_extend(N)
 
         red = self.add_component(UnsignedCompareGTE(p1, p2, prefix=f"{prefix}_cmp", inner_component = True))
         self.out.connect_bus(red.out)
