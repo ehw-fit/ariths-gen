@@ -68,8 +68,8 @@ class UnsignedPopCount(GeneralCircuit):
                 return a
             else:
                 half = a.N // 2
-                b_in = Bus(N=half, prefix=f"b_inn{depth}A")
-                c_in = Bus(N=a.N - half, prefix=f"b_inn{depth}B")
+                b_in = Bus(N=half, prefix=f"b_inn_{branch}_{depth}A")
+                c_in = Bus(N=a.N - half, prefix=f"b_inn_{branch}_{depth}B")
                 #print(a, half, a.N)
 
 
@@ -87,4 +87,4 @@ class UnsignedPopCount(GeneralCircuit):
             
         sumbus = create_tree(self.a,0, "X")
         #print(sumbus)
-        self.out.connect_bus(sumbus  )
+        self.out.connect_bus(sumbus)

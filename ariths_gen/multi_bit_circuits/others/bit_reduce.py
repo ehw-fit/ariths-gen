@@ -80,10 +80,10 @@ class BitReduce(GeneralCircuit):
 
 
 class OrReduce(BitReduce):
-    def __init__(self, a: Bus, prefix : str = "", name : str = "orreduce", **kwargs):
+    def __init__(self, a: Bus, prefix: str = "", name: str = "orreduce", **kwargs):
         super().__init__(a=a, gate=OrGate, prefix=prefix, name=name, **kwargs)
 
 
 class AndReduce(BitReduce):
-    def __init__(self, a: Bus, prefix : str = "", name : str = "orreduce", **kwargs):
+    def __init__(self, a: Bus, prefix: str = "", name: str = "andreduce", **kwargs):
         super().__init__(a=a, gate=AndGate, prefix=prefix, name=name, **kwargs)

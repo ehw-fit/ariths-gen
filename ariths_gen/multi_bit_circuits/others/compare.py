@@ -83,7 +83,7 @@ class UnsignedCompareLTE(GeneralCircuit):
     Returns true if a <= b
     """
 
-    def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_lt", **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_lte", **kwargs):
         self.a = a
         self.b = b
         self.N = max(a.N, b.N)
@@ -177,7 +177,7 @@ class UnsignedCompareGTE(GeneralCircuit):
         for i in reversed(range(self.N)):
             iA = self.a[i] if i < self.a.N else ConstantWireValue0()
             iB = self.b[i] if i < self.b.N else ConstantWireValue0()
-            
+
             i1 = iA
             i2 = self.add_component(NotGate(iB, f"{self.prefix}_i1_{i}", parent_component=self)).out
 
@@ -188,7 +188,7 @@ class UnsignedCompareGTE(GeneralCircuit):
             psum = self.add_component(AndGate(pi, psum, f"{self.prefix}_psum_{i}", parent_component=self)).out
 
         res[self.N] = psum # or all equal (xor)
-        
+
         red = self.add_component(OrReduce(res, prefix=f"{self.prefix}_orred", inner_component=True))
 
         self.out.connect_bus(red.out)

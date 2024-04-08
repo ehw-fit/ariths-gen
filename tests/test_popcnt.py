@@ -1,3 +1,9 @@
+import os
+import sys
+# Add the parent directory to the system path
+DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(DIR_PATH, '..'))
+
 from io import StringIO
 from ariths_gen.core.cgp_circuit import UnsignedCGPCircuit
 from ariths_gen.wire_components import (

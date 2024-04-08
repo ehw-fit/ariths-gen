@@ -22,6 +22,28 @@ import math
 class UnsignedAccurateTwoBitMultiplier(MultiplierCircuit):
     """Class representing unsigned two-bit accurate multiplier.
 
+    ```
+         A1B1   A1B0   A0B1   A0B0
+         │ │    │ │    │ │    │ │
+        ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐
+        │AND│  │AND│  │AND│  │AND│
+        └─┬─┘  └─┬─┘  └─┬─┘  └─┬─┘
+          │      └──┬──┐└┬─┐   │
+          │         │  │ │ │   │
+          │         │  │ │ │   │
+          │         │ ┌▼─▼┐│   │
+          │         │ │AND││   │
+          │         │ └─┬─┘│   │
+          └─────┐ ┌─┼───┘┌─┘   │
+                │ │ └──┐ │     │
+        ┌◄─►┐  ┌▼─▼┐  ┌▼─▼┐    │
+        │AND│  │XOR│  │XOR│    │
+        └─┬─┘  └─┬─┘  └─┬─┘    │
+          │      │      │      │
+          ▼      ▼      ▼      ▼
+          O3     O2     O1     O0
+    ```
+
     Description of the __init__ method.
 
     Args:
@@ -76,6 +98,22 @@ class UnsignedApproximateTwoBitMultiplierM1(MultiplierCircuit):
     """Class representing unsigned two-bit approximate multiplier variant M1.
 
     M1 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
+    
+    ```
+         A1B1   A1B0   A0B1   A0B0
+         │ │    │ │    │ │    │ │
+        ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐
+        │AND│  │AND│  │AND│  │AND│
+        └─┬─┘  └─┬─┘  └─┬─┘  └─┬─┘
+          │      │      └┐     │  
+          │      └─────┐ │     │
+          └──────┐    ┌▼─▼┐    │
+                 │    │ OR│    │
+                 │    └─┬─┘    │
+                 │      │      │
+          ▼      ▼      ▼      ▼
+        O3=0     O2     O1     O0
+    ```
 
     Description of the __init__ method.
 
@@ -127,6 +165,29 @@ class UnsignedApproximateTwoBitMultiplierM2(MultiplierCircuit):
     """Class representing unsigned two-bit approximate multiplier variant M2.
 
     M2 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
+    
+    ```
+         A1B1          A1B0   A0B1
+         │ │           │ │    │ │
+        ┌▼─▼┐         ┌▼─▼┐  ┌▼─▼┐
+        │AND│         │AND│  │AND│
+        └─┬─┘         └─┬─┘  └─┬─┘
+          │             │┌─────┴┐
+          │            ┌┴┼────┐ │
+          │            │ │    │ │
+          │           ┌▼─▼┐  ┌▼─▼┐
+          │           │XOR│  │AND│
+          │           └─┬─┘  └─┬─┘
+          └─────┐ ┌─────┼──────┤
+                │ │     │      │
+               ┌▼─▼┐    │      │
+               │XOR│    │      │
+               └─┬─┘    │      │
+          ┌──────┼──────┼──────┤
+          │      │      │      │
+          ▼      ▼      ▼      ▼
+          O3     O2     O1     O0
+    ```
 
     Description of the __init__ method.
 
@@ -180,6 +241,33 @@ class UnsignedApproximateTwoBitMultiplierM3(MultiplierCircuit):
     """Class representing unsigned two-bit approximate multiplier variant M3.
 
     M3 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
+    
+    ```
+         A1B1   A1B0   A0B1   A0B0
+         │ │    │ │    │ │    │ │
+        ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐
+        │AND│  │AND│  │AND│  │AND│
+        └─┬─┘  └─┬─┘  └─┬─┘  └─┬─┘
+          │      │      └┐     │
+          │      │       │     │
+          │      └─────┐ │     │
+          │           ┌▼─▼┐    │
+          │           │ OR│    │
+          │           └─┬─┘    │
+          │┌─────┬──────┼──────┤
+          ││     │      │      │
+          ││   ┌─▼─┐    │      │
+          ││   │NOT│    │      │
+          ││   └─┬─┘    │      │
+         ┌┴┼────┐└┐     │      │
+         │ │    │ │     │      │
+        ┌▼─▼┐  ┌▼─▼┐    │      │
+        │AND│  │AND│    │      │
+        └─┬─┘  └─┬─┘    │      │
+          │      │      │      │
+          ▼      ▼      ▼      ▼
+          O3     O2     O1     O0
+    ```
 
     Description of the __init__ method.
 
@@ -236,6 +324,22 @@ class UnsignedApproximateTwoBitMultiplierM4(MultiplierCircuit):
 
     M4 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
 
+    ```
+         A1B1   A1B0   A0B1   A0B0
+         │ │    │ │    │ │    │ │
+        ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐
+        │AND│  │AND│  │AND│  │AND│
+        └─┬─┘  └─┬─┘  └─┬─┘  └─┬─┘
+          │      │      └┐     │  
+          │      └─────┐ │     │
+          └──────┐    ┌▼─▼┐    │
+                 │    │XOR│    │
+                 │    └─┬─┘    │
+                 │      │      │
+          ▼      ▼      ▼      ▼
+        O3=0     O2     O1     O0
+    ```
+
     Description of the __init__ method.
 
     Args:
@@ -285,7 +389,13 @@ class SignedApproximateTwoBitMultiplierM4(MultiplierCircuit):
 class UnsignedRecursiveMultiplier(MultiplierCircuit):
     """Class representing unsigned recursive multiplier.
 
-    TODO
+    Input bit-vector length N can be any power of two greater than 1 (e.g. 2, 4, 8, ...).
+    
+    The internal structure of the recursive multiplier is composed of subsequent two-bit submultipliers provided in the input `submultipliers` list.
+    The `submultipliers` list should contain the classes of the two-bit submultipliers that will be used for instantiation. If None are provided, accurate two-bit submultipliers are assumed.
+    
+    The number of submultipliers required is equal to (N/2)² for N > 2. For N = 2, only one two-bit submultiplier is required.
+    
     Description of the __init__ method.
 
     Args:

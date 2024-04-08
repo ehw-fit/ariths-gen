@@ -59,7 +59,7 @@ class PopCountCompare(GeneralCircuit):
                      ▼             
     """
 
-    def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_lt", **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "popcnt_cmp", **kwargs):
         self.a = a
         self.b = b
         

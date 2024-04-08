@@ -54,8 +54,9 @@ class GeneralCircuit():
         self.out = Bus(outname, out_N, out_bus=True, signed=signed)
 
         self.components = []
-        self.circuit_wires = []
+        self._prefixes = [] # TODO rename to fullname and add distinct attr for prefix, name, suffix
         self.circuit_gates = []
+        self.circuit_wires = []
         self.signed = signed
         self.c_data_type = "int64_t" if self.signed is True else "uint64_t"
         self.pyc = None  # Python compiled function
@@ -87,12 +88,26 @@ class GeneralCircuit():
     
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
+        
+        Additionally it adds all the gates of the component to the circuit's list of gates and all
+        sbcomponents prefixes to check for naming duplicates which could cause issues in the circuit generation.
 
         Args:
             component: Subcomponent to be added into list of components composing described circuit.
         """
-        prefixes = [c.prefix for c in self.components]
-        assert component.prefix not in prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
+        # TODO will be redone in ArithsGen rework
+        # We should probably check also wire names for especially hierarchical generation
+        if isinstance(component, TwoInputLogicGate):
+            if component.disable_generation is False:
+                self.circuit_gates.append(component)
+        else:
+            self.circuit_gates.extend(component.get_circuit_gates())
+            for prefix in component._prefixes:
+                assert prefix not in self._prefixes, f"Component with prefix {prefix} already exists in the circuit."
+            self._prefixes.extend(component._prefixes)
+
+        assert component.prefix not in self._prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
+        self._prefixes.append(component.prefix)
         self.components.append(component)
         return component
 
@@ -120,7 +135,7 @@ class GeneralCircuit():
             return sum(isinstance(c, cls) for c in self.components if isinstance(c, cls) and c.disable_generation is False)
         else:
             return sum(isinstance(c, cls) for c in self.components)
-
+        
     def get_circuit_gates(self, verilog_output: bool = False):
         """Gets a list of all the logic gates in circuit that should be generated.
 
@@ -227,14 +242,13 @@ class GeneralCircuit():
         else:
             return len(self.circuit_wires)+2
 
-    def get_cgp_wires(self):
+    def get_circuit_wires(self):
         """Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
 
         Constant wire with value 0 has constant index of 0.
         Constant wire with value 1 has constant index of 1.
         Other wires indexes start counting from 2 and up.
         """
-        self.circuit_wires = []
         circuit_wires_names = []
 
         for input in self.inputs:
@@ -262,6 +276,7 @@ class GeneralCircuit():
                 self.circuit_wires.append(
                     (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
                 circuit_wires_names.append(gate.out.name)
+                
 
     def get_circuit_wire_index(self, wire: Wire):
         """Searches for circuit's wire unique index position within the circuit. Used for cgp chromosome generation.
@@ -773,7 +788,7 @@ class GeneralCircuit():
         Returns:
             str: CGP chromosome parameters of described arithmetic circuit.
         """
-        self.circuit_gates = self.get_circuit_gates()
+        # self.circuit_gates = self.get_circuit_gates() TODO delete
         return f"{{{sum(input_bus.N for input_bus in self.inputs)},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}"
 
     def get_triplets_cgp(self):
@@ -789,7 +804,7 @@ class GeneralCircuit():
         Returns:
             str: List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.
         """
-        self.get_cgp_wires()
+        self.get_circuit_wires()
         return "".join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), out_id=self.get_circuit_wire_index(g.out)) if isinstance(g, OneInputLogicGate) else
                        g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])
 
