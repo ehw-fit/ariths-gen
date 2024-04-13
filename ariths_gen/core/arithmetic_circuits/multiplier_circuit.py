@@ -1,36 +1,24 @@
-from .arithmetic_circuit import (
-    ArithmeticCircuit
+from .general_circuit import (
+    GeneralCircuit
 )
-
-from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
-
 from ariths_gen.wire_components import (
-    Wire,
-    ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
-
+from ariths_gen.one_bit_circuits.logic_gates import (
+    AndGate,
+    NandGate
+)
 import math
 
 
-class MultiplierCircuit(ArithmeticCircuit):
-    """Class represents a general multiplier circuit derived from `ArithmeticCircuit` class.
+class MultiplierCircuit(GeneralCircuit):
+    """Class represents a general multiplier circuit derived from `GeneralCircuit` class.
 
-    The __init__ method calls parent class __init__ method which fills some mandatory attributes concerning arithmetic circuit
+    The __init__ method calls parent class __init__ method which fills some mandatory attributes concerning general circuit
     that are later used for generation into various representations.
     """
-
-    def __init__(self, a, b, prefix: str, name: str, out_N: int, **kwargs):
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=out_N, **kwargs)
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, outname: str = "", **kwargs):
+        super().__init__(prefix=prefix, name=name, out_N=out_N, inner_component=inner_component, inputs=inputs, one_bit_circuit=one_bit_circuit, signed=signed, outname=outname, **kwargs)
 
     # Array/approximate multipliers
     def get_previous_partial_product(self, a_index: int, b_index: int, mult_type=""):
@@ -266,7 +254,7 @@ class MultiplierCircuit(ArithmeticCircuit):
         else:
             return self.columns[column][bit+1]
 
-    def update_column_wires(self, curr_column: int, adder: ArithmeticCircuit, next_column: int = 0):
+    def update_column_wires(self, curr_column: int, adder: GeneralCircuit, next_column: int = 0):
         """Provides bit height reduction of the chosen column.
 
         Inserts chosen column's top bits into an `adder` circuit to reduce its bit height.
@@ -274,7 +262,7 @@ class MultiplierCircuit(ArithmeticCircuit):
 
         Args:
             curr_column (int): Current pp column index.
-            adder (ArithmeticCircuit): Two/three input one bit adder.
+            adder (GeneralCircuit): Two/three input one bit adder.
             next_column (int, optional): Subsequent pp column index. Defaults to 0.
         """
         if hasattr(adder, "c"):

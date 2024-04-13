@@ -74,7 +74,7 @@ class Wire():
             return f"({self.c_const})"
         # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
         # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
-        elif self.is_buswire():
+        elif self.is_buswire() and self.name == f"{self.prefix}[{self.index}]":
             return f"(({self.prefix} >> {self.index}) & 0x01)"
         else:
             return f"(({self.name} >> 0) & 0x01)"

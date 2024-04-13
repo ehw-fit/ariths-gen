@@ -1,19 +1,10 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
     ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
     GeneralCircuit
-)
-
-from ariths_gen.core.logic_gate_circuits import (
-    MultipleInputLogicGate
-)
-from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,

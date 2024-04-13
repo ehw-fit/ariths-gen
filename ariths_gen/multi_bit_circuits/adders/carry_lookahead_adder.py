@@ -1,34 +1,24 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.core.logic_gate_circuits import (
     MultipleInputLogicGate
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
-    FullAdderPG,
     PGLogicBlock
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
     OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
-class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
+class UnsignedCarryLookaheadAdder(GeneralCircuit):
     """Class representing unsigned carry-lookahead adder.
 
     Unsigned carry-lookahead adder represents faster adder circuit which is composed
@@ -67,7 +57,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "", name: str = "u_cla", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -128,7 +118,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
         self.out.connect(self.N, cin)
 
 
-class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
+class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, GeneralCircuit):
     """Class representing signed carry-lookahead adder.
 
     Signed carry-lookahead adder represents faster adder circuit which is composed

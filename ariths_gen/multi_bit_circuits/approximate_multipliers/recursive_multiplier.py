@@ -11,11 +11,9 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XorGate,
     NotGate
 )
-
 from ariths_gen.multi_bit_circuits.adders import (
     UnsignedCarryLookaheadAdder
 )
-
 import math
 
 
@@ -55,7 +53,7 @@ class UnsignedAccurateTwoBitMultiplier(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_2bit_accm", **kwargs):
         self.N = max(a.N, b.N)
         assert self.N == 2
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -98,14 +96,14 @@ class UnsignedApproximateTwoBitMultiplierM1(MultiplierCircuit):
     """Class representing unsigned two-bit approximate multiplier variant M1.
 
     M1 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
-    
+
     ```
          A1B1   A1B0   A0B1   A0B0
          │ │    │ │    │ │    │ │
         ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐
         │AND│  │AND│  │AND│  │AND│
         └─┬─┘  └─┬─┘  └─┬─┘  └─┬─┘
-          │      │      └┐     │  
+          │      │      └┐     │
           │      └─────┐ │     │
           └──────┐    ┌▼─▼┐    │
                  │    │ OR│    │
@@ -126,7 +124,7 @@ class UnsignedApproximateTwoBitMultiplierM1(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_2bit_axm1", **kwargs):
         self.N = max(a.N, b.N)
         assert self.N == 2
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -165,7 +163,7 @@ class UnsignedApproximateTwoBitMultiplierM2(MultiplierCircuit):
     """Class representing unsigned two-bit approximate multiplier variant M2.
 
     M2 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
-    
+
     ```
          A1B1          A1B0   A0B1
          │ │           │ │    │ │
@@ -200,7 +198,7 @@ class UnsignedApproximateTwoBitMultiplierM2(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_2bit_axm1", **kwargs):
         self.N = max(a.N, b.N)
         assert self.N == 2
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -241,7 +239,7 @@ class UnsignedApproximateTwoBitMultiplierM3(MultiplierCircuit):
     """Class representing unsigned two-bit approximate multiplier variant M3.
 
     M3 ax variant defined here: https://ieeexplore.ieee.org/document/8727537
-    
+
     ```
          A1B1   A1B0   A0B1   A0B0
          │ │    │ │    │ │    │ │
@@ -280,7 +278,7 @@ class UnsignedApproximateTwoBitMultiplierM3(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_2bit_axm3", **kwargs):
         self.N = max(a.N, b.N)
         assert self.N == 2
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -330,7 +328,7 @@ class UnsignedApproximateTwoBitMultiplierM4(MultiplierCircuit):
         ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐  ┌▼─▼┐
         │AND│  │AND│  │AND│  │AND│
         └─┬─┘  └─┬─┘  └─┬─┘  └─┬─┘
-          │      │      └┐     │  
+          │      │      └┐     │
           │      └─────┐ │     │
           └──────┐    ┌▼─▼┐    │
                  │    │XOR│    │
@@ -351,7 +349,7 @@ class UnsignedApproximateTwoBitMultiplierM4(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_2bit_axm4", **kwargs):
         self.N = max(a.N, b.N)
         assert self.N == 2
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -390,12 +388,12 @@ class UnsignedRecursiveMultiplier(MultiplierCircuit):
     """Class representing unsigned recursive multiplier.
 
     Input bit-vector length N can be any power of two greater than 1 (e.g. 2, 4, 8, ...).
-    
+
     The internal structure of the recursive multiplier is composed of subsequent two-bit submultipliers provided in the input `submultipliers` list.
     The `submultipliers` list should contain the classes of the two-bit submultipliers that will be used for instantiation. If None are provided, accurate two-bit submultipliers are assumed.
-    
+
     The number of submultipliers required is equal to (N/2)² for N > 2. For N = 2, only one two-bit submultiplier is required.
-    
+
     Description of the __init__ method.
 
     Args:
@@ -410,7 +408,7 @@ class UnsignedRecursiveMultiplier(MultiplierCircuit):
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_rm", submultipliers: list = None, unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
         assert self.N > 1 and self.N & (self.N-1) == 0  # assure that N is a power of two greater than 1 (So allowed N is 2, 4, 8, ..)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -424,7 +422,7 @@ class UnsignedRecursiveMultiplier(MultiplierCircuit):
 
         assert (self.N > 2 and len(submultipliers) == (self.N//2)**2) or (self.N == 2 and len(submultipliers) == 1)
 
-        if self.N == 2: # Base case for just one two-bit multiplier
+        if self.N == 2:  # Base case for just one two-bit multiplier
             # TODO add suffix in ariths_gen rework
             mult = submultipliers[0](Bus(prefix=self.prefix + "_a", wires_list=self.a.bus), Bus(prefix=self.prefix + "_b", wires_list=self.b.bus), prefix=self.prefix + "_" + str(self.get_instance_num(cls=submultipliers[0])), **kwargs)
             self.add_component(mult)
@@ -467,7 +465,7 @@ class UnsignedRecursiveMultiplier(MultiplierCircuit):
 
                 # Create wire vectors holding partial products for final summation
                 pp = Bus(prefix=f"pp_{m}", N=self.out.N, wires_list=[ConstantWireValue0() for _ in range(self.out.N)])
-                #[pp.connect_bus(submult.out, offset=(self.out.N-4)-(a_bus_offset+b_bus_offset))]
+                # [pp.connect_bus(submult.out, offset=(self.out.N-4)-(a_bus_offset+b_bus_offset))]
                 [pp.connect((self.out.N-1)-(a_bus_offset+b_bus_offset)-i, submult.out[3-i], inserted_wire_desired_index=3-i) for i in range(4)]
                 partial_products.append(pp)
 

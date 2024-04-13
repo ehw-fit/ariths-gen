@@ -1,11 +1,8 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
     MultiplierCircuit,
 )
 from ariths_gen.core.logic_gate_circuits import (
@@ -16,13 +13,7 @@ from ariths_gen.one_bit_circuits.one_bit_components import (
     FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    AndGate
 )
 from ariths_gen.multi_bit_circuits.adders import (
     UnsignedCarryLookaheadAdder
@@ -114,7 +105,7 @@ class UnsignedBrokenCarrySaveMultiplier(MultiplierCircuit):
         # Vertical cut should be greater or equal to horizontal cut
         assert vertical_cut >= horizontal_cut
 
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -213,7 +204,6 @@ class UnsignedBrokenCarrySaveMultiplier(MultiplierCircuit):
             adder_name = unsigned_adder_class_name(a=a, b=b).prefix + str(final_cpa_N)
             adder_a = Bus(prefix=f"a", wires_list=previous_sums)
             adder_b = Bus(prefix=f"b", wires_list=previous_carries)
-
             final_adder = unsigned_adder_class_name(a=adder_a, b=adder_b, prefix=self.prefix, name=adder_name, inner_component=True)
             self.add_component(final_adder)
             [self.out.connect(o, final_adder.out.get_wire(o-max(self.N, self.vertical_cut)), inserted_wire_desired_index=o-max(self.N, self.vertical_cut)) for o in range(max(self.N, self.vertical_cut), self.out.N)]

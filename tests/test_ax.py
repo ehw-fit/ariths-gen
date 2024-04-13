@@ -8,13 +8,8 @@ DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(DIR_PATH, '..'))
 import numpy as np
 import itertools
-
-from ariths_gen.core.arithmetic_circuits.arithmetic_circuit import ArithmeticCircuit
-from ariths_gen.core.arithmetic_circuits import GeneralCircuit
-from ariths_gen.wire_components import Bus, Wire
-from ariths_gen.multi_bit_circuits.adders import UnsignedRippleCarryAdder
+from ariths_gen.wire_components import Bus
 from ariths_gen.multi_bit_circuits.approximate_adders import QuAdder
-from ariths_gen.multi_bit_circuits.multipliers import UnsignedArrayMultiplier, UnsignedDaddaMultiplier
 
 
 def test_quadder():

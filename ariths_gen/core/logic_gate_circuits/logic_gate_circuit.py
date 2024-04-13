@@ -1,4 +1,4 @@
-from ariths_gen.wire_components.wires import Wire, ConstantWireValue0, ConstantWireValue1
+from ariths_gen.wire_components.wires import Wire
 from ariths_gen.wire_components.buses import Bus
 import math
 

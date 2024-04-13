@@ -1,11 +1,11 @@
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit
+    GeneralCircuit
 )
 
 from ariths_gen.wire_components.wires import Wire
 
 
-class TwoInputOneBitCircuit(ArithmeticCircuit):
+class TwoInputOneBitCircuit(GeneralCircuit):
     """Class represents a general two input one bit circuit and implements their generation to various representations. It is derived from `ArithmeticCircuit` class.
 
     Description of the __init__ method.
@@ -16,11 +16,8 @@ class TwoInputOneBitCircuit(ArithmeticCircuit):
         prefix (str, optional): Prefix name of circuit. Defaults to "two_input_one_bit_circuit".
     """
     def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "two_input_one_bit_circuit"):
-        super().__init__(a=a, b=b, prefix=prefix, name="", out_N=1, one_bit_circuit=True)
+        super().__init__(inputs=[a, b], prefix=prefix, name="", out_N=1, one_bit_circuit=True)
         self.c_data_type = "uint8_t"
-        self.prefix = prefix
-        self.a = a
-        self.b = b
 
     """ C CODE GENERATION """
     # FLAT C #

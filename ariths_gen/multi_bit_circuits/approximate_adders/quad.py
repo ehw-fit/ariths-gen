@@ -7,33 +7,20 @@ M. A. Hanif, R. Hafiz, O. Hasan and M. Shafique, "QuAd: Design and analysis of Q
 """
 
 from ...wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
-from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder
+
+from ariths_gen.multi_bit_circuits.adders.ripple_carry_adder import (
+    UnsignedRippleCarryAdder
 )
-from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
-from ariths_gen.multi_bit_circuits.adders.ripple_carry_adder import UnsignedRippleCarryAdder
 import warnings
 
 
-class QuAdder(ArithmeticCircuit):
+class QuAdder(GeneralCircuit):
     """
     Implementation of QuAd
 
@@ -102,13 +89,13 @@ class QuAdder(ArithmeticCircuit):
         self.use_log = use_log
 
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
 
-        #warnings.warn("QuAdder is not tested yet")
+        # warnings.warn("QuAdder is not tested yet")
 
         # Connect all outputs to zero
         for i in range(self.N+1):
@@ -128,7 +115,7 @@ class QuAdder(ArithmeticCircuit):
 
             for i, j in zip(out_indexes, in_indexes):
                 if j >= in_bus.N:
-                    out_bus[i] = ConstantWireValue0() # unsigned extension
+                    out_bus[i] = ConstantWireValue0()  # unsigned extension
                 else:
                     out_bus.connect(i, in_bus.get_wire(j))  # [i] = in_bus[j]
 

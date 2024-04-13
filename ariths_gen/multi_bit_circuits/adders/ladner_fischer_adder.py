@@ -1,41 +1,22 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
     PGSumLogic,
     GreyCell,
     BlackCell
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
-from ariths_gen.multi_bit_circuits.adders import (
-    UnsignedCarryLookaheadAdder,
-    UnsignedPGRippleCarryAdder,
-    UnsignedRippleCarryAdder,
-    SignedCarryLookaheadAdder,
-    SignedPGRippleCarryAdder,
-    SignedRippleCarryAdder
+    XorGate
 )
 import math
 
 
-class UnsignedLadnerFischerAdder(ArithmeticCircuit):
+class UnsignedLadnerFischerAdder(GeneralCircuit):
     """Class representing unsigned Ladner-Fischer adder (using valency-2 logic gates).
 
     The Ladner-Fischer adder belongs to a type of tree (parallel-prefix) adders.
@@ -88,7 +69,7 @@ class UnsignedLadnerFischerAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_lfa", config_choice: int = 1, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -188,7 +169,7 @@ class UnsignedLadnerFischerAdder(ArithmeticCircuit):
                         self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())
 
 
-class SignedLadnerFischerAdder(UnsignedLadnerFischerAdder, ArithmeticCircuit):
+class SignedLadnerFischerAdder(UnsignedLadnerFischerAdder, GeneralCircuit):
     """Class representing signed Ladner-Fischer adder (using valency-2 logic gates).
 
     The Ladner-Fischer adder belongs to a type of tree (parallel-prefix) adders.

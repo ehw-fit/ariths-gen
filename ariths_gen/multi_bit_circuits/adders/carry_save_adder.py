@@ -1,38 +1,20 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
     ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    ThreeInputArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
     FullAdder
 )
-from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
 from ariths_gen.multi_bit_circuits.adders import (
-    UnsignedCarryLookaheadAdder,
-    UnsignedPGRippleCarryAdder,
-    UnsignedRippleCarryAdder,
-    SignedCarryLookaheadAdder,
-    SignedPGRippleCarryAdder,
-    SignedRippleCarryAdder
+    UnsignedCarryLookaheadAdder
 )
 
 
-class CarrySaveAdderComponent(ThreeInputArithmeticCircuit):
+class CarrySaveAdderComponent(GeneralCircuit):
     """Class representing carry save adder component.
 
     The carry save adder component is especially useful when constructing tree multiplier architectures to reduce the propagation delay as opposed to traditional implementation of tree multipliers with half/full adders.
@@ -70,7 +52,8 @@ class CarrySaveAdderComponent(ThreeInputArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, c: Bus, prefix: str = "", name: str = "csa_component", signed: bool = False, **kwargs):
         self.N = max(a.N, b.N, c.N)
-        super().__init__(a=a, b=b, c=c, prefix=prefix, name=name, out_N=(2*self.N)+2, signed=signed, **kwargs)
+        super().__init__(inputs=[a, b, c], prefix=prefix, name=name, out_N=(2*self.N)+2, signed=signed, **kwargs)
+        self.out.signed = False  # CSA component has always unsigned output
 
         bus_extension_wire = ConstantWireValue1() if self.signed is True else ConstantWireValue0()
         self.a.bus_extend(N=self.N, prefix=a.prefix, desired_extension_wire=bus_extension_wire)
@@ -94,7 +77,7 @@ class CarrySaveAdderComponent(ThreeInputArithmeticCircuit):
         [self.out.connect(o, self.carry_bits.get_wire(o-int(self.out.N/2))) for o in range(int(self.out.N/2), self.out.N)]
 
 
-class UnsignedCarrySaveAdder(ThreeInputArithmeticCircuit):
+class UnsignedCarrySaveAdder(GeneralCircuit):
     """Class representing unsigned carry save adder.
 
     Unsigned carry save adder represents 3 input N-bit unsigned adder which is composed of
@@ -132,7 +115,7 @@ class UnsignedCarrySaveAdder(ThreeInputArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, c: Bus, prefix: str = "", name: str = "u_csa", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N, c.N)
-        super().__init__(a=a, b=b, c=c, prefix=prefix, name=name, out_N=self.N+2, **kwargs)
+        super().__init__(inputs=[a, b, c], prefix=prefix, name=name, out_N=self.N+2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)

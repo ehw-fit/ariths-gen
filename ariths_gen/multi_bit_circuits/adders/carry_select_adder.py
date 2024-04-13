@@ -1,34 +1,23 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
     ConstantWireValue1,
-    Bus,
-    wires
+    Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
-)
-from ariths_gen.core.logic_gate_circuits import (
-    MultipleInputLogicGate
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
     FullAdder,
     TwoOneMultiplexer
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
     OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
-class UnsignedCarrySelectAdder(ArithmeticCircuit):
+class UnsignedCarrySelectAdder(GeneralCircuit):
     """Class representing unsigned carry select adder.
 
     Carry select adder's logic is divided into a number of carry select blocks.
@@ -75,7 +64,7 @@ class UnsignedCarrySelectAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, select_block_size: int = 4, prefix: str = "", name: str = "u_csla", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -125,7 +114,7 @@ class UnsignedCarrySelectAdder(ArithmeticCircuit):
         self.out.connect(self.N, cin)
 
 
-class SignedCarrySelectAdder(UnsignedCarrySelectAdder, ArithmeticCircuit):
+class SignedCarrySelectAdder(UnsignedCarrySelectAdder, GeneralCircuit):
     """Class representing signed carry select adder.
 
     Carry select adder's logic is divided into a number of carry select blocks.
