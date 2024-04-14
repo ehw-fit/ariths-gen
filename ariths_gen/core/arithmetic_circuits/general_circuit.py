@@ -31,7 +31,7 @@ class GeneralCircuit():
             attr_name = chr(97+i)
             full_prefix = f"{self.prefix}_{input.prefix}" if self.inner_component else f"{input.prefix}"
             if isinstance(input, Bus) or isinstance(input, Wire):
-                circuit_input = copy.deepcopy(input)
+                circuit_input = input
                 circuit_input.prefix = full_prefix
             setattr(self, attr_name, circuit_input)
             self.inputs.append(circuit_input)
@@ -452,8 +452,8 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical C code of subcomponent arithmetic circuit's wires declaration.
         """
-        return ";\n".join([f"  {self.c_data_type} {i.prefix} = 0" for i in self.inputs]) + ";\n" + \
-              f"  {self.c_data_type} {self.out.prefix} = 0;\n"
+        return "".join([f"  {self.c_data_type} {i.prefix} = 0;\n" for i in self.inputs if ((isinstance(i, Wire)) or (not all((w.is_const()) or (w.parent_bus is not None and w.prefix == i.prefix) for w in i.bus)))]) + \
+               f"  {self.c_data_type} {self.out.prefix} = 0;\n"
 
     def get_init_c_hier(self):
         """Generates hierarchical C code initialization and assignment of corresponding arithmetic circuit's input/output wires.
@@ -598,9 +598,7 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Verilog code of subcomponent arithmetic circuit's wires declaration.
         """
-        return "".join(w.get_wire_declaration_v() for w in self.inputs + [self.out]) + "\n"
-
-        #return "".join(b.get_wire_declaration_v() for b in self.inputs + [self.out] if not all((w.is_const()) or (w.parent_bus is not None and w.prefix == b.prefix) for w in b.bus)) + "\n"
+        return "".join(b.get_wire_declaration_v() for b in self.inputs + [self.out] if (b == self.out) or (not all((w.is_const()) or (w.parent_bus is not None and w.prefix == b.prefix) for w in b.bus)))
 
     def get_init_v_hier(self):
         """Generates hierarchical Verilog code initialization and assignment of corresponding arithmetic circuit's input/output wires.
@@ -676,16 +674,10 @@ class GeneralCircuit():
         Returns:
             str: Flat Blif code containing declaration of circuit's wires.
         """
-        if self.N == 1:
-            return f".inputs {' '.join([w.prefix for w in self.inputs])}\n" + \
-                   f".outputs{self.out.get_wire_declaration_blif()}\n" + \
-                   f".names vdd\n1\n" + \
-                   f".names gnd\n0\n"
-        else:
-            return f".inputs{''.join([w.get_wire_declaration_blif() for w in self.inputs])}\n" + \
-                   f".outputs{self.out.get_wire_declaration_blif()}\n" + \
-                   f".names vdd\n1\n" + \
-                   f".names gnd\n0\n"
+        return f".inputs {''.join([w.get_wire_declaration_blif() for w in self.inputs])}\n" + \
+               f".outputs{self.out.get_wire_declaration_blif()}\n" + \
+               f".names vdd\n1\n" + \
+               f".names gnd\n0\n"
 
     def get_function_blif_flat(self):
         """Generates flat Blif code with invocation of subcomponents logic gates functions via their corresponding truth tables.
@@ -715,6 +707,9 @@ class GeneralCircuit():
         file_object.write(self.get_function_blif_flat())
         file_object.write(self.get_function_out_blif())
         file_object.write(f".end\n")
+
+
+
 
     # HIERARCHICAL BLIF #
     def get_invocations_blif_hier(self):

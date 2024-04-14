@@ -319,8 +319,8 @@ def test_mac():
             assert a.N == b.N
             assert r.N == 2 * a.N
 
-            self.mul = self.add_component(UnsignedArrayMultiplier(a=a, b=b, prefix=self.prefix, name=f"u_arrmul{a.N}", inner_component=True))
-            self.add = self.add_component(UnsignedRippleCarryAdder(a=r, b=self.mul.out, prefix=self.prefix, name=f"u_rca{r.N}", inner_component=True))
+            self.mul = self.add_component(UnsignedArrayMultiplier(a=Bus(wires_list=a.bus, prefix=a.prefix), b=Bus(wires_list=b.bus, prefix=b.prefix), prefix=self.prefix, name=f"u_arrmul{a.N}", inner_component=True))
+            self.add = self.add_component(UnsignedRippleCarryAdder(a=Bus(wires_list=r.bus, prefix=r.prefix), b=self.mul.out, prefix=self.prefix, name=f"u_rca{r.N}", inner_component=True))
             self.out.connect_bus(connecting_bus=self.add.out)
 
     # usage

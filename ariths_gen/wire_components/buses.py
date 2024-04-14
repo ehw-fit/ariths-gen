@@ -179,7 +179,7 @@ class Bus():
         """
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
         return "".join([f"  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}" for w in mapped_positions])
 
     def return_bus_wires_sign_extend_c_flat(self):
@@ -226,7 +226,7 @@ class Bus():
         """
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
         return "".join([f"  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}" for w in mapped_positions])
 
     def get_unique_assign_out_wires_v(self, circuit_block: object):
@@ -249,7 +249,6 @@ class Bus():
             str: Verilog code for declaration of individual bus wires.
         """
         return f"  wire [{self.N-1}:0] {self.prefix};\n"
-
 
     """ BLIF CODE GENERATION """
     def get_wire_declaration_blif(self, array: bool = True):

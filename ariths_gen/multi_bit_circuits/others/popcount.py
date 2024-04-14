@@ -43,18 +43,17 @@ class UnsignedPopCount(GeneralCircuit):
                 #print(b_in.prefix)
                 #print(a, half, a.N)
                 for i, j in enumerate(range(half)):
-                    b_in[i] = a[j]
+                    b_in.connect(i, a.get_wire(j))
                 for i, j in enumerate(range(half, a.N)):
-                    c_in[i] = a[j]
+                    c_in.connect(i, a.get_wire(j))
 
                 b = create_tree(b_in, depth=depth + 1, branch = branch + "A")
                 c = create_tree(c_in, depth=depth + 1, branch = branch + "B")
-                
-                
+
                 d = self.adder(a=b, b=c, prefix = f"{self.prefix}_add{branch}_{depth}")
                 self.add_component(d)
                 return d.out
-            
+
         sumbus = create_tree(self.a,0, "X")
         #print(sumbus)
         self.out.connect_bus(sumbus)

@@ -189,7 +189,7 @@ class Wire():
 
     """ BLIF CODE GENERATION """
     def get_declaration_blif(self, prefix: str = "", offset: int = 0, array: bool = False):
-        """Wire declaration in Blif code.
+        """Declaration of wire which is part of a bus in Blif code.
 
         Declares basic wire name if wire is not part of a bus
         or declares wire by an offset of its position within the bus.
@@ -207,6 +207,16 @@ class Wire():
         else:
             return f"{self.name}"
 
+    def get_wire_declaration_blif(self):
+        """Declaration of a single wire in Blif code.
+        
+        Used for declaration of modul inputs.
+        
+        Returns:
+            str: Blif code for declaration of a wire.
+        """
+        return f" {self.prefix}\n"
+        
     def get_assign_blif(self, prefix: str, output: bool = False):
         """Assignment of wire value to another desired wire in Blif code.
 
@@ -245,10 +255,8 @@ class Wire():
         """
         if self.is_const():
             return self.blif_const
-        elif self.parent_bus is not None and self.parent_bus.N > 1:
-            return self.name
         else:
-            return self.prefix
+            return self.name
 
     def __str__(self):
         if self.is_const():

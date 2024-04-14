@@ -38,13 +38,8 @@ class PopCountCompare(GeneralCircuit):
         p2 = self.add_component(UnsignedPopCount(a=Bus(wires_list=self.b.bus, prefix=f"{prefix}_popcount2_a"),
                                                  prefix=f"{prefix}_popcount2",
                                                  inner_component=True)).out
-        print(p1)
         #N = max(p1.N, p2.N)
         #p1.bus_extend(N)
         #p2.bus_extend(N)
-        cmp_gte_a = Bus(wires_list=p1.bus, prefix=f"{prefix}_cmp_gte_a")
-        cmp_gte_a.connect_bus(p1)
-        cmp_gte_b = Bus(wires_list=p2.bus, prefix=f"{prefix}_cmp_gte_b")
-        cmp_gte_b.connect_bus(p2)
-        red = self.add_component(UnsignedCompareGTE(cmp_gte_a, cmp_gte_b, prefix=f"{prefix}_cmp", inner_component = True))
+        red = self.add_component(UnsignedCompareGTE(p1, p2, prefix=f"{prefix}_cmp", inner_component = True))
         self.out.connect_bus(red.out)
