@@ -173,9 +173,3 @@ def test_popcountcompare_small2_cgp():
     #expected = np.sum(r, axis=1)
 
     np.testing.assert_array_equal(v, expected)
-
-if __name__ == "__main__":
-    #test_popcountcompare_small()
-    #test_popcountcompare_same()
-    #test_popcountcompare_small2()
-    #test_popcountcompare_small2_cgp()
