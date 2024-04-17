@@ -17,10 +17,11 @@ class FourInputOneBitCircuit(TwoInputOneBitCircuit, GeneralCircuit):
         b (Wire): Second input wire.
         c (Wire): Third input wire.
         d (Wire): Fourth input wire.
-        prefix (str, optional): Prefix name of circuit. Defaults to "four_input_one_bit_circuit".
+        prefix (str, optional): Prefix name of circuit. Defaults to "".
+        name (str, optional): Name of circuit. Defaults to "four_input_one_bit_circuit".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="c"), d: Wire = Wire(name="d"), prefix: str = "four_input_one_bit_circuit"):
-        GeneralCircuit.__init__(self, inputs=[a, b, c, d], prefix=prefix, name="", out_N=1)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="c"), d: Wire = Wire(name="d"), prefix: str = "", name: str = "four_input_one_bit_circuit"):
+        GeneralCircuit.__init__(self, inputs=[a, b, c, d], prefix=prefix, name=name, out_N=1)
         self.c_data_type = "uint8_t"
 
     """ C CODE GENERATION """
@@ -36,7 +37,7 @@ class FourInputOneBitCircuit(TwoInputOneBitCircuit, GeneralCircuit):
 
     # HIERARCHICAL C #
     # Subcomponent generation (four inputs)
-    def get_out_invocation_c(self, *args, **kwargs):
+    def get_out_invocation_c(self):
         """Generates hierarchical C code invocation of corresponding four input one bit circuit's generated function block.
 
         Assigns output values from invocation of the corresponding function block into inner wires present inside the upper
@@ -117,7 +118,7 @@ class FourInputOneBitCircuit(TwoInputOneBitCircuit, GeneralCircuit):
                         f"" for c in self.components])
 
     # Subcomponent generation
-    def get_out_invocation_v(self, *args, **kwargs):
+    def get_out_invocation_v(self):
         """Generates hierarchical Verilog code invocation of corresponding four input one bit circuit's generated function block.
 
         Assigns output values from invocation of the corresponding function block into inner wires present inside the upper
@@ -143,7 +144,7 @@ class FourInputOneBitCircuit(TwoInputOneBitCircuit, GeneralCircuit):
         """
         unique_out_wires = []
         [unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name, self.c.name, self.d.name] else unique_out_wires.append(o.name) for o in self.out.bus]
-        return f".inputs {self.a.get_declaration_blif()} {self.b.get_declaration_blif()} {self.c.get_declaration_blif()} {self.d.get_declaration_blif()}\n" + \
+        return f".inputs {self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}{self.c.get_wire_declaration_blif()}{self.d.get_wire_declaration_blif()}\n" + \
                f".outputs" + \
                "".join([f" {o}" for o in unique_out_wires]) + "\n" + \
                f".names vdd\n1\n" + \
@@ -187,7 +188,7 @@ class FourInputOneBitCircuit(TwoInputOneBitCircuit, GeneralCircuit):
                        c.out.get_assign_blif(prefix=f"{unique_out_wires.pop(unique_out_wires.index(c.out.name+'_outid'+str(c.outid)))}", output=True) if f"{c.out.name+'_outid'+str(c.outid)}" in unique_out_wires else
                        "" for c in self.components])
 
-    def get_invocation_blif_hier(self, *args, **kwargs):
+    def get_invocation_blif_hier(self):
         """Generates hierarchical Blif code invocation of corresponding four input one bit circuit's generated function block.
 
         Returns:

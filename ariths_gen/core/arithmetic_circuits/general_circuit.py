@@ -162,7 +162,7 @@ class GeneralCircuit():
     def get_circuit_gates(self, verilog_output: bool = False):
         """Gets a list of all the logic gates in circuit that should be generated.
 
-        Args:
+        Args:            
             verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.
         Returns:
             list: List of composite logic gates.
@@ -170,13 +170,13 @@ class GeneralCircuit():
         gates = []
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
-                if c.disable_generation is False and (verilog_output is False or ((hasattr(self, "use_verilog_instance") and self.use_verilog_instance is False) or hasattr(self, "use_verilog_instance") is False)):
+                if (c.disable_generation is False) and (verilog_output is False or getattr(c, "use_verilog_instance", False) is False):
                     gates.append(c)
             else:
                 # Check whether it is necessary to use gates for the Verilog component
                 # description (ArithsGen internally defined comp) or not (technology specific instance)
                 if verilog_output is False or ((hasattr(c, "use_verilog_instance") and c.use_verilog_instance is False) or hasattr(c, "use_verilog_instance") is False):
-                    gates.extend((c.get_circuit_gates(verilog_output)))
+                    gates.extend(c.get_circuit_gates(verilog_output))
         return gates
 
     def get_one_bit_components(self):
@@ -214,7 +214,7 @@ class GeneralCircuit():
         return multi_bit_comps
 
     @staticmethod
-    def get_unique_types(components: list, name="", multi_bit: bool = False):
+    def get_unique_types(components: list, multi_bit: bool = False):
         """Retrieves just the unique representatives of class types present inside the provided components list.
 
         Args:
@@ -242,8 +242,8 @@ class GeneralCircuit():
         gate_comps = self.get_unique_types(components=self.get_circuit_gates(verilog_output))
         one_bit_comps = self.get_unique_types(
             components=self.get_one_bit_components())
-        multi_bit_comps = self.get_unique_types(name=self.prefix,
-            components=self.get_multi_bit_components(), multi_bit=True)
+        multi_bit_comps = self.get_unique_types(components=self.get_multi_bit_components(),
+                                                multi_bit=True)
 
         all_components = gate_comps + one_bit_comps + multi_bit_comps
         return all_components
@@ -711,6 +711,11 @@ class GeneralCircuit():
 
 
 
+
+
+
+
+
     # HIERARCHICAL BLIF #
     def get_invocations_blif_hier(self):
         """Generates hierarchical Blif code with invocations of subcomponents function blocks.
@@ -732,11 +737,17 @@ class GeneralCircuit():
         init_signature = inspect.signature(self.__class__.__init__)
         default_circuit_name = init_signature.parameters['name'].default
         circuit_type = default_circuit_name + "x".join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
-        return "".join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
-               f".subckt {circuit_type}" + \
-               "".join([f" {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]" for i, b in enumerate(self.inputs) for w in b.bus]) + \
-               "".join([f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus]) + "\n"
-        
+        if self.out.N > 1:
+            return "".join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
+                   f".subckt {circuit_type}" + \
+                   "".join([f" {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]" if b.N > 1 else f" {chr(97+i)}={b.prefix}" for i, b in enumerate(self.inputs) for w in b.bus]) + \
+                   "".join([f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus if not o.is_const()]) + "\n"
+        else:
+            return "".join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
+                   f".subckt {circuit_type}" + \
+                   "".join([f" {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]" if b.N > 1 else f" {chr(97+i)}={b.prefix}" for i, b in enumerate(self.inputs) for w in b.bus]) + \
+                   "".join([f" {circuit_type}_out={o.name}" for o in self.out.bus if not o.is_const()]) + "\n"
+            
         # TODO delete
         return f"{self.a.get_wire_assign_blif(output=True)}" + \
                f"{self.b.get_wire_assign_blif(output=True)}" + \

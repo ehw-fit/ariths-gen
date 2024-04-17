@@ -13,10 +13,11 @@ class TwoInputOneBitCircuit(GeneralCircuit):
     Args:
         a (Wire): First input wire.
         b (Wire): Second input wire.
-        prefix (str, optional): Prefix name of circuit. Defaults to "two_input_one_bit_circuit".
+        prefix (str, optional): Prefix name of circuit. Defaults to "".
+        name (str, optional): Name of circuit. Defaults to "two_input_one_bit_circuit".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "two_input_one_bit_circuit"):
-        super().__init__(inputs=[a, b], prefix=prefix, name="", out_N=1, one_bit_circuit=True)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "", name: str = "two_input_one_bit_circuit"):
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=1, one_bit_circuit=True)
         self.c_data_type = "uint8_t"
 
     """ C CODE GENERATION """
@@ -50,7 +51,7 @@ class TwoInputOneBitCircuit(GeneralCircuit):
         adder_block = self.__class__()
         return f"{adder_block.get_circuit_c()}\n\n"
 
-    def get_out_invocation_c(self, *args, **kwargs):
+    def get_out_invocation_c(self):
         """Generates hierarchical C code invocation of corresponding two input one bit circuit's generated function block.
 
         Assigns output values from invocation of the corresponding function block into inner wires present inside the upper
@@ -165,7 +166,7 @@ class TwoInputOneBitCircuit(GeneralCircuit):
         adder_block = self.__class__()
         return f"{adder_block.get_circuit_v()}\n\n"
 
-    def get_out_invocation_v(self, *args, **kwargs):
+    def get_out_invocation_v(self):
         """Generates hierarchical Verilog code invocation of corresponding two input one bit circuit's generated function block.
 
         Assigns output values from invocation of the corresponding function block into inner wires present inside the upper
@@ -250,7 +251,7 @@ class TwoInputOneBitCircuit(GeneralCircuit):
         """
         unique_out_wires = []
         [unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
-        return f".inputs {self.a.get_declaration_blif()} {self.b.get_declaration_blif()}\n" + \
+        return f".inputs {self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n" + \
                f".outputs" + \
                "".join([f" {o}" for o in unique_out_wires]) + "\n" + \
                f".names vdd\n1\n" + \
@@ -326,7 +327,7 @@ class TwoInputOneBitCircuit(GeneralCircuit):
                        c.out.get_assign_blif(prefix=f"{unique_out_wires.pop(unique_out_wires.index(c.out.name+'_outid'+str(c.outid)))}", output=True) if f"{c.out.name+'_outid'+str(c.outid)}" in unique_out_wires else
                        "" for c in self.components])
 
-    def get_invocation_blif_hier(self, *args, **kwargs):
+    def get_invocation_blif_hier(self):
         """Generates hierarchical Blif code invocation of corresponding two input one bit circuit's generated function block.
 
         Returns:

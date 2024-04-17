@@ -24,10 +24,11 @@ class BlackCell(FourInputOneBitCircuit):
         b (Wire, optional): Second input wire, represents propagate signal from the current stage. Defaults to Wire(name="p1").
         c (Wire, optional): Third input wire, represents generate signal from a preceding stage. Defaults to Wire(name="g0").
         d (Wire, optional): Fourth input wire, represents propagate signal from a preceding stage. Defaults to Wire(name="p0").
-        prefix (str, optional): Prefix name of grey cell. Defaults to "gc".
+        prefix (str, optional): Prefix name of grey cell. Defaults to "".
+        name (str, optional): Name of grey cell. Defaults to "gc".
     """
-    def __init__(self, a: Wire = Wire(name="g1"), b: Wire = Wire(name="p1"), c: Wire = Wire(name="g0"), d: Wire = Wire(name="p0"), prefix: str = "bc"):
-        super().__init__(a, b, c, d, prefix)
+    def __init__(self, a: Wire = Wire(name="g1"), b: Wire = Wire(name="p1"), c: Wire = Wire(name="g0"), d: Wire = Wire(name="p0"), prefix: str = "", name: str = "bc"):
+        super().__init__(a, b, c, d, prefix=prefix, name=name)
         # 2 wires for component's bus output (generate, propagate)
         self.out = Bus(self.prefix+"_out", 2)
 

@@ -205,7 +205,7 @@ class Wire():
         if array is True:
             return f"{prefix}[{offset}]"
         else:
-            return f"{self.name}"
+            return f"{prefix}"
 
     def get_wire_declaration_blif(self):
         """Declaration of a single wire in Blif code.
@@ -215,7 +215,7 @@ class Wire():
         Returns:
             str: Blif code for declaration of a wire.
         """
-        return f" {self.prefix}\n"
+        return f"{self.prefix} "
         
     def get_assign_blif(self, prefix: str, output: bool = False):
         """Assignment of wire value to another desired wire in Blif code.
