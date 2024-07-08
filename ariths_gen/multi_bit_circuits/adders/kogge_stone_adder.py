@@ -1,41 +1,22 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
     PGSumLogic,
     GreyCell,
     BlackCell
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
-from ariths_gen.multi_bit_circuits.adders import (
-    UnsignedCarryLookaheadAdder,
-    UnsignedPGRippleCarryAdder,
-    UnsignedRippleCarryAdder,
-    SignedCarryLookaheadAdder,
-    SignedPGRippleCarryAdder,
-    SignedRippleCarryAdder
+    XorGate
 )
 import math
 
 
-class UnsignedKoggeStoneAdder(ArithmeticCircuit):
+class UnsignedKoggeStoneAdder(GeneralCircuit):
     """Class representing unsigned Kogge-Stone adder (using valency-2 logic gates).
 
     The Kogge-Stone adder belongs to a type of tree (parallel-prefix) adders.
@@ -86,7 +67,7 @@ class UnsignedKoggeStoneAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_ksa", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -129,7 +110,7 @@ class UnsignedKoggeStoneAdder(ArithmeticCircuit):
                     self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())
 
 
-class SignedKoggeStoneAdder(UnsignedKoggeStoneAdder, ArithmeticCircuit):
+class SignedKoggeStoneAdder(UnsignedKoggeStoneAdder, GeneralCircuit):
     """Class representing signed Kogge-Stone adder (using valency-2 logic gates).
 
     The Kogge-Stone adder belongs to a type of tree (parallel-prefix) adders.

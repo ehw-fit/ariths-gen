@@ -1,35 +1,22 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
     ConstantWireValue1,
-    Bus,
-    wires
+    Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
-)
-from ariths_gen.core.logic_gate_circuits import (
-    MultipleInputLogicGate
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
     FullAdder,
     TwoOneMultiplexer
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 import math
 
 
-class UnsignedConditionalSumAdder(ArithmeticCircuit):
+class UnsignedConditionalSumAdder(GeneralCircuit):
     """Class representing unsigned conditional sum adder.
 
     Conditional sum adder performs carry-select addition starting with
@@ -108,7 +95,7 @@ class UnsignedConditionalSumAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_cosa", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -191,7 +178,7 @@ class UnsignedConditionalSumAdder(ArithmeticCircuit):
                 self.out.connect(self.N, self.carry_sig[i_wire+1][0][-1])
 
 
-class SignedConditionalSumAdder(UnsignedConditionalSumAdder, ArithmeticCircuit):
+class SignedConditionalSumAdder(UnsignedConditionalSumAdder, GeneralCircuit):
     """Class representing signed conditional sum adder.
 
     Conditional sum adder performs carry-select addition starting with

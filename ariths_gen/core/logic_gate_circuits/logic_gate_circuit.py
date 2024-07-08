@@ -1,4 +1,4 @@
-from ariths_gen.wire_components.wires import Wire, ConstantWireValue0, ConstantWireValue1
+from ariths_gen.wire_components.wires import Wire
 from ariths_gen.wire_components.buses import Bus
 import math
 
@@ -344,7 +344,7 @@ class TwoInputLogicGate():
         Returns:
             str: Blif logic gate's wires declaration.
         """
-        return f".inputs {self.a.get_declaration_blif()} {self.b.get_declaration_blif()}\n" + \
+        return f".inputs {self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n" + \
                f".outputs" + \
                "".join([f" {self.out.name}\n" if self.disable_generation is False else f" {self.out.name}_out\n" for _ in range(1)]) + \
                f".names vdd\n1\n" + \
@@ -687,7 +687,7 @@ class OneInputLogicGate(TwoInputLogicGate):
         Returns:
             str: Blif logic gate's wires declaration.
         """
-        return f".inputs {self.a.get_declaration_blif()}\n" + \
+        return f".inputs {self.a.get_wire_declaration_blif()}\n" + \
                f".outputs" + \
                "".join([f" {self.out.name}\n" if self.disable_generation is False else f" {self.out.name}_out\n" for _ in range(1)]) + \
                f".names vdd\n1\n" + \

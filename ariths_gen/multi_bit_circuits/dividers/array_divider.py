@@ -1,31 +1,20 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
     TwoOneMultiplexer,
     FullSubtractor
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
     NotGate
 )
 
 
-class ArrayDivider(ArithmeticCircuit):
+class ArrayDivider(GeneralCircuit):
     """Class representing array divider.
 
     Array divider performs division between two N bit numbers and stores their
@@ -96,7 +85,7 @@ class ArrayDivider(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "arrdiv", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)

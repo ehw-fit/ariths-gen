@@ -18,7 +18,7 @@ class Bus():
         if wires_list is None:
             self.prefix = prefix
             # Adding wires into current bus's wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            self.bus = [Wire(name=prefix+f"[{i}]", prefix=prefix, index=i, parent_bus=self) for i in range(N)]
+            self.bus = [Wire(name=prefix+f"[{i}]" if N != 1 else prefix, prefix=prefix, index=i, parent_bus=self) for i in range(N)]
             self.N = N
         else:
             self.prefix = prefix
@@ -179,7 +179,7 @@ class Bus():
         """
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
         return "".join([f"  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}" for w in mapped_positions])
 
     def return_bus_wires_sign_extend_c_flat(self):
@@ -226,7 +226,7 @@ class Bus():
         """
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
         return "".join([f"  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}" for w in mapped_positions])
 
     def get_unique_assign_out_wires_v(self, circuit_block: object):
@@ -250,13 +250,9 @@ class Bus():
         """
         return f"  wire [{self.N-1}:0] {self.prefix};\n"
 
-
     """ BLIF CODE GENERATION """
-    def get_wire_declaration_blif(self, array: bool = True):
+    def get_wire_declaration_blif(self):
         """Declare each wire from the bus independently in Blif code representation.
-
-        Args:
-            array (bool, optional): Specifies whether to declare wires from bus by their offset e.g. out[0] or by their wire name e.g. out_0. Defaults to True.
 
         Returns:
             str: Blif code for declaration of individual bus wires.
@@ -264,6 +260,7 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        array = True if self.N > 1 else False
         return "".join([f" {w[1].get_declaration_blif(prefix=self.prefix, offset=w[0], array=array)}" for w in mapped_positions])
 
     def get_wire_assign_blif(self, output: bool = False):
@@ -278,7 +275,10 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return "".join([w[1].get_assign_blif(prefix=self.prefix+f"[{w[0]}]", output=output) for w in mapped_positions])
+        if self.N > 1:
+            return "".join([w[1].get_assign_blif(prefix=self.prefix+f"[{w[0]}]", output=output) for w in mapped_positions])
+        else:
+            return "".join([w[1].get_assign_blif(prefix=self.prefix, output=output) for w in mapped_positions])
 
     def get_unique_assign_out_wires_blif(self, function_block_out_bus: object):
         """Assigns unique output wires to their respective outputs of subcomponent's function block modul in hierarchical Blif subcomponent's invocation.

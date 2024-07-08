@@ -1,53 +1,25 @@
-"""
-
-"""
-
 from ariths_gen.wire_components import (
-    Wire,
-    ConstantWireValue0,
-    ConstantWireValue1,
-    Bus,
-    wires
+    Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    GeneralCircuit,
-    MultiplierCircuit
-)
-from ariths_gen.core.logic_gate_circuits import (
-    MultipleInputLogicGate
-)
-from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
-    FullAdderP,
-    TwoOneMultiplexer
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    OrGate
+)
+from ariths_gen.core.logic_gate_circuits import (
+    TwoInputLogicGate
 )
 
-from ariths_gen.core.logic_gate_circuits import TwoInputLogicGate, TwoInputInvertedLogicGate, OneInputLogicGate
-from ariths_gen.multi_bit_circuits.adders import UnsignedRippleCarryAdder
-
-from math import log2, ceil
 
 class BitReduce(GeneralCircuit):
     """Class representing tree reducer circuit. Doent work for NAND gate!
     """
 
-    def __init__(self, a: Bus, gate : TwoInputLogicGate, prefix : str = "", name : str = "bitreduce", **kwargs):
+    def __init__(self, a: Bus, gate: TwoInputLogicGate, prefix: str = "", name: str = "bitreduce", **kwargs):
         self.N = a.N
-        self.a = a
-
-        outc = 1
-        super().__init__(name=name, prefix=prefix, inputs = [self.a], out_N=outc)
+        super().__init__(name=name, prefix=prefix, inputs=[a], out_N=1, **kwargs)
 
         # tree reduction
         def create_tree(a: Bus, depth: int, branch="A"):
@@ -80,10 +52,10 @@ class BitReduce(GeneralCircuit):
 
 
 class OrReduce(BitReduce):
-    def __init__(self, a: Bus, prefix : str = "", name : str = "orreduce", **kwargs):
+    def __init__(self, a: Bus, prefix: str = "", name: str = "orreduce", **kwargs):
         super().__init__(a=a, gate=OrGate, prefix=prefix, name=name, **kwargs)
 
 
 class AndReduce(BitReduce):
-    def __init__(self, a: Bus, prefix : str = "", name : str = "orreduce", **kwargs):
+    def __init__(self, a: Bus, prefix: str = "", name: str = "andreduce", **kwargs):
         super().__init__(a=a, gate=AndGate, prefix=prefix, name=name, **kwargs)

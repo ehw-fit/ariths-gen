@@ -1,12 +1,12 @@
-from ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder import UnsignedCarryLookaheadAdder
+from ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder import (
+    UnsignedCarryLookaheadAdder
+)
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
     ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
     MultiplierCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
@@ -14,13 +14,7 @@ from ariths_gen.one_bit_circuits.one_bit_components import (
     FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
@@ -50,7 +44,7 @@ class UnsignedDaddaMultiplier(MultiplierCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_dadda_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -154,7 +148,7 @@ class SignedDaddaMultiplier(MultiplierCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_dadda_cla", unsigned_adder_class_name: str = UnsignedCarryLookaheadAdder, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)

@@ -1,13 +1,14 @@
-from typing import Dict
-from ariths_gen.core.logic_gate_circuits.logic_gate_circuit import OneInputLogicGate, TwoInputLogicGate
-
+from ariths_gen.core.logic_gate_circuits.logic_gate_circuit import (
+    OneInputLogicGate,
+    TwoInputLogicGate
+)
 from ariths_gen.wire_components import (
     Wire,
-    ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
-
+from typing import Dict
+import inspect
+import copy
 from io import StringIO
 
 
@@ -17,7 +18,6 @@ class GeneralCircuit():
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     """
-
     def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, outname=None, **kwargs):
         if prefix == "":
             self.prefix = name
@@ -25,37 +25,28 @@ class GeneralCircuit():
             self.prefix = prefix + "_" + name
         self.inner_component = inner_component
 
-        if one_bit_circuit is False:
-            # Dynamic input bus assignment
-            self.inputs = []
-            input_names = "abcdefghijklmnopqrstuvwxyz"  # This should be enough..
-            assert len(input_names) >= len(inputs)
-            for i, input in enumerate(inputs):
-                attr_name = input_names[i]
-                full_prefix = f"{self.prefix}_{input.prefix}" if self.inner_component else f"{input.prefix}"
-                if isinstance(input, Bus):
-                    bus = Bus(prefix=full_prefix, wires_list=input.bus)
-                    setattr(self, attr_name, bus)
-                    self.inputs.append(bus)
-                    
-                    # If the input bus is an output bus, connect it
-                    if input.is_output_bus():
-                        getattr(self, attr_name).connect_bus(connecting_bus=input)
-                else:
-                    wire = Wire(name=input.name, prefix=full_prefix)
-                    setattr(self, attr_name, wire)
-                    self.inputs.append(wire)
-
-        else:
-            self.inputs = inputs
+        # Dynamic input bus assignment
+        self.inputs = []
+        for i, input in enumerate(inputs):
+            attr_name = chr(97+i)
+            full_prefix = f"{self.prefix}_{input.prefix}" if self.inner_component else f"{input.prefix}"
+            if isinstance(input, Bus) or isinstance(input, Wire):
+                circuit_input = input
+                circuit_input.prefix = full_prefix
+            setattr(self, attr_name, circuit_input)
+            self.inputs.append(circuit_input)
+            # If the input bus is an output bus, connect it
+            if isinstance(input, Bus) and input.is_output_bus():
+                getattr(self, attr_name).connect_bus(connecting_bus=input)
 
         if not outname:
             outname = self.prefix+"_out"
         self.out = Bus(outname, out_N, out_bus=True, signed=signed)
 
         self.components = []
-        self.circuit_wires = []
+        self._prefixes = [] # TODO rename to fullname and add distinct attr for prefix, name, suffix
         self.circuit_gates = []
+        self.circuit_wires = []
         self.signed = signed
         self.c_data_type = "int64_t" if self.signed is True else "uint64_t"
         self.pyc = None  # Python compiled function
@@ -74,25 +65,72 @@ class GeneralCircuit():
 
     def __str__(self):
         return f"<{type(self).__name__} prefix={self.prefix} " + (", ".join([f"input={i}" for i in self.inputs])) + ">"
-
         # super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
 
+    def get_hier_subcomponent_def(self, parent_kwargs: dict = {}):
+        """ Creates and returns a new instance of the current circuit block used for definition of a subcomponent in a hierarchical circuit.
+
+        Args:
+            parent_kwargs (dict): Dictionary containing all the configuration settings of the parent circuit block.
+
+        Returns:
+            GeneralCircuit: A new instance of the current circuit block with proper prefix and input wires.
+        """
+        # Obtain proper circuit name with its input bit widths
+        init_signature = inspect.signature(self.__class__.__init__)
+        init_params = list(init_signature.parameters.keys())
+        default_circuit_name = init_signature.parameters['name'].default
+        circuit_type = default_circuit_name + "x".join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        # Initialize and fill args for the new instance based on the current instance
+        init_args = {}
+
+        for param in init_params[1:]:  # Skip 'self'
+            attr = getattr(self, param, None)  # Get the attribute from the current instance
+
+            if attr is not None:  # If attribute does not exist, it will use default value from the signature
+                if isinstance(attr, Bus):  # If the input is a Bus, create a copy of the Bus object with same length, but proper prefix
+                    init_args[param] = Bus(N=attr.N, prefix=param)
+                elif isinstance(attr, Wire):  # If the input is a Wire, create a copy of the Wire object with proper prefix
+                    init_args[param] = Wire(name=param)
+                else:  # Copy other types of attributes
+                    init_args[param] = copy.deepcopy(attr)
+
+        init_args['name'] = circuit_type
+        init_args['prefix'] = ""
+
+        circuit_block = self.__class__(**init_args, **parent_kwargs)
+        return circuit_block
 
     def get_circuit_def(self) -> Dict[str, Wire]:
         """ returns IDs and wires of the inputs and output"""
-     #.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n" 
+        # TODO delete? (probably replaced by get_hier_subcomponent_def)
+        #.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
         r = {chr(97 + i): self.inputs[i] for i in range(len(self.inputs))}
         r['out'] = self.get_global_prefix() + "_out"
         return r
-    
+
     def add_component(self, component):
         """Adds a component into list of circuit's inner subcomponents.
+        
+        Additionally it adds all the gates of the component to the circuit's list of gates and all
+        sbcomponents prefixes to check for naming duplicates which could cause issues in the circuit generation.
 
         Args:
             component: Subcomponent to be added into list of components composing described circuit.
         """
-        prefixes = [c.prefix for c in self.components]
-        assert component.prefix not in prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
+        # TODO should be refactored in ArithsGen rework
+        # We should probably check also wire names for especially hierarchical generation
+        if isinstance(component, TwoInputLogicGate):
+            if component.disable_generation is False:
+                self.circuit_gates.append(component)
+        else:
+            self.circuit_gates.extend(component.get_circuit_gates())
+            for prefix in component._prefixes:
+                assert prefix not in self._prefixes, f"Component with prefix {prefix} already exists in the circuit."
+            self._prefixes.extend(component._prefixes)
+
+        assert component.prefix not in self._prefixes, f"Component with prefix {component.prefix} already exists in the circuit."
+        self._prefixes.append(component.prefix)
         self.components.append(component)
         return component
 
@@ -120,11 +158,11 @@ class GeneralCircuit():
             return sum(isinstance(c, cls) for c in self.components if isinstance(c, cls) and c.disable_generation is False)
         else:
             return sum(isinstance(c, cls) for c in self.components)
-
+        
     def get_circuit_gates(self, verilog_output: bool = False):
         """Gets a list of all the logic gates in circuit that should be generated.
 
-        Args:
+        Args:            
             verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.
         Returns:
             list: List of composite logic gates.
@@ -132,13 +170,13 @@ class GeneralCircuit():
         gates = []
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
-                if c.disable_generation is False and (verilog_output is False or ((hasattr(self, "use_verilog_instance") and self.use_verilog_instance is False) or hasattr(self, "use_verilog_instance") is False)):
+                if (c.disable_generation is False) and (verilog_output is False or getattr(c, "use_verilog_instance", False) is False):
                     gates.append(c)
             else:
                 # Check whether it is necessary to use gates for the Verilog component
                 # description (ArithsGen internally defined comp) or not (technology specific instance)
                 if verilog_output is False or ((hasattr(c, "use_verilog_instance") and c.use_verilog_instance is False) or hasattr(c, "use_verilog_instance") is False):
-                    gates.extend((c.get_circuit_gates(verilog_output)))
+                    gates.extend(c.get_circuit_gates(verilog_output))
         return gates
 
     def get_one_bit_components(self):
@@ -151,7 +189,7 @@ class GeneralCircuit():
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
                 continue
-            elif isinstance(getattr(c, 'a'), Wire):
+            elif all(isinstance(i, Wire) for i in self.inputs):
                 one_bit_comps.append(c)
             else:
                 one_bit_comps.extend(c.get_one_bit_components())
@@ -168,10 +206,11 @@ class GeneralCircuit():
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
                 continue
-            elif isinstance(getattr(c, 'a'), Wire):
+            elif all(isinstance(i, Wire) for i in self.inputs):
                 continue
             else:
                 multi_bit_comps.append(c)
+                multi_bit_comps.extend(c.get_multi_bit_components())
         return multi_bit_comps
 
     @staticmethod
@@ -186,7 +225,7 @@ class GeneralCircuit():
             list: List of unique composite class types.
         """
         if multi_bit is True:
-            return list({(type(c), c.N): c for c in components}.values())
+            return list({(type(c), tuple(i.N for i in c.inputs)): c for c in components[::-1]}.values())
         else:
             return list({type(c): c for c in components}.values())
 
@@ -203,8 +242,8 @@ class GeneralCircuit():
         gate_comps = self.get_unique_types(components=self.get_circuit_gates(verilog_output))
         one_bit_comps = self.get_unique_types(
             components=self.get_one_bit_components())
-        multi_bit_comps = self.get_unique_types(
-            components=self.get_multi_bit_components(), multi_bit=True)
+        multi_bit_comps = self.get_unique_types(components=self.get_multi_bit_components(),
+                                                multi_bit=True)
 
         all_components = gate_comps + one_bit_comps + multi_bit_comps
         return all_components
@@ -227,14 +266,13 @@ class GeneralCircuit():
         else:
             return len(self.circuit_wires)+2
 
-    def get_cgp_wires(self):
+    def get_circuit_wires(self):
         """Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
 
         Constant wire with value 0 has constant index of 0.
         Constant wire with value 1 has constant index of 1.
         Other wires indexes start counting from 2 and up.
         """
-        self.circuit_wires = []
         circuit_wires_names = []
 
         for input in self.inputs:
@@ -262,6 +300,7 @@ class GeneralCircuit():
                 self.circuit_wires.append(
                     (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
                 circuit_wires_names.append(gate.out.name)
+                
 
     def get_circuit_wire_index(self, wire: Wire):
         """Searches for circuit's wire unique index position within the circuit. Used for cgp chromosome generation.
@@ -313,8 +352,6 @@ class GeneralCircuit():
             file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
         """
         file_object.write(self.get_prototype_python())
-        # file_object.write(self.out.get_declaration_python())
-        # file_object.write(self.get_declaration_python_flat()+"\n")
         file_object.write(self.get_init_python_flat()+"\n")
         file_object.write(self.get_function_out_python_flat())
         file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
@@ -388,8 +425,6 @@ class GeneralCircuit():
         """
         # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         self.component_types = self.get_component_types()
-        for c in self.component_types:
-            c._parent_kwargs = self.kwargs
         return "".join([c.get_function_block_c() for c in self.component_types])
 
     def get_function_block_c(self):
@@ -398,12 +433,7 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical C code of multi-bit arithmetic circuit's function block description.
         """
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
-        return f"{circuit_block.get_circuit_c()}\n\n"
+        return f"{self.get_hier_subcomponent_def(parent_kwargs=self.kwargs).get_circuit_c()}\n\n"
 
     def get_declarations_c_hier(self):
         """Generates hierarchical C code declaration of input/output circuit wires.
@@ -422,8 +452,7 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical C code of subcomponent arithmetic circuit's wires declaration.
         """
-        return f"  {self.c_data_type} {self.a.prefix} = 0;\n" + \
-               f"  {self.c_data_type} {self.b.prefix} = 0;\n" + \
+        return "".join([f"  {self.c_data_type} {i.prefix} = 0;\n" for i in self.inputs if ((isinstance(i, Wire)) or (not all((w.is_const()) or (w.parent_bus is not None and w.prefix == i.prefix) for w in i.bus)))]) + \
                f"  {self.c_data_type} {self.out.prefix} = 0;\n"
 
     def get_init_c_hier(self):
@@ -445,9 +474,12 @@ class GeneralCircuit():
             str: Hierarchical C code of subcomponent's C function invocation and output assignment.
         """
         # Getting name of circuit type for proper C code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
-        return self.a.return_bus_wires_values_c_hier() + self.b.return_bus_wires_values_c_hier() + \
-            f"  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n"
+        init_signature = inspect.signature(self.__class__.__init__)
+        default_circuit_name = init_signature.parameters['name'].default
+        circuit_type = default_circuit_name + "x".join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        # TODO .. now only works for input buses
+        return "".join(w.return_bus_wires_values_c_hier() for w in self.inputs) + \
+               f"  {self.out.prefix} = {circuit_type}({', '.join(w.prefix if isinstance(w, Bus) else w.get_wire_value_c_hier() for w in self.inputs)});\n"
 
     def get_function_out_c_hier(self):
         """Generates hierarchical C code assignment of corresponding arithmetic circuit's output bus wires.
@@ -484,14 +516,13 @@ class GeneralCircuit():
 
     """ VERILOG CODE GENERATION """
     # FLAT VERILOG #
-
     def get_prototype_v(self):
         """Generates Verilog code module header to describe corresponding arithmetic circuit's interface in Verilog code.
 
         Returns:
             str: Module's name and parameters in Verilog code.
         """
-        return f"module {self.prefix}(" + ",".join(f"input [{x.N-1}:0] {x.prefix}" for x in self.inputs) + f", output [{self.out.N-1}:0] {self.out.prefix});\n"
+        return f"module {self.prefix}(" + ", ".join(f"input [{x.N-1}:0] {x.prefix}" for x in self.inputs) + f", output [{self.out.N-1}:0] {self.out.prefix});\n"
 
     def get_declaration_v_flat(self):
         """Generates flat Verilog code declaration of input/output circuit wires.
@@ -539,8 +570,6 @@ class GeneralCircuit():
         """
         # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         self.component_types = self.get_component_types(verilog_output=True)
-        for c in self.component_types:
-            c._parent_kwargs = self.kwargs
         return "".join([c.get_function_block_v() for c in self.component_types])
 
     def get_function_block_v(self):
@@ -550,11 +579,7 @@ class GeneralCircuit():
             str: Hierarchical Verilog code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
-        return f"{circuit_block.get_circuit_v()}\n\n"
+        return f"{self.get_hier_subcomponent_def(parent_kwargs=self.kwargs).get_circuit_v()}\n\n"
 
     def get_declarations_v_hier(self):
         """Generates hierarchical Verilog code declaration of input/output circuit wires.
@@ -573,12 +598,7 @@ class GeneralCircuit():
         Returns:
             str: Hierarchical Verilog code of subcomponent arithmetic circuit's wires declaration.
         """
-        return "".join(w.get_wire_declaration_v() for w in self.inputs + [self.out]) + "\n"
-
-        # TODO del..
-        return f"  wire [{self.a.N-1}:0] {self.a.prefix};\n" + \
-               f"  wire [{self.b.N-1}:0] {self.b.prefix};\n" + \
-               f"  wire [{self.out.N-1}:0] {self.out.prefix};\n"
+        return "".join(b.get_wire_declaration_v() for b in self.inputs + [self.out] if (b == self.out) or (not all((w.is_const()) or (w.parent_bus is not None and w.prefix == b.prefix) for w in b.bus)))
 
     def get_init_v_hier(self):
         """Generates hierarchical Verilog code initialization and assignment of corresponding arithmetic circuit's input/output wires.
@@ -599,12 +619,13 @@ class GeneralCircuit():
             str: Hierarchical Verilog code of subcomponent's module invocation and output assignment.
         """
         # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_type)
+        init_signature = inspect.signature(self.__class__.__init__)
+        default_circuit_name = init_signature.parameters['name'].default
+        circuit_type = default_circuit_name + "x".join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        circuit_block = self.get_hier_subcomponent_def(parent_kwargs=self.kwargs)
+        # TODO .. now only works for input buses
         return "".join([c.return_bus_wires_values_v_hier() for c in self.inputs]) + \
-            f"  {circuit_type} {circuit_type}_{self.out.prefix}(" + ",".join([f".{a.prefix}({b.prefix})" for a, b in zip(circuit_block.inputs, self.inputs)]) + f", .{circuit_block.out.prefix}({self.out.prefix}));\n"
-        #.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n"
+               f"  {circuit_type} {circuit_type}_{self.out.prefix}(" + ",".join([f".{a.prefix}({b.prefix})" for a, b in zip(circuit_block.inputs, self.inputs)]) + f", .{circuit_block.out.prefix}({self.out.prefix}));\n"
 
     def get_function_out_v_hier(self):
         """Generates hierarchical Verilog code assignment of corresponding arithmetic circuit's output bus wires.
@@ -653,7 +674,7 @@ class GeneralCircuit():
         Returns:
             str: Flat Blif code containing declaration of circuit's wires.
         """
-        return f".inputs{''.join([w.get_wire_declaration_blif() for w in self.inputs])}\n" + \
+        return f".inputs {''.join([w.get_wire_declaration_blif() for w in self.inputs])}\n" + \
                f".outputs{self.out.get_wire_declaration_blif()}\n" + \
                f".names vdd\n1\n" + \
                f".names gnd\n0\n"
@@ -687,6 +708,14 @@ class GeneralCircuit():
         file_object.write(self.get_function_out_blif())
         file_object.write(f".end\n")
 
+
+
+
+
+
+
+
+
     # HIERARCHICAL BLIF #
     def get_invocations_blif_hier(self):
         """Generates hierarchical Blif code with invocations of subcomponents function blocks.
@@ -705,7 +734,21 @@ class GeneralCircuit():
             str: Hierarchical Blif code of subcomponent's model invocation and output assignment.
         """
         # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
+        init_signature = inspect.signature(self.__class__.__init__)
+        default_circuit_name = init_signature.parameters['name'].default
+        circuit_type = default_circuit_name + "x".join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        if self.out.N > 1:
+            return "".join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
+                   f".subckt {circuit_type}" + \
+                   "".join([f" {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]" if b.N > 1 else f" {chr(97+i)}={b.prefix}" for i, b in enumerate(self.inputs) for w in b.bus]) + \
+                   "".join([f" {circuit_type}_out[{self.out.bus.index(o)}]={o.name}" for o in self.out.bus if not o.is_const()]) + "\n"
+        else:
+            return "".join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
+                   f".subckt {circuit_type}" + \
+                   "".join([f" {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]" if b.N > 1 else f" {chr(97+i)}={b.prefix}" for i, b in enumerate(self.inputs) for w in b.bus]) + \
+                   "".join([f" {circuit_type}_out={o.name}" for o in self.out.bus if not o.is_const()]) + "\n"
+            
+        # TODO delete
         return f"{self.a.get_wire_assign_blif(output=True)}" + \
                f"{self.b.get_wire_assign_blif(output=True)}" + \
                f".subckt {circuit_type}" + \
@@ -734,8 +777,6 @@ class GeneralCircuit():
         # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         # (iterating backwards as opposed to other representations so the top modul is always above its subcomponents)
         self.component_types = self.get_component_types()
-        for c in self.component_types:
-            c._parent_kwargs = self.kwargs
         return "\n".join([c.get_function_block_blif() for c in self.component_types[::-1]])
 
     def get_function_block_blif(self):
@@ -745,11 +786,7 @@ class GeneralCircuit():
             str: Hierarchical Blif code of multi-bit arithmetic circuit's function block description.
         """
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus("a", self.N), b=Bus("b", self.N)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix="a"), b=Bus(
-            N=self.N, prefix="b"), name=circuit_prefix, **self._parent_kwargs)
-        return f"{circuit_block.get_circuit_blif()}"
+        return f"{self.get_hier_subcomponent_def(parent_kwargs=self.kwargs).get_circuit_blif()}"
 
     # Generating hierarchical BLIF code representation of circuit
     def get_blif_code_hier(self, file_object):
@@ -773,7 +810,7 @@ class GeneralCircuit():
         Returns:
             str: CGP chromosome parameters of described arithmetic circuit.
         """
-        self.circuit_gates = self.get_circuit_gates()
+        # self.circuit_gates = self.get_circuit_gates() TODO delete
         return f"{{{sum(input_bus.N for input_bus in self.inputs)},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}"
 
     def get_triplets_cgp(self):
@@ -789,7 +826,7 @@ class GeneralCircuit():
         Returns:
             str: List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.
         """
-        self.get_cgp_wires()
+        self.get_circuit_wires()
         return "".join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), out_id=self.get_circuit_wire_index(g.out)) if isinstance(g, OneInputLogicGate) else
                        g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])
 

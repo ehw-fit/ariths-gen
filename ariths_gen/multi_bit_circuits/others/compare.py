@@ -1,43 +1,20 @@
-"""
-
-"""
-
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
     ConstantWireValue1,
-    Bus,
-    wires
+    Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    GeneralCircuit,
-    MultiplierCircuit
-)
-
-from ariths_gen.core.logic_gate_circuits import (
-    MultipleInputLogicGate
-)
-from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
-    FullAdderP,
-    TwoOneMultiplexer
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
     XnorGate,
     NotGate
 )
+from ariths_gen.multi_bit_circuits.others import (
+    OrReduce
+)
 
-from ariths_gen.multi_bit_circuits.others import OrReduce
-
-
-from math import log2, ceil
 
 class UnsignedCompareLT(GeneralCircuit):
     """Class representing unsigned compare
@@ -47,12 +24,8 @@ class UnsignedCompareLT(GeneralCircuit):
     """
 
     def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_lt", **kwargs):
-        self.a = a
-        self.b = b
         self.N = max(a.N, b.N)
-
-        super().__init__(name=name, prefix=prefix, 
-                         inputs = [self.a, self.b], out_N=1)
+        super().__init__(name=name, prefix=prefix, inputs=[a, b], out_N=1)
 
         # create wires
         psum = ConstantWireValue1()
@@ -83,13 +56,9 @@ class UnsignedCompareLTE(GeneralCircuit):
     Returns true if a <= b
     """
 
-    def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_lt", **kwargs):
-        self.a = a
-        self.b = b
+    def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_lte", **kwargs):
         self.N = max(a.N, b.N)
-
-        super().__init__(name=name, prefix=prefix, 
-                         inputs = [self.a, self.b], out_N=1)
+        super().__init__(name=name, prefix=prefix, inputs=[a, b], out_N=1)
 
         # create wires
         psum = ConstantWireValue1()
@@ -125,12 +94,8 @@ class UnsignedCompareGT(GeneralCircuit):
     """
 
     def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_gt", **kwargs):
-        self.a = a
-        self.b = b
         self.N = max(a.N, b.N)
-
-        super().__init__(name=name, prefix=prefix, 
-                         inputs = [self.a, self.b], out_N=1)
+        super().__init__(name=name, prefix=prefix, inputs=[a, b], out_N=1)
 
         # create wires
         psum = ConstantWireValue1()
@@ -162,12 +127,8 @@ class UnsignedCompareGTE(GeneralCircuit):
     """
 
     def __init__(self, a: Bus, b: Bus, prefix : str = "", name : str = "cmp_gte", **kwargs):
-        self.a = a
-        self.b = b
         self.N = max(a.N, b.N)
-
-        super().__init__(name=name, prefix=prefix, 
-                         inputs = [self.a, self.b], out_N=1)
+        super().__init__(name=name, prefix=prefix, inputs=[a, b], out_N=1)
 
         # create wires
         psum = ConstantWireValue1()
@@ -177,7 +138,7 @@ class UnsignedCompareGTE(GeneralCircuit):
         for i in reversed(range(self.N)):
             iA = self.a[i] if i < self.a.N else ConstantWireValue0()
             iB = self.b[i] if i < self.b.N else ConstantWireValue0()
-            
+
             i1 = iA
             i2 = self.add_component(NotGate(iB, f"{self.prefix}_i1_{i}", parent_component=self)).out
 
