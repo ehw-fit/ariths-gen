@@ -68,8 +68,8 @@ class UnsignedPopCount(GeneralCircuit):
                 return a
             else:
                 half = a.N // 2
-                b_in = Bus(N=half, prefix=f"b_inn{depth}A")
-                c_in = Bus(N=a.N - half, prefix=f"b_inn{depth}B")
+                b_in = Bus(N=half, prefix=f"b_inn{branch}_{depth}A")
+                c_in = Bus(N=a.N - half, prefix=f"c_inn{branch}_{depth}B")
                 #print(a, half, a.N)
 
 
@@ -81,7 +81,9 @@ class UnsignedPopCount(GeneralCircuit):
 
                 b = create_tree(b_in, depth=depth + 1, branch = branch + "A")
                 c = create_tree(c_in, depth= depth + 1, branch = branch + "B")
-                d = self.adder(a=b, b=c, prefix = f"{self.prefix}_add{branch}_{depth}")
+                d = self.adder(a=b, b=c, 
+                               prefix = f"{self.prefix}_add{branch}_{depth}", inner_component=True,
+                               parent_component=self)
                 self.add_component(d)
                 return d.out
             

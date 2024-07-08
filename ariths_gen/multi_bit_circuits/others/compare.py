@@ -189,6 +189,6 @@ class UnsignedCompareGTE(GeneralCircuit):
 
         res[self.N] = psum # or all equal (xor)
         
-        red = self.add_component(OrReduce(res, prefix=f"{self.prefix}_orred", inner_component=True))
+        red = self.add_component(OrReduce(res, prefix=f"{self.prefix}_orred", inner_component=True, parent_component=self))
 
         self.out.connect_bus(red.out)
