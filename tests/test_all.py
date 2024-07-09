@@ -44,6 +44,10 @@ from ariths_gen.multi_bit_circuits.adders import (
     SignedCarryIncrementAdder
 )
 
+from ariths_gen.multi_bit_circuits.subtractors import (
+    UnsignedRippleCarrySubtractor, SignedRippleCarrySubtractor
+)
+
 from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
@@ -282,6 +286,23 @@ def test_unsigned_add():
             np.testing.assert_array_equal(expected, r)
 
 
+
+def test_unsigned_sub():
+    """ Test unsigned subtractor """
+    N = 9
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(2**N)
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    # Non configurable multi-bit subtractors
+    for c in [UnsignedRippleCarrySubtractor]:
+        sub = c(a, b)
+        r = sub(av, bv)
+        np.testing.assert_array_equal(expected, r)
+
+
 def test_signed_add():
     """ Test signed adders """
     N = 9
@@ -311,6 +332,20 @@ def test_signed_add():
             r = add(av, bv)
             np.testing.assert_array_equal(expected, r)
 
+def test_signed_sub():
+    """ Test signed subtractor """
+    N = 4
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(-(2**(N-1)), 2**(N-1))
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    # Non configurable multi-bit adders
+    for c in [SignedRippleCarrySubtractor]:
+        sub = c(a, b)
+        r = sub(av, bv)
+        np.testing.assert_array_equal(expected, r)
 
 def test_mac():
     class MAC(GeneralCircuit):

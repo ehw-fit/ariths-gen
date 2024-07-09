@@ -18,7 +18,7 @@ class GeneralCircuit():
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     """
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, outname=None, **kwargs):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, signed_out = None, outname=None, **kwargs):
         if prefix == "":
             self.prefix = name
         else:
@@ -41,13 +41,17 @@ class GeneralCircuit():
 
         if not outname:
             outname = self.prefix+"_out"
-        self.out = Bus(outname, out_N, out_bus=True, signed=signed)
+
+        if signed_out is None:
+            signed_out = signed
+        self.out = Bus(outname, out_N, out_bus=True, signed=signed_out)
 
         self.components = []
         self._prefixes = [] # TODO rename to fullname and add distinct attr for prefix, name, suffix
         self.circuit_gates = []
         self.circuit_wires = []
         self.signed = signed
+        self.signed_out = signed_out
         self.c_data_type = "int64_t" if self.signed is True else "uint64_t"
         self.pyc = None  # Python compiled function
         self.kwargs = kwargs
