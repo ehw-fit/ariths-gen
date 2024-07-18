@@ -349,16 +349,18 @@ class GeneralCircuit():
         return self.out.return_bus_wires_values_python_flat()
 
     # Generating flat Python code representation of circuit
-    def get_python_code_flat(self, file_object):
+
+    def get_python_code_flat(self, file_object, retype=True):
         """Generates flat Python code representation of corresponding arithmetic circuit.
 
         Args:
             file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
+            retype (bool) specifies if signed output should return int64_t
         """
         file_object.write(self.get_prototype_python())
         file_object.write(self.get_init_python_flat()+"\n")
         file_object.write(self.get_function_out_python_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_python_flat(retype=True))
         file_object.write(f"  return {self.out.prefix}"+"\n")
 
     """ C CODE GENERATION """
