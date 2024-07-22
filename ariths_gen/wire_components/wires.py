@@ -1,3 +1,5 @@
+import re
+
 class Wire():
     """Class representing basic wire used to interconnect components.
 
@@ -76,6 +78,12 @@ class Wire():
         # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
         elif self.is_buswire() and self.name == f"{self.prefix}[{self.index}]":
             return f"(({self.prefix} >> {self.index}) & 0x01)"
+        elif self.is_buswire():
+            g = re.match(r"(.*)\[(\d+)\]", self.name)
+            if g:
+                return f"(({g.group(1)} >> {g.group(2)}) & 0x01)"
+            else:
+                return f"(({self.name} >> 0) & 0x01)"
         else:
             return f"(({self.name} >> 0) & 0x01)"
 
