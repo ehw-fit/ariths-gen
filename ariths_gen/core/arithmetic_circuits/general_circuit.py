@@ -268,7 +268,9 @@ class GeneralCircuit():
         if wire.is_const():
             return wire.cgp_const
         else:
-            return len(self.circuit_wires)+2
+            # [1] is reservation for a constant wire with value 1
+            pos = max([1] + [x[2] for x in self.circuit_wires])
+            return pos + 1
 
     def get_circuit_wires(self):
         """Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
