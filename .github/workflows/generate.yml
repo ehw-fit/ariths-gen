@@ -35,7 +35,7 @@ jobs:
     - name: Run generating axmults
       run: python generate_axmuls.py
     - name: Upload results
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v4
       with:
         name: arithmetic-circuits-8
         path: test_circuits
