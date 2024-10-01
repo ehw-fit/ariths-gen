@@ -54,6 +54,13 @@ from ariths_gen.multi_bit_circuits.adders import (
     SignedCarryIncrementAdder
 )
 
+from ariths_gen.multi_bit_circuits.subtractors import (
+    UnsignedRippleCarrySubtractor,
+    SignedRippleCarrySubtractor,
+    UnsignedRippleBorrowSubtractor,
+    SignedRippleBorrowSubtractor
+)
+
 from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
@@ -222,6 +229,23 @@ if __name__ == "__main__":
         circuit = SignedLadnerFischerAdder(a, b, name=name, config_choice=1)
         export_circuit(circuit, name)
 
+        """ SUBTRACTORS """
+        name = f"u_rcs{N}"
+        circuit = UnsignedRippleCarrySubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        name = f"s_rcs{N}"
+        circuit = SignedRippleCarrySubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        name = f"u_rbs{N}"
+        circuit = UnsignedRippleBorrowSubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        name = f"s_rbs{N}"
+        circuit = SignedRippleBorrowSubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
         """ MULTIPLIERS """
         # Arrmul
         name = f"u_arrmul{N}"

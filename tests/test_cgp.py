@@ -46,6 +46,13 @@ from ariths_gen.multi_bit_circuits.adders import (
     SignedCarryIncrementAdder
 )
 
+from ariths_gen.multi_bit_circuits.subtractors import (
+    UnsignedRippleBorrowSubtractor,
+    UnsignedRippleCarrySubtractor,
+    SignedRippleBorrowSubtractor,
+    SignedRippleCarrySubtractor
+)
+
 from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
@@ -203,6 +210,61 @@ def test_cgp_signed_add():
             assert add(0, 0) == 0
             assert add2(0, 0) == 0
             np.testing.assert_array_equal(expected, r)
+
+
+def test_cgp_unsigned_sub():
+    """ Test unsigned subtractors """
+    N = 7
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(2**N)
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    #for c in [UnsignedRippleBorrowSubtractor, UnsignedRippleCarrySubtractor]:
+    for c in [UnsignedRippleBorrowSubtractor]:
+        sub = c(a, b)
+        code = StringIO()
+        sub.get_cgp_code_flat(code)
+        cgp_code = code.getvalue()
+
+        sub2 = UnsignedCGPCircuit(cgp_code, [N, N], signed_out=True)
+        o = StringIO()
+        sub2.get_v_code_flat(o)
+        print(o.getvalue())
+
+        r = sub2(av, bv)
+        assert sub(0, 0) == 0
+        assert sub2(0, 0) == 0
+        np.testing.assert_array_equal(expected, r)
+    
+
+def test_cgp_signed_sub():
+    """ Test signed subtractors """
+    N = 7
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(-(2**(N-1)), 2**(N-1))
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    for c in [SignedRippleBorrowSubtractor, SignedRippleCarrySubtractor]:
+        sub = c(a, b)
+        r = sub(av, bv)
+        code = StringIO()
+        sub.get_cgp_code_flat(code)
+        cgp_code = code.getvalue()
+        print(cgp_code)
+
+        sub2 = SignedCGPCircuit(cgp_code, [N, N])
+        o = StringIO()
+        sub2.get_v_code_flat(o)
+        print(o.getvalue())
+
+        r = sub2(av, bv)
+        assert sub(0, 0) == 0
+        assert sub2(0, 0) == 0
+        np.testing.assert_array_equal(expected, r)
 
 
 def test_cgp_unsigned_mul():
@@ -440,6 +502,8 @@ def test_cgp_variant1():
 if __name__ == "__main__":
     test_cgp_unsigned_add()
     test_cgp_signed_add()
+    test_cgp_unsigned_sub()
+    test_cgp_signed_sub()
     test_cgp_unsigned_mul()
     test_cgp_signed_mul()
     test_cgp_variant1()

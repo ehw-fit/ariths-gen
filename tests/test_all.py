@@ -45,7 +45,8 @@ from ariths_gen.multi_bit_circuits.adders import (
 )
 
 from ariths_gen.multi_bit_circuits.subtractors import (
-    UnsignedRippleCarrySubtractor, SignedRippleCarrySubtractor
+    UnsignedRippleCarrySubtractor, SignedRippleCarrySubtractor,
+    UnsignedRippleBorrowSubtractor, SignedRippleBorrowSubtractor
 )
 
 from ariths_gen.multi_bit_circuits.multipliers import (
@@ -286,23 +287,6 @@ def test_unsigned_add():
             np.testing.assert_array_equal(expected, r)
 
 
-
-def test_unsigned_sub():
-    """ Test unsigned subtractor """
-    N = 9
-    a = Bus(N=N, prefix="a")
-    b = Bus(N=N, prefix="b")
-    av = np.arange(2**N)
-    bv = av.reshape(-1, 1)
-    expected = av - bv
-
-    # Non configurable multi-bit subtractors
-    for c in [UnsignedRippleCarrySubtractor]:
-        sub = c(a, b)
-        r = sub(av, bv)
-        np.testing.assert_array_equal(expected, r)
-
-
 def test_signed_add():
     """ Test signed adders """
     N = 9
@@ -332,9 +316,26 @@ def test_signed_add():
             r = add(av, bv)
             np.testing.assert_array_equal(expected, r)
 
+
+
+def test_unsigned_sub():
+    """ Test unsigned subtractor """
+    N = 9
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(2**N)
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    for c in [UnsignedRippleCarrySubtractor, UnsignedRippleBorrowSubtractor]:
+        sub = c(a, b)
+        r = sub(av, bv)
+        np.testing.assert_array_equal(expected, r)
+
+
 def test_signed_sub():
     """ Test signed subtractor """
-    N = 4
+    N = 9
     a = Bus(N=N, prefix="a")
     b = Bus(N=N, prefix="b")
     av = np.arange(-(2**(N-1)), 2**(N-1))
@@ -342,7 +343,7 @@ def test_signed_sub():
     expected = av - bv
 
     # Non configurable multi-bit adders
-    for c in [SignedRippleCarrySubtractor]:
+    for c in [SignedRippleCarrySubtractor, SignedRippleBorrowSubtractor]:
         sub = c(a, b)
         r = sub(av, bv)
         np.testing.assert_array_equal(expected, r)
@@ -442,6 +443,8 @@ if __name__ == "__main__":
     test_signed_mul()
     test_unsigned_add()
     test_signed_add()
+    test_unsigned_sub()
+    test_signed_sub()
     test_mac()
     test_direct()
     test_wire_as_bus()

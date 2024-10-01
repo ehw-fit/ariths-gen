@@ -26,7 +26,7 @@ from io import StringIO
 
 from itertools import product
 
-def test_popcountcompare_same():
+def test_popcountcompare_same(verbose: bool = False):
     N = 10
 
     a = Bus(N=N, prefix="a")
@@ -35,7 +35,9 @@ def test_popcountcompare_same():
     test_cases = list(product(list(range(2**N)), repeat=2))
     all = np.array(test_cases)
 
-    print(all)
+    if verbose:
+        print(all)
+
     av = all[:, 0]
     bv = all[:, 1]
     def popcnt(x):
@@ -43,28 +45,29 @@ def test_popcountcompare_same():
         return np.sum(mask > 0, axis=0)
     cnta = (popcnt(av))
     cntb = (popcnt(bv))
-    print(cnta)
-    print(cntb)
 
-
+    if verbose:
+        print(cnta)
+        print(cntb)
 
     cmp = PopCountCompare(a=a, b=b)
     cmp.get_v_code_hier(open("tmp.verilog", "w"))
 
     v = cmp(av, bv)
-    print("ret = ", v)
 
+    if verbose:
+        print("ret = ", v)
 
     expected = np.array(cnta >= cntb).astype(int)
 
-    print("expected = ", expected)
-        
-    #expected = np.sum(r, axis=1)
+    if verbose:
+        print("expected = ", expected)
 
+    #expected = np.sum(r, axis=1)
     np.testing.assert_array_equal(v, expected)
 
 
-def test_popcountcompare_small():
+def test_popcountcompare_small(verbose: bool = False):
     N = 10
 
     a = Bus(N=N, prefix="a")
@@ -73,7 +76,9 @@ def test_popcountcompare_small():
     test_cases = list(product(range(2**N), range(2**(N//2))))
     all = np.array(test_cases)
 
-    print(all)
+    if verbose:
+        print(all)
+
     av = all[:, 0]
     bv = all[:, 1]
     def popcnt(x):
@@ -82,24 +87,28 @@ def test_popcountcompare_small():
     cnta = (popcnt(av))
     cntb = (popcnt(bv))
 
+    if verbose:
+        print(cnta)
+        print(cntb)
 
     cmp = PopCountCompare(a=a, b=b)
     cmp.get_v_code_hier(open("tmp.verilog", "w"))
 
     v = cmp(av, bv)
-    print("ret = ", v)
 
+    if verbose:
+        print("ret = ", v)
 
     expected = np.array(cnta >= cntb).astype(int)
 
-    print("expected = ", expected)
+    if verbose:
+        print("expected = ", expected)
         
     #expected = np.sum(r, axis=1)
-
     np.testing.assert_array_equal(v, expected)
 
 
-def test_popcountcompare_small2():
+def test_popcountcompare_small2(verbose: bool = False):
     N = 10
 
     a = Bus(N=N // 2, prefix="a")
@@ -108,7 +117,9 @@ def test_popcountcompare_small2():
     test_cases = list(product( range(2**(N//2)), range(2**N)))
     all = np.array(test_cases)
 
-    print(all)
+    if verbose:
+        print(all)
+
     av = all[:, 0]
     bv = all[:, 1]
     def popcnt(x):
@@ -117,25 +128,28 @@ def test_popcountcompare_small2():
     cnta = (popcnt(av))
     cntb = (popcnt(bv))
 
+    if verbose:
+        print(cnta)
+        print(cntb)
 
     cmp = PopCountCompare(a=a, b=b)
     cmp.get_v_code_hier(open("tmp.verilog", "w"))
 
     v = cmp(av, bv)
-    print("ret = ", v)
 
+    if verbose:
+        print("ret = ", v)
 
     expected = np.array(cnta >= cntb).astype(int)
 
-    print("expected = ", expected)
+    if verbose:
+        print("expected = ", expected)
         
     #expected = np.sum(r, axis=1)
-
     np.testing.assert_array_equal(v, expected)
 
 
-
-def test_popcountcompare_small2_cgp():
+def test_popcountcompare_small2_cgp(verbose: bool = False):
     N = 10
 
     a = Bus(N=N // 2, prefix="a")
@@ -144,7 +158,9 @@ def test_popcountcompare_small2_cgp():
     test_cases = list(product( range(2**(N//2)), range(2**N)))
     all = np.array(test_cases)
 
-    print(all)
+    if verbose:
+        print(all)
+
     av = all[:, 0]
     bv = all[:, 1]
     def popcnt(x):
@@ -153,6 +169,9 @@ def test_popcountcompare_small2_cgp():
     cnta = (popcnt(av))
     cntb = (popcnt(bv))
 
+    if verbose:
+        print(cnta)
+        print(cntb)
 
     cmp = PopCountCompare(a=a, b=b)
     cmp.get_v_code_hier(open("tmp.verilog", "w"))
@@ -163,13 +182,22 @@ def test_popcountcompare_small2_cgp():
     cgp = UnsignedCGPCircuit(o.getvalue(), [N//2, N])
 
     v = cgp(av, bv)
-    print("ret = ", v)
 
+    if verbose:
+        print("ret = ", v)
 
     expected = np.array(cnta >= cntb).astype(int)
 
-    print("expected = ", expected)
+    if verbose:
+        print("expected = ", expected)
         
     #expected = np.sum(r, axis=1)
-
     np.testing.assert_array_equal(v, expected)
+
+
+if __name__ == "__main__":
+    test_popcountcompare_same()
+    test_popcountcompare_small()
+    test_popcountcompare_small2()
+    test_popcountcompare_small2_cgp()
+    print("Python popcount_compare tests were successful!")

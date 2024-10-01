@@ -21,7 +21,7 @@ from ariths_gen.multi_bit_circuits.others import (
 import numpy as np
 
 
-def test_popcount():
+def test_popcount(verbose: bool = False):
     """ Test unsigned adders """
     N = 7
 
@@ -29,15 +29,13 @@ def test_popcount():
         a = Bus(N=N, prefix="a")
         av = np.arange(2**N)
 
-
         popcnt = UnsignedPopCount(a=a)
         #o = StringIO()
         #popcnt.get_v_code_hier(o)
         #print(o.getvalue())
 
-
-        print(popcnt(av))
-
+        if verbose:
+            print(popcnt(av))
 
         # conv to binary
         r = []
@@ -46,19 +44,24 @@ def test_popcount():
             r.append(a_s % 2)
             a_s = a_s // 2
         r = np.dstack(r).reshape(-1, N)
-        print("r = ", r)
+
+        if verbose:
+            print("r = ", r)
+
         expected = np.sum(r, axis=1)
+
+        if verbose:
+            print("expected = ", expected)
 
         np.testing.assert_array_equal(popcnt(av), expected)
 
-def test_popcount_cgp():
+def test_popcount_cgp(verbose: bool = False):
     """ Test unsigned adders """
     N = 7
 
     for N in [3, 7, 8, 9, 16]:
         a = Bus(N=N, prefix="a")
         av = np.arange(2**N)
-
 
         popcnt = UnsignedPopCount(a=a)
         o = StringIO()
@@ -66,9 +69,8 @@ def test_popcount_cgp():
         cgp = UnsignedCGPCircuit(o.getvalue(), [N])
         v = cgp(av)
 
-
-        print(popcnt(av))
-
+        if verbose:
+            print(popcnt(av))
 
         # conv to binary
         r = []
@@ -77,8 +79,19 @@ def test_popcount_cgp():
             r.append(a_s % 2)
             a_s = a_s // 2
         r = np.dstack(r).reshape(-1, N)
-        print("r = ", r)
+
+        if verbose:
+            print("r = ", r)
+
         expected = np.sum(r, axis=1)
+
+        if verbose:
+            print("expected = ", expected)
 
         np.testing.assert_array_equal(v, expected)
 
+
+if __name__ == "__main__":
+    test_popcount()
+    test_popcount_cgp()
+    print("Python popcount tests were successful!")

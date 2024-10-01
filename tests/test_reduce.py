@@ -24,20 +24,20 @@ from ariths_gen.multi_bit_circuits.others import (
 )
 
 
-def test_orreduce():
+def test_orreduce(verbose: bool = False):
     """ Test unsigned adders """
     N = 7
 
     for N in [3, 7, 8, 9, 16]:
         a = Bus(N=N, prefix="a")
         av = np.arange(2**N)
-
 
         reduce = OrReduce(a=a)
         o = StringIO()
         reduce.get_v_code_hier(o)
-        print(o.getvalue())
 
+        if verbose:
+            print(o.getvalue())
 
         #print(reduce(av))
 
@@ -48,13 +48,19 @@ def test_orreduce():
             r.append(a_s % 2)
             a_s = a_s // 2
         r = np.dstack(r).reshape(-1, N)
-        print("r = ", r)
+
+        if verbose:
+            print("r = ", r)
+
         expected = np.bitwise_or.reduce(r, axis=1)
+        
+        if verbose:
+            print("expected = ", expected)
 
         np.testing.assert_array_equal(reduce(av), expected)
 
 
-def test_andreduce():
+def test_andreduce(verbose: bool = False):
     """ Test unsigned adders """
     N = 7
 
@@ -62,12 +68,12 @@ def test_andreduce():
         a = Bus(N=N, prefix="a")
         av = np.arange(2**N)
 
-
         reduce = AndReduce(a=a)
         o = StringIO()
         reduce.get_v_code_hier(o)
-        print(o.getvalue())
 
+        if verbose:
+            print(o.getvalue())
 
         #print(reduce(av))
 
@@ -78,8 +84,14 @@ def test_andreduce():
             r.append(a_s % 2)
             a_s = a_s // 2
         r = np.dstack(r).reshape(-1, N)
-        print("r = ", r)
+
+        if verbose:
+            print("r = ", r)
+
         expected = np.bitwise_and.reduce(r, axis=1)
+
+        if verbose:
+            print("expected = ", expected)
 
         np.testing.assert_array_equal(reduce(av), expected)
 

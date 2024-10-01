@@ -17,7 +17,7 @@ class UnsignedRippleCarryAdder(GeneralCircuit):
     """Class representing unsigned ripple carry adder.
 
     Unsigned ripple carry adder represents N-bit unsigned adder which is composed of
-    N one bit adders, where first is a half adder and rest are full adders.
+    N one bit adders, where the first is a half adder and rest are full adders.
 
     Its downside is its long propagation delay the bigger the circuit is.
 
@@ -68,7 +68,7 @@ class SignedRippleCarryAdder(UnsignedRippleCarryAdder, GeneralCircuit):
     """Class representing signed ripple carry adder.
 
     Signed ripple carry adder represents N-bit signed adder which is composed of
-    N one bit adders, where first is a half adder and rest are full adders.
+    N one bit adders, where the first is a half adder and rest are full adders.
     At last XOR gates are used to ensure proper sign extension.
 
     Its downside is its long propagation delay the bigger the circuit is.
