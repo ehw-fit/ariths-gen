@@ -21,12 +21,13 @@ class FullAdder(ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
-        prefix (str, optional): Prefix name of full adder. Defaults to "fa".
+        prefix (str, optional): Prefix name of full adder. Defaults to "".
+        name (str, optional): Name of full adder. Defaults to "fa".
     """
     use_verilog_instance = False
 
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa"):
-        super().__init__(a, b, c, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "", name: str = "fa"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # 2 wires for component's bus output (sum, cout)
         self.out = Bus(self.prefix+"_out", 2)
 
@@ -76,13 +77,12 @@ class FullAdder(ThreeInputOneBitCircuit):
         return "  " + self.use_verilog_instance.format(
             **{
                 "unit": self.prefix,
-                "wirea": self.a.prefix,
-                "wireb": self.b.prefix,
-                "wirec": self.c.prefix,
+                "wirea": f"1'b{self.a.value}" if self.a.is_const() else self.a.name,
+                "wireb": f"1'b{self.b.value}" if self.b.is_const() else self.b.name,
+                "wirec": f"1'b{self.c.value}" if self.c.is_const() else self.c.name,
                 "wireys": self.get_sum_wire().prefix,
                 "wireyc": self.get_carry_wire().prefix,
-            }
-        ) + ";\n"
+            }) + ";\n"
 
     def get_self_init_v_hier(self):
         """ support of custom PDK """
@@ -93,7 +93,8 @@ class FullAdder(ThreeInputOneBitCircuit):
         for o in self.out.bus:
             unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
 
-        return "  " + self.use_verilog_instance.format(**{
+        return "  " + self.use_verilog_instance.format(
+            **{
                 "unit": self.prefix,
                 "wirea": self.a.name,
                 "wireb": self.b.name,
@@ -101,6 +102,15 @@ class FullAdder(ThreeInputOneBitCircuit):
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
             }) + ";\n"
+
+    def get_circuit_v(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_circuit_v()
+
+        return f"{self.get_prototype_v_hier()}" + \
+               f"{self.get_self_init_v_hier()}" + \
+               f"endmodule"
 
 
 class FullAdderP(FullAdder, ThreeInputOneBitCircuit):
@@ -120,10 +130,11 @@ class FullAdderP(FullAdder, ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
-        prefix (str, optional): Prefix name of full adder with p logic. Defaults to "fa_p".
+        prefix (str, optional): Prefix name of full adder with p logic. Defaults to "".
+        name (str, optional): Name of full adder with p logic. Defaults to "fa_p".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa_p"):
-        super().__init__(a, b, c, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "", name: str = "fa_p"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # 3 wires for component's bus output (sum, cout, propagate)
         self.out.bus_extend(3)
         self.out.connect(2, self.get_previous_component(5).out)
@@ -155,10 +166,11 @@ class FullAdderPG(FullAdder, ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
-        prefix (str, optional): Prefix name of full adder with pg logic. Defaults to "fa_pg".
+        prefix (str, optional): Prefix name of full adder with pg logic. Defaults to "".
+        name (str, optional): Name of full adder with pg logic. Defaults to "fa_pg".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "fa_pg"):
-        super().__init__(a, b, c, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "", name: str = "fa_pg"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # 4 wires for component's bus output (sum, cout, propagate, generate)
         self.out.bus_extend(4)
         self.out.connect(2, self.get_previous_component(5).out)
@@ -198,10 +210,11 @@ class PGSumLogic(ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         c (Wire, optional): Carry input wire. Defaults to Wire(name="cin").
-        prefix (str, optional): Prefix name of pg sum logic. Defaults to "pg_sum".
+        prefix (str, optional): Prefix name of pg sum logic. Defaults to "".
+        name (str, optional): Name of pg sum logic. Defaults to "pg_sum".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "pg_sum"):
-        super().__init__(a, b, c, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="cin"), prefix: str = "", name: str = "pg_sum"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # 3 wires for component's bus output (sum, propagate, generate)
         self.out = Bus(self.prefix+"_out", 3)
 
@@ -262,10 +275,13 @@ class TwoOneMultiplexer(ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="d0").
         b (Wire, optional): Second input wire. Defaults to Wire(name="d1").
         c (Wire, optional): Select signal. Defaults to Wire(name="sel").
-        prefix (str, optional): Prefix name of two to one multiplexer. Defaults to "mux2to1".
+        prefix (str, optional): Prefix name of two to one multiplexer. Defaults to "".
+        name (str, optional): Name of two to one multiplexer. Defaults to "mux2to1".
     """
-    def __init__(self, a: Wire = Wire(name="d0"), b: Wire = Wire(name="d1"), c: Wire = Wire(name="sel"), prefix: str = "mux2to1"):
-        super().__init__(a, b, c, prefix)
+    use_verilog_instance = False
+
+    def __init__(self, a: Wire = Wire(name="d0"), b: Wire = Wire(name="d1"), c: Wire = Wire(name="sel"), prefix: str = "", name: str = "mux2to1"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # Represents select signal (self.c naming for proper unified generation)
         self.c = c
         # 1 wire for component's output bus
@@ -295,6 +311,53 @@ class TwoOneMultiplexer(ThreeInputOneBitCircuit):
         """
         return self.out.get_wire(0)
 
+    def get_init_v_flat(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_init_v_flat()
+
+        if self.out[0].is_const():
+            return ""
+        else:
+            # TODO - replace by one verilog_instance_format!
+            neg_out_w_name = f"neg_{self.out.get_wire(0).name}"
+            return f"  wire {neg_out_w_name};\n  " + self.use_verilog_instance.format(
+                **{
+                    "unit": self.prefix,
+                    "wirea": self.a.get_wire_value_v_hier(), # former version:  f"1'b{self.a.value}" if self.a.is_const() else self.a.name,
+                    "wireb": self.b.get_wire_value_v_hier(), #f"1'b{self.b.value}" if self.b.is_const() else self.b.name,
+                    "wires": self.c.get_wire_value_v_hier(), #f"1'b{self.c.value}" if self.c.is_const() else self.c.name,
+                    "wirey": neg_out_w_name,
+                }) + ";\n" + f"  assign {self.out.get_wire(0).name} = ~{neg_out_w_name};\n"
+
+    def get_self_init_v_hier(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_self_init_v_hier()
+
+        unique_out_wires = []
+        for o in self.out.bus:
+            unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
+
+        neg_out_w_name = f"neg_{unique_out_wires[0]}"
+        return f"  wire {neg_out_w_name};\n  " + self.use_verilog_instance.format(
+            **{
+                "unit": self.prefix,
+                "wirea": self.a.name,
+                "wireb": self.b.name,
+                "wires": self.c.name,
+                "wirey": neg_out_w_name
+            }) + ";\n" + f"  assign {unique_out_wires[0]} = ~{neg_out_w_name};\n"
+
+    def get_circuit_v(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_circuit_v()
+
+        return f"{self.get_prototype_v_hier()}" + \
+               f"{self.get_self_init_v_hier()}" + \
+               f"endmodule"
+
 
 class FullSubtractor(ThreeInputOneBitCircuit):
     """Class representing three input one bit full subtractor.
@@ -313,10 +376,11 @@ class FullSubtractor(ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
         c (Wire, optional): Input borrow wire. Defaults to Wire(name="bin").
-        prefix (str, optional): Prefix name of full subtractor. Defaults to "fs".
+        prefix (str, optional): Prefix name of full subtractor. Defaults to "".
+        name (str, optional): Name of full subtractor. Defaults to "fs".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="bin"), prefix: str = "fs"):
-        super().__init__(a, b, c, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), c: Wire = Wire(name="bin"), prefix: str = "", name: str = "fs"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # 2 wires for component's bus output (difference, bout)
         self.out = Bus(self.prefix+"_out", 2)
 
@@ -380,10 +444,11 @@ class GreyCell(ThreeInputOneBitCircuit):
         a (Wire, optional): First input wire, represents generate signal from the current stage. Defaults to Wire(name="g1").
         b (Wire, optional): Second input wire, represents propagate signal from the current stage. Defaults to Wire(name="p1").
         c (Wire, optional): Third input wire, represents generate signal from a preceding stage. Defaults to Wire(name="g0").
-        prefix (str, optional): Prefix name of grey cell. Defaults to "gc".
+        prefix (str, optional): Prefix name of grey cell. Defaults to "".
+        name (str, optional): Name of grey cell. Defaults to "gc".
     """
-    def __init__(self, a: Wire = Wire(name="g1"), b: Wire = Wire(name="p1"), c: Wire = Wire(name="g0"), prefix: str = "gc"):
-        super().__init__(a, b, c, prefix)
+    def __init__(self, a: Wire = Wire(name="g1"), b: Wire = Wire(name="p1"), c: Wire = Wire(name="g0"), prefix: str = "", name: str = "gc"):
+        super().__init__(a, b, c, prefix=prefix, name=name)
         # 1 wire for component's bus output (output generate)
         self.out = Bus(self.prefix+"_out", 1)
 

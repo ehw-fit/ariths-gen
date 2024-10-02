@@ -1,11 +1,8 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
     MultiplierCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
@@ -13,17 +10,7 @@ from ariths_gen.one_bit_circuits.one_bit_components import (
     FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
-from ariths_gen.multi_bit_circuits.multipliers import (
-    UnsignedArrayMultiplier,
-    SignedArrayMultiplier
+    AndGate
 )
 
 
@@ -107,7 +94,7 @@ class UnsignedBrokenArrayMultiplier(MultiplierCircuit):
         # Vertical cut should be greater or equal to horizontal cut
         assert vertical_cut >= horizontal_cut
 
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)

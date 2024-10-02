@@ -1,33 +1,23 @@
 from ariths_gen.wire_components import (
-    Wire,
-    ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
     HalfAdder,
     FullAdder
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
-class UnsignedRippleCarryAdder(ArithmeticCircuit):
+class UnsignedRippleCarryAdder(GeneralCircuit):
     """Class representing unsigned ripple carry adder.
 
     Unsigned ripple carry adder represents N-bit unsigned adder which is composed of
-    N one bit adders, where first is a half adder and rest are full adders.
+    N one bit adders, where the first is a half adder and rest are full adders.
 
     Its downside is its long propagation delay the bigger the circuit is.
 
@@ -53,7 +43,7 @@ class UnsignedRippleCarryAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_rca", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -74,11 +64,11 @@ class UnsignedRippleCarryAdder(ArithmeticCircuit):
                 self.out.connect(self.N, obj_adder.get_carry_wire())
 
 
-class SignedRippleCarryAdder(UnsignedRippleCarryAdder, ArithmeticCircuit):
+class SignedRippleCarryAdder(UnsignedRippleCarryAdder, GeneralCircuit):
     """Class representing signed ripple carry adder.
 
     Signed ripple carry adder represents N-bit signed adder which is composed of
-    N one bit adders, where first is a half adder and rest are full adders.
+    N one bit adders, where the first is a half adder and rest are full adders.
     At last XOR gates are used to ensure proper sign extension.
 
     Its downside is its long propagation delay the bigger the circuit is.

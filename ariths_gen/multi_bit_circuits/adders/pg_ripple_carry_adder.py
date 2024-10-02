@@ -1,30 +1,21 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
     PGSumLogic
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
     OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
-class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
+class UnsignedPGRippleCarryAdder(GeneralCircuit):
     """Class representing unsigned ripple carry adder with propagate/generate logic.
 
     Unsigned ripple carry adder with PG logic represents slightly different rca implementation
@@ -69,7 +60,7 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "u_pg_rca", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -96,7 +87,7 @@ class UnsignedPGRippleCarryAdder(ArithmeticCircuit):
                 self.out.connect(self.N, obj_or.out)
 
 
-class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, ArithmeticCircuit):
+class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, GeneralCircuit):
     """Class representing signed ripple carry adder with propagate/generate logic.
 
     Signed ripple carry adder with PG logic represents slightly different rca implementation

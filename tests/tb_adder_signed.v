@@ -22,7 +22,7 @@ module add_signed_tb;
                 
                 #period;
 
-                //$assert(b == 0);c
+                //$assert(b == 0);
                 if ( k + j != o) begin
                     $display("Invalid output: %d + %d = %d", a, b, o);
                 end

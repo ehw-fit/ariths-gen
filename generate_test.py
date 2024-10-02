@@ -54,6 +54,13 @@ from ariths_gen.multi_bit_circuits.adders import (
     SignedCarryIncrementAdder
 )
 
+from ariths_gen.multi_bit_circuits.subtractors import (
+    UnsignedRippleCarrySubtractor,
+    SignedRippleCarrySubtractor,
+    UnsignedRippleBorrowSubtractor,
+    SignedRippleBorrowSubtractor
+)
+
 from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
@@ -63,6 +70,11 @@ from ariths_gen.multi_bit_circuits.multipliers import (
     SignedDaddaMultiplier,
     SignedWallaceMultiplier,
     SignedCarrySaveMultiplier
+)
+
+from ariths_gen.multi_bit_circuits.approximate_multipliers import (
+    UnsignedRecursiveMultiplier,
+    UnsignedAccurateTwoBitMultiplier
 )
 
 from ariths_gen.multi_bit_circuits.dividers import (
@@ -217,6 +229,23 @@ if __name__ == "__main__":
         circuit = SignedLadnerFischerAdder(a, b, name=name, config_choice=1)
         export_circuit(circuit, name)
 
+        """ SUBTRACTORS """
+        name = f"u_rcs{N}"
+        circuit = UnsignedRippleCarrySubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        name = f"s_rcs{N}"
+        circuit = SignedRippleCarrySubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        name = f"u_rbs{N}"
+        circuit = UnsignedRippleBorrowSubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        name = f"s_rbs{N}"
+        circuit = SignedRippleBorrowSubtractor(a, b, name=name)
+        export_circuit(circuit, name)
+        
         """ MULTIPLIERS """
         # Arrmul
         name = f"u_arrmul{N}"
@@ -225,6 +254,11 @@ if __name__ == "__main__":
 
         name = f"s_arrmul{N}"
         circuit = SignedArrayMultiplier(a, b, name=name)
+        export_circuit(circuit, name)
+        
+        # Accurate recursive multiplier
+        name = f"u_recmul{N}"
+        circuit = UnsignedRecursiveMultiplier(a, b, name=name)
         export_circuit(circuit, name)
 
         # Csamul (Braun multiplier) – the ppa adders are also configurable as above if desirable

@@ -19,12 +19,13 @@ class HalfAdder(TwoInputOneBitCircuit):
     Args:
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
-        prefix (str, optional): Prefix name of half adder. Defaults to "ha".
+        prefix (str, optional): Prefix name of half adder. Defaults to "".
+        name (str, optional): Name of half adder. Defaults to "ha".
     """
     use_verilog_instance = False
 
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "ha"):
-        super().__init__(a, b, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "", name: str = "ha"):
+        super().__init__(a, b, prefix=prefix, name=name)
         # 2 wires for component's bus output (sum, cout)
         self.out = Bus(self.prefix+"_out", 2)
 
@@ -64,12 +65,11 @@ class HalfAdder(TwoInputOneBitCircuit):
         return "  " + self.use_verilog_instance.format(
             **{
                 "unit": self.prefix,
-                "wirea": self.a.prefix,
-                "wireb": self.b.prefix,
+                "wirea": f"1'b{self.a.value}" if self.a.is_const() else self.a.name,
+                "wireb": f"1'b{self.b.value}" if self.b.is_const() else self.b.name,
                 "wireys": self.get_sum_wire().prefix,
                 "wireyc": self.get_carry_wire().prefix,
-            }
-        ) + ";\n"
+            }) + ";\n"
 
     def get_self_init_v_hier(self):
         """ support of custom PDK """
@@ -80,13 +80,23 @@ class HalfAdder(TwoInputOneBitCircuit):
         for o in self.out.bus:
             unique_out_wires.append(o.name+"_outid"+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name)
 
-        return "  " + self.use_verilog_instance.format(**{
+        return "  " + self.use_verilog_instance.format(
+            **{
                 "unit": self.prefix,
                 "wirea": self.a.name,
                 "wireb": self.b.name,
                 "wireys": unique_out_wires[0],
                 "wireyc": unique_out_wires[1],
             }) + ";\n"
+
+    def get_circuit_v(self):
+        """ support of custom PDK """
+        if not self.use_verilog_instance:
+            return super().get_circuit_v()
+
+        return f"{self.get_prototype_v_hier()}" + \
+               f"{self.get_self_init_v_hier()}" + \
+               f"endmodule"
 
 
 class PGLogicBlock(TwoInputOneBitCircuit):
@@ -105,10 +115,11 @@ class PGLogicBlock(TwoInputOneBitCircuit):
     Args:
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
-        prefix (str, optional): Prefix name of pg logic block. Defaults to "pg_logic".
+        prefix (str, optional): Prefix name of pg logic block. Defaults to "".
+        name (str, optional): Name of pg logic block. Defaults to "pg_logic".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "pg_logic"):
-        super().__init__(a, b, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "", name: str = "pg_logic"):
+        super().__init__(a, b, prefix=prefix, name=name)
         # 3 wires for component's bus output (propagate, generate, sum)
         self.out = Bus(self.prefix+"_out", 3)
 
@@ -165,10 +176,11 @@ class HalfSubtractor(TwoInputOneBitCircuit):
     Args:
         a (Wire, optional): First input wire. Defaults to Wire(name="a").
         b (Wire, optional): Second input wire. Defaults to Wire(name="b").
-        prefix (str, optional): Prefix name of half subtractor adder. Defaults to "hs".
+        prefix (str, optional): Prefix name of half subtractor adder. Defaults to "".
+        name (str, optional): Name of half subtractor adder. Defaults to "hs".
     """
-    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "hs"):
-        super().__init__(a, b, prefix)
+    def __init__(self, a: Wire = Wire(name="a"), b: Wire = Wire(name="b"), prefix: str = "", name: str = "hs"):
+        super().__init__(a, b, prefix=prefix, name=name)
         # 2 wires for component's bus output (difference, bout)
         self.out = Bus(self.prefix+"_out", 2)
 

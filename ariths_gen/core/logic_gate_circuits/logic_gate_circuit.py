@@ -1,4 +1,4 @@
-from ariths_gen.wire_components.wires import Wire, ConstantWireValue0, ConstantWireValue1
+from ariths_gen.wire_components.wires import Wire
 from ariths_gen.wire_components.buses import Bus
 import math
 
@@ -33,14 +33,16 @@ class MultipleInputLogicGate():
         prefix (str, optional): Prefix used to name inner composite logic gates. Defaults to "".
     """
     def __init__(self, a: Bus, two_input_gate_cls, parent_component: object, prefix: str = ""):
+        i = 0
         while a.N != 1:
             N = math.floor(a.N/2)
             out_wires = []
             # Creation of composite two input logic gates from bus `a`'s bit pairs and addition of generated blocks outputs for next iteration
             for bus_index in range(0, N):
-                gate = two_input_gate_cls(a=a.get_wire(bus_index), b=a.get_wire(bus_index+N), prefix=prefix+str(parent_component.get_instance_num(cls=two_input_gate_cls, count_disabled_gates=False)), parent_component=parent_component)
+                gate = two_input_gate_cls(a=a.get_wire(bus_index), b=a.get_wire(bus_index+N), prefix=prefix+ "_" + str(i) + "_" + str(parent_component.get_instance_num(cls=two_input_gate_cls, count_disabled_gates=False)), parent_component=parent_component)
                 parent_component.add_component(gate)
                 out_wires.append(gate.out)
+                i += 1
 
             # In case bus `a` has odd number of wires
             if a.N % 2 != 0:
@@ -110,6 +112,8 @@ class TwoInputLogicGate():
         Returns:
             str: C code description of logic gate's Boolean function (with bitwise shifted inputs).
         """
+        if self.out.is_const():
+            return self.out.get_wire_value_c_flat()
         return f"{self.a.get_wire_value_c_flat()} {self.operator} {self.b.get_wire_value_c_flat()}"
 
     def get_declaration_c_flat(self):
@@ -206,6 +210,8 @@ class TwoInputLogicGate():
         # No gate logic is generated if one of the inputs is a wire with constant value.
         # I.e. either the constant or the second input wire is propagated to the output for the corresponding logic gate's logic function.
         if self.disable_generation:
+            #return f"  {self.out.prefix} = {self.get_function_c()} # DD {self.prefix} \n"
+
             return ""
         else:
             return f"  {self.out.prefix} = {self.get_function_c()}\n"
@@ -338,7 +344,7 @@ class TwoInputLogicGate():
         Returns:
             str: Blif logic gate's wires declaration.
         """
-        return f".inputs {self.a.get_declaration_blif()} {self.b.get_declaration_blif()}\n" + \
+        return f".inputs {self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n" + \
                f".outputs" + \
                "".join([f" {self.out.name}\n" if self.disable_generation is False else f" {self.out.name}_out\n" for _ in range(1)]) + \
                f".names vdd\n1\n" + \
@@ -681,7 +687,7 @@ class OneInputLogicGate(TwoInputLogicGate):
         Returns:
             str: Blif logic gate's wires declaration.
         """
-        return f".inputs {self.a.get_declaration_blif()}\n" + \
+        return f".inputs {self.a.get_wire_declaration_blif()}\n" + \
                f".outputs" + \
                "".join([f" {self.out.name}\n" if self.disable_generation is False else f" {self.out.name}_out\n" for _ in range(1)]) + \
                f".names vdd\n1\n" + \

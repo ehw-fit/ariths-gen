@@ -1,13 +1,9 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
-    Bus,
-    wires
+    Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.core.logic_gate_circuits import (
     MultipleInputLogicGate
@@ -19,16 +15,11 @@ from ariths_gen.one_bit_circuits.one_bit_components import (
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
-class UnsignedCarrySkipAdder(ArithmeticCircuit):
+class UnsignedCarrySkipAdder(GeneralCircuit):
     """Class representing unsigned carry skip (bypass) adder composed of smaller carry bypass blocks of chosen size to reduce propagation delay.
 
     Unsigned carry skip (bypass) adder represents faster adder circuit which is composed
@@ -72,7 +63,7 @@ class UnsignedCarrySkipAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = "", name: str = "u_cska", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -120,7 +111,7 @@ class UnsignedCarrySkipAdder(ArithmeticCircuit):
         self.out.connect(self.N, cin)
 
 
-class SignedCarrySkipAdder(UnsignedCarrySkipAdder, ArithmeticCircuit):
+class SignedCarrySkipAdder(UnsignedCarrySkipAdder, GeneralCircuit):
     """Class representing signed carry skip (bypass) adder composed of smaller carry bypass blocks of chosen size to reduce propagation delay.
 
     Signed carry skip (bypass) adder represents faster adder circuit which is composed

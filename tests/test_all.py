@@ -1,3 +1,11 @@
+import os
+import sys
+# Add the parent directory to the system path
+DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(DIR_PATH, '..'))
+import numpy as np
+import math
+
 from ariths_gen.wire_components import (
     Wire,
     ConstantWireValue0,
@@ -36,6 +44,11 @@ from ariths_gen.multi_bit_circuits.adders import (
     SignedCarryIncrementAdder
 )
 
+from ariths_gen.multi_bit_circuits.subtractors import (
+    UnsignedRippleCarrySubtractor, SignedRippleCarrySubtractor,
+    UnsignedRippleBorrowSubtractor, SignedRippleBorrowSubtractor
+)
+
 from ariths_gen.multi_bit_circuits.multipliers import (
     UnsignedDaddaMultiplier,
     UnsignedArrayMultiplier,
@@ -51,7 +64,9 @@ from ariths_gen.multi_bit_circuits.approximate_multipliers import (
     UnsignedTruncatedArrayMultiplier,
     UnsignedTruncatedCarrySaveMultiplier,
     UnsignedBrokenArrayMultiplier,
-    UnsignedBrokenCarrySaveMultiplier
+    UnsignedBrokenCarrySaveMultiplier,
+    UnsignedRecursiveMultiplier,
+    UnsignedAccurateTwoBitMultiplier
 )
 
 from ariths_gen.one_bit_circuits.logic_gates import (
@@ -63,8 +78,6 @@ from ariths_gen.one_bit_circuits.logic_gates import (
     XnorGate,
     NotGate
 )
-import numpy as np
-import math
 
 
 def test_unsigned_approxmul(values=False):
@@ -120,6 +133,19 @@ def test_unsigned_mul():
         assert mul(0, 0) == 0
         r = mul(av, bv)
         np.testing.assert_array_equal(expected, r)
+    
+    # Accurate variant of recursive multiplier
+    for c in [UnsignedRecursiveMultiplier]:
+        N_rec = 8
+        a_rec = Bus(N=N_rec, prefix="a")
+        b_rec = Bus(N=N_rec, prefix="b")
+        av_rec = np.arange(2**N_rec)
+        bv_rec = av_rec.reshape(-1, 1)
+        expected_rec = av_rec * bv_rec
+        mul = c(a_rec, b_rec, submultipliers=[UnsignedAccurateTwoBitMultiplier for _ in range((N_rec//2)**2)])
+        assert mul(0, 0) == 0
+        r = mul(av_rec, bv_rec)
+        np.testing.assert_array_equal(expected_rec, r)
 
     # Configurable PPA
     for c in [UnsignedDaddaMultiplier, UnsignedCarrySaveMultiplier, UnsignedWallaceMultiplier]:
@@ -291,6 +317,37 @@ def test_signed_add():
             np.testing.assert_array_equal(expected, r)
 
 
+
+def test_unsigned_sub():
+    """ Test unsigned subtractor """
+    N = 9
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(2**N)
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    for c in [UnsignedRippleCarrySubtractor, UnsignedRippleBorrowSubtractor]:
+        sub = c(a, b)
+        r = sub(av, bv)
+        np.testing.assert_array_equal(expected, r)
+
+
+def test_signed_sub():
+    """ Test signed subtractor """
+    N = 9
+    a = Bus(N=N, prefix="a")
+    b = Bus(N=N, prefix="b")
+    av = np.arange(-(2**(N-1)), 2**(N-1))
+    bv = av.reshape(-1, 1)
+    expected = av - bv
+
+    # Non configurable multi-bit adders
+    for c in [SignedRippleCarrySubtractor, SignedRippleBorrowSubtractor]:
+        sub = c(a, b)
+        r = sub(av, bv)
+        np.testing.assert_array_equal(expected, r)
+
 def test_mac():
     class MAC(GeneralCircuit):
         def __init__(self, a: Bus, b: Bus, r: Bus, prefix: str = "", name: str = "mac", **kwargs):
@@ -298,8 +355,8 @@ def test_mac():
             assert a.N == b.N
             assert r.N == 2 * a.N
 
-            self.mul = self.add_component(UnsignedArrayMultiplier(a=a, b=b, prefix=self.prefix, name=f"u_arrmul{a.N}", inner_component=True))
-            self.add = self.add_component(UnsignedRippleCarryAdder(a=r, b=self.mul.out, prefix=self.prefix, name=f"u_rca{r.N}", inner_component=True))
+            self.mul = self.add_component(UnsignedArrayMultiplier(a=Bus(wires_list=a.bus, prefix=a.prefix), b=Bus(wires_list=b.bus, prefix=b.prefix), prefix=self.prefix, name=f"u_arrmul{a.N}", inner_component=True))
+            self.add = self.add_component(UnsignedRippleCarryAdder(a=Bus(wires_list=r.bus, prefix=r.prefix), b=self.mul.out, prefix=self.prefix, name=f"u_rca{r.N}", inner_component=True))
             self.out.connect_bus(connecting_bus=self.add.out)
 
     # usage
@@ -316,7 +373,7 @@ def test_mac():
 
 def test_direct():
     class err_circuit(GeneralCircuit):
-        def __init__(self, prefix: str = "", name: str = "adder", inner_component: bool = True, a: Bus = Bus(), b: Bus = Bus()):
+        def __init__(self, a: Bus = Bus(), b: Bus = Bus(), prefix: str = "", name: str = "adder", inner_component: bool = False):
             super().__init__(prefix=prefix, name=name, out_N=(a.N + 1), inner_component=inner_component, inputs=[a, b])
             self.N = 1
             self.prefix = prefix
@@ -341,3 +398,54 @@ def test_direct():
     expected = np.array([[0, 3, 0, 3], [2, 3, 2, 3], [0, 3, 0, 3], [2, 3, 2, 3]])
     np.testing.assert_equal(r, expected)
     print(r)
+
+
+def test_wire_as_bus():
+    """ accept a wire as a bus """
+    class test_circuit(GeneralCircuit):
+        def __init__(self, a: Wire, b: Wire, c: Bus, prefix="test_circuit", **kwargs):
+            super().__init__(prefix=prefix, name="test_circuit", inputs=[a, b, c], out_N=1, **kwargs)
+            g = self.add_component(AndGate(a, b, prefix="g2"))
+            g2 = self.add_component(AndGate(g.out, c[0], prefix="g3"))
+            g3 = self.add_component(AndGate(g2.out, c[1], prefix="g4"))
+            self.out[0] = g3.out
+
+    circ = test_circuit(Wire("a"), Wire("b"), Bus("c", 2), "c1")
+    r = circ(np.array([0, 1]),
+             np.array([0, 1]).reshape(-1, 1),
+             np.arange(4).reshape(-1, 1, 1))
+    assert r.sum() == 1
+    assert r[-1, -1, -1] == 1
+
+def test_unique():
+    from ariths_gen.wire_components import Wire, Bus
+    import pytest
+    import sys
+    from ariths_gen.one_bit_circuits.logic_gates import AndGate
+    from ariths_gen.one_bit_circuits.one_bit_components import TwoOneMultiplexer
+    from ariths_gen.core.arithmetic_circuits import GeneralCircuit
+
+    class test_circuit(GeneralCircuit):
+        def __init__(self, a: Bus, prefix="test_circuit", **kwargs):
+            super().__init__(prefix=prefix, name="test_circuit", inputs=[a], out_N=1, **kwargs)
+            g = self.add_component(AndGate(a[0], a[1], prefix="g2"))
+            g2 = self.add_component(AndGate(g.out, a[2], prefix="g2"))
+            g3 = self.add_component(AndGate(g2.out, g.out, prefix="g2"))
+            self.out[0] = g3.out
+
+    with pytest.raises(AssertionError):
+        circ = test_circuit(Bus("a", 3), "c1")
+        circ.get_v_code_flat(file_object=sys.stdout)
+
+if __name__ == "__main__":
+    test_unsigned_approxmul()
+    test_unsigned_mul()
+    test_signed_mul()
+    test_unsigned_add()
+    test_signed_add()
+    test_unsigned_sub()
+    test_signed_sub()
+    test_mac()
+    test_direct()
+    test_wire_as_bus()
+    print("Python tests were successful!")

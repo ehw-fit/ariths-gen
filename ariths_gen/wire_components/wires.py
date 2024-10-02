@@ -1,3 +1,5 @@
+import re
+
 class Wire():
     """Class representing basic wire used to interconnect components.
 
@@ -16,6 +18,9 @@ class Wire():
         self.index = index
         self.prefix = name if prefix == "" else prefix
         self.parent_bus = parent_bus
+
+    def __str__(self):
+        return f"wire{self.name}{self.value}{self.index}"
 
     @staticmethod
     def is_const():
@@ -71,8 +76,14 @@ class Wire():
             return f"({self.c_const})"
         # If wire is part of an input bus (where wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
         # then the wire value is obtained from bitwise shifting the required wire from the parent bus ('parent_bus.prefix' is the same value as 'self.prefix')
-        elif self.is_buswire():
+        elif self.is_buswire() and self.name == f"{self.prefix}[{self.index}]":
             return f"(({self.prefix} >> {self.index}) & 0x01)"
+        elif self.is_buswire():
+            g = re.match(r"(.*)\[(\d+)\]", self.name)
+            if g:
+                return f"(({g.group(1)} >> {g.group(2)}) & 0x01)"
+            else:
+                return f"(({self.name} >> 0) & 0x01)"
         else:
             return f"(({self.name} >> 0) & 0x01)"
 
@@ -186,7 +197,7 @@ class Wire():
 
     """ BLIF CODE GENERATION """
     def get_declaration_blif(self, prefix: str = "", offset: int = 0, array: bool = False):
-        """Wire declaration in Blif code.
+        """Declaration of wire which is part of a bus in Blif code.
 
         Declares basic wire name if wire is not part of a bus
         or declares wire by an offset of its position within the bus.
@@ -202,8 +213,18 @@ class Wire():
         if array is True:
             return f"{prefix}[{offset}]"
         else:
-            return f"{self.name}"
+            return f"{prefix}"
 
+    def get_wire_declaration_blif(self):
+        """Declaration of a single wire in Blif code.
+        
+        Used for declaration of modul inputs.
+        
+        Returns:
+            str: Blif code for declaration of a wire.
+        """
+        return f"{self.prefix} "
+        
     def get_assign_blif(self, prefix: str, output: bool = False):
         """Assignment of wire value to another desired wire in Blif code.
 
@@ -242,10 +263,8 @@ class Wire():
         """
         if self.is_const():
             return self.blif_const
-        elif self.parent_bus is not None and self.parent_bus.N > 1:
-            return self.name
         else:
-            return self.prefix
+            return self.name
 
     def __str__(self):
         if self.is_const():
@@ -254,6 +273,11 @@ class Wire():
             return f"<w={self.prefix}[{self.index}]>"
         else:
             return f"<w={self.name}>"
+
+    """ define read-only parameter N"""
+    @property
+    def N(self):
+        return 1
 
 
 # Wires with constant values #

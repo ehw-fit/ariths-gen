@@ -1,34 +1,24 @@
 from ariths_gen.wire_components import (
-    Wire,
     ConstantWireValue0,
-    ConstantWireValue1,
     Bus
 )
 from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
+    GeneralCircuit
 )
 from ariths_gen.core.logic_gate_circuits import (
     MultipleInputLogicGate
 )
 from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
-    FullAdderPG,
     PGLogicBlock
 )
 from ariths_gen.one_bit_circuits.logic_gates import (
     AndGate,
-    NandGate,
     OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
+    XorGate
 )
 
 
-class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
+class UnsignedCarryLookaheadAdder(GeneralCircuit):
     """Class representing unsigned carry-lookahead adder.
 
     Unsigned carry-lookahead adder represents faster adder circuit which is composed
@@ -67,7 +57,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
     """
     def __init__(self, a: Bus, b: Bus, cla_block_size: int = 4, prefix: str = "", name: str = "u_cla", **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -109,14 +99,14 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
 
                     # For each pg pair values algorithmically combine two input AND gates to replace multiple input gates (resolves fan-in issue)
                     pg_wires = Bus(wires_list=composite_wires)
-                    multi_bit_and_gate = MultipleInputLogicGate(a=pg_wires, two_input_gate_cls=AndGate, prefix=self.prefix+"_and", parent_component=self)
+                    multi_bit_and_gate = MultipleInputLogicGate(a=pg_wires, two_input_gate_cls=AndGate, prefix=self.prefix+f"_and{block_n}_{i}_{g_index}", parent_component=self)
                     composite_or_gates_inputs.append(multi_bit_and_gate.out)
 
                 # Final OR gates cascade using generated AND gates output wires
                 composite_or_wires = Bus(wires_list=composite_or_gates_inputs)
-                multi_bit_or_gate = MultipleInputLogicGate(a=composite_or_wires, two_input_gate_cls=OrGate, prefix=self.prefix+"_or", parent_component=self)
+                multi_bit_or_gate = MultipleInputLogicGate(a=composite_or_wires, two_input_gate_cls=OrGate, prefix=self.prefix+f"_orred{block_n}_{i}_{g_index}_", parent_component=self)
                 # Carry bit generation
-                obj_cout_or = OrGate(pg_block.get_generate_wire(), multi_bit_or_gate.out, prefix=self.prefix+"_or"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
+                obj_cout_or = OrGate(pg_block.get_generate_wire(), multi_bit_or_gate.out, prefix=self.prefix+f"_or{block_n}_{i}_{g_index}_"+str(self.get_instance_num(cls=OrGate, count_disabled_gates=False)), parent_component=self)
                 self.add_component(obj_cout_or)
                 # Updating cin for the the next cla block/sum XOR
                 cin = obj_cout_or.out
@@ -128,7 +118,7 @@ class UnsignedCarryLookaheadAdder(ArithmeticCircuit):
         self.out.connect(self.N, cin)
 
 
-class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, ArithmeticCircuit):
+class SignedCarryLookaheadAdder(UnsignedCarryLookaheadAdder, GeneralCircuit):
     """Class representing signed carry-lookahead adder.
 
     Signed carry-lookahead adder represents faster adder circuit which is composed
