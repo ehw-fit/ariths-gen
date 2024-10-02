@@ -54,7 +54,7 @@ jobs:
         python-version: '3.x'
     - run: python -m pip install numpy
     - name: Download workflow run artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: arithmetic-circuits-8
         path: test_circuits        
@@ -80,6 +80,42 @@ jobs:
       run: |
         cd tests
         bash test_circuits_verilog.sh
+        cd ..
+    
+    - name: Python circuits testing
+      run: |
+        cd tests
+        python test_all.py
+        cd ..
+    
+    - name: Python ax testing
+      run: |
+        cd tests
+        python test_ax.py
+        cd ..
+
+    - name: Python CGP testing
+      run: |
+        cd tests
+        python test_cgp.py
+        cd ..
+
+    - name: Python Compare testing
+      run: |
+        cd tests
+        python test_compare.py
+        cd ..
+    
+    - name: Python Popcount testing
+      run: |
+        cd tests
+        python test_popcnt.py
+        cd ..
+
+    - name: Python Reduce testing
+      run: |
+        cd tests
+        python test_reduce.py
         cd ..
 
   test_python:
