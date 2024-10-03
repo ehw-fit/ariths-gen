@@ -1,10 +1,10 @@
 
 `timescale 1 ns/10 ps  // time-unit = 1 ns, precision = 10 ps
 
-module add_signed_tb;
-    reg signed [7:0] a;
-    reg signed [7:0] b;
-    wire signed [8:0] o;
+module sub_unsigned_tb;
+    reg [7:0] a;
+    reg [7:0] b;
+    wire signed [8:0] o;  // output must be signed for a subtractor
 
     integer k, j;
     localparam period = 20;
@@ -14,8 +14,8 @@ module add_signed_tb;
     always 
     begin
 
-        for(k = -127; k < 128; k = k+1) begin
-            for(j = -127; j < 128; j = j+1) begin
+        for(k = 0; k < 256; k = k+1) begin
+            for(j = 0; j < 256; j = j+1) begin
 
                 assign a = k;
                 assign b = j;
@@ -23,8 +23,8 @@ module add_signed_tb;
                 #period;
 
                 //$assert(b == 0);
-                if ( k + j != o) begin
-                    $display("Invalid output: %d + %d = %d", a, b, o);
+                if ( k - j != o) begin
+                    $display("Invalid output: %d - %d = %d", a, b, o);
                 end
             end;
         end;

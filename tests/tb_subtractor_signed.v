@@ -1,7 +1,7 @@
 
 `timescale 1 ns/10 ps  // time-unit = 1 ns, precision = 10 ps
 
-module add_signed_tb;
+module sub_signed_tb;
     reg signed [7:0] a;
     reg signed [7:0] b;
     wire signed [8:0] o;
@@ -23,8 +23,8 @@ module add_signed_tb;
                 #period;
 
                 //$assert(b == 0);
-                if ( k + j != o) begin
-                    $display("Invalid output: %d + %d = %d", a, b, o);
+                if ( k - j != o) begin
+                    $display("Invalid output: %d - %d = %d", a, b, o);
                 end
             end;
         end;
