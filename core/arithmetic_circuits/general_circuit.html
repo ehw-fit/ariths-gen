@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.10.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
 <title>ariths_gen.core.arithmetic_circuits.general_circuit API documentation</title>
-<meta name="description" content="" />
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
-<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
-<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
-<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
 </head>
 <body>
 <main>
@@ -22,785 +25,6 @@
 <h1 class="title">Module <code>ariths_gen.core.arithmetic_circuits.general_circuit</code></h1>
 </header>
 <section id="section-intro">
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">from ariths_gen.core.logic_gate_circuits.logic_gate_circuit import OneInputLogicGate, TwoInputLogicGate
-
-from ariths_gen.wire_components import (
-    Wire,
-    ConstantWireValue0,
-    ConstantWireValue1,
-    Bus
-)
-
-from io import StringIO
-
-
-class GeneralCircuit():
-    &#34;&#34;&#34;Class represents a general circuit and ensures its generation to various representations.
-
-    The __init__ method fills some mandatory attributes concerning arithmetic circuit
-    that are later used for generation into various representations.
-    &#34;&#34;&#34;
-
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None):
-        if prefix == &#34;&#34;:
-            self.prefix = name
-        else:
-            self.prefix = prefix + &#34;_&#34; + name
-        self.inner_component = inner_component
-        self.inputs = inputs
-        if not outname:
-            outname = self.prefix+&#34;_out&#34;
-        self.out = Bus(outname, out_N, out_bus=True, signed=signed)
-
-        self.components = []
-        self.circuit_wires = []
-        self.circuit_gates = []
-        self.signed = signed
-        self.c_data_type = &#34;int64_t&#34; if self.signed is True else &#34;uint64_t&#34;
-        self.pyc = None  # Python compiled function
-
-    def __call__(self, *args):
-        if not self.pyc:
-            buf = StringIO()
-            self.get_python_code_flat(buf)
-
-            globs, locs = {}, {}
-            exec(buf.getvalue(), globs, locs)
-            self.pyc = locs[self.prefix]
-
-        return self.pyc(*args)
-
-    def add_component(self, component):
-        &#34;&#34;&#34;Adds a component into list of circuit&#39;s inner subcomponents.
-
-        Args:
-            component: Subcomponent to be added into list of components composing described circuit.
-        &#34;&#34;&#34;
-        self.components.append(component)
-        return component
-
-    def get_previous_component(self, number: int = 1):
-        &#34;&#34;&#34;Retrieves previously added composite subcomponent from circuit&#39;s list of components.
-
-        Args:
-            number (int, optional): Offset indicating which lastly added component will be retrieved. Defaults to 1.
-
-        Returns:
-            component: Desired previously added composite component.
-        &#34;&#34;&#34;
-        return self.components[-number]
-
-    def get_instance_num(self, cls, count_disabled_gates: bool = True):
-        &#34;&#34;&#34;Informs how many instances of the same type are already present inside circuit&#39;s components list.
-
-        Args:
-            cls (type): Class type for which to count the number of instances in the components list.
-            count_disabled_gates (bool, optional): Indicates whether logic gates that aren&#39;t generated should be also counted. Defaults to True.
-        Returns:
-            int: Number of instances of the same class type.
-        &#34;&#34;&#34;
-        if issubclass(cls, TwoInputLogicGate) and count_disabled_gates is False:
-            return sum(isinstance(c, cls) for c in self.components if isinstance(c, cls) and c.disable_generation is False)
-        else:
-            return sum(isinstance(c, cls) for c in self.components)
-
-    def get_circuit_gates(self):
-        &#34;&#34;&#34;Gets a list of all the logic gates in circuit that should be generated.
-
-        Returns:
-            list: List of composite logic gates.
-        &#34;&#34;&#34;
-        gates = []
-        for c in self.components:
-            if isinstance(c, TwoInputLogicGate):
-                if c.disable_generation is False:
-                    gates.append(c)
-            else:
-                gates.extend((c.get_circuit_gates()))
-        return gates
-
-    def get_one_bit_components(self):
-        &#34;&#34;&#34;Retrieves a list of all the one bit circuits (besides logic gates) present as subcomponents inside the circuit.
-
-        Returns:
-            list: List of composite one bit circuits.
-        &#34;&#34;&#34;
-        one_bit_comps = []
-        for c in self.components:
-            if isinstance(c, TwoInputLogicGate):
-                continue
-            elif isinstance(getattr(c, &#39;a&#39;), Wire):
-                one_bit_comps.append(c)
-            else:
-                one_bit_comps.extend(c.get_one_bit_components())
-
-        return one_bit_comps
-
-    def get_multi_bit_components(self):
-        &#34;&#34;&#34;Retrieves a list of all the multi bit circuits present as subcomponents inside the circuit.
-
-        Returns:
-            list: List of composite multi bit circuits.
-        &#34;&#34;&#34;
-        multi_bit_comps = []
-        for c in self.components:
-            if isinstance(c, TwoInputLogicGate):
-                continue
-            elif isinstance(getattr(c, &#39;a&#39;), Wire):
-                continue
-            else:
-                multi_bit_comps.append(c)
-        return multi_bit_comps
-
-    @staticmethod
-    def get_unique_types(components: list, multi_bit: bool = False):
-        &#34;&#34;&#34;Retrieves just the unique representatives of class types present inside the provided components list.
-
-        Args:
-            components (list): List of components to be filtered.
-            multi_bit (bool): Specifies whether the provided components list is composed of multi bit type circuits. Defaults to False.
-
-        Returns:
-            list: List of unique composite class types.
-        &#34;&#34;&#34;
-        if multi_bit is True:
-            return list({(type(c), c.N): c for c in components}.values())
-        else:
-            return list({type(c): c for c in components}.values())
-
-    def get_component_types(self):
-        &#34;&#34;&#34;Retrieves a list of all the unique types of subcomponents composing the circuit.
-
-        Returning list consists of only the unique types of logic gates, one bit circuits and multi bit circuits.
-
-        Returns:
-            list: List of unique component types describing the circuit.
-        &#34;&#34;&#34;
-        gate_comps = self.get_unique_types(components=self.get_circuit_gates())
-        one_bit_comps = self.get_unique_types(
-            components=self.get_one_bit_components())
-        multi_bit_comps = self.get_unique_types(
-            components=self.get_multi_bit_components(), multi_bit=True)
-
-        all_components = gate_comps + one_bit_comps + multi_bit_comps
-        return all_components
-
-    def get_sum_wire(self):
-        &#34;&#34;&#34;Get output wire carrying sum value.
-
-        Returns:
-           Wire: Return sum wire.
-        &#34;&#34;&#34;
-        return self.out.get_wire(0)
-
-    def get_carry_wire(self):
-        &#34;&#34;&#34;Get output wire carrying carry out value.
-
-        Returns:
-           Wire: Return carry out wire.
-        &#34;&#34;&#34;
-        return self.out.get_wire(1)
-
-    def save_wire_id(self, wire: Wire):
-        &#34;&#34;&#34;Returns appropriate wire index position within the circuit.
-
-        Constant wire with value 0 has constant index of 0.
-        Constant wire with value 1 has constant index of 1.
-        Other wires indexes start counting from 2 and up.
-
-        Args:
-            wire (Wire): Wire that will be stored at this circuit index position.
-
-        Returns:
-            int: Wire&#39;s index position within circuit.
-        &#34;&#34;&#34;
-        if wire.is_const():
-            return wire.cgp_const
-        else:
-            return len([w[0] for w in self.circuit_wires if w[0].is_const() is False]) + 2
-
-    def get_cgp_wires(self):
-        &#34;&#34;&#34;Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
-
-        Constant wire with value 0 has constant index of 0.
-        Constant wire with value 1 has constant index of 1.
-        Other wires indexes start counting from 2 and up.
-        &#34;&#34;&#34;
-        self.circuit_wires = []
-        if isinstance(self.a, Bus):
-            [self.circuit_wires.append(
-                (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.a.bus]
-            [self.circuit_wires.append(
-                (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.b.bus]
-            if hasattr(self, &#39;c&#39;):
-                [self.circuit_wires.append(
-                    (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.c.bus]
-        else:
-            self.circuit_wires.append(
-                (self.a, f&#34;{self.a.name}&#34;, self.save_wire_id(wire=self.a)))
-            self.circuit_wires.append(
-                (self.b, f&#34;{self.b.name}&#34;, self.save_wire_id(wire=self.b)))
-            if hasattr(self, &#39;c&#39;):
-                self.circuit_wires.append(
-                    (self.c, f&#34;{self.c.name}&#34;, self.save_wire_id(wire=self.c)))
-
-        for gate in self.circuit_gates:
-            if not [item for item in self.circuit_wires if gate.a.name == item[1]]:
-                self.circuit_wires.append(
-                    (gate.a, gate.a.name, self.save_wire_id(wire=gate.a)))
-
-            if hasattr(gate, &#39;b&#39;) and not [item for item in self.circuit_wires if gate.b.name == item[1]]:
-                self.circuit_wires.append(
-                    (gate.b, gate.b.name, self.save_wire_id(wire=gate.b)))
-
-            if not [item for item in self.circuit_wires if gate.out.name == item[1]]:
-                self.circuit_wires.append(
-                    (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
-
-    def get_circuit_wire_index(self, wire: Wire):
-        &#34;&#34;&#34;Searches for circuit&#39;s wire unique index position within the circuit. Used for cgp chromosome generation.
-
-        Args:
-            wire (Wire): Wire to retrieve index position of.
-
-        Returns:
-            int: Wire&#39;s index position number within the circuit.
-        &#34;&#34;&#34;
-        if wire.is_const():
-            return wire.cgp_const
-        else:
-            for w in self.circuit_wires:
-                if wire.name == w[1]:
-                    return w[2]
-
-    &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
-    # FLAT PYTHON #
-    def get_prototype_python(self):
-        &#34;&#34;&#34;Generates Python code function header to describe corresponding arithmetic circuit&#39;s interface in Python code.
-
-        Returns:
-            str: Function&#39;s name and parameters in Python code.
-        &#34;&#34;&#34;
-        return f&#34;def {self.prefix}(&#34; + &#34;, &#34;.join([f&#34;{x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;:&#34; + &#34;\n&#34;
-
-    def get_init_python_flat(self):
-        &#34;&#34;&#34;Generates flat Python code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-        Returns:
-            str: Flat Python code initialization of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_assign_python_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_python_flat() for c in self.components])
-
-    def get_function_out_python_flat(self):
-        &#34;&#34;&#34;Generates flat Python code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-        Returns:
-            str: Flat Python code containing output bus wires assignment.
-        &#34;&#34;&#34;
-        return self.out.return_bus_wires_values_python_flat()
-
-    # Generating flat Python code representation of circuit
-    def get_python_code_flat(self, file_object):
-        &#34;&#34;&#34;Generates flat Python code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_prototype_python())
-        #file_object.write(self.out.get_declaration_python())
-        #file_object.write(self.get_declaration_python_flat()+&#34;\n&#34;)
-        file_object.write(self.get_init_python_flat()+&#34;\n&#34;)
-        file_object.write(self.get_function_out_python_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
-        file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;\n&#34;)
-
-    &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
-    # FLAT C #
-    @staticmethod
-    def get_includes_c():
-        &#34;&#34;&#34;Generates necessary C library includes for output representation.
-
-        Returns:
-            str: C code library includes.
-        &#34;&#34;&#34;
-        return f&#34;#include &lt;stdio.h&gt;\n#include &lt;stdint.h&gt;\n\n&#34;
-
-    def get_prototype_c(self):
-        &#34;&#34;&#34;Generates C code function header to describe corresponding arithmetic circuit&#39;s interface in C code.
-
-        Returns:
-            str: Function&#39;s name and parameters in C code.
-        &#34;&#34;&#34;
-        return f&#34;{self.c_data_type} {self.prefix}(&#34; + &#34;,&#34;.join([f&#34;{self.c_data_type} {x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;{&#34; + &#34;\n&#34;
-
-    def get_declaration_c_flat(self):
-        &#34;&#34;&#34;Generates flat C code declaration of input/output circuit wires.
-
-        Returns:
-            str: Flat C code arithmetic circuit&#39;s wires declaration.
-        &#34;&#34;&#34;
-        return f&#34;&#34;.join([c.get_declaration_c_flat() for c in self.components])
-
-    def get_init_c_flat(self):
-        &#34;&#34;&#34;Generates flat C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-        Returns:
-            str: Flat C code initialization of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_assign_c_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_c_flat() for c in self.components])
-
-    def get_function_out_c_flat(self):
-        &#34;&#34;&#34;Generates flat C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-        Returns:
-            str: Flat C code containing output bus wires assignment.
-        &#34;&#34;&#34;
-        return self.out.return_bus_wires_values_c_flat()
-
-    # Generating flat C code representation of circuit
-    def get_c_code_flat(self, file_object):
-        &#34;&#34;&#34;Generates flat C code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_includes_c())
-        file_object.write(self.get_prototype_c())
-        file_object.write(self.out.get_declaration_c())
-        file_object.write(self.get_declaration_c_flat()+&#34;\n&#34;)
-        file_object.write(self.get_init_c_flat()+&#34;\n&#34;)
-        file_object.write(self.get_function_out_c_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_c_flat())
-        file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;)
-
-    # HIERARCHICAL C #
-    def get_function_blocks_c(self):
-        &#34;&#34;&#34;Generates hierarchical C code representation of all subcomponents function blocks present in corresponding arithmetic circuit.
-
-        Returns:
-            str: Hierarchical C code of all subcomponents function blocks description.
-        &#34;&#34;&#34;
-        # Retrieve all unique component types composing this circuit
-        self.component_types = self.get_component_types()
-        return &#34;&#34;.join([c.get_function_block_c() for c in self.component_types])
-
-    def get_function_block_c(self):
-        &#34;&#34;&#34;Generates hierarchical C code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical C code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
-
-    def get_declarations_c_hier(self):
-        &#34;&#34;&#34;Generates hierarchical C code declaration of input/output circuit wires.
-
-        Returns:
-            str: Hierarchical C code containing unique declaration of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_declaration_c_hier() for c in self.components])
-
-    def get_declaration_c_hier(self):
-        &#34;&#34;&#34;Generates hierarchical C code declaration of corresponding subcomponent input/output wires inside the upper component.
-
-        Generates wires used to connect input/output values to/from invocation of the corresponding function block into inner wires present
-        inside the upper component from which function block has been invoked.
-
-        Returns:
-            str: Hierarchical C code of subcomponent arithmetic circuit&#39;s wires declaration.
-        &#34;&#34;&#34;
-        return f&#34;  {self.c_data_type} {self.a.prefix} = 0;\n&#34; + \
-               f&#34;  {self.c_data_type} {self.b.prefix} = 0;\n&#34; + \
-               f&#34;  {self.c_data_type} {self.out.prefix} = 0;\n&#34;
-
-    def get_init_c_hier(self):
-        &#34;&#34;&#34;Generates hierarchical C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-        Returns:
-            str: Hierarchical C code initialization of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_gate_invocation_c() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_c() for c in self.components])
-
-    def get_out_invocation_c(self):
-        &#34;&#34;&#34;Generates hierarchical C code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-        Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
-        Assigns output values from invocation of the corresponding function block into inner wires present inside
-        the upper component from which function block has been invoked.
-
-        Returns:
-            str: Hierarchical C code of subcomponent&#39;s C function invocation and output assignment.
-        &#34;&#34;&#34;
-        # Getting name of circuit type for proper C code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        return self.a.return_bus_wires_values_c_hier() + self.b.return_bus_wires_values_c_hier() + \
-            f&#34;  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n&#34;
-
-    def get_function_out_c_hier(self):
-        &#34;&#34;&#34;Generates hierarchical C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-        Returns:
-            str: Hierarchical C code containing output bus wires assignment.
-        &#34;&#34;&#34;
-        return self.out.return_bus_wires_values_c_hier()
-
-    def get_circuit_c(self):
-        &#34;&#34;&#34;Generates hierarchical C code subcomponent&#39;s function block.
-
-        Returns:
-            str: Hierarchical C code of subcomponent&#39;s function block.
-        &#34;&#34;&#34;
-        return f&#34;{self.get_prototype_c()}&#34; + \
-               f&#34;{self.out.get_declaration_c()}&#34; + \
-               f&#34;{self.get_declarations_c_hier()}\n&#34; + \
-               f&#34;{self.get_init_c_hier()}\n&#34; + \
-               f&#34;{self.get_function_out_c_hier()}&#34; + \
-               f&#34;{self.out.return_bus_wires_sign_extend_c_hier()}&#34; + \
-               f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;
-
-    # Generating hierarchical C code representation of circuit
-    def get_c_code_hier(self, file_object):
-        &#34;&#34;&#34;Generates hierarchical C code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_includes_c())
-        file_object.write(self.get_function_blocks_c())
-        file_object.write(self.get_circuit_c())
-
-    &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
-    # FLAT VERILOG #
-
-    def get_prototype_v(self):
-        &#34;&#34;&#34;Generates Verilog code module header to describe corresponding arithmetic circuit&#39;s interface in Verilog code.
-
-        Returns:
-            str: Module&#39;s name and parameters in Verilog code.
-        &#34;&#34;&#34;
-        return f&#34;module {self.prefix}(&#34; + &#34;,&#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
-
-    def get_declaration_v_flat(self):
-        &#34;&#34;&#34;Generates flat Verilog code declaration of input/output circuit wires.
-
-        Returns:
-            str: Flat Verilog code arithmetic circuit&#39;s wires declaration.
-        &#34;&#34;&#34;
-        return f&#34;&#34;.join([c.get_declaration_v_flat() for c in self.components])
-
-    def get_init_v_flat(self):
-        &#34;&#34;&#34;Generates flat Verilog code initialization and assignment of corresponding arithmetic circuit&#39;s input/output buses wires.
-
-        Returns:
-            str: Flat Verilog code initialization of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_assign_v_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_v_flat() for c in self.components])
-
-    def get_function_out_v_flat(self):
-        &#34;&#34;&#34;Generates flat Verilog code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-        Returns:
-            str: Flat Verilog code containing output bus wires assignment.
-        &#34;&#34;&#34;
-        return self.out.return_bus_wires_values_v_flat()
-
-    # Generating flat Verilog code representation of circuit
-    def get_v_code_flat(self, file_object):
-        &#34;&#34;&#34;Generates flat Verilog code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_prototype_v())
-        file_object.write(self.get_declaration_v_flat()+&#34;\n&#34;)
-        file_object.write(self.get_init_v_flat() + &#34;\n&#34;)
-        file_object.write(self.get_function_out_v_flat())
-        file_object.write(f&#34;endmodule&#34;)
-
-    # HIERARCHICAL VERILOG #
-    def get_function_blocks_v(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code representation of all subcomponents function blocks present in corresponding arithmetic circuit.
-
-        Returns:
-            str: Hierarchical Verilog code of all subcomponents function blocks description.
-        &#34;&#34;&#34;
-        # Retrieve all unique component types composing this circuit
-        self.component_types = self.get_component_types()
-        return &#34;&#34;.join([c.get_function_block_v() for c in self.component_types])
-
-    def get_function_block_v(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical Verilog code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
-
-    def get_declarations_v_hier(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code declaration of input/output circuit wires.
-
-        Returns:
-            str: Hierarchical Verilog code containing unique declaration of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_declaration_v_hier() for c in self.components])
-
-    def get_declaration_v_hier(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code declaration of corresponding subcomponent input/output wires inside the upper component.
-
-        Generates wires used to connect input/output values to/from invocation of the corresponding function block into inner wires present
-        inside the upper component from which function block has been invoked.
-
-        Returns:
-            str: Hierarchical Verilog code of subcomponent arithmetic circuit&#39;s wires declaration.
-        &#34;&#34;&#34;
-        return f&#34;  wire [{self.a.N-1}:0] {self.a.prefix};\n&#34; + \
-               f&#34;  wire [{self.b.N-1}:0] {self.b.prefix};\n&#34; + \
-               f&#34;  wire [{self.out.N-1}:0] {self.out.prefix};\n&#34;
-
-    def get_init_v_hier(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-        Returns:
-            str: Hierarchical Verilog code initialization of arithmetic circuit wires.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join([c.get_gate_invocation_v() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_v() for c in self.components])
-
-    def get_out_invocation_v(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-        Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
-        Assigns output values from invocation of the corresponding function block into inner wires present inside
-        the upper component from which function block has been invoked.
-
-        Returns:
-            str: Hierarchical Verilog code of subcomponent&#39;s module invocation and output assignment.
-        &#34;&#34;&#34;
-        # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_type)
-        return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-            f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
-
-    def get_function_out_v_hier(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-        Returns:
-            str: Hierarchical Verilog code containing output bus wires assignment.
-        &#34;&#34;&#34;
-        return self.out.return_bus_wires_values_v_hier()
-
-    def get_circuit_v(self):
-        &#34;&#34;&#34;Generates hierarchical Verilog code subcomponent&#39;s function block.
-
-        Returns:
-            str: Hierarchical Verilog code of subcomponent&#39;s function block.
-        &#34;&#34;&#34;
-        return f&#34;{self.get_prototype_v()}&#34; + \
-               f&#34;{self.get_declarations_v_hier()}\n&#34; + \
-               f&#34;{self.get_init_v_hier()}\n&#34; + \
-               f&#34;{self.get_function_out_v_hier()}&#34; + \
-               f&#34;endmodule&#34;
-
-    # Generating hierarchical Verilog code representation of circuit
-    def get_v_code_hier(self, file_object):
-        &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_function_blocks_v())
-        file_object.write(self.get_circuit_v())
-
-    &#34;&#34;&#34; BLIF CODE GENERATION &#34;&#34;&#34;
-    # FLAT BLIF #
-
-    def get_prototype_blif(self):
-        &#34;&#34;&#34;Generates Blif code model name of described arithmetic circuit.
-
-        Returns:
-            str: Model&#39;s name in Blif code.
-        &#34;&#34;&#34;
-        return f&#34;.model {self.prefix}\n&#34;
-
-    def get_declaration_blif(self):
-        &#34;&#34;&#34;Generates flat Blif code declaration of input/output circuit wires.
-
-        Returns:
-            str: Flat Blif code containing declaration of circuit&#39;s wires.
-        &#34;&#34;&#34;
-        return f&#34;.inputs{&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
-               f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-               f&#34;.names vdd\n1\n&#34; + \
-               f&#34;.names gnd\n0\n&#34;
-
-    def get_function_blif_flat(self):
-        &#34;&#34;&#34;Generates flat Blif code with invocation of subcomponents logic gates functions via their corresponding truth tables.
-
-        Returns:
-            str: Flat Blif code containing invocation of inner subcomponents logic gates Boolean functions.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join(c.get_function_blif_flat() for c in self.components)
-
-    def get_function_out_blif(self):
-        &#34;&#34;&#34;Generates flat Blif code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-        Returns:
-            str: Flat Blif code containing output bus wires assignment.
-        &#34;&#34;&#34;
-        return f&#34;{self.out.get_wire_assign_blif(output=True)}&#34;
-
-    # Generating flat BLIF code representation of circuit
-    def get_blif_code_flat(self, file_object):
-        &#34;&#34;&#34;Generates flat Blif code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_prototype_blif())
-        file_object.write(self.get_declaration_blif())
-        file_object.write(self.get_function_blif_flat())
-        file_object.write(self.get_function_out_blif())
-        file_object.write(f&#34;.end\n&#34;)
-
-    # HIERARCHICAL BLIF #
-    def get_invocations_blif_hier(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code with invocations of subcomponents function blocks.
-
-        Returns:
-            str: Hierarchical Blif code containing invocations of inner subcomponents function blocks.
-        &#34;&#34;&#34;
-        return &#34;&#34;.join(c.get_invocation_blif_hier() for c in self.components)
-
-    def get_invocation_blif_hier(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-        Used for multi-bit subcomponent&#39;s modul invocation.
-
-        Returns:
-            str: Hierarchical Blif code of subcomponent&#39;s model invocation and output assignment.
-        &#34;&#34;&#34;
-        # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        return f&#34;{self.a.get_wire_assign_blif(output=True)}&#34; + \
-               f&#34;{self.b.get_wire_assign_blif(output=True)}&#34; + \
-               f&#34;.subckt {circuit_type}&#34; + \
-               &#34;&#34;.join([f&#34; a[{self.a.bus.index(w)}]={self.a.prefix}[{self.a.bus.index(w)}]&#34; for w in self.a.bus]) + \
-               &#34;&#34;.join([f&#34; b[{self.b.bus.index(w)}]={self.b.prefix}[{self.b.bus.index(w)}]&#34; for w in self.b.bus]) + \
-               &#34;&#34;.join(
-                   [f&#34; {circuit_type}_out[{self.out.bus.index(o)}]={o.name}&#34; for o in self.out.bus]) + &#34;\n&#34;
-
-    def get_circuit_blif(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code subcomponent&#39;s function block.
-
-        Returns:
-            str: Hierarchical Blif code of subcomponent&#39;s function block.
-        &#34;&#34;&#34;
-        return f&#34;{self.get_prototype_blif()}&#34; + \
-               f&#34;{self.get_declaration_blif()}&#34; + \
-               f&#34;{self.get_invocations_blif_hier()}&#34; + \
-               f&#34;{self.get_function_out_blif()}&#34; + \
-               f&#34;.end\n&#34;
-
-    def get_function_blocks_blif(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code representation of all subcomponents function blocks present in corresponding arithmetic circuit.
-
-        Returns:
-            str: Hierarchical Blif code of all subcomponents function blocks description.
-        &#34;&#34;&#34;
-        # Retrieve all unique component types composing this circuit
-        # (iterating backwards as opposed to other representations so the top modul is always above its subcomponents)
-        self.component_types = self.get_component_types()
-        return &#34;\n&#34;.join([c.get_function_block_blif() for c in self.component_types[::-1]])
-
-    def get_function_block_blif(self):
-        &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-        Returns:
-            str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
-        &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_blif()}&#34;
-
-    # Generating hierarchical BLIF code representation of circuit
-    def get_blif_code_hier(self, file_object):
-        &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_circuit_blif()+&#34;\n&#34;)
-        file_object.write(self.get_function_blocks_blif())
-
-    &#34;&#34;&#34; CGP CODE GENERATION &#34;&#34;&#34;
-    # FLAT CGP #
-
-    def get_parameters_cgp(self):
-        &#34;&#34;&#34;Generates CGP chromosome parameters of corresponding arithmetic circuit.
-
-        In total seven parameters represent: total inputs, total outputs, number of rows, number of columns (gates),
-        number of each gate&#39;s inputs, number of each gate&#39;s outputs, quality constant value.
-
-        Returns:
-            str: CGP chromosome parameters of described arithmetic circuit.
-        &#34;&#34;&#34;
-        self.circuit_gates = self.get_circuit_gates()
-        return f&#34;{{{sum(input_bus.N for input_bus in self.inputs)},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}&#34;
-
-    def get_triplets_cgp(self):
-        &#34;&#34;&#34;Generates list of logic gate triplets (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.
-
-        Each triplet represents unique logic gate within the described arithmetic circuit. Besides the contained input wires indexes and gate&#39;s inner logic function, an output wire
-        with incremented index position is also created and remembered to be appropriately driven as an input to another logic gate or as the circuit&#39;s output.
-
-        Constant wire with value 0 has constant index of 0.
-        Constant wire with value 1 has constant index of 1.
-        Other wires indexes start counting from 2 and up.
-
-        Returns:
-            str: List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.
-        &#34;&#34;&#34;
-        self.get_cgp_wires()
-        return &#34;&#34;.join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), out_id=self.get_circuit_wire_index(g.out)) if isinstance(g, OneInputLogicGate) else
-                       g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])
-
-    def get_outputs_cgp(self):
-        &#34;&#34;&#34;Generates list of output wires indexes of described arithmetic circuit from MSB to LSB.
-
-        Returns:
-            str: List of arithmetic circuit&#39;s output wire indexes.
-        &#34;&#34;&#34;
-        return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + &#34;)&#34;
-
-    # Generating flat CGP chromosome representation of circuit
-    def get_cgp_code_flat(self, file_object):
-        &#34;&#34;&#34;Generates flat CGP chromosome representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-        &#34;&#34;&#34;
-        file_object.write(self.get_parameters_cgp())
-        file_object.write(self.get_triplets_cgp())
-        file_object.write(self.get_outputs_cgp())</code></pre>
-</details>
 </section>
 <section>
 </section>
@@ -813,7 +37,7 @@ class GeneralCircuit():
 <dl>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit"><code class="flex name class">
 <span>class <span class="ident">GeneralCircuit</span></span>
-<span>(</span><span>prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None)</span>
+<span>(</span><span>prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, signed_out=None, outname=None, **kwargs)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class represents a general circuit and ensures its generation to various representations.</p>
@@ -829,24 +53,43 @@ that are later used for generation into various representations.</p></div>
     The __init__ method fills some mandatory attributes concerning arithmetic circuit
     that are later used for generation into various representations.
     &#34;&#34;&#34;
-
-    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], signed: bool = False, outname=None):
+    def __init__(self, prefix: str, name: str, out_N: int, inner_component: bool = False, inputs: list = [], one_bit_circuit: bool = False, signed: bool = False, signed_out = None, outname=None, **kwargs):
         if prefix == &#34;&#34;:
             self.prefix = name
         else:
             self.prefix = prefix + &#34;_&#34; + name
         self.inner_component = inner_component
-        self.inputs = inputs
+
+        # Dynamic input bus assignment
+        self.inputs = []
+        for i, input in enumerate(inputs):
+            attr_name = chr(97+i)
+            full_prefix = f&#34;{self.prefix}_{input.prefix}&#34; if self.inner_component else f&#34;{input.prefix}&#34;
+            if isinstance(input, Bus) or isinstance(input, Wire):
+                circuit_input = input
+                circuit_input.prefix = full_prefix
+            setattr(self, attr_name, circuit_input)
+            self.inputs.append(circuit_input)
+            # If the input bus is an output bus, connect it
+            if isinstance(input, Bus) and input.is_output_bus():
+                getattr(self, attr_name).connect_bus(connecting_bus=input)
+
         if not outname:
             outname = self.prefix+&#34;_out&#34;
-        self.out = Bus(outname, out_N, out_bus=True, signed=signed)
+
+        if signed_out is None:
+            signed_out = signed
+        self.out = Bus(outname, out_N, out_bus=True, signed=signed_out)
 
         self.components = []
-        self.circuit_wires = []
+        self._prefixes = [] # TODO rename to fullname and add distinct attr for prefix, name, suffix
         self.circuit_gates = []
+        self.circuit_wires = []
         self.signed = signed
+        self.signed_out = signed_out
         self.c_data_type = &#34;int64_t&#34; if self.signed is True else &#34;uint64_t&#34;
         self.pyc = None  # Python compiled function
+        self.kwargs = kwargs
 
     def __call__(self, *args):
         if not self.pyc:
@@ -859,12 +102,74 @@ that are later used for generation into various representations.</p></div>
 
         return self.pyc(*args)
 
+    def __str__(self):
+        return f&#34;&lt;{type(self).__name__} prefix={self.prefix} &#34; + (&#34;, &#34;.join([f&#34;input={i}&#34; for i in self.inputs])) + &#34;&gt;&#34;
+        # super().__init__(prefix, name, out_N, inner_component, inputs=[a, b], signed=signed, **kwargs)
+
+    def get_hier_subcomponent_def(self, parent_kwargs: dict = {}):
+        &#34;&#34;&#34; Creates and returns a new instance of the current circuit block used for definition of a subcomponent in a hierarchical circuit.
+
+        Args:
+            parent_kwargs (dict): Dictionary containing all the configuration settings of the parent circuit block.
+
+        Returns:
+            GeneralCircuit: A new instance of the current circuit block with proper prefix and input wires.
+        &#34;&#34;&#34;
+        # Obtain proper circuit name with its input bit widths
+        init_signature = inspect.signature(self.__class__.__init__)
+        init_params = list(init_signature.parameters.keys())
+        default_circuit_name = init_signature.parameters[&#39;name&#39;].default
+        circuit_type = default_circuit_name + &#34;x&#34;.join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        # Initialize and fill args for the new instance based on the current instance
+        init_args = {}
+
+        for param in init_params[1:]:  # Skip &#39;self&#39;
+            attr = getattr(self, param, None)  # Get the attribute from the current instance
+
+            if attr is not None:  # If attribute does not exist, it will use default value from the signature
+                if isinstance(attr, Bus):  # If the input is a Bus, create a copy of the Bus object with same length, but proper prefix
+                    init_args[param] = Bus(N=attr.N, prefix=param)
+                elif isinstance(attr, Wire):  # If the input is a Wire, create a copy of the Wire object with proper prefix
+                    init_args[param] = Wire(name=param)
+                else:  # Copy other types of attributes
+                    init_args[param] = copy.deepcopy(attr)
+
+        init_args[&#39;name&#39;] = circuit_type
+        init_args[&#39;prefix&#39;] = &#34;&#34;
+
+        circuit_block = self.__class__(**init_args, **parent_kwargs)
+        return circuit_block
+
+    def get_circuit_def(self) -&gt; Dict[str, Wire]:
+        &#34;&#34;&#34; returns IDs and wires of the inputs and output&#34;&#34;&#34;
+        # TODO delete? (probably replaced by get_hier_subcomponent_def)
+        #.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
+        r = {chr(97 + i): self.inputs[i] for i in range(len(self.inputs))}
+        r[&#39;out&#39;] = self.get_global_prefix() + &#34;_out&#34;
+        return r
+
     def add_component(self, component):
         &#34;&#34;&#34;Adds a component into list of circuit&#39;s inner subcomponents.
+        
+        Additionally it adds all the gates of the component to the circuit&#39;s list of gates and all
+        sbcomponents prefixes to check for naming duplicates which could cause issues in the circuit generation.
 
         Args:
             component: Subcomponent to be added into list of components composing described circuit.
         &#34;&#34;&#34;
+        # TODO should be refactored in ArithsGen rework
+        # We should probably check also wire names for especially hierarchical generation
+        if isinstance(component, TwoInputLogicGate):
+            if component.disable_generation is False:
+                self.circuit_gates.append(component)
+        else:
+            self.circuit_gates.extend(component.get_circuit_gates())
+            for prefix in component._prefixes:
+                assert prefix not in self._prefixes, f&#34;Component with prefix {prefix} already exists in the circuit.&#34;
+            self._prefixes.extend(component._prefixes)
+
+        assert component.prefix not in self._prefixes, f&#34;Component with prefix {component.prefix} already exists in the circuit.&#34;
+        self._prefixes.append(component.prefix)
         self.components.append(component)
         return component
 
@@ -892,20 +197,25 @@ that are later used for generation into various representations.</p></div>
             return sum(isinstance(c, cls) for c in self.components if isinstance(c, cls) and c.disable_generation is False)
         else:
             return sum(isinstance(c, cls) for c in self.components)
-
-    def get_circuit_gates(self):
+        
+    def get_circuit_gates(self, verilog_output: bool = False):
         &#34;&#34;&#34;Gets a list of all the logic gates in circuit that should be generated.
 
+        Args:            
+            verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.
         Returns:
             list: List of composite logic gates.
         &#34;&#34;&#34;
         gates = []
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
-                if c.disable_generation is False:
+                if (c.disable_generation is False) and (verilog_output is False or getattr(c, &#34;use_verilog_instance&#34;, False) is False):
                     gates.append(c)
             else:
-                gates.extend((c.get_circuit_gates()))
+                # Check whether it is necessary to use gates for the Verilog component
+                # description (ArithsGen internally defined comp) or not (technology specific instance)
+                if verilog_output is False or ((hasattr(c, &#34;use_verilog_instance&#34;) and c.use_verilog_instance is False) or hasattr(c, &#34;use_verilog_instance&#34;) is False):
+                    gates.extend(c.get_circuit_gates(verilog_output))
         return gates
 
     def get_one_bit_components(self):
@@ -918,7 +228,7 @@ that are later used for generation into various representations.</p></div>
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
                 continue
-            elif isinstance(getattr(c, &#39;a&#39;), Wire):
+            elif all(isinstance(i, Wire) for i in self.inputs):
                 one_bit_comps.append(c)
             else:
                 one_bit_comps.extend(c.get_one_bit_components())
@@ -935,10 +245,11 @@ that are later used for generation into various representations.</p></div>
         for c in self.components:
             if isinstance(c, TwoInputLogicGate):
                 continue
-            elif isinstance(getattr(c, &#39;a&#39;), Wire):
+            elif all(isinstance(i, Wire) for i in self.inputs):
                 continue
             else:
                 multi_bit_comps.append(c)
+                multi_bit_comps.extend(c.get_multi_bit_components())
         return multi_bit_comps
 
     @staticmethod
@@ -953,42 +264,28 @@ that are later used for generation into various representations.</p></div>
             list: List of unique composite class types.
         &#34;&#34;&#34;
         if multi_bit is True:
-            return list({(type(c), c.N): c for c in components}.values())
+            return list({(type(c), tuple(i.N for i in c.inputs)): c for c in components[::-1]}.values())
         else:
             return list({type(c): c for c in components}.values())
 
-    def get_component_types(self):
+    def get_component_types(self, verilog_output: bool = False):
         &#34;&#34;&#34;Retrieves a list of all the unique types of subcomponents composing the circuit.
 
         Returning list consists of only the unique types of logic gates, one bit circuits and multi bit circuits.
 
+        Args:
+            verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.
         Returns:
             list: List of unique component types describing the circuit.
         &#34;&#34;&#34;
-        gate_comps = self.get_unique_types(components=self.get_circuit_gates())
+        gate_comps = self.get_unique_types(components=self.get_circuit_gates(verilog_output))
         one_bit_comps = self.get_unique_types(
             components=self.get_one_bit_components())
-        multi_bit_comps = self.get_unique_types(
-            components=self.get_multi_bit_components(), multi_bit=True)
+        multi_bit_comps = self.get_unique_types(components=self.get_multi_bit_components(),
+                                                multi_bit=True)
 
         all_components = gate_comps + one_bit_comps + multi_bit_comps
         return all_components
-
-    def get_sum_wire(self):
-        &#34;&#34;&#34;Get output wire carrying sum value.
-
-        Returns:
-           Wire: Return sum wire.
-        &#34;&#34;&#34;
-        return self.out.get_wire(0)
-
-    def get_carry_wire(self):
-        &#34;&#34;&#34;Get output wire carrying carry out value.
-
-        Returns:
-           Wire: Return carry out wire.
-        &#34;&#34;&#34;
-        return self.out.get_wire(1)
 
     def save_wire_id(self, wire: Wire):
         &#34;&#34;&#34;Returns appropriate wire index position within the circuit.
@@ -1006,45 +303,45 @@ that are later used for generation into various representations.</p></div>
         if wire.is_const():
             return wire.cgp_const
         else:
-            return len([w[0] for w in self.circuit_wires if w[0].is_const() is False]) + 2
+            # [1] is reservation for a constant wire with value 1
+            pos = max([1] + [x[2] for x in self.circuit_wires])
+            return pos + 1
 
-    def get_cgp_wires(self):
+    def get_circuit_wires(self):
         &#34;&#34;&#34;Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
 
         Constant wire with value 0 has constant index of 0.
         Constant wire with value 1 has constant index of 1.
         Other wires indexes start counting from 2 and up.
         &#34;&#34;&#34;
-        self.circuit_wires = []
-        if isinstance(self.a, Bus):
-            [self.circuit_wires.append(
-                (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.a.bus]
-            [self.circuit_wires.append(
-                (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.b.bus]
-            if hasattr(self, &#39;c&#39;):
+        circuit_wires_names = []
+
+        for input in self.inputs:
+            if isinstance(input, Bus):
                 [self.circuit_wires.append(
-                    (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.c.bus]
-        else:
-            self.circuit_wires.append(
-                (self.a, f&#34;{self.a.name}&#34;, self.save_wire_id(wire=self.a)))
-            self.circuit_wires.append(
-                (self.b, f&#34;{self.b.name}&#34;, self.save_wire_id(wire=self.b)))
-            if hasattr(self, &#39;c&#39;):
+                    (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in input.bus]
+                [circuit_wires_names.append(w.name) for w in input.bus]
+            else:
                 self.circuit_wires.append(
-                    (self.c, f&#34;{self.c.name}&#34;, self.save_wire_id(wire=self.c)))
+                    (input, f&#34;{input.name}&#34;, self.save_wire_id(wire=input)))
+                circuit_wires_names.append(input.name)
 
         for gate in self.circuit_gates:
-            if not [item for item in self.circuit_wires if gate.a.name == item[1]]:
+            if gate.a.name not in circuit_wires_names:
                 self.circuit_wires.append(
                     (gate.a, gate.a.name, self.save_wire_id(wire=gate.a)))
+                circuit_wires_names.append(gate.a.name)
 
-            if hasattr(gate, &#39;b&#39;) and not [item for item in self.circuit_wires if gate.b.name == item[1]]:
+            if hasattr(gate, &#39;b&#39;) and gate.b.name not in circuit_wires_names:
                 self.circuit_wires.append(
                     (gate.b, gate.b.name, self.save_wire_id(wire=gate.b)))
+                circuit_wires_names.append(gate.b.name)
 
-            if not [item for item in self.circuit_wires if gate.out.name == item[1]]:
+            if gate.out.name not in circuit_wires_names:
                 self.circuit_wires.append(
                     (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))
+                circuit_wires_names.append(gate.out.name)
+                
 
     def get_circuit_wire_index(self, wire: Wire):
         &#34;&#34;&#34;Searches for circuit&#39;s wire unique index position within the circuit. Used for cgp chromosome generation.
@@ -1089,18 +386,18 @@ that are later used for generation into various representations.</p></div>
         return self.out.return_bus_wires_values_python_flat()
 
     # Generating flat Python code representation of circuit
-    def get_python_code_flat(self, file_object):
+
+    def get_python_code_flat(self, file_object, retype=True):
         &#34;&#34;&#34;Generates flat Python code representation of corresponding arithmetic circuit.
 
         Args:
             file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
+            retype (bool) specifies if signed output should return int64_t
         &#34;&#34;&#34;
         file_object.write(self.get_prototype_python())
-        #file_object.write(self.out.get_declaration_python())
-        #file_object.write(self.get_declaration_python_flat()+&#34;\n&#34;)
         file_object.write(self.get_init_python_flat()+&#34;\n&#34;)
         file_object.write(self.get_function_out_python_flat())
-        file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
+        file_object.write(self.out.return_bus_wires_sign_extend_python_flat(retype=True))
         file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;\n&#34;)
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
@@ -1169,7 +466,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Hierarchical C code of all subcomponents function blocks description.
         &#34;&#34;&#34;
-        # Retrieve all unique component types composing this circuit
+        # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         self.component_types = self.get_component_types()
         return &#34;&#34;.join([c.get_function_block_c() for c in self.component_types])
 
@@ -1179,12 +476,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Hierarchical C code of multi-bit arithmetic circuit&#39;s function block description.
         &#34;&#34;&#34;
-        # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;
+        return f&#34;{self.get_hier_subcomponent_def(parent_kwargs=self.kwargs).get_circuit_c()}\n\n&#34;
 
     def get_declarations_c_hier(self):
         &#34;&#34;&#34;Generates hierarchical C code declaration of input/output circuit wires.
@@ -1203,8 +495,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Hierarchical C code of subcomponent arithmetic circuit&#39;s wires declaration.
         &#34;&#34;&#34;
-        return f&#34;  {self.c_data_type} {self.a.prefix} = 0;\n&#34; + \
-               f&#34;  {self.c_data_type} {self.b.prefix} = 0;\n&#34; + \
+        return &#34;&#34;.join([f&#34;  {self.c_data_type} {i.prefix} = 0;\n&#34; for i in self.inputs if ((isinstance(i, Wire)) or (not all((w.is_const()) or (w.parent_bus is not None and w.prefix == i.prefix) for w in i.bus)))]) + \
                f&#34;  {self.c_data_type} {self.out.prefix} = 0;\n&#34;
 
     def get_init_c_hier(self):
@@ -1226,9 +517,12 @@ that are later used for generation into various representations.</p></div>
             str: Hierarchical C code of subcomponent&#39;s C function invocation and output assignment.
         &#34;&#34;&#34;
         # Getting name of circuit type for proper C code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        return self.a.return_bus_wires_values_c_hier() + self.b.return_bus_wires_values_c_hier() + \
-            f&#34;  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n&#34;
+        init_signature = inspect.signature(self.__class__.__init__)
+        default_circuit_name = init_signature.parameters[&#39;name&#39;].default
+        circuit_type = default_circuit_name + &#34;x&#34;.join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        # TODO .. now only works for input buses
+        return &#34;&#34;.join(w.return_bus_wires_values_c_hier() for w in self.inputs) + \
+               f&#34;  {self.out.prefix} = {circuit_type}({&#39;, &#39;.join(w.prefix if isinstance(w, Bus) else w.get_wire_value_c_hier() for w in self.inputs)});\n&#34;
 
     def get_function_out_c_hier(self):
         &#34;&#34;&#34;Generates hierarchical C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
@@ -1265,14 +559,13 @@ that are later used for generation into various representations.</p></div>
 
     &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
     # FLAT VERILOG #
-
     def get_prototype_v(self):
         &#34;&#34;&#34;Generates Verilog code module header to describe corresponding arithmetic circuit&#39;s interface in Verilog code.
 
         Returns:
             str: Module&#39;s name and parameters in Verilog code.
         &#34;&#34;&#34;
-        return f&#34;module {self.prefix}(&#34; + &#34;,&#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
+        return f&#34;module {self.prefix}(&#34; + &#34;, &#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;
 
     def get_declaration_v_flat(self):
         &#34;&#34;&#34;Generates flat Verilog code declaration of input/output circuit wires.
@@ -1318,8 +611,8 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Hierarchical Verilog code of all subcomponents function blocks description.
         &#34;&#34;&#34;
-        # Retrieve all unique component types composing this circuit
-        self.component_types = self.get_component_types()
+        # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
+        self.component_types = self.get_component_types(verilog_output=True)
         return &#34;&#34;.join([c.get_function_block_v() for c in self.component_types])
 
     def get_function_block_v(self):
@@ -1329,11 +622,7 @@ that are later used for generation into various representations.</p></div>
             str: Hierarchical Verilog code of multi-bit arithmetic circuit&#39;s function block description.
         &#34;&#34;&#34;
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;
+        return f&#34;{self.get_hier_subcomponent_def(parent_kwargs=self.kwargs).get_circuit_v()}\n\n&#34;
 
     def get_declarations_v_hier(self):
         &#34;&#34;&#34;Generates hierarchical Verilog code declaration of input/output circuit wires.
@@ -1352,9 +641,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Hierarchical Verilog code of subcomponent arithmetic circuit&#39;s wires declaration.
         &#34;&#34;&#34;
-        return f&#34;  wire [{self.a.N-1}:0] {self.a.prefix};\n&#34; + \
-               f&#34;  wire [{self.b.N-1}:0] {self.b.prefix};\n&#34; + \
-               f&#34;  wire [{self.out.N-1}:0] {self.out.prefix};\n&#34;
+        return &#34;&#34;.join(b.get_wire_declaration_v() for b in self.inputs + [self.out] if (b == self.out) or (not all((w.is_const()) or (w.parent_bus is not None and w.prefix == b.prefix) for w in b.bus)))
 
     def get_init_v_hier(self):
         &#34;&#34;&#34;Generates hierarchical Verilog code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
@@ -1375,11 +662,13 @@ that are later used for generation into various representations.</p></div>
             str: Hierarchical Verilog code of subcomponent&#39;s module invocation and output assignment.
         &#34;&#34;&#34;
         # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_type)
-        return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-            f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
+        init_signature = inspect.signature(self.__class__.__init__)
+        default_circuit_name = init_signature.parameters[&#39;name&#39;].default
+        circuit_type = default_circuit_name + &#34;x&#34;.join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        circuit_block = self.get_hier_subcomponent_def(parent_kwargs=self.kwargs)
+        # TODO .. now only works for input buses
+        return &#34;&#34;.join([c.return_bus_wires_values_v_hier() for c in self.inputs]) + \
+               f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(&#34; + &#34;,&#34;.join([f&#34;.{a.prefix}({b.prefix})&#34; for a, b in zip(circuit_block.inputs, self.inputs)]) + f&#34;, .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;
 
     def get_function_out_v_hier(self):
         &#34;&#34;&#34;Generates hierarchical Verilog code assignment of corresponding arithmetic circuit&#39;s output bus wires.
@@ -1428,7 +717,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Flat Blif code containing declaration of circuit&#39;s wires.
         &#34;&#34;&#34;
-        return f&#34;.inputs{&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
+        return f&#34;.inputs {&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
                f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
                f&#34;.names vdd\n1\n&#34; + \
                f&#34;.names gnd\n0\n&#34;
@@ -1462,6 +751,14 @@ that are later used for generation into various representations.</p></div>
         file_object.write(self.get_function_out_blif())
         file_object.write(f&#34;.end\n&#34;)
 
+
+
+
+
+
+
+
+
     # HIERARCHICAL BLIF #
     def get_invocations_blif_hier(self):
         &#34;&#34;&#34;Generates hierarchical Blif code with invocations of subcomponents function blocks.
@@ -1480,14 +777,27 @@ that are later used for generation into various representations.</p></div>
             str: Hierarchical Blif code of subcomponent&#39;s model invocation and output assignment.
         &#34;&#34;&#34;
         # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
-        circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
+        init_signature = inspect.signature(self.__class__.__init__)
+        default_circuit_name = init_signature.parameters[&#39;name&#39;].default
+        circuit_type = default_circuit_name + &#34;x&#34;.join(str(getattr(self, chr(97+i)).N) for i, _ in enumerate(self.inputs))
+        if self.out.N &gt; 1:
+            return &#34;&#34;.join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
+                   f&#34;.subckt {circuit_type}&#34; + \
+                   &#34;&#34;.join([f&#34; {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]&#34; if b.N &gt; 1 else f&#34; {chr(97+i)}={b.prefix}&#34; for i, b in enumerate(self.inputs) for w in b.bus]) + \
+                   &#34;&#34;.join([f&#34; {circuit_type}_out[{self.out.bus.index(o)}]={o.name}&#34; for o in self.out.bus if not o.is_const()]) + &#34;\n&#34;
+        else:
+            return &#34;&#34;.join([w.get_wire_assign_blif(output=True) for w in self.inputs]) + \
+                   f&#34;.subckt {circuit_type}&#34; + \
+                   &#34;&#34;.join([f&#34; {chr(97+i)}[{b.bus.index(w)}]={b.prefix}[{b.bus.index(w)}]&#34; if b.N &gt; 1 else f&#34; {chr(97+i)}={b.prefix}&#34; for i, b in enumerate(self.inputs) for w in b.bus]) + \
+                   &#34;&#34;.join([f&#34; {circuit_type}_out={o.name}&#34; for o in self.out.bus if not o.is_const()]) + &#34;\n&#34;
+            
+        # TODO delete
         return f&#34;{self.a.get_wire_assign_blif(output=True)}&#34; + \
                f&#34;{self.b.get_wire_assign_blif(output=True)}&#34; + \
                f&#34;.subckt {circuit_type}&#34; + \
                &#34;&#34;.join([f&#34; a[{self.a.bus.index(w)}]={self.a.prefix}[{self.a.bus.index(w)}]&#34; for w in self.a.bus]) + \
                &#34;&#34;.join([f&#34; b[{self.b.bus.index(w)}]={self.b.prefix}[{self.b.bus.index(w)}]&#34; for w in self.b.bus]) + \
-               &#34;&#34;.join(
-                   [f&#34; {circuit_type}_out[{self.out.bus.index(o)}]={o.name}&#34; for o in self.out.bus]) + &#34;\n&#34;
+               &#34;&#34;.join([f&#34; {circuit_type}_out[{self.out.bus.index(o)}]={o.name}&#34; for o in self.out.bus]) + &#34;\n&#34;
 
     def get_circuit_blif(self):
         &#34;&#34;&#34;Generates hierarchical Blif code subcomponent&#39;s function block.
@@ -1507,7 +817,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: Hierarchical Blif code of all subcomponents function blocks description.
         &#34;&#34;&#34;
-        # Retrieve all unique component types composing this circuit
+        # Retrieve all unique component types composing this circuit and add them kwargs from the parent circuit to allow propagatation of config settings for subcomponents
         # (iterating backwards as opposed to other representations so the top modul is always above its subcomponents)
         self.component_types = self.get_component_types()
         return &#34;\n&#34;.join([c.get_function_block_blif() for c in self.component_types[::-1]])
@@ -1519,11 +829,7 @@ that are later used for generation into various representations.</p></div>
             str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
         &#34;&#34;&#34;
         # Obtain proper circuit name with its bit width
-        circuit_prefix = self.__class__(
-            a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-        circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-            N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-        return f&#34;{circuit_block.get_circuit_blif()}&#34;
+        return f&#34;{self.get_hier_subcomponent_def(parent_kwargs=self.kwargs).get_circuit_blif()}&#34;
 
     # Generating hierarchical BLIF code representation of circuit
     def get_blif_code_hier(self, file_object):
@@ -1547,7 +853,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: CGP chromosome parameters of described arithmetic circuit.
         &#34;&#34;&#34;
-        self.circuit_gates = self.get_circuit_gates()
+        # self.circuit_gates = self.get_circuit_gates() TODO delete
         return f&#34;{{{sum(input_bus.N for input_bus in self.inputs)},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}&#34;
 
     def get_triplets_cgp(self):
@@ -1563,7 +869,7 @@ that are later used for generation into various representations.</p></div>
         Returns:
             str: List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.
         &#34;&#34;&#34;
-        self.get_cgp_wires()
+        self.get_circuit_wires()
         return &#34;&#34;.join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), out_id=self.get_circuit_wire_index(g.out)) if isinstance(g, OneInputLogicGate) else
                        g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])
 
@@ -1588,9 +894,52 @@ that are later used for generation into various representations.</p></div>
 </details>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></li>
-<li><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ThreeInputArithmeticCircuit" href="arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ThreeInputArithmeticCircuit">ThreeInputArithmeticCircuit</a></li>
+<li><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit" href="multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit">MultiplierCircuit</a></li>
 <li><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit" href="../cgp_circuit.html#ariths_gen.core.cgp_circuit.UnsignedCGPCircuit">UnsignedCGPCircuit</a></li>
+<li><a title="ariths_gen.core.one_bit_circuits.four_input_one_bit_circuit.FourInputOneBitCircuit" href="../one_bit_circuits/four_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.four_input_one_bit_circuit.FourInputOneBitCircuit">FourInputOneBitCircuit</a></li>
+<li><a title="ariths_gen.core.one_bit_circuits.three_input_one_bit_circuit.ThreeInputOneBitCircuit" href="../one_bit_circuits/three_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.three_input_one_bit_circuit.ThreeInputOneBitCircuit">ThreeInputOneBitCircuit</a></li>
+<li><a title="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit" href="../one_bit_circuits/two_input_one_bit_circuit.html#ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit">TwoInputOneBitCircuit</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder" href="../../multi_bit_circuits/adders/brent_kung_adder.html#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder">SignedBrentKungAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder" href="../../multi_bit_circuits/adders/brent_kung_adder.html#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder">UnsignedBrentKungAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_increment_adder.SignedCarryIncrementAdder" href="../../multi_bit_circuits/adders/carry_increment_adder.html#ariths_gen.multi_bit_circuits.adders.carry_increment_adder.SignedCarryIncrementAdder">SignedCarryIncrementAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_increment_adder.UnsignedCarryIncrementAdder" href="../../multi_bit_circuits/adders/carry_increment_adder.html#ariths_gen.multi_bit_circuits.adders.carry_increment_adder.UnsignedCarryIncrementAdder">UnsignedCarryIncrementAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.SignedCarryLookaheadAdder" href="../../multi_bit_circuits/adders/carry_lookahead_adder.html#ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.SignedCarryLookaheadAdder">SignedCarryLookaheadAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder" href="../../multi_bit_circuits/adders/carry_lookahead_adder.html#ariths_gen.multi_bit_circuits.adders.carry_lookahead_adder.UnsignedCarryLookaheadAdder">UnsignedCarryLookaheadAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_save_adder.CarrySaveAdderComponent" href="../../multi_bit_circuits/adders/carry_save_adder.html#ariths_gen.multi_bit_circuits.adders.carry_save_adder.CarrySaveAdderComponent">CarrySaveAdderComponent</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_save_adder.UnsignedCarrySaveAdder" href="../../multi_bit_circuits/adders/carry_save_adder.html#ariths_gen.multi_bit_circuits.adders.carry_save_adder.UnsignedCarrySaveAdder">UnsignedCarrySaveAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_select_adder.SignedCarrySelectAdder" href="../../multi_bit_circuits/adders/carry_select_adder.html#ariths_gen.multi_bit_circuits.adders.carry_select_adder.SignedCarrySelectAdder">SignedCarrySelectAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_select_adder.UnsignedCarrySelectAdder" href="../../multi_bit_circuits/adders/carry_select_adder.html#ariths_gen.multi_bit_circuits.adders.carry_select_adder.UnsignedCarrySelectAdder">UnsignedCarrySelectAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_skip_adder.SignedCarrySkipAdder" href="../../multi_bit_circuits/adders/carry_skip_adder.html#ariths_gen.multi_bit_circuits.adders.carry_skip_adder.SignedCarrySkipAdder">SignedCarrySkipAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.carry_skip_adder.UnsignedCarrySkipAdder" href="../../multi_bit_circuits/adders/carry_skip_adder.html#ariths_gen.multi_bit_circuits.adders.carry_skip_adder.UnsignedCarrySkipAdder">UnsignedCarrySkipAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.conditional_sum_adder.SignedConditionalSumAdder" href="../../multi_bit_circuits/adders/conditional_sum_adder.html#ariths_gen.multi_bit_circuits.adders.conditional_sum_adder.SignedConditionalSumAdder">SignedConditionalSumAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.conditional_sum_adder.UnsignedConditionalSumAdder" href="../../multi_bit_circuits/adders/conditional_sum_adder.html#ariths_gen.multi_bit_circuits.adders.conditional_sum_adder.UnsignedConditionalSumAdder">UnsignedConditionalSumAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.han_carlson_adder.SignedHanCarlsonAdder" href="../../multi_bit_circuits/adders/han_carlson_adder.html#ariths_gen.multi_bit_circuits.adders.han_carlson_adder.SignedHanCarlsonAdder">SignedHanCarlsonAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.han_carlson_adder.UnsignedHanCarlsonAdder" href="../../multi_bit_circuits/adders/han_carlson_adder.html#ariths_gen.multi_bit_circuits.adders.han_carlson_adder.UnsignedHanCarlsonAdder">UnsignedHanCarlsonAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.knowles_adder.SignedKnowlesAdder" href="../../multi_bit_circuits/adders/knowles_adder.html#ariths_gen.multi_bit_circuits.adders.knowles_adder.SignedKnowlesAdder">SignedKnowlesAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.knowles_adder.UnsignedKnowlesAdder" href="../../multi_bit_circuits/adders/knowles_adder.html#ariths_gen.multi_bit_circuits.adders.knowles_adder.UnsignedKnowlesAdder">UnsignedKnowlesAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder" href="../../multi_bit_circuits/adders/kogge_stone_adder.html#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder">SignedKoggeStoneAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder" href="../../multi_bit_circuits/adders/kogge_stone_adder.html#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder">UnsignedKoggeStoneAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.ladner_fischer_adder.SignedLadnerFischerAdder" href="../../multi_bit_circuits/adders/ladner_fischer_adder.html#ariths_gen.multi_bit_circuits.adders.ladner_fischer_adder.SignedLadnerFischerAdder">SignedLadnerFischerAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.ladner_fischer_adder.UnsignedLadnerFischerAdder" href="../../multi_bit_circuits/adders/ladner_fischer_adder.html#ariths_gen.multi_bit_circuits.adders.ladner_fischer_adder.UnsignedLadnerFischerAdder">UnsignedLadnerFischerAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder" href="../../multi_bit_circuits/adders/pg_ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder">SignedPGRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder" href="../../multi_bit_circuits/adders/pg_ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder">UnsignedPGRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder" href="../../multi_bit_circuits/adders/ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder">SignedRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder" href="../../multi_bit_circuits/adders/ripple_carry_adder.html#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder">UnsignedRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.sklansky_adder.SignedSklanskyAdder" href="../../multi_bit_circuits/adders/sklansky_adder.html#ariths_gen.multi_bit_circuits.adders.sklansky_adder.SignedSklanskyAdder">SignedSklanskyAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.sklansky_adder.UnsignedSklanskyAdder" href="../../multi_bit_circuits/adders/sklansky_adder.html#ariths_gen.multi_bit_circuits.adders.sklansky_adder.UnsignedSklanskyAdder">UnsignedSklanskyAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.approximate_adders.quad.QuAdder" href="../../multi_bit_circuits/approximate_adders/quad.html#ariths_gen.multi_bit_circuits.approximate_adders.quad.QuAdder">QuAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider" href="../../multi_bit_circuits/dividers/array_divider.html#ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider">ArrayDivider</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.bit_reduce.BitReduce" href="../../multi_bit_circuits/others/bit_reduce.html#ariths_gen.multi_bit_circuits.others.bit_reduce.BitReduce">BitReduce</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareGT" href="../../multi_bit_circuits/others/compare.html#ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareGT">UnsignedCompareGT</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareGTE" href="../../multi_bit_circuits/others/compare.html#ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareGTE">UnsignedCompareGTE</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareLT" href="../../multi_bit_circuits/others/compare.html#ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareLT">UnsignedCompareLT</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareLTE" href="../../multi_bit_circuits/others/compare.html#ariths_gen.multi_bit_circuits.others.compare.UnsignedCompareLTE">UnsignedCompareLTE</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.popcount.UnsignedPopCount" href="../../multi_bit_circuits/others/popcount.html#ariths_gen.multi_bit_circuits.others.popcount.UnsignedPopCount">UnsignedPopCount</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.others.popcount_compare.PopCountCompare" href="../../multi_bit_circuits/others/popcount_compare.html#ariths_gen.multi_bit_circuits.others.popcount_compare.PopCountCompare">PopCountCompare</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_borrow_subtractor.SignedRippleBorrowSubtractor" href="../../multi_bit_circuits/subtractors/ripple_borrow_subtractor.html#ariths_gen.multi_bit_circuits.subtractors.ripple_borrow_subtractor.SignedRippleBorrowSubtractor">SignedRippleBorrowSubtractor</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_borrow_subtractor.UnsignedRippleBorrowSubtractor" href="../../multi_bit_circuits/subtractors/ripple_borrow_subtractor.html#ariths_gen.multi_bit_circuits.subtractors.ripple_borrow_subtractor.UnsignedRippleBorrowSubtractor">UnsignedRippleBorrowSubtractor</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor" href="../../multi_bit_circuits/subtractors/ripple_carry_subtractor.html#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor">SignedRippleCarrySubtractor</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor" href="../../multi_bit_circuits/subtractors/ripple_carry_subtractor.html#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor">UnsignedRippleCarrySubtractor</a></li>
 </ul>
 <h3>Static methods</h3>
 <dl>
@@ -1604,19 +953,6 @@ that are later used for generation into various representations.</p></div>
 <dt><code>str</code></dt>
 <dd>C code library includes.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@staticmethod
-def get_includes_c():
-    &#34;&#34;&#34;Generates necessary C library includes for output representation.
-
-    Returns:
-        str: C code library includes.
-    &#34;&#34;&#34;
-    return f&#34;#include &lt;stdio.h&gt;\n#include &lt;stdint.h&gt;\n\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types"><code class="name flex">
 <span>def <span class="ident">get_unique_types</span></span>(<span>components: list, multi_bit: bool = False)</span>
@@ -1635,26 +971,6 @@ def get_includes_c():
 <dt><code>list</code></dt>
 <dd>List of unique composite class types.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">@staticmethod
-def get_unique_types(components: list, multi_bit: bool = False):
-    &#34;&#34;&#34;Retrieves just the unique representatives of class types present inside the provided components list.
-
-    Args:
-        components (list): List of components to be filtered.
-        multi_bit (bool): Specifies whether the provided components list is composed of multi bit type circuits. Defaults to False.
-
-    Returns:
-        list: List of unique composite class types.
-    &#34;&#34;&#34;
-    if multi_bit is True:
-        return list({(type(c), c.N): c for c in components}.values())
-    else:
-        return list({type(c): c for c in components}.values())</code></pre>
-</details>
 </dd>
 </dl>
 <h3>Methods</h3>
@@ -1664,24 +980,13 @@ def get_unique_types(components: list, multi_bit: bool = False):
 </code></dt>
 <dd>
 <div class="desc"><p>Adds a component into list of circuit's inner subcomponents.</p>
+<p>Additionally it adds all the gates of the component to the circuit's list of gates and all
+sbcomponents prefixes to check for naming duplicates which could cause issues in the circuit generation.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>component</code></strong></dt>
 <dd>Subcomponent to be added into list of components composing described circuit.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def add_component(self, component):
-    &#34;&#34;&#34;Adds a component into list of circuit&#39;s inner subcomponents.
-
-    Args:
-        component: Subcomponent to be added into list of components composing described circuit.
-    &#34;&#34;&#34;
-    self.components.append(component)
-    return component</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat"><code class="name flex">
 <span>def <span class="ident">get_blif_code_flat</span></span>(<span>self, file_object)</span>
@@ -1693,22 +998,6 @@ def get_unique_types(components: list, multi_bit: bool = False):
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_blif_code_flat(self, file_object):
-    &#34;&#34;&#34;Generates flat Blif code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_prototype_blif())
-    file_object.write(self.get_declaration_blif())
-    file_object.write(self.get_function_blif_flat())
-    file_object.write(self.get_function_out_blif())
-    file_object.write(f&#34;.end\n&#34;)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier"><code class="name flex">
 <span>def <span class="ident">get_blif_code_hier</span></span>(<span>self, file_object)</span>
@@ -1720,19 +1009,6 @@ def get_unique_types(components: list, multi_bit: bool = False):
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_blif_code_hier(self, file_object):
-    &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_circuit_blif()+&#34;\n&#34;)
-    file_object.write(self.get_function_blocks_blif())</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat"><code class="name flex">
 <span>def <span class="ident">get_c_code_flat</span></span>(<span>self, file_object)</span>
@@ -1744,25 +1020,6 @@ def get_unique_types(components: list, multi_bit: bool = False):
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_c_code_flat(self, file_object):
-    &#34;&#34;&#34;Generates flat C code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_includes_c())
-    file_object.write(self.get_prototype_c())
-    file_object.write(self.out.get_declaration_c())
-    file_object.write(self.get_declaration_c_flat()+&#34;\n&#34;)
-    file_object.write(self.get_init_c_flat()+&#34;\n&#34;)
-    file_object.write(self.get_function_out_c_flat())
-    file_object.write(self.out.return_bus_wires_sign_extend_c_flat())
-    file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier"><code class="name flex">
 <span>def <span class="ident">get_c_code_hier</span></span>(<span>self, file_object)</span>
@@ -1774,43 +1031,6 @@ def get_unique_types(components: list, multi_bit: bool = False):
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_c_code_hier(self, file_object):
-    &#34;&#34;&#34;Generates hierarchical C code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_includes_c())
-    file_object.write(self.get_function_blocks_c())
-    file_object.write(self.get_circuit_c())</code></pre>
-</details>
-</dd>
-<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire"><code class="name flex">
-<span>def <span class="ident">get_carry_wire</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Get output wire carrying carry out value.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>Wire</code></dt>
-<dd>Return carry out wire.</dd>
-</dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_carry_wire(self):
-    &#34;&#34;&#34;Get output wire carrying carry out value.
-
-    Returns:
-       Wire: Return carry out wire.
-    &#34;&#34;&#34;
-    return self.out.get_wire(1)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat"><code class="name flex">
 <span>def <span class="ident">get_cgp_code_flat</span></span>(<span>self, file_object)</span>
@@ -1822,71 +1042,6 @@ def get_unique_types(components: list, multi_bit: bool = False):
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_cgp_code_flat(self, file_object):
-    &#34;&#34;&#34;Generates flat CGP chromosome representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_parameters_cgp())
-    file_object.write(self.get_triplets_cgp())
-    file_object.write(self.get_outputs_cgp())</code></pre>
-</details>
-</dd>
-<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires"><code class="name flex">
-<span>def <span class="ident">get_cgp_wires</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside <code>self.circuit_wires</code> list.</p>
-<p>Constant wire with value 0 has constant index of 0.
-Constant wire with value 1 has constant index of 1.
-Other wires indexes start counting from 2 and up.</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_cgp_wires(self):
-    &#34;&#34;&#34;Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside `self.circuit_wires` list.
-
-    Constant wire with value 0 has constant index of 0.
-    Constant wire with value 1 has constant index of 1.
-    Other wires indexes start counting from 2 and up.
-    &#34;&#34;&#34;
-    self.circuit_wires = []
-    if isinstance(self.a, Bus):
-        [self.circuit_wires.append(
-            (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.a.bus]
-        [self.circuit_wires.append(
-            (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.b.bus]
-        if hasattr(self, &#39;c&#39;):
-            [self.circuit_wires.append(
-                (w, f&#34;{w.name}&#34;, self.save_wire_id(wire=w))) for w in self.c.bus]
-    else:
-        self.circuit_wires.append(
-            (self.a, f&#34;{self.a.name}&#34;, self.save_wire_id(wire=self.a)))
-        self.circuit_wires.append(
-            (self.b, f&#34;{self.b.name}&#34;, self.save_wire_id(wire=self.b)))
-        if hasattr(self, &#39;c&#39;):
-            self.circuit_wires.append(
-                (self.c, f&#34;{self.c.name}&#34;, self.save_wire_id(wire=self.c)))
-
-    for gate in self.circuit_gates:
-        if not [item for item in self.circuit_wires if gate.a.name == item[1]]:
-            self.circuit_wires.append(
-                (gate.a, gate.a.name, self.save_wire_id(wire=gate.a)))
-
-        if hasattr(gate, &#39;b&#39;) and not [item for item in self.circuit_wires if gate.b.name == item[1]]:
-            self.circuit_wires.append(
-                (gate.b, gate.b.name, self.save_wire_id(wire=gate.b)))
-
-        if not [item for item in self.circuit_wires if gate.out.name == item[1]]:
-            self.circuit_wires.append(
-                (gate.out, gate.out.name, self.save_wire_id(wire=gate.out)))</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif"><code class="name flex">
 <span>def <span class="ident">get_circuit_blif</span></span>(<span>self)</span>
@@ -1898,22 +1053,6 @@ Other wires indexes start counting from 2 and up.</p></div>
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code of subcomponent's function block.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_circuit_blif(self):
-    &#34;&#34;&#34;Generates hierarchical Blif code subcomponent&#39;s function block.
-
-    Returns:
-        str: Hierarchical Blif code of subcomponent&#39;s function block.
-    &#34;&#34;&#34;
-    return f&#34;{self.get_prototype_blif()}&#34; + \
-           f&#34;{self.get_declaration_blif()}&#34; + \
-           f&#34;{self.get_invocations_blif_hier()}&#34; + \
-           f&#34;{self.get_function_out_blif()}&#34; + \
-           f&#34;.end\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c"><code class="name flex">
 <span>def <span class="ident">get_circuit_c</span></span>(<span>self)</span>
@@ -1925,54 +1064,26 @@ Other wires indexes start counting from 2 and up.</p></div>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code of subcomponent's function block.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_circuit_c(self):
-    &#34;&#34;&#34;Generates hierarchical C code subcomponent&#39;s function block.
-
-    Returns:
-        str: Hierarchical C code of subcomponent&#39;s function block.
-    &#34;&#34;&#34;
-    return f&#34;{self.get_prototype_c()}&#34; + \
-           f&#34;{self.out.get_declaration_c()}&#34; + \
-           f&#34;{self.get_declarations_c_hier()}\n&#34; + \
-           f&#34;{self.get_init_c_hier()}\n&#34; + \
-           f&#34;{self.get_function_out_c_hier()}&#34; + \
-           f&#34;{self.out.return_bus_wires_sign_extend_c_hier()}&#34; + \
-           f&#34;  return {self.out.prefix}&#34;+&#34;;\n}&#34;</code></pre>
-</details>
+</dd>
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def"><code class="name flex">
+<span>def <span class="ident">get_circuit_def</span></span>(<span>self) ‑> Dict[str, <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>returns IDs and wires of the inputs and output</p></div>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates"><code class="name flex">
-<span>def <span class="ident">get_circuit_gates</span></span>(<span>self)</span>
+<span>def <span class="ident">get_circuit_gates</span></span>(<span>self, verilog_output: bool = False)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Gets a list of all the logic gates in circuit that should be generated.</p>
+<p>Args:
+<br>
+verilog_output (bool): Specifies whether the call has been invoked by a verilog output generation method.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>list</code></dt>
 <dd>List of composite logic gates.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_circuit_gates(self):
-    &#34;&#34;&#34;Gets a list of all the logic gates in circuit that should be generated.
-
-    Returns:
-        list: List of composite logic gates.
-    &#34;&#34;&#34;
-    gates = []
-    for c in self.components:
-        if isinstance(c, TwoInputLogicGate):
-            if c.disable_generation is False:
-                gates.append(c)
-        else:
-            gates.extend((c.get_circuit_gates()))
-    return gates</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v"><code class="name flex">
 <span>def <span class="ident">get_circuit_v</span></span>(<span>self)</span>
@@ -1984,22 +1095,6 @@ Other wires indexes start counting from 2 and up.</p></div>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code of subcomponent's function block.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_circuit_v(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code subcomponent&#39;s function block.
-
-    Returns:
-        str: Hierarchical Verilog code of subcomponent&#39;s function block.
-    &#34;&#34;&#34;
-    return f&#34;{self.get_prototype_v()}&#34; + \
-           f&#34;{self.get_declarations_v_hier()}\n&#34; + \
-           f&#34;{self.get_init_v_hier()}\n&#34; + \
-           f&#34;{self.get_function_out_v_hier()}&#34; + \
-           f&#34;endmodule&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index"><code class="name flex">
 <span>def <span class="ident">get_circuit_wire_index</span></span>(<span>self, wire: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>)</span>
@@ -2016,59 +1111,32 @@ Other wires indexes start counting from 2 and up.</p></div>
 <dt><code>int</code></dt>
 <dd>Wire's index position number within the circuit.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_circuit_wire_index(self, wire: Wire):
-    &#34;&#34;&#34;Searches for circuit&#39;s wire unique index position within the circuit. Used for cgp chromosome generation.
-
-    Args:
-        wire (Wire): Wire to retrieve index position of.
-
-    Returns:
-        int: Wire&#39;s index position number within the circuit.
-    &#34;&#34;&#34;
-    if wire.is_const():
-        return wire.cgp_const
-    else:
-        for w in self.circuit_wires:
-            if wire.name == w[1]:
-                return w[2]</code></pre>
-</details>
+</dd>
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires"><code class="name flex">
+<span>def <span class="ident">get_circuit_wires</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Gets a list of all wires in circuit along with their index position for cgp chromosome generation and stores them inside <code>self.circuit_wires</code> list.</p>
+<p>Constant wire with value 0 has constant index of 0.
+Constant wire with value 1 has constant index of 1.
+Other wires indexes start counting from 2 and up.</p></div>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types"><code class="name flex">
-<span>def <span class="ident">get_component_types</span></span>(<span>self)</span>
+<span>def <span class="ident">get_component_types</span></span>(<span>self, verilog_output: bool = False)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Retrieves a list of all the unique types of subcomponents composing the circuit.</p>
 <p>Returning list consists of only the unique types of logic gates, one bit circuits and multi bit circuits.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>verilog_output</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Specifies whether the call has been invoked by a verilog output generation method.</dd>
+</dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>list</code></dt>
 <dd>List of unique component types describing the circuit.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_component_types(self):
-    &#34;&#34;&#34;Retrieves a list of all the unique types of subcomponents composing the circuit.
-
-    Returning list consists of only the unique types of logic gates, one bit circuits and multi bit circuits.
-
-    Returns:
-        list: List of unique component types describing the circuit.
-    &#34;&#34;&#34;
-    gate_comps = self.get_unique_types(components=self.get_circuit_gates())
-    one_bit_comps = self.get_unique_types(
-        components=self.get_one_bit_components())
-    multi_bit_comps = self.get_unique_types(
-        components=self.get_multi_bit_components(), multi_bit=True)
-
-    all_components = gate_comps + one_bit_comps + multi_bit_comps
-    return all_components</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_declaration_blif</span></span>(<span>self)</span>
@@ -2080,21 +1148,6 @@ Other wires indexes start counting from 2 and up.</p></div>
 <dt><code>str</code></dt>
 <dd>Flat Blif code containing declaration of circuit's wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declaration_blif(self):
-    &#34;&#34;&#34;Generates flat Blif code declaration of input/output circuit wires.
-
-    Returns:
-        str: Flat Blif code containing declaration of circuit&#39;s wires.
-    &#34;&#34;&#34;
-    return f&#34;.inputs{&#39;&#39;.join([w.get_wire_declaration_blif() for w in self.inputs])}\n&#34; + \
-           f&#34;.outputs{self.out.get_wire_declaration_blif()}\n&#34; + \
-           f&#34;.names vdd\n1\n&#34; + \
-           f&#34;.names gnd\n0\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_flat</span></span>(<span>self)</span>
@@ -2106,18 +1159,6 @@ Other wires indexes start counting from 2 and up.</p></div>
 <dt><code>str</code></dt>
 <dd>Flat C code arithmetic circuit's wires declaration.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declaration_c_flat(self):
-    &#34;&#34;&#34;Generates flat C code declaration of input/output circuit wires.
-
-    Returns:
-        str: Flat C code arithmetic circuit&#39;s wires declaration.
-    &#34;&#34;&#34;
-    return f&#34;&#34;.join([c.get_declaration_c_flat() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_hier</span></span>(<span>self)</span>
@@ -2131,23 +1172,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code of subcomponent arithmetic circuit's wires declaration.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declaration_c_hier(self):
-    &#34;&#34;&#34;Generates hierarchical C code declaration of corresponding subcomponent input/output wires inside the upper component.
-
-    Generates wires used to connect input/output values to/from invocation of the corresponding function block into inner wires present
-    inside the upper component from which function block has been invoked.
-
-    Returns:
-        str: Hierarchical C code of subcomponent arithmetic circuit&#39;s wires declaration.
-    &#34;&#34;&#34;
-    return f&#34;  {self.c_data_type} {self.a.prefix} = 0;\n&#34; + \
-           f&#34;  {self.c_data_type} {self.b.prefix} = 0;\n&#34; + \
-           f&#34;  {self.c_data_type} {self.out.prefix} = 0;\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_flat</span></span>(<span>self)</span>
@@ -2159,18 +1183,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Verilog code arithmetic circuit's wires declaration.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declaration_v_flat(self):
-    &#34;&#34;&#34;Generates flat Verilog code declaration of input/output circuit wires.
-
-    Returns:
-        str: Flat Verilog code arithmetic circuit&#39;s wires declaration.
-    &#34;&#34;&#34;
-    return f&#34;&#34;.join([c.get_declaration_v_flat() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
@@ -2184,23 +1196,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code of subcomponent arithmetic circuit's wires declaration.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declaration_v_hier(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code declaration of corresponding subcomponent input/output wires inside the upper component.
-
-    Generates wires used to connect input/output values to/from invocation of the corresponding function block into inner wires present
-    inside the upper component from which function block has been invoked.
-
-    Returns:
-        str: Hierarchical Verilog code of subcomponent arithmetic circuit&#39;s wires declaration.
-    &#34;&#34;&#34;
-    return f&#34;  wire [{self.a.N-1}:0] {self.a.prefix};\n&#34; + \
-           f&#34;  wire [{self.b.N-1}:0] {self.b.prefix};\n&#34; + \
-           f&#34;  wire [{self.out.N-1}:0] {self.out.prefix};\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier"><code class="name flex">
 <span>def <span class="ident">get_declarations_c_hier</span></span>(<span>self)</span>
@@ -2212,18 +1207,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code containing unique declaration of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declarations_c_hier(self):
-    &#34;&#34;&#34;Generates hierarchical C code declaration of input/output circuit wires.
-
-    Returns:
-        str: Hierarchical C code containing unique declaration of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_declaration_c_hier() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier"><code class="name flex">
 <span>def <span class="ident">get_declarations_v_hier</span></span>(<span>self)</span>
@@ -2235,18 +1218,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code containing unique declaration of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declarations_v_hier(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code declaration of input/output circuit wires.
-
-    Returns:
-        str: Hierarchical Verilog code containing unique declaration of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_declaration_v_hier() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat"><code class="name flex">
 <span>def <span class="ident">get_function_blif_flat</span></span>(<span>self)</span>
@@ -2258,18 +1229,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Blif code containing invocation of inner subcomponents logic gates Boolean functions.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_blif_flat(self):
-    &#34;&#34;&#34;Generates flat Blif code with invocation of subcomponents logic gates functions via their corresponding truth tables.
-
-    Returns:
-        str: Flat Blif code containing invocation of inner subcomponents logic gates Boolean functions.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join(c.get_function_blif_flat() for c in self.components)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif"><code class="name flex">
 <span>def <span class="ident">get_function_block_blif</span></span>(<span>self)</span>
@@ -2281,23 +1240,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code of multi-bit arithmetic circuit's function block description.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_block_blif(self):
-    &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-    Returns:
-        str: Hierarchical Blif code of multi-bit arithmetic circuit&#39;s function block description.
-    &#34;&#34;&#34;
-    # Obtain proper circuit name with its bit width
-    circuit_prefix = self.__class__(
-        a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-    circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-    return f&#34;{circuit_block.get_circuit_blif()}&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c"><code class="name flex">
 <span>def <span class="ident">get_function_block_c</span></span>(<span>self)</span>
@@ -2309,23 +1251,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code of multi-bit arithmetic circuit's function block description.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_block_c(self):
-    &#34;&#34;&#34;Generates hierarchical C code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-    Returns:
-        str: Hierarchical C code of multi-bit arithmetic circuit&#39;s function block description.
-    &#34;&#34;&#34;
-    # Obtain proper circuit name with its bit width
-    circuit_prefix = self.__class__(
-        a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-    circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-    return f&#34;{circuit_block.get_circuit_c()}\n\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v"><code class="name flex">
 <span>def <span class="ident">get_function_block_v</span></span>(<span>self)</span>
@@ -2337,23 +1262,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code of multi-bit arithmetic circuit's function block description.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_block_v(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding multi-bit arithmetic circuit used as function block in hierarchical circuit description.
-
-    Returns:
-        str: Hierarchical Verilog code of multi-bit arithmetic circuit&#39;s function block description.
-    &#34;&#34;&#34;
-    # Obtain proper circuit name with its bit width
-    circuit_prefix = self.__class__(
-        a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-    circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_prefix)
-    return f&#34;{circuit_block.get_circuit_v()}\n\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif"><code class="name flex">
 <span>def <span class="ident">get_function_blocks_blif</span></span>(<span>self)</span>
@@ -2365,21 +1273,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code of all subcomponents function blocks description.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_blocks_blif(self):
-    &#34;&#34;&#34;Generates hierarchical Blif code representation of all subcomponents function blocks present in corresponding arithmetic circuit.
-
-    Returns:
-        str: Hierarchical Blif code of all subcomponents function blocks description.
-    &#34;&#34;&#34;
-    # Retrieve all unique component types composing this circuit
-    # (iterating backwards as opposed to other representations so the top modul is always above its subcomponents)
-    self.component_types = self.get_component_types()
-    return &#34;\n&#34;.join([c.get_function_block_blif() for c in self.component_types[::-1]])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c"><code class="name flex">
 <span>def <span class="ident">get_function_blocks_c</span></span>(<span>self)</span>
@@ -2391,20 +1284,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code of all subcomponents function blocks description.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_blocks_c(self):
-    &#34;&#34;&#34;Generates hierarchical C code representation of all subcomponents function blocks present in corresponding arithmetic circuit.
-
-    Returns:
-        str: Hierarchical C code of all subcomponents function blocks description.
-    &#34;&#34;&#34;
-    # Retrieve all unique component types composing this circuit
-    self.component_types = self.get_component_types()
-    return &#34;&#34;.join([c.get_function_block_c() for c in self.component_types])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v"><code class="name flex">
 <span>def <span class="ident">get_function_blocks_v</span></span>(<span>self)</span>
@@ -2416,20 +1295,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code of all subcomponents function blocks description.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_blocks_v(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code representation of all subcomponents function blocks present in corresponding arithmetic circuit.
-
-    Returns:
-        str: Hierarchical Verilog code of all subcomponents function blocks description.
-    &#34;&#34;&#34;
-    # Retrieve all unique component types composing this circuit
-    self.component_types = self.get_component_types()
-    return &#34;&#34;.join([c.get_function_block_v() for c in self.component_types])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif"><code class="name flex">
 <span>def <span class="ident">get_function_out_blif</span></span>(<span>self)</span>
@@ -2441,18 +1306,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Blif code containing output bus wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_out_blif(self):
-    &#34;&#34;&#34;Generates flat Blif code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-    Returns:
-        str: Flat Blif code containing output bus wires assignment.
-    &#34;&#34;&#34;
-    return f&#34;{self.out.get_wire_assign_blif(output=True)}&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat"><code class="name flex">
 <span>def <span class="ident">get_function_out_c_flat</span></span>(<span>self)</span>
@@ -2464,18 +1317,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat C code containing output bus wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_out_c_flat(self):
-    &#34;&#34;&#34;Generates flat C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-    Returns:
-        str: Flat C code containing output bus wires assignment.
-    &#34;&#34;&#34;
-    return self.out.return_bus_wires_values_c_flat()</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier"><code class="name flex">
 <span>def <span class="ident">get_function_out_c_hier</span></span>(<span>self)</span>
@@ -2487,18 +1328,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code containing output bus wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_out_c_hier(self):
-    &#34;&#34;&#34;Generates hierarchical C code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-    Returns:
-        str: Hierarchical C code containing output bus wires assignment.
-    &#34;&#34;&#34;
-    return self.out.return_bus_wires_values_c_hier()</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat"><code class="name flex">
 <span>def <span class="ident">get_function_out_python_flat</span></span>(<span>self)</span>
@@ -2510,18 +1339,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Python code containing output bus wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_out_python_flat(self):
-    &#34;&#34;&#34;Generates flat Python code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-    Returns:
-        str: Flat Python code containing output bus wires assignment.
-    &#34;&#34;&#34;
-    return self.out.return_bus_wires_values_python_flat()</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat"><code class="name flex">
 <span>def <span class="ident">get_function_out_v_flat</span></span>(<span>self)</span>
@@ -2533,18 +1350,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Verilog code containing output bus wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_out_v_flat(self):
-    &#34;&#34;&#34;Generates flat Verilog code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-    Returns:
-        str: Flat Verilog code containing output bus wires assignment.
-    &#34;&#34;&#34;
-    return self.out.return_bus_wires_values_v_flat()</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier"><code class="name flex">
 <span>def <span class="ident">get_function_out_v_hier</span></span>(<span>self)</span>
@@ -2556,18 +1361,22 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code containing output bus wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_function_out_v_hier(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code assignment of corresponding arithmetic circuit&#39;s output bus wires.
-
-    Returns:
-        str: Hierarchical Verilog code containing output bus wires assignment.
-    &#34;&#34;&#34;
-    return self.out.return_bus_wires_values_v_hier()</code></pre>
-</details>
+</dd>
+<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def"><code class="name flex">
+<span>def <span class="ident">get_hier_subcomponent_def</span></span>(<span>self, parent_kwargs: dict = {})</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Creates and returns a new instance of the current circuit block used for definition of a subcomponent in a hierarchical circuit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>parent_kwargs</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Dictionary containing all the configuration settings of the parent circuit block.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></code></dt>
+<dd>A new instance of the current circuit block with proper prefix and input wires.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat"><code class="name flex">
 <span>def <span class="ident">get_init_c_flat</span></span>(<span>self)</span>
@@ -2579,18 +1388,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat C code initialization of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_init_c_flat(self):
-    &#34;&#34;&#34;Generates flat C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-    Returns:
-        str: Flat C code initialization of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_assign_c_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_c_flat() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier"><code class="name flex">
 <span>def <span class="ident">get_init_c_hier</span></span>(<span>self)</span>
@@ -2602,18 +1399,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code initialization of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_init_c_hier(self):
-    &#34;&#34;&#34;Generates hierarchical C code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-    Returns:
-        str: Hierarchical C code initialization of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_gate_invocation_c() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_c() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat"><code class="name flex">
 <span>def <span class="ident">get_init_python_flat</span></span>(<span>self)</span>
@@ -2625,18 +1410,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Python code initialization of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_init_python_flat(self):
-    &#34;&#34;&#34;Generates flat Python code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-    Returns:
-        str: Flat Python code initialization of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_assign_python_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_python_flat() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat"><code class="name flex">
 <span>def <span class="ident">get_init_v_flat</span></span>(<span>self)</span>
@@ -2648,18 +1421,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Flat Verilog code initialization of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_init_v_flat(self):
-    &#34;&#34;&#34;Generates flat Verilog code initialization and assignment of corresponding arithmetic circuit&#39;s input/output buses wires.
-
-    Returns:
-        str: Flat Verilog code initialization of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_assign_v_flat() if isinstance(c, TwoInputLogicGate) else c.get_init_v_flat() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier"><code class="name flex">
 <span>def <span class="ident">get_init_v_hier</span></span>(<span>self)</span>
@@ -2671,18 +1432,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code initialization of arithmetic circuit wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_init_v_hier(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
-
-    Returns:
-        str: Hierarchical Verilog code initialization of arithmetic circuit wires.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join([c.get_gate_invocation_v() if isinstance(c, TwoInputLogicGate) else c.get_out_invocation_v() for c in self.components])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num"><code class="name flex">
 <span>def <span class="ident">get_instance_num</span></span>(<span>self, cls, count_disabled_gates: bool = True)</span>
@@ -2701,24 +1450,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>int</code></dt>
 <dd>Number of instances of the same class type.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_instance_num(self, cls, count_disabled_gates: bool = True):
-    &#34;&#34;&#34;Informs how many instances of the same type are already present inside circuit&#39;s components list.
-
-    Args:
-        cls (type): Class type for which to count the number of instances in the components list.
-        count_disabled_gates (bool, optional): Indicates whether logic gates that aren&#39;t generated should be also counted. Defaults to True.
-    Returns:
-        int: Number of instances of the same class type.
-    &#34;&#34;&#34;
-    if issubclass(cls, TwoInputLogicGate) and count_disabled_gates is False:
-        return sum(isinstance(c, cls) for c in self.components if isinstance(c, cls) and c.disable_generation is False)
-    else:
-        return sum(isinstance(c, cls) for c in self.components)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocation_blif_hier</span></span>(<span>self)</span>
@@ -2731,28 +1462,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code of subcomponent's model invocation and output assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_invocation_blif_hier(self):
-    &#34;&#34;&#34;Generates hierarchical Blif code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-    Used for multi-bit subcomponent&#39;s modul invocation.
-
-    Returns:
-        str: Hierarchical Blif code of subcomponent&#39;s model invocation and output assignment.
-    &#34;&#34;&#34;
-    # Getting name of circuit type for proper Blif code generation without affecting actual generated composition
-    circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-    return f&#34;{self.a.get_wire_assign_blif(output=True)}&#34; + \
-           f&#34;{self.b.get_wire_assign_blif(output=True)}&#34; + \
-           f&#34;.subckt {circuit_type}&#34; + \
-           &#34;&#34;.join([f&#34; a[{self.a.bus.index(w)}]={self.a.prefix}[{self.a.bus.index(w)}]&#34; for w in self.a.bus]) + \
-           &#34;&#34;.join([f&#34; b[{self.b.bus.index(w)}]={self.b.prefix}[{self.b.bus.index(w)}]&#34; for w in self.b.bus]) + \
-           &#34;&#34;.join(
-               [f&#34; {circuit_type}_out[{self.out.bus.index(o)}]={o.name}&#34; for o in self.out.bus]) + &#34;\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocations_blif_hier</span></span>(<span>self)</span>
@@ -2764,18 +1473,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code containing invocations of inner subcomponents function blocks.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_invocations_blif_hier(self):
-    &#34;&#34;&#34;Generates hierarchical Blif code with invocations of subcomponents function blocks.
-
-    Returns:
-        str: Hierarchical Blif code containing invocations of inner subcomponents function blocks.
-    &#34;&#34;&#34;
-    return &#34;&#34;.join(c.get_invocation_blif_hier() for c in self.components)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components"><code class="name flex">
 <span>def <span class="ident">get_multi_bit_components</span></span>(<span>self)</span>
@@ -2787,26 +1484,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>list</code></dt>
 <dd>List of composite multi bit circuits.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_multi_bit_components(self):
-    &#34;&#34;&#34;Retrieves a list of all the multi bit circuits present as subcomponents inside the circuit.
-
-    Returns:
-        list: List of composite multi bit circuits.
-    &#34;&#34;&#34;
-    multi_bit_comps = []
-    for c in self.components:
-        if isinstance(c, TwoInputLogicGate):
-            continue
-        elif isinstance(getattr(c, &#39;a&#39;), Wire):
-            continue
-        else:
-            multi_bit_comps.append(c)
-    return multi_bit_comps</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components"><code class="name flex">
 <span>def <span class="ident">get_one_bit_components</span></span>(<span>self)</span>
@@ -2818,27 +1495,6 @@ inside the upper component from which function block has been invoked.</p>
 <dt><code>list</code></dt>
 <dd>List of composite one bit circuits.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_one_bit_components(self):
-    &#34;&#34;&#34;Retrieves a list of all the one bit circuits (besides logic gates) present as subcomponents inside the circuit.
-
-    Returns:
-        list: List of composite one bit circuits.
-    &#34;&#34;&#34;
-    one_bit_comps = []
-    for c in self.components:
-        if isinstance(c, TwoInputLogicGate):
-            continue
-        elif isinstance(getattr(c, &#39;a&#39;), Wire):
-            one_bit_comps.append(c)
-        else:
-            one_bit_comps.extend(c.get_one_bit_components())
-
-    return one_bit_comps</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c"><code class="name flex">
 <span>def <span class="ident">get_out_invocation_c</span></span>(<span>self)</span>
@@ -2853,25 +1509,6 @@ the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code of subcomponent's C function invocation and output assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_out_invocation_c(self):
-    &#34;&#34;&#34;Generates hierarchical C code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-    Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
-    Assigns output values from invocation of the corresponding function block into inner wires present inside
-    the upper component from which function block has been invoked.
-
-    Returns:
-        str: Hierarchical C code of subcomponent&#39;s C function invocation and output assignment.
-    &#34;&#34;&#34;
-    # Getting name of circuit type for proper C code generation without affecting actual generated composition
-    circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-    return self.a.return_bus_wires_values_c_hier() + self.b.return_bus_wires_values_c_hier() + \
-        f&#34;  {self.out.prefix} = {circuit_type}({self.a.prefix}, {self.b.prefix});\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v"><code class="name flex">
 <span>def <span class="ident">get_out_invocation_v</span></span>(<span>self)</span>
@@ -2886,27 +1523,6 @@ the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code of subcomponent's module invocation and output assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_out_invocation_v(self):
-    &#34;&#34;&#34;Generates hierarchical Verilog code invocation of corresponding arithmetic circuit&#39;s generated function block.
-
-    Assigns input values from other subcomponents into multi-bit input buses used as inputs for function block invocation.
-    Assigns output values from invocation of the corresponding function block into inner wires present inside
-    the upper component from which function block has been invoked.
-
-    Returns:
-        str: Hierarchical Verilog code of subcomponent&#39;s module invocation and output assignment.
-    &#34;&#34;&#34;
-    # Getting name of circuit type and insitu copying out bus for proper Verilog code generation without affecting actual generated composition
-    circuit_type = self.__class__(a=Bus(&#34;a&#34;), b=Bus(&#34;b&#34;)).prefix + str(self.N)
-    circuit_block = self.__class__(a=Bus(N=self.N, prefix=&#34;a&#34;), b=Bus(
-        N=self.N, prefix=&#34;b&#34;), name=circuit_type)
-    return self.a.return_bus_wires_values_v_hier() + self.b.return_bus_wires_values_v_hier() + \
-        f&#34;  {circuit_type} {circuit_type}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.prefix}), .{circuit_block.b.prefix}({self.b.prefix}), .{circuit_block.out.prefix}({self.out.prefix}));\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp"><code class="name flex">
 <span>def <span class="ident">get_outputs_cgp</span></span>(<span>self)</span>
@@ -2918,18 +1534,6 @@ the upper component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>List of arithmetic circuit's output wire indexes.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_outputs_cgp(self):
-    &#34;&#34;&#34;Generates list of output wires indexes of described arithmetic circuit from MSB to LSB.
-
-    Returns:
-        str: List of arithmetic circuit&#39;s output wire indexes.
-    &#34;&#34;&#34;
-    return &#34;(&#34; + &#34;,&#34;.join([str(self.get_circuit_wire_index(o)) for o in self.out.bus]) + &#34;)&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp"><code class="name flex">
 <span>def <span class="ident">get_parameters_cgp</span></span>(<span>self)</span>
@@ -2943,22 +1547,6 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>str</code></dt>
 <dd>CGP chromosome parameters of described arithmetic circuit.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_parameters_cgp(self):
-    &#34;&#34;&#34;Generates CGP chromosome parameters of corresponding arithmetic circuit.
-
-    In total seven parameters represent: total inputs, total outputs, number of rows, number of columns (gates),
-    number of each gate&#39;s inputs, number of each gate&#39;s outputs, quality constant value.
-
-    Returns:
-        str: CGP chromosome parameters of described arithmetic circuit.
-    &#34;&#34;&#34;
-    self.circuit_gates = self.get_circuit_gates()
-    return f&#34;{{{sum(input_bus.N for input_bus in self.inputs)},{self.out.N},1,{len(self.circuit_gates)},2,1,0}}&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component"><code class="name flex">
 <span>def <span class="ident">get_previous_component</span></span>(<span>self, number: int = 1)</span>
@@ -2975,21 +1563,6 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>component</code></dt>
 <dd>Desired previously added composite component.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_previous_component(self, number: int = 1):
-    &#34;&#34;&#34;Retrieves previously added composite subcomponent from circuit&#39;s list of components.
-
-    Args:
-        number (int, optional): Offset indicating which lastly added component will be retrieved. Defaults to 1.
-
-    Returns:
-        component: Desired previously added composite component.
-    &#34;&#34;&#34;
-    return self.components[-number]</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif"><code class="name flex">
 <span>def <span class="ident">get_prototype_blif</span></span>(<span>self)</span>
@@ -3001,18 +1574,6 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>str</code></dt>
 <dd>Model's name in Blif code.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_prototype_blif(self):
-    &#34;&#34;&#34;Generates Blif code model name of described arithmetic circuit.
-
-    Returns:
-        str: Model&#39;s name in Blif code.
-    &#34;&#34;&#34;
-    return f&#34;.model {self.prefix}\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c"><code class="name flex">
 <span>def <span class="ident">get_prototype_c</span></span>(<span>self)</span>
@@ -3024,18 +1585,6 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>str</code></dt>
 <dd>Function's name and parameters in C code.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_prototype_c(self):
-    &#34;&#34;&#34;Generates C code function header to describe corresponding arithmetic circuit&#39;s interface in C code.
-
-    Returns:
-        str: Function&#39;s name and parameters in C code.
-    &#34;&#34;&#34;
-    return f&#34;{self.c_data_type} {self.prefix}(&#34; + &#34;,&#34;.join([f&#34;{self.c_data_type} {x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python"><code class="name flex">
 <span>def <span class="ident">get_prototype_python</span></span>(<span>self)</span>
@@ -3047,18 +1596,6 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>str</code></dt>
 <dd>Function's name and parameters in Python code.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_prototype_python(self):
-    &#34;&#34;&#34;Generates Python code function header to describe corresponding arithmetic circuit&#39;s interface in Python code.
-
-    Returns:
-        str: Function&#39;s name and parameters in Python code.
-    &#34;&#34;&#34;
-    return f&#34;def {self.prefix}(&#34; + &#34;, &#34;.join([f&#34;{x.prefix}&#34; for x in self.inputs]) + &#34;)&#34; + &#34;:&#34; + &#34;\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v"><code class="name flex">
 <span>def <span class="ident">get_prototype_v</span></span>(<span>self)</span>
@@ -3070,21 +1607,9 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>str</code></dt>
 <dd>Module's name and parameters in Verilog code.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_prototype_v(self):
-    &#34;&#34;&#34;Generates Verilog code module header to describe corresponding arithmetic circuit&#39;s interface in Verilog code.
-
-    Returns:
-        str: Module&#39;s name and parameters in Verilog code.
-    &#34;&#34;&#34;
-    return f&#34;module {self.prefix}(&#34; + &#34;,&#34;.join(f&#34;input [{x.N-1}:0] {x.prefix}&#34; for x in self.inputs) + f&#34;, output [{self.out.N-1}:0] {self.out.prefix});\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat"><code class="name flex">
-<span>def <span class="ident">get_python_code_flat</span></span>(<span>self, file_object)</span>
+<span>def <span class="ident">get_python_code_flat</span></span>(<span>self, file_object, retype=True)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Generates flat Python code representation of corresponding arithmetic circuit.</p>
@@ -3092,48 +1617,8 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dl>
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
-</dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_python_code_flat(self, file_object):
-    &#34;&#34;&#34;Generates flat Python code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_prototype_python())
-    #file_object.write(self.out.get_declaration_python())
-    #file_object.write(self.get_declaration_python_flat()+&#34;\n&#34;)
-    file_object.write(self.get_init_python_flat()+&#34;\n&#34;)
-    file_object.write(self.get_function_out_python_flat())
-    file_object.write(self.out.return_bus_wires_sign_extend_python_flat())
-    file_object.write(f&#34;  return {self.out.prefix}&#34;+&#34;\n&#34;)</code></pre>
-</details>
-</dd>
-<dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire"><code class="name flex">
-<span>def <span class="ident">get_sum_wire</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Get output wire carrying sum value.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>Wire</code></dt>
-<dd>Return sum wire.</dd>
-</dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_sum_wire(self):
-    &#34;&#34;&#34;Get output wire carrying sum value.
-
-    Returns:
-       Wire: Return sum wire.
-    &#34;&#34;&#34;
-    return self.out.get_wire(0)</code></pre>
-</details>
+</dl>
+<p>retype (bool) specifies if signed output should return int64_t</p></div>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp"><code class="name flex">
 <span>def <span class="ident">get_triplets_cgp</span></span>(<span>self)</span>
@@ -3150,27 +1635,6 @@ Other wires indexes start counting from 2 and up.</p>
 <dt><code>str</code></dt>
 <dd>List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_triplets_cgp(self):
-    &#34;&#34;&#34;Generates list of logic gate triplets (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.
-
-    Each triplet represents unique logic gate within the described arithmetic circuit. Besides the contained input wires indexes and gate&#39;s inner logic function, an output wire
-    with incremented index position is also created and remembered to be appropriately driven as an input to another logic gate or as the circuit&#39;s output.
-
-    Constant wire with value 0 has constant index of 0.
-    Constant wire with value 1 has constant index of 1.
-    Other wires indexes start counting from 2 and up.
-
-    Returns:
-        str: List of triplets each describing logic function of corresponding two input logic gate and as a whole describe the arithmetic circuit.
-    &#34;&#34;&#34;
-    self.get_cgp_wires()
-    return &#34;&#34;.join([g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), out_id=self.get_circuit_wire_index(g.out)) if isinstance(g, OneInputLogicGate) else
-                   g.get_triplet_cgp(a_id=self.get_circuit_wire_index(g.a), b_id=self.get_circuit_wire_index(g.b), out_id=self.get_circuit_wire_index(g.out)) for g in self.circuit_gates])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat"><code class="name flex">
 <span>def <span class="ident">get_v_code_flat</span></span>(<span>self, file_object)</span>
@@ -3182,22 +1646,6 @@ Other wires indexes start counting from 2 and up.</p>
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_v_code_flat(self, file_object):
-    &#34;&#34;&#34;Generates flat Verilog code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_prototype_v())
-    file_object.write(self.get_declaration_v_flat()+&#34;\n&#34;)
-    file_object.write(self.get_init_v_flat() + &#34;\n&#34;)
-    file_object.write(self.get_function_out_v_flat())
-    file_object.write(f&#34;endmodule&#34;)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier"><code class="name flex">
 <span>def <span class="ident">get_v_code_hier</span></span>(<span>self, file_object)</span>
@@ -3209,19 +1657,6 @@ Other wires indexes start counting from 2 and up.</p>
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_v_code_hier(self, file_object):
-    &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding arithmetic circuit.
-
-    Args:
-        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
-    &#34;&#34;&#34;
-    file_object.write(self.get_function_blocks_v())
-    file_object.write(self.get_circuit_v())</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id"><code class="name flex">
 <span>def <span class="ident">save_wire_id</span></span>(<span>self, wire: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>)</span>
@@ -3241,28 +1676,6 @@ Other wires indexes start counting from 2 and up.</p>
 <dt><code>int</code></dt>
 <dd>Wire's index position within circuit.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def save_wire_id(self, wire: Wire):
-    &#34;&#34;&#34;Returns appropriate wire index position within the circuit.
-
-    Constant wire with value 0 has constant index of 0.
-    Constant wire with value 1 has constant index of 1.
-    Other wires indexes start counting from 2 and up.
-
-    Args:
-        wire (Wire): Wire that will be stored at this circuit index position.
-
-    Returns:
-        int: Wire&#39;s index position within circuit.
-    &#34;&#34;&#34;
-    if wire.is_const():
-        return wire.cgp_const
-    else:
-        return len([w[0] for w in self.circuit_wires if w[0].is_const() is False]) + 2</code></pre>
-</details>
 </dd>
 </dl>
 </dd>
@@ -3270,7 +1683,6 @@ Other wires indexes start counting from 2 and up.</p>
 </section>
 </article>
 <nav id="sidebar">
-<h1>Index</h1>
 <div class="toc">
 <ul></ul>
 </div>
@@ -3290,14 +1702,14 @@ Other wires indexes start counting from 2 and up.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire">get_carry_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
@@ -3319,6 +1731,7 @@ Other wires indexes start counting from 2 and up.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
@@ -3340,7 +1753,6 @@ Other wires indexes start counting from 2 and up.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire">get_sum_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat" href="#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
@@ -3354,7 +1766,7 @@ Other wires indexes start counting from 2 and up.</p>
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
 </footer>
 </body>
 </html>

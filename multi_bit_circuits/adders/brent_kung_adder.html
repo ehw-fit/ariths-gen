@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>ariths_gen.multi_bit_circuits.adders.brent_kung_adder API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.adders.brent_kung_adder</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder"><code class="flex name class">
+<span>class <span class="ident">SignedBrentKungAdder</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_bka', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class representing signed Brent-Kung adder (using valency-2 logic gates).</p>
+<p>The Brent-Kung adder belongs to a type of tree (parallel-prefix) adders.
+Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+The main difference between each tree adder lies in the implementation of the part 2).</p>
+<p>Along with Kogge-Stone and Sklansky it is considered to be a fundamental tree adder architecture.</p>
+<p>Brent-Kung achieves 2*log2(N)-1 stages and fanout of 2 at each stage inside 2). The adder computes prefixes for 2-bit groups.
+These are used to find prefixes for 4-bit groups, which in turn are used to find prefixes for 8-bit groups, and so forth.
+The prefixes then fan back down to compute the carries-in to each bit.</p>
+<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+For further circuit characteristics see the book CMOS VLSI Design.</p>
+<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+The 2) part is then composed according to the parallel-prefix adder characteristics.
+At last XOR gates are used to ensure proper sign extension.</p>
+<pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
+  │  │          │  │        │  │        │  │
+┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+│  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
+│  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
+│      │     ││      │   ││      │   ││      │
+└─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
+  │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
+  │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
+  │ │            Parallel-prefix             │
+  │ │               PG logic                 │
+  │ └─┬───────┬──────────┬──────────┬────────┘
+  │   │S3     │S2        │S1        │S0
+┌─▼───▼───────▼──────────▼──────────▼────────┐
+│                Sum + Cout                  │
+│           with sign extension              │
+└┬────┬───────┬──────────┬──────────┬────────┘
+ │    │       │          │          │
+ ▼    ▼       ▼          ▼          ▼
+Cout  S3      S1         S0         S0
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>First input bus.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>Second input bus.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of signed bka. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of signed bka. Defaults to "s_bka".</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class SignedBrentKungAdder(UnsignedBrentKungAdder, GeneralCircuit):
+    &#34;&#34;&#34;Class representing signed Brent-Kung adder (using valency-2 logic gates).
+
+    The Brent-Kung adder belongs to a type of tree (parallel-prefix) adders.
+    Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+    The main difference between each tree adder lies in the implementation of the part 2).
+
+    Along with Kogge-Stone and Sklansky it is considered to be a fundamental tree adder architecture.
+
+    Brent-Kung achieves 2*log2(N)-1 stages and fanout of 2 at each stage inside 2). The adder computes prefixes for 2-bit groups.
+    These are used to find prefixes for 4-bit groups, which in turn are used to find prefixes for 8-bit groups, and so forth.
+    The prefixes then fan back down to compute the carries-in to each bit.
+
+    Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+    For further circuit characteristics see the book CMOS VLSI Design.
+
+    The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+    The 2) part is then composed according to the parallel-prefix adder characteristics.
+    At last XOR gates are used to ensure proper sign extension.
+
+    ```
+      B3 A3         B2 A2       B1 A1       B0 A0
+      │  │          │  │        │  │        │  │
+    ┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+    │  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
+    │  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
+    │      │     ││      │   ││      │   ││      │
+    └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
+      │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
+      │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
+      │ │            Parallel-prefix             │
+      │ │               PG logic                 │
+      │ └─┬───────┬──────────┬──────────┬────────┘
+      │   │S3     │S2        │S1        │S0
+    ┌─▼───▼───────▼──────────▼──────────▼────────┐
+    │                Sum + Cout                  │
+    │           with sign extension              │
+    └┬────┬───────┬──────────┬──────────┬────────┘
+     │    │       │          │          │
+     ▼    ▼       ▼          ▼          ▼
+    Cout  S3      S1         S0         S0
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of signed bka. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed bka. Defaults to &#34;s_bka&#34;.
+    &#34;&#34;&#34;
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_bka&#34;, **kwargs):
+        super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
+
+        # Additional XOR gates to ensure correct sign extension in case of sign addition
+        self.add_component(XorGate(self.a.get_wire(self.N-1), self.b.get_wire(self.N-1), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self))
+        self.add_component(XorGate(self.get_previous_component().out, self.get_previous_component(2).get_generate_wire(), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self))
+        self.out.connect(self.N, self.get_previous_component().out)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder" href="#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder">UnsignedBrentKungAdder</a></li>
+<li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder" href="#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder">UnsignedBrentKungAdder</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declaration_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declaration_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declaration_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declaration_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declaration_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declarations_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_declarations_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_blif_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_block_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_block_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_block_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_blocks_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_blocks_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_blocks_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_out_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_out_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_out_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_init_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_invocation_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_invocations_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_multi_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_one_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_out_invocation_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_out_invocation_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_outputs_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_parameters_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_previous_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_prototype_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_prototype_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder"><code class="flex name class">
+<span>class <span class="ident">UnsignedBrentKungAdder</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_bka', **kwargs)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Class representing unsigned Brent-Kung adder (using valency-2 logic gates).</p>
+<p>The Brent-Kung adder belongs to a type of tree (parallel-prefix) adders.
+Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+The main difference between each tree adder lies in the implementation of the part 2).</p>
+<p>Along with Kogge-Stone and Sklansky it is considered to be a fundamental tree adder architecture.</p>
+<p>Brent-Kung achieves 2*log2(N)-1 stages and fanout of 2 at each stage inside 2). The adder computes prefixes for 2-bit groups.
+These are used to find prefixes for 4-bit groups, which in turn are used to find prefixes for 8-bit groups, and so forth.
+The prefixes then fan back down to compute the carries-in to each bit.</p>
+<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+For further circuit characteristics see the book CMOS VLSI Design.</p>
+<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+The 2) part is then composed according to the parallel-prefix adder characteristics.</p>
+<pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
+  │  │          │  │        │  │        │  │
+┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+│  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
+│  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
+│      │     ││      │   ││      │   ││      │
+└─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
+  │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
+  │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
+  │ │            Parallel-prefix             │
+  │ │               PG logic                 │
+  │ └─┬───────┬──────────┬──────────┬────────┘
+  │   │S3     │S2        │S1        │S0
+┌─▼───▼───────▼──────────▼──────────▼────────┐
+│                Sum + Cout                  │
+│                   logic                    │
+└┬────┬───────┬──────────┬──────────┬────────┘
+ │    │       │          │          │
+ ▼    ▼       ▼          ▼          ▼
+Cout  S3      S1         S0         S0
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>First input bus.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>Second input bus.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of unsigned bka. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of unsigned bka. Defaults to "u_bka".</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UnsignedBrentKungAdder(GeneralCircuit):
+    &#34;&#34;&#34;Class representing unsigned Brent-Kung adder (using valency-2 logic gates).
+
+    The Brent-Kung adder belongs to a type of tree (parallel-prefix) adders.
+    Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+    The main difference between each tree adder lies in the implementation of the part 2).
+
+    Along with Kogge-Stone and Sklansky it is considered to be a fundamental tree adder architecture.
+
+    Brent-Kung achieves 2*log2(N)-1 stages and fanout of 2 at each stage inside 2). The adder computes prefixes for 2-bit groups.
+    These are used to find prefixes for 4-bit groups, which in turn are used to find prefixes for 8-bit groups, and so forth.
+    The prefixes then fan back down to compute the carries-in to each bit.
+
+    Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+    For further circuit characteristics see the book CMOS VLSI Design.
+
+    The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+    The 2) part is then composed according to the parallel-prefix adder characteristics.
+
+    ```
+      B3 A3         B2 A2       B1 A1       B0 A0
+      │  │          │  │        │  │        │  │
+    ┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+    │  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
+    │  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
+    │      │     ││      │   ││      │   ││      │
+    └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
+      │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
+      │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
+      │ │            Parallel-prefix             │
+      │ │               PG logic                 │
+      │ └─┬───────┬──────────┬──────────┬────────┘
+      │   │S3     │S2        │S1        │S0
+    ┌─▼───▼───────▼──────────▼──────────▼────────┐
+    │                Sum + Cout                  │
+    │                   logic                    │
+    └┬────┬───────┬──────────┬──────────┬────────┘
+     │    │       │          │          │
+     ▼    ▼       ▼          ▼          ▼
+    Cout  S3      S1         S0         S0
+    ```
+
+    Description of the __init__ method.
+
+    Args:
+        a (Bus): First input bus.
+        b (Bus): Second input bus.
+        prefix (str, optional): Prefix name of unsigned bka. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned bka. Defaults to &#34;u_bka&#34;.
+    &#34;&#34;&#34;
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_bka&#34;, **kwargs):
+        self.N = max(a.N, b.N)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+
+        # Bus sign extension in case buses have different lengths
+        self.a.bus_extend(N=self.N, prefix=a.prefix)
+        self.b.bus_extend(N=self.N, prefix=b.prefix)
+        cin = ConstantWireValue0()
+
+        # Lists of list containing all propagate/generate wires
+        self.propagate_sig = []
+        self.generate_sig = []
+        # Cin0 used as a first generate wire for obtaining next carry bits
+        self.generate_sig.append([cin])
+
+        # For each bit pair proceed with three stages of PPAs (Generate PG signals, Prefix computation (PG logic), Computation and connection of outputs)
+        # NOTE In the implementation below, both the first and third stages are handled by the PG FAs
+        for i_wire in range(self.N):
+            # 1st + 3rd stage: Generate PG signals + Computation and connection of outputs
+            self.add_component(PGSumLogic(self.a.get_wire(i_wire), self.b.get_wire(i_wire), self.generate_sig[i_wire][-1], prefix=self.prefix+&#34;_pg_sum&#34;+str(self.get_instance_num(cls=PGSumLogic))))
+            self.generate_sig.append([self.get_previous_component().get_generate_wire()])
+            self.propagate_sig.append([self.get_previous_component().get_propagate_wire()])
+
+            self.out.connect(i_wire, self.get_previous_component().get_sum_wire())
+            if i_wire == self.N-1:
+                self.add_component(GreyCell(self.generate_sig[i_wire+1][-1], self.propagate_sig[i_wire][0], self.generate_sig[i_wire][-1], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                self.out.connect(self.N, self.get_previous_component().get_generate_wire())
+            # 2nd stage: Prefix Computation (PG logic)
+            # For all bit indexes expect for the last one, proceed with the parralel prefix PG logic
+            else:
+                if i_wire % 2 == 0:  # Even-numbered bit index columns
+                    index_stages = math.log(i_wire+2, 2)  # +1 because indexes start from 0 and additional +1 because the first generated carry is actually the second carry after cin (the previous cin has 0 stages)
+                    if int(index_stages) == index_stages:
+                        for stage in range(int(index_stages)):
+                            # Grey cell
+                            if stage == index_stages-1:
+                                if stage == 0:  # Bit index with only one stage
+                                    self.add_component(GreyCell(self.generate_sig[i_wire+1][0], self.propagate_sig[i_wire][0], self.generate_sig[i_wire][0], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                                else:  # Bit index contains multiple stages, GC is its last stage
+                                    self.add_component(GreyCell(self.get_previous_component().get_generate_wire(), self.get_previous_component().get_propagate_wire(), self.generate_sig[(i_wire+1)-(2**stage)][-1], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                            # Black cell
+                            else:  # If bit index contains more than one stage, every stage except for the last one contains a Black cell
+                                self.add_component(BlackCell(self.generate_sig[i_wire+1][-1], self.propagate_sig[i_wire][-1], self.generate_sig[(i_wire+1)-(2**stage)][stage], self.propagate_sig[i_wire-(2**stage)][stage], prefix=self.prefix+&#34;_bc&#34;+str(self.get_instance_num(cls=BlackCell))))
+                                self.propagate_sig[i_wire].append(self.get_previous_component().get_propagate_wire())
+                            self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())
+                    # Special cases (bit indexes between powers of 2)
+                    else:
+                        lower_closest_power_of_two = 2**math.floor(math.log(i_wire+2, 2))  # i.e. 2^3 = 8
+                        higher_closest_power_of_two = 2**math.ceil(math.log(i_wire+2, 2))  # i.e. 2^4 = 16
+
+                        up_diff = higher_closest_power_of_two - (i_wire+2)
+                        down_diff = (i_wire+2) - lower_closest_power_of_two
+                        diff_power = up_diff if up_diff &lt; down_diff else down_diff
+                        index_stages = math.floor(math.log(diff_power, 2))+1
+
+                        for stage in range(index_stages):
+                            # Black cell
+                            if stage != index_stages-1:
+                                self.add_component(BlackCell(self.generate_sig[i_wire+1][-1], self.propagate_sig[i_wire][-1], self.generate_sig[(i_wire+1)-(2**stage)][stage], self.propagate_sig[i_wire-(2**stage)][stage], prefix=self.prefix+&#34;_bc&#34;+str(self.get_instance_num(cls=BlackCell))))
+                                self.propagate_sig[i_wire].append(self.get_previous_component().get_propagate_wire())
+                            # Grey cell
+                            else:
+                                self.add_component(GreyCell(self.get_previous_component().get_generate_wire(), self.get_previous_component().get_propagate_wire(), self.generate_sig[(i_wire+1)-(2**stage)][-1], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                            self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())
+                # Odd-numbered bit index columns
+                else:
+                    self.add_component(GreyCell(self.generate_sig[i_wire+1][-1], self.propagate_sig[i_wire][0], self.generate_sig[i_wire][-1], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                    self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder" href="#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder">SignedBrentKungAdder</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders" href="index.html">ariths_gen.multi_bit_circuits.adders</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder" href="#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.SignedBrentKungAdder">SignedBrentKungAdder</a></code></h4>
+</li>
+<li>
+<h4><code><a title="ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder" href="#ariths_gen.multi_bit_circuits.adders.brent_kung_adder.UnsignedBrentKungAdder">UnsignedBrentKungAdder</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder API documentation</title>
+<title>ariths_gen.multi_bit_circuits.adders.kogge_stone_adder API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder</code></h1>
+<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.adders.kogge_stone_adder</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -35,19 +35,23 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder"><code class="flex name class">
-<span>class <span class="ident">SignedPGRippleCarryAdder</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_pg_rca', **kwargs)</span>
+<dt id="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder"><code class="flex name class">
+<span>class <span class="ident">SignedKoggeStoneAdder</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_ksa', **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing signed ripple carry adder with propagate/generate logic.</p>
-<p>Signed ripple carry adder with PG logic represents slightly different rca implementation
-of N-bit signed adder which is composed of N one bit three input P/G/Sum logic function blocks.</p>
-<p>Each of them generates the P/G signals and contains a XOR gate responsible
-for the creation of corresponding sum bit. Besides this the Group PG logic is composed
-of AND and OR gates (basically a GreyCell) for computing the prefixes.</p>
-<p>At last XOR gates are used to ensure proper sign extension.</p>
-<p>You can find more info in the book: CMOS VLSI Design</p>
+<div class="desc"><p>Class representing signed Kogge-Stone adder (using valency-2 logic gates).</p>
+<p>The Kogge-Stone adder belongs to a type of tree (parallel-prefix) adders.
+Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+The main difference between each tree adder lies in the implementation of the part 2).</p>
+<p>Along with Brent-Kung and Sklansky it is considered to be a fundamental tree adder architecture.</p>
+<p>Kogge-Stone achieves log(N,2) stages and fanout of 2 at each stage inside 2). The circuit contains more PG cells
+than the other tree adder architectures.</p>
+<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+For further circuit characteristics see the book CMOS VLSI Design.</p>
+<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+The 2) part is then composed according to the parallel-prefix adder characteristics.
+At last XOR gates are used to ensure proper sign extension.</p>
 <pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
   │  │          │  │        │  │        │  │
 ┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
@@ -57,12 +61,12 @@ of AND and OR gates (basically a GreyCell) for computing the prefixes.</p>
 └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
   │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
   │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
-  │ │          Group PG logic                │
-  │ │                                        │
+  │ │            Parallel-prefix             │
+  │ │               PG logic                 │
   │ └─┬───────┬──────────┬──────────┬────────┘
   │   │S3     │S2        │S1        │S0
 ┌─▼───▼───────▼──────────▼──────────▼────────┐
-│            Sum + Cout logic                │
+│                Sum + Cout                  │
 │           with sign extension              │
 └┬────┬───────┬──────────┬──────────┬────────┘
  │    │       │          │          │
@@ -77,27 +81,32 @@ Cout  S3      S1         S0         S0
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of signed P/G rca. Defaults to "".</dd>
+<dd>Prefix name of signed ksa. Defaults to "".</dd>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of signed P/G rca. Defaults to "s_pg_rca".</dd>
+<dd>Name of signed ksa. Defaults to "s_ksa".</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class SignedPGRippleCarryAdder(UnsignedPGRippleCarryAdder, GeneralCircuit):
-    &#34;&#34;&#34;Class representing signed ripple carry adder with propagate/generate logic.
+<pre><code class="python">class SignedKoggeStoneAdder(UnsignedKoggeStoneAdder, GeneralCircuit):
+    &#34;&#34;&#34;Class representing signed Kogge-Stone adder (using valency-2 logic gates).
 
-    Signed ripple carry adder with PG logic represents slightly different rca implementation
-    of N-bit signed adder which is composed of N one bit three input P/G/Sum logic function blocks.
+    The Kogge-Stone adder belongs to a type of tree (parallel-prefix) adders.
+    Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+    The main difference between each tree adder lies in the implementation of the part 2).
 
-    Each of them generates the P/G signals and contains a XOR gate responsible
-    for the creation of corresponding sum bit. Besides this the Group PG logic is composed
-    of AND and OR gates (basically a GreyCell) for computing the prefixes.
+    Along with Brent-Kung and Sklansky it is considered to be a fundamental tree adder architecture.
 
+    Kogge-Stone achieves log(N,2) stages and fanout of 2 at each stage inside 2). The circuit contains more PG cells
+    than the other tree adder architectures.
+
+    Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+    For further circuit characteristics see the book CMOS VLSI Design.
+
+    The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+    The 2) part is then composed according to the parallel-prefix adder characteristics.
     At last XOR gates are used to ensure proper sign extension.
-
-    You can find more info in the book: CMOS VLSI Design
 
     ```
       B3 A3         B2 A2       B1 A1       B0 A0
@@ -109,12 +118,12 @@ Cout  S3      S1         S0         S0
     └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
       │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
       │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
-      │ │          Group PG logic                │
-      │ │                                        │
+      │ │            Parallel-prefix             │
+      │ │               PG logic                 │
       │ └─┬───────┬──────────┬──────────┬────────┘
       │   │S3     │S2        │S1        │S0
     ┌─▼───▼───────▼──────────▼──────────▼────────┐
-    │            Sum + Cout logic                │
+    │                Sum + Cout                  │
     │           with sign extension              │
     └┬────┬───────┬──────────┬──────────┬────────┘
      │    │       │          │          │
@@ -127,105 +136,107 @@ Cout  S3      S1         S0         S0
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed P/G rca. Defaults to &#34;&#34;.
-        name (str, optional): Name of signed P/G rca. Defaults to &#34;s_pg_rca&#34;.
+        prefix (str, optional): Prefix name of signed ksa. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed ksa. Defaults to &#34;s_ksa&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_pg_rca&#34;, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_ksa&#34;, **kwargs):
         super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
-        sign_xor_1 = XorGate(self.a.get_wire(self.N-1), self.b.get_wire(self.N-1), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
-        self.add_component(sign_xor_1)
-        sign_xor_2 = XorGate(sign_xor_1.out, self.get_previous_component(2).out, prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
-        self.add_component(sign_xor_2)
-        self.out.connect(self.N, sign_xor_2.out)</code></pre>
+        self.add_component(XorGate(self.a.get_wire(self.N-1), self.b.get_wire(self.N-1), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self))
+        self.add_component(XorGate(self.get_previous_component().out, self.get_previous_component(2).get_generate_wire(), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self))
+        self.out.connect(self.N, self.get_previous_component().out)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder">UnsignedPGRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder" href="#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder">UnsignedKoggeStoneAdder</a></li>
 <li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
 </ul>
 <h3>Inherited members</h3>
 <ul class="hlist">
-<li><code><b><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder">UnsignedPGRippleCarryAdder</a></b></code>:
+<li><code><b><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder" href="#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder">UnsignedKoggeStoneAdder</a></b></code>:
 <ul class="hlist">
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declaration_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declaration_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declaration_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declaration_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declaration_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declarations_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_declarations_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_blif_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_block_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_block_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_block_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_blocks_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_blocks_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_blocks_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_out_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_out_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_out_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_init_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_invocation_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_invocations_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_multi_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_one_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_out_invocation_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_out_invocation_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_outputs_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_parameters_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_previous_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_prototype_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_prototype_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declaration_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declaration_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declaration_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declaration_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declaration_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declarations_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_declarations_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_blif_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_block_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_block_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_block_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_blocks_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_blocks_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_blocks_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_out_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_out_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_out_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_init_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_invocation_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_invocations_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_multi_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_one_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_out_invocation_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_out_invocation_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_outputs_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_parameters_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_previous_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_prototype_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_prototype_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
 </ul>
 </li>
 </ul>
 </dd>
-<dt id="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder"><code class="flex name class">
-<span>class <span class="ident">UnsignedPGRippleCarryAdder</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_pg_rca', **kwargs)</span>
+<dt id="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder"><code class="flex name class">
+<span>class <span class="ident">UnsignedKoggeStoneAdder</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_ksa', **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing unsigned ripple carry adder with propagate/generate logic.</p>
-<p>Unsigned ripple carry adder with PG logic represents slightly different rca implementation
-of N-bit unsigned adder which is composed of N one bit three input P/G/Sum logic function blocks.</p>
-<p>Each of them generates the P/G signals and contains a XOR gate responsible
-for the creation of corresponding sum bit. Besides this the Group PG logic is composed
-of AND and OR gates (basically a GreyCell) for computing the prefixes.</p>
-<p>You can find more info in the book: CMOS VLSI Design</p>
+<div class="desc"><p>Class representing unsigned Kogge-Stone adder (using valency-2 logic gates).</p>
+<p>The Kogge-Stone adder belongs to a type of tree (parallel-prefix) adders.
+Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+The main difference between each tree adder lies in the implementation of the part 2).</p>
+<p>Along with Brent-Kung and Sklansky it is considered to be a fundamental tree adder architecture.</p>
+<p>Kogge-Stone achieves log2(N) stages and fanout of 2 at each stage inside 2). The circuit contains more PG cells
+than the other tree adder architectures.</p>
+<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+For further circuit characteristics see the book CMOS VLSI Design.</p>
+<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+The 2) part is then composed according to the parallel-prefix adder characteristics.</p>
 <pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
   │  │          │  │        │  │        │  │
 ┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
@@ -235,13 +246,13 @@ of AND and OR gates (basically a GreyCell) for computing the prefixes.</p>
 └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
   │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
   │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
-  │ │          Group PG logic                │
-  │ │                                        │
+  │ │            Parallel-prefix             │
+  │ │               PG logic                 │
   │ └─┬───────┬──────────┬──────────┬────────┘
   │   │S3     │S2        │S1        │S0
 ┌─▼───▼───────▼──────────▼──────────▼────────┐
 │                Sum + Cout                  │
-│                  logic                     │
+│                   logic                    │
 └┬────┬───────┬──────────┬──────────┬────────┘
  │    │       │          │          │
  ▼    ▼       ▼          ▼          ▼
@@ -255,25 +266,31 @@ Cout  S3      S1         S0         S0
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned P/G rca. Defaults to "".</dd>
+<dd>Prefix name of unsigned ksa. Defaults to "".</dd>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of unsigned P/G rca. Defaults to "u_pg_rca".</dd>
+<dd>Name of unsigned ksa. Defaults to "u_ksa".</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class UnsignedPGRippleCarryAdder(GeneralCircuit):
-    &#34;&#34;&#34;Class representing unsigned ripple carry adder with propagate/generate logic.
+<pre><code class="python">class UnsignedKoggeStoneAdder(GeneralCircuit):
+    &#34;&#34;&#34;Class representing unsigned Kogge-Stone adder (using valency-2 logic gates).
 
-    Unsigned ripple carry adder with PG logic represents slightly different rca implementation
-    of N-bit unsigned adder which is composed of N one bit three input P/G/Sum logic function blocks.
+    The Kogge-Stone adder belongs to a type of tree (parallel-prefix) adders.
+    Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+    The main difference between each tree adder lies in the implementation of the part 2).
 
-    Each of them generates the P/G signals and contains a XOR gate responsible
-    for the creation of corresponding sum bit. Besides this the Group PG logic is composed
-    of AND and OR gates (basically a GreyCell) for computing the prefixes.
+    Along with Brent-Kung and Sklansky it is considered to be a fundamental tree adder architecture.
 
-    You can find more info in the book: CMOS VLSI Design
+    Kogge-Stone achieves log2(N) stages and fanout of 2 at each stage inside 2). The circuit contains more PG cells
+    than the other tree adder architectures.
+
+    Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+    For further circuit characteristics see the book CMOS VLSI Design.
+
+    The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+    The 2) part is then composed according to the parallel-prefix adder characteristics.
 
     ```
       B3 A3         B2 A2       B1 A1       B0 A0
@@ -285,13 +302,13 @@ Cout  S3      S1         S0         S0
     └─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
       │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
       │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
-      │ │          Group PG logic                │
-      │ │                                        │
+      │ │            Parallel-prefix             │
+      │ │               PG logic                 │
       │ └─┬───────┬──────────┬──────────┬────────┘
       │   │S3     │S2        │S1        │S0
     ┌─▼───▼───────▼──────────▼──────────▼────────┐
     │                Sum + Cout                  │
-    │                  logic                     │
+    │                   logic                    │
     └┬────┬───────┬──────────┬──────────┬────────┘
      │    │       │          │          │
      ▼    ▼       ▼          ▼          ▼
@@ -303,36 +320,52 @@ Cout  S3      S1         S0         S0
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned P/G rca. Defaults to &#34;&#34;.
-        name (str, optional): Name of unsigned P/G rca. Defaults to &#34;u_pg_rca&#34;.
+        prefix (str, optional): Prefix name of unsigned ksa. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned ksa. Defaults to &#34;u_ksa&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_pg_rca&#34;, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_ksa&#34;, **kwargs):
         self.N = max(a.N, b.N)
         super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
+        cin = ConstantWireValue0()
 
-        # Gradual addition of 1-bit adder components
-        for input_index in range(self.N):
-            if input_index == 0:
-                # First full adder with connected constant wire with value 0 as cin 0
-                obj_pg_fa = PGSumLogic(self.a.get_wire(input_index), self.b.get_wire(input_index), ConstantWireValue0(), prefix=self.prefix+&#34;_pg_sum&#34;+str(input_index))
+        # Lists of list containing all propagate/generate wires
+        self.propagate_sig = []
+        self.generate_sig = []
+        # Cin0 used as a first generate wire for obtaining next carry bits
+        self.generate_sig.append([cin])
+
+        # For each bit pair proceed with three stages of PPAs (Generate PG signals, Prefix computation (PG logic), Computation and connection of outputs)
+        # NOTE In the implementation below, both the first and third stages are handled by the PG FAs
+        for i_wire in range(self.N):
+            # 1st + 3rd stage: Generate PG signals + Computation and connection of outputs
+            self.add_component(PGSumLogic(self.a.get_wire(i_wire), self.b.get_wire(i_wire), self.generate_sig[i_wire][-1], prefix=self.prefix+&#34;_pg_sum&#34;+str(self.get_instance_num(cls=PGSumLogic))))
+            self.generate_sig.append([self.get_previous_component().get_generate_wire()])
+            self.propagate_sig.append([self.get_previous_component().get_propagate_wire()])
+
+            self.out.connect(i_wire, self.get_previous_component().get_sum_wire())
+            if i_wire == self.N-1:
+                self.add_component(GreyCell(self.generate_sig[i_wire+1][-1], self.propagate_sig[i_wire][0], self.generate_sig[i_wire][-1], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                self.out.connect(self.N, self.get_previous_component().get_generate_wire())
+            # 2nd stage: Prefix Computation (PG logic)
+            # For all bit indexes expect for the last one, proceed with the parralel prefix PG logic
             else:
-                obj_pg_fa = PGSumLogic(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().out, prefix=self.prefix+&#34;_pg_sum&#34;+str(input_index))
-
-            self.add_component(obj_pg_fa)
-            self.out.connect(input_index, obj_pg_fa.get_sum_wire())
-
-            obj_and = AndGate(self.get_previous_component().c, self.get_previous_component().get_propagate_wire(), prefix=self.prefix+&#34;_and&#34;+str(input_index), parent_component=self)
-            obj_or = OrGate(obj_and.out, self.get_previous_component().get_generate_wire(), prefix=self.prefix+&#34;_or&#34;+str(input_index), parent_component=self)
-            self.add_component(obj_and)
-            self.add_component(obj_or)
-
-            # Connecting last output bit to last cout
-            if input_index == (self.N-1):
-                self.out.connect(self.N, obj_or.out)</code></pre>
+                index_stages = math.ceil(math.log(i_wire+2, 2))  # +1 because indexes start from 0 and additional +1 because the first generated carry is actually the second carry after cin (the previous cin has 0 stages)
+                for stage in range(index_stages):
+                    # Grey cell
+                    if stage == index_stages-1:
+                        if stage == 0:  # Bit index with only one stage
+                            self.add_component(GreyCell(self.generate_sig[i_wire+1][0], self.propagate_sig[i_wire][0], self.generate_sig[i_wire][0], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                        else:  # Bit index contains multiple stages, GC is its last stage
+                            self.add_component(GreyCell(self.get_previous_component().get_generate_wire(), self.get_previous_component().get_propagate_wire(), self.generate_sig[(i_wire+1)-(2**stage)][-1], prefix=self.prefix+&#34;_gc&#34;+str(self.get_instance_num(cls=GreyCell))))
+                    # Black cell
+                    else:  # If bit index contains more than one stage, every stage except for the last one contains a Black cells
+                        self.add_component(BlackCell(self.generate_sig[i_wire+1][-1], self.propagate_sig[i_wire][-1], self.generate_sig[(i_wire+1)-(2**stage)][stage], self.propagate_sig[i_wire-(2**stage)][stage], prefix=self.prefix+&#34;_bc&#34;+str(self.get_instance_num(cls=BlackCell))))
+                        self.propagate_sig[i_wire].append(self.get_previous_component().get_propagate_wire())
+                    self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -340,7 +373,7 @@ Cout  S3      S1         S0         S0
 </ul>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder">SignedPGRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder" href="#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder">SignedKoggeStoneAdder</a></li>
 </ul>
 <h3>Inherited members</h3>
 <ul class="hlist">
@@ -427,10 +460,10 @@ Cout  S3      S1         S0         S0
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.SignedPGRippleCarryAdder">SignedPGRippleCarryAdder</a></code></h4>
+<h4><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder" href="#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.SignedKoggeStoneAdder">SignedKoggeStoneAdder</a></code></h4>
 </li>
 <li>
-<h4><code><a title="ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.pg_ripple_carry_adder.UnsignedPGRippleCarryAdder">UnsignedPGRippleCarryAdder</a></code></h4>
+<h4><code><a title="ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder" href="#ariths_gen.multi_bit_circuits.adders.kogge_stone_adder.UnsignedKoggeStoneAdder">UnsignedKoggeStoneAdder</a></code></h4>
 </li>
 </ul>
 </li>

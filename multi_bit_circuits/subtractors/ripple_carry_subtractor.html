@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>ariths_gen.multi_bit_circuits.adders.ripple_carry_adder API documentation</title>
+<title>ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.adders.ripple_carry_adder</code></h1>
+<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -35,21 +35,22 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder"><code class="flex name class">
-<span>class <span class="ident">SignedRippleCarryAdder</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_rca', **kwargs)</span>
+<dt id="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor"><code class="flex name class">
+<span>class <span class="ident">SignedRippleCarrySubtractor</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 's_rcs', **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing signed ripple carry adder.</p>
-<p>Signed ripple carry adder represents N-bit signed adder which is composed of
-N one bit adders, where the first is a half adder and rest are full adders.
+<div class="desc"><p>Class representing signed ripple carry subtractor.</p>
+<p>Signed ripple carry subtractor represents N-bit signed subtractor which is composed of
+N one bit fulladders. The first FA has carry-in set to one and the B inputs of all FAs are inverted.
 At last XOR gates are used to ensure proper sign extension.</p>
 <p>Its downside is its long propagation delay the bigger the circuit is.</p>
-<pre><code>  B3 A3      B3 A3      B2 A2      B1 A1      B0 A0
+<pre><code>  __         __         __         __         __
+  B3 A3      B3 A3      B2 A2      B1 A1      B0 A0
   │  │       │  │       │  │       │  │       │  │
 ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
-│ SIGN │ C4│      │ C3│      │ C2│      │ C1│      │
-│Extend│◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  HA  │
+│ SIGN │ C4│      │ C3│      │ C2│      │ C1│      │  1
+│Extend│◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──
 │      │   │      │   │      │   │      │   │      │
 └──┬───┘   └──┬───┘   └──┬───┘   └──┬───┘   └──┬───┘
    ▼          ▼          ▼          ▼          ▼
@@ -63,29 +64,30 @@ At last XOR gates are used to ensure proper sign extension.</p>
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of signed rca. Defaults to "".</dd>
+<dd>Prefix name of signed rcs. Defaults to "".</dd>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of signed rca. Defaults to "s_rca".</dd>
+<dd>Name of signed rcs. Defaults to "s_rcs".</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class SignedRippleCarryAdder(UnsignedRippleCarryAdder, GeneralCircuit):
-    &#34;&#34;&#34;Class representing signed ripple carry adder.
+<pre><code class="python">class SignedRippleCarrySubtractor(UnsignedRippleCarrySubtractor, GeneralCircuit):
+    &#34;&#34;&#34;Class representing signed ripple carry subtractor.
 
-    Signed ripple carry adder represents N-bit signed adder which is composed of
-    N one bit adders, where the first is a half adder and rest are full adders.
+    Signed ripple carry subtractor represents N-bit signed subtractor which is composed of
+    N one bit fulladders. The first FA has carry-in set to one and the B inputs of all FAs are inverted.
     At last XOR gates are used to ensure proper sign extension.
 
     Its downside is its long propagation delay the bigger the circuit is.
 
     ```
+      __         __         __         __         __
       B3 A3      B3 A3      B2 A2      B1 A1      B0 A0
       │  │       │  │       │  │       │  │       │  │
     ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
-    │ SIGN │ C4│      │ C3│      │ C2│      │ C1│      │
-    │Extend│◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  HA  │
+    │ SIGN │ C4│      │ C3│      │ C2│      │ C1│      │  1
+    │Extend│◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──
     │      │   │      │   │      │   │      │   │      │
     └──┬───┘   └──┬───┘   └──┬───┘   └──┬───┘   └──┬───┘
        ▼          ▼          ▼          ▼          ▼
@@ -97,111 +99,112 @@ At last XOR gates are used to ensure proper sign extension.</p>
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed rca. Defaults to &#34;&#34;.
-        name (str, optional): Name of signed rca. Defaults to &#34;s_rca&#34;.
+        prefix (str, optional): Prefix name of signed rcs. Defaults to &#34;&#34;.
+        name (str, optional): Name of signed rcs. Defaults to &#34;s_rcs&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_rca&#34;, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_rcs&#34;, **kwargs):
+        self.N = max(a.N, b.N)
         super().__init__(a=a, b=b, prefix=prefix, name=name, signed=True, **kwargs)
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
-        sign_xor_1 = XorGate(self.get_previous_component(1).a, self.get_previous_component(1).b, prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
+        sign_xor_1 = XorGate(self.get_previous_component(2).a, self.get_previous_component(2).b, prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
         self.add_component(sign_xor_1)
-        sign_xor_2 = XorGate(sign_xor_1.out, self.get_previous_component(2).get_carry_wire(), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
+        sign_xor_2 = XorGate(sign_xor_1.out, self.get_previous_component(3).get_carry_wire(), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self)
         self.add_component(sign_xor_2)
         self.out.connect(self.N, sign_xor_2.out)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
-<li><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder">UnsignedRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor" href="#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor">UnsignedRippleCarrySubtractor</a></li>
 <li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
 </ul>
 <h3>Inherited members</h3>
 <ul class="hlist">
-<li><code><b><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder">UnsignedRippleCarryAdder</a></b></code>:
+<li><code><b><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor" href="#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor">UnsignedRippleCarrySubtractor</a></b></code>:
 <ul class="hlist">
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declaration_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declaration_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declaration_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declaration_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declaration_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declarations_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_declarations_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_blif_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_block_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_block_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_block_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_blocks_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_blocks_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_blocks_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_out_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_out_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_out_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_init_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_invocation_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_invocations_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_multi_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_one_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_out_invocation_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_out_invocation_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_outputs_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_parameters_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_previous_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_prototype_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_prototype_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.add_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_blif_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declaration_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declaration_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declaration_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declaration_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declaration_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declarations_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_declarations_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_blif_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_block_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_block_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_block_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_blocks_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_blocks_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_blocks_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_out_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_out_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_out_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_init_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_init_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_init_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_instance_num" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_invocation_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_invocations_blif_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_multi_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_one_bit_components" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_out_invocation_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_out_invocation_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_outputs_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_parameters_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_previous_component" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_prototype_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_prototype_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.get_v_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor.save_wire_id" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
 </ul>
 </li>
 </ul>
 </dd>
-<dt id="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder"><code class="flex name class">
-<span>class <span class="ident">UnsignedRippleCarryAdder</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_rca', **kwargs)</span>
+<dt id="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor"><code class="flex name class">
+<span>class <span class="ident">UnsignedRippleCarrySubtractor</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'u_rcs', **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing unsigned ripple carry adder.</p>
-<p>Unsigned ripple carry adder represents N-bit unsigned adder which is composed of
-N one bit adders, where the first is a half adder and rest are full adders.</p>
-<p>Its downside is its long propagation delay the bigger the circuit is.</p>
-<pre><code>      B3 A3      B2 A2      B1 A1      B0 A0
-      │  │       │  │       │  │       │  │
-    ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
-    │      │ C3│      │ C2│      │ C1│      │
- ┌──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  HA  │
- │  │      │   │      │   │      │   │      │
- │  └──┬───┘   └──┬───┘   └──┬───┘   └──┬───┘
- ▼     ▼          ▼          ▼          ▼
-Cout   S3         S2         S1         S0
+<div class="desc"><p>Class representing unsigned ripple carry subtractor.</p>
+<p>Unsigned ripple carry subtractor represents N-bit unsigned subtractor which is composed of
+N one bit fulladders. The first FA has carry-in set to one and the B inputs of all FAs are inverted.</p>
+<pre><code>      ──         ──         ──         ──        
+      B3 A3      B2 A2      B1 A1      B0 A0     
+      │  │       │  │       │  │       │  │      
+    ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐    
+    │      │ C3│      │ C2│      │ C1│      │  1
+ ┌──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄── 
+ │  │      │   │      │   │      │   │      │    
+ │  └──────┘   └──────┘   └──────┘   └──────┘    
+ ▼     ▼          ▼          ▼          ▼        
+Cout   S3         S2         S1         S0       
 </code></pre>
 <p>Description of the <strong>init</strong> method.</p>
 <h2 id="args">Args</h2>
@@ -211,32 +214,30 @@ Cout   S3         S2         S1         S0
 <dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
 <dd>Second input bus.</dd>
 <dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned rca. Defaults to "".</dd>
+<dd>Prefix name of unsigned rcs. Defaults to "".</dd>
 <dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of unsigned rca. Defaults to "u_rca".</dd>
+<dd>Name of unsigned rcs. Defaults to "u_rcs".</dd>
 </dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class UnsignedRippleCarryAdder(GeneralCircuit):
-    &#34;&#34;&#34;Class representing unsigned ripple carry adder.
+<pre><code class="python">class UnsignedRippleCarrySubtractor(GeneralCircuit):
+    &#34;&#34;&#34;Class representing unsigned ripple carry subtractor.
 
-    Unsigned ripple carry adder represents N-bit unsigned adder which is composed of
-    N one bit adders, where the first is a half adder and rest are full adders.
-
-    Its downside is its long propagation delay the bigger the circuit is.
-
+    Unsigned ripple carry subtractor represents N-bit unsigned subtractor which is composed of
+    N one bit fulladders. The first FA has carry-in set to one and the B inputs of all FAs are inverted.
     ```
-          B3 A3      B2 A2      B1 A1      B0 A0
-          │  │       │  │       │  │       │  │
-        ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐
-        │      │ C3│      │ C2│      │ C1│      │
-     ┌──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  HA  │
-     │  │      │   │      │   │      │   │      │
-     │  └──┬───┘   └──┬───┘   └──┬───┘   └──┬───┘
-     ▼     ▼          ▼          ▼          ▼
-    Cout   S3         S2         S1         S0
+          ──         ──         ──         ──        
+          B3 A3      B2 A2      B1 A1      B0 A0     
+          │  │       │  │       │  │       │  │      
+        ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐   ┌─▼──▼─┐    
+        │      │ C3│      │ C2│      │ C1│      │  1
+     ┌──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄──┤  FA  │◄── 
+     │  │      │   │      │   │      │   │      │    
+     │  └──────┘   └──────┘   └──────┘   └──────┘    
+     ▼     ▼          ▼          ▼          ▼        
+    Cout   S3         S2         S1         S0       
     ```
 
     Description of the __init__ method.
@@ -244,12 +245,12 @@ Cout   S3         S2         S1         S0
     Args:
         a (Bus): First input bus.
         b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned rca. Defaults to &#34;&#34;.
-        name (str, optional): Name of unsigned rca. Defaults to &#34;u_rca&#34;.
+        prefix (str, optional): Prefix name of unsigned rcs. Defaults to &#34;&#34;.
+        name (str, optional): Name of unsigned rcs. Defaults to &#34;u_rcs&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_rca&#34;, **kwargs):
+    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_rcs&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N+1, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N + 1, signed_out=True, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -257,17 +258,20 @@ Cout   S3         S2         S1         S0
 
         # Gradual addition of 1-bit adder components
         for input_index in range(self.N):
+            b_not = self.add_component(NotGate(self.b.get_wire(input_index), prefix=self.prefix+&#34;_not&#34;+str(input_index)))
             # First adder is a half adder
             if input_index == 0:
-                obj_adder = HalfAdder(self.a.get_wire(input_index), self.b.get_wire(input_index), prefix=self.prefix+&#34;_ha&#34;)
+                obj_adder = FullAdder(self.a.get_wire(input_index), b_not.out, ConstantWireValue1(), prefix=self.prefix+&#34;_ha&#34;)
             # Rest adders are full adders
             else:
-                obj_adder = FullAdder(self.a.get_wire(input_index), self.b.get_wire(input_index), self.get_previous_component().get_carry_wire(), prefix=self.prefix+&#34;_fa&#34;+str(input_index))
+                obj_adder = FullAdder(self.a.get_wire(input_index), b_not.out, obj_adder.get_carry_wire(), prefix=self.prefix+&#34;_fa&#34;+str(input_index))
 
             self.add_component(obj_adder)
             self.out.connect(input_index, obj_adder.get_sum_wire())
-            if input_index == (self.N-1):
-                self.out.connect(self.N, obj_adder.get_carry_wire())</code></pre>
+
+        # invert the last carry wire
+        self.add_component(NotGate(obj_adder.get_carry_wire(), prefix=self.prefix+&#34;_not_c&#34;+str(self.N-1)))
+        self.out.connect(self.N, self.get_previous_component().out)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -275,7 +279,7 @@ Cout   S3         S2         S1         S0
 </ul>
 <h3>Subclasses</h3>
 <ul class="hlist">
-<li><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder">SignedRippleCarryAdder</a></li>
+<li><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor" href="#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor">SignedRippleCarrySubtractor</a></li>
 </ul>
 <h3>Inherited members</h3>
 <ul class="hlist">
@@ -356,16 +360,16 @@ Cout   S3         S2         S1         S0
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="ariths_gen.multi_bit_circuits.adders" href="index.html">ariths_gen.multi_bit_circuits.adders</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.subtractors" href="index.html">ariths_gen.multi_bit_circuits.subtractors</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.SignedRippleCarryAdder">SignedRippleCarryAdder</a></code></h4>
+<h4><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor" href="#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.SignedRippleCarrySubtractor">SignedRippleCarrySubtractor</a></code></h4>
 </li>
 <li>
-<h4><code><a title="ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder" href="#ariths_gen.multi_bit_circuits.adders.ripple_carry_adder.UnsignedRippleCarryAdder">UnsignedRippleCarryAdder</a></code></h4>
+<h4><code><a title="ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor" href="#ariths_gen.multi_bit_circuits.subtractors.ripple_carry_subtractor.UnsignedRippleCarrySubtractor">UnsignedRippleCarrySubtractor</a></code></h4>
 </li>
 </ul>
 </li>

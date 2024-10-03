@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.10.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
 <title>ariths_gen.wire_components.buses API documentation</title>
-<meta name="description" content="" />
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
-<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
-<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
-<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
 </head>
 <body>
 <main>
@@ -22,286 +25,6 @@
 <h1 class="title">Module <code>ariths_gen.wire_components.buses</code></h1>
 </header>
 <section id="section-intro">
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">from .wires import Wire, ConstantWireValue0, ConstantWireValue1
-
-
-class Bus():
-    &#34;&#34;&#34;Class representing bus of wires used as inputs/outputs of bigger circuits.
-
-    Description of the __init__ method.
-
-    Args:
-        prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
-        N (int, optional): Number of wires in the bus. Defaults to 1.
-        wires_list (list, optional): List of Wire objects used to clone one bus to another. Defaults to None.
-        out_bus (bool, optional): Specifies whether this Bus is an output bus of some previous component. Defaults to False.
-        signed (bool, optional): Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.
-    &#34;&#34;&#34;
-    def __init__(self, prefix: str = &#34;bus&#34;, N: int = 1, wires_list: list = None, out_bus: bool = False, signed: bool = False):
-        self.out_bus = out_bus
-        if wires_list is None:
-            self.prefix = prefix
-            # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            self.bus = [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(N)]
-            self.N = N
-        else:
-            self.prefix = prefix
-            self.bus = wires_list
-            self.N = len(self.bus)
-
-        # Determine C code signedness
-        self.signed = signed
-        if self.N &gt; 8:
-            self.c_var_size = 64
-            if signed is True:
-                self.c_type = &#34;int64_t&#34;
-            else:
-                self.c_type = &#34;uint64_t&#34;
-        else:
-            self.c_var_size = 8
-            if signed is True:
-                self.c_type = &#34;int8_t&#34;
-            else:
-                self.c_type = &#34;uint8_t&#34;
-
-    def is_output_bus(self):
-        &#34;&#34;&#34;Tells whether this Bus is an output bus.
-
-        Returns:
-            bool: Returns True if it is an output bus of some component.
-        &#34;&#34;&#34;
-        return self.out_bus
-
-    def bus_extend(self, N: int, prefix: str = &#34;bus&#34;, desired_extension_wire: Wire = ConstantWireValue0()):
-        &#34;&#34;&#34;Provides bus extension to contain more wires.
-
-        Args:
-            N (int): Number of wires in the bus. Defaults to 1.
-            prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
-            desired_extension_wire (Wire, optional): Specifies the wire that should be connected to all of the extending bus wires. Defaults to ConstantWireValue0().
-        &#34;&#34;&#34;
-        # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
-        if self.N &lt; N:
-            # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            self.bus += [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
-
-            for w_index in range(self.N, N):
-                self.connect(bus_wire_index=w_index, inner_component_out_wire=desired_extension_wire)
-
-            self.N = N
-
-    def get_wire(self, wire_index: int = 0):
-        &#34;&#34;&#34;Retrieves a wire from the bus by a given index.
-
-        Args:
-            wire_index (int, optional): Index of wire to be retrieved from the bus. Defaults to 0.
-
-        Returns:
-            Wire: Returning wire from the bus.
-        &#34;&#34;&#34;
-        return self.bus[wire_index]
-
-    # Connecting output wire of the inner circuit component to desired position in the described circuit&#39;s output bus
-    def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):
-        &#34;&#34;&#34;Connects given &#39;Wire&#39; object to a &#39;bus_wire_index&#39; within this bus.
-
-        Used for connection of output wire of the inner circuit component
-        to the appropriate wire of the circuit&#39;s output bus.
-
-        Args:
-            bus_wire_index (int): Index in bus to store given wire in.
-            inner_component_out_wire (Wire): Wire of some other component (mostly its output) to store in the bus.
-            inserted_wire_desired_index(int, optional): Optional desired explicit index, where &#39;inner_component_out_wire&#39; value resides in the inner components&#39;s output bus. Otherwise &#39;inner_component_out_wire&#39; self index value is used. Defaults to -1.
-        &#34;&#34;&#34;
-        inserted_wire_index = inserted_wire_desired_index if inserted_wire_desired_index != -1 else inner_component_out_wire.index
-        # Used for connection of constant wire value into a bus
-        if inner_component_out_wire.is_const():
-            self.bus[bus_wire_index] = inner_component_out_wire
-        # Proper connection of wires that themselves are not yet a member of any other bus and also those that could be part of some bus but do not have `inserted_wire_desired_index` defined
-        elif inner_component_out_wire.parent_bus is None or inserted_wire_desired_index == -1:
-            self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
-        # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
-        elif inserted_wire_desired_index != -1:
-            self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
-
-    def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0):
-        &#34;&#34;&#34;Ensures connection of specified bus wires to this bus wires.
-
-        Used for connection of some inner circuit component&#39;s output bus (`connecting_bus`) wires
-        to the appropriate input bus (this `self` bus) wires of some other circuit.
-
-        Args:
-            connecting_bus (object): Specifies the connecting bus.
-            start_connection_pos (int, optional): Specifies the position from which to start interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to 0.
-            end_connection_pos (int, optional): Specifies the position from which to end interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to -1.
-            offset (int, optional): Specifies the offset wire index position in the `self` bus for proper connection (i.e. wire at index position 5 in the `connecting_bus` with offset set to 5 will be connected to `self` bus index position 0). Default to 0.
-        &#34;&#34;&#34;
-        if end_connection_pos == -1:
-            end_connection_pos = self.N
-
-        [self.connect(o-offset, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]
-
-    &#34;&#34;&#34; PYTHON CODE GENERATION &#34;&#34;&#34;
-    def return_bus_wires_values_python_flat(self):
-        &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding Python variable (object) at proper offset bit position in the bus for flat generation.
-
-        Returns:
-            str: Python code for assigning wire values into bus represented in Python code variable.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34;  {self.prefix} = 0\n&#34;] + [f&#34;  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}&#34; for w in mapped_positions])
-
-    def return_bus_wires_sign_extend_python_flat(self):
-        &#34;&#34;&#34;Sign extends the bus&#39;s corresponding Python variable (object) to ensure proper flat Python code variable signedness.
-
-        Returns:
-            str: Python code for sign extending the bus variable wire values.
-        &#34;&#34;&#34;
-        if self.signed is True:
-            last_bus_wire = self.bus[-1]
-            return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_python_flat(offset=i)}&#34; for i in range(len(self.bus), 64)])
-        else:
-            return &#34;&#34;
-
-    &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
-    def get_declaration_c(self):
-        &#34;&#34;&#34;Bus declaration in C code.
-
-        Returns:
-            str: C code for declaration and initialization of bus name.
-        &#34;&#34;&#34;
-        return f&#34;  {self.c_type} {self.prefix} = 0;\n&#34;
-
-    def return_bus_wires_values_c_flat(self):
-        &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding C variable at proper offset bit position in the bus for flat generation.
-
-        Returns:
-            str: C code for assigning wire values into bus represented in C code variable.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_flat(offset=w[0])}&#34; for w in mapped_positions])
-
-    def return_bus_wires_values_c_hier(self):
-        &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding C variable at proper offset bit position in the bus for hierarchical generation.
-
-        Returns:
-            str: C code for assigning wire values into bus represented in C code variable.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}&#34; for w in mapped_positions])
-
-    def return_bus_wires_sign_extend_c_flat(self):
-        &#34;&#34;&#34;Sign extends the bus&#39;s corresponding C variable to ensure proper flat C code variable signedness.
-
-        Returns:
-            str: C code for sign extending the bus variable wire values.
-        &#34;&#34;&#34;
-        if self.signed is True:
-            last_bus_wire = self.bus[-1]
-            return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_c_flat(offset=i)}&#34; for i in range(len(self.bus), self.c_var_size)])
-        else:
-            return &#34;&#34;
-
-    def return_bus_wires_sign_extend_c_hier(self):
-        &#34;&#34;&#34;Sign extends the bus&#39;s corresponding C variable to ensure proper hier C code variable signedness.
-
-        Returns:
-            str: C code for sign extending the bus variable wire values.
-        &#34;&#34;&#34;
-        if self.signed is True:
-            last_bus_wire = self.bus[-1]
-            return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_c_hier(offset=i)}&#34; for i in range(len(self.bus), self.c_var_size)])
-        else:
-            return &#34;&#34;
-
-    &#34;&#34;&#34; VERILOG CODE GENERATION &#34;&#34;&#34;
-    def return_bus_wires_values_v_flat(self):
-        &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding Verilog variable at proper offset bit position in the bus for flat generation.
-
-        Returns:
-            str: Verilog code for assigning wire values into bus represented in Verilog code bus variable.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_flat()}&#34; for w in mapped_positions])
-
-    def return_bus_wires_values_v_hier(self):
-        &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.
-
-        Returns:
-            str: Verilog code for assigning wire values into bus represented in Verilog code variable.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}&#34; for w in mapped_positions])
-
-    def get_unique_assign_out_wires_v(self, circuit_block: object):
-        &#34;&#34;&#34;Returns bus&#39;s wires used for hierarchical one bit subcomponent&#39;s function block invocation and output wires assignments.
-
-        Args:
-            circuit_block (object): Object describing corresponding function block that is being invoked for proper output wires assignment during instantiation.
-
-        Returns:
-            str: Verilog code unique bus wires for proper subcomponent&#39;s function block invocation.
-        &#34;&#34;&#34;
-        unique_out_wires = []
-        [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
-        return &#34;&#34;.join([f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}({unique_out_wires.pop(unique_out_wires.index(o.prefix))})&#34; if o.prefix in unique_out_wires else f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}()&#34; for o in self.bus])
-
-    &#34;&#34;&#34; BLIF CODE GENERATION &#34;&#34;&#34;
-    def get_wire_declaration_blif(self, array: bool = True):
-        &#34;&#34;&#34;Declare each wire from the bus independently in Blif code representation.
-
-        Args:
-            array (bool, optional): Specifies whether to declare wires from bus by their offset e.g. out[0] or by their wire name e.g. out_0. Defaults to True.
-
-        Returns:
-            str: Blif code for declaration of individual bus wires.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34; {w[1].get_declaration_blif(prefix=self.prefix, offset=w[0], array=array)}&#34; for w in mapped_positions])
-
-    def get_wire_assign_blif(self, output: bool = False):
-        &#34;&#34;&#34;Assign all bits from the bus as each individual wires or assign wires into the corresponding output bus position in Blif code representation.
-
-        Args:
-            output (bool, optional): Specifies whether bus wires are used as outputs (True, assigned to) or as inputs (False, assigned from). Defaults to False.
-
-        Returns:
-            str: Blif code for bus wires assignments.
-        &#34;&#34;&#34;
-        # Ensures correct binding between the bus wire index and the wire itself
-        # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([w[1].get_assign_blif(prefix=self.prefix+f&#34;[{w[0]}]&#34;, output=output) for w in mapped_positions])
-
-    def get_unique_assign_out_wires_blif(self, function_block_out_bus: object):
-        &#34;&#34;&#34;Assigns unique output wires to their respective outputs of subcomponent&#39;s function block modul in hierarchical Blif subcomponent&#39;s invocation.
-
-        Args:
-            function_block_out_bus (object): Specifies output bus of corresponding function block&#39;s outputs for proper subcomponent modul invocation.
-
-        Returns:
-            str: Blif code for proper subcomponent&#39;s function block invocation with respective output wires assignment.
-        &#34;&#34;&#34;
-        unique_out_wires = []
-        [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
-        return &#34;&#34;.join([f&#34; {function_block_out_bus.get_wire(self.bus.index(o)).name}={unique_out_wires.pop(unique_out_wires.index(o.prefix))}&#34; if o.prefix in unique_out_wires else &#34;&#34; for o in self.bus])</code></pre>
-</details>
 </section>
 <section>
 </section>
@@ -353,7 +76,7 @@ class Bus():
         if wires_list is None:
             self.prefix = prefix
             # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-            self.bus = [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(N)]
+            self.bus = [Wire(name=prefix+f&#34;[{i}]&#34; if N != 1 else prefix, prefix=prefix, index=i, parent_bus=self) for i in range(N)]
             self.N = N
         else:
             self.prefix = prefix
@@ -410,7 +133,11 @@ class Bus():
         Returns:
             Wire: Returning wire from the bus.
         &#34;&#34;&#34;
+        assert wire_index &lt; self.N, f&#34;Wire index {wire_index} is out of bounds of the bus {self.prefix} with size {self.N}&#34;
         return self.bus[wire_index]
+
+    def __getitem__(self, i):
+        return self.get_wire(i)
 
     # Connecting output wire of the inner circuit component to desired position in the described circuit&#39;s output bus
     def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):
@@ -434,6 +161,9 @@ class Bus():
         # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
         elif inserted_wire_desired_index != -1:
             self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
+
+    def __setitem__(self, i, v):
+        self.connect(i, v)
 
     def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0):
         &#34;&#34;&#34;Ensures connection of specified bus wires to this bus wires.
@@ -462,9 +192,9 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([f&#34;  {self.prefix} = 0\n&#34;] + [f&#34;  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}&#34; for w in mapped_positions])
+        return &#34;&#34;.join([f&#34;  {self.prefix} = 0\n&#34;] + [f&#34;  {self.prefix} = ({self.prefix}) | {w[1].return_wire_value_python_flat(offset=w[0])}&#34; for w in mapped_positions])
 
-    def return_bus_wires_sign_extend_python_flat(self):
+    def return_bus_wires_sign_extend_python_flat(self, retype: bool = False):
         &#34;&#34;&#34;Sign extends the bus&#39;s corresponding Python variable (object) to ensure proper flat Python code variable signedness.
 
         Returns:
@@ -472,9 +202,24 @@ class Bus():
         &#34;&#34;&#34;
         if self.signed is True:
             last_bus_wire = self.bus[-1]
-            return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_python_flat(offset=i)}&#34; for i in range(len(self.bus), 64)])
+
+            assert self.N &lt; 64, &#34;Sign extension is not supported for bus with more than 64 bits&#34;
+            if retype:
+                rewrite = f&#34;&#34;&#34;
+  if hasattr({self.prefix}, &#39;astype&#39;):
+    {self.prefix} = {self.prefix}.astype(&#34;int64&#34;)
+  else:
+    from ctypes import c_int64
+    {self.prefix} = c_int64({self.prefix}).value\n&#34;&#34;&#34;
+            else:
+                rewrite = &#34;&#34;
+            
+            return &#34;&#34;.join([f&#34;  {self.prefix} = ({self.prefix}) | {last_bus_wire.return_wire_value_python_flat(offset=i)}&#34; for i in range(len(self.bus), 64)]) + rewrite
         else:
             return &#34;&#34;
+
+    def __str__(self):
+        return f&#34;&lt;wire N={self.N} prefix={self.prefix} \&#34;&#34; + (&#34;,&#34;.join([str(w) for w in self.bus])) + &#34;\&#34;&gt;&#34;
 
     &#34;&#34;&#34; C CODE GENERATION &#34;&#34;&#34;
     def get_declaration_c(self):
@@ -504,7 +249,7 @@ class Bus():
         &#34;&#34;&#34;
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
         return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}&#34; for w in mapped_positions])
 
     def return_bus_wires_sign_extend_c_flat(self):
@@ -551,7 +296,7 @@ class Bus():
         &#34;&#34;&#34;
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-        mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
         return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}&#34; for w in mapped_positions])
 
     def get_unique_assign_out_wires_v(self, circuit_block: object):
@@ -567,12 +312,17 @@ class Bus():
         [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
         return &#34;&#34;.join([f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}({unique_out_wires.pop(unique_out_wires.index(o.prefix))})&#34; if o.prefix in unique_out_wires else f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}()&#34; for o in self.bus])
 
-    &#34;&#34;&#34; BLIF CODE GENERATION &#34;&#34;&#34;
-    def get_wire_declaration_blif(self, array: bool = True):
-        &#34;&#34;&#34;Declare each wire from the bus independently in Blif code representation.
+    def get_wire_declaration_v(self):
+        &#34;&#34;&#34;Declare the wire in Verilog code representation.
 
-        Args:
-            array (bool, optional): Specifies whether to declare wires from bus by their offset e.g. out[0] or by their wire name e.g. out_0. Defaults to True.
+        Returns:
+            str: Verilog code for declaration of individual bus wires.
+        &#34;&#34;&#34;
+        return f&#34;  wire [{self.N-1}:0] {self.prefix};\n&#34;
+
+    &#34;&#34;&#34; BLIF CODE GENERATION &#34;&#34;&#34;
+    def get_wire_declaration_blif(self):
+        &#34;&#34;&#34;Declare each wire from the bus independently in Blif code representation.
 
         Returns:
             str: Blif code for declaration of individual bus wires.
@@ -580,6 +330,7 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
+        array = True if self.N &gt; 1 else False
         return &#34;&#34;.join([f&#34; {w[1].get_declaration_blif(prefix=self.prefix, offset=w[0], array=array)}&#34; for w in mapped_positions])
 
     def get_wire_assign_blif(self, output: bool = False):
@@ -594,7 +345,10 @@ class Bus():
         # Ensures correct binding between the bus wire index and the wire itself
         # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
         mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-        return &#34;&#34;.join([w[1].get_assign_blif(prefix=self.prefix+f&#34;[{w[0]}]&#34;, output=output) for w in mapped_positions])
+        if self.N &gt; 1:
+            return &#34;&#34;.join([w[1].get_assign_blif(prefix=self.prefix+f&#34;[{w[0]}]&#34;, output=output) for w in mapped_positions])
+        else:
+            return &#34;&#34;.join([w[1].get_assign_blif(prefix=self.prefix, output=output) for w in mapped_positions])
 
     def get_unique_assign_out_wires_blif(self, function_block_out_bus: object):
         &#34;&#34;&#34;Assigns unique output wires to their respective outputs of subcomponent&#39;s function block modul in hierarchical Blif subcomponent&#39;s invocation.
@@ -625,28 +379,6 @@ class Bus():
 <dt><strong><code>desired_extension_wire</code></strong> :&ensp;<code>Wire</code>, optional</dt>
 <dd>Specifies the wire that should be connected to all of the extending bus wires. Defaults to ConstantWireValue0().</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def bus_extend(self, N: int, prefix: str = &#34;bus&#34;, desired_extension_wire: Wire = ConstantWireValue0()):
-    &#34;&#34;&#34;Provides bus extension to contain more wires.
-
-    Args:
-        N (int): Number of wires in the bus. Defaults to 1.
-        prefix (str, optional): Prefix name of the bus. Defaults to &#34;bus&#34;.
-        desired_extension_wire (Wire, optional): Specifies the wire that should be connected to all of the extending bus wires. Defaults to ConstantWireValue0().
-    &#34;&#34;&#34;
-    # Checks if any extension is neccesarry and if so, proceeds to wire extend the bus
-    if self.N &lt; N:
-        # Adding wires into current bus&#39;s wires list (wire names are concatenated from bus prefix and their index position inside the bus in square brackets)
-        self.bus += [Wire(name=prefix+f&#34;[{i}]&#34;, prefix=prefix, index=i, parent_bus=self) for i in range(self.N, N)]
-
-        for w_index in range(self.N, N):
-            self.connect(bus_wire_index=w_index, inner_component_out_wire=desired_extension_wire)
-
-        self.N = N</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.connect"><code class="name flex">
 <span>def <span class="ident">connect</span></span>(<span>self, bus_wire_index: int, inner_component_out_wire: <a title="ariths_gen.wire_components.wires.Wire" href="wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>, inserted_wire_desired_index: int = -1)</span>
@@ -663,32 +395,6 @@ to the appropriate wire of the circuit's output bus.</p>
 <dd>Wire of some other component (mostly its output) to store in the bus.</dd>
 </dl>
 <p>inserted_wire_desired_index(int, optional): Optional desired explicit index, where 'inner_component_out_wire' value resides in the inner components's output bus. Otherwise 'inner_component_out_wire' self index value is used. Defaults to -1.</p></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def connect(self, bus_wire_index: int, inner_component_out_wire: Wire, inserted_wire_desired_index: int = -1):
-    &#34;&#34;&#34;Connects given &#39;Wire&#39; object to a &#39;bus_wire_index&#39; within this bus.
-
-    Used for connection of output wire of the inner circuit component
-    to the appropriate wire of the circuit&#39;s output bus.
-
-    Args:
-        bus_wire_index (int): Index in bus to store given wire in.
-        inner_component_out_wire (Wire): Wire of some other component (mostly its output) to store in the bus.
-        inserted_wire_desired_index(int, optional): Optional desired explicit index, where &#39;inner_component_out_wire&#39; value resides in the inner components&#39;s output bus. Otherwise &#39;inner_component_out_wire&#39; self index value is used. Defaults to -1.
-    &#34;&#34;&#34;
-    inserted_wire_index = inserted_wire_desired_index if inserted_wire_desired_index != -1 else inner_component_out_wire.index
-    # Used for connection of constant wire value into a bus
-    if inner_component_out_wire.is_const():
-        self.bus[bus_wire_index] = inner_component_out_wire
-    # Proper connection of wires that themselves are not yet a member of any other bus and also those that could be part of some bus but do not have `inserted_wire_desired_index` defined
-    elif inner_component_out_wire.parent_bus is None or inserted_wire_desired_index == -1:
-        self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)
-    # Proper connection of wires that are already a member of some other bus and are desired to connect value from their previous bus to this one at desired index position
-    elif inserted_wire_desired_index != -1:
-        self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.connect_bus"><code class="name flex">
 <span>def <span class="ident">connect_bus</span></span>(<span>self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0)</span>
@@ -708,27 +414,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
 <dd>Specifies the offset wire index position in the <code>self</code> bus for proper connection (i.e. wire at index position 5 in the <code>connecting_bus</code> with offset set to 5 will be connected to <code>self</code> bus index position 0). Default to 0.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def connect_bus(self, connecting_bus: object, start_connection_pos: int = 0, end_connection_pos: int = -1, offset: int = 0):
-    &#34;&#34;&#34;Ensures connection of specified bus wires to this bus wires.
-
-    Used for connection of some inner circuit component&#39;s output bus (`connecting_bus`) wires
-    to the appropriate input bus (this `self` bus) wires of some other circuit.
-
-    Args:
-        connecting_bus (object): Specifies the connecting bus.
-        start_connection_pos (int, optional): Specifies the position from which to start interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to 0.
-        end_connection_pos (int, optional): Specifies the position from which to end interconnecting wires from the `connecting_bus` to this `self` bus. Defaults to -1.
-        offset (int, optional): Specifies the offset wire index position in the `self` bus for proper connection (i.e. wire at index position 5 in the `connecting_bus` with offset set to 5 will be connected to `self` bus index position 0). Default to 0.
-    &#34;&#34;&#34;
-    if end_connection_pos == -1:
-        end_connection_pos = self.N
-
-    [self.connect(o-offset, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_declaration_c"><code class="name flex">
 <span>def <span class="ident">get_declaration_c</span></span>(<span>self)</span>
@@ -740,18 +425,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>C code for declaration and initialization of bus name.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_declaration_c(self):
-    &#34;&#34;&#34;Bus declaration in C code.
-
-    Returns:
-        str: C code for declaration and initialization of bus name.
-    &#34;&#34;&#34;
-    return f&#34;  {self.c_type} {self.prefix} = 0;\n&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_blif"><code class="name flex">
 <span>def <span class="ident">get_unique_assign_out_wires_blif</span></span>(<span>self, function_block_out_bus: object)</span>
@@ -768,23 +441,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Blif code for proper subcomponent's function block invocation with respective output wires assignment.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_unique_assign_out_wires_blif(self, function_block_out_bus: object):
-    &#34;&#34;&#34;Assigns unique output wires to their respective outputs of subcomponent&#39;s function block modul in hierarchical Blif subcomponent&#39;s invocation.
-
-    Args:
-        function_block_out_bus (object): Specifies output bus of corresponding function block&#39;s outputs for proper subcomponent modul invocation.
-
-    Returns:
-        str: Blif code for proper subcomponent&#39;s function block invocation with respective output wires assignment.
-    &#34;&#34;&#34;
-    unique_out_wires = []
-    [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
-    return &#34;&#34;.join([f&#34; {function_block_out_bus.get_wire(self.bus.index(o)).name}={unique_out_wires.pop(unique_out_wires.index(o.prefix))}&#34; if o.prefix in unique_out_wires else &#34;&#34; for o in self.bus])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_v"><code class="name flex">
 <span>def <span class="ident">get_unique_assign_out_wires_v</span></span>(<span>self, circuit_block: object)</span>
@@ -801,23 +457,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Verilog code unique bus wires for proper subcomponent's function block invocation.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_unique_assign_out_wires_v(self, circuit_block: object):
-    &#34;&#34;&#34;Returns bus&#39;s wires used for hierarchical one bit subcomponent&#39;s function block invocation and output wires assignments.
-
-    Args:
-        circuit_block (object): Object describing corresponding function block that is being invoked for proper output wires assignment during instantiation.
-
-    Returns:
-        str: Verilog code unique bus wires for proper subcomponent&#39;s function block invocation.
-    &#34;&#34;&#34;
-    unique_out_wires = []
-    [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
-    return &#34;&#34;.join([f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}({unique_out_wires.pop(unique_out_wires.index(o.prefix))})&#34; if o.prefix in unique_out_wires else f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}()&#34; for o in self.bus])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire"><code class="name flex">
 <span>def <span class="ident">get_wire</span></span>(<span>self, wire_index: int = 0)</span>
@@ -834,21 +473,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>Wire</code></dt>
 <dd>Returning wire from the bus.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_wire(self, wire_index: int = 0):
-    &#34;&#34;&#34;Retrieves a wire from the bus by a given index.
-
-    Args:
-        wire_index (int, optional): Index of wire to be retrieved from the bus. Defaults to 0.
-
-    Returns:
-        Wire: Returning wire from the bus.
-    &#34;&#34;&#34;
-    return self.bus[wire_index]</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire_assign_blif"><code class="name flex">
 <span>def <span class="ident">get_wire_assign_blif</span></span>(<span>self, output: bool = False)</span>
@@ -865,58 +489,28 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Blif code for bus wires assignments.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_wire_assign_blif(self, output: bool = False):
-    &#34;&#34;&#34;Assign all bits from the bus as each individual wires or assign wires into the corresponding output bus position in Blif code representation.
-
-    Args:
-        output (bool, optional): Specifies whether bus wires are used as outputs (True, assigned to) or as inputs (False, assigned from). Defaults to False.
-
-    Returns:
-        str: Blif code for bus wires assignments.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([w[1].get_assign_blif(prefix=self.prefix+f&#34;[{w[0]}]&#34;, output=output) for w in mapped_positions])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire_declaration_blif"><code class="name flex">
-<span>def <span class="ident">get_wire_declaration_blif</span></span>(<span>self, array: bool = True)</span>
+<span>def <span class="ident">get_wire_declaration_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Declare each wire from the bus independently in Blif code representation.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>array</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether to declare wires from bus by their offset e.g. out[0] or by their wire name e.g. out_0. Defaults to True.</dd>
-</dl>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>Blif code for declaration of individual bus wires.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def get_wire_declaration_blif(self, array: bool = True):
-    &#34;&#34;&#34;Declare each wire from the bus independently in Blif code representation.
-
-    Args:
-        array (bool, optional): Specifies whether to declare wires from bus by their offset e.g. out[0] or by their wire name e.g. out_0. Defaults to True.
-
-    Returns:
-        str: Blif code for declaration of individual bus wires.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([f&#34; {w[1].get_declaration_blif(prefix=self.prefix, offset=w[0], array=array)}&#34; for w in mapped_positions])</code></pre>
-</details>
+</dd>
+<dt id="ariths_gen.wire_components.buses.Bus.get_wire_declaration_v"><code class="name flex">
+<span>def <span class="ident">get_wire_declaration_v</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Declare the wire in Verilog code representation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code for declaration of individual bus wires.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.is_output_bus"><code class="name flex">
 <span>def <span class="ident">is_output_bus</span></span>(<span>self)</span>
@@ -928,18 +522,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>bool</code></dt>
 <dd>Returns True if it is an output bus of some component.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def is_output_bus(self):
-    &#34;&#34;&#34;Tells whether this Bus is an output bus.
-
-    Returns:
-        bool: Returns True if it is an output bus of some component.
-    &#34;&#34;&#34;
-    return self.out_bus</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_sign_extend_c_flat</span></span>(<span>self)</span>
@@ -951,22 +533,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>C code for sign extending the bus variable wire values.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_sign_extend_c_flat(self):
-    &#34;&#34;&#34;Sign extends the bus&#39;s corresponding C variable to ensure proper flat C code variable signedness.
-
-    Returns:
-        str: C code for sign extending the bus variable wire values.
-    &#34;&#34;&#34;
-    if self.signed is True:
-        last_bus_wire = self.bus[-1]
-        return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_c_flat(offset=i)}&#34; for i in range(len(self.bus), self.c_var_size)])
-    else:
-        return &#34;&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_hier"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_sign_extend_c_hier</span></span>(<span>self)</span>
@@ -978,25 +544,9 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>C code for sign extending the bus variable wire values.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_sign_extend_c_hier(self):
-    &#34;&#34;&#34;Sign extends the bus&#39;s corresponding C variable to ensure proper hier C code variable signedness.
-
-    Returns:
-        str: C code for sign extending the bus variable wire values.
-    &#34;&#34;&#34;
-    if self.signed is True:
-        last_bus_wire = self.bus[-1]
-        return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_c_hier(offset=i)}&#34; for i in range(len(self.bus), self.c_var_size)])
-    else:
-        return &#34;&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_python_flat"><code class="name flex">
-<span>def <span class="ident">return_bus_wires_sign_extend_python_flat</span></span>(<span>self)</span>
+<span>def <span class="ident">return_bus_wires_sign_extend_python_flat</span></span>(<span>self, retype: bool = False)</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Sign extends the bus's corresponding Python variable (object) to ensure proper flat Python code variable signedness.</p>
@@ -1005,22 +555,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Python code for sign extending the bus variable wire values.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_sign_extend_python_flat(self):
-    &#34;&#34;&#34;Sign extends the bus&#39;s corresponding Python variable (object) to ensure proper flat Python code variable signedness.
-
-    Returns:
-        str: Python code for sign extending the bus variable wire values.
-    &#34;&#34;&#34;
-    if self.signed is True:
-        last_bus_wire = self.bus[-1]
-        return &#34;&#34;.join([f&#34;  {self.prefix} |= {last_bus_wire.return_wire_value_python_flat(offset=i)}&#34; for i in range(len(self.bus), 64)])
-    else:
-        return &#34;&#34;</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_c_flat</span></span>(<span>self)</span>
@@ -1032,21 +566,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>C code for assigning wire values into bus represented in C code variable.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_values_c_flat(self):
-    &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding C variable at proper offset bit position in the bus for flat generation.
-
-    Returns:
-        str: C code for assigning wire values into bus represented in C code variable.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_flat(offset=w[0])}&#34; for w in mapped_positions])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_hier"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_c_hier</span></span>(<span>self)</span>
@@ -1058,21 +577,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>C code for assigning wire values into bus represented in C code variable.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_values_c_hier(self):
-    &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding C variable at proper offset bit position in the bus for hierarchical generation.
-
-    Returns:
-        str: C code for assigning wire values into bus represented in C code variable.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}&#34; for w in mapped_positions])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_python_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_python_flat</span></span>(<span>self)</span>
@@ -1084,21 +588,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Python code for assigning wire values into bus represented in Python code variable.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_values_python_flat(self):
-    &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding Python variable (object) at proper offset bit position in the bus for flat generation.
-
-    Returns:
-        str: Python code for assigning wire values into bus represented in Python code variable.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([f&#34;  {self.prefix} = 0\n&#34;] + [f&#34;  {self.prefix} |= {w[1].return_wire_value_python_flat(offset=w[0])}&#34; for w in mapped_positions])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_v_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_v_flat</span></span>(<span>self)</span>
@@ -1110,21 +599,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Verilog code for assigning wire values into bus represented in Verilog code bus variable.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_values_v_flat(self):
-    &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding Verilog variable at proper offset bit position in the bus for flat generation.
-
-    Returns:
-        str: Verilog code for assigning wire values into bus represented in Verilog code bus variable.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_flat()}&#34; for w in mapped_positions])</code></pre>
-</details>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_v_hier"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_v_hier</span></span>(<span>self)</span>
@@ -1136,21 +610,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <dt><code>str</code></dt>
 <dd>Verilog code for assigning wire values into bus represented in Verilog code variable.</dd>
 </dl></div>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def return_bus_wires_values_v_hier(self):
-    &#34;&#34;&#34;Retrieves values from bus&#39;s wires and stores them in bus&#39;s corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.
-
-    Returns:
-        str: Verilog code for assigning wire values into bus represented in Verilog code variable.
-    &#34;&#34;&#34;
-    # Ensures correct binding between the bus wire index and the wire itself
-    # It is used for the case when multiple of the same wire (e.g. `ContantWireValue0()`) are present in the bus (its id would otherwise be incorrect when using `self.bus.index(_)`)
-    mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
-    return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}&#34; for w in mapped_positions])</code></pre>
-</details>
 </dd>
 </dl>
 </dd>
@@ -1158,7 +617,6 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 </section>
 </article>
 <nav id="sidebar">
-<h1>Index</h1>
 <div class="toc">
 <ul></ul>
 </div>
@@ -1182,6 +640,7 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire" href="#ariths_gen.wire_components.buses.Bus.get_wire">get_wire</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire_assign_blif" href="#ariths_gen.wire_components.buses.Bus.get_wire_assign_blif">get_wire_assign_blif</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire_declaration_blif" href="#ariths_gen.wire_components.buses.Bus.get_wire_declaration_blif">get_wire_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.wire_components.buses.Bus.get_wire_declaration_v" href="#ariths_gen.wire_components.buses.Bus.get_wire_declaration_v">get_wire_declaration_v</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.is_output_bus" href="#ariths_gen.wire_components.buses.Bus.is_output_bus">is_output_bus</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_flat" href="#ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_flat">return_bus_wires_sign_extend_c_flat</a></code></li>
 <li><code><a title="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_hier" href="#ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_hier">return_bus_wires_sign_extend_c_hier</a></code></li>
@@ -1199,7 +658,7 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
 </footer>
 </body>
 </html>

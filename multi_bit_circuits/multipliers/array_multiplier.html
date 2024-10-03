@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-<meta name="generator" content="pdoc 0.10.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
 <title>ariths_gen.multi_bit_circuits.multipliers.array_multiplier API documentation</title>
-<meta name="description" content="" />
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
-<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
-<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
-<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
-<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
 </head>
 <body>
 <main>
@@ -22,258 +25,6 @@
 <h1 class="title">Module <code>ariths_gen.multi_bit_circuits.multipliers.array_multiplier</code></h1>
 </header>
 <section id="section-intro">
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">from ariths_gen.wire_components import (
-    Wire,
-    ConstantWireValue0,
-    ConstantWireValue1,
-    Bus
-)
-from ariths_gen.core.arithmetic_circuits import (
-    ArithmeticCircuit,
-    MultiplierCircuit
-)
-from ariths_gen.one_bit_circuits.one_bit_components import (
-    HalfAdder,
-    FullAdder,
-    FullAdderPG
-)
-from ariths_gen.one_bit_circuits.logic_gates import (
-    AndGate,
-    NandGate,
-    OrGate,
-    NorGate,
-    XorGate,
-    XnorGate,
-    NotGate
-)
-
-
-class UnsignedArrayMultiplier(MultiplierCircuit):
-    &#34;&#34;&#34;Class representing unsigned array multiplier.
-
-    Unsigned array multiplier represents N-bit multiplier composed of
-    many AND gates and half/full adders to calculate partial products and
-    gradually sum them.
-
-    Downside is its rather big area because it is composed of many logic gates.
-
-    ```
-                                       A3B0     A2B0     A1B0     A0B0
-                                       │ │      │ │      │ │      │ │
-                                      ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
-                                      │AND│    │AND│    │AND│    │AND│
-                                      └┬──┘    └┬──┘    └┬──┘    └─┬─┘
-                                 A3B1  │  A2B1  │ A1B1   │  A0B1   │
-                                ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │
-                                │AND│  │ │AND│  │ │AND│  │ │AND│   │
-                                └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │
-                                 │     │  │     │  │     │  │      │
-                             ┌───▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │
-                             │    │   │    │   │    │   │    │     │
-                     ┌───────┤ HA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │
-                     │       │    │   │    │   │    │   │    │     │
-                     │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │
-                     │  A3B2  │  A2B2  │  A1B2  │  A0B2   │        │
-                     │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │
-                     │ │AND│  │ │AND│  │ │AND│  │ │AND│   │        │
-                     │ └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │
-                     │  │     │  │     │  │     │  │      │        │
-                    ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │
-                    │    │   │    │   │    │   │    │     │        │
-            ┌───────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │
-            │       │    │   │    │   │    │   │    │     │        │
-            │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │        │
-            │  A3B3  │  A2B3  │  A1B3  │  A0B3   │        │        │
-            │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │        │
-            │ │AND│  │ │AND│  │ │AND│  │ │AND│   │        │        │
-            │ └┬──┘  │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │        │
-            │  │     │  │     │  │     │  │      │        │        │
-           ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │        │
-           │    │   │    │   │    │   │    │     │        │        │
-    ┌──────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │        │
-    │      │    │   │    │   │    │   │    │     │        │        │
-    │      └─┬──┘   └─┬──┘   └─┬──┘   └─┬──┘     │        │        │
-    │        │        │        │        │        │        │        │
-    ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼
-    P7       P6       P5       P4       P3       P2       P1       P0
-    ```
-
-    Description of the __init__ method.
-
-    Args:
-        a (Bus): First input bus.
-        b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of unsigned array multiplier. Defaults to &#34;&#34;.
-        name (str, optional): Name of unsigned array multiplier. Defaults to &#34;u_arrmul&#34;.
-    &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_arrmul&#34;, **kwargs):
-        self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
-
-        # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Gradual generation of partial products
-        for b_multiplier_index in range(self.N):
-            for a_multiplicand_index in range(self.N):
-                # AND gates generation for calculation of partial products
-                obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+&#34;_and&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                self.add_component(obj_and)
-
-                if b_multiplier_index != 0:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index].out if b_multiplier_index == 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index)
-                    # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == 0:
-                        obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-                        # Product generation
-                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
-
-                    # HA generation, last 1-bit adder in second row
-                    elif a_multiplicand_index == self.N-1 and b_multiplier_index == 1:
-                        obj_adder = HalfAdder(self.get_previous_component().out, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-
-                    # FA generation
-                    else:
-                        obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_fa&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-
-                # PRODUCT GENERATION
-                if a_multiplicand_index == 0 and b_multiplier_index == 0:
-                    self.out.connect(a_multiplicand_index, obj_and.out)
-
-                    # 1 bit multiplier case
-                    if a_multiplicand_index == self.N-1:
-                        self.out.connect(a_multiplicand_index+1, ConstantWireValue0())
-
-                elif b_multiplier_index == self.N-1:
-                    self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
-
-                    if a_multiplicand_index == self.N-1:
-                        self.out.connect(self.out.N-1, obj_adder.get_carry_wire())
-
-
-class SignedArrayMultiplier(MultiplierCircuit):
-    &#34;&#34;&#34;Class representing signed array multiplier.
-
-    Signed array multiplier represents N-bit multiplier composed of
-    many AND/NAND gates and half/full adders to calculate partial products and
-    gradually sum them.
-
-    Downside is its rather big area because it is composed of many logic gates.
-
-    ```
-                                         A3B0     A2B0     A1B0     A0B0
-                                         │ │      │ │      │ │      │ │
-                                        ┌▼─▼─┐   ┌▼─▼┐    ┌▼─▼┐    ┌▼─▼┐
-                                        │NAND│   │AND│    │AND│    │AND│
-                                        └┬───┘   └┬──┘    └┬──┘    └─┬─┘
-                                   A3B1  │  A2B1  │ A1B1   │  A0B1   │
-                                  ┌▼─▼─┐ │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │
-                                  │NAND│ │ │AND│  │ │AND│  │ │AND│   │
-                                1 └┬───┘ │ └┬──┘  │ └┬──┘  │ └┬──┘   │
-                                │  │     │  │     │  │     │  │      │
-                               ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │
-                               │    │   │    │   │    │   │    │     │
-                       ┌───────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │
-                       │       │    │   │    │   │    │   │    │     │
-                       │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │
-                       │  A3B2  │  A2B2  │  A1B2  │  A0B2   │        │
-                       │ ┌▼─▼─┐ │ ┌▼─▼┐  │ ┌▼─▼┐  │ ┌▼─▼┐   │        │
-                       │ │NAND│ │ │AND│  │ │AND│  │ │AND│   │        │
-                       │ └┬───┘ │ └┬──┘  │ └┬──┘  │ └┬──┘   │        │
-                       │  │     │  │     │  │     │  │      │        │
-                      ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │
-                      │    │   │    │   │    │   │    │     │        │
-              ┌───────┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │
-              │       │    │   │    │   │    │   │    │     │        │
-              │       └┬───┘   └┬───┘   └┬───┘   └─┬──┘     │        │
-              │  A3B3  │  A2B3  │  A1B3  │  A0B3   │        │        │
-              │ ┌▼─▼┐  │ ┌▼─▼─┐ │ ┌▼─▼─┐ │ ┌▼─▼─┐  │        │        │
-              │ │AND│  │ │NAND│ │ │NAND│ │ │NAND│  │        │        │
-      1       │ └┬──┘  │ └┬───┘ │ └┬───┘ │ └┬───┘  │        │        │
-      │       │  │     │  │     │  │     │  │      │        │        │
-    ┌─▼──┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐   ┌▼──▼┐     │        │        │
-    │    │   │    │   │    │   │    │   │    │     │        │        │
-    │XOR │◄──┤ FA │◄──┤ FA │◄──┤ FA │◄──┤ HA │     │        │        │
-    │    │   │    │   │    │   │    │   │    │     │        │        │
-    └─┬──┘   └─┬──┘   └─┬──┘   └─┬──┘   └─┬──┘     │        │        │
-      │        │        │        │        │        │        │        │
-      ▼        ▼        ▼        ▼        ▼        ▼        ▼        ▼
-      P7       P6       P5       P4       P3       P2       P1       P0
-    ```
-
-    Description of the __init__ method.
-
-    Args:
-        a (Bus): First input bus.
-        b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of signed array multiplier. Defaults to &#34;&#34;.
-        name (str, optional): Name of signed array multiplier. Defaults to &#34;s_arrmul&#34;.
-    &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_arrmul&#34;, **kwargs):
-        self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
-        
-        # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
-
-        # Gradual generation of partial products
-        for b_multiplier_index in range(self.N):
-            for a_multiplicand_index in range(self.N):
-                # AND and NAND gates generation for calculation of partial products and sign extension
-                if (b_multiplier_index == self.N-1 and a_multiplicand_index != self.N-1) or (b_multiplier_index != self.N-1 and a_multiplicand_index == self.N-1):
-                    obj_nand = NandGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+&#34;_nand&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index), parent_component=self)
-                    self.add_component(obj_nand)
-                else:
-                    obj_and = AndGate(self.a.get_wire(a_multiplicand_index), self.b.get_wire(b_multiplier_index), prefix=self.prefix+&#34;_and&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index), parent_component=self)
-                    self.add_component(obj_and)
-
-                if b_multiplier_index != 0:
-                    previous_product = self.components[a_multiplicand_index + b_multiplier_index].out if b_multiplier_index == 1 else self.get_previous_partial_product(a_index=a_multiplicand_index, b_index=b_multiplier_index)
-                    # HA generation for first 1-bit adder in each row starting from the second one
-                    if a_multiplicand_index == 0:
-                        obj_adder = HalfAdder(self.get_previous_component().out, previous_product, prefix=self.prefix+&#34;_ha&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-                        # Product generation
-                        self.out.connect(b_multiplier_index, obj_adder.get_sum_wire())
-
-                    # FA generation
-                    else:
-                        # Constant wire with value 1 used at the last FA in second row (as one of its inputs) for signed multiplication (based on Baugh Wooley algorithm)
-                        if a_multiplicand_index == self.N-1 and b_multiplier_index == 1:
-                            previous_product = ConstantWireValue1()
-
-                        obj_adder = FullAdder(self.get_previous_component().out, previous_product, self.get_previous_component(number=2).get_carry_wire(), prefix=self.prefix+&#34;_fa&#34;+str(a_multiplicand_index)+&#34;_&#34;+str(b_multiplier_index))
-                        self.add_component(obj_adder)
-
-                # PRODUCT GENERATION
-                if a_multiplicand_index == 0 and b_multiplier_index == 0:
-                    self.out.connect(a_multiplicand_index, obj_and.out)
-
-                    # 1 bit multiplier case
-                    if a_multiplicand_index == self.N-1:
-                        obj_nor = NorGate(ConstantWireValue1(), self.get_previous_component().out, prefix=self.prefix+&#34;_nor_zero_extend&#34;, parent_component=self)
-                        self.add_component(obj_nor)
-
-                        self.out.connect(a_multiplicand_index+1, obj_nor.out)
-
-                elif b_multiplier_index == self.N-1:
-                    self.out.connect(b_multiplier_index + a_multiplicand_index, obj_adder.get_sum_wire())
-
-                    if a_multiplicand_index == self.N-1:
-                        obj_xor = XorGate(self.get_previous_component().get_carry_wire(), ConstantWireValue1(), prefix=self.prefix+&#34;_xor&#34;+str(a_multiplicand_index+1)+&#34;_&#34;+str(b_multiplier_index), parent_component=self)
-                        self.add_component(obj_xor)
-
-                        self.out.connect(self.out.N-1, obj_xor.out)</code></pre>
-</details>
 </section>
 <section>
 </section>
@@ -409,8 +160,8 @@ gradually sum them.</p>
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
-        
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
+
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
         self.b.bus_extend(N=self.N, prefix=b.prefix)
@@ -467,7 +218,6 @@ gradually sum them.</p>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit">MultiplierCircuit</a></li>
-<li><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="../../core/arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></li>
 <li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
 </ul>
 <h3>Inherited members</h3>
@@ -482,14 +232,14 @@ gradually sum them.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_carry_wire" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire">get_carry_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_cgp_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height">get_column_height</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_wire" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_wire">get_column_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
@@ -513,6 +263,7 @@ gradually sum them.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
@@ -536,7 +287,6 @@ gradually sum them.</p>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_sum_wire" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire">get_sum_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
@@ -675,7 +425,7 @@ P7       P6       P5       P4       P3       P2       P1       P0
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;u_arrmul&#34;, **kwargs):
         self.N = max(a.N, b.N)
-        super().__init__(a=a, b=b, prefix=prefix, name=name, out_N=self.N*2, **kwargs)
+        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, **kwargs)
 
         # Bus sign extension in case buses have different lengths
         self.a.bus_extend(N=self.N, prefix=a.prefix)
@@ -724,7 +474,6 @@ P7       P6       P5       P4       P3       P2       P1       P0
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit">MultiplierCircuit</a></li>
-<li><a title="ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit" href="../../core/arithmetic_circuits/arithmetic_circuit.html#ariths_gen.core.arithmetic_circuits.arithmetic_circuit.ArithmeticCircuit">ArithmeticCircuit</a></li>
 <li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
 </ul>
 <h3>Inherited members</h3>
@@ -739,14 +488,14 @@ P7       P6       P5       P4       P3       P2       P1       P0
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_blif_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_c_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_c_code_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_carry_wire" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_carry_wire">get_carry_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_cgp_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_cgp_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_wires">get_cgp_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_blif" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_gates" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_wire_index" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_circuit_wires" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_height">get_column_height</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_wire" href="../../core/arithmetic_circuits/multiplier_circuit.html#ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_column_wire">get_column_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_component_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
@@ -770,6 +519,7 @@ P7       P6       P5       P4       P3       P2       P1       P0
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_function_out_python_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_function_out_v_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_function_out_v_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_hier_subcomponent_def" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_includes_c" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_init_c_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_init_c_hier" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
@@ -793,7 +543,6 @@ P7       P6       P5       P4       P3       P2       P1       P0
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_prototype_python" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_prototype_v" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_python_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
-<li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_sum_wire" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_sum_wire">get_sum_wire</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_triplets_cgp" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_unique_types" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
 <li><code><a title="ariths_gen.core.arithmetic_circuits.multiplier_circuit.MultiplierCircuit.get_v_code_flat" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
@@ -811,7 +560,6 @@ P7       P6       P5       P4       P3       P2       P1       P0
 </section>
 </article>
 <nav id="sidebar">
-<h1>Index</h1>
 <div class="toc">
 <ul></ul>
 </div>
@@ -835,7 +583,7 @@ P7       P6       P5       P4       P3       P2       P1       P0
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
 </footer>
 </body>
 </html>

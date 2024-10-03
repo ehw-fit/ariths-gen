@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.1">
-<title>ariths_gen.multi_bit_circuits.dividers.array_divider API documentation</title>
+<title>ariths_gen.multi_bit_circuits.others.popcount API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
@@ -22,7 +22,7 @@ hljs.highlightAll();
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.dividers.array_divider</code></h1>
+<h1 class="title">Module <code>ariths_gen.multi_bit_circuits.others.popcount</code></h1>
 </header>
 <section id="section-intro">
 </section>
@@ -35,183 +35,62 @@ hljs.highlightAll();
 <section>
 <h2 class="section-title" id="header-classes">Classes</h2>
 <dl>
-<dt id="ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider"><code class="flex name class">
-<span>class <span class="ident">ArrayDivider</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, prefix: str = '', name: str = 'arrdiv', **kwargs)</span>
+<dt id="ariths_gen.multi_bit_circuits.others.popcount.UnsignedPopCount"><code class="flex name class">
+<span>class <span class="ident">UnsignedPopCount</span></span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>, adder: Optional[<a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a>] = None, prefix: str = '', name: str = 'popcnt', **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing array divider.</p>
-<p>Array divider performs division between two N bit numbers and stores their
-quotient in the output bus (remainder bits are not returned).</p>
-<p>Design is based on series of iterative subtractions.</p>
-<pre><code>       0  B3     0  B2     0  B1     A3 B0
-       │  │      │  │      │  │      │  │
-       │  │      │  │      │  │      │  │
-     ┌─▼──▼─┐  ┌─▼──▼─┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-     │      │  │      │  │      │  │      │
-   ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-   │ │      │  │      │  │      │  │      │
-   │ └──────┘  └───┬──┘  └───┬──┘  └───┬──┘
-   │               │   │0    │   │0    │   │A3
-   │             ┌─▼───▼┐  ┌─▼───▼┐  ┌─▼───▼┐
-   ├────────────►│2:1MUX├─►│2:1MUX├─►│2:1MUX│
-   │             └───┬──┘  └───┬──┘  └───┬──┘
-   │              MX0│ B3   MX1│ B2   MX2│  B1     A2 B0
-   │                 │ │       │ │       │  │      │  │
-   │               ┌─▼─▼──┐  ┌─▼─▼──┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-   │               │      │  │      │  │      │  │      │
-   │             ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-   │             │ │      │  │      │  │      │  │      │
-   │             │ └──────┘  └───┬──┘  └───┬──┘  └───┬──┘
-   │             │               │   │MX1  │   │MX2  │   │A2
-   │             │             ┌─▼───▼┐  ┌─▼───▼┐  ┌─▼───▼┐
-   │             ├────────────►│2:1MUX├─►│2:1MUX│─►│2:1MUX│
-   │             │             └───┬──┘  └───┬──┘  └───┬──┘
-   │             │              MX3│ B3   MX4│ B2   MX5│  B1     A1 B0
-   │             │                 │ │       │ │       │  │      │  │
-   │             │               ┌─▼─▼──┐  ┌─▼─▼──┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-   │             │               │      │  │      │  │      │  │      │
-   │             │             ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-   │             │             │ │      │  │      │  │      │  │      │
-   │             │             │ └──────┘  └───┬──┘  └───┬──┘  └───┬──┘
-   │             │             │               │   │MX4  │   │MX5  │   │A1
-   │             │             │             ┌─▼───▼┐  ┌─▼───▼┐  ┌─▼───▼┐
-   │             │             │────────────►│2:1MUX├─►│2:1MUX│─►│2:1MUX│
-   │             │             │             └───┬──┘  └───┬──┘  └───┬──┘
-   │             │             │              MX6│ B3   MX7│ B2   MX8│  B1     A0 B0
-   │             │             │                 │ │       │ │       │  │      │  │
-   │             │             │               ┌─▼─▼──┐  ┌─▼─▼──┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-   │             │             │               │      │  │      │  │      │  │      │
-   │             │             │             ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-   │             │             │             │ │      │  │      │  │      │  │      │
-   │             │             │             │ └──────┘  └──────┘  └──────┘  └──────┘
-   │             │             │             │
-   │             │             │             │
-┌──▼──┐       ┌──▼──┐       ┌──▼──┐       ┌──▼──┐
-│     │       │     │       │     │       │     │
-│ NOT │       │ NOT │       │ NOT │       │ NOT │
-│     │       │     │       │     │       │     │
-└──┬──┘       └──┬──┘       └──┬──┘       └──┬──┘
-   ▼             ▼             ▼             ▼
-   Q3            Q2            Q1            Q0
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>First input bus.</dd>
-<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>Second input bus.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of array divider. Defaults to "".</dd>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of array divider. Defaults to "arrdiv".</dd>
-</dl></div>
+<div class="desc"><p>Class representing unsigned popcount circuit.</p>
+<p>Popcount circuit is a circuit that counts the number of 1s in a binary number.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">class ArrayDivider(GeneralCircuit):
-    &#34;&#34;&#34;Class representing array divider.
+<pre><code class="python">class UnsignedPopCount(GeneralCircuit):
+    &#34;&#34;&#34;Class representing unsigned popcount circuit.
 
-    Array divider performs division between two N bit numbers and stores their
-    quotient in the output bus (remainder bits are not returned).
+    Popcount circuit is a circuit that counts the number of 1s in a binary number.
 
-    Design is based on series of iterative subtractions.
-
-    ```
-           0  B3     0  B2     0  B1     A3 B0
-           │  │      │  │      │  │      │  │
-           │  │      │  │      │  │      │  │
-         ┌─▼──▼─┐  ┌─▼──▼─┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-         │      │  │      │  │      │  │      │
-       ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-       │ │      │  │      │  │      │  │      │
-       │ └──────┘  └───┬──┘  └───┬──┘  └───┬──┘
-       │               │   │0    │   │0    │   │A3
-       │             ┌─▼───▼┐  ┌─▼───▼┐  ┌─▼───▼┐
-       ├────────────►│2:1MUX├─►│2:1MUX├─►│2:1MUX│
-       │             └───┬──┘  └───┬──┘  └───┬──┘
-       │              MX0│ B3   MX1│ B2   MX2│  B1     A2 B0
-       │                 │ │       │ │       │  │      │  │
-       │               ┌─▼─▼──┐  ┌─▼─▼──┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-       │               │      │  │      │  │      │  │      │
-       │             ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-       │             │ │      │  │      │  │      │  │      │
-       │             │ └──────┘  └───┬──┘  └───┬──┘  └───┬──┘
-       │             │               │   │MX1  │   │MX2  │   │A2
-       │             │             ┌─▼───▼┐  ┌─▼───▼┐  ┌─▼───▼┐
-       │             ├────────────►│2:1MUX├─►│2:1MUX│─►│2:1MUX│
-       │             │             └───┬──┘  └───┬──┘  └───┬──┘
-       │             │              MX3│ B3   MX4│ B2   MX5│  B1     A1 B0
-       │             │                 │ │       │ │       │  │      │  │
-       │             │               ┌─▼─▼──┐  ┌─▼─▼──┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-       │             │               │      │  │      │  │      │  │      │
-       │             │             ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-       │             │             │ │      │  │      │  │      │  │      │
-       │             │             │ └──────┘  └───┬──┘  └───┬──┘  └───┬──┘
-       │             │             │               │   │MX4  │   │MX5  │   │A1
-       │             │             │             ┌─▼───▼┐  ┌─▼───▼┐  ┌─▼───▼┐
-       │             │             │────────────►│2:1MUX├─►│2:1MUX│─►│2:1MUX│
-       │             │             │             └───┬──┘  └───┬──┘  └───┬──┘
-       │             │             │              MX6│ B3   MX7│ B2   MX8│  B1     A0 B0
-       │             │             │                 │ │       │ │       │  │      │  │
-       │             │             │               ┌─▼─▼──┐  ┌─▼─▼──┐  ┌─▼──▼─┐  ┌─▼──▼─┐
-       │             │             │               │      │  │      │  │      │  │      │
-       │             │             │             ┌─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─┤  FS  │◄─ 0
-       │             │             │             │ │      │  │      │  │      │  │      │
-       │             │             │             │ └──────┘  └──────┘  └──────┘  └──────┘
-       │             │             │             │
-       │             │             │             │
-    ┌──▼──┐       ┌──▼──┐       ┌──▼──┐       ┌──▼──┐
-    │     │       │     │       │     │       │     │
-    │ NOT │       │ NOT │       │ NOT │       │ NOT │
-    │     │       │     │       │     │       │     │
-    └──┬──┘       └──┬──┘       └──┬──┘       └──┬──┘
-       ▼             ▼             ▼             ▼
-       Q3            Q2            Q1            Q0
-    ```
-
-    Description of the __init__ method.
-
-    Args:
-        a (Bus): First input bus.
-        b (Bus): Second input bus.
-        prefix (str, optional): Prefix name of array divider. Defaults to &#34;&#34;.
-        name (str, optional): Name of array divider. Defaults to &#34;arrdiv&#34;.
     &#34;&#34;&#34;
-    def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;arrdiv&#34;, **kwargs):
-        self.N = max(a.N, b.N)
-        super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N, **kwargs)
 
-        # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
+    def __init__(self, a: Bus, adder : Optional[GeneralCircuit] = None, prefix : str = &#34;&#34;, name : str = &#34;popcnt&#34;, **kwargs):
+        self.N = a.N
+        outc = ceil(log2(self.N + 1))
+        #print(&#34;outc&#34;, outc)
+        super().__init__(name=name, prefix=prefix, inputs=[a], out_N=outc)
 
-        # Performing series of iterative subtractions
-        # Gradually shifting the divisor
-        for a_index in reversed(range(self.N)):
-            # Series of subtractions to obtain quotient bit
-            for b_index in range(self.N):
-                # First full subtractor is formed from divisor&#39;s LSB bit (b_index) and divident&#39;s MSB bit (a_index)
-                if b_index == 0:
-                    adder_object = FullSubtractor(a=self.a.get_wire(a_index), b=self.b.get_wire(b_index), c=ConstantWireValue0(), prefix=self.prefix+&#34;_fs&#34;+str(self.get_instance_num(cls=FullSubtractor)))
-                elif a_index == self.N-1:
-                    adder_object = FullSubtractor(a=ConstantWireValue0(), b=self.b.get_wire(b_index), c=self.get_previous_component().get_borrow_wire(), prefix=self.prefix+&#34;_fs&#34;+str(self.get_instance_num(cls=FullSubtractor)))
-                else:
-                    adder_object = FullSubtractor(a=self.get_previous_component(self.N+1).out.get_wire(), b=self.b.get_wire(b_index), c=self.get_previous_component().get_borrow_wire(), prefix=self.prefix+&#34;_fs&#34;+str(self.get_instance_num(cls=FullSubtractor)))
-                self.add_component(adder_object)
+        self.a.bus_extend(2**(outc - 1), prefix=a.prefix)
+        #print(self.a)
+        self.adder = adder
+        if not self.adder:
+            self.adder = UnsignedRippleCarryAdder
 
-            # Don&#39;t generate multiplexers for divison remainders
-            if a_index != 0:
-                for mux_index in range(self.N-1):
-                    mux_object = TwoOneMultiplexer(a=self.get_previous_component(self.N).get_difference_wire(), b=self.get_previous_component(self.N).a, c=self.get_previous_component(1+mux_index).get_borrow_wire(), prefix=self.prefix+&#34;_mux2to1&#34;+str(self.get_instance_num(cls=TwoOneMultiplexer)))
-                    self.add_component(mux_object)
+        # tree reduction
+        def create_tree(a: Bus, depth: int, branch=&#34;A&#34;):
+            #print(a)
+            if a.N == 1:
+                return a
+            else:
+                half = a.N // 2
+                b_in = Bus(N=half, prefix=f&#34;b_inn{branch}_{depth}A&#34;)
+                c_in = Bus(N=a.N - half, prefix=f&#34;c_inn{branch}_{depth}B&#34;)
+                #print(a, half, a.N)
+                for i, j in enumerate(range(half)):
+                    b_in.connect(i, a.get_wire(j))
+                for i, j in enumerate(range(half, a.N)):
+                    c_in.connect(i, a.get_wire(j))
 
-            # Every borrow out obtained from each iteration of subtractions needs to be negated to represent the quotient output bit
-            quotient = NotGate(a=adder_object.get_borrow_wire(), prefix=self.prefix+&#34;_not&#34;+str(self.get_instance_num(cls=NotGate)), parent_component=self)
-            self.add_component(quotient)
-            self.out.connect(a_index, quotient.out)</code></pre>
+                b = create_tree(b_in, depth=depth + 1, branch = branch + &#34;A&#34;)
+                c = create_tree(c_in, depth= depth + 1, branch = branch + &#34;B&#34;)
+                d = self.adder(a=b, b=c, 
+                               prefix = f&#34;{self.prefix}_add{branch}_{depth}&#34;, inner_component=True,
+                               parent_component=self)
+                self.add_component(d)
+                return d.out
+
+        sumbus = create_tree(self.a,0, &#34;X&#34;)
+        #print(sumbus)
+        self.out.connect_bus(sumbus)</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -296,13 +175,13 @@ quotient in the output bus (remainder bits are not returned).</p>
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="ariths_gen.multi_bit_circuits.dividers" href="index.html">ariths_gen.multi_bit_circuits.dividers</a></code></li>
+<li><code><a title="ariths_gen.multi_bit_circuits.others" href="index.html">ariths_gen.multi_bit_circuits.others</a></code></li>
 </ul>
 </li>
 <li><h3><a href="#header-classes">Classes</a></h3>
 <ul>
 <li>
-<h4><code><a title="ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider" href="#ariths_gen.multi_bit_circuits.dividers.array_divider.ArrayDivider">ArrayDivider</a></code></h4>
+<h4><code><a title="ariths_gen.multi_bit_circuits.others.popcount.UnsignedPopCount" href="#ariths_gen.multi_bit_circuits.others.popcount.UnsignedPopCount">UnsignedPopCount</a></code></h4>
 </li>
 </ul>
 </li>
