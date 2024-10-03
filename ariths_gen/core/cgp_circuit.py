@@ -42,9 +42,15 @@ class UnsignedCGPCircuit(GeneralCircuit):
 
             assert sum(
                 input_widths) == c_in, f"CGP input width {c_in} doesn't match input_widths {input_widths}"
+            
+            def get_name(i):
+                if i < 26:
+                    return chr(i + 0x61)
+                assert i < 26 * 26
+                return chr(i // 26 + 0x60) + chr(i % 26 + 0x61)
 
-            inputs = [Bus(N=bw, prefix=f"input_{chr(i)}")
-                    for i, bw in enumerate(input_widths, start=0x61)]
+            inputs = [Bus(N=bw, prefix=f"input_{get_name(i)}")
+                    for i, bw in enumerate(input_widths)]
 
             # Assign each Bus object in self.inputs to a named attribute of self
             for bus in inputs:
