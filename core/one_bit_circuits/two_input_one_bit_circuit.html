@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta name="generator" content="pdoc3 0.11.1">
+<meta name="generator" content="pdoc3 0.11.4">
 <title>ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
 <style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
@@ -37,7 +37,7 @@ hljs.highlightAll();
 <dl>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit"><code class="flex name class">
 <span>class <span class="ident">TwoInputOneBitCircuit</span></span>
-<span>(</span><span>a: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a> = &lt;ariths_gen.wire_components.wires.Wire object&gt;, b: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a> = &lt;ariths_gen.wire_components.wires.Wire object&gt;, prefix: str = '', name: str = 'two_input_one_bit_circuit')</span>
+<span>(</span><span>a: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a> = &lt;ariths_gen.wire_components.wires.Wire object&gt;,<br>b: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a> = &lt;ariths_gen.wire_components.wires.Wire object&gt;,<br>prefix: str = '',<br>name: str = 'two_input_one_bit_circuit')</span>
 </code></dt>
 <dd>
 <div class="desc"><p>Class represents a general two input one bit circuit and implements their generation to various representations. It is derived from <code>ArithmeticCircuit</code> class.</p>
@@ -426,6 +426,21 @@ hljs.highlightAll();
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_blif_code_flat(self, file_object):
+    &#34;&#34;&#34;Generates flat Blif code representation of corresponding one bit circuit.
+
+    Args:
+        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
+    &#34;&#34;&#34;
+    file_object.write(self.get_prototype_blif())
+    file_object.write(self.get_declaration_blif())
+    file_object.write(self.get_function_blif_flat(top_modul=True))
+    file_object.write(f&#34;.end\n&#34;)</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_declaration_blif</span></span>(<span>self)</span>
@@ -439,6 +454,27 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Blif code containing declaration of circuit's input/output wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declaration_blif(self):
+    &#34;&#34;&#34;Generates Blif code declaration of two input one bit circuit&#39;s input/output wires.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner modul logic is also modified accordingly. It is used for self two input one bit circuit flat/hierarchical generation.
+
+    Returns:
+        str: Blif code containing declaration of circuit&#39;s input/output wires.
+    &#34;&#34;&#34;
+    unique_out_wires = []
+    [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+    return f&#34;.inputs {self.a.get_wire_declaration_blif()}{self.b.get_wire_declaration_blif()}\n&#34; + \
+           f&#34;.outputs&#34; + \
+           &#34;&#34;.join([f&#34; {o}&#34; for o in unique_out_wires]) + &#34;\n&#34; + \
+           f&#34;.names vdd\n1\n&#34; + \
+           f&#34;.names gnd\n0\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declaration_c_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_flat</span></span>(<span>self)</span>
@@ -450,6 +486,19 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Flat C code containing unique declaration of circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declaration_c_flat(self):
+    &#34;&#34;&#34;Generates flat C code declaration of output wires.
+
+    Returns:
+        str: Flat C code containing unique declaration of circuit wires.
+    &#34;&#34;&#34;
+    # Unique declaration of all circuit&#39;s inner components outputs
+    return &#34;&#34;.join([c.out.get_declaration_c() for c in self.components if c.disable_generation is False])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declaration_c_hier"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_hier</span></span>(<span>self)</span>
@@ -461,6 +510,19 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Hierarchical C code containing unique declaration of circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declaration_c_hier(self):
+    &#34;&#34;&#34;Generates hierarchical C code declaration of output wires.
+
+    Returns:
+        str: Hierarchical C code containing unique declaration of circuit wires.
+    &#34;&#34;&#34;
+    # Unique declaration of all circuit&#39;s inner components outputs
+    return &#34;&#34;.join([c.out.get_declaration_c() for c in self.components if c.disable_generation is False and any(o.prefix == c.out.prefix for o in self.out.bus)])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declaration_v_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_flat</span></span>(<span>self)</span>
@@ -472,6 +534,19 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Flat Verilog code containing unique declaration of one bit circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declaration_v_flat(self):
+    &#34;&#34;&#34;Generates flat Verilog code declaration of inner component&#39;s output wires.
+
+    Returns:
+        str: Flat Verilog code containing unique declaration of one bit circuit wires.
+    &#34;&#34;&#34;
+    # Unique declaration of all circuit&#39;s inner components outputs
+    return &#34;&#34;.join([c.out.get_declaration_v_flat() for c in self.components if c.disable_generation is False])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declaration_v_hier"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
@@ -483,6 +558,19 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code containing unique declaration of circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declaration_v_hier(self):
+    &#34;&#34;&#34;Generates hierarchical Verilog code declaration of output wires.
+
+    Returns:
+        str: Hierarchical Verilog code containing unique declaration of circuit wires.
+    &#34;&#34;&#34;
+    # Unique declaration of all circuit&#39;s inner components outputs
+    return &#34;&#34;.join([c.out.get_declaration_v_hier() for c in self.components if c.disable_generation is False and any(o.prefix == c.out.prefix for o in self.out.bus)])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declarations_v_flat"><code class="name flex">
 <span>def <span class="ident">get_declarations_v_flat</span></span>(<span>self)</span>
@@ -494,6 +582,19 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Flat Verilog code containing unique declaration of one bit circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declarations_v_flat(self):
+    &#34;&#34;&#34;Generates flat Verilog code declaration of self one bit circuit wires when described one bit circuit is a top module.
+
+    Returns:
+        str: Flat Verilog code containing unique declaration of one bit circuit wires.
+    &#34;&#34;&#34;
+    # Unique declaration of all circuit&#39;s inner component wires
+    return &#34;&#34;.join([c.out.get_declaration_v_flat() for c in self.components if c.disable_generation is False and not any(o.prefix == c.out.prefix for o in self.out.bus)])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_declarations_v_hier"><code class="name flex">
 <span>def <span class="ident">get_declarations_v_hier</span></span>(<span>self)</span>
@@ -505,6 +606,19 @@ In such cases the inner modul logic is also modified accordingly. It is used for
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code containing unique declaration of subcomponent's function block circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_declarations_v_hier(self):
+    &#34;&#34;&#34;Generates hierarchical Verilog code declaration of input subcomponent&#39;s circuit wires.
+
+    Returns:
+        str: Hierarchical Verilog code containing unique declaration of subcomponent&#39;s function block circuit wires.
+    &#34;&#34;&#34;
+    # Unique declaration of all circuit&#39;s inner component wires
+    return &#34;&#34;.join([c.out.get_declaration_v_hier() for c in self.components if c.disable_generation is False and not any(o.prefix == c.out.prefix for o in self.out.bus)])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_function_blif_flat"><code class="name flex">
 <span>def <span class="ident">get_function_blif_flat</span></span>(<span>self, top_modul: bool = False)</span>
@@ -523,6 +637,31 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Flat Blif code containing invocation of inner subcomponents logic gates Boolean functions.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_function_blif_flat(self, top_modul: bool = False):
+    &#34;&#34;&#34;Generates flat Blif code with invocation of subcomponents logic gates Boolean functions via their corresponding truth tables.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner modul prototype is also modified accordingly. It is used for self two input one bit circuit flat generation.
+
+    Args:
+        top_modul (bool, optional): Specifies whether the described circuit represents top modul component (self one bit circuit generation). Defaults to False.
+
+    Returns:
+        str: Flat Blif code containing invocation of inner subcomponents logic gates Boolean functions.
+    &#34;&#34;&#34;
+    if top_modul:
+        unique_out_wires = []
+        [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+        return &#34;&#34;.join([c.get_function_blif_flat() if c.disable_generation is False else
+                       c.out.get_assign_blif(prefix=f&#34;{unique_out_wires.pop(unique_out_wires.index(c.out.name+&#39;_outid&#39;+str(c.outid)))}&#34;, output=True) if f&#34;{c.out.name+&#39;_outid&#39;+str(c.outid)}&#34; in unique_out_wires else
+                       &#34;&#34; for c in self.components])
+    else:
+        return &#34;&#34;.join([c.get_function_blif_flat() for c in self.components])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_function_block_blif"><code class="name flex">
 <span>def <span class="ident">get_function_block_blif</span></span>(<span>self)</span>
@@ -534,6 +673,19 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code of two input one bit circuit's function block description.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_function_block_blif(self):
+    &#34;&#34;&#34;Generates hierarchical Blif code representation of corresponding two input one bit circuit used as function block in hierarchical circuit description.
+
+    Returns:
+        str: Hierarchical Blif code of two input one bit circuit&#39;s function block description.
+    &#34;&#34;&#34;
+    adder_block = self.__class__()
+    return f&#34;{adder_block.get_circuit_blif()}&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_function_block_c"><code class="name flex">
 <span>def <span class="ident">get_function_block_c</span></span>(<span>self)</span>
@@ -545,6 +697,19 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Hierarchical C code of two input one bit circuit's function block description.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_function_block_c(self):
+    &#34;&#34;&#34;Generates hierarchical C code representation of corresponding two input one bit circuit used as function block in hierarchical circuit description.
+
+    Returns:
+        str: Hierarchical C code of two input one bit circuit&#39;s function block description.
+    &#34;&#34;&#34;
+    adder_block = self.__class__()
+    return f&#34;{adder_block.get_circuit_c()}\n\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_function_block_v"><code class="name flex">
 <span>def <span class="ident">get_function_block_v</span></span>(<span>self)</span>
@@ -556,6 +721,19 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code of two input one bit circuit's function block description.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_function_block_v(self):
+    &#34;&#34;&#34;Generates hierarchical Verilog code representation of corresponding two input one bit circuit used as function block in hierarchical circuit description.
+
+    Returns:
+        str: Hierarchical Verilog code of two input one bit circuit&#39;s function block description.
+    &#34;&#34;&#34;
+    adder_block = self.__class__()
+    return f&#34;{adder_block.get_circuit_v()}\n\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_function_out_c_hier"><code class="name flex">
 <span>def <span class="ident">get_function_out_c_hier</span></span>(<span>self)</span>
@@ -567,6 +745,18 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Hierarchical C code containing output bus wires assignment.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_function_out_c_hier(self):
+    &#34;&#34;&#34;Generates hierarchical C code assignment of corresponding two input one bit circuit&#39;s output wires.
+
+    Returns:
+        str: Hierarchical C code containing output bus wires assignment.
+    &#34;&#34;&#34;
+    return self.out.return_bus_wires_values_c_flat()</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_c_flat"><code class="name flex">
 <span>def <span class="ident">get_init_c_flat</span></span>(<span>self)</span>
@@ -578,6 +768,18 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Flat C code initialization of two input one bit circuit output wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_init_c_flat(self):
+    &#34;&#34;&#34;Generates flat C code initialization and assignment of corresponding two input one bit circuit&#39;s output wires.
+
+    Returns:
+        str: Flat C code initialization of two input one bit circuit output wires.
+    &#34;&#34;&#34;
+    return &#34;&#34;.join([c.get_assign_c_flat() for c in self.components])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_init_v_flat"><code class="name flex">
 <span>def <span class="ident">get_init_v_flat</span></span>(<span>self)</span>
@@ -589,6 +791,18 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Flat Verilog code initialization of two input one bit circuit wires.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_init_v_flat(self):
+    &#34;&#34;&#34;Generates flat Verilog code initialization and assignment of corresponding two input one bit circuit&#39;s input/output wires.
+
+    Returns:
+        str: Flat Verilog code initialization of two input one bit circuit wires.
+    &#34;&#34;&#34;
+    return &#34;&#34;.join([c.get_assign_v_flat() for c in self.components])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_invocation_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocation_blif_hier</span></span>(<span>self)</span>
@@ -600,6 +814,19 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code subcomponent's model invocation.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_invocation_blif_hier(self):
+    &#34;&#34;&#34;Generates hierarchical Blif code invocation of corresponding two input one bit circuit&#39;s generated function block.
+
+    Returns:
+        str: Hierarchical Blif code subcomponent&#39;s model invocation.
+    &#34;&#34;&#34;
+    circuit_block = self.__class__()
+    return f&#34;.subckt {circuit_block.prefix} {circuit_block.a.prefix}={self.a.get_wire_value_blif()} {circuit_block.b.prefix}={self.b.get_wire_value_blif()}{self.out.get_unique_assign_out_wires_blif(function_block_out_bus=circuit_block.out)}\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_invocations_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocations_blif_hier</span></span>(<span>self)</span>
@@ -613,6 +840,25 @@ In such cases the inner modul prototype is also modified accordingly. It is used
 <dt><code>str</code></dt>
 <dd>Hierarchical Blif code containing invocation of inner subcomponents function blocks.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_invocations_blif_hier(self):
+    &#34;&#34;&#34;Generates hierarchical Blif code with invocation of subcomponents function blocks.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner modul prototype is also modified accordingly. It is used for self two input one bit circuit hierarchical generation.
+
+    Returns:
+        str: Hierarchical Blif code containing invocation of inner subcomponents function blocks.
+    &#34;&#34;&#34;
+    unique_out_wires = []
+    [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+    return &#34;&#34;.join([c.get_invocation_blif_hier() if c.disable_generation is False else
+                   c.out.get_assign_blif(prefix=f&#34;{unique_out_wires.pop(unique_out_wires.index(c.out.name+&#39;_outid&#39;+str(c.outid)))}&#34;, output=True) if f&#34;{c.out.name+&#39;_outid&#39;+str(c.outid)}&#34; in unique_out_wires else
+                   &#34;&#34; for c in self.components])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_out_invocation_c"><code class="name flex">
 <span>def <span class="ident">get_out_invocation_c</span></span>(<span>self)</span>
@@ -626,6 +872,25 @@ component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical C code subcomponent's C function invocation and output assignment.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_out_invocation_c(self):
+    &#34;&#34;&#34;Generates hierarchical C code invocation of corresponding two input one bit circuit&#39;s generated function block.
+
+    Assigns output values from invocation of the corresponding function block into inner wires present inside the upper
+    component from which function block has been invoked.
+
+    Returns:
+        str: Hierarchical C code subcomponent&#39;s C function invocation and output assignment.
+    &#34;&#34;&#34;
+    # Used to retrieve proper component&#39;s output wire offset position within the output bus
+    output_bus_wire_names = []
+    [output_bus_wire_names.append(w.prefix) for w in self.out.bus]
+    circuit_block = self.__class__()
+    return &#34;&#34;.join([f&#34;  {c.out.prefix} = ({circuit_block.prefix}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()}) &gt;&gt; {output_bus_wire_names.index(c.out.prefix)}) &amp; 0x01;\n&#34; for c in self.components if c.disable_generation is False and c.out.prefix in output_bus_wire_names])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_out_invocation_v"><code class="name flex">
 <span>def <span class="ident">get_out_invocation_v</span></span>(<span>self)</span>
@@ -639,6 +904,22 @@ component from which function block has been invoked.</p>
 <dt><code>str</code></dt>
 <dd>Hierarchical Verilog code subcomponent's module invocation and output assignment.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_out_invocation_v(self):
+    &#34;&#34;&#34;Generates hierarchical Verilog code invocation of corresponding two input one bit circuit&#39;s generated function block.
+
+    Assigns output values from invocation of the corresponding function block into inner wires present inside the upper
+    component from which function block has been invoked.
+
+    Returns:
+        str: Hierarchical Verilog code subcomponent&#39;s module invocation and output assignment.
+    &#34;&#34;&#34;
+    circuit_block = self.__class__()
+    return f&#34;  {circuit_block.prefix} {circuit_block.prefix}_{self.out.prefix}(.{circuit_block.a.prefix}({self.a.get_wire_value_v_hier()}), .{circuit_block.b.prefix}({self.b.get_wire_value_v_hier()}){self.out.get_unique_assign_out_wires_v(circuit_block)});\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_parameters_cgp"><code class="name flex">
 <span>def <span class="ident">get_parameters_cgp</span></span>(<span>self)</span>
@@ -652,6 +933,22 @@ number of each gate's inputs, number of each gate's outputs, quality constant va
 <dt><code>str</code></dt>
 <dd>CGP chromosome parameters of described circuit.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_parameters_cgp(self):
+    &#34;&#34;&#34;Generates CGP chromosome parameters of corresponding two input one bit circuit.
+
+    In total seven parameters represent: total inputs, total outputs, number of rows, number of columns (gates),
+    number of each gate&#39;s inputs, number of each gate&#39;s outputs, quality constant value.
+
+    Returns:
+        str: CGP chromosome parameters of described circuit.
+    &#34;&#34;&#34;
+    self.circuit_gates = self.get_circuit_gates()
+    return f&#34;{{2,{self.out.N},1,{len(self.circuit_gates)},2,1,0}}&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_prototype_v"><code class="name flex">
 <span>def <span class="ident">get_prototype_v</span></span>(<span>self)</span>
@@ -665,6 +962,24 @@ In such cases the inner module logic is also modified accordingly. It is used fo
 <dt><code>str</code></dt>
 <dd>Flat module's name and parameters in Verilog.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_prototype_v(self):
+    &#34;&#34;&#34;Generates Verilog for flat module header to describe corresponding two input one bit circuit&#39;s interface in Verilog.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner module logic is also modified accordingly. It is used for self two input one bit circuit flat generation.
+
+    Returns:
+        str: Flat module&#39;s name and parameters in Verilog.
+    &#34;&#34;&#34;
+    unique_out_wires = []
+    [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+    return f&#34;module {self.prefix}(input {self.a.name}, input {self.b.name}&#34; + \
+           &#34;&#34;.join([f&#34;, output {o}&#34; for o in unique_out_wires]) + &#34;);\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_prototype_v_hier"><code class="name flex">
 <span>def <span class="ident">get_prototype_v_hier</span></span>(<span>self)</span>
@@ -678,6 +993,24 @@ In such cases the inner module logic is also modified accordingly. It is used fo
 <dt><code>str</code></dt>
 <dd>Hierarchical module's name and parameters in Verilog.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_prototype_v_hier(self):
+    &#34;&#34;&#34;Generates Verilog for hierarchical module header to describe corresponding two input one bit circuit&#39;s interface in Verilog.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner module logic is also modified accordingly. It is used for self two input one bit circuit hierarchical generation.
+
+    Returns:
+        str: Hierarchical module&#39;s name and parameters in Verilog.
+    &#34;&#34;&#34;
+    unique_out_wires = []
+    [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+    return f&#34;module {self.prefix}(input [0:0] {self.a.name}, input [0:0] {self.b.name}&#34; + \
+           &#34;&#34;.join([f&#34;, output [0:0] {o}&#34; for o in unique_out_wires]) + &#34;);\n&#34;</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_self_init_v_flat"><code class="name flex">
 <span>def <span class="ident">get_self_init_v_flat</span></span>(<span>self)</span>
@@ -691,6 +1024,26 @@ In such cases the inner module prototype is also modified accordingly. It is use
 <dt><code>str</code></dt>
 <dd>Verilog flat module's inner circuit wires initialization and assignment.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_self_init_v_flat(self):
+    &#34;&#34;&#34;Generates Verilog for self flat module initialization and assignment of corresponding two input one bit circuit&#39;s input/output wires.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner module prototype is also modified accordingly. It is used for self two input one bit circuit flat generation.
+
+    Returns:
+        str: Verilog flat module&#39;s inner circuit wires initialization and assignment.
+    &#34;&#34;&#34;
+    unique_out_wires = []
+    [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+    return &#34;&#34;.join([c.get_assign_v_flat() if c.disable_generation is False else
+                    f&#34;  assign {unique_out_wires.pop(unique_out_wires.index(c.out.name+&#39;_outid&#39;+str(c.outid)))} = {c.out.v_const};\n&#34; if f&#34;{c.out.name+&#39;_outid&#39;+str(c.outid)}&#34; in unique_out_wires and c.out.is_const() else
+                    f&#34;  assign {unique_out_wires.pop(unique_out_wires.index(c.out.name+&#39;_outid&#39;+str(c.outid)))} = {c.out.name};\n&#34; if f&#34;{c.out.name+&#39;_outid&#39;+str(c.outid)}&#34; in unique_out_wires else
+                    f&#34;&#34; for c in self.components])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_self_init_v_hier"><code class="name flex">
 <span>def <span class="ident">get_self_init_v_hier</span></span>(<span>self)</span>
@@ -704,6 +1057,26 @@ In such cases the inner module prototype is also modified accordingly. It is use
 <dt><code>str</code></dt>
 <dd>Verilog hierarchical module's inner circuit wires initialization and assignment.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_self_init_v_hier(self):
+    &#34;&#34;&#34;Generates Verilog for hierarchical module&#39;s inner initialization and assignment of corresponding arithmetic circuit&#39;s input/output wires.
+
+    It is adapted for generation of general description of two input one bit circuits as well as their modified versions when some inputs are desired as constant values.
+    In such cases the inner module prototype is also modified accordingly. It is used for self two input one bit circuit hierarchical generation.
+
+    Returns:
+        str: Verilog hierarchical module&#39;s inner circuit wires initialization and assignment.
+    &#34;&#34;&#34;
+    unique_out_wires = []
+    [unique_out_wires.append(o.name+&#34;_outid&#34;+str(self.out.bus.index(o))) if o.is_const() or o.name in [self.a.name, self.b.name] else unique_out_wires.append(o.name) for o in self.out.bus]
+    return &#34;&#34;.join([c.get_gate_invocation_v() if c.disable_generation is False else
+                    f&#34;  assign {unique_out_wires.pop(unique_out_wires.index(c.out.name+&#39;_outid&#39;+str(c.outid)))}[0] = {c.out.v_const};\n&#34; if f&#34;{c.out.name+&#39;_outid&#39;+str(c.outid)}&#34; in unique_out_wires and c.out.is_const() else
+                    f&#34;  assign {unique_out_wires.pop(unique_out_wires.index(c.out.name+&#39;_outid&#39;+str(c.outid)))}[0] = {c.out.name}[0];\n&#34; if f&#34;{c.out.name+&#39;_outid&#39;+str(c.outid)}&#34; in unique_out_wires else
+                    f&#34;&#34; for c in self.components])</code></pre>
+</details>
 </dd>
 <dt id="ariths_gen.core.one_bit_circuits.two_input_one_bit_circuit.TwoInputOneBitCircuit.get_v_code_flat"><code class="name flex">
 <span>def <span class="ident">get_v_code_flat</span></span>(<span>self, file_object)</span>
@@ -715,6 +1088,21 @@ In such cases the inner module prototype is also modified accordingly. It is use
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_v_code_flat(self, file_object):
+    &#34;&#34;&#34;Generates flat Verilog code representation of corresponding one bit circuit.
+
+    Args:
+        file_object (TextIOWrapper): Destination file object where circuit&#39;s representation will be written to.
+    &#34;&#34;&#34;
+    file_object.write(self.get_prototype_v())
+    file_object.write(self.get_declarations_v_flat())
+    file_object.write(self.get_self_init_v_flat())
+    file_object.write(f&#34;endmodule&#34;)</code></pre>
+</details>
 </dd>
 </dl>
 <h3>Inherited members</h3>
@@ -816,7 +1204,7 @@ In such cases the inner module prototype is also modified accordingly. It is use
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.4</a>.</p>
 </footer>
 </body>
 </html>
