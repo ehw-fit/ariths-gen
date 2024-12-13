@@ -16,3 +16,4 @@ from .multi_bit_circuits import (
 )
 
 from .pdk import *
+from . __version__ import __version__
