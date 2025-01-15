@@ -12,7 +12,7 @@ test_circuit () {
         echo -e "===== Testing verilog \e[33m$circuit\e[0m ($mode) ======"
 
         if iverilog -o tmp.verilog -Ddut=$circuit ../test_circuits/verilog_circuits/$mode/$circuit.v tb_$type.v ; then
-            tv=`vvp tmp.verilog`
+            tv=`vvp -n tmp.verilog`
             if [[ $tv ]]; then
                 echo -e "[\e[31mfail\e[0m]"
                 echo -e $tv
