@@ -73,28 +73,13 @@ class AndGate(TwoInputLogicGate):
             parent.set_cnfvar(self.out, z)
             return []
 
+        if x == y: # a AND a
+            parent.set_cnfvar(self.out, x)
+            return []
+
         z = parent.get_cnfvar(self.out, create = True)
     
-#        return f"[[{x},-{z}],[{y},-{z}],[{z},-{x},-{y}]]"
         return [[x,-z],[y,-z],[-x,-y,z]]
-# """
-#         auto z = getnewvar();
-# 	z je vystupni promenna hradla
-
-# 	x <- getvar(in1)
-# 	y <- getvar(in2)
-
-# 	do CNF ukladam:
-
-# 	XOR:
-
-# 	  [[-x,y,z],[x,-y,z],[-x,-y,-z],[x,y,-z]]
-
-# 	AND: 
-
-# 	  [[x,-z],[y,-z],[-x,-y-,-z]]
-
-
 
 
 class NandGate(TwoInputInvertedLogicGate):
@@ -161,6 +146,25 @@ class NandGate(TwoInputInvertedLogicGate):
             return f".names {self.a.get_wire_value_blif()} {self.b.get_wire_value_blif()} {self.out.get_wire_value_blif()}\n" + \
                    f"0- 1\n-0 1\n"
 
+    def get_cnf_clause(self, parent):
+        """Generates CNF clause representing AND gate Boolean function using its truth table."""
+
+
+        x = parent.get_cnfvar(self.a)
+        y = parent.get_cnfvar(self.b)
+
+        if x == -y: # a NAND ~a
+            z = parent.get_cnfvar(ConstantWireValue1())
+            parent.set_cnfvar(self.out, z)
+            return []
+
+        if x == y: # a AND a
+            parent.set_cnfvar(self.out, -x)
+            return []
+
+        z = parent.get_cnfvar(self.out, create = True)
+    
+        return [[x,z],[y,z],[-x,-y,-z]]
 
 class OrGate(TwoInputLogicGate):
     """Class representing two input OR gate.
@@ -220,6 +224,25 @@ class OrGate(TwoInputLogicGate):
             return f".names {self.a.get_wire_value_blif()} {self.b.get_wire_value_blif()} {self.out.get_wire_value_blif()}\n" + \
                    f"1- 1\n-1 1\n"
 
+    def get_cnf_clause(self, parent):
+        """Generates CNF clause representing AND gate Boolean function using its truth table."""
+
+
+        x = parent.get_cnfvar(self.a)
+        y = parent.get_cnfvar(self.b)
+
+        if x == -y: # a OR ~a
+            z = parent.get_cnfvar(ConstantWireValue1())
+            parent.set_cnfvar(self.out, z)
+            return []
+
+        if x == y: # a OR a
+            parent.set_cnfvar(self.out, x)
+            return []
+
+        z = parent.get_cnfvar(self.out, create = True)
+    
+        return [[-x,z],[-y,z],[x,y,-z]]
 
 class NorGate(TwoInputInvertedLogicGate):
     """Class representing two input NOR gate.
@@ -285,6 +308,25 @@ class NorGate(TwoInputInvertedLogicGate):
             return f".names {self.a.get_wire_value_blif()} {self.b.get_wire_value_blif()} {self.out.get_wire_value_blif()}\n" + \
                    f"00 1\n"
 
+    def get_cnf_clause(self, parent):
+        """Generates CNF clause representing AND gate Boolean function using its truth table."""
+
+
+        x = parent.get_cnfvar(self.a)
+        y = parent.get_cnfvar(self.b)
+
+        if x == -y: # a NOR ~a
+            z = parent.get_cnfvar(ConstantWireValue0())
+            parent.set_cnfvar(self.out, z)
+            return []
+
+        if x == y: # a NOR a
+            parent.set_cnfvar(self.out, -x)
+            return []
+
+        z = parent.get_cnfvar(self.out, create = True)
+    
+        return [[-x,-z],[-y,-z],[x,y,z]]
 
 class XorGate(TwoInputLogicGate):
     """Class representing two input XOR gate.
@@ -336,30 +378,23 @@ class XorGate(TwoInputLogicGate):
         else:
             self.out = Wire(name=prefix)
             
-
     def get_cnf_clause(self, parent):
         z = parent.get_cnfvar(self.out, create = True)
         x = parent.get_cnfvar(self.a)
         y = parent.get_cnfvar(self.b)
 
-        return [[ -x, y, z], [x,-y,z],[x,y,-z],[x,-y,-z]]
+        if x == -y: # a XOR ~a
+            z = parent.get_cnfvar(ConstantWireValue1())
+            parent.set_cnfvar(self.out, z)
+            return []
 
-# """
-#         auto z = getnewvar();
-# 	z je vystupni promenna hradla
+        if x == y: # a XOR a
+            z = parent.get_cnfvar(ConstantWireValue0())
+            parent.set_cnfvar(self.out, z)
+            return []
 
-# 	x <- getvar(in1)
-# 	y <- getvar(in2)
+        return [[ -x, y, z], [x,-y,z], [x,y,-z], [-x,-y,-z]]
 
-# 	do CNF ukladam:
-
-# 	XOR:
-
-# 	  [[-x,y,z],[x,-y,z],[-x,-y,-z],[x,y,-z]]
-
-# 	AND: 
-
-# 	  [[x,-z],[y,-z],[-x,-y-,-z]]
 
     """ BLIF CODE GENERATION """
     def get_function_blif(self):
@@ -439,6 +474,23 @@ class XnorGate(TwoInputInvertedLogicGate):
         else:
             return f".names {self.a.get_wire_value_blif()} {self.b.get_wire_value_blif()} {self.out.get_wire_value_blif()}\n" + \
                    f"00 1\n11 1\n"
+
+    def get_cnf_clause(self, parent):
+        z = parent.get_cnfvar(self.out, create = True)
+        x = parent.get_cnfvar(self.a)
+        y = parent.get_cnfvar(self.b)
+
+        if x == -y: # a XNOR ~a
+            z = parent.get_cnfvar(ConstantWireValue0())
+            parent.set_cnfvar(self.out, z)
+            return []
+            
+        if x == y: # a XNOR a
+            z = parent.get_cnfvar(ConstantWireValue1())
+            parent.set_cnfvar(self.out, z)
+            return []
+
+        return [[ -x, y, -z], [x,-y,-z], [x,y,z], [-x,-y,z]]
 
 
 # Single-input #
