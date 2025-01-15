@@ -60,6 +60,41 @@ class AndGate(TwoInputLogicGate):
         else:
             return f".names {self.a.get_wire_value_blif()} {self.b.get_wire_value_blif()} {self.out.get_wire_value_blif()}\n" + \
                    f"11 1\n"
+        
+    def get_cnf_clause(self, parent):
+        """Generates CNF clause representing AND gate Boolean function using its truth table."""
+
+
+        x = parent.get_cnfvar(self.a)
+        y = parent.get_cnfvar(self.b)
+
+        if x == -y: # a AND ~a
+            z = parent.get_cnfvar(ConstantWireValue0())
+            parent.set_cnfvar(self.out, z)
+            return []
+
+        z = parent.get_cnfvar(self.out, create = True)
+    
+#        return f"[[{x},-{z}],[{y},-{z}],[{z},-{x},-{y}]]"
+        return [[x,-z],[y,-z],[-x,-y,z]]
+# """
+#         auto z = getnewvar();
+# 	z je vystupni promenna hradla
+
+# 	x <- getvar(in1)
+# 	y <- getvar(in2)
+
+# 	do CNF ukladam:
+
+# 	XOR:
+
+# 	  [[-x,y,z],[x,-y,z],[-x,-y,-z],[x,y,-z]]
+
+# 	AND: 
+
+# 	  [[x,-z],[y,-z],[-x,-y-,-z]]
+
+
 
 
 class NandGate(TwoInputInvertedLogicGate):
@@ -281,7 +316,7 @@ class XorGate(TwoInputLogicGate):
         # If constant input is present, logic gate is not generated and corresponding
         # input value is propagated to the output to connect to other components
         if a.is_const() and a.value == 1:
-            assert self.parent_component, "Parent component for gate {self} is not defined"
+            assert self.parent_component, f"Parent component for gate {self} is not defined"
             output = NotGate(a=b, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
@@ -290,7 +325,7 @@ class XorGate(TwoInputLogicGate):
             self.out = b
             self.disable_generation = True
         elif b.is_const() and b.value == 1:
-            assert self.parent_component, "Parent component for gate {self} is not defined"
+            assert self.parent_component, f"Parent component for gate {self} is not defined"
             output = NotGate(a=a, prefix=prefix + "_not", outid=outid, parent_component=parent_component)
             self.parent_component.add_component(output) if parent_component is not None else None
             self.out = output.out
@@ -300,6 +335,31 @@ class XorGate(TwoInputLogicGate):
             self.disable_generation = True
         else:
             self.out = Wire(name=prefix)
+            
+
+    def get_cnf_clause(self, parent):
+        z = parent.get_cnfvar(self.out, create = True)
+        x = parent.get_cnfvar(self.a)
+        y = parent.get_cnfvar(self.b)
+
+        return [[ -x, y, z], [x,-y,z],[x,y,-z],[x,-y,-z]]
+
+# """
+#         auto z = getnewvar();
+# 	z je vystupni promenna hradla
+
+# 	x <- getvar(in1)
+# 	y <- getvar(in2)
+
+# 	do CNF ukladam:
+
+# 	XOR:
+
+# 	  [[-x,y,z],[x,-y,z],[-x,-y,-z],[x,y,-z]]
+
+# 	AND: 
+
+# 	  [[x,-z],[y,-z],[-x,-y-,-z]]
 
     """ BLIF CODE GENERATION """
     def get_function_blif(self):
@@ -432,3 +492,8 @@ class NotGate(OneInputLogicGate):
         else:
             return f".names {self.a.get_wire_value_blif()} {self.out.get_wire_value_blif()}\n" + \
                    f"0 1\n"
+
+    def get_cnf_clause(self, parent):
+        x = parent.get_cnfvar(self.a)
+        parent.set_cnfvar(self.out, -x)
+        return []

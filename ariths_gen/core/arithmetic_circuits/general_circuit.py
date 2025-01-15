@@ -1,3 +1,4 @@
+import json
 from ariths_gen.core.logic_gate_circuits.logic_gate_circuit import (
     OneInputLogicGate,
     TwoInputLogicGate
@@ -10,6 +11,8 @@ from typing import Dict
 import inspect
 import copy
 from io import StringIO
+
+from ariths_gen.wire_components.wires import ConstantWireValue0, ConstantWireValue1
 
 
 class GeneralCircuit():
@@ -856,3 +859,103 @@ class GeneralCircuit():
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_triplets_cgp())
         file_object.write(self.get_outputs_cgp())
+
+
+    # Generating flat C code representation of circuit
+    def get_cnf_code_flat(self, file_object):
+        """Generates flat C code representation of corresponding arithmetic circuit.
+
+        Args:
+            file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
+        """
+        assert self.out.N == 1, f"CNF generation only supports single output, not {self.out.N}"
+
+        self.cnf_vars = {}
+        self.cnf_varid = 1
+        self.cnf_has_const = False
+        self.cnf_var_comments = {}
+
+        for i in self.inputs:
+            for j in range(i.N):
+                self.get_cnfvar(i[j], create=True)
+
+        # hash array for gate outputs
+        hash_outputs = {}
+        for i, g in enumerate(self.circuit_gates):
+            assert g.out not in hash_outputs, f"Gate {g} has multiple outputs"
+            hash_outputs[g.out] = (i, g)
+
+
+        active_outputs = set()
+
+        # set ouput active
+        for i in range(self.out.N):
+            active_outputs.add(self.out[i].name)
+
+        print(active_outputs)
+        # for all gates back
+        for g in reversed(self.circuit_gates):
+            if g.out.name in active_outputs:
+                # set output active
+                active_outputs.add(g.a.name)
+                if hasattr(g, "b"):
+                    active_outputs.add(g.b.name)
+                if hasattr(g, "c"):
+                    active_outputs += (g.c.name)
+                print("Setting active output", g.out, " for gate ", g)
+        
+        
+        print("active outputs", active_outputs)
+
+        print(hash_outputs)
+        
+
+        #file_object.write(self.get_includes_c())
+        #file_object.write(self.get_prototype_c())
+        allcnfs = []
+        for g in self.circuit_gates:
+            if g.out.name not in active_outputs:
+                continue
+            allcnfs += g.get_cnf_clause(self)
+
+        allcnfs.append([self.get_cnfvar(self.out[0])])
+        const1 = ConstantWireValue1()
+        if str(const1) in self.cnf_vars:
+            allcnfs.append([self.get_cnfvar(const1)])
+
+
+        # header p cnf <vars> <clauses>
+        file_object.write(f"p cnf {self.cnf_varid-1} {len(allcnfs)}\n")
+
+        file_object.write("c varmap={}\n".format(json.dumps(self.cnf_var_comments)))
+        for c in allcnfs:
+            file_object.write(" ".join(map(str, c)) + "\n")
+
+
+
+    def get_cnfvar(self, wire : Wire, create = False):
+        wireid = str(wire)
+        if wireid in self.cnf_vars:
+            assert not create, f"Wire {wireid} already found in CNF vars for {wire}"
+        elif wire.is_const():
+            # create FALSE variable
+            print("Creating new CNF var for constant wires", wire, " id ", wireid)
+            self.cnf_vars[str(ConstantWireValue0())] = -self.cnf_varid
+            self.cnf_vars[str(ConstantWireValue1())] = self.cnf_varid
+            self.cnf_var_comments[self.cnf_varid] = True
+
+
+            self.cnf_varid += 1
+        else:
+            assert create, f"Wire {wireid} not found in CNF vars"
+            print("Creating new CNF var for wire", wire, " id ", wireid)
+            self.cnf_var_comments[self.cnf_varid] = wire.name
+            self.cnf_vars[wireid] = self.cnf_varid
+            self.cnf_varid += 1
+        return self.cnf_vars[wireid]
+    
+    def set_cnfvar(self, wire : Wire, value : int):
+        """ for buffers and inverters """
+        wireid = str(wire)
+        assert not wireid in self.cnf_vars, f"Wire {wireid} already found in CNF vars for {wire}"
+        self.cnf_vars[wireid] = value

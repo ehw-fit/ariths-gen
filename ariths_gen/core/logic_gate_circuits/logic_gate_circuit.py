@@ -500,6 +500,9 @@ class TwoInputLogicGate():
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_gate_triplet_cgp())
 
+    def get_cnf_clause(self, parent):
+        raise NotImplementedError(f"CNF generation is not implemented for this class. {self.__class__.__name__}")
+
 
 class TwoInputInvertedLogicGate(TwoInputLogicGate):
     """Class representing two input inverted logic gates.
