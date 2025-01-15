@@ -1,6 +1,7 @@
 import os
 import sys
 
+
 # Add the parent directory to the system path
 DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(DIR_PATH, '..'))
@@ -11,6 +12,8 @@ import math
 from io import StringIO
 import tempfile
 
+from ariths_gen.one_bit_circuits.logic_gates.logic_gates import AndGate, NotGate, OrGate, XnorGate, XorGate, NandGate, NorGate
+from ariths_gen.wire_components.buses import Bus, Wire
 from ariths_gen.core.cgp_circuit import UnsignedCGPCircuit
 from ariths_gen.core.arithmetic_circuits.general_circuit import GeneralCircuit
 
@@ -98,7 +101,24 @@ def test_cnf_minisat():
     assert res["clauses"] == 0
     assert not res["SATISFIABLE"]
 
+def test_cnf_own():
+    class c(GeneralCircuit):
+        def __init__(self):
+            inputs = Bus(N=4, prefix="a")
+            super().__init__(name="c", prefix="c", inputs=[inputs], out_N=1)
+
+            # a AND (NOT a)
+            g1 = self.add_component(NotGate(inputs[0], prefix="g1")).out
+            g2 = self.add_component(AndGate(inputs[0], g1, prefix="g2")).out
+            self.out.connect(0, g2)
+
+    res = minisat_runner(c()).get_results()
+    print(res)
+    assert not res["SATISFIABLE"] # UNSAT
+    assert res["clauses"] == 0
+
     
 if __name__ == "__main__":
+    test_cnf_own()
     test_cnf_minisat()
     print("CNF Python tests were successful!")

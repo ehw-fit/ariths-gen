@@ -28,6 +28,6 @@ module sub_signed_tb;
                 end
             end;
         end;
-        $finish;
+        $finish(0);
     end
 endmodule

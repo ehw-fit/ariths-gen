@@ -881,7 +881,6 @@ class GeneralCircuit():
         for i in range(self.out.N):
             active_outputs.add(self.out[i].name)
 
-        print(active_outputs)
         # for all gates back
         for g in reversed(self.circuit_gates):
             if g.out.name in active_outputs:
@@ -894,12 +893,6 @@ class GeneralCircuit():
                 print("Setting active output", g.out, " for gate ", g)
         
         
-        print("active outputs", active_outputs)
-
-        print(hash_outputs)
-        
-
-
         inputs = []
         for i in self.inputs:
             for j in range(i.N):
