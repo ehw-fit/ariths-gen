@@ -7,7 +7,7 @@ from ariths_gen.wire_components import (
     Wire,
     Bus
 )
-from typing import Dict
+from typing import Dict, List, Tuple
 import inspect
 import copy
 from io import StringIO
@@ -860,26 +860,15 @@ class GeneralCircuit():
         file_object.write(self.get_triplets_cgp())
         file_object.write(self.get_outputs_cgp())
 
-
-    # Generating flat C code representation of circuit
-    def get_cnf_code_flat(self, file_object):
-        """Generates flat C code representation of corresponding arithmetic circuit.
-
-        Args:
-            file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
+    def get_simplified_circuits(self) -> Tuple[List[Wire], List[object]]:
         """
-        assert self.out.N == 1, f"CNF generation only supports single output, not {self.out.N}"
+        Generates simplified circuit representation with only active outputs and their corresponding input wires and logic gates.
+        
+        Returns:
+            Tuple[List[Wire], List[object]]: List of input wires and list of logic gates.
+        """        
 
-        self.cnf_vars = {}
-        self.cnf_varid = 1
-        self.cnf_has_const = False
-        self.cnf_var_comments = {}
-
-        for i in self.inputs:
-            for j in range(i.N):
-                self.get_cnfvar(i[j], create=True)
-
-        # hash array for gate outputs
+         # hash array for gate outputs
         hash_outputs = {}
         for i, g in enumerate(self.circuit_gates):
             assert g.out not in hash_outputs, f"Gate {g} has multiple outputs"
@@ -910,12 +899,46 @@ class GeneralCircuit():
         print(hash_outputs)
         
 
+
+        inputs = []
+        for i in self.inputs:
+            for j in range(i.N):
+                if i[j].name in active_outputs:
+                    inputs.append(i[j])
+
+        gates = []
+        for g in self.circuit_gates:
+            if g.out.name in active_outputs:
+                gates.append(g)
+
+        return inputs, gates
+
+    # Generating flat C code representation of circuit
+    def get_cnf_code_flat(self, file_object):
+        """Generates flat C code representation of corresponding arithmetic circuit.
+
+        Args:
+            file_object (TextIOWrapper): Destination file object where circuit's representation will be written to.
+        """
+        assert self.out.N == 1, f"CNF generation only supports single output, not {self.out.N}"
+
+        self.cnf_vars = {}
+        self.cnf_varid = 1
+        self.cnf_has_const = False
+        self.cnf_var_comments = {}
+
+        
+        active_inputs, active_gates = self.get_simplified_circuits()        
+        
+        for i in self.inputs:
+            for j in range(i.N):
+                self.get_cnfvar(i[j], create=True)
+
+
         #file_object.write(self.get_includes_c())
         #file_object.write(self.get_prototype_c())
         allcnfs = []
-        for g in self.circuit_gates:
-            if g.out.name not in active_outputs:
-                continue
+        for g in active_gates:
             allcnfs += g.get_cnf_clause(self)
 
         allcnfs.append([self.get_cnfvar(self.out[0])])
@@ -929,7 +952,7 @@ class GeneralCircuit():
 
         file_object.write("c varmap={}\n".format(json.dumps(self.cnf_var_comments)))
         for c in allcnfs:
-            file_object.write(" ".join(map(str, c)) + "\n")
+            file_object.write(" ".join(map(str, c + [0])) + "\n")
 
 
 
