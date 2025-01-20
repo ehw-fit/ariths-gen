@@ -890,7 +890,7 @@ class GeneralCircuit():
                     active_outputs.add(g.b.name)
                 if hasattr(g, "c"):
                     active_outputs += (g.c.name)
-                print("Setting active output", g.out, " for gate ", g)
+                #print("Setting active output", g.out, " for gate ", g)
         
         
         inputs = []
@@ -907,7 +907,7 @@ class GeneralCircuit():
         return inputs, gates
 
     # Generating flat C code representation of circuit
-    def get_cnf_code_flat(self, file_object):
+    def get_cnf_code_flat(self, file_object, use_dual_logic=False):
         """Generates flat C code representation of corresponding arithmetic circuit.
 
         Args:
@@ -931,22 +931,37 @@ class GeneralCircuit():
         #file_object.write(self.get_includes_c())
         #file_object.write(self.get_prototype_c())
         allcnfs = []
-        for g in active_gates:
-            allcnfs += g.get_cnf_clause(self)
+        if (use_dual_logic):
+            for g in active_gates:
+                allcnfs += g.get_cnf_clause_dual(self)
 
-        allcnfs.append([self.get_cnfvar(self.out[0])])
-        const1 = ConstantWireValue1()
-        if str(const1) in self.cnf_vars:
-            allcnfs.append([self.get_cnfvar(const1)])
+            outvar = self.get_cnfvar(self.out[0])
+            allcnfs.append([-outvar])
 
+            const1 = ConstantWireValue1()
+            if str(const1) in self.cnf_vars:
+                allcnfs.append([-self.get_cnfvar(const1)])
 
-        # header p cnf <vars> <clauses>
-        file_object.write(f"p cnf {self.cnf_varid-1} {len(allcnfs)}\n")
+        else:
+            for g in active_gates:
+                allcnfs += g.get_cnf_clause(self)
 
-        file_object.write("c varmap={}\n".format(json.dumps(self.cnf_var_comments)))
-        for c in allcnfs:
-            file_object.write(" ".join(map(str, c + [0])) + "\n")
+            outvar = self.get_cnfvar(self.out[0])
+            allcnfs.append([outvar])
 
+            const1 = ConstantWireValue1()
+            if str(const1) in self.cnf_vars:
+                allcnfs.append([self.get_cnfvar(const1)])
+
+        if hasattr(file_object, 'write'):
+            # header p cnf <vars> <clauses>
+            file_object.write(f"p cnf {self.cnf_varid-1} {len(allcnfs)}\n")
+
+            file_object.write("c varmap={}\n".format(json.dumps(self.cnf_var_comments)))
+            for c in allcnfs:
+                file_object.write(" ".join(map(str, c + [0])) + "\n")
+
+        return allcnfs, outvar
 
 
     def get_cnfvar(self, wire : Wire, create = False):
@@ -955,7 +970,7 @@ class GeneralCircuit():
             assert not create, f"Wire {wireid} already found in CNF vars for {wire}"
         elif wire.is_const():
             # create FALSE variable
-            print("Creating new CNF var for constant wires", wire, " id ", wireid)
+            #print("Creating new CNF var for constant wires", wire, " id ", wireid)
             self.cnf_vars[str(ConstantWireValue0())] = -self.cnf_varid
             self.cnf_vars[str(ConstantWireValue1())] = self.cnf_varid
             self.cnf_var_comments[self.cnf_varid] = True
@@ -964,7 +979,7 @@ class GeneralCircuit():
             self.cnf_varid += 1
         else:
             assert create, f"Wire {wireid} not found in CNF vars"
-            print("Creating new CNF var for wire", wire, " id ", wireid)
+            #print("Creating new CNF var for wire", wire, " id ", wireid)
             self.cnf_var_comments[self.cnf_varid] = wire.name
             self.cnf_vars[wireid] = self.cnf_varid
             self.cnf_varid += 1

@@ -28,6 +28,7 @@ class AndGate(TwoInputLogicGate):
         self.gate_type = "and_gate"
         self.cgp_function = 2
         self.operator = "&"
+        self.dual_gate = OrGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
@@ -107,6 +108,7 @@ class NandGate(TwoInputInvertedLogicGate):
         self.gate_type = "nand_gate"
         self.cgp_function = 5
         self.operator = "&"
+        self.dual_gate = NOrGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
@@ -191,6 +193,7 @@ class OrGate(TwoInputLogicGate):
         self.gate_type = "or_gate"
         self.cgp_function = 3
         self.operator = "|"
+        self.dual_gate = AndGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
@@ -269,6 +272,7 @@ class NorGate(TwoInputInvertedLogicGate):
         self.gate_type = "nor_gate"
         self.cgp_function = 6
         self.operator = "|"
+        self.dual_gate = NandGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
@@ -353,6 +357,7 @@ class XorGate(TwoInputLogicGate):
         self.gate_type = "xor_gate"
         self.cgp_function = 4
         self.operator = "^"
+        self.dual_gate = XnorGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
@@ -436,6 +441,7 @@ class XnorGate(TwoInputInvertedLogicGate):
         self.gate_type = "xnor_gate"
         self.cgp_function = 7
         self.operator = "^"
+        self.dual_gate = XorGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
@@ -518,6 +524,7 @@ class NotGate(OneInputLogicGate):
         self.gate_type = "not_gate"
         self.cgp_function = 1
         self.operator = "~"
+        self.dual_gate = NotGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding

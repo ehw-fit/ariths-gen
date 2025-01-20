@@ -86,6 +86,8 @@ class TwoInputLogicGate():
         # Obtaining the caller object to gain access into its `components` list Used for adding NOT gates as a replacement for two input logic gates with constant input (optimalization)
         # Also used to obtain caller object's `prefix` name for proper wire names generation of flat/hier representations
         self.parent_component = parent_component
+        # Reference to the dual gate (duality logic)
+        self.dual_gate = None
 
     """ C CODE GENERATION """
     # FLAT C #
@@ -499,6 +501,12 @@ class TwoInputLogicGate():
         """
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_gate_triplet_cgp())
+
+    def get_cnf_clause_dual(self, parent):
+        if self.dual_gate is None:
+            raise NotImplementedError(f"CNF generation is not implemented for this class. {self.__class__.__name__}")
+        return self.dual_gate.get_cnf_clause(self, parent)
+
 
     def get_cnf_clause(self, parent):
         raise NotImplementedError(f"CNF generation is not implemented for this class. {self.__class__.__name__}")
