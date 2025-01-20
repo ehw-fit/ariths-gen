@@ -108,7 +108,7 @@ class NandGate(TwoInputInvertedLogicGate):
         self.gate_type = "nand_gate"
         self.cgp_function = 5
         self.operator = "&"
-        self.dual_gate = NOrGate
+        self.dual_gate = NorGate
 
         # Logic gate output wire generation based on input values
         # If constant input is present, logic gate is not generated and corresponding
