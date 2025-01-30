@@ -99,7 +99,7 @@ https://ehw-fit.github.io/ariths-gen/ .
 When one uses a specific process design kit (PDK), it is not effective to implement half- and full-adders using two-inputs logic gates. These circuits are directly implemented as CMOS modules and are more effective than heuristic optimization by synthesis tool. If you want to use for example FreePDK45 library, you can call a following function before verilog code generating.
 
 ```py
-from ariths_gen import set_pdk45_library
+from ariths_gen.tools.pdk import set_pdk45_library
 set_pdk45_library()
 ```
 
