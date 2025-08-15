@@ -27,7 +27,7 @@ When you use this tool in your work/research, please cite the following article:
 }
 ```
 
-## Instalation
+## Installation
 ```bash
 pip install ariths-gen
 
