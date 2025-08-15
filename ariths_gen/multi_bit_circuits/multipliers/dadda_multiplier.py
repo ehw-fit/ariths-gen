@@ -151,8 +151,8 @@ class SignedDaddaMultiplier(MultiplierCircuit):
         super().__init__(inputs=[a, b], prefix=prefix, name=name, out_N=self.N*2, signed=True, **kwargs)
 
         # Bus sign extension in case buses have different lengths
-        self.a.bus_extend(N=self.N, prefix=a.prefix)
-        self.b.bus_extend(N=self.N, prefix=b.prefix)
+        self.a.bus_extend(N=self.N, prefix=a.prefix, desired_extension_wire=self.a.get_wire(self.a.N-1))
+        self.b.bus_extend(N=self.N, prefix=b.prefix, desired_extension_wire=self.b.get_wire(self.b.N-1))
 
         # Get starting stage and maximum possible column height
         self.stage, self.d = self.get_maximum_height(initial_value=min(self.a.N, self.b.N))
