@@ -19,4 +19,4 @@ from .tools  import (
     pdk, shuffle_circuit
 )
 
-__version__ = "1.1.3"
+__version__ = "1.1.4"
