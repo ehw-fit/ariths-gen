@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <meta name="generator" content="pdoc3 0.11.6">
-<title>ariths_gen.one_bit_circuits.logic_gates API documentation</title>
-<meta name="description" content="">
+<title>ariths_gen.tools.pdk API documentation</title>
+<meta name="description" content="Support of custom PDK …">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
@@ -33,22 +33,40 @@ el.replaceWith(d);
 <main>
 <article id="content">
 <header>
-<h1 class="title">Module <code>ariths_gen.one_bit_circuits.logic_gates</code></h1>
+<h1 class="title">Module <code>ariths_gen.tools.pdk</code></h1>
 </header>
 <section id="section-intro">
+<p>Support of custom PDK</p>
+<p>This file defines functions for generating full and half adders
+directly on the CMOS modules level.</p>
+<p>You may add your own modules as defined in the example below
+(inside <code><a title="ariths_gen.tools.pdk.set_pdk45_library" href="#ariths_gen.tools.pdk.set_pdk45_library">set_pdk45_library()</a></code>)</p>
+<p>NOTE: Please call this function before calling <code>get_v_code_XXX()</code> to allow the
+Verilog generation process to take into account the library's specific definitions.</p>
 </section>
 <section>
-<h2 class="section-title" id="header-submodules">Sub-modules</h2>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
 <dl>
-<dt><code class="name"><a title="ariths_gen.one_bit_circuits.logic_gates.logic_gates" href="logic_gates.html">ariths_gen.one_bit_circuits.logic_gates.logic_gates</a></code></dt>
+<dt id="ariths_gen.tools.pdk.set_pdk45_library"><code class="name flex">
+<span>def <span class="ident">set_pdk45_library</span></span>(<span>)</span>
+</code></dt>
 <dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_pdk45_library():
+    one_bit_components.FullAdder.use_verilog_instance = &#34;FAX1 {unit} (.A({wirea}), .B({wireb}), .C({wirec}), .YS({wireys}), .YC({wireyc}))&#34;
+    one_bit_components.HalfAdder.use_verilog_instance = &#34;HAX1 {unit} (.A({wirea}), .B({wireb}), .YS({wireys}), .YC({wireyc}))&#34;
+    one_bit_components.TwoOneMultiplexer.use_verilog_instance = &#34;MUX2X1 {unit} (.A({wirea}), .B({wireb}), .S({wires}), .Y({wirey}))&#34;</code></pre>
+</details>
 <div class="desc"></div>
 </dd>
 </dl>
-</section>
-<section>
-</section>
-<section>
 </section>
 <section>
 </section>
@@ -60,12 +78,12 @@ el.replaceWith(d);
 <ul id="index">
 <li><h3>Super-module</h3>
 <ul>
-<li><code><a title="ariths_gen.one_bit_circuits" href="../index.html">ariths_gen.one_bit_circuits</a></code></li>
+<li><code><a title="ariths_gen.tools" href="index.html">ariths_gen.tools</a></code></li>
 </ul>
 </li>
-<li><h3><a href="#header-submodules">Sub-modules</a></h3>
-<ul>
-<li><code><a title="ariths_gen.one_bit_circuits.logic_gates.logic_gates" href="logic_gates.html">ariths_gen.one_bit_circuits.logic_gates.logic_gates</a></code></li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="ariths_gen.tools.pdk.set_pdk45_library" href="#ariths_gen.tools.pdk.set_pdk45_library">set_pdk45_library</a></code></li>
 </ul>
 </li>
 </ul>

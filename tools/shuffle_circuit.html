@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>ariths_gen.tools.shuffle_circuit API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>ariths_gen.tools.shuffle_circuit</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="ariths_gen.tools.shuffle_circuit.ShuffleCircuit"><code class="flex name class">
+<span>class <span class="ident">ShuffleCircuit</span></span>
+<span>(</span><span>code: str = '',<br>strategy='random',<br>input_widths: list = None,<br>inputs: list = None,<br>prefix: str = '',<br>name: str = 'cgp',<br>**kwargs)</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ShuffleCircuit(UnsignedCGPCircuit):
+
+    @staticmethod
+    def from_circuit(circuit: GeneralCircuit, strategy = &#34;random&#34;):
+        o = StringIO()
+        circuit.get_cgp_code_flat(o)
+
+        cgp = o.getvalue()
+        return ShuffleCircuit(code=cgp.strip(), strategy=strategy, input_widths=[i.N for i in circuit.inputs])
+    
+
+    def __init__(self, code: str = &#34;&#34;, strategy = &#34;random&#34;, input_widths: list = None, inputs: list = None, prefix: str = &#34;&#34;, name: str = &#34;cgp&#34;, **kwargs):
+        &#34;&#34;&#34;
+        Initializes the CGP (Cartesian Genetic Programming) circuit by parsing the provided code and setting up the inputs, 
+        internal nodes, and outputs. The circuit is shuffled and maintained as an acyclic forward graph.
+        Args:
+            code (str): The CGP code string defining the circuit structure.
+            input_widths (list): List of widths for each input bus.
+            strategy: random, min or max
+            inputs (list): List of input Bus objects.
+            prefix (str): Prefix for naming components.
+            name (str): Name of the circuit.
+            **kwargs: Additional keyword arguments for the GeneralCircuit initialization.
+        Raises:
+            AssertionError: If neither inputs nor input_widths are provided, or if both are provided.
+            ValueError: If there are backward or loop connections in the CGP genes, or if output connections are out of range.
+        &#34;&#34;&#34;
+
+        cgp_prefix, cgp_core, cgp_outputs = re.match(
+            r&#34;{(.*)}(.*)\(([^()]+)\)&#34;, code).groups()
+
+        c_in, c_out, c_rows, c_cols, c_ni, c_no, c_lback = map(
+            int, cgp_prefix.split(&#34;,&#34;))
+        
+        assert inputs is not None or input_widths is not None, &#34;Either inputs or input_widths must be provided&#34;
+
+        if inputs:
+            assert input_widths is None, &#34;Only one of inputs or input_widths must be provided&#34;
+
+            input_widths =[i.N for i in inputs]
+            assert sum(input_widths) == c_in, f&#34;CGP input width {c_in} doesn&#39;t match inputs {inputs_widths}&#34;
+
+
+
+        else:
+
+            assert sum(
+                input_widths) == c_in, f&#34;CGP input width {c_in} doesn&#39;t match input_widths {input_widths}&#34;
+            
+            def get_name(i):
+                if i &lt; 26:
+                    return chr(i + 0x61)
+                assert i &lt; 26 * 26
+                return chr(i // 26 + 0x60) + chr(i % 26 + 0x61)
+
+            inputs = [Bus(N=bw, prefix=f&#34;input_{get_name(i)}&#34;)
+                    for i, bw in enumerate(input_widths)]
+
+            # Assign each Bus object in self.inputs to a named attribute of self
+            for bus in inputs:
+                # Here, bus.prefix is &#39;input_a&#39;, &#39;input_b&#39;, etc.
+                # We strip &#39;input_&#39; and use the remaining part (e.g., &#39;a&#39;, &#39;b&#39;) to create the attribute name
+                attr_name = bus.prefix.replace(&#39;input_&#39;, &#39;&#39;)
+                setattr(self, attr_name, bus)
+
+        # Adding values to the list
+        self.vals = {}
+        j = 2  # Start from two, 0=False, 1=True
+        for iid, bw in enumerate(input_widths):
+            for i in range(bw):
+                assert j not in self.vals
+                self.vals[j] = inputs[iid].get_wire(i)
+                j += 1
+
+        GeneralCircuit.__init__(self, prefix=prefix, name=name, out_N=c_out, inputs=inputs, **kwargs)
+
+        if not code:
+            return # only for getting the name
+        
+        cgp_core = cgp_core.split(&#34;)(&#34;)
+
+
+
+        i = 0
+
+        values = []
+        for definition in cgp_core:
+            i, in_a, in_b, fn = map(int, re.match(
+                r&#34;\(?\[(\d+)\](\d+),(\d+),(\d+)\)?&#34;, definition).groups())
+
+            if in_a &gt; i or in_b &gt; i:
+                raise ValueError(f&#34;Backward connection in CGP gene \&#34;{definition}\&#34;, maxid = {i}&#34;)
+
+            if in_a == i or in_b == i:
+                raise ValueError(f&#34;Loop connection in CGP gene: \&#34;{definition}\&#34;, maxid = {i}&#34;)
+            
+            values.append((i, in_a, in_b, fn))
+
+        connected = []
+        disconnected = values.copy()
+
+        to_connect = []
+
+        while disconnected or to_connect:
+            
+            # get the values that can be connected
+            disconnected2 = []
+            for i, in_a, in_b, fn in disconnected:
+                # pick the nodes that can be connected
+                if fn in [8, 9] or (in_a in self.vals and fn in [0, 1]) or (in_a in self.vals and in_b in self.vals):
+                    to_connect.append((i, in_a, in_b, fn))
+                else:
+                    disconnected2.append((i, in_a, in_b, fn))
+            
+            disconnected = disconnected2
+
+            # print(&#34;To connect: &#34;, to_connect)
+            # print(&#34;Disconnected: &#34;, disconnected)
+            # print(&#34;Vals&#34;, self.vals.keys())
+            # print(&#34;&#34;)
+
+
+            if strategy == &#34;random&#34;:
+                # randomly pick one value from to_connect
+                picked = random.choice(to_connect)
+            elif strategy == &#34;max&#34;:
+                # select the value with the highest i
+                picked = max(to_connect, key=lambda x: x[0])
+            elif strategy == &#34;min&#34;:
+                # select the value with the lowest i
+                picked = min(to_connect, key=lambda x: x[0])
+            else:
+                raise ValueError(f&#34;Unknown strategy {strategy}, can be random, min or max&#34;)
+
+            i, in_a, in_b, fn = picked
+
+            to_connect.remove(picked)
+
+            # remove the picked value from disconnected
+            comp_set = dict(prefix=f&#34;{self.prefix}_core_{i:03d}&#34;, parent_component=self)
+
+            a = b = None
+
+            if fn not in [8, 9]:
+                a = self._get_wire(in_a)
+
+                if fn not in [0, 1]:
+                    b = self._get_wire(in_b)
+
+            if fn == 0:  # IDENTITY
+                o = a
+            elif fn == 1:  # NOT
+                o = self.add_component(NotGate(a, **comp_set)).out
+            elif fn == 2:  # AND
+                o = self.add_component(AndGate(a, b, **comp_set)).out
+            elif fn == 3:  # OR
+                o = self.add_component(OrGate(a, b, **comp_set)).out
+            elif fn == 4:  # XOR
+                o = self.add_component(XorGate(a, b, **comp_set)).out
+            elif fn == 5:  # NAND
+                o = self.add_component(NandGate(a, b, **comp_set)).out
+            elif fn == 6:  # NOR
+                o = self.add_component(NorGate(a, b, **comp_set)).out
+            elif fn == 7:  # XNOR
+                o = self.add_component(XnorGate(a, b, **comp_set)).out
+            elif fn == 8:  # TRUE
+                o = ConstantWireValue1()
+            elif fn == 9:  # FALSE
+                o = ConstantWireValue0()
+
+            assert i not in self.vals
+            self.vals[i] = o
+
+        # print(&#34;Disconnected: &#34;, disconnected)
+        # print(&#34;vals: &#34;, self.vals.keys())
+        # Output connection
+        for i, o in enumerate(map(int, cgp_outputs.split(&#34;,&#34;))):
+            if o &gt;= c_in + c_rows * c_cols + 2:
+                raise ValueError(
+                    f&#34;Output {i} is connected to wire {o} which is not in the range of CGP wires ({c_in + c_rows * c_cols + 2})&#34;)
+            w = self._get_wire(o)
+            self.out.connect(i, w)</code></pre>
+</details>
+<div class="desc"><p>Unsigned circuit variant that loads CGP code and is able to export it to C/verilog/Blif/CGP.</p>
+<p>Initializes the CGP (Cartesian Genetic Programming) circuit by parsing the provided code and setting up the inputs,
+internal nodes, and outputs. The circuit is shuffled and maintained as an acyclic forward graph.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>code</code></strong> :&ensp;<code>str</code></dt>
+<dd>The CGP code string defining the circuit structure.</dd>
+<dt><strong><code>input_widths</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of widths for each input bus.</dd>
+<dt><strong><code>strategy</code></strong></dt>
+<dd>random, min or max</dd>
+<dt><strong><code>inputs</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of input Bus objects.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Prefix for naming components.</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the circuit.</dd>
+<dt><strong><code>**kwargs</code></strong></dt>
+<dd>Additional keyword arguments for the GeneralCircuit initialization.</dd>
+</dl>
+<h2 id="raises">Raises</h2>
+<dl>
+<dt><code>AssertionError</code></dt>
+<dd>If neither inputs nor input_widths are provided, or if both are provided.</dd>
+<dt><code>ValueError</code></dt>
+<dd>If there are backward or loop connections in the CGP genes, or if output connections are out of range.</dd>
+</dl></div>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit" href="../core/cgp_circuit.html#ariths_gen.core.cgp_circuit.UnsignedCGPCircuit">UnsignedCGPCircuit</a></li>
+<li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
+</ul>
+<h3>Static methods</h3>
+<dl>
+<dt id="ariths_gen.tools.shuffle_circuit.ShuffleCircuit.from_circuit"><code class="name flex">
+<span>def <span class="ident">from_circuit</span></span>(<span>circuit: <a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a>,<br>strategy='random')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_circuit(circuit: GeneralCircuit, strategy = &#34;random&#34;):
+    o = StringIO()
+    circuit.get_cgp_code_flat(o)
+
+    cgp = o.getvalue()
+    return ShuffleCircuit(code=cgp.strip(), strategy=strategy, input_widths=[i.N for i in circuit.inputs])</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit" href="../core/cgp_circuit.html#ariths_gen.core.cgp_circuit.UnsignedCGPCircuit">UnsignedCGPCircuit</a></b></code>:
+<ul class="hlist">
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.add_component" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.add_component">add_component</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_blif_code_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_flat">get_blif_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_blif_code_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_blif_code_hier">get_blif_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_c_code_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_flat">get_c_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_c_code_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_c_code_hier">get_c_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_cgp_code_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_cgp_code_flat">get_cgp_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_blif" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_blif">get_circuit_blif</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_c" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_c">get_circuit_c</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_def" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_def">get_circuit_def</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_gates" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_gates">get_circuit_gates</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_v" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_v">get_circuit_v</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_wire_index" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wire_index">get_circuit_wire_index</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_circuit_wires" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_circuit_wires">get_circuit_wires</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_component_types" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_component_types">get_component_types</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declaration_blif" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_blif">get_declaration_blif</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declaration_c_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_flat">get_declaration_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declaration_c_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_c_hier">get_declaration_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declaration_v_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_flat">get_declaration_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declaration_v_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declaration_v_hier">get_declaration_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declarations_c_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_c_hier">get_declarations_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_declarations_v_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_declarations_v_hier">get_declarations_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_blif_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blif_flat">get_function_blif_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_block_blif" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_blif">get_function_block_blif</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_block_c" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_c">get_function_block_c</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_block_v" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_block_v">get_function_block_v</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_blocks_blif" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_blif">get_function_blocks_blif</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_blocks_c" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_c">get_function_blocks_c</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_blocks_v" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_blocks_v">get_function_blocks_v</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_out_blif" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_blif">get_function_out_blif</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_out_c_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_flat">get_function_out_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_out_c_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_c_hier">get_function_out_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_out_python_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_python_flat">get_function_out_python_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_out_v_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_flat">get_function_out_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_function_out_v_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_function_out_v_hier">get_function_out_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_hier_subcomponent_def" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_hier_subcomponent_def">get_hier_subcomponent_def</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_includes_c" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_includes_c">get_includes_c</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_init_c_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_flat">get_init_c_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_init_c_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_c_hier">get_init_c_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_init_python_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_python_flat">get_init_python_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_init_v_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_flat">get_init_v_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_init_v_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_init_v_hier">get_init_v_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_instance_num" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_instance_num">get_instance_num</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_invocation_blif_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocation_blif_hier">get_invocation_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_invocations_blif_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_invocations_blif_hier">get_invocations_blif_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_multi_bit_components" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_multi_bit_components">get_multi_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_one_bit_components" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_one_bit_components">get_one_bit_components</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_out_invocation_c" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_c">get_out_invocation_c</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_out_invocation_v" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_out_invocation_v">get_out_invocation_v</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_outputs_cgp" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_outputs_cgp">get_outputs_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_parameters_cgp" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_parameters_cgp">get_parameters_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_previous_component" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_previous_component">get_previous_component</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_prototype_blif" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_blif">get_prototype_blif</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_prototype_c" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_c">get_prototype_c</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_prototype_python" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_python">get_prototype_python</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_prototype_v" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_prototype_v">get_prototype_v</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_python_code_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_python_code_flat">get_python_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_triplets_cgp" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_triplets_cgp">get_triplets_cgp</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_unique_types" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_unique_types">get_unique_types</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_v_code_flat" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_flat">get_v_code_flat</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.get_v_code_hier" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.get_v_code_hier">get_v_code_hier</a></code></li>
+<li><code><a title="ariths_gen.core.cgp_circuit.UnsignedCGPCircuit.save_wire_id" href="../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit.save_wire_id">save_wire_id</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="ariths_gen.tools" href="index.html">ariths_gen.tools</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="ariths_gen.tools.shuffle_circuit.ShuffleCircuit" href="#ariths_gen.tools.shuffle_circuit.ShuffleCircuit">ShuffleCircuit</a></code></h4>
+<ul class="">
+<li><code><a title="ariths_gen.tools.shuffle_circuit.ShuffleCircuit.from_circuit" href="#ariths_gen.tools.shuffle_circuit.ShuffleCircuit.from_circuit">from_circuit</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>

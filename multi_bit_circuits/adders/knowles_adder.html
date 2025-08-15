@@ -3,19 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta name="generator" content="pdoc3 0.11.4">
+<meta name="generator" content="pdoc3 0.11.6">
 <title>ariths_gen.multi_bit_circuits.adders.knowles_adder API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
 <style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => {
 hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
 hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
 })</script>
 </head>
 <body>
@@ -40,54 +51,6 @@ hljs.highlightAll();
 <span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>,<br>b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>,<br>prefix: str = '',<br>name: str = 's_ka',<br>config_choice: int = 1,<br>**kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing signed Knowles adder (using valency-2 logic gates).</p>
-<p>The Knowles adder belongs to a type of tree (parallel-prefix) adders.
-Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
-The main difference between each tree adder lies in the implementation of the part 2).</p>
-<p>Knowles adders are a family of tree adders that represent a tradeoff between Kogge-Stone and Sklansky implementations.
-Depending on the input bitwidth, there are many possible implementation configurations, precisely: [1, ⌈log2(N)⌉-2] number for N &gt; 4 (otherwise just 1).
-The structures of the individual configurations shift from inclination more towards one or the other original implementation.</p>
-<p>Knowles networks provide tradeoff between the number of wires and fanout load on wires, while the number of stages inside the 2) part remains the same.</p>
-<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
-For further circuit characteristics see the book CMOS VLSI Design.</p>
-<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
-The 2) part is then composed according to the parallel-prefix adder characteristics.
-At last XOR gates are used to ensure proper sign extension.</p>
-<pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
-  │  │          │  │        │  │        │  │
-┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
-│  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
-│  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
-│      │     ││      │   ││      │   ││      │
-└─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
-  │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
-  │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
-  │ │            Parallel-prefix             │
-  │ │               PG logic                 │
-  │ └─┬───────┬──────────┬──────────┬────────┘
-  │   │S3     │S2        │S1        │S0
-┌─▼───▼───────▼──────────▼──────────▼────────┐
-│                Sum + Cout                  │
-│           with sign extension              │
-└┬────┬───────┬──────────┬──────────┬────────┘
- │    │       │          │          │
- ▼    ▼       ▼          ▼          ▼
-Cout  S3      S1         S0         S0
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>First input bus.</dd>
-<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>Second input bus.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of signed ka. Defaults to "".</dd>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of signed ka. Defaults to "s_ka".</dd>
-<dt><strong><code>config_choice</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Tradeoff implementation choice concerning the number of wires and fanout load on wires. The number of choices goes from 1 up to ⌈log2(N)⌉-2 for N &gt; 4, otherwise the choice is 1. Defaults to 1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -145,6 +108,11 @@ Cout  S3      S1         S0         S0
         config_choice (int, optional): Tradeoff implementation choice concerning the number of wires and fanout load on wires. The number of choices goes from 1 up to ⌈log2(N)⌉-2 for N &gt; 4, otherwise the choice is 1. Defaults to 1.
     &#34;&#34;&#34;
     def __init__(self, a: Bus, b: Bus, prefix: str = &#34;&#34;, name: str = &#34;s_ka&#34;, config_choice: int = 1, **kwargs):
+        # Signed bus length extension
+        N = max(a.N, b.N)
+        a.bus_extend(N=N, prefix=a.prefix, desired_extension_wire=a.get_wire(a.N-1))
+        b.bus_extend(N=N, prefix=b.prefix, desired_extension_wire=b.get_wire(b.N-1))
+        
         super().__init__(a=a, b=b, prefix=prefix, name=name, config_choice=config_choice, signed=True, **kwargs)
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition
@@ -152,6 +120,54 @@ Cout  S3      S1         S0         S0
         self.add_component(XorGate(self.get_previous_component().out, self.get_previous_component(2).get_generate_wire(), prefix=self.prefix+&#34;_xor&#34;+str(self.get_instance_num(cls=XorGate)), parent_component=self))
         self.out.connect(self.N, self.get_previous_component().out)</code></pre>
 </details>
+<div class="desc"><p>Class representing signed Knowles adder (using valency-2 logic gates).</p>
+<p>The Knowles adder belongs to a type of tree (parallel-prefix) adders.
+Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+The main difference between each tree adder lies in the implementation of the part 2).</p>
+<p>Knowles adders are a family of tree adders that represent a tradeoff between Kogge-Stone and Sklansky implementations.
+Depending on the input bitwidth, there are many possible implementation configurations, precisely: [1, ⌈log2(N)⌉-2] number for N &gt; 4 (otherwise just 1).
+The structures of the individual configurations shift from inclination more towards one or the other original implementation.</p>
+<p>Knowles networks provide tradeoff between the number of wires and fanout load on wires, while the number of stages inside the 2) part remains the same.</p>
+<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+For further circuit characteristics see the book CMOS VLSI Design.</p>
+<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+The 2) part is then composed according to the parallel-prefix adder characteristics.
+At last XOR gates are used to ensure proper sign extension.</p>
+<pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
+  │  │          │  │        │  │        │  │
+┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+│  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
+│  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
+│      │     ││      │   ││      │   ││      │
+└─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
+  │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
+  │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
+  │ │            Parallel-prefix             │
+  │ │               PG logic                 │
+  │ └─┬───────┬──────────┬──────────┬────────┘
+  │   │S3     │S2        │S1        │S0
+┌─▼───▼───────▼──────────▼──────────▼────────┐
+│                Sum + Cout                  │
+│           with sign extension              │
+└┬────┬───────┬──────────┬──────────┬────────┘
+ │    │       │          │          │
+ ▼    ▼       ▼          ▼          ▼
+Cout  S3      S1         S0         S0
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>First input bus.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>Second input bus.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of signed ka. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of signed ka. Defaults to "s_ka".</dd>
+<dt><strong><code>config_choice</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Tradeoff implementation choice concerning the number of wires and fanout load on wires. The number of choices goes from 1 up to ⌈log2(N)⌉-2 for N &gt; 4, otherwise the choice is 1. Defaults to 1.</dd>
+</dl></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.multi_bit_circuits.adders.knowles_adder.UnsignedKnowlesAdder" href="#ariths_gen.multi_bit_circuits.adders.knowles_adder.UnsignedKnowlesAdder">UnsignedKnowlesAdder</a></li>
@@ -231,53 +247,6 @@ Cout  S3      S1         S0         S0
 <span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>,<br>b: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>,<br>prefix: str = '',<br>name: str = 'u_ka',<br>config_choice: int = 1,<br>**kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing unsigned Knowles adder (using valency-2 logic gates).</p>
-<p>The Knowles adder belongs to a type of tree (parallel-prefix) adders.
-Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
-The main difference between each tree adder lies in the implementation of the part 2).</p>
-<p>Knowles adders are a family of tree adders that represent a tradeoff between Kogge-Stone and Sklansky implementations.
-Depending on the input bitwidth, there are many possible implementation configurations, precisely: [1, ⌈log2(N)⌉-2] number for N &gt; 4 (otherwise just 1).
-The structures of the individual configurations shift from inclination more towards one or the other original implementation.</p>
-<p>Knowles networks provide tradeoff between the number of wires and fanout load on wires, while the number of stages inside the 2) part remains the same.</p>
-<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
-For further circuit characteristics see the book CMOS VLSI Design.</p>
-<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
-The 2) part is then composed according to the parallel-prefix adder characteristics.</p>
-<pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
-  │  │          │  │        │  │        │  │
-┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
-│  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
-│  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
-│      │     ││      │   ││      │   ││      │
-└─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
-  │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
-  │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
-  │ │            Parallel-prefix             │
-  │ │               PG logic                 │
-  │ └─┬───────┬──────────┬──────────┬────────┘
-  │   │S3     │S2        │S1        │S0
-┌─▼───▼───────▼──────────▼──────────▼────────┐
-│                Sum + Cout                  │
-│                   logic                    │
-└┬────┬───────┬──────────┬──────────┬────────┘
- │    │       │          │          │
- ▼    ▼       ▼          ▼          ▼
-Cout  S3      S1         S0         S0
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>First input bus.</dd>
-<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>Second input bus.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of unsigned ka. Defaults to "".</dd>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Name of unsigned ka. Defaults to "u_ka".</dd>
-<dt><strong><code>config_choice</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Tradeoff implementation choice concerning the number of wires and fanout load on wires. The number of choices goes from 1 up to ⌈log2(N)⌉-2 for N &gt; 4, otherwise the choice is 1. Defaults to 1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -389,6 +358,53 @@ Cout  S3      S1         S0         S0
                         self.propagate_sig[i_wire].append(self.get_previous_component().get_propagate_wire())
                     self.generate_sig[i_wire+1].append(self.get_previous_component().get_generate_wire())</code></pre>
 </details>
+<div class="desc"><p>Class representing unsigned Knowles adder (using valency-2 logic gates).</p>
+<p>The Knowles adder belongs to a type of tree (parallel-prefix) adders.
+Tree adder structure consists of three parts of logic: 1) PG logic generation, 2) Parallel PG logic computation, 3) Final sum and cout computation
+The main difference between each tree adder lies in the implementation of the part 2).</p>
+<p>Knowles adders are a family of tree adders that represent a tradeoff between Kogge-Stone and Sklansky implementations.
+Depending on the input bitwidth, there are many possible implementation configurations, precisely: [1, ⌈log2(N)⌉-2] number for N &gt; 4 (otherwise just 1).
+The structures of the individual configurations shift from inclination more towards one or the other original implementation.</p>
+<p>Knowles networks provide tradeoff between the number of wires and fanout load on wires, while the number of stages inside the 2) part remains the same.</p>
+<p>Main building components are GreyCells and BlackCells that appropriately encapsulate the essential logic used for PG computation.
+For further circuit characteristics see the book CMOS VLSI Design.</p>
+<p>The implementation performs the 1) and 3) (sum XORs) parts using one bit three input P/G/Sum logic function blocks.
+The 2) part is then composed according to the parallel-prefix adder characteristics.</p>
+<pre><code>  B3 A3         B2 A2       B1 A1       B0 A0
+  │  │          │  │        │  │        │  │
+┌─▼──▼─┐      ┌─▼──▼─┐    ┌─▼──▼─┐    ┌─▼──▼─┐
+│  PG  │  C3  │  PG  │ C2 │  PG  │ C1 │  PG  │
+│  SUM │◄────┐│  SUM │◄──┐│  SUM │◄──┐│  SUM │◄──0
+│      │     ││      │   ││      │   ││      │
+└─┬──┬┬┘     │└─┬┬┬──┘   │└─┬┬┬──┘   │└─┬┬┬──┘
+  │  ││G3P3S3│  │││G2P2S2│  │││G1P1S1│  │││G0P0S0
+  │ ┌▼▼──────┴──▼▼▼──────┴──▼▼▼──────┴──▼▼▼──┐
+  │ │            Parallel-prefix             │
+  │ │               PG logic                 │
+  │ └─┬───────┬──────────┬──────────┬────────┘
+  │   │S3     │S2        │S1        │S0
+┌─▼───▼───────▼──────────▼──────────▼────────┐
+│                Sum + Cout                  │
+│                   logic                    │
+└┬────┬───────┬──────────┬──────────┬────────┘
+ │    │       │          │          │
+ ▼    ▼       ▼          ▼          ▼
+Cout  S3      S1         S0         S0
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>First input bus.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>Second input bus.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of unsigned ka. Defaults to "".</dd>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Name of unsigned ka. Defaults to "u_ka".</dd>
+<dt><strong><code>config_choice</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Tradeoff implementation choice concerning the number of wires and fanout load on wires. The number of choices goes from 1 up to ⌈log2(N)⌉-2 for N &gt; 4, otherwise the choice is 1. Defaults to 1.</dd>
+</dl></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit" href="../../core/arithmetic_circuits/general_circuit.html#ariths_gen.core.arithmetic_circuits.general_circuit.GeneralCircuit">GeneralCircuit</a></li>
@@ -493,7 +509,7 @@ Cout  S3      S1         S0         S0
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.4</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
 </footer>
 </body>
 </html>

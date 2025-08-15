@@ -3,19 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta name="generator" content="pdoc3 0.11.4">
+<meta name="generator" content="pdoc3 0.11.6">
 <title>ariths_gen.wire_components.buses API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
 <style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => {
 hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
 hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
 })</script>
 </head>
 <body>
@@ -40,21 +51,6 @@ hljs.highlightAll();
 <span>(</span><span>prefix: str = 'bus',<br>N: int = 1,<br>wires_list: list = None,<br>out_bus: bool = False,<br>signed: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing bus of wires used as inputs/outputs of bigger circuits.</p>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of the bus. Defaults to "bus".</dd>
-<dt><strong><code>N</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Number of wires in the bus. Defaults to 1.</dd>
-<dt><strong><code>wires_list</code></strong> :&ensp;<code>list</code>, optional</dt>
-<dd>List of Wire objects used to clone one bus to another. Defaults to None.</dd>
-<dt><strong><code>out_bus</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether this Bus is an output bus of some previous component. Defaults to False.</dd>
-<dt><strong><code>signed</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -363,22 +359,27 @@ hljs.highlightAll();
         [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
         return &#34;&#34;.join([f&#34; {function_block_out_bus.get_wire(self.bus.index(o)).name}={unique_out_wires.pop(unique_out_wires.index(o.prefix))}&#34; if o.prefix in unique_out_wires else &#34;&#34; for o in self.bus])</code></pre>
 </details>
+<div class="desc"><p>Class representing bus of wires used as inputs/outputs of bigger circuits.</p>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of the bus. Defaults to "bus".</dd>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Number of wires in the bus. Defaults to 1.</dd>
+<dt><strong><code>wires_list</code></strong> :&ensp;<code>list</code>, optional</dt>
+<dd>List of Wire objects used to clone one bus to another. Defaults to None.</dd>
+<dt><strong><code>out_bus</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether this Bus is an output bus of some previous component. Defaults to False.</dd>
+<dt><strong><code>signed</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether this Bus should consider signed numbers or not (used for C code generation). Defaults to False.</dd>
+</dl></div>
 <h3>Methods</h3>
 <dl>
 <dt id="ariths_gen.wire_components.buses.Bus.bus_extend"><code class="name flex">
 <span>def <span class="ident">bus_extend</span></span>(<span>self,<br>N: int,<br>prefix: str = 'bus',<br>desired_extension_wire: <a title="ariths_gen.wire_components.wires.Wire" href="wires.html#ariths_gen.wire_components.wires.Wire">Wire</a> = &lt;ariths_gen.wire_components.wires.ConstantWireValue0 object&gt;)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Provides bus extension to contain more wires.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
-<dd>Number of wires in the bus. Defaults to 1.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of the bus. Defaults to "bus".</dd>
-<dt><strong><code>desired_extension_wire</code></strong> :&ensp;<code>Wire</code>, optional</dt>
-<dd>Specifies the wire that should be connected to all of the extending bus wires. Defaults to ConstantWireValue0().</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -401,22 +402,21 @@ hljs.highlightAll();
 
         self.N = N</code></pre>
 </details>
+<div class="desc"><p>Provides bus extension to contain more wires.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>N</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of wires in the bus. Defaults to 1.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of the bus. Defaults to "bus".</dd>
+<dt><strong><code>desired_extension_wire</code></strong> :&ensp;<code>Wire</code>, optional</dt>
+<dd>Specifies the wire that should be connected to all of the extending bus wires. Defaults to ConstantWireValue0().</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.connect"><code class="name flex">
 <span>def <span class="ident">connect</span></span>(<span>self,<br>bus_wire_index: int,<br>inner_component_out_wire: <a title="ariths_gen.wire_components.wires.Wire" href="wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>,<br>inserted_wire_desired_index: int = -1)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Connects given 'Wire' object to a 'bus_wire_index' within this bus.</p>
-<p>Used for connection of output wire of the inner circuit component
-to the appropriate wire of the circuit's output bus.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>bus_wire_index</code></strong> :&ensp;<code>int</code></dt>
-<dd>Index in bus to store given wire in.</dd>
-<dt><strong><code>inner_component_out_wire</code></strong> :&ensp;<code>Wire</code></dt>
-<dd>Wire of some other component (mostly its output) to store in the bus.</dd>
-</dl>
-<p>inserted_wire_desired_index(int, optional): Optional desired explicit index, where 'inner_component_out_wire' value resides in the inner components's output bus. Otherwise 'inner_component_out_wire' self index value is used. Defaults to -1.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -443,25 +443,22 @@ to the appropriate wire of the circuit's output bus.</p>
     elif inserted_wire_desired_index != -1:
         self.bus[bus_wire_index] = Wire(name=inner_component_out_wire.name, prefix=inner_component_out_wire.parent_bus.prefix, index=inserted_wire_index, value=inner_component_out_wire.value, parent_bus=self)</code></pre>
 </details>
+<div class="desc"><p>Connects given 'Wire' object to a 'bus_wire_index' within this bus.</p>
+<p>Used for connection of output wire of the inner circuit component
+to the appropriate wire of the circuit's output bus.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>bus_wire_index</code></strong> :&ensp;<code>int</code></dt>
+<dd>Index in bus to store given wire in.</dd>
+<dt><strong><code>inner_component_out_wire</code></strong> :&ensp;<code>Wire</code></dt>
+<dd>Wire of some other component (mostly its output) to store in the bus.</dd>
+</dl>
+<p>inserted_wire_desired_index(int, optional): Optional desired explicit index, where 'inner_component_out_wire' value resides in the inner components's output bus. Otherwise 'inner_component_out_wire' self index value is used. Defaults to -1.</p></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.connect_bus"><code class="name flex">
 <span>def <span class="ident">connect_bus</span></span>(<span>self,<br>connecting_bus: object,<br>start_connection_pos: int = 0,<br>end_connection_pos: int = -1,<br>offset: int = 0)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Ensures connection of specified bus wires to this bus wires.</p>
-<p>Used for connection of some inner circuit component's output bus (<code>connecting_bus</code>) wires
-to the appropriate input bus (this <code>self</code> bus) wires of some other circuit.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>connecting_bus</code></strong> :&ensp;<code>object</code></dt>
-<dd>Specifies the connecting bus.</dd>
-<dt><strong><code>start_connection_pos</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Specifies the position from which to start interconnecting wires from the <code>connecting_bus</code> to this <code>self</code> bus. Defaults to 0.</dd>
-<dt><strong><code>end_connection_pos</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Specifies the position from which to end interconnecting wires from the <code>connecting_bus</code> to this <code>self</code> bus. Defaults to -1.</dd>
-<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Specifies the offset wire index position in the <code>self</code> bus for proper connection (i.e. wire at index position 5 in the <code>connecting_bus</code> with offset set to 5 will be connected to <code>self</code> bus index position 0). Default to 0.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -483,17 +480,25 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
 
     [self.connect(o-offset, connecting_bus.get_wire(o), inserted_wire_desired_index=o) for o in range(start_connection_pos, end_connection_pos)]</code></pre>
 </details>
+<div class="desc"><p>Ensures connection of specified bus wires to this bus wires.</p>
+<p>Used for connection of some inner circuit component's output bus (<code>connecting_bus</code>) wires
+to the appropriate input bus (this <code>self</code> bus) wires of some other circuit.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>connecting_bus</code></strong> :&ensp;<code>object</code></dt>
+<dd>Specifies the connecting bus.</dd>
+<dt><strong><code>start_connection_pos</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Specifies the position from which to start interconnecting wires from the <code>connecting_bus</code> to this <code>self</code> bus. Defaults to 0.</dd>
+<dt><strong><code>end_connection_pos</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Specifies the position from which to end interconnecting wires from the <code>connecting_bus</code> to this <code>self</code> bus. Defaults to -1.</dd>
+<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Specifies the offset wire index position in the <code>self</code> bus for proper connection (i.e. wire at index position 5 in the <code>connecting_bus</code> with offset set to 5 will be connected to <code>self</code> bus index position 0). Default to 0.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_declaration_c"><code class="name flex">
 <span>def <span class="ident">get_declaration_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Bus declaration in C code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code for declaration and initialization of bus name.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -506,22 +511,17 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     &#34;&#34;&#34;
     return f&#34;  {self.c_type} {self.prefix} = 0;\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Bus declaration in C code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code for declaration and initialization of bus name.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_blif"><code class="name flex">
 <span>def <span class="ident">get_unique_assign_out_wires_blif</span></span>(<span>self, function_block_out_bus: object)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Assigns unique output wires to their respective outputs of subcomponent's function block modul in hierarchical Blif subcomponent's invocation.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>function_block_out_bus</code></strong> :&ensp;<code>object</code></dt>
-<dd>Specifies output bus of corresponding function block's outputs for proper subcomponent modul invocation.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code for proper subcomponent's function block invocation with respective output wires assignment.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -539,22 +539,22 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
     return &#34;&#34;.join([f&#34; {function_block_out_bus.get_wire(self.bus.index(o)).name}={unique_out_wires.pop(unique_out_wires.index(o.prefix))}&#34; if o.prefix in unique_out_wires else &#34;&#34; for o in self.bus])</code></pre>
 </details>
+<div class="desc"><p>Assigns unique output wires to their respective outputs of subcomponent's function block modul in hierarchical Blif subcomponent's invocation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>function_block_out_bus</code></strong> :&ensp;<code>object</code></dt>
+<dd>Specifies output bus of corresponding function block's outputs for proper subcomponent modul invocation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code for proper subcomponent's function block invocation with respective output wires assignment.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_unique_assign_out_wires_v"><code class="name flex">
 <span>def <span class="ident">get_unique_assign_out_wires_v</span></span>(<span>self, circuit_block: object)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Returns bus's wires used for hierarchical one bit subcomponent's function block invocation and output wires assignments.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>circuit_block</code></strong> :&ensp;<code>object</code></dt>
-<dd>Object describing corresponding function block that is being invoked for proper output wires assignment during instantiation.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code unique bus wires for proper subcomponent's function block invocation.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -572,22 +572,22 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     [unique_out_wires.append(w.prefix) if w.prefix not in unique_out_wires else None for w in self.bus]
     return &#34;&#34;.join([f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}({unique_out_wires.pop(unique_out_wires.index(o.prefix))})&#34; if o.prefix in unique_out_wires else f&#34;, .{circuit_block.out.get_wire(self.bus.index(o)).prefix}()&#34; for o in self.bus])</code></pre>
 </details>
+<div class="desc"><p>Returns bus's wires used for hierarchical one bit subcomponent's function block invocation and output wires assignments.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>circuit_block</code></strong> :&ensp;<code>object</code></dt>
+<dd>Object describing corresponding function block that is being invoked for proper output wires assignment during instantiation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code unique bus wires for proper subcomponent's function block invocation.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire"><code class="name flex">
 <span>def <span class="ident">get_wire</span></span>(<span>self, wire_index: int = 0)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves a wire from the bus by a given index.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>wire_index</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Index of wire to be retrieved from the bus. Defaults to 0.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>Wire</code></dt>
-<dd>Returning wire from the bus.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -604,22 +604,22 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     assert wire_index &lt; self.N, f&#34;Wire index {wire_index} is out of bounds of the bus {self.prefix} with size {self.N}&#34;
     return self.bus[wire_index]</code></pre>
 </details>
+<div class="desc"><p>Retrieves a wire from the bus by a given index.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>wire_index</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Index of wire to be retrieved from the bus. Defaults to 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Wire</code></dt>
+<dd>Returning wire from the bus.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire_assign_blif"><code class="name flex">
 <span>def <span class="ident">get_wire_assign_blif</span></span>(<span>self, output: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Assign all bits from the bus as each individual wires or assign wires into the corresponding output bus position in Blif code representation.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>output</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether bus wires are used as outputs (True, assigned to) or as inputs (False, assigned from). Defaults to False.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code for bus wires assignments.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -641,17 +641,22 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     else:
         return &#34;&#34;.join([w[1].get_assign_blif(prefix=self.prefix, output=output) for w in mapped_positions])</code></pre>
 </details>
+<div class="desc"><p>Assign all bits from the bus as each individual wires or assign wires into the corresponding output bus position in Blif code representation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>output</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether bus wires are used as outputs (True, assigned to) or as inputs (False, assigned from). Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code for bus wires assignments.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_wire_declaration_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Declare each wire from the bus independently in Blif code representation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code for declaration of individual bus wires.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -668,17 +673,17 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     array = True if self.N &gt; 1 else False
     return &#34;&#34;.join([f&#34; {w[1].get_declaration_blif(prefix=self.prefix, offset=w[0], array=array)}&#34; for w in mapped_positions])</code></pre>
 </details>
+<div class="desc"><p>Declare each wire from the bus independently in Blif code representation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code for declaration of individual bus wires.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.get_wire_declaration_v"><code class="name flex">
 <span>def <span class="ident">get_wire_declaration_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Declare the wire in Verilog code representation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code for declaration of individual bus wires.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -691,17 +696,17 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     &#34;&#34;&#34;
     return f&#34;  wire [{self.N-1}:0] {self.prefix};\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Declare the wire in Verilog code representation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code for declaration of individual bus wires.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.is_output_bus"><code class="name flex">
 <span>def <span class="ident">is_output_bus</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Tells whether this Bus is an output bus.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>bool</code></dt>
-<dd>Returns True if it is an output bus of some component.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -714,17 +719,17 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     &#34;&#34;&#34;
     return self.out_bus</code></pre>
 </details>
+<div class="desc"><p>Tells whether this Bus is an output bus.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>Returns True if it is an output bus of some component.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_sign_extend_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Sign extends the bus's corresponding C variable to ensure proper flat C code variable signedness.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code for sign extending the bus variable wire values.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -741,17 +746,17 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     else:
         return &#34;&#34;</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_hier"><code class="name flex">
-<span>def <span class="ident">return_bus_wires_sign_extend_c_hier</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Sign extends the bus's corresponding C variable to ensure proper hier C code variable signedness.</p>
+<div class="desc"><p>Sign extends the bus's corresponding C variable to ensure proper flat C code variable signedness.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>C code for sign extending the bus variable wire values.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_c_hier"><code class="name flex">
+<span>def <span class="ident">return_bus_wires_sign_extend_c_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -768,17 +773,17 @@ to the appropriate input bus (this <code>self</code> bus) wires of some other ci
     else:
         return &#34;&#34;</code></pre>
 </details>
+<div class="desc"><p>Sign extends the bus's corresponding C variable to ensure proper hier C code variable signedness.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code for sign extending the bus variable wire values.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_sign_extend_python_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_sign_extend_python_flat</span></span>(<span>self, retype: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Sign extends the bus's corresponding Python variable (object) to ensure proper flat Python code variable signedness.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Python code for sign extending the bus variable wire values.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -807,17 +812,17 @@ else:
       else:
           return &#34;&#34;</code></pre>
 </details>
+<div class="desc"><p>Sign extends the bus's corresponding Python variable (object) to ensure proper flat Python code variable signedness.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Python code for sign extending the bus variable wire values.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code for assigning wire values into bus represented in C code variable.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -833,17 +838,17 @@ else:
     mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
     return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_flat(offset=w[0])}&#34; for w in mapped_positions])</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_hier"><code class="name flex">
-<span>def <span class="ident">return_bus_wires_values_c_hier</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for hierarchical generation.</p>
+<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for flat generation.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>C code for assigning wire values into bus represented in C code variable.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_c_hier"><code class="name flex">
+<span>def <span class="ident">return_bus_wires_values_c_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -859,17 +864,17 @@ else:
     mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
     return &#34;&#34;.join([f&#34;  {self.prefix} |= {w[1].return_wire_value_c_hier(offset=w[0])}&#34; for w in mapped_positions])</code></pre>
 </details>
+<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding C variable at proper offset bit position in the bus for hierarchical generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code for assigning wire values into bus represented in C code variable.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_python_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_python_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding Python variable (object) at proper offset bit position in the bus for flat generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Python code for assigning wire values into bus represented in Python code variable.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -885,17 +890,17 @@ else:
     mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
     return &#34;&#34;.join([f&#34;  {self.prefix} = 0\n&#34;] + [f&#34;  {self.prefix} = ({self.prefix}) | {w[1].return_wire_value_python_flat(offset=w[0])}&#34; for w in mapped_positions])</code></pre>
 </details>
+<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding Python variable (object) at proper offset bit position in the bus for flat generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Python code for assigning wire values into bus represented in Python code variable.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_v_flat"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for flat generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code for assigning wire values into bus represented in Verilog code bus variable.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -911,17 +916,17 @@ else:
     mapped_positions = [(w_id, self.bus[w_id]) for w_id in range(self.N)]
     return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_flat()}&#34; for w in mapped_positions])</code></pre>
 </details>
+<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for flat generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code for assigning wire values into bus represented in Verilog code bus variable.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.buses.Bus.return_bus_wires_values_v_hier"><code class="name flex">
 <span>def <span class="ident">return_bus_wires_values_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code for assigning wire values into bus represented in Verilog code variable.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -937,6 +942,12 @@ else:
     mapped_positions = [(w_id, w) for w_id, w in enumerate(self.bus) if ((w.parent_bus is None) or (w.parent_bus is not None and w.prefix != self.prefix) or (w.is_const()))]
     return &#34;&#34;.join([f&#34;  assign {self.prefix}[{w[0]}] = {w[1].return_wire_value_v_hier()}&#34; for w in mapped_positions])</code></pre>
 </details>
+<div class="desc"><p>Retrieves values from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code for assigning wire values into bus represented in Verilog code variable.</dd>
+</dl></div>
 </dd>
 </dl>
 </dd>
@@ -985,7 +996,7 @@ else:
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.4</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
 </footer>
 </body>
 </html>

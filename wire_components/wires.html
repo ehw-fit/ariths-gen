@@ -3,19 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta name="generator" content="pdoc3 0.11.4">
+<meta name="generator" content="pdoc3 0.11.6">
 <title>ariths_gen.wire_components.wires API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
 <style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => {
 hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
 hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
 })</script>
 </head>
 <body>
@@ -40,14 +51,6 @@ hljs.highlightAll();
 <span>(</span><span>name: str = '')</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing wire carrying constant value 0 used to interconnect components.</p>
-<p>Description of the <strong>init</strong> method.</p>
-<p>Method fills in desired constant wire's attributes regarding its values for individual representations.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Custom constant wire name and prefix (used for generation of circuits that use constants as inputs). Defaults to "".</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -84,6 +87,14 @@ hljs.highlightAll();
         &#34;&#34;&#34;
         return True</code></pre>
 </details>
+<div class="desc"><p>Class representing wire carrying constant value 0 used to interconnect components.</p>
+<p>Description of the <strong>init</strong> method.</p>
+<p>Method fills in desired constant wire's attributes regarding its values for individual representations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Custom constant wire name and prefix (used for generation of circuits that use constants as inputs). Defaults to "".</dd>
+</dl></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.wire_components.wires.Wire" href="#ariths_gen.wire_components.wires.Wire">Wire</a></li>
@@ -94,12 +105,6 @@ hljs.highlightAll();
 <span>def <span class="ident">is_const</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Information whether wire carries constant value.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>bool</code></dt>
-<dd>True, because constant wire carries a constant value 0.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -113,6 +118,12 @@ def is_const():
     &#34;&#34;&#34;
     return True</code></pre>
 </details>
+<div class="desc"><p>Information whether wire carries constant value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True, because constant wire carries a constant value 0.</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Inherited members</h3>
@@ -144,14 +155,6 @@ def is_const():
 <span>(</span><span>name: str = '')</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing wire carrying constant value 1 used to interconnect components.</p>
-<p>Description of the <strong>init</strong> method.</p>
-<p>Method fills in desired constant wire's attributes regarding its values for individual representations.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Custom constant wire name and prefix (used for generation of circuits that use constants as inputs). Defaults to "".</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -188,6 +191,14 @@ def is_const():
         &#34;&#34;&#34;
         return True</code></pre>
 </details>
+<div class="desc"><p>Class representing wire carrying constant value 1 used to interconnect components.</p>
+<p>Description of the <strong>init</strong> method.</p>
+<p>Method fills in desired constant wire's attributes regarding its values for individual representations.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Custom constant wire name and prefix (used for generation of circuits that use constants as inputs). Defaults to "".</dd>
+</dl></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.wire_components.wires.Wire" href="#ariths_gen.wire_components.wires.Wire">Wire</a></li>
@@ -198,12 +209,6 @@ def is_const():
 <span>def <span class="ident">is_const</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Information whether wire carries constant value.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>bool</code></dt>
-<dd>True, because constant wire carries a constant value 1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -217,6 +222,12 @@ def is_const():
     &#34;&#34;&#34;
     return True</code></pre>
 </details>
+<div class="desc"><p>Information whether wire carries constant value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>True, because constant wire carries a constant value 1.</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Inherited members</h3>
@@ -248,21 +259,6 @@ def is_const():
 <span>(</span><span>name: str,<br>prefix: str = '',<br>value: int = 0,<br>index: int = 0,<br>parent_bus: object = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing basic wire used to interconnect components.</p>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
-<dd>Name of the wire.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix of the wire. Defaultly the same as its name. Defaults to "".</dd>
-<dt><strong><code>value</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Value the wire carries (0,1). Defaults to 0.</dd>
-<dt><strong><code>index</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Index position of wire (mainly used for indexing within a bus). Defaults to 0.</dd>
-<dt><strong><code>parent_bus</code></strong> :&ensp;<code>object</code>, optional</dt>
-<dd>Bus object of which a Wire is a part of (used mainly for proper generation of wire names). Defaults to None.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -546,6 +542,21 @@ def is_const():
     def N(self):
         return 1</code></pre>
 </details>
+<div class="desc"><p>Class representing basic wire used to interconnect components.</p>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the wire.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix of the wire. Defaultly the same as its name. Defaults to "".</dd>
+<dt><strong><code>value</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Value the wire carries (0,1). Defaults to 0.</dd>
+<dt><strong><code>index</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Index position of wire (mainly used for indexing within a bus). Defaults to 0.</dd>
+<dt><strong><code>parent_bus</code></strong> :&ensp;<code>object</code>, optional</dt>
+<dd>Bus object of which a Wire is a part of (used mainly for proper generation of wire names). Defaults to None.</dd>
+</dl></div>
 <h3>Subclasses</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.wire_components.wires.ConstantWireValue0" href="#ariths_gen.wire_components.wires.ConstantWireValue0">ConstantWireValue0</a></li>
@@ -557,12 +568,6 @@ def is_const():
 <span>def <span class="ident">is_const</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Information whether wire carries constant value.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>bool</code></dt>
-<dd>False, because basic wire doesn't represent a wire with constant value.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -576,13 +581,18 @@ def is_const():
     &#34;&#34;&#34;
     return False</code></pre>
 </details>
+<div class="desc"><p>Information whether wire carries constant value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>bool</code></dt>
+<dd>False, because basic wire doesn't represent a wire with constant value.</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Instance variables</h3>
 <dl>
 <dt id="ariths_gen.wire_components.wires.Wire.N"><code class="name">prop <span class="ident">N</span></code></dt>
 <dd>
-<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -591,6 +601,7 @@ def is_const():
 def N(self):
     return 1</code></pre>
 </details>
+<div class="desc"></div>
 </dd>
 </dl>
 <h3>Methods</h3>
@@ -599,21 +610,6 @@ def N(self):
 <span>def <span class="ident">get_assign_blif</span></span>(<span>self, prefix: str, output: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Assignment of wire value to another desired wire in Blif code.</p>
-<p>This wire's value is either assigned to desired output bus wire (represented by <code>prefix</code> name) when <code>output</code>=True.
-Otherwise the wire value at desired bus position (represented by <code>prefix</code> name) is assigned to this wire when <code>output</code>=False.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code></dt>
-<dd>Name of the source/destination bus wire to be assigned from/to.</dd>
-<dt><strong><code>output</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Whether <code>prefix</code> represents the destination or the source wire in the assignment. Defaultly it symbolizes the source. Defaults to False.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code for assignment of one wire to another.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -645,28 +641,26 @@ Otherwise the wire value at desired bus position (represented by <code>prefix</c
             return f&#34;.names {prefix} {self.name}\n&#34; + \
                    f&#34;1 1\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Assignment of wire value to another desired wire in Blif code.</p>
+<p>This wire's value is either assigned to desired output bus wire (represented by <code>prefix</code> name) when <code>output</code>=True.
+Otherwise the wire value at desired bus position (represented by <code>prefix</code> name) is assigned to this wire when <code>output</code>=False.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the source/destination bus wire to be assigned from/to.</dd>
+<dt><strong><code>output</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether <code>prefix</code> represents the destination or the source wire in the assignment. Defaultly it symbolizes the source. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code for assignment of one wire to another.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_declaration_blif</span></span>(<span>self, prefix: str = '', offset: int = 0, array: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Declaration of wire which is part of a bus in Blif code.</p>
-<p>Declares basic wire name if wire is not part of a bus
-or declares wire by an offset of its position within the bus.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Bus prefix of which this wire is a part off. Defaults to "".</dd>
-<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Offset wire location within a bus. Defaults to 0.</dd>
-<dt><strong><code>array</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Tells whether a basic wire or a wire from within a bus is to be declared. Defaults to False.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code for declaration of a wire.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -690,17 +684,28 @@ or declares wire by an offset of its position within the bus.</p>
     else:
         return f&#34;{prefix}&#34;</code></pre>
 </details>
+<div class="desc"><p>Declaration of wire which is part of a bus in Blif code.</p>
+<p>Declares basic wire name if wire is not part of a bus
+or declares wire by an offset of its position within the bus.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Bus prefix of which this wire is a part off. Defaults to "".</dd>
+<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Offset wire location within a bus. Defaults to 0.</dd>
+<dt><strong><code>array</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Tells whether a basic wire or a wire from within a bus is to be declared. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code for declaration of a wire.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_declaration_c"><code class="name flex">
 <span>def <span class="ident">get_declaration_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Wire declaration in C code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Empty string if C code wire is carrying constant value (constant value is used in situ) or returns C code for declaration and initialization of wire's name.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -716,17 +721,17 @@ or declares wire by an offset of its position within the bus.</p>
     else:
         return f&#34;  uint8_t {self.name} = {self.value};\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Wire declaration in C code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Empty string if C code wire is carrying constant value (constant value is used in situ) or returns C code for declaration and initialization of wire's name.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_declaration_v_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Wire declaration for flat Verilog code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Empty string if Verilog code wire is carrying constant value (constant value is used in situ) or returns Verilog code for declaration and initialization of wire's name.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -742,17 +747,17 @@ or declares wire by an offset of its position within the bus.</p>
     else:
         return f&#34;  wire {self.name};\n&#34;</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.wire_components.wires.Wire.get_declaration_v_hier"><code class="name flex">
-<span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Wire declaration for hierarchical Verilog code.</p>
+<div class="desc"><p>Wire declaration for flat Verilog code.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>Empty string if Verilog code wire is carrying constant value (constant value is used in situ) or returns Verilog code for declaration and initialization of wire's name.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.wire_components.wires.Wire.get_declaration_v_hier"><code class="name flex">
+<span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -768,18 +773,17 @@ or declares wire by an offset of its position within the bus.</p>
     else:
         return f&#34;  wire [0:0] {self.name};\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Wire declaration for hierarchical Verilog code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Empty string if Verilog code wire is carrying constant value (constant value is used in situ) or returns Verilog code for declaration and initialization of wire's name.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_wire_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_wire_declaration_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Declaration of a single wire in Blif code.</p>
-<p>Used for declaration of modul inputs.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code for declaration of a wire.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -794,19 +798,18 @@ or declares wire by an offset of its position within the bus.</p>
     &#34;&#34;&#34;
     return f&#34;{self.prefix} &#34;</code></pre>
 </details>
+<div class="desc"><p>Declaration of a single wire in Blif code.</p>
+<p>Used for declaration of modul inputs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code for declaration of a wire.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_blif"><code class="name flex">
 <span>def <span class="ident">get_wire_value_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Accesses bit value from wire represented in Blif code.</p>
-<p>Used for assignment of specific one bit circuit/gate values to their respective parameters
-in hierarchical Blif subcomponents generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif code to get bit value from this wire or to get constant wire's bit value 0/1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -825,17 +828,19 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return self.name</code></pre>
 </details>
+<div class="desc"><p>Accesses bit value from wire represented in Blif code.</p>
+<p>Used for assignment of specific one bit circuit/gate values to their respective parameters
+in hierarchical Blif subcomponents generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif code to get bit value from this wire or to get constant wire's bit value 0/1.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_c_flat"><code class="name flex">
 <span>def <span class="ident">get_wire_value_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Accesses desired bit value from wire represented in C code variable used for flat generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code bitwise shift to get desired bit value from this wire or wire variable's constant bit value 0/1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -861,17 +866,17 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01)&#34;</code></pre>
 </details>
+<div class="desc"><p>Accesses desired bit value from wire represented in C code variable used for flat generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code bitwise shift to get desired bit value from this wire or wire variable's constant bit value 0/1.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_c_hier"><code class="name flex">
 <span>def <span class="ident">get_wire_value_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Accesses desired bit value from wire represented in C code variable used for hierarchical generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code bitwise shift to get desired bit value position from this wire or wire variable's constant bit value 0/1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -887,17 +892,17 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01)&#34;</code></pre>
 </details>
+<div class="desc"><p>Accesses desired bit value from wire represented in C code variable used for hierarchical generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code bitwise shift to get desired bit value position from this wire or wire variable's constant bit value 0/1.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_v_flat"><code class="name flex">
 <span>def <span class="ident">get_wire_value_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Accesses bit value from wire represented in Verilog code variable used for flat generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code to get bit value from this wire or to get constant wire's bit value 0/1.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -913,17 +918,17 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return self.name</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier"><code class="name flex">
-<span>def <span class="ident">get_wire_value_v_hier</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Accesses bit value from wire represented in Verilog code variable used for hierarchical generation.</p>
+<div class="desc"><p>Accesses bit value from wire represented in Verilog code variable used for flat generation.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>Verilog code to get bit value from this wire or to get constant wire's bit value 0/1.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.wire_components.wires.Wire.get_wire_value_v_hier"><code class="name flex">
+<span>def <span class="ident">get_wire_value_v_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -939,12 +944,17 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;{self.prefix}[{self.index}]&#34;</code></pre>
 </details>
+<div class="desc"><p>Accesses bit value from wire represented in Verilog code variable used for hierarchical generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code to get bit value from this wire or to get constant wire's bit value 0/1.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.is_buswire"><code class="name flex">
 <span>def <span class="ident">is_buswire</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -952,22 +962,12 @@ in hierarchical Blif subcomponents generation.</p>
 <pre><code class="python">def is_buswire(self):
     return self.name.endswith(&#34;[&#34;+str(self.index)+&#34;]&#34;) and self.parent_bus is not None</code></pre>
 </details>
+<div class="desc"></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_c_flat"><code class="name flex">
 <span>def <span class="ident">return_wire_value_c_flat</span></span>(<span>self, offset: int = 0)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -986,12 +986,7 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;(({self.name} &gt;&gt; 0) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier"><code class="name flex">
-<span>def <span class="ident">return_wire_value_c_hier</span></span>(<span>self, offset: int = 0)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for hierarchical generation.</p>
+<div class="desc"><p>Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
@@ -1002,6 +997,11 @@ in hierarchical Blif subcomponents generation.</p>
 <dt><code>str</code></dt>
 <dd>C code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_c_hier"><code class="name flex">
+<span>def <span class="ident">return_wire_value_c_hier</span></span>(<span>self, offset: int = 0)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1022,12 +1022,7 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;(({self.prefix} &gt;&gt; {self.index}) &amp; 0x01ull) &lt;&lt; {offset};\n&#34;</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat"><code class="name flex">
-<span>def <span class="ident">return_wire_value_python_flat</span></span>(<span>self, offset: int = 0)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
+<div class="desc"><p>Retrieves desired bit value from wire represented in C code variable and bitwise shifts it to desired position for storing it within a bus for hierarchical generation.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
@@ -1036,8 +1031,13 @@ in hierarchical Blif subcomponents generation.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
-<dd>Python code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
+<dd>C code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_python_flat"><code class="name flex">
+<span>def <span class="ident">return_wire_value_python_flat</span></span>(<span>self, offset: int = 0)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1061,17 +1061,22 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;((({self.name} &gt;&gt; 0) &amp; 0x01) &lt;&lt; {offset})\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Retrieves desired bit value from wire represented in Python code variable (object) and bitwise shifts it to desired position for storing it within a bus for flat generation.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>offset</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Used to shift wire value in order to be stored in proper location inside a bus. Defaults to 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Python code bitwise shift for storing (constant/variable) wire value at desired offset position.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_v_flat"><code class="name flex">
 <span>def <span class="ident">return_wire_value_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves bit value from wire represented in Verilog code variable for storing it within a bus for flat generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code for retrieving (constant/variable) wire value (and assign it at desired bus offset position).</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1087,17 +1092,17 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;{self.name};\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Retrieves bit value from wire represented in Verilog code variable for storing it within a bus for flat generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code for retrieving (constant/variable) wire value (and assign it at desired bus offset position).</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.wire_components.wires.Wire.return_wire_value_v_hier"><code class="name flex">
 <span>def <span class="ident">return_wire_value_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Retrieves bit value from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code for retrieving (constant/variable) wire value used for assigning it into bus represented in Verilog code variable.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1113,6 +1118,12 @@ in hierarchical Blif subcomponents generation.</p>
     else:
         return f&#34;{self.prefix}[{self.index}];\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Retrieves bit value from bus's wires and stores them in bus's corresponding Verilog variable at proper offset bit position in the bus for hierarchical generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code for retrieving (constant/variable) wire value used for assigning it into bus represented in Verilog code variable.</dd>
+</dl></div>
 </dd>
 </dl>
 </dd>
@@ -1173,7 +1184,7 @@ in hierarchical Blif subcomponents generation.</p>
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.4</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
 </footer>
 </body>
 </html>

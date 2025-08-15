@@ -3,19 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-<meta name="generator" content="pdoc3 0.11.4">
+<meta name="generator" content="pdoc3 0.11.6">
 <title>ariths_gen.core.logic_gate_circuits.logic_gate_circuit API documentation</title>
 <meta name="description" content="">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
-<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
 <style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
 <style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
 <script>window.addEventListener('DOMContentLoaded', () => {
 hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
 hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
 })</script>
 </head>
 <body>
@@ -40,32 +51,6 @@ hljs.highlightAll();
 <span>(</span><span>a: <a title="ariths_gen.wire_components.buses.Bus" href="../../wire_components/buses.html#ariths_gen.wire_components.buses.Bus">Bus</a>,<br>two_input_gate_cls,<br>parent_component: object,<br>prefix: str = '')</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing multiple input logic gate internally composed of corresponding two input logic gates.</p>
-<p>Gates are cascaded in a tree like structure to solve fan-in issue concerning multi-input logic gates.
-Tree like structure increases propagation delay logarithmically with number of inputs.</p>
-<pre><code>   ┌──────┐
-──►│ FUNC │
-   │      ├──┐  ┌──────┐
-──►│      │  ├─►│ FUNC │
-   └──────┘  │  │      ├─►
-   ┌──────┐  ├─►│      │
-──►│ FUNC │  │  └──────┘
-   │      ├──┘
-──►│      │
-   └──────┘
-   ...
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
-<dd>Bus containing input wires to form inner composite two input logic gates.</dd>
-<dt><strong><code>two_input_gate_cls</code></strong> :&ensp;<code>type</code></dt>
-<dd>Specific two input logic gate class type that specifies what type of multiple input logic gate the instance represents.</dd>
-<dt>parent_component (object) Object of upper component of which this logic gate is a subcomponent (used for adding composite two input gates into <code>parent_component</code>'s list of subcomponents).</dt>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix used to name inner composite logic gates. Defaults to "".</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -119,30 +104,38 @@ Tree like structure increases propagation delay logarithmically with number of i
             a = Bus(prefix=a.prefix, N=N, wires_list=out_wires)
         self.out = a.get_wire(0)</code></pre>
 </details>
+<div class="desc"><p>Class representing multiple input logic gate internally composed of corresponding two input logic gates.</p>
+<p>Gates are cascaded in a tree like structure to solve fan-in issue concerning multi-input logic gates.
+Tree like structure increases propagation delay logarithmically with number of inputs.</p>
+<pre><code>   ┌──────┐
+──►│ FUNC │
+   │      ├──┐  ┌──────┐
+──►│      │  ├─►│ FUNC │
+   └──────┘  │  │      ├─►
+   ┌──────┐  ├─►│      │
+──►│ FUNC │  │  └──────┘
+   │      ├──┘
+──►│      │
+   └──────┘
+   ...
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Bus</code></dt>
+<dd>Bus containing input wires to form inner composite two input logic gates.</dd>
+<dt><strong><code>two_input_gate_cls</code></strong> :&ensp;<code>type</code></dt>
+<dd>Specific two input logic gate class type that specifies what type of multiple input logic gate the instance represents.</dd>
+<dt>parent_component (object) Object of upper component of which this logic gate is a subcomponent (used for adding composite two input gates into <code>parent_component</code>'s list of subcomponents).</dt>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix used to name inner composite logic gates. Defaults to "".</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate"><code class="flex name class">
 <span>class <span class="ident">OneInputLogicGate</span></span>
 <span>(</span><span>a: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>,<br>prefix: str = 'gate',<br>outid: int = 0,<br>parent_component: object = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing one input logic gates.</p>
-<pre><code>   ┌──────┐
-   │ FUNC │
-──►│      │───►
-   │      │
-   └──────┘
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Wire</code></dt>
-<dd>First input wire.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of logic gate. Defaults to "gate".</dd>
-<dt><strong><code>outid</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Index of output wire. Defaults to 0.</dd>
-</dl>
-<p>parent_component (object, optional) Object of upper component of which logic gate is a subcomponent. Defaults to None.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -374,6 +367,24 @@ Tree like structure increases propagation delay logarithmically with number of i
             out_id = a_id+1 if a_id == 2 else 2
         return self.get_triplet_cgp(a_id=a_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)</code></pre>
 </details>
+<div class="desc"><p>Class representing one input logic gates.</p>
+<pre><code>   ┌──────┐
+   │ FUNC │
+──►│      │───►
+   │      │
+   └──────┘
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Wire</code></dt>
+<dd>First input wire.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of logic gate. Defaults to "gate".</dd>
+<dt><strong><code>outid</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Index of output wire. Defaults to 0.</dd>
+</dl>
+<p>parent_component (object, optional) Object of upper component of which logic gate is a subcomponent. Defaults to None.</p></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate">TwoInputLogicGate</a></li>
@@ -388,17 +399,6 @@ Tree like structure increases propagation delay logarithmically with number of i
 <span>def <span class="ident">get_output_cgp</span></span>(<span>out_id: int)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates list of output wires indexes of described one input logic gate from MSB to LSB.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>Output wire index position.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>List containing logic gate's output wire indexes (one in this case).</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -415,6 +415,17 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;({out_id})&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates list of output wires indexes of described one input logic gate from MSB to LSB.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output wire index position.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>List containing logic gate's output wire indexes (one in this case).</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Methods</h3>
@@ -423,12 +434,6 @@ def get_output_cgp(out_id: int):
 <span>def <span class="ident">get_declaration_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code declaration of one input logic gate's wires.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif logic gate's wires declaration.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -445,17 +450,17 @@ def get_output_cgp(out_id: int):
            f&#34;.names vdd\n1\n&#34; + \
            f&#34;.names gnd\n0\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code declaration of one input logic gate's wires.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif logic gate's wires declaration.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_function_block_blif"><code class="name flex">
 <span>def <span class="ident">get_function_block_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code representation of corresponding one input logic gate used as subcomponent in hierarchical circuit description.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif logic gate subcomponent description.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -472,17 +477,17 @@ def get_output_cgp(out_id: int):
            f&#34;{gate_block.get_function_blif()}&#34; + \
            f&#34;.end\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code representation of corresponding one input logic gate used as subcomponent in hierarchical circuit description.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif logic gate subcomponent description.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_function_block_v"><code class="name flex">
 <span>def <span class="ident">get_function_block_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code representation of corresponding logic gate used as a function block in hierarchical circuit description.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code of logic gate's function block description.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -498,17 +503,17 @@ def get_output_cgp(out_id: int):
            f&#34;  assign {gate_block.out.name} = {gate_block.get_function_v()};\n&#34; + \
            f&#34;endmodule\n\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code representation of corresponding logic gate used as a function block in hierarchical circuit description.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code of logic gate's function block description.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_function_c"><code class="name flex">
 <span>def <span class="ident">get_function_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code representing corresponding one input logic gate's Boolean function using bitwise operators between its bitwise shifted input.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code description of logic gate's Boolean function (with bitwise shifted input).</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -521,17 +526,17 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;{self.operator}({self.a.get_wire_value_c_flat()}) &amp; 0x01&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code representing corresponding one input logic gate's Boolean function using bitwise operators between its bitwise shifted input.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code description of logic gate's Boolean function (with bitwise shifted input).</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_function_v"><code class="name flex">
 <span>def <span class="ident">get_function_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code representing corresponding one input logic gate's Boolean function using bitwise operators between its input.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog description of logic gate's Boolean function.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -544,17 +549,17 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;{self.operator}{self.a.get_wire_value_v_flat()}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code representing corresponding one input logic gate's Boolean function using bitwise operators between its input.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog description of logic gate's Boolean function.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_gate_triplet_cgp"><code class="name flex">
 <span>def <span class="ident">get_gate_triplet_cgp</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat CGP triplet and output representation of corresponding logic gate itself.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Triplet and output lists describing function of corresponding one input logic gate.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -576,22 +581,17 @@ def get_output_cgp(out_id: int):
         out_id = a_id+1 if a_id == 2 else 2
     return self.get_triplet_cgp(a_id=a_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)</code></pre>
 </details>
+<div class="desc"><p>Generates flat CGP triplet and output representation of corresponding logic gate itself.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Triplet and output lists describing function of corresponding one input logic gate.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_invocation_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocation_blif_hier</span></span>(<span>self, top_modul: bool = False, *args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code invocation of corresponding one input logic gate's generated subcomponent.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>top_modul</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether the described circuit has logic gate as its top modul component (used for self logic gate generation). Defaults to False.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif logic gate subcomponent invocation.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -612,17 +612,22 @@ def get_output_cgp(out_id: int):
     else:
         return f&#34;.subckt {self.gate_type} a={self.a.get_wire_value_blif()} out={self.out.get_wire_value_blif()}\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code invocation of corresponding one input logic gate's generated subcomponent.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>top_modul</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether the described circuit has logic gate as its top modul component (used for self logic gate generation). Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif logic gate subcomponent invocation.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_prototype_c_flat"><code class="name flex">
 <span>def <span class="ident">get_prototype_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat C code function header to describe corresponding one input logic gate's interface in flat C code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Function's name and parameter in flat C code.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -635,17 +640,17 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;uint8_t {self.prefix}(uint8_t {self.a.name})&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates flat C code function header to describe corresponding one input logic gate's interface in flat C code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Function's name and parameter in flat C code.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_prototype_c_hier"><code class="name flex">
 <span>def <span class="ident">get_prototype_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates hierarchical C code function header to describe corresponding one input logic gate's interface in hierarchical C code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Function's name and parameters in hierarchical C code.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -658,17 +663,17 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;uint8_t {self.gate_type}(uint8_t {self.a.name})&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates hierarchical C code function header to describe corresponding one input logic gate's interface in hierarchical C code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Function's name and parameters in hierarchical C code.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_prototype_v_flat"><code class="name flex">
 <span>def <span class="ident">get_prototype_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat Verilog module header to describe corresponding one input logic gate's interface in flat Verilog.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Module's name and parameter in flat Verilog.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -682,17 +687,17 @@ def get_output_cgp(out_id: int):
     return f&#34;module {self.prefix}(input {self.a.name}&#34; + \
            &#34;&#34;.join([f&#34;, output {self.out.name});\n&#34; if self.disable_generation is False else f&#34;, output {self.out.name}_out);\n&#34; for _ in range(1)])</code></pre>
 </details>
+<div class="desc"><p>Generates flat Verilog module header to describe corresponding one input logic gate's interface in flat Verilog.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Module's name and parameter in flat Verilog.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_prototype_v_hier"><code class="name flex">
 <span>def <span class="ident">get_prototype_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates hierarchical Verilog module header to describe corresponding one input logic gate's interface in hierarchical Verilog.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Module's name and parameter in hierarchical Verilog.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -705,30 +710,17 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;module {self.gate_type}(input {self.a.name}, output {self.out.name});\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates hierarchical Verilog module header to describe corresponding one input logic gate's interface in hierarchical Verilog.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Module's name and parameter in hierarchical Verilog.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate.get_triplet_cgp"><code class="name flex">
 <span>def <span class="ident">get_triplet_cgp</span></span>(<span>self, a_id: int, out_id: int)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates logic gate triplet (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.</p>
-<p>Each triplet represents unique logic gate within the described circuit. In this case of one input logic gate, the same input wire index is driven to both inputs.
-Besides the contained input wires indexes and gate's inner logic function, an output wire with incremented index position is also created and remembered to be
-appropriately driven as an input to another logic gate or as the circuit's output.</p>
-<p>Constant wire with value 0 has constant index of 0.
-Constant wire with value 1 has constant index of 1.
-Other wires indexes start counting from 2 and up.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>First (used also as the second) input wire index position.</dd>
-<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>Outpu wire index position</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Triplet describing function of corresponding one input logic gate.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -753,6 +745,25 @@ Other wires indexes start counting from 2 and up.</p>
     &#34;&#34;&#34;
     return f&#34;([{out_id}]{a_id},{a_id},{self.cgp_function})&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates logic gate triplet (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.</p>
+<p>Each triplet represents unique logic gate within the described circuit. In this case of one input logic gate, the same input wire index is driven to both inputs.
+Besides the contained input wires indexes and gate's inner logic function, an output wire with incremented index position is also created and remembered to be
+appropriately driven as an input to another logic gate or as the circuit's output.</p>
+<p>Constant wire with value 0 has constant index of 0.
+Constant wire with value 1 has constant index of 1.
+Other wires indexes start counting from 2 and up.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>First (used also as the second) input wire index position.</dd>
+<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Outpu wire index position</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Triplet describing function of corresponding one input logic gate.</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Inherited members</h3>
@@ -788,26 +799,6 @@ Other wires indexes start counting from 2 and up.</p>
 <span>(</span><span>a: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>,<br>b: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>,<br>prefix: str = 'gate',<br>outid: int = 0,<br>parent_component: object = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing two input inverted logic gates.</p>
-<pre><code>   ┌──────┐
-──►│ FUNC │
-   │      │O──►
-──►│      │
-   └──────┘
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Wire</code></dt>
-<dd>First input wire.</dd>
-<dt><strong><code>b</code></strong> :&ensp;<code>Wire</code></dt>
-<dd>Second input wire.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of logic gate. Defaults to "gate".</dd>
-<dt><strong><code>outid</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Index of output wire. Defaults to 0.</dd>
-</dl>
-<p>parent_component (object, optional) Object of upper component of which logic gate is a subcomponent. Defaults to None.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -855,6 +846,26 @@ Other wires indexes start counting from 2 and up.</p>
         &#34;&#34;&#34;
         return &#34;~(&#34;+(super().get_function_v())+&#34;)&#34;</code></pre>
 </details>
+<div class="desc"><p>Class representing two input inverted logic gates.</p>
+<pre><code>   ┌──────┐
+──►│ FUNC │
+   │      │O──►
+──►│      │
+   └──────┘
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Wire</code></dt>
+<dd>First input wire.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Wire</code></dt>
+<dd>Second input wire.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of logic gate. Defaults to "gate".</dd>
+<dt><strong><code>outid</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Index of output wire. Defaults to 0.</dd>
+</dl>
+<p>parent_component (object, optional) Object of upper component of which logic gate is a subcomponent. Defaults to None.</p></div>
 <h3>Ancestors</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate">TwoInputLogicGate</a></li>
@@ -871,12 +882,6 @@ Other wires indexes start counting from 2 and up.</p>
 <span>def <span class="ident">get_function_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code representing corresponding negated two input logic gate's Boolean function using bitwise operators between its bitwise shifted inputs.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code description of negated logic gate's Boolean function (with bitwise shifted inputs).</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -889,17 +894,17 @@ Other wires indexes start counting from 2 and up.</p>
     &#34;&#34;&#34;
     return &#34;~(&#34;+(super().get_function_c()) + &#34;) &amp; 0x01&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code representing corresponding negated two input logic gate's Boolean function using bitwise operators between its bitwise shifted inputs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code description of negated logic gate's Boolean function (with bitwise shifted inputs).</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputInvertedLogicGate.get_function_v"><code class="name flex">
 <span>def <span class="ident">get_function_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code representing corresponding negated two input logic gate's Boolean function using bitwise operators between its inputs.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog description of negated logic gate's Boolean function.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -912,6 +917,12 @@ Other wires indexes start counting from 2 and up.</p>
     &#34;&#34;&#34;
     return &#34;~(&#34;+(super().get_function_v())+&#34;)&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code representing corresponding negated two input logic gate's Boolean function using bitwise operators between its inputs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog description of negated logic gate's Boolean function.</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Inherited members</h3>
@@ -958,26 +969,6 @@ Other wires indexes start counting from 2 and up.</p>
 <span>(</span><span>a: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>,<br>b: <a title="ariths_gen.wire_components.wires.Wire" href="../../wire_components/wires.html#ariths_gen.wire_components.wires.Wire">Wire</a>,<br>prefix: str = 'gate',<br>outid: int = 0,<br>parent_component: object = None)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Class representing two input logic gates.</p>
-<pre><code>   ┌──────┐
-──►│ FUNC │
-   │      ├─►
-──►│      │
-   └──────┘
-</code></pre>
-<p>Description of the <strong>init</strong> method.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a</code></strong> :&ensp;<code>Wire</code></dt>
-<dd>First input wire.</dd>
-<dt><strong><code>b</code></strong> :&ensp;<code>Wire</code></dt>
-<dd>Second input wire.</dd>
-<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
-<dd>Prefix name of logic gate. Defaults to "gate".</dd>
-<dt><strong><code>outid</code></strong> :&ensp;<code>int</code>, optional</dt>
-<dd>Index of output wire. Defaults to 0.</dd>
-</dl>
-<p>parent_component (object, optional) Object of upper component of which logic gate is a subcomponent. Defaults to None.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1427,6 +1418,26 @@ Other wires indexes start counting from 2 and up.</p>
         file_object.write(self.get_parameters_cgp())
         file_object.write(self.get_gate_triplet_cgp())</code></pre>
 </details>
+<div class="desc"><p>Class representing two input logic gates.</p>
+<pre><code>   ┌──────┐
+──►│ FUNC │
+   │      ├─►
+──►│      │
+   └──────┘
+</code></pre>
+<p>Description of the <strong>init</strong> method.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a</code></strong> :&ensp;<code>Wire</code></dt>
+<dd>First input wire.</dd>
+<dt><strong><code>b</code></strong> :&ensp;<code>Wire</code></dt>
+<dd>Second input wire.</dd>
+<dt><strong><code>prefix</code></strong> :&ensp;<code>str</code>, optional</dt>
+<dd>Prefix name of logic gate. Defaults to "gate".</dd>
+<dt><strong><code>outid</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Index of output wire. Defaults to 0.</dd>
+</dl>
+<p>parent_component (object, optional) Object of upper component of which logic gate is a subcomponent. Defaults to None.</p></div>
 <h3>Subclasses</h3>
 <ul class="hlist">
 <li><a title="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate" href="#ariths_gen.core.logic_gate_circuits.logic_gate_circuit.OneInputLogicGate">OneInputLogicGate</a></li>
@@ -1441,12 +1452,6 @@ Other wires indexes start counting from 2 and up.</p>
 <span>def <span class="ident">get_includes_c</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates necessary C library includes for output representation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code library includes.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1460,22 +1465,17 @@ def get_includes_c():
     &#34;&#34;&#34;
     return f&#34;#include &lt;stdio.h&gt;\n#include &lt;stdint.h&gt;\n\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates necessary C library includes for output representation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code library includes.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_output_cgp"><code class="name flex">
 <span>def <span class="ident">get_output_cgp</span></span>(<span>out_id: int)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates list of output wires indexes of described two input logic gate from MSB to LSB.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>Output wire index position.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>List containing logic gate's output wire indexes (one in this case).</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1492,19 +1492,22 @@ def get_output_cgp(out_id: int):
     &#34;&#34;&#34;
     return f&#34;({out_id})&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates list of output wires indexes of described two input logic gate from MSB to LSB.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Output wire index position.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>List containing logic gate's output wire indexes (one in this case).</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_parameters_cgp"><code class="name flex">
 <span>def <span class="ident">get_parameters_cgp</span></span>(<span>)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates CGP chromosome parameters of corresponding logic gate.</p>
-<p>In total seven parameters represent: total inputs, total outputs, number of rows, number of columns (gates),
-number of each gate's inputs, number of each gate's outputs, quality constant value.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>CGP chromosome parameters of described logic gate.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1521,6 +1524,14 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return &#34;{2,1,1,1,2,1,0}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates CGP chromosome parameters of corresponding logic gate.</p>
+<p>In total seven parameters represent: total inputs, total outputs, number of rows, number of columns (gates),
+number of each gate's inputs, number of each gate's outputs, quality constant value.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>CGP chromosome parameters of described logic gate.</dd>
+</dl></div>
 </dd>
 </dl>
 <h3>Methods</h3>
@@ -1529,12 +1540,6 @@ def get_parameters_cgp():
 <span>def <span class="ident">get_assign_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code for invocation of logical functions and subsequently provides assignment to their output.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code invocation of logical function and assignment to output.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1552,17 +1557,17 @@ def get_parameters_cgp():
     else:
         return f&#34;  {self.out.prefix} = {self.get_function_c()};\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code for invocation of logical functions and subsequently provides assignment to their output.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code invocation of logical function and assignment to output.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_python_flat"><code class="name flex">
 <span>def <span class="ident">get_assign_python_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Python code for invocation of logical functions and subsequently provides assignment to their output.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Python code invocation of logical function and assignment to output.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1582,17 +1587,17 @@ def get_parameters_cgp():
     else:
         return f&#34;  {self.out.prefix} = {self.get_function_c()}\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Python code for invocation of logical functions and subsequently provides assignment to their output.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Python code invocation of logical function and assignment to output.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_assign_v_flat"><code class="name flex">
 <span>def <span class="ident">get_assign_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code for invocation of logical functions and subsequently provides assignment to their output.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code invocation of logical function and assignment to output.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1610,17 +1615,17 @@ def get_parameters_cgp():
     else:
         return f&#34;  assign {self.out.prefix} = {self.get_function_v()};\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code for invocation of logical functions and subsequently provides assignment to their output.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code invocation of logical function and assignment to output.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_blif_code"><code class="name flex">
 <span>def <span class="ident">get_blif_code</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat Blif code representation of corresponding logic gate itself.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
-<dd>Destination file object where circuit's representation will be written to.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1636,17 +1641,17 @@ def get_parameters_cgp():
     file_object.write(self.get_function_blif_flat(top_modul=True))
     file_object.write(f&#34;.end\n&#34;)</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code"><code class="name flex">
-<span>def <span class="ident">get_c_code</span></span>(<span>self, file_object)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Generates flat C code representation of corresponding logic gate itself.</p>
+<div class="desc"><p>Generates flat Blif code representation of corresponding logic gate itself.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_c_code"><code class="name flex">
+<span>def <span class="ident">get_c_code</span></span>(<span>self, file_object)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1661,17 +1666,17 @@ def get_parameters_cgp():
     file_object.write(self.get_prototype_c_flat())
     file_object.write(&#34;  return &#34;+(self.get_function_c())+&#34;;\n}&#34;)</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_cgp_code"><code class="name flex">
-<span>def <span class="ident">get_cgp_code</span></span>(<span>self, file_object)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Generates flat CGP chromosome representation of corresponding logic gate itself.</p>
+<div class="desc"><p>Generates flat C code representation of corresponding logic gate itself.</p>
 <h2 id="args">Args</h2>
 <dl>
 <dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
 <dd>Destination file object where circuit's representation will be written to.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_cgp_code"><code class="name flex">
+<span>def <span class="ident">get_cgp_code</span></span>(<span>self, file_object)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1685,17 +1690,17 @@ def get_parameters_cgp():
     file_object.write(self.get_parameters_cgp())
     file_object.write(self.get_gate_triplet_cgp())</code></pre>
 </details>
+<div class="desc"><p>Generates flat CGP chromosome representation of corresponding logic gate itself.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
+<dd>Destination file object where circuit's representation will be written to.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_blif"><code class="name flex">
 <span>def <span class="ident">get_declaration_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code declaration of two input logic gate's wires.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif logic gate's wires declaration.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1712,17 +1717,17 @@ def get_parameters_cgp():
            f&#34;.names vdd\n1\n&#34; + \
            f&#34;.names gnd\n0\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code declaration of two input logic gate's wires.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif logic gate's wires declaration.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_c_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code declaration of output wire for flat representation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code logic gate's output wire declaration.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1740,17 +1745,17 @@ def get_parameters_cgp():
     else:
         return f&#34;{self.out.get_declaration_c()}&#34;</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_c_hier"><code class="name flex">
-<span>def <span class="ident">get_declaration_c_hier</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Generates C code declaration of output wire for hierarchical representation.</p>
+<div class="desc"><p>Generates C code declaration of output wire for flat representation.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>C code logic gate's output wire declaration.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_c_hier"><code class="name flex">
+<span>def <span class="ident">get_declaration_c_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1768,17 +1773,17 @@ def get_parameters_cgp():
     else:
         return f&#34;{self.out.get_declaration_c()}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code declaration of output wire for hierarchical representation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code logic gate's output wire declaration.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_v_flat"><code class="name flex">
 <span>def <span class="ident">get_declaration_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code declaration of output wire for flat representation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code logic gate's output wire declaration.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1796,17 +1801,17 @@ def get_parameters_cgp():
     else:
         return f&#34;{self.out.get_declaration_v_flat()}&#34;</code></pre>
 </details>
-</dd>
-<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_v_hier"><code class="name flex">
-<span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<div class="desc"><p>Generates Verilog code declaration of output wire for hierarchical representation.</p>
+<div class="desc"><p>Generates Verilog code declaration of output wire for flat representation.</p>
 <h2 id="returns">Returns</h2>
 <dl>
 <dt><code>str</code></dt>
 <dd>Verilog code logic gate's output wire declaration.</dd>
 </dl></div>
+</dd>
+<dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_declaration_v_hier"><code class="name flex">
+<span>def <span class="ident">get_declaration_v_hier</span></span>(<span>self)</span>
+</code></dt>
+<dd>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1824,23 +1829,17 @@ def get_parameters_cgp():
     else:
         return f&#34;{self.out.get_declaration_v_hier()}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code declaration of output wire for hierarchical representation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code logic gate's output wire declaration.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_function_blif_flat"><code class="name flex">
 <span>def <span class="ident">get_function_blif_flat</span></span>(<span>self, top_modul: bool = False)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code representing corresponding two input logic gate's Boolean function between its inputs.</p>
-<p>Invokes corresponding logic gate's <code>get_function_blif</code> method for its individual description of logic function.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>top_modul</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether the described circuit has logic gate as its top modul component (used for self logic gate generation). Defaults to False.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif description of logic gate's Boolean function.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1865,17 +1864,23 @@ def get_parameters_cgp():
     else:
         return f&#34;{self.get_function_blif()}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code representing corresponding two input logic gate's Boolean function between its inputs.</p>
+<p>Invokes corresponding logic gate's <code>get_function_blif</code> method for its individual description of logic function.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>top_modul</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether the described circuit has logic gate as its top modul component (used for self logic gate generation). Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif description of logic gate's Boolean function.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_function_block_blif"><code class="name flex">
 <span>def <span class="ident">get_function_block_blif</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code representation of corresponding two input logic gate used as subcomponent in hierarchical circuit description.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif logic gate subcomponent description.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1892,17 +1897,17 @@ def get_parameters_cgp():
            f&#34;{gate_block.get_function_blif()}&#34; + \
            f&#34;.end\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code representation of corresponding two input logic gate used as subcomponent in hierarchical circuit description.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif logic gate subcomponent description.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_function_block_c"><code class="name flex">
 <span>def <span class="ident">get_function_block_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code representation of corresponding logic gate used as a function block in hierarchical circuit description.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code of logic gate's function block description.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1917,17 +1922,17 @@ def get_parameters_cgp():
     return f&#34;{gate_block.get_prototype_c_hier()}&#34; + \
            f&#34;  return &#34;+(gate_block.get_function_c())+&#34;;\n}\n\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code representation of corresponding logic gate used as a function block in hierarchical circuit description.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code of logic gate's function block description.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_function_block_v"><code class="name flex">
 <span>def <span class="ident">get_function_block_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code representation of corresponding logic gate used as function block in hierarchical circuit description.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog logic gate's function block description.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1943,17 +1948,17 @@ def get_parameters_cgp():
            f&#34;  assign {gate_block.out.name} = {gate_block.get_function_v()};\n&#34; + \
            f&#34;endmodule\n\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code representation of corresponding logic gate used as function block in hierarchical circuit description.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog logic gate's function block description.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_function_c"><code class="name flex">
 <span>def <span class="ident">get_function_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code representing corresponding two input logic gate's Boolean function using bitwise operators between its bitwise shifted inputs.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code description of logic gate's Boolean function (with bitwise shifted inputs).</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1968,17 +1973,17 @@ def get_parameters_cgp():
         return self.out.get_wire_value_c_flat()
     return f&#34;{self.a.get_wire_value_c_flat()} {self.operator} {self.b.get_wire_value_c_flat()}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code representing corresponding two input logic gate's Boolean function using bitwise operators between its bitwise shifted inputs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code description of logic gate's Boolean function (with bitwise shifted inputs).</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_function_v"><code class="name flex">
 <span>def <span class="ident">get_function_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code representing corresponding two input logic gate's Boolean function using bitwise operators between its inputs.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog description of logic gate's Boolean function.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -1991,17 +1996,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return f&#34;{self.a.get_wire_value_v_flat()} {self.operator} {self.b.get_wire_value_v_flat()}&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code representing corresponding two input logic gate's Boolean function using bitwise operators between its inputs.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog description of logic gate's Boolean function.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_gate_invocation_c"><code class="name flex">
 <span>def <span class="ident">get_gate_invocation_c</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates C code invocation of corresponding logic gate's generated function block.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>C code of logic gate's function block invocation.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2019,17 +2024,17 @@ def get_parameters_cgp():
     else:
         return f&#34;  {self.out.name} = {self.gate_type}({self.a.get_wire_value_c_hier()}, {self.b.get_wire_value_c_hier()});\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates C code invocation of corresponding logic gate's generated function block.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>C code of logic gate's function block invocation.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_gate_invocation_v"><code class="name flex">
 <span>def <span class="ident">get_gate_invocation_v</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Verilog code invocation of corresponding logic gate's generated function block.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Verilog code logic gate's function block invocation.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2048,17 +2053,17 @@ def get_parameters_cgp():
         gate_block = self.__class__(a=Wire(name=&#34;a&#34;), b=Wire(name=&#34;b&#34;), prefix=&#34;out&#34;)
         return f&#34;  {self.gate_type} {self.gate_type}_{self.out.prefix}(.{gate_block.a.prefix}({self.a.get_wire_value_v_hier()}), .{gate_block.b.prefix}({self.b.get_wire_value_v_hier()}), .{gate_block.out.prefix}({self.out.prefix}));\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Verilog code invocation of corresponding logic gate's generated function block.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Verilog code logic gate's function block invocation.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_gate_triplet_cgp"><code class="name flex">
 <span>def <span class="ident">get_gate_triplet_cgp</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat CGP triplet and output representation of corresponding logic gate itself.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Triplet and output lists describing function of corresponding two input logic gate.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2088,22 +2093,17 @@ def get_parameters_cgp():
         out_id = a_id+1 if a_id &gt; b_id else b_id+1
     return self.get_triplet_cgp(a_id=a_id, b_id=b_id, out_id=out_id) + self.get_output_cgp(out_id=out_id)</code></pre>
 </details>
+<div class="desc"><p>Generates flat CGP triplet and output representation of corresponding logic gate itself.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Triplet and output lists describing function of corresponding two input logic gate.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_invocation_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_invocation_blif_hier</span></span>(<span>self, top_modul: bool = False, *args, **kwargs)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates Blif code invocation of corresponding two input logic gate's generated subcomponent.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>top_modul</code></strong> :&ensp;<code>bool</code>, optional</dt>
-<dd>Specifies whether the described circuit has logic gate as its top modul component (used for self logic gate generation). Defaults to False.</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Blif logic gate subcomponent invocation.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2124,17 +2124,22 @@ def get_parameters_cgp():
     else:
         return f&#34;.subckt {self.gate_type} a={self.a.get_wire_value_blif()} b={self.b.get_wire_value_blif()} out={self.out.get_wire_value_blif()}\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates Blif code invocation of corresponding two input logic gate's generated subcomponent.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>top_modul</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Specifies whether the described circuit has logic gate as its top modul component (used for self logic gate generation). Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Blif logic gate subcomponent invocation.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_output_v_flat"><code class="name flex">
 <span>def <span class="ident">get_output_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat Verilog module's output wire assignment used for self logic gate circuit generation.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Module's output wire assignment in flat Verilog.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2147,17 +2152,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return &#34;&#34;.join([f&#34;  assign {self.out.name} = {self.get_function_v()};\n&#34; if self.disable_generation is False else f&#34;  assign {self.out.name}_out = {self.get_function_v()};\n&#34; for _ in range(1)])</code></pre>
 </details>
+<div class="desc"><p>Generates flat Verilog module's output wire assignment used for self logic gate circuit generation.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Module's output wire assignment in flat Verilog.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_prototype_blif_flat"><code class="name flex">
 <span>def <span class="ident">get_prototype_blif_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat Blif model header to describe corresponding logic gate's interface in flat Blif.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Model's name in flat Blif code.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2170,17 +2175,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return f&#34;.model {self.prefix}\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates flat Blif model header to describe corresponding logic gate's interface in flat Blif.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Model's name in flat Blif code.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_prototype_blif_hier"><code class="name flex">
 <span>def <span class="ident">get_prototype_blif_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates hierarchical Blif model header to describe corresponding logic gate's interface in hierarchical Blif.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Model's name in hierarchical Blif.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2193,17 +2198,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return f&#34;.model {self.gate_type}\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates hierarchical Blif model header to describe corresponding logic gate's interface in hierarchical Blif.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Model's name in hierarchical Blif.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_prototype_c_flat"><code class="name flex">
 <span>def <span class="ident">get_prototype_c_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat C code function header to describe corresponding two input logic gate's interface in flat C code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Function's name and parameters in flat C code.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2216,17 +2221,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return f&#34;uint8_t {self.prefix}(uint8_t {self.a.name}, uint8_t {self.b.name})&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates flat C code function header to describe corresponding two input logic gate's interface in flat C code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Function's name and parameters in flat C code.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_prototype_c_hier"><code class="name flex">
 <span>def <span class="ident">get_prototype_c_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates hierarchical C code function header to describe corresponding two input logic gate's interface in hierarchical C code.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Function's name and parameters in hierarchical C code.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2239,17 +2244,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return f&#34;uint8_t {self.gate_type}(uint8_t {self.a.name}, uint8_t {self.b.name})&#34; + &#34;{&#34; + &#34;\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates hierarchical C code function header to describe corresponding two input logic gate's interface in hierarchical C code.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Function's name and parameters in hierarchical C code.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_prototype_v_flat"><code class="name flex">
 <span>def <span class="ident">get_prototype_v_flat</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat Verilog module header to describe corresponding two input logic gate's interface in flat Verilog.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Module's name and parameters in flat Verilog.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2263,17 +2268,17 @@ def get_parameters_cgp():
     return f&#34;module {self.prefix}(input {self.a.name}, input {self.b.name}&#34; + \
            &#34;&#34;.join([f&#34;, output {self.out.name}&#34; if self.disable_generation is False else f&#34;, output {self.out.name}_out&#34; for _ in range(1)]) + &#34;);\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates flat Verilog module header to describe corresponding two input logic gate's interface in flat Verilog.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Module's name and parameters in flat Verilog.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_prototype_v_hier"><code class="name flex">
 <span>def <span class="ident">get_prototype_v_hier</span></span>(<span>self)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates hierarchical Verilog module header to describe corresponding two input logic gate's interface in hierarchical Verilog.</p>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Module's name and parameters in hierarchical Verilog.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2286,31 +2291,17 @@ def get_parameters_cgp():
     &#34;&#34;&#34;
     return f&#34;module {self.gate_type}(input {self.a.name}, input {self.b.name}, output {self.out.name});\n&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates hierarchical Verilog module header to describe corresponding two input logic gate's interface in hierarchical Verilog.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Module's name and parameters in hierarchical Verilog.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_triplet_cgp"><code class="name flex">
 <span>def <span class="ident">get_triplet_cgp</span></span>(<span>self, a_id: int, b_id: int, out_id: int)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates logic gate triplet (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.</p>
-<p>Each triplet represents unique logic gate within the described circuit. Besides the contained input wires indexes and gate's inner logic function, an output wire
-with incremented index position is also created and remembered to be appropriately driven as an input to another logic gate or as the circuit's output.</p>
-<p>Constant wire with value 0 has constant index of 0.
-Constant wire with value 1 has constant index of 1.
-Other wires indexes start counting from 2 and up.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>a_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>First input wire index position.</dd>
-<dt><strong><code>b_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>Second input wire index position.</dd>
-<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
-<dd>The output wire index position</dd>
-</dl>
-<h2 id="returns">Returns</h2>
-<dl>
-<dt><code>str</code></dt>
-<dd>Triplet describing function of corresponding two input logic gate.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2335,17 +2326,31 @@ Other wires indexes start counting from 2 and up.</p>
     &#34;&#34;&#34;
     return f&#34;([{out_id}]{a_id},{b_id},{self.cgp_function})&#34;</code></pre>
 </details>
+<div class="desc"><p>Generates logic gate triplet (first input wire, second input wire, logic gate function) using wires unique position indexes within the described circuit.</p>
+<p>Each triplet represents unique logic gate within the described circuit. Besides the contained input wires indexes and gate's inner logic function, an output wire
+with incremented index position is also created and remembered to be appropriately driven as an input to another logic gate or as the circuit's output.</p>
+<p>Constant wire with value 0 has constant index of 0.
+Constant wire with value 1 has constant index of 1.
+Other wires indexes start counting from 2 and up.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>a_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>First input wire index position.</dd>
+<dt><strong><code>b_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>Second input wire index position.</dd>
+<dt><strong><code>out_id</code></strong> :&ensp;<code>int</code></dt>
+<dd>The output wire index position</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>Triplet describing function of corresponding two input logic gate.</dd>
+</dl></div>
 </dd>
 <dt id="ariths_gen.core.logic_gate_circuits.logic_gate_circuit.TwoInputLogicGate.get_v_code"><code class="name flex">
 <span>def <span class="ident">get_v_code</span></span>(<span>self, file_object)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Generates flat Verilog code representation of corresponding logic gate itself.</p>
-<h2 id="args">Args</h2>
-<dl>
-<dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
-<dd>Destination file object where circuit's representation will be written to.</dd>
-</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -2360,6 +2365,12 @@ Other wires indexes start counting from 2 and up.</p>
     file_object.write(self.get_output_v_flat())
     file_object.write(f&#34;endmodule&#34;)</code></pre>
 </details>
+<div class="desc"><p>Generates flat Verilog code representation of corresponding logic gate itself.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>file_object</code></strong> :&ensp;<code>TextIOWrapper</code></dt>
+<dd>Destination file object where circuit's representation will be written to.</dd>
+</dl></div>
 </dd>
 </dl>
 </dd>
@@ -2450,7 +2461,7 @@ Other wires indexes start counting from 2 and up.</p>
 </nav>
 </main>
 <footer id="footer">
-<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.4</a>.</p>
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
 </footer>
 </body>
 </html>
