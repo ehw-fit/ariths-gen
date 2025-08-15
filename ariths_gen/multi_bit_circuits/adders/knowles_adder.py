@@ -177,6 +177,11 @@ class SignedKnowlesAdder(UnsignedKnowlesAdder, GeneralCircuit):
         config_choice (int, optional): Tradeoff implementation choice concerning the number of wires and fanout load on wires. The number of choices goes from 1 up to ⌈log2(N)⌉-2 for N > 4, otherwise the choice is 1. Defaults to 1.
     """
     def __init__(self, a: Bus, b: Bus, prefix: str = "", name: str = "s_ka", config_choice: int = 1, **kwargs):
+        # Signed bus length extension
+        N = max(a.N, b.N)
+        a.bus_extend(N=N, prefix=a.prefix, desired_extension_wire=a.get_wire(a.N-1))
+        b.bus_extend(N=N, prefix=b.prefix, desired_extension_wire=b.get_wire(b.N-1))
+        
         super().__init__(a=a, b=b, prefix=prefix, name=name, config_choice=config_choice, signed=True, **kwargs)
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition

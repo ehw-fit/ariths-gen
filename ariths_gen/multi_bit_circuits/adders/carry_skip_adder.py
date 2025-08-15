@@ -156,6 +156,11 @@ class SignedCarrySkipAdder(UnsignedCarrySkipAdder, GeneralCircuit):
         name (str, optional): Name of signed cska. Defaults to "s_cska".
     """
     def __init__(self, a: Bus, b: Bus, bypass_block_size: int = 4, prefix: str = "", name: str = "s_cska", **kwargs):
+        # Signed bus length extension
+        N = max(a.N, b.N)
+        a.bus_extend(N=N, prefix=a.prefix, desired_extension_wire=a.get_wire(a.N-1))
+        b.bus_extend(N=N, prefix=b.prefix, desired_extension_wire=b.get_wire(b.N-1))
+        
         super().__init__(a=a, b=b, bypass_block_size=bypass_block_size, prefix=prefix, name=name, signed=True, **kwargs)
 
         # Additional XOR gates to ensure correct sign extension in case of sign addition

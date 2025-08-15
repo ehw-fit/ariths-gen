@@ -15,4 +15,7 @@ from .multi_bit_circuits import (
     dividers
 )
 
-from .pdk import *
+from .tools  import (
+    pdk, shuffle_circuit
+)
+from .__version__ import __version__

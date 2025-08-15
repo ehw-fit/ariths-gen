@@ -13,6 +13,7 @@ test_circuit () {
 
         if iverilog -o tmp.verilog -Ddut=$circuit ../test_circuits/verilog_circuits/$mode/$circuit.v tb_$type.v ; then
             tv=`vvp tmp.verilog`
+            tv=$(echo "$tv" | grep -v "\$finish called")
             if [[ $tv ]]; then
                 echo -e "[\e[31mfail\e[0m]"
                 echo -e $tv

@@ -10,7 +10,7 @@ You may add your own modules as defined in the example below
 NOTE: Please call this function before calling `get_v_code_XXX()` to allow the
 Verilog generation process to take into account the library's specific definitions.
 """
-from .one_bit_circuits import (
+from ..one_bit_circuits import (
     one_bit_components
 )
 
