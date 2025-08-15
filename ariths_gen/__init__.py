@@ -18,4 +18,5 @@ from .multi_bit_circuits import (
 from .tools  import (
     pdk, shuffle_circuit
 )
-from .__version__ import __version__
+
+__version__ = "1.1.3"
